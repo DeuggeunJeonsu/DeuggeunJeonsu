@@ -1,0 +1,262 @@
+/* main 스타일 */
+html, body{
+    background-color: #fff;
+	font-size: 14px;
+	color: #797979;
+	width: 100%;
+	padding: 0;
+    margin: 0;
+	margin-left: 0;
+	margin-right: 0;
+	font-weight: 400;
+	width: 100%;
+	font-family: 'Raleway', sans-serif;
+}
+
+.mian-content{
+    width: 100%;
+    overflow: hidden;
+}
+/*헤더 스타일***************************************************/
+
+.header-nav{
+    border: 1px solid salmon;
+
+    position: fixed;
+    display: block; 
+    width: 100%;
+    margin-bottom: 0;
+    border-radius: 0px;
+    background-color: #fff;
+    /* border: none; */
+    border-bottom: solid 1px #e0e0e0;
+    z-index: 9;
+    padding: 0.5rem 1rem;
+}
+
+/*  검색영역(돋보기 버튼 눌렀을 때) */
+.top-search{
+    background-color: #333;
+    padding: 10px 0;
+    /* display: none;  */
+    /* 이거 확인 후 주석 해제 할 것 */
+}
+
+.search-container{
+    position: relative;
+    max-width: 1140px;
+
+    margin-right: auto;
+    margin-left: auto;
+    padding-right: 15px;
+    padding-left: 15px;
+    width: 100%;
+
+}
+.input-group{
+    position: relative;
+    display: flex;
+    width: 100%;
+}
+.search-icon-area{
+    background-color: transparent;
+    border: none;
+    color: #fff;
+    padding-left: 0;
+    padding-right: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    padding: 0.5rem 0.75rem;
+    margin-bottom: 0;
+    font-size: 1rem;
+    font-weight: normal;
+    line-height: 1.25;
+    text-align: center;
+    border-radius: 0.25rem;
+    white-space: nowrap;
+    vertical-align: middle;
+    display: flex;
+    align-items:  center;
+}
+
+.form-search{
+    border-radius: 0;
+    background-color: transparent;
+    border: none;
+    box-sizing: 0px;
+    color: #fff;
+    height: 40px;
+    padding: 0 15px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+    flex: 1 1 auto;
+    width: 1%;
+    margin-bottom: 0;
+    outline: none;
+    font-size:  1rem;
+    line-height: 1.25;
+    background-image: none;
+    background-clip: padding-box;
+    transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+    overflow: visible;
+    margin: 0;
+    font-family: inherit;
+    touch-action: manipulation;
+
+}
+
+/* 헤더 nav 영역 */
+.nav-container{
+    position: relative;
+    flex-wrap: nowrap;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1140px;
+
+    margin-right: auto;
+    margin-left: auto;
+    padding-right: 15px;
+    padding-left: 15px;
+    width: 100%;
+}
+
+/* 장바구니 검색 로그인 */
+.nav-icon{
+    position: absolute;
+    right: 10px;
+    top: 0;
+    margin-top: -10px;
+    float: right;
+    display: inline-block;
+    margin-left: 13px;
+    margin-right: -15px;
+
+}
+.nav-icon > ul {
+    padding: 0;
+    margin: 0 0 -7px 0;
+    list-style: none;
+    display: inline-block;
+   
+}
+
+.nav-icon > ul > li {
+    float: left;
+    display: block;
+}
+.nav-icon > ul > li >a{
+    color: #6f6f6f;
+    display: block;
+    padding: 28px 15px;
+    position: relative;
+    transition: 0.3s ease-in-out;
+    text-decoration: none;
+    outline: none;
+    background-color: transparent;
+    font-size: 20px;
+
+}
+.fa{
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.login-icon{
+    font-weight: bold;
+}
+.nav-icon > ul > li >a span.shopping-count{
+    background-color: #777;
+    border-radius: 50%;
+    margin-right: -4px;
+
+    position: absolute;
+    top: 50%;
+    margin-top: -15px;
+    right: 5px;
+    font-size: 10px;
+    padding: 0;
+    width: 15px;
+    height: 15px;
+    padding-top: 2px;
+
+    display: inline-block;
+    font-weight: bold;
+    line-height: 1;
+    color: #fff;
+    white-space: nowrap;
+    vertical-align: baseline;
+    vertical-align: baseline;
+
+    text-align: center;
+
+}
+
+.log-image{
+    color: rgb(0, 0, 0, 0.9);
+    display: inline-block;
+    padding-top: 0.3125rem;
+    padding-bottom: 0.3125rem;
+    margin-right: 1rem;
+    font-size: 1.25rem;
+    line-height: inherit;
+    white-space: nowrap;
+    transition: 0.3s ease-in-out;
+    text-decoration: none;
+    outline: none;
+    touch-action: manipulation;
+    background-color: transparent;
+}
+.log-disply{
+    display: none;
+}
+.m-top-10{
+    margin-top: 10px;
+}
+.log{
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    -user-select: none;
+    -webkit-user-drag: none;
+    -user-drag: none;
+
+    vertical-align: middle;
+    border-style: none;
+
+    width: 100px;
+}
+.collapse{
+    display: flex !important;
+    flex-basis: 100%;
+    align-ltems: center;
+}
+.nav-list{
+    flex-direction: row;
+    display: flex;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+    flex-wrap: wrap;
+    margin: 0;
+    padding: 0;
+}
+.nav-list > li {
+    display: list-item;
+    text-align: -webkit-match-parent;
+}
+.nav-list > li > a{
+    padding: 30px 15px;
+    font-weight: 600;
+    color: #6f6f6f;
+    background-color: transparent !important;
+    transition: 0.3s ease-in-out;
+    text-decoration: none;
+    outline: none;
+    touch-action: manipulation;
+}
