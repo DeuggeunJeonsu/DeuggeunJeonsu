@@ -1,439 +1,330 @@
-* { 
-    box-sizing: border-box;
-    padding: 0;
+/* main 스타일 */
+html, body{
+    background-color: #fff;
+	font-size: 14px;
+	color: #797979;
+	width: 100%;
+	padding: 0;
     margin: 0;
+	margin-left: 0;
+	margin-right: 0;
+	font-weight: 400;
+	width: 100%;
+	font-family: 'Raleway', sans-serif;
 }
 
-/* div, main, section, header, footer, article, nav, aside, form
-{ border : 1px solid black; }  */
-/* 다 만들고 삭제 */
-
-
-main{
-    width: 1140px;
-    margin : auto;
-
-    /* min-height : 요소의 최소 높이
-            -> 내부 요소가 없어도 최소 높이 유지
-            -> 내부 요소가 지정된 크기를 초과하면
-                그에 맞에 늘어남
-    */
-    min-height: 500px;
-}
-
-/* header */
-header{
-    height: 200px;
-    display: flex;
-    flex-direction: row;
-}
-
-header > section:nth-child(1){ width: 15%;}
-header > section:nth-child(2){ width: 70%;}
-header > section:nth-child(3){ width: 15%; }
-
-
-/* 로고 */
-header > section:first-child{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-#homeLogo{
-    width: 120px;
-    height: auto; /* 이미지 기본 비율에 맞게 자동 지정 */
-}
-
-
-/* 검색 영역 */
-header > section:nth-child(2){
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.search-area{
-    width: 500px;
-}
-
-.search-area fieldset{
-    border: 2px solid #455ba8;
-    padding : 2px;
-    border-radius: 5px;
+.mian-content{
+    width: 100%;
+    overflow: hidden;
     display: flex;
 }
+/*헤더 스타일***************************************************/
 
-/* 검색 창 */
-#query{
-    border : none; /* 테두리 없애기 */
-    /* outline : 
-        포커스가 맞춰진 input의 테두리 */
-    /* outline : none; */
-    outline : 0;
-    font-size: 18px;
-    font-weight: bold;
-    padding : 10px;
+.header-nav{
+    border: 1px solid blue;
 
-    width: 92%;
+    position: fixed;
+    
+    display: block; 
+    width: 100%;
+    margin-bottom: 0;
+    border-radius: 0px;
+    
+    border: none;
+    /* border-bottom: solid 1px #e0e0e0; */
+    z-index: 9;
+    padding: 0.5rem 1rem;
 }
 
-/* 검색 버튼 */
-#searchBtn{
-    width: 8%;
-    cursor: pointer;
-    border : none;
-
-    font-size: 1.2em;
-    color : #455ba8;
-    background-color: white;
+/*  검색영역(돋보기 버튼 눌렀을 때) */
+.top-search{
+    background-color: #333;
+    padding: 10px 0;
+    display: none;
+}
+.dispaly-none{
+    display: none;
 }
 
-/* **********************드롭다운************************* */
-/* 헤더 오른쪽 상단 메뉴 */
-
-header{
+.search-container{
     position: relative;
+    max-width: 1140px;
+
+    margin-right: auto;
+    margin-left: auto;
+    padding-right: 15px;
+    padding-left: 15px;
+    width: 100%;
+
+}
+.input-group{
+    position: relative;
+    display: flex;
+    width: 100%;
+}
+.search-icon-area{
+    background-color: transparent;
+    border: none;
+    color: #fff;
+    padding-left: 0;
+    padding-right: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    padding: 0.5rem 0.75rem;
+    margin-bottom: 0;
+    font-size: 1rem;
+    font-weight: normal;
+    line-height: 1.25;
+    text-align: center;
+    border-radius: 0.25rem;
+    white-space: nowrap;
+    vertical-align: middle;
+    display: flex;
+    align-items:  center;
 }
 
-.header-top-menu{
+.form-search{
+    border-radius: 0;
+    background-color: transparent;
+    border: none;
+    box-sizing: 0px;
+    color: #fff;
+    height: 40px;
+    padding: 0 15px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+    flex: 1 1 auto;
+    width: 1%;
+    margin-bottom: 0;
+    outline: none;
+    font-size:  1rem;
+    line-height: 1.25;
+    background-image: none;
+    background-clip: padding-box;
+    transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+    overflow: visible;
+    margin: 0;
+    font-family: inherit;
+    touch-action: manipulation;
+
+}
+
+/* 헤더 nav 영역 */
+.nav-container{
+    position: relative;
+    /* flex-wrap: nowrap; */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+   
+    max-width: 1140px;
+
+    padding: 5px 15px 5px 15px;
+    margin-left: auto;
+    margin-right: auto;
+  
+   
+    width: 100%;
+
+    box-sizing: 0;
+
+    /* background-color: #fff; */
+
+}
+
+
+
+/* 현재 고치고 있는 중,,,, */
+
+.no-background{
+    -ms-transition: all 1s ease-in-out;
+	transition: all 1s ease-in-out;
+
+	background-color: transparent;
+    border: none;
+}
+.nav-container-bg{
+    transition: all 1s ease-in-out;
+    -ms-transition: all 1s ease-in-out;
+
+    background-color: #fff;
+    border-bottom: solid 3px #e0e0e0;
+}
+
+
+
+
+/* 장바구니 검색 로그인 */
+.nav-icon{
     position: absolute;
     right: 10px;
-    top: 5px;
+    top: 0;
+    margin-top: -10px;
+    float: right;
+    display: inline-block;
+    margin-left: 13px;
+    margin-right: -15px;
 
 }
-
-.header-top-menu *{
-
-    font-size:  15px;
-    font-weight: bold;
-}
-
-/* 헤더 메뉴 체크박스 */
-#headerMenuToggle{ display: none;}
-
-/* 오른쪽 상단 닉네임 부분 */
-label[for='headerMenuToggle']{cursor: pointer;}
-label[for='headerMenuToggle']:hover{text-decoration: underline;}
-
-/* 체크박스 다음형제요소 div */
-#headerMenuToggle + div{display: none;}
-
-/* 체크된 #headerMenuToggle의 다음 형제 요소 div */
-#headerMenuToggle:checked + div{display: block;}
-
-/* 닉네임 클릭시 보이는 메뉴 */
-.header-menu{
-    position: absolute;
-    width: 100px;
-    height: 80px;
-    right: 0;
-    margin-top: 5px;
-    border: 1px solid black;
-}
-.header-menu > a{
-    display:  flex;
-    height: 50%;
-    justify-content: center;
-    align-items: center;
-}
-
-.header-menu > a:first-child{
-    border-bottom:  1px solid #ccc;
-}
-
-.header-menu > a:hover{
-    background-color: #455ba8;
-    color:white
-}
-
-
-
-
-/* nav */
-nav{
-    height: 50px;
-    position: sticky;
-    /* 화면 밖으로 벗어났을 때 
-        지정된 위치에 고정*/
-
-    top : 0; /* 최상단에 붙임 */
-
-    background-color: white;
-    border-bottom: 2px solid black;
-    z-index: 1000;
-}
-
-nav > ul{
-    display: flex;
-
-    /* li 태그 앞에 기호 삭제 */
+.nav-icon > ul {
+    padding: 0;
+    margin: 0 0 -7px 0;
     list-style: none;
-    height: 100%;
+    display: inline-block;
+   
 }
 
-
-nav li{
-    flex : 0 1 150px;
-        /* grow shrink basis */
-}
-
-nav a{
-    text-decoration: none;
-    color : black;
-    font-size: 18px;
-    font-weight: bold;
-    padding : 11px 0;
+.nav-icon > ul > li {
+    float: left;
     display: block;
+}
+.nav-icon > ul > li >a{
+    color: #99E1ED;
+    display: block;
+    padding: 28px 15px;
+    position: relative;
+    transition: 0.3s ease-in-out;
+    text-decoration: none;
+    outline: none;
+    background-color: transparent;
+    font-size: 20px;
+
+}
+.fa{
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.login-icon{
+    font-weight: bold;
+}
+.nav-icon > ul > li >a span.shopping-count{
+    background-color: #777;
+    border-radius: 50%;
+    margin-right: -4px;
+
+    position: absolute;
+    top: 50%;
+    margin-top: -15px;
+    right: 5px;
+    font-size: 10px;
+    padding: 0;
+    width: 15px;
+    height: 15px;
+    padding-top: 2px;
+
+    display: inline-block;
+    font-weight: bold;
+    line-height: 1;
+    color: #fff;
+    white-space: nowrap;
+    vertical-align: baseline;
+    vertical-align: baseline;
+
     text-align: center;
 
-    border-radius: 5px;
-    transition-duration: 0.1s;
-    height: 100%;
 }
 
-
-nav a:hover{
-    color : white;
-    background-color: #455ba8;
-}
-
-
-
-
-/* content */
-.content{
-    height: 800px;
-    display: flex;
-    
-    /* flex 지정 시 기본값 */
-    flex-direction: row;
-    justify-content: flex-start;
-    /* flex-start : flex요소에만 사용 가능한 정렬 방식 */
-    /* start : block요소, flex, grid 등에서도 적용 가능한 정렬 방식 */
-    align-items: stretch;
-}
-
-.content-1{ 
-    flex-basis: 70%;
-    padding : 20px;
-}
-.content-2{ flex-basis: 30%;}
-
-.content-1 > *{
-    margin-bottom: 20px;
-}
-
-.content-1 > pre{
-    font-size: 1rem;
-    font-family: '고딕';
-}
-
-/* 로그인 영역 */
-.content-2 > form{
-    height: 150px;
-    padding : 10px;
-    margin-top : 10px;
-
-    display: flex;
-
-    flex-direction: column;
-    justify-content: center;
-}
-
-.id-pw-area{
-    border: 1px solid #ccc;
-    display: flex;
-
-    /* 중심축 방향 크기 지정 */
-    flex-basis: 60%;
-}
-
-/* id/pw 입력 영역*/
-.id-pw-area > section:first-child{
-    width: 75%;
-    display: flex;
-    flex-direction: column;
-}
-
-.id-pw-area > section:first-child > input{
-    border : 0;
-    border-right : 1px solid #ccc;
-    flex-basis: 50%;
+.log-image{
+    color: rgb(0, 0, 0, 0.9);
+    display: inline-block;
+    padding-top: 0.3125rem;
+    padding-bottom: 0.3125rem;
+    margin-right: 1rem;
+    font-size: 1.25rem;
+    line-height: inherit;
+    white-space: nowrap;
+    transition: 0.3s ease-in-out;
+    text-decoration: none;
     outline: none;
-    padding: 5px;
+    touch-action: manipulation;
+    background-color: transparent;
 }
-
-/* id input 태그 */
-input[name='inputId']{
-    border-bottom : 1px solid #ccc !important;
+.log-disply{
+    display: none;
 }
-
-/* id/pw에 초점이 맞춰졌을 때 */
-.id-pw-area > section:first-child > input:focus{
-    border: 2px solid #455ba8 !important;
-}
-
-
-/* 로그인 버튼 영역 */
-.id-pw-area > section:last-child{
-    width: 25%;
-    display: flex;
-    justify-content: center;
-}
-
-/* 로그인 버튼 */
-.id-pw-area > section:last-child > button{
-    width: 100%;
-    background-color: white;
-    cursor: pointer;
-    border : none;
-}
-
-/* 로그인 버튼에 마우스가 올라갔을 때 */
-.id-pw-area > section:last-child > button:hover{
-    background-color: #455ba8;
-    color: white;
-}
-
-/* 아이디 저장 label */
-.content-2 label{
-    margin-top: 5px;
-    font-size: 14px;
-    display: flex;
-    padding: 5px 0;
-}
-
-input[name='saveId']{
-    margin-right: 5px;
-}
-
-/* 회원가입, ID/PW 찾기 영역 */
-.signup-find-area{
+.m-top-10{
     margin-top: 10px;
-    padding-left: 5px;
 }
+.log{
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    -user-select: none;
+    -webkit-user-drag: none;
+    -user-drag: none;
 
-.signup-find-area > a{
-    color : black;
-    text-decoration: none;
-    font-size: 14px;
+    vertical-align: middle;
+    border-style: none;
+
+    width: 100px;
 }
-
-.signup-find-area > span{
-    padding: 0 10px;
+.collapse{
+    display: flex !important;
+    flex-basis: 100%;
+    align-ltems: center;
 }
-
-
-
-
-/* footer */
-footer{
-    height: 200px;
-    background-color: #a3add342;
+.nav-list{
+    flex-direction: row;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-footer > p{ 
-    font-weight: bold;
-    margin : 16px 0;
-}
-
-footer > article > *{
-    font-size: 14px;
-}
-
-footer a{
-    color:black;
-    text-decoration: none;
-}
-
-footer span{
-    padding : 0 10px;
-}
-
-
-/* ---------------------------------------------------------------------------- */
-
-/* 로그인 성공 시 화면 */
-.login-area{
-    height: 120px;
-    padding: 30px 10px;
-    margin: 10px 0;
-    border: 1px solid black;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-}
-
-/* 프로필 이미지 */
-#memberProfile{
-    width: 64px;
-    height: 64px;
-    border-radius: 50%;
-}
-
-
-/* 프로필 이미지를 감싸고 있는 a태그 */
-.login-area > a{
-    display: block;
-    width: 70px;
-    height: 70px;
-    border: 3px solid #ddd;
-    border-radius: 50%;
-}
-
-/* 회원 정보 + 로그아웃 버튼 영역 설정 */
-
-.my-info{
-    width: 100%;
-    height: 100%;
-    margin-left: 20px;
-}
-
-.my-info > div{
-    display: flex;
-    justify-content: space-between;
-}
-
-a{ 
-    text-decoration: none;
-    color : black;
-}
-
-/* 닉네임 */
-#nickname{
-    color : black;
-    font-size: 20px;
-    font-weight: bold;
-    letter-spacing: -3px;
-}
-
-/* 로그아웃 버튼 */
-#logoutBtn{
-    color : gray;
-    font-size: 14px;
-    font-weight: bold;
-
-    border: 2px solid gray;
-    padding : 3px 5px;
-    border-radius: 10px;
-}
-
-#logoutBtn:hover{
-    color : white;
-    background-color: gray;
-}
-
-#logoutBtn:active{
-    transform: scale(0.8);
-}
-
-/* 내정보 - 이메일 */
-.my-info > p{
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+    flex-wrap: wrap;
     margin: 0;
-    color : gray;
+    padding: 0;
+}
+.nav-list > li {
+    display: list-item;
+    
+}
+.nav-list > li > a{
+    padding: 30px 15px;
+    font-weight: 600;
+    color: #99E1ED;
+    background-color: transparent !important;
+    transition: 0.3s ease-in-out;
+    text-decoration: none;
+    outline: none;
+    touch-action: manipulation;
+}
+
+
+/**********************************/
+/* style.css */
+
+/* 숨기려는 버튼을 골라서 쓰자
+
+/* 전체화면 버튼 */
+/* video::-webkit-media-controls-fullscreen-button {} */
+
+/* 일시정지, 재생 버튼 */
+/* video::-webkit-media-controls-play-button {} */
+
+/* 재생 슬라이드..? */
+/* video::-webkit-media-controls-timeline {} */
+
+/* 현재 진행 시간 */
+/* video::-webkit-media-controls-current-time-display{} */
+
+/* 전체 시간 */
+/* video::-webkit-media-controls-time-remaining-display {} */
+
+/* 음소거 버튼 */
+/* video::-webkit-media-controls-mute-button {} */
+
+/* 볼륨 조절 슬라이드 */
+/* video::-webkit-media-controls-volume-slider {} */ */
+
+/* 괄호에 display: none !important; 를 추가하면된다.
+ 예 ) 전체화면 전환 버튼을 숨긴다. 
+ 다만 더블클릭으로 전체화면이 되는 기능등은 그대로고 단지 버튼만 없앤다. */
+
+ .home video::-webkit-media-controls-fullscreen-button {
+    display: none !important;
 }
