@@ -77,7 +77,7 @@ html, body{
     line-height: 1.25;
     text-align: center;
     border-radius: 0.25rem;
-    white-space: nowrap;
+    /* white-space: nowrap; */
     vertical-align: middle;
     display: flex;
     align-items:  center;
@@ -222,7 +222,7 @@ html, body{
     font-weight: bold;
     line-height: 1;
     color: #fff;
-    white-space: nowrap;
+    /* white-space: nowrap; */
     vertical-align: baseline;
     vertical-align: baseline;
 
@@ -238,7 +238,7 @@ html, body{
     margin-right: 1rem;
     font-size: 1.25rem;
     line-height: inherit;
-    white-space: nowrap;
+    /* white-space: nowrap; */
     transition: 0.3s ease-in-out;
     text-decoration: none;
     outline: none;
@@ -275,7 +275,7 @@ html, body{
     padding-left: 0;
     margin-bottom: 0;
     list-style: none;
-    flex-wrap: wrap;
+    /* flex-wrap: wrap; */
     margin: 0;
     padding: 0;
 }
@@ -295,36 +295,53 @@ html, body{
 }
 
 
-/**********************************/
-/* style.css */
+/* ************************************ */
+/* 비디오 영역 관련 */
+#hello video{
+    position: absolute;
+    width: 100%;
+    
 
-/* 숨기려는 버튼을 골라서 쓰자
+}
 
-/* 전체화면 버튼 */
-/* video::-webkit-media-controls-fullscreen-button {} */
-
-/* 일시정지, 재생 버튼 */
-/* video::-webkit-media-controls-play-button {} */
-
-/* 재생 슬라이드..? */
-/* video::-webkit-media-controls-timeline {} */
-
-/* 현재 진행 시간 */
-/* video::-webkit-media-controls-current-time-display{} */
-
-/* 전체 시간 */
-/* video::-webkit-media-controls-time-remaining-display {} */
-
-/* 음소거 버튼 */
-/* video::-webkit-media-controls-mute-button {} */
-
-/* 볼륨 조절 슬라이드 */
-/* video::-webkit-media-controls-volume-slider {} */ */
-
-/* 괄호에 display: none !important; 를 추가하면된다.
- 예 ) 전체화면 전환 버튼을 숨긴다. 
- 다만 더블클릭으로 전체화면이 되는 기능등은 그대로고 단지 버튼만 없앤다. */
-
- .home video::-webkit-media-controls-fullscreen-button {
-    display: none !important;
+#hello{
+    
+    background-size: cover;
+    position: relative;
+    height: 100%;
+}
+.hello-container{
+    margin-right: auto;
+    margin-left: auto;
+    padding-right: 15px;
+    padding-left: 15px;
+    width: 100%;
+    height: 100%;
+}
+.hello-row{
+    display: flex;
+    /* -ms-flex-wrap: wrap; */
+    /* flex-wrap: wrap; */
+    margin-right: 700px;
+    margin-left: 200px;
+}
+.main-home{
+    overflow: hidden;
+    padding-top: 50%;
+    /* padding-bottom: 20%; */
+    position: relative;
+    z-index: 3;
+}
+.main-home h1{
+    color: #fff;
+    font-family: 'Raleway', sans-serif;
+    font-size: 3.286rem;
+    font-weight: 700;
+    line-height: 3.5rem;
+}
+.hello-BtnArea input{
+    width: 300px;
+    height: 200px;
+    border: none;
+    background-color: #99E1ED;
 }

@@ -11,12 +11,6 @@ $(document).ready(function(){
         $('.top-search').slideUp();
     })
 
-  
-
-
-
-
-
     // 스크롤 여부 확인 후 header 변화 
     var didScroll = false; // 스크롤 여부를 확인하는 변수
     const headerNav = document.querySelector(".header-nav");
@@ -55,5 +49,16 @@ $(document).ready(function(){
             log01.classList.remove("log-disply");
             return;
         }
+    }
+});
+// *********************메인페이지*******************************
+
+// 메인페이지 동영상 컨트롤바 제거
+$(document).ready(function(){
+    if( document.querySelector('.home video') != null){
+
+        // JavaScript 방법으로 컨트롤 숨기기
+        const videoElement = document.querySelector('.home video');
+        videoElement.controls = false;
     }
 });
