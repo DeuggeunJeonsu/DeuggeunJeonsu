@@ -28,28 +28,45 @@ $(document).ready(function(){
 
     const log01 = document.querySelector(".log01");  
     const log02 = document.querySelector(".log02"); //스크롤내렸을 때 보이게 될 로고
+    const mainPage = document.querySelector("[name='mainPage']");
 
     // 스크롤 내렸을 때 배경 색 보이기
-    function hasScrolled() {
-        var scrollTop = $(window).scrollTop();
-        if (scrollTop === 0) {
-            //배경 변화
-            headerNav.classList.add("no-background");
-            headerNav.classList.remove("nav-container-bg");
 
-            // 로고 변화
-            log02.classList.remove("log-disply");
-            log01.classList.add("log-disply");
-            return;
-        } else {
-            headerNav.classList.remove("no-background");
-            headerNav.classList.add("nav-container-bg")
+    if(mainPage.value == "mainPage"){
 
-            log02.classList.add("log-disply");
-            log01.classList.remove("log-disply");
-            return;
+        function hasScrolled() {
+    
+            var scrollTop = $(window).scrollTop();
+            if (scrollTop === 0) {
+                //배경 변화
+                headerNav.classList.add("no-background");
+                headerNav.classList.remove("nav-container-bg");
+    
+                // 로고 변화
+                log02.classList.remove("log-disply");
+                log01.classList.add("log-disply");
+                return;
+            } else {
+                headerNav.classList.remove("no-background");
+                headerNav.classList.add("nav-container-bg")
+    
+                log02.classList.add("log-disply");
+                log01.classList.remove("log-disply");
+                return;
+            }
         }
+        
+    } else {
+
+        headerNav.classList.add("nav-sticky");
+
+        log02.classList.add("log-disply");
+        log01.classList.remove("log-disply");
+
+        return;
+
     }
+
 });
 // *********************메인페이지*******************************
 

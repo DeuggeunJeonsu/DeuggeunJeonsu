@@ -5,6 +5,9 @@
     font-style: normal;
 }
 
+* {
+    border: 1px solid black;
+}
 
 /* 전체 글꼴 */
 *{
@@ -30,6 +33,7 @@ html, body{
     overflow: hidden;
     display: flex;
 }
+
 /*헤더 스타일***************************************************/
 
 .header-nav{
@@ -46,6 +50,11 @@ html, body{
     /* border-bottom: solid 1px #e0e0e0; */
     z-index: 9;
     padding: 0.5rem 1rem;
+}
+
+.nav-sticky{
+    position: sticky;
+    top : 0;
 }
 
 /*  검색영역(돋보기 버튼 눌렀을 때) */
@@ -357,3 +366,39 @@ width: 1500px;
     border: none;
     background-color: #99E1ED;
 }
+
+/* --------------------------- Footer 시작 ---------------------------*/
+footer{
+    height: 120px;
+    background-color: #212121;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #888888;
+    
+}
+.footer-row{
+    font-size: 18px;
+    font-weight: 600;
+}
+footer i {
+    padding: 0px 5px;
+    color: #ff0000;
+}
+article{
+    display: flex;
+    font-size: 15px;
+}
+footer p{
+    color: #9c9a9a;
+    text-decoration: none;
+}
+footer span{
+    padding : 0 10px;
+}
+.footer-row2{
+    font-size: 12px;
+}
+
+/* ————————————— Footer 끝 —————————————*/
