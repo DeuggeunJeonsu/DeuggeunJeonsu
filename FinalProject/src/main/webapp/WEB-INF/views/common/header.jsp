@@ -38,7 +38,7 @@
                         <input type="text" class="form-search" placeholder="검색어를 입력해주세요">
                         <span class="search-icon-area close-search">
                             <!-- <i class="fa fa-regular fa-circle-xmark"></i> -->
-                            <i>X</i>
+                            <i>&times;</i>
                         </span>
                     </div>
                 </div>
