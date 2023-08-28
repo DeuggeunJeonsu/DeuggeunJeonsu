@@ -15,25 +15,31 @@
 		<div class="video-container">
 			<!--메인 동영상 재생  -->
 			<section id="hello" class="home bg-mega" width="1140px">
-				<video controls autoplay loop muted width="100%">
+				<video controls autoplay loop muted>
 					<source src="/resources/images/main/mainVido.mp4">
 				</video>
-					<div class="hello-container">
-						<div class="hello-row">
-							<div class="main-home">
-								<h1 class="text-white">
-									Let's work out<br> with your<br> <span style="color: #99E1ED ;">Deuggeun-Jeonsu</span>
-								</h1>
-							</div>
-						</div>
-						<div class="hello-BtnArea">
-							<input type="button">
-							<input type="button">
-						</div>
-					</div>
 			</section>
+			<div class="hello-container">
+				<div class="hello-row">
+					<div class="main-home">
+						<h1 class="text-white">
+							Let's work out<br> with your<br> <span style="color: #99E1ED ;">Deuggeun-Jeonsu</span>
+						</h1>
+					</div>
+				</div>
+				<div class="hello-BtnArea">
+					<input type="button">
+					<input type="button">
+				</div>
+			</div>
 		</div>
+	
+		
 	</section>
+	<section id="middle-Container">
+
+	</section>
+	
 
 
 

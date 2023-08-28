@@ -319,26 +319,31 @@ width: 1500px;
 /* ************************************ */
 /* 비디오 영역 관련 */
 #hello video{
-    position: absolute;
-    width: 100vw;
-    min-height: 100vh;
+    /* position: absolute; */
+    max-width: 2379px;
+    /* min-height: 100vh; */
     
 
+}
+.video-container{
+    height: 1300px;
 }
 
 #hello{
-    
+    position: absolute;
     background-size: cover;
-    position: relative;
-    height: 100%;
+    /* position: relative; */
+    /* height: 100%; */
 }
 .hello-container{
-    min-height: 100vh;
+    position: relative;
+
+    /* max-height: 100vh;
     margin-right: auto;
     margin-left: auto;
     padding-right: 15px;
     padding-left: 15px;
-    min-width: 100vw;
+    min-width: 100vw; */
 }
 .hello-row{
     display: flex;
@@ -351,7 +356,7 @@ width: 1500px;
     overflow: hidden;
     padding-top: 50%;
     /* padding-bottom: 20%; */
-    position: relative;
+    /* position: relative; */
     z-index: 3;
 }
 .main-home h1{
@@ -366,6 +371,11 @@ width: 1500px;
     height: 200px;
     border: none;
     background-color: #99E1ED;
+}
+#middle-Container{
+    margin-top: 100px;
+    height: 1500px;
+    background-color: pink;
 }
 
 /* --------------------------- Footer 시작 ---------------------------*/
