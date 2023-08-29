@@ -20,49 +20,61 @@
     margin: 20px 0;
 }
 
-.searchBar{
-    width: 220px;
-    height: 27px;
-
-    border-radius: 5px;
-    border: 2px solid #ddd;
-    background-color: white;
-
-    display: flex;
-    justify-content: left;
-    align-items: center;
-
-    z-index: 1;
-    opacity: 1;
-
-    padding-left: 5px;
-}
-
-#search-area input{
+/* 검색창 스타일 */
+.search-place input[type="search"] {
     width: 300px;
-
+    height: 50px;
+    padding: 10px;
+    font-size: 16px;
+    background-color: #f5f5f5;
     border: none;
-    -webkit-appearance: none;
-    text-align: left;
-    margin-left: 10px;
-
-    overflow: auto;
-
-    z-index: -1;
-    font-size: 15px;
+    border-radius: 10px;
+    outline: none;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, box-shadow 0.3s;
 }
 
-#search-area input:focus{
+.search-place input[type="search"]:hover,
+.search-place input[type="search"]:focus {
+    background-color: #99E1ED;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#search-button{
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+    padding: 0;
+    font-size: 16px;
+    color: #fff;
+    border: none;
+    background-color: #ccc;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
     outline: none;
 }
 
-.fa-magnifying-glass{
-    font-size: 15px;
+#search-button:hover{
+    cursor: pointer;
+}
+
+#sort-btn-area{
+    display: flex;
+    
+    align-items: center;
 }
 
 #sort-btn-area a{
+    font-size: 16px;
+
     text-decoration: none;
     color: #797979;
+
+    margin: 0 5px;
+}
+
+#sort-btn-area a:hover{
+    color: #99E1ED;
+    font-weight: bold;
 }
 
 /* 해시태그 영역 */
@@ -70,7 +82,7 @@
     display: flex;
     position: relative;
 
-    right: 120px;
+    right: 50px;
 }
 
 .hashTag-area div{
@@ -81,13 +93,22 @@
     padding: 5px;
 
     color: white;
-    font-size: 15px;
-    text-align: center;
+    font-size: 18px;
 
-    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 20px;
 
     cursor: pointer;
 }
+
+.hashTag-area div:hover{
+    transform: scale(1.05);
+    transition-duration: 0.5s;
+}
+
 
 .hashTag-area .fa-solid{
     display: none;
@@ -95,13 +116,12 @@
 
 .hashTag-area div:hover .fa-solid{
     display: inline;
+    transform: scale(1.05);
 }
 
 .fa-circle-xmark{
-    font-size: 15px;
-
-    position: relative;
-    left: 3px;
+    font-size: 13px;
+    margin-left: 5px;
 }
 
 /* 게시글 썸네일 영역*/
@@ -121,6 +141,13 @@
     border: 1px solid #ddd;
     
     background-color: white;
+
+    cursor: pointer;
+}
+
+.thumbnail:hover{
+    transform: scale(1.05);
+    transition-duration: 0.5s;
 }
 
 .thumbnail > div:first-of-type{
