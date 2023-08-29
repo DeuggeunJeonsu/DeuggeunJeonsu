@@ -16,14 +16,20 @@
 <body>
     <main>
 
-    <form action="/notification" method="GET">
+		<div class="Jheader">
+			<jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
+		</div>
 
+    <form action="/notification" method="GET">
+		
+		
+		
         <div class="Jbody">
             <div class="Jcenter">
 
 
                 <div class="Jhead">
-                    <h2>공지사항 게시판</h2>
+                    <h1>공지사항 게시판</h1>
                 </div>
 
                 <div class="Jtext">
@@ -31,12 +37,7 @@
                 </div>
 
                 <div class="Jsearch">
-                    <button class="fa-solid fa-magnifying-glass" ><svg
-                            xmlns="http://www.w3.org/2000/svg" 
-                            viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
-                            <path
-                                d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z" />
-                        </svg></button> <input type="text">
+                    <button class="fa-solid fa-magnifying-glass" ></button> <input type="text">
                 </div>
 
                 <div class="JList">
@@ -56,7 +57,7 @@
                         <tbody>
                             <tr>
                                 <td><div id="Jpoint">중요!</div></td>
-                               <td><a href="#">회원가입 시 필수 약관동의에 대하여</a></td>
+                               <td><a href="/notificationDetail">회원가입 시 필수 약관동의에 대하여</a></td>
                                 <td>관리자</td>
                                 <td>2023-08-20</td>
                                 <td>1</td>
@@ -92,9 +93,12 @@
 
                 </div>
 
+                <div class="Jbtn">
+                    <a href="/notificationWrite"><button type="button" class="Jwrite">글쓰기</button></a>
+                </div>
+
                 <div class="pagination-area">
 
-                    <button class="Jwrite">글쓰기</button>
 
                     <ul class="pagination">
                     

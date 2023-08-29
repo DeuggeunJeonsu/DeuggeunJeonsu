@@ -2,6 +2,11 @@
  /* border: 1px solid black; */
 }
 
+.Jheader{
+	height: 100px;
+	width: 100%;
+	
+}
 
 a{
     text-decoration: none;
@@ -144,6 +149,8 @@ td{
     display: flex;
     justify-content: right;
     align-items: center;
+
+    font-size: 17px;
 
 }
 

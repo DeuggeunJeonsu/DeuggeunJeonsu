@@ -16,6 +16,10 @@
 <body>
     <main>
 
+        <div class="Jheader">
+			<jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
+		</div>
+
         <div class="Jbody">
             <div class="Jcenter">
 
@@ -42,7 +46,7 @@
                     <div id="ncCheckbox"><input type="checkbox"> 중요 공지사항</div>
 
                 </div>
-                <textarea class="ncContent" maxlength="2000" placeholder="내용을 입력해주세요."></textarea>
+                <textarea class="ncContent" maxlength="1999" placeholder="내용을 입력해주세요."></textarea>
 
                 
 
