@@ -36,6 +36,10 @@ html, body{
 
 /*헤더 스타일***************************************************/
 
+
+
+
+
 .header-nav{
     border: 1px solid blue;
 
@@ -51,6 +55,7 @@ html, body{
     z-index: 9;
     padding: 0.5rem 1rem;
 }
+
 
 .nav-sticky{
     position: sticky;
@@ -69,7 +74,7 @@ html, body{
 
 .search-container{
     position: relative;
-    max-width: 1140px;
+    /* max-width: 1140px; */
 
     margin-right: auto;
     margin-left: auto;
@@ -131,6 +136,9 @@ html, body{
     touch-action: manipulation;
 
 }
+.close-search i{
+    color: #fff;
+}
 
 /* 헤더 nav 영역 */
 .nav-container{
@@ -178,17 +186,17 @@ width: 1500px;
 /* 장바구니 검색 로그인 */
 .nav-icon{
     position: absolute;
-    right: 20px;
+    right: 5%;
     top: auto;
     margin-top: 0px;
-    float: inherit;
+   
     display: inline-block;
     /* margin-left: 13px; */
-    margin-right: -15px;
+    /* margin-right: -15px; */
 }
 .nav-icon > ul {
     padding: 0;
-    margin: 0 0 -7px 0;
+    /* margin: 0 0 -7px 0; */
     list-style: none;
     display: inline-block;
    
@@ -316,56 +324,68 @@ width: 1500px;
 }
 
 
+
 /* ************************************ */
 /* 비디오 영역 관련 */
-#hello video{
-    position: absolute;
-    width: 100vw;
-    min-height: 100vh;
-    
-
-}
-
-#hello{
-    
+#hello {
+    position: relative;
     background-size: cover;
-    position: relative;
-    height: 100%;
-}
-.hello-container{
-    min-height: 100vh;
-    margin-right: auto;
-    margin-left: auto;
-    padding-right: 15px;
-    padding-left: 15px;
-    min-width: 100vw;
-}
-.hello-row{
-    display: flex;
-    /* -ms-flex-wrap: wrap; */
-    /* flex-wrap: wrap; */
-    margin-right: 700px;
-    margin-left: 200px;
-}
-.main-home{
     overflow: hidden;
-    padding-top: 50%;
-    /* padding-bottom: 20%; */
+}
+
+#hello video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: auto;
+    min-width: 100%;
+    min-height: 100%;
+}
+
+.hello-container {
     position: relative;
+    width: 100%;
+    padding-bottom: 56.25%;
+}
+
+.main-home {
+    position: absolute;
+    top: 50%;
+    left: 30%;
+    transform: translate(-50%, -50%);
+    /* text-align: center; */
     z-index: 3;
 }
-.main-home h1{
+
+.main-home h1 {
     color: #fff;
     font-family: 'Raleway', sans-serif;
     font-size: 3.286rem;
     font-weight: 700;
     line-height: 3.5rem;
+    margin: 0;
 }
-.hello-BtnArea input{
-    width: 300px;
-    height: 200px;
+
+.hello-BtnArea {
+    width: 350px;
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.hello-BtnArea button {
+    width: 180px;
+    height: 50px;
     border: none;
     background-color: #99E1ED;
+    cursor: pointer;
+}
+#middle-Container{
+    margin: 0 250px;
+    border:1px solid #777;
 }
 
 /* --------------------------- Footer 시작 ---------------------------*/
@@ -403,3 +423,106 @@ footer span{
 }
 
 /* ————————————— Footer 끝 —————————————*/
+
+/* _______________middle-Container__________________ */
+#schedule-area{
+    height: 100%;
+    display: flex;
+    align-items: space-between;
+}
+/* 달력 */
+#CalendarArea {
+    background-color : white;
+    height: auto;
+    width: 400px;
+    margin: 0px;
+    padding: 20px;
+    margin: 0 auto;
+    border-radius:5px;
+    box-shadow:0px 10px 20px 0px rgba(0,0,0,0.5);
+}
+
+td {
+    width: 50px;
+    height: 50px;
+}
+
+.Calendar {
+    text-align: center;
+}
+
+.Calendar>thead>tr:first-child>td {
+    font-family: 'Questrial', sans-serif;
+    font-size: 1.1em;
+    font-weight: bold;
+}
+.Calendar>thead>tr:last-child>td:nth-child(1),  .Calendar>thead>tr:last-child>td:nth-child(7){
+    color: #F79DC2;
+}
+
+
+.calenderBtn{
+    color:rgba(52, 196, 219, 0.5);
+    font-size: 50px;
+}
+
+.Calendar>thead>tr:last-child>td {
+    font-family: 'Questrial', sans-serif;
+    font-weight: 600;     
+}
+
+.Calendar>tbody>tr>td>p {
+    font-family: 'Montserrat', sans-serif;
+    height: 35px;
+    width: 35px;
+    border-radius: 45px;
+    transition-duration: .2s;
+    line-height: 35px;
+    margin: 2.5px;
+    display: block;
+    text-align: center;
+}        
+
+.futureDay {
+    color: lightgray;
+}
+
+.today {
+    font-family: 'Montserrat', sans-serif;
+    height: 45px;
+    width: 45px;
+    border-radius: 45px;
+    transition-duration: .2s;
+    line-height: 45px;
+    margin: 2.5px;
+    display: block;
+    text-align: center;
+}
+
+.pastDay {
+    background-color: #FFFFFF;
+    cursor: pointer;
+}
+.pastDay:hover{
+    background:#eee;
+}
+
+.pastDay.choiceDay,
+.today.choiceDay {
+    background:  rgba(52, 196, 219, 0.5);
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+}
+.holiday{
+    color:#F79DC2;
+}
+.triangle{
+    color: #f1c40f;
+    font-size: 30px;
+    
+
+}
+.Circle{
+    color: #ee4949;
+} 
