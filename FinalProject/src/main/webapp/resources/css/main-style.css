@@ -45,9 +45,8 @@ html, body{
 
 
 .header-nav{
-    border: 1px solid blue;
 
-    position: fixed;
+    /* position: fixed;
     
     display: block; 
     width: 100%;
@@ -55,17 +54,30 @@ html, body{
     border-radius: 0px;
     
     border: none;
-    /* border-bottom: solid 1px #e0e0e0; */
+    border-bottom: solid 1px #e0e0e0;
+    z-index: 9;
+    padding: 0.5rem 1rem; */
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: white;
     z-index: 9;
     padding: 0.5rem 1rem;
+    border-bottom: 1px solid #e0e0e0;
 }
 
 
 .nav-sticky{
     position: sticky;
     top : 0;
+    z-index: 9;
+    background-color: #fff;
 }
-
+.nav-padding{
+    padding-top: 111px;
+}
 /*  검색영역(돋보기 버튼 눌렀을 때) */
 .top-search{
     background-color: #333;

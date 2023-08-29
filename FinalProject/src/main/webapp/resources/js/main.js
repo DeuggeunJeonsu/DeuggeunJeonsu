@@ -14,10 +14,60 @@ $(document).ready(function(){
     // 스크롤 여부 확인 후 header 변화 
     var didScroll = false; // 스크롤 여부를 확인하는 변수
     const headerNav = document.querySelector(".header-nav");
-
+    const navContainer = document.querySelector(".nav-container")
+    const log01 = document.querySelector(".log01");  
+    const log02 = document.querySelector(".log02"); //스크롤내렸을 때 보이게 될 로고
+    const body = document.querySelector("body")
     $(window).scroll(function(e) {
         didScroll = true;
     });
+
+
+        // 스크롤 내렸을 때 배경 색 보이기
+        if(document.querySelector("[name='mainPage']") == null){
+
+            // const mainPage = document.querySelector("[name='mainPage']");
+            // if(mainPage.value == "mainPage"){
+        
+            //     function hasScrolled() {
+            
+            //         var scrollTop = $(window).scrollTop();
+            //         if (scrollTop === 0) {
+            //             //배경 변화
+            //             headerNav.classList.add("no-background");
+            //             headerNav.classList.remove("nav-container-bg");
+            
+            //             // 로고 변화
+            //             log02.classList.remove("log-disply");
+            //             log01.classList.add("log-disply");
+            //             return;
+            //         } else {
+            //             headerNav.classList.remove("no-background");
+            //             headerNav.classList.add("nav-container-bg")
+            
+            //             log02.classList.add("log-disply");
+            //             log01.classList.remove("log-disply");
+            //             return;
+            //         }
+            //     }
+                
+            // } 
+        
+        
+            navContainer.classList.add("nav-sticky");
+            headerNav.classList.remove("no-background");
+            headerNav.classList.add("nav-container-bg")
+            body.classList.add("nav-padding")
+            log02.classList.add("log-disply");
+            log01.classList.remove("log-disply");
+    
+            return;
+    
+        }
+    
+
+
+
 
     setInterval(function() {
         if (didScroll) {
@@ -26,16 +76,9 @@ $(document).ready(function(){
         }
     }, 250);
 
-    const log01 = document.querySelector(".log01");  
-    const log02 = document.querySelector(".log02"); //스크롤내렸을 때 보이게 될 로고
+   
     
-    
-    // 스크롤 내렸을 때 배경 색 보이기
-    if(document.querySelector("[name='mainPage']") != null){
 
-        const mainPage = document.querySelector("[name='mainPage']");
-        if(mainPage.value == "mainPage"){
-    
             function hasScrolled() {
         
                 var scrollTop = $(window).scrollTop();
@@ -57,18 +100,11 @@ $(document).ready(function(){
                     return;
                 }
             }
-            
-        } 
-    }else {
+
+
+
+
     
-        headerNav.classList.add("nav-sticky");
-
-        log02.classList.add("log-disply");
-        log01.classList.remove("log-disply");
-
-        return;
-
-    }
 
 });
 // *********************메인페이지*******************************
