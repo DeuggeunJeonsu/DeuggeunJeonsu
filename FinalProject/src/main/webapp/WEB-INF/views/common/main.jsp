@@ -26,7 +26,7 @@
 							</h1>
 							<div class="hello-BtnArea">
 								<button>My health Schedule</button>
-								<button>BMI측정</button>
+								<button>BMI 측정</button>
 							</div>
 						</div>
 					</div>
@@ -41,7 +41,11 @@
 			<div>
 				<h1>My health Schedule</h1>
 				<div>
-					<progress  id="schedule-progress" value="20" max="100"></progress>
+					<div class="progress">
+						<div class="progress-num" style="width:20%"></div>
+					</div>
+					<div class="todolist-area">
+					</div>
 				</div>
 			</div>
 			<div id="CalendarArea">
