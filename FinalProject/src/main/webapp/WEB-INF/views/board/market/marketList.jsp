@@ -9,7 +9,10 @@
     <title>게시판이름</title>
 </head>
 <body>
+    <jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
     
+
+
     
 </body>
 </html>
