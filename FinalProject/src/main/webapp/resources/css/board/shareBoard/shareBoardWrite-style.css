@@ -1,0 +1,118 @@
+/* div{
+    border: 1px solid #99E1ED;;
+} */
+
+#main-container{
+    margin: 100px 400px;
+    height: auto;
+}
+form{
+    display: flex;
+    flex-direction: column;
+}
+#title-area > div:nth-of-type(2){
+    padding-bottom: 10px;
+    border-bottom: 2px solid #ddd;
+}
+
+.top-write{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+#writer{
+    display: flex;
+    width: 70%;
+    align-items: center;
+    margin: 20px;
+
+}
+#writer span{
+    font-size: 16px;
+    padding-left: 20px;
+}
+
+.top-write button{
+   width: 100px;
+   height: 50px;
+   cursor: pointer;
+   background-color: #99E1ED;
+   border: none;
+   border-radius: 10px;
+}
+#profile-area{
+    width: 60px;
+    height: 60px;
+    border: 3px solid #ccc;
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+}
+.thumbnail-Routine-area{
+   display: flex;
+}
+.thumbnail-area{
+    width: 50%;
+}
+/* 이미지를 감싸는 div */
+.boardImg{
+    width: 230px;
+    height: 230px;
+    display: inline-block;
+    text-align: center;
+
+    position: relative;
+}
+
+.boardImg > label{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #ccc;
+    cursor: pointer;
+}
+
+.inputImage{
+    display: none;
+}
+
+
+/* 이미지 */
+
+.inputImage{
+    display: none;
+}
+.boardImg img{
+    max-width: 100%;
+    max-height: 100%;
+}
+
+/* 썸네일만 이미지 크게 */
+.thumbnail{
+    width: 300px;   
+    height: 300px;
+}
+
+
+
+.routine-area{
+    width: 50%;
+}
+
+.routine-area>div:nth-child(1){
+    display: flex;
+    justify-content: space-between;
+}
+
+.routine-area > textarea{
+    width: 100%;
+    height: 80%;
+
+    overflow: auto;
+    resize: none;
+    outline: none;
+}
