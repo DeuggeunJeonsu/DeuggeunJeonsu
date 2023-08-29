@@ -12,8 +12,14 @@
 .font-weight *{
     font-family: 'Pretendard-Regular';
 }
+/* a태그 속성 제거 */
+a{
+    text-decoration: none;
+    color: #797979;
+}
 .board-title{
     font-size: 30px;
+    font-weight: 600;
     margin-bottom: 15px;
 }
 .title{
@@ -43,14 +49,15 @@
 
 #sort-btn-area a{
     text-decoration: none;
-    color: black;
+    color: #797979;
 }
 .search-place input[type="search"] {
     width: 300px;
     height: 50px;
     padding: 10px;
-    font-size: 16px;
+    font-size: 18px;
     background-color: #f5f5f5;
+    color: #3e3d3d;
     border: none;
     border-radius: 10px;
     outline: none;
@@ -68,7 +75,7 @@
     height: 50px;
     border-radius: 10px;
     padding: 0;
-    font-size: 16px;
+    font-size: 18px;
     color: #fff;
     border: none;
     background-color: #ccc;
@@ -104,7 +111,7 @@ span{
 }
 
 .thumbnail > div:first-of-type{
-    height: 60%;
+    height: 75%;
 
     display: flex;
     justify-content: center;
@@ -114,8 +121,8 @@ span{
 
 }
 
-.thumbnail > div:first-of-type> img{
-    width: 200px;
+img{
+    width: 203px;
 }
 
 .thumbnail > div:nth-of-type(2){
@@ -129,37 +136,8 @@ span{
     font-weight: bold;
 }
 
-/* 게시글 작성일, 좋아요 영역 */
-.createDate-area{
+.page{
     display: flex;
-    justify-content: space-between;
-
-    margin-top: 5px;
-}
-/* 
-.createDate-area > div:nth-of-type(2){
-    margin-left: 80px;
-} */
-
-/* 게시글 작성자 프로필 영역 */
-.profile-area{
-    margin-top: 25px;
-    display: flex;
-    align-items: center;
-}
-
-.profileArea > img{
-    width: 40px;
-}
-
-/* 닉네임 영역 */
-.profile-area > div:nth-of-type(2){
-    width: 200px;
-    margin-left: 5px;
-}
-
-/* 좋아요 영역 */
-.profile-area > div:nth-of-type(3){
-    margin-left: 80px;
-    width: 150px;
+    justify-content: center;
+    margin-bottom: 30px;
 }

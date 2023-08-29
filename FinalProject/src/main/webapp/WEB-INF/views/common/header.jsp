@@ -63,7 +63,7 @@
                     </ul>
                 </div>
                 <div class="log-area">
-                    <a href="#" class="log-image">
+                    <a href="/" class="log-image">
                         <img src="/resources/images/main/log01.png" class="log log-disply  log01" alt="">
                         <img src="/resources/images/main/log02.png" class="log  log02" alt="">
                     </a>
@@ -83,7 +83,7 @@
                             <a href="#">공지사항</a>
                         </li>
                         <li>
-                            <a href="#">득근마켓</a>
+                            <a href="/market">득근마켓</a>
                         </li>
                     </ul>
                 </div>
