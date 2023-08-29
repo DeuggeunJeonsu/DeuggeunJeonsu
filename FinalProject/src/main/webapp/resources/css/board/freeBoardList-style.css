@@ -1,0 +1,117 @@
+@font-face {
+    font-family: 'Pretendard-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.font-weight *{
+    font-family: 'Pretendard-Regular';
+}
+
+#main-container{
+    margin: 0 250px;
+}
+
+/* 게시판 제목 영역 */
+#title-area > div:nth-of-type(1){
+}
+
+#title-area > div:nth-of-type(2){
+    padding-bottom: 10px;
+    border-bottom: 2px solid #ddd;
+}
+
+/* 검색창, 조회 정렬 버튼 영역 */
+#search-area{
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
+}
+
+#sort-btn-area a{
+    text-decoration: none;
+    color: black;
+}
+
+/* 게시글 썸네일 영역*/
+#list-area{
+    margin-top: 30px;
+
+    display: grid;
+    grid-template-columns: 250px 250px 250px 250px;
+    grid-template-rows: 330px 330px 330px 330px;
+    row-gap: 50px;
+    column-gap: 50px;
+
+    justify-content: center;
+}
+
+#list-area > div{
+    border: 1px solid #ddd;
+}
+
+.thumbnail > div:first-of-type{
+    height: 60%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: #797979;
+
+}
+
+.thumbnail > div:first-of-type> img{
+    width: 200px;
+}
+
+.thumbnail > div:nth-of-type(2){
+    height: 40%;
+    padding: 10px;
+}
+
+/* 게시글 제목 */
+.title{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* 게시글 작성일, 좋아요 영역 */
+.createDate-area{
+    display: flex;
+    justify-content: space-between;
+
+    margin-top: 5px;
+}
+/* 
+.createDate-area > div:nth-of-type(2){
+    margin-left: 80px;
+} */
+
+/* 게시글 작성자 프로필 영역 */
+.profile-area{
+    margin-top: 25px;
+    display: flex;
+    align-items: center;
+}
+
+.profileArea > img{
+    width: 40px;
+}
+
+/* 닉네임 영역 */
+.profile-area > div:nth-of-type(2){
+    width: 200px;
+    margin-left: 5px;
+}
+
+/* 좋아요 영역 */
+.profile-area > div:nth-of-type(3){
+    margin-left: 80px;
+    width: 150px;
+}
