@@ -1,24 +1,11 @@
-@font-face {
-    font-family: 'Pretendard-Regular';
-    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
-    font-weight: 500;
-    font-style: normal;
-}
-
 * {
     box-sizing: border-box;
 }
 
-.font-weight *{
-    font-family: 'Pretendard-Regular';
-}
 
 #main-container{
-    margin: 0 250px;
-}
-
-/* 게시판 제목 영역 */
-#title-area > div:nth-of-type(1){
+    margin: 100px 400px;
+    height: auto;
 }
 
 #title-area > div:nth-of-type(2){
@@ -30,29 +17,110 @@
 #search-area{
     display: flex;
     justify-content: space-between;
-    margin: 10px 0;
+    margin: 20px 0;
+}
+
+.searchBar{
+    width: 220px;
+    height: 27px;
+
+    border-radius: 5px;
+    border: 2px solid #ddd;
+    background-color: white;
+
+    display: flex;
+    justify-content: left;
+    align-items: center;
+
+    z-index: 1;
+    opacity: 1;
+
+    padding-left: 5px;
+}
+
+#search-area input{
+    width: 300px;
+
+    border: none;
+    -webkit-appearance: none;
+    text-align: left;
+    margin-left: 10px;
+
+    overflow: auto;
+
+    z-index: -1;
+    font-size: 15px;
+}
+
+#search-area input:focus{
+    outline: none;
+}
+
+.fa-magnifying-glass{
+    font-size: 15px;
 }
 
 #sort-btn-area a{
     text-decoration: none;
-    color: black;
+    color: #797979;
+}
+
+/* 해시태그 영역 */
+.hashTag-area{
+    display: flex;
+    position: relative;
+
+    right: 120px;
+}
+
+.hashTag-area div{
+    width: 140px;
+    background-color: #99e1ed;
+
+    margin: 0 7px;
+    padding: 5px;
+
+    color: white;
+    font-size: 15px;
+    text-align: center;
+
+    border-radius: 15px;
+
+    cursor: pointer;
+}
+
+.hashTag-area .fa-solid{
+    display: none;
+}
+
+.hashTag-area div:hover .fa-solid{
+    display: inline;
+}
+
+.fa-circle-xmark{
+    font-size: 15px;
+
+    position: relative;
+    left: 3px;
 }
 
 /* 게시글 썸네일 영역*/
 #list-area{
-    margin-top: 30px;
+    margin-top: 70px;
 
     display: grid;
-    grid-template-columns: 250px 250px 250px 250px;
-    grid-template-rows: 330px 330px 330px 330px;
-    row-gap: 50px;
-    column-gap: 50px;
+    grid-template-columns: 250px 250px 250px;
+    grid-template-rows: 330px 330px 330px;
+    row-gap: 70px;
+    column-gap: 120px;
 
     justify-content: center;
 }
 
-#list-area > div{
+.thumbnail{
     border: 1px solid #ddd;
+    
+    background-color: white;
 }
 
 .thumbnail > div:first-of-type{
@@ -78,7 +146,7 @@
 /* 게시글 제목 */
 .title{
     font-size: 20px;
-    font-weight: bold;
+    /* font-weight: bold; */
 }
 
 /* 게시글 작성일, 좋아요 영역 */
@@ -86,22 +154,19 @@
     display: flex;
     justify-content: space-between;
 
-    margin-top: 5px;
+    margin-top: 10px;
 }
-/* 
-.createDate-area > div:nth-of-type(2){
-    margin-left: 80px;
-} */
 
 /* 게시글 작성자 프로필 영역 */
 .profile-area{
-    margin-top: 25px;
+    margin-top: 20px;
     display: flex;
     align-items: center;
 }
 
 .profileArea > img{
     width: 40px;
+    border-radius: 50%;
 }
 
 /* 닉네임 영역 */
@@ -112,6 +177,17 @@
 
 /* 좋아요 영역 */
 .profile-area > div:nth-of-type(3){
-    margin-left: 80px;
-    width: 150px;
+    margin-left: 90px;
+    width: 120px;
+}
+
+/* 페이지네이션 영역 */
+.paginationArea{
+    height: 100px;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin-top: 40px;
 }
