@@ -9,6 +9,10 @@
     border: 1px solid black;
 } */
 
+*{
+    box-sizing: border-box;
+}
+
 /* 전체 글꼴 */
 *{
 font-family: 'LINESeedKR-Bd';
@@ -362,14 +366,16 @@ width: 1500px;
 .main-home h1 {
     color: #fff;
     font-family: 'Raleway', sans-serif;
-    font-size: 3.286rem;
+    font-size: 4rem;
     font-weight: 700;
-    line-height: 3.5rem;
+    line-height: 4rem;
     margin: 0;
 }
 
+
 .hello-BtnArea {
-    width: 350px;
+    width: 540px;
+    height: 100px;
     display: flex;
     justify-content: space-between;
     gap: 1rem;
@@ -377,11 +383,18 @@ width: 1500px;
 }
 
 .hello-BtnArea button {
-    width: 180px;
-    height: 50px;
+    width: 230px;
+    height: 70px;
     border: none;
     background-color: #99E1ED;
     cursor: pointer;
+    font-size: 1.5rem;
+}
+
+.hello-BtnArea button:hover{
+    transition-duration: 0.5s;
+    width: 240px;
+    height: 75px;
 }
 #middle-Container{
     margin: 0 250px;
@@ -429,12 +442,35 @@ footer span{
     height: 100%;
     display: flex;
     align-items: space-between;
+    padding: 30px;
 }
+
+#schedule-area>div:nth-of-type(1){
+    min-width: 500px;
+    padding-left: 30px;
+}
+
+#schedule-area>div:nth-of-type(1) > h1{
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    margin-top: 15px;
+}
+.progress{
+    background-color: #e0e0e0;
+    max-width: 400px;
+}
+.progress-num{
+    background-color: #99E1ED;
+    height: 20px;
+}
+
+
+
 /* 달력 */
 #CalendarArea {
     background-color : white;
     height: auto;
-    width: 400px;
+    min-width: 550px;
     margin: 0px;
     padding: 20px;
     margin: 0 auto;
@@ -449,11 +485,14 @@ td {
 
 .Calendar {
     text-align: center;
+    width: 90%;
+    height: 500px;
+    margin: auto;
 }
 
 .Calendar>thead>tr:first-child>td {
     font-family: 'Questrial', sans-serif;
-    font-size: 1.1em;
+    font-size: 1.7em;
     font-weight: bold;
 }
 .Calendar>thead>tr:last-child>td:nth-child(1),  .Calendar>thead>tr:last-child>td:nth-child(7){
@@ -468,7 +507,8 @@ td {
 
 .Calendar>thead>tr:last-child>td {
     font-family: 'Questrial', sans-serif;
-    font-weight: 600;     
+    font-weight: 600;  
+    font-size: 1.5rem;   
 }
 
 .Calendar>tbody>tr>td>p {
@@ -481,6 +521,7 @@ td {
     margin: 2.5px;
     display: block;
     text-align: center;
+    font-size: 1.5rem;
 }        
 
 .futureDay {
@@ -511,7 +552,7 @@ td {
 .today.choiceDay {
     background:  rgba(52, 196, 219, 0.5);
     color: #fff;
-    font-weight: 600;
+    font-weight: 700;
     cursor: pointer;
 }
 .holiday{
@@ -520,7 +561,6 @@ td {
 .triangle{
     color: #f1c40f;
     font-size: 30px;
-    
 
 }
 .Circle{
