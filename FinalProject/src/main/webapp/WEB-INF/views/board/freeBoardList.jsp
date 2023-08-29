@@ -10,7 +10,7 @@
 <%-- boardList-style.css 연결 --%>
 <link rel="stylesheet" href="/resources/css/board/freeBoardList-style.css">
 </head>
-<body>
+<body style="background-color:#F8F9FA">
 
 	<jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
 	
@@ -20,8 +20,23 @@
             <div>득근전수 회원님들이 자유롭게 이야기를 나누는 공간입니다.</div>
         </div>
         <div id="search-area">
-            <div>
-                <input type="search">
+            <div class="searchBar">
+                <i class="fa-solid fa-magnifying-glass" style="color: #99e1ed;"></i>
+                <input type="search" placeholder="#검색어">
+            </div>
+            <div class="hashTag-area">
+                <div>
+                    #오운완
+                    <i class="fa-solid fa-circle-xmark" style="color: #ffffff;"></i>
+                </div>                
+                <div>
+                    #OOTD
+                    <i class="fa-solid fa-circle-xmark" style="color: #ffffff;"></i>
+                </div>                
+                <div>
+                    #단백질쉐이커
+                    <i class="fa-solid fa-circle-xmark" style="color: #ffffff;"></i>
+                </div>                
             </div>
             <div id="sort-btn-area">
                 <a href="#"><span>최신순</span></a> |
@@ -29,7 +44,7 @@
                 <a href="#"><span>팔로워</span></a>
             </div>
         </div>
-        <div id="list-area" class="font-weight">
+        <div id="list-area">
             <div class="thumbnail">
                 <div><img src="/resources/images/main/log02.png"></div>
                 <div>
@@ -40,61 +55,153 @@
                     </div>
                     <div class="profile-area">
                         <div class="profileArea"><img src="/resources/images/user.png"></div>
-                        <div>by 닉네임</div>
+                        <div>닉네임</div>
                         <div><i class="fa-solid fa-heart" style="color: #ff4242;"></i> 99</div>
                     </div>
                 </div>
             </div>
+
             <div class="thumbnail">
                 <div><img src="/resources/images/main/log02.png"></div>
-                <div>내용 영역</div>
+                <div>
+                    <div class="title ">제목입니다</div>
+                    <div class="createDate-area">
+                        <div>작성일 23.01.01</div>
+                        <div><i class="fa-regular fa-comment" style="color: #ddd;"></i> 4</div>
+                    </div>
+                    <div class="profile-area">
+                        <div class="profileArea"><img src="/resources/images/user.png"></div>
+                        <div>닉네임</div>
+                        <div><i class="fa-solid fa-heart" style="color: #ff4242;"></i> 99</div>
+                    </div>
+                </div>
             </div>
+
             <div class="thumbnail">
                 <div><img src="/resources/images/main/log02.png"></div>
-                <div>내용 영역</div>
+                <div>
+                    <div class="title ">제목입니다</div>
+                    <div class="createDate-area">
+                        <div>작성일 23.01.01</div>
+                        <div><i class="fa-regular fa-comment" style="color: #ddd;"></i> 4</div>
+                    </div>
+                    <div class="profile-area">
+                        <div class="profileArea"><img src="/resources/images/user.png"></div>
+                        <div>닉네임</div>
+                        <div><i class="fa-solid fa-heart" style="color: #ff4242;"></i> 99</div>
+                    </div>
+                </div>
             </div>
+
             <div class="thumbnail">
                 <div><img src="/resources/images/main/log02.png"></div>
-                <div>내용 영역</div>
+                <div>
+                    <div class="title ">제목입니다</div>
+                    <div class="createDate-area">
+                        <div>작성일 23.01.01</div>
+                        <div><i class="fa-regular fa-comment" style="color: #ddd;"></i> 4</div>
+                    </div>
+                    <div class="profile-area">
+                        <div class="profileArea"><img src="/resources/images/user.png"></div>
+                        <div>닉네임</div>
+                        <div><i class="fa-solid fa-heart" style="color: #ff4242;"></i> 99</div>
+                    </div>
+                </div>
             </div>
+
             <div class="thumbnail">
                 <div><img src="/resources/images/main/log02.png"></div>
-                <div>내용 영역</div>
+                <div>
+                    <div class="title ">제목입니다</div>
+                    <div class="createDate-area">
+                        <div>작성일 23.01.01</div>
+                        <div><i class="fa-regular fa-comment" style="color: #ddd;"></i> 4</div>
+                    </div>
+                    <div class="profile-area">
+                        <div class="profileArea"><img src="/resources/images/user.png"></div>
+                        <div>닉네임</div>
+                        <div><i class="fa-solid fa-heart" style="color: #ff4242;"></i> 99</div>
+                    </div>
+                </div>
             </div>
+ 
             <div class="thumbnail">
                 <div><img src="/resources/images/main/log02.png"></div>
-                <div>내용 영역</div>
+                <div>
+                    <div class="title ">제목입니다</div>
+                    <div class="createDate-area">
+                        <div>작성일 23.01.01</div>
+                        <div><i class="fa-regular fa-comment" style="color: #ddd;"></i> 4</div>
+                    </div>
+                    <div class="profile-area">
+                        <div class="profileArea"><img src="/resources/images/user.png"></div>
+                        <div>닉네임</div>
+                        <div><i class="fa-solid fa-heart" style="color: #ff4242;"></i> 99</div>
+                    </div>
+                </div>
             </div>
+
             <div class="thumbnail">
                 <div><img src="/resources/images/main/log02.png"></div>
-                <div>내용 영역</div>
+                <div>
+                    <div class="title ">제목입니다</div>
+                    <div class="createDate-area">
+                        <div>작성일 23.01.01</div>
+                        <div><i class="fa-regular fa-comment" style="color: #ddd;"></i> 4</div>
+                    </div>
+                    <div class="profile-area">
+                        <div class="profileArea"><img src="/resources/images/user.png"></div>
+                        <div>닉네임</div>
+                        <div><i class="fa-solid fa-heart" style="color: #ff4242;"></i> 99</div>
+                    </div>
+                </div>
             </div>
+
             <div class="thumbnail">
                 <div><img src="/resources/images/main/log02.png"></div>
-                <div>내용 영역</div>
+                <div>
+                    <div class="title ">제목입니다</div>
+                    <div class="createDate-area">
+                        <div>작성일 23.01.01</div>
+                        <div><i class="fa-regular fa-comment" style="color: #ddd;"></i> 4</div>
+                    </div>
+                    <div class="profile-area">
+                        <div class="profileArea"><img src="/resources/images/user.png"></div>
+                        <div>닉네임</div>
+                        <div><i class="fa-solid fa-heart" style="color: #ff4242;"></i> 99</div>
+                    </div>
+                </div>
             </div>
+
             <div class="thumbnail">
                 <div><img src="/resources/images/main/log02.png"></div>
-                <div>내용 영역</div>
+                <div>
+                    <div class="title ">제목입니다</div>
+                    <div class="createDate-area">
+                        <div>작성일 23.01.01</div>
+                        <div><i class="fa-regular fa-comment" style="color: #ddd;"></i> 4</div>
+                    </div>
+                    <div class="profile-area">
+                        <div class="profileArea"><img src="/resources/images/user.png"></div>
+                        <div>닉네임</div>
+                        <div><i class="fa-solid fa-heart" style="color: #ff4242;"></i> 99</div>
+                    </div>
+                </div>
             </div>
-            <div class="thumbnail">
-                <div><img src="/resources/images/main/log02.png"></div>
-                <div>내용 영역</div>
-            </div>
-            <div class="thumbnail">
-                <div><img src="/resources/images/main/log02.png"></div>
-                <div>내용 영역</div>
-            </div>
-            <div class="thumbnail">
-                <div><img src="/resources/images/main/log02.png"></div>
-                <div>내용 영역</div>
-            </div>
+
         </div>
-        <div>
-            페이지네이션 영역
+        <div class="paginationArea">
+            <div>
+                페이지네이션 영역
+            </div>
         </div>
 	</section>
 
+    <!-- footer include -->
+	<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
+
+    <!-- main.js 연결 -->
 	<script src="/resources/js/main.js"></script>
+
 </body>
 </html>
