@@ -1,11 +1,16 @@
 *{ box-sizing: border-box;
- /*    border: 1px solid black;  */
+    /*  border: 1px solid black;   */
+    
 }
-
-
 a{
     text-decoration: none;
     color: black;
+}
+
+.Jheader{
+	height: 100px;
+	width: 100%;
+	
 }
 
 a:hover{
@@ -14,14 +19,17 @@ a:hover{
 }
 
 .Jbody{
+    width: 100%;
     margin: auto;
     display: flex;
     justify-content: center;
+    min-width: 1000px;
 }
 
 .Jcenter{
     width: 80%;
     height: 100%;
+    min-width: 1000px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -52,6 +60,7 @@ td{
     border-bottom: 2px solid gray;
     height: 30px;
     width: 1000px;
+    font-size: 15px;
 }
 
 .Jsearch{
@@ -88,9 +97,17 @@ td{
     cursor: pointer;
 }
 
+main{
+    min-width: 1000px;
+}
+
+.JList{
+    min-width: 1000px;
+}
 
 .pagination-area{
     width: 100%;
+    min-width: 2000px;
     display: flex;
     flex-direction: column;
 }
@@ -118,12 +135,12 @@ td{
     width: 70px;
     height: 30px;
     margin-top: 15px;
-    margin-left: 960px;
     background-color: #99E1ED;
     color: white;
     font-weight: bold;
     border-radius: 2px;
     border:none;
+    margin-right: 20px;
 }
 
 
@@ -137,8 +154,10 @@ td{
     border-radius: 20px;
     font-size: 12px;
     font-weight: bold;
-    background-color: forestgreen;
-    
+    background-color: rgb(46, 204, 113);
+    display: flex;
+    align-items: center;
+    justify-content: center;
     color: white;
 }
 
@@ -146,4 +165,12 @@ tbody > tr:nth-child(1) > td:nth-child(1){
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 100%;
 }
+
+.Jbtn{
+    width: 1000px;
+    display: flex;
+    justify-content: right;
+}
+

@@ -9,7 +9,7 @@ public class FreeBoardController {
 
 	@RequestMapping("/freeBoard")
 	public String FreeBoardList() {
-		return "board/freeBoardList";
+		return "board/freeBoard/freeBoardList";
 	}
 	
 }
