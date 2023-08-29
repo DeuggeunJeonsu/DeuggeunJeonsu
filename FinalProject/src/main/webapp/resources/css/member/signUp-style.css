@@ -1,61 +1,240 @@
-/* 폰트 설정 */
+@charset "utf-8";
+
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  border: 0px solid silver;
+}
+
+body {
+  font-size: 0.8rem;
+  line-height: 1rem;
+  color: #333;
+  letter-spacing: 0.1px;
+}
+
+h2 {
+  font-size: 1.2em;
+  line-height: 1.2rem;
+  text-align: center;
+}
+
+h3 {
+  font-size: 1.4em;
+  line-height: 1.4rem;
+}
+
+a:link { color: #666; text-decoration: none;}
+a:visited { color: #666;}
+a:hover { color: #666;}
+a:active { color: #666;}
+
+ul {
+  list-style: none;
+}
+
+.ico {
+  left: 6px;
+  top: 4px;
+  vertical-align: -6px;  
+}
+
+input {
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  padding: 14px;
+  margin: 10px 0;
+  font-size: 1rem;
+}
+
+input:focus {
+  outline: none;
+}
+
+input[type=radio] {
+  position: absolute;
+  z-index: 1;
+  opacity: 0;
+}
+
+input[type=radio]+.ico {
+  display: inline-block;
+  position: relative;
+  width: 24px;
+  height: 24px;
+  margin-right: 10px;
+  border: 1px solid #ddd;
+  background-color: #fff;
+  border-radius: 100%;
+  vertical-align: -4px;
+}
+
+button {
+  width: 50%;
+  font-size: 1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  padding: 14px;
+  margin-left: 10px;
+  border: 1px solid rgba(52, 196, 219, 0.5);
+  border-radius: 4px;
+  color: rgba(52, 196, 219, 0.5);
+  background: white;
+  transition: 0.3s;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+button[type="submit"] {
+  background: rgba(52, 196, 219, 0.5);
+  color: #fff;
+}
+
+
+/* start */
+
+
+form {
+  max-width: 768px;
+  margin: 0 auto;
+  padding: 100px 5%;
+}
+
+form> div div {
+  margin-bottom: 1rem;
+}
+
+form div label {
+  /* font-size: 1rem; */
+  font-weight: bold;
+}
+
+form div label.imp::after {
+  content: "*";
+  color: #ee6a7b;
+}
+
+form .membership div div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+form .membership div input {
+  width: 100%;
+}
+
+form .membership div ul li {
+  width: 100%;
+}
+
+form .membership :nth-child(6) input{
+  margin: -10px 0;
+
+}
+
+form .membership :nth-child(7) div {
+  position: relative;
+  margin-bottom: 0;
+}
+
+form .membership :nth-child(7) div img {
+  position: absolute;
+  right: 10px;
+  width: 28px;
+  height: 28px;
+}
+
+form .membership :nth-child(8) div {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+form .membership :nth-child(8) div input {
+  border: none;
+  margin: 0;
+  text-align: center;
+}
+
+form .membership :nth-child(10) {
+  margin: 2rem 0;
+}
+
+form .membership :nth-child(9) ul,
+form .membership :nth-child(10) p {
+  margin: 20px 0;
+}
+
+form .membership :nth-child(9) ul li,
+form .membership :nth-child(10) ul li {
+  margin: 20px 0;
+  font-size: 1rem;
+}
+
+form .terms {
+  margin: 2rem 0;
+}
+
+form .terms span {
+  color: #ccc;
+}
+
+form .terms div {
+  margin: 1rem 0;
+}
+
+form .terms div p {
+  margin: 10px 0;
+}
+
+form .terms> :nth-child(1) {
+  margin: 1rem 0;
+}
+
+form .terms> :nth-child(2) {
+  line-height: 1.4rem;
+  margin: 1rem 0;
+  border-bottom: 1px solid #eee;
+}
+
+form .terms> :nth-child(3),
+form .terms :nth-child(4),
+form .terms :nth-child(5) {
+  position: relative;
+}
+.tel{
   
-html > body {
-    
-    font-family: "GmarketSansMedium";
-    text-underline-position: under;
-  }
-  
-  input:focus{
-    border-color:black;
-  }
-  
-  /* 이용약관 동의 체크박스 */
-  [type="checkbox"] {
-    appearance:none;
-    width:18px;
-    height:18px;
-    box-sizing:border-box;
-    border:2px solid #afafaf;
-    border-radius:3px;
-    outline:0;
-  }
-  
-  [type="checkbox"]:focus {
-    border-color:rgba(52, 196, 219, 0.5);
-  }
-  
-  [type="checkbox"]:checked {
-    background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3e%3c/svg%3e");
-    background-color:rgba(52, 196, 219, 0.5);
-    border-color:rgba(52, 196, 219, 0.5);
-  }
-  
-  /* 올바르지 않은 이메일 주소가 입력된 경우 */  
-  input[type="email"] ~ ul {
-    display:none;
-  }
-  input[type="email"].started:invalid ~ .invalid {
-    display:block;
-  }
-  input[type="email"].started:valid ~ .valid {
-    display:block;
-  }
-  
-  /* 비밀번호 요소의 표시 */
-  input[name="password"] ~ ul {
-    display:none;
-  }
-  
-  input[name="password"].started:placeholder-shown ~ ul {
-    display:block;
-  }
-  
-  /* 전화번호 요소의 표시 */
-  input[type="tel"] ~ ul{
-      display:none;
-  }
-  
-  input[type="tel"].started:invalid ~ .invalid {
-    display:block;
-  }
+}
+
+form .terms> :nth-child(3) a,
+form .terms :nth-child(4) a,
+form .terms :nth-child(5) a {
+  position: absolute;
+  right: 0;
+  width: 30px;
+  height: 30px;
+  background-size: 36px 36px;
+}
+
+form .terms :nth-child(7) div {
+  margin-left: 10%;  
+}
+
+
+form> button {
+  margin: 0 auto;
+  width: 100%;
+}
+
+
+
+
+
+
+/* end */
