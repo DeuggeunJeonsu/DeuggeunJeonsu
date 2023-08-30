@@ -7,11 +7,11 @@
 <meta charset="UTF-8">
 <title>게시판 이름</title>
 
-<%-- boardList-style.css 연결 --%>
+<%-- marketList-style.css 연결 --%>
 <link rel="stylesheet" href="../resources/css/board/market/marketList-style.css">
 
- <!-- Font Awesome CDN 추가 -->
- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+Wy4y5AuWn1C4EyyIbJs6YXvPECJwFPa28H" crossorigin="anonymous">
+<!-- Font Awesome CDN 추가 -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+Wy4y5AuWn1C4EyyIbJs6YXvPECJwFPa28H" crossorigin="anonymous">
 </head>
 <body>
 
@@ -36,81 +36,106 @@
         
         <div id="list-area" class="font-weight">
             <div class="thumbnail">
-                <div><img src="/resources/images/main/log02.png"></div>
+                <div> <a href="/marketDetail">
+                    <img src="/resources/images/main/log02.png">
+                </a>
+                </div>
                 <div class="list-content">
-                    <div class="title">상품명입니다</div>
+                    <div class="title"><a href="">상품명입니다</a></div>
                     <div>내용 영역</div>
                 </div>
             </div>
             <div class="thumbnail">
-                <div><img src="/resources/images/main/log02.png"></div>
-                <div class="list-content">
-                    <div class="title">상품명입니다</div>
-                    <div>내용 영역</div>
+                <div> <a href="/marketDetail">
+                    <img src="/resources/images/main/log02.png">
+                </a>
                 </div>
-            </div>
-            <div class="thumbnail">
-                <div><img src="/resources/images/main/log02.png"></div>
                 <div class="list-content">
-                    <div class="title">상품명입니다</div>
+                    <div class="title"><a href="">상품명입니다</a></div>
                     <div>내용 영역</div>
                 </div>
             </div>
 
             <div class="thumbnail">
-                <div><img src="/resources/images/main/log02.png"></div>
-                <div class="list-content">
-                    <div class="title">상품명입니다</div>
-                    <div>내용 영역</div>
+                <div> <a href="/marketDetail">
+                    <img src="/resources/images/main/log02.png">
+                </a>
                 </div>
-            </div>
-
-
-            <div class="thumbnail">
-                <div><img src="/resources/images/main/log02.png"></div>
                 <div class="list-content">
-                    <div class="title">상품명입니다</div>
-                    <div>내용 영역</div>
-                </div>
-            </div>
-
-
-            <div class="thumbnail">
-                <div><img src="/resources/images/main/log02.png"></div>
-                <div class="list-content">
-                    <div class="title">상품명입니다</div>
+                    <div class="title"><a href="">상품명입니다</a></div>
                     <div>내용 영역</div>
                 </div>
             </div>
 
             <div class="thumbnail">
-                <div><img src="/resources/images/main/log02.png"></div>
+                <div> <a href="/marketDetail">
+                    <img src="/resources/images/main/log02.png">
+                </a>
+                </div>
                 <div class="list-content">
-                    <div class="title">상품명입니다</div>
+                    <div class="title"><a href="">상품명입니다</a></div>
                     <div>내용 영역</div>
                 </div>
             </div>
 
             <div class="thumbnail">
-                <div><img src="/resources/images/main/log02.png"></div>
+                <div> <a href="/marketDetail">
+                    <img src="/resources/images/main/log02.png">
+                </a>
+                </div>
                 <div class="list-content">
-                    <div class="title">상품명입니다</div>
+                    <div class="title"><a href="">상품명입니다</a></div>
                     <div>내용 영역</div>
                 </div>
             </div>
 
             <div class="thumbnail">
-                <div><img src="/resources/images/main/log02.png"></div>
+                <div> <a href="/marketDetail">
+                    <img src="/resources/images/main/log02.png">
+                </a>
+                </div>
                 <div class="list-content">
-                    <div class="title">상품명입니다</div>
+                    <div class="title"><a href="">상품명입니다</a></div>
                     <div>내용 영역</div>
                 </div>
             </div>
-        </div>
-        <div>
+
+            <div class="thumbnail">
+                <div> <a href="/marketDetail">
+                    <img src="/resources/images/main/log02.png">
+                </a>
+                </div>
+                <div class="list-content">
+                    <div class="title"><a href="">상품명입니다</a></div>
+                    <div>내용 영역</div>
+                </div>
+            </div>
+
+            <div class="thumbnail">
+                <div> <a href="/marketDetail">
+                    <img src="/resources/images/main/log02.png">
+                </a>
+                </div>
+                <div class="list-content">
+                    <div class="title"><a href="">상품명입니다</a></div>
+                    <div>내용 영역</div>
+                </div>
+            </div>
+
+            <div class="thumbnail">
+                <div> <a href="/marketDetail">
+                    <img src="/resources/images/main/log02.png">
+                </a>
+                </div>
+                <div class="list-content">
+                    <div class="title"><a href="">상품명입니다</a></div>
+                    <div>내용 영역</div>
+                </div>
+            </div>   
+        </section>
+        <div class="page">
             페이지네이션 영역
         </div>
-	</section>
 
 
 <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>

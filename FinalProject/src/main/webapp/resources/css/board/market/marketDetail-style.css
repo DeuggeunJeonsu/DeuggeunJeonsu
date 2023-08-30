@@ -1,0 +1,9 @@
+* {
+    box-sizing: border-box;
+}
+
+
+#main-container{
+    margin: 100px 400px;
+    height: auto;
+}
