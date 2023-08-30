@@ -1,17 +1,23 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"  %>
+
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 <head>
-<meta charset="UTF-8">
-<title>내 뱃지</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>내 뱃지</title>
 
-<%-- myBadge-style.css 연결 --%>
-<link rel="stylesheet" href="../resources/css/member/myPage/myBadge-style.css">
+    <%-- myPageSideBar-style.css 연결 --%>
+    <link rel="stylesheet" href="../resources/css/member/myPage/myPageSideBar-style.css">
+    <%-- myBadge-style.css 연결 --%>
+    <link rel="stylesheet" href="../resources/css/member/myPage/myBadge-style.css">
+    
 </head>
-<body style="background-color:#F8F9FA">
 
+<body>
+    <%-- header include --%>
 	<jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
 	
 	<section id="main-container">
