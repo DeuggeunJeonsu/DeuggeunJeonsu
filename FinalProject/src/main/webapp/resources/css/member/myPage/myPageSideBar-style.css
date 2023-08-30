@@ -4,6 +4,11 @@
     width: 25%;
 }
 
+#middle-area a{
+    text-decoration: none;
+    color: #797979;
+}
+
 /* 프로필, 닉네임 영역 */
 .sideBarTop{
     margin: 20px;
