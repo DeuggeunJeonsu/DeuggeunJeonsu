@@ -1,10 +1,23 @@
 *{ box-sizing: border-box;
-    /*  border: 1px solid black;   */
+      /*  border: 1px solid black;  */
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+.adMain{
+    height: 110px;
+    display: flex;
+    justify-content: center;
+}
+#mainImg{
+    width: 290px;
+    height: 100px;
 }
 
-.Jheader {
-	height: 100px;
-	width: 100%;
+
+#mainImg:hover{
+    cursor: pointer;
 }
 
 main{
@@ -15,7 +28,7 @@ main{
     display: flex;
     margin: auto;
     min-width: 1000px;
-    height: 950px;
+    height: 825px;
     width: 1500px;
 
 }
@@ -278,3 +291,25 @@ main{
 #inquiry2:hover{
     cursor: pointer;
 }
+
+
+.userList{
+    
+    display: flex;
+    flex-direction: column;
+    height: 80px;
+
+    margin-top: -77px;
+    margin-right: -10px;
+
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+}
+
+#userImg{
+    font-size: 52px;
+    cursor: pointer;
+    
+}
+
