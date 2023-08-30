@@ -83,7 +83,7 @@
                             <a href="#">공지사항</a>
                         </li>
                         <li>
-                            <a href="/market">득근마켓</a>
+                            <a href="/market/marketList">득근마켓</a>
                         </li>
                     </ul>
                 </div>
