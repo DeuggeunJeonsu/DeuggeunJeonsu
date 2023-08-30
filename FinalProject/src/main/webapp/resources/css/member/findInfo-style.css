@@ -1,0 +1,103 @@
+* {
+    box-sizing: border-box;
+    margin : 0;
+    padding : 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    overflow: hidden;
+    margin: 0;
+    min-width: 1200px;
+    min-height: 800px;
+}
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 40px;
+    border-radius: 5px;
+    height: 90vh;
+}
+
+
+/* 타이틀 부분 */
+main .title-area {
+    text-align: center;
+    margin-bottom: 20px;
+}
+main .title-area p:nth-of-type(1){
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: black;
+}
+main .title-area p:nth-of-type(2){
+    font-size: 14px;
+    color: black;
+}
+
+/* 서브 타이틀 부분 */
+main section:nth-of-type(2) legend > p{
+    font-size: 25px;
+    font-weight: bold;
+}
+
+/* 휴대폰, 아이디, 인증번호 입력 부분*/
+.input-box {
+    position: relative;
+    width: 300px;
+}
+
+.input-box input {
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    background-color: inherit;
+    display: block;
+    padding: 10px 10px;
+    margin: 10px 0;
+    font-size: 18px;
+}
+
+.width30{
+    width: 30%;
+}
+.width70{
+    width: 70%;
+}
+.width100{
+    width: 100%;
+}
+
+.input-box input:focus{
+    outline: 0;
+}
+
+/* 아이디/비밀번호 찾기 버튼 부분*/
+.find-id-btn, .find-pw-btn {
+    cursor: pointer;
+    display: inline-block;
+    width: 100%;
+    background: #99E1ED;
+    color : white;
+    padding: 15px;
+    font-size: 18px;
+    font-weight: bold;
+    border: 0;
+    border-radius: 5px;
+    margin-top: 10px;
+    
+}
+
+.find-id-btn:focus, .find-pw-btn:focus {
+    outline: 0;
+}
+
+.find-id-btn:active, .find-pw-btn:active {
+    transform: scale(0.98);
+}
