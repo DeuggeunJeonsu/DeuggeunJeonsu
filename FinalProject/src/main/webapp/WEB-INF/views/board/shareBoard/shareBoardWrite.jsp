@@ -31,12 +31,12 @@
             </div>
             <div class= "middle-write">
                 <div class="writeTitle-area">
-                    <input type="text" name="boardTitle" placeholder="제목" value="">
+                    <input type="text" name="boardTitle" placeholder="제목을 입력해주세요" value="">
                 </div>
-                <div class="thumbnail-Routine-area">
+                <div class="thumbnail-routineType-area">
                     <div class="thumbnail-area">
-                        <h3>thumbnail<h3>
-                        <div class="img-box">
+                        <h3>Thumbnail<h3>
+                        <div class="thumbnail-box">
                             <div class="boardImg thumbnail">
                                 <label for="img0">
                                     <img class="preview" src="">
@@ -46,17 +46,92 @@
                             </div>
                         </div>
                     </div>
-                    <div class="routine-area">
+                    <div class="routineType-area">
                         <div>
                             <h3>Routine Type</h3>
-                           <select name='exercise-name'>
-                                <option value='' selected>-- 선택 --</option>
-                                <option value='apple'>사과</option>
-                                <option value='banana'>바나나</option>
-                                <option value='lemon'>레몬</option>
-                            </select>
+                            <article class="cont-select">
+                                <button class="btn-select" type="button">운동타입</button>
+                                <ul class="list-member">
+                                    <li><button type="button">하체</button></li>
+                                    <li><button type="button">상체</button></li>
+                                    <li><button type="button">등</button></li>
+                                    <li><button type="button">어깨</button></li>
+                                    <li><button type="button">팔</button></li>
+                                </ul>
+                            </article>
                         </div>
-                        <textarea></textarea>
+                        <textarea placeholder="루틴 설명을 입력해주세요"></textarea>
+                    </div>
+                </div>
+                <div class="routine-area">
+                    <div>
+                        <h3>Routine</h3>
+                        <hr>
+                    </div>
+                    
+                    <div class="routine-add">
+                        <div class="routine">
+                            <div class="boardImg">
+                                <label for="img0">
+                                    <img class="preview" src="">
+                                </label>
+                                <input type="file" name="images" class="inputImage" id="img0" accept="image/*">
+                                <span class="delete-image">&times;</span>
+                            </div>
+                            <div class="routine-write-area">
+                                <input type="test" placeholder="운동명을 입력해주세요">
+<textarea>
+1. 
+2. 
+3. 
+
+꿀팁!
+</textarea>
+                            </div>
+                        </div>
+
+                                                <div class="routine">
+                            <div class="boardImg">
+                                <label for="img0">
+                                    <img class="preview" src="">
+                                </label>
+                                <input type="file" name="images" class="inputImage" id="img0" accept="image/*">
+                                <span class="delete-image">&times;</span>
+                            </div>
+                            <div class="routine-write-area">
+                                <input type="test" placeholder="운동명을 입력해주세요">
+<textarea>
+1. 
+2. 
+3. 
+
+꿀팁!
+</textarea>
+                            </div>
+                        </div>
+
+
+                                                <div class="routine">
+                            <div class="boardImg">
+                                <label for="img0">
+                                    <img class="preview" src="">
+                                </label>
+                                <input type="file" name="images" class="inputImage" id="img0" accept="image/*">
+                                <span class="delete-image">&times;</span>
+                            </div>
+                            <div class="routine-write-area">
+                                <input type="test" placeholder="운동명을 입력해주세요">
+<textarea>
+1. 
+2. 
+3. 
+
+꿀팁!
+</textarea>
+                            </div>
+                        </div>
+
+
                     </div>
                 </div>
             </div>
@@ -67,8 +142,7 @@
     <!-- footer include -->
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
 
-    <!-- main.js 연결 -->
-	<script src="../resources/js/main.js"></script>
+    <script src="/resources/js/board/shareBoardWrite.js"></script>
 
 </body>
 </html>
