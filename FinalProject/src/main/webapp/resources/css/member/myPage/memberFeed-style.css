@@ -1,0 +1,233 @@
+* {
+    box-sizing: border-box;
+}
+
+#main-container{
+    margin: auto;
+    margin-top: 100px;
+    width: 1000px;
+    height: auto;
+}
+
+/* 회원 정보 영역 */
+#member-info-area{
+    height: 200px;
+
+    display: flex;
+}
+
+/* 회원 프로필 */
+.memberProfileArea{
+    width: 25%;
+
+    display: flex;
+    align-items: center;
+}
+
+.memberProfileArea > img{
+    width: 190px;
+    height: 190px;
+
+    border-radius: 50%;
+    border: 2px solid #99E1ED;
+}
+
+/* 회원 닉네임, 팔로워 수 영역 */
+.memberInfoArea{
+    width: 30%;
+}
+
+/* 닉네임 */
+.memberInfoArea > div:first-of-type{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    height: 50%;
+
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.memberInfoArea > div:first-of-type > div:first-of-type{
+    margin-left: 9px;
+}
+
+.followBtnArea{
+    width: 33%;
+}
+
+.followBtnArea > button{
+    width: 95px;
+    height: 40px;
+
+    font-size: 16px;
+
+    color: white;
+    background-color: #99E1ED;
+    border: none;
+
+    cursor: pointer;
+}
+
+
+/* 팔로워 수 */
+.memberInfoArea > div:nth-of-type(2){
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    height: 50%;
+
+    font-size: 18px;
+}
+
+.followInfoArea {
+    display: flex;
+}
+
+.followInfoArea > div {
+    margin: 0 10px;
+}
+
+/* 획득한 뱃지 영역 */
+#member-badge-area{
+    height: 200px;
+}
+
+#member-badge-area > div:first-of-type{
+    margin-top: 30px;
+    font-size: 18px;
+
+    border-bottom: 2px solid #ddd;
+
+    height: 15%;
+}
+
+#badge-area-middle{
+    height: 75%;
+    
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.badgeImg{
+    height: 100px;
+}
+
+.badgeImg > img{
+    height: 100px;
+    width: 100px;
+}
+
+
+
+/* 작성한 게시글 목록 조회 영역 */
+#member-board-area{
+    height: 1200px;
+}
+
+#member-board-area > div:first-of-type{
+    margin-top: 40px;
+    font-size: 18px;
+
+    border-bottom: 2px solid #ddd;
+
+    height: 3%;
+}
+
+#board-area-middle{
+    margin-top: 20px;
+
+    display: grid;
+    grid-template-columns: 250px 250px 250px;
+    grid-template-rows: 330px 330px 330px;
+    row-gap: 50px;
+    column-gap: 90px;
+
+    justify-content: center;
+}
+
+/* 게시글 썸네일 */
+.thumbnail{
+    width: 250px;
+    height: 330px;
+    border: 1px solid #ddd;
+    
+    background-color: white;
+
+    cursor: pointer;
+}
+
+.thumbnail:hover{
+    transform: scale(1.05);
+    transition-duration: 0.5s;
+}
+
+.thumbnail > div:first-of-type{
+    height: 60%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: #797979;
+
+}
+
+.thumbnail > div:first-of-type> img{
+    width: 200px;
+}
+
+.thumbnail > div:nth-of-type(2){
+    height: 40%;
+    padding: 10px;
+}
+
+/* 게시글 제목 */
+.title{
+    font-size: 20px;
+    /* font-weight: bold; */
+}
+
+/* 게시글 작성일, 좋아요 영역 */
+.createDate-area{
+    display: flex;
+    justify-content: space-between;
+
+    margin-top: 10px;
+}
+
+/* 게시글 작성자 프로필 영역 */
+.profile-area{
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.profileArea > img{
+    width: 40px;
+    border-radius: 50%;
+}
+
+/* 닉네임 영역 */
+.profile-area > div:nth-of-type(2){
+    width: 200px;
+    margin-left: 5px;
+}
+
+/* 좋아요 영역 */
+.profile-area > div:nth-of-type(3){
+    margin-left: 90px;
+    width: 120px;
+}
+
+/* 페이지네이션 영역 */
+#pagination-area{
+    height: 100px;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

@@ -10,7 +10,7 @@
 <%-- boardList-style.css 연결 --%>
 <link rel="stylesheet" href="../resources/css/board/freeBoard/freeBoardList-style.css">
 </head>
-<body style="background-color:#F8F9FA">
+<body>
 
 	<jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
 	
