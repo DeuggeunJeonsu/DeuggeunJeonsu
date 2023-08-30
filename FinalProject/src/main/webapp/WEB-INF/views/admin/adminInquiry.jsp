@@ -5,9 +5,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>득근전수 회원 목록</title>
+<title>회원 문의 목록</title>
 
-<link rel="stylesheet" href="/resources/css/admin/userList.css">
+<link rel="stylesheet" href="/resources/css/admin/adminInquiry.css">
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
@@ -27,14 +27,14 @@
 						관리자님
 
 					</div>
-					<a href="/adminBoardList"><div id="sideList">득근전수 회원 목록</div></a>
+					<a href="/adminBoardList"><div id="sideList">득근전수 회원 목록</div>
 					<a href="/adminInquiry"><div id="sideList">회원 문의</div></a>
 					<a href="/userList"><div id="sideList">관리자 페이지</div></a>
 				</div>
 
 				<div class="userList">
 					<div class="Jhead">
-						<h2>득근전수 회원 목록</h2>
+						<h2>회원 문의 목록</h2>
 					</div>
 
 
@@ -51,40 +51,45 @@
 							<thead>
 
 								<tr>
-									<th>회원 번호</th>
-									<th>회원 아이디</th>
-									<th>닉네임</th>
-									<th>비고</th>
+									<th>문의 번호</th>
+									<th>제목</th>
+									<th>구분</th>
+									<th>회원아이디</th>
+									<th>답변</th>
 								</tr>
 							</thead>
 
 							<tbody>
 								<tr>
 									<td>4</td>
-									<td>user01</td>
-									<td>유저일</td>
-									<td><button id="userDel">탈퇴</button></td>
+									<td>상품이 이상해요</td>
+									<td>상품 / 환불</td>
+									<td>user04</td>
+									<td>완료</td>
 								</tr>
 
 								<tr>
 									<td>3</td>
-									<td>user02</td>
-									<td>유저이</td>
-									<td><button id="userDel">탈퇴</button></td>
+									<td>환불 해주세요.</td>
+									<td>상품 / 환불</td>
+									<td>user03</td>
+									<td><button id="iqWrite">답변</button></td>
 								</tr>
 
 								<tr>
 									<td>2</td>
-									<td>user03</td>
-									<td>유저삼</td>
-									<td><button id="userDel">탈퇴</button></td>
+									<td>반품 요청합니다</td>
+									<td>상품 / 반품</td>
+									<td>user02</td>
+									<td><button id="iqWrite">답변</button></td>
 								</tr>
 
 								<tr>
 									<td>1</td>
-									<td>user04</td>
-									<td>유저사</td>
-									<td><button id="userDel">탈퇴</button></td>
+									<td>배송이 느리네요</td>
+									<td>상품 / 배송 문의</td>
+									<td>user01</td>
+									<td>완료</td>
 								</tr>
 							</tbody>
 						</table>
@@ -97,7 +102,6 @@
 			</div>
 
 		</div>
-
 
 	</main>
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>

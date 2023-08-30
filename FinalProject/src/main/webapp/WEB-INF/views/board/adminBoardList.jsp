@@ -16,84 +16,98 @@
 
 </head>
 <body>
-	<main>
-		
-		<jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
-		
-		<div class="adBody">
+    <main>
+        <div class="adMain">
+            <img src="/resources/images/main/log01.png" id="mainImg">
+        </div>
+        <div class="adBody">
+            
+            <div class="workOut">
+                <a href="#"><div id="wo1">
+                    <div id="wo2">
+                        
+                        <div id="wo3">
+                            운동 공유 게시판
+                        </div>
 
-			<div class="workOut">
-				<div id="wo1">
-					<div id="wo2">
+                        <div id="wo4">
+                            <img src="/resources/images/admin1.jpg">
+                        </div>
 
-						<div id="wo3">운동 공유 게시판</div>
+                    </div></a>
+                </div>
+            
+                
+                <div class="inquiry1">
 
-						<div id="wo4">
-							<img src="/resources/images/admin2.jpg">
-						</div>
+                    <i class="fa-solid fa-envelope-circle-check" id="inquiry2"></i>
+                    회원 문의
+                </div>
 
-					</div>
-				</div>
+                <div class="userList">
+                    <i class="fa-solid fa-users" id="userImg"></i>
+                    회원 목록
+                </div>
 
-				<div class="inquiry1">
+            </div>
+            
 
-					<i class="fa-solid fa-envelope-circle-check" id="inquiry2"></i> 회원
-					문의
-				</div>
+            
 
-			</div>
+           <div class="notification">
+    <a href="#"><div id="nc1">
+                    <div id="nc2">
+                        
+                        <div id="nc3">
+                            공지사항 게시판
+                        </div>
 
+                        <div id="nc4">
+                            <img src="/resources/images/admin2.jpg">
+                        </div>
 
+                    </div></a>
+                </div>
+            </div>
+           
 
+           <div class="information">
+                <a href="#">  <div id="im1">
+                    <div id="im2">
+                        
+                        <div id="im3">
+                            건강/운동 정보 컬럼
+                        </div>
 
-			<div class="notification">
-				<div id="nc1">
-					<div id="nc2">
+                        <div id="im4">
+                            <img src="/resources/images/admin3.jpg">
+                        </div>
 
-						<div id="nc3">공지사항 게시판</div>
-
-						<div id="nc4">
-							<img src="/resources/images/admin1.jpg">
-						</div>
-
-					</div>
-				</div>
-			</div>
-
-
-			<div class="information">
-				<div id="im1">
-					<div id="im2">
-
-						<div id="im3">건강/운동 정보 컬럼</div>
-
-						<div id="im4">
-							<img src="/resources/images/admin4.jpg">
-						</div>
-
-					</div>
-				</div>
-			</div>
-
-
-			<div class="freeBoard">
-				<div id="fb1">
-					<div id="fb2">
-
-						<div id="fb3">자유 게시판</div>
-
-						<div id="fb4">
-							<img src="/resources/images/admin3.jpg">
-						</div>
-
-					</div>
-				</div>
-			</div>
+                    </div></a>
+                </div>
+            
+            </div>
 
 
+            <div class="freeBoard">
+                <a href="#"> <div id="fb1">
+                    <div id="fb2">
+                        
+                        <div id="fb3">
+                            자유 게시판
+                        </div>
+
+                        <div id="fb4">
+                            <img src="/resources/images/admin4.jpg">
+                        </div>
+
+                    </div></a>
+                </div>
+            </div>
 
 
-		</div>
-	</main>
+        </div>
+    </main>
+    <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
 </body>
 </html>
