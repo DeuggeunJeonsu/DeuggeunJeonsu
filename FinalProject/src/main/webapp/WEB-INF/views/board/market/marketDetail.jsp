@@ -17,7 +17,15 @@
 
 	<jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
 	
-	
+	<div class="main-container">
+        <div class="top-container">
+            <div class="item-photo"></div>
+            <div class="item-detail"></div>
+        </div>
+        <div class="item-nav"></div>
+        <div class="item-content"></div>
+        <div class="notice"></div>
+    </div>
 
 
     <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
