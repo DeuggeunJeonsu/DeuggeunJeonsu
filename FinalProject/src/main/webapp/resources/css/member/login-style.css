@@ -1,0 +1,175 @@
+* {
+    box-sizing: border-box;
+    margin : 0;
+    padding : 0;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+	-webkit-text-fill-color: #000;
+    -webkit-box-shadow: 0 0 0px 1000px #fff inset;
+    box-shadow: 0 0 0px 1000px #fff inset;
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+input:autofill,
+input:autofill:hover,
+input:autofill:focus,
+input:autofill:active {
+	-webkit-text-fill-color: #000;
+    -webkit-box-shadow: 0 0 0px 1000px #fff inset;
+    box-shadow: 0 0 0px 1000px #fff inset;
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    overflow: hidden;
+    margin: 0;
+    min-width: 1200px;
+    min-height: 800px;
+}
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 40px;
+    border-radius: 5px;
+    height: 90vh;
+}
+
+
+/* 타이틀 부분 */
+main .title-area {
+    text-align: center;
+    margin-bottom: 20px;
+}
+main .title-area p:nth-of-type(1){
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: black;
+}
+main .title-area p:nth-of-type(2){
+    font-size: 14px;
+    color: black;
+}
+
+
+/* 아이디, 비밀번호 입력 부분*/
+.input-box {
+    position: relative;
+    width: 300px;
+}
+
+.input-box input {
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    background-color: inherit;
+    display: block;
+    width: 100%;
+    padding: 10px 10px;
+    margin: 10px 0;
+    font-size: 18px;
+}
+
+.input-box input:focus{
+    outline: 0;
+}
+
+/* 로그인 버튼 부분*/
+.login-btn {
+    cursor: pointer;
+    display: inline-block;
+    width: 100%;
+    background: #99E1ED;
+    color : white;
+    padding: 15px;
+    font-size: 18px;
+    font-weight: bold;
+    border: 0;
+    border-radius: 5px;
+    margin-top: 10px;
+    
+}
+.kakao-login-btn {
+    cursor: pointer;
+    display: inline-block;
+    width: 100%;
+    background: #F7E111;
+    color : black;
+    padding: 15px;
+    font-size: 18px;
+    font-weight: bold;
+    border: 0;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.login-btn:focus, .kakao-login-btn:focus {
+    outline: 0;
+}
+
+.login-btn:active, .kakao-login-btn:active {
+    transform: scale(0.98);
+}
+
+
+/* 아이디 저장 부분*/
+.saveId-area{
+    padding: 5px 0;
+    display: flex;
+    align-items: center;
+}        
+
+.saveId-area > input{
+    display: none;
+}
+
+#saveId+label{
+    display: flex;
+    cursor: pointer;
+    font-size: 12px;
+    color: black;
+}
+
+#saveId+label > i{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 20px;
+    height: 20px;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    margin-right: 10px;
+    padding-top: 2px;
+    color : #ccc;
+    font-size: 1.05em;
+}
+
+.saveId-area > input:checked + label > i{
+    background-color: #99E1ED;
+    border-color: #99E1ED;
+    color: white !important;
+}
+
+/* 회원가입, 아이디/비밀번호 찾기 */
+.text-area {
+    margin-top: 10px;
+    display :flex;
+    justify-content: space-between;
+}
+
+.text-area a{
+    text-decoration: none;
+    color: black;
+    margin: 0 5px;
+}
