@@ -12,9 +12,14 @@ public class MarketController {
 //	@Autowired
 //	private MarketService service;
 
-	@GetMapping("/")
-	public String MarketList() {
+	@GetMapping("/marketList")
+	public String selectmarketList() {
 		return "board/market/marketList";
+	}
+	
+	@GetMapping("/marketDetail")
+	public String marketDetail() {
+		return "board/market/marketDetail";
 	}
 	
 	@GetMapping("/payment")
