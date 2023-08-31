@@ -35,5 +35,12 @@ public class AdminController {
 		return "admin/adminIqWrite";
 	}
 
+	// 회원 문의 답변 작성페이지
+	@RequestMapping("/marketWrite")
+	public String marketWrite() {
+
+		return "admin/marketWrite";
+	}
+
 
 }
