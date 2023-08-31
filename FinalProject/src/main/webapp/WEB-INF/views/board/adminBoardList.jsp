@@ -10,15 +10,15 @@
 
 <script src="https://kit.fontawesome.com/f7459b8054.js"
 	crossorigin="anonymous"></script>
-
 <link rel="stylesheet"
 	href="/resources/css/board/adminBoardList-style.css">
 
 </head>
 <body>
+	
     <main>
         <div class="adMain">
-            <img src="/resources/images/main/log01.png" id="mainImg">
+            <a href="/"><img src="/resources/images/main/log01.png" id="mainImg"></a>
         </div>
         <div class="adBody">
             
@@ -31,7 +31,7 @@
                         </div>
 
                         <div id="wo4">
-                            <img src="/resources/images/admin1.jpg">
+                            <img src="/resources/images/admin/admin1.jpg">
                         </div>
 
                     </div></a>
@@ -40,13 +40,13 @@
                 
                 <div class="inquiry1">
 
-                    <i class="fa-solid fa-envelope-circle-check" id="inquiry2"></i>
-                    회원 문의
+                    <i class="fa-solid fa-envelope-circle-check" id="inquiry2" name="1"></i>
+                    <label id="inquiry2">회원 문의</label>
                 </div>
 
                 <div class="userList">
                     <i class="fa-solid fa-users" id="userImg"></i>
-                    회원 목록
+                    <label id="userImg">회원 목록</label>
                 </div>
 
             </div>
@@ -63,7 +63,7 @@
                         </div>
 
                         <div id="nc4">
-                            <img src="/resources/images/admin2.jpg">
+                            <img src="/resources/images/admin/admin2.jpg">
                         </div>
 
                     </div></a>
@@ -80,7 +80,7 @@
                         </div>
 
                         <div id="im4">
-                            <img src="/resources/images/admin3.jpg">
+                            <img src="/resources/images/admin/admin3.jpg">
                         </div>
 
                     </div></a>
@@ -98,7 +98,7 @@
                         </div>
 
                         <div id="fb4">
-                            <img src="/resources/images/admin4.jpg">
+                            <img src="/resources/images/admin/admin4.jpg">
                         </div>
 
                     </div></a>

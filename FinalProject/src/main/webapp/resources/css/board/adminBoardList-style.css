@@ -1,5 +1,7 @@
 *{ box-sizing: border-box;
       /*  border: 1px solid black;  */
+      margin: 0;
+      
 }
 a{
     text-decoration: none;
@@ -8,7 +10,6 @@ a{
 .adMain{
     height: 110px;
     display: flex;
-    justify-content: center;
 }
 #mainImg{
     width: 290px;
@@ -282,7 +283,7 @@ main{
     font-weight: bold;
 }
 
-#inquiry2{
+.fa-envelope-circle-check{
     font-size: 55px;
     color: #aab7e9;
 
@@ -307,9 +308,44 @@ main{
     text-align: center;
 }
 
-#userImg{
+.fa-users{
     font-size: 52px;
     cursor: pointer;
     
+}
+
+/* ---------------------------------------------------------- */
+footer{
+    height: 120px;
+    width: 100%;
+    background-color: #212121;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #888888;
+    
+}
+.footer-row{
+    font-size: 18px;
+    font-weight: 600;
+}
+footer i {
+    padding: 0px 5px;
+    color: #ff0000;
+}
+article{
+    display: flex;
+    font-size: 15px;
+}
+footer p{
+    color: #9c9a9a;
+    text-decoration: none;
+}
+footer span{
+    padding : 0 10px;
+}
+.footer-row2{
+    font-size: 12px;
 }
 
