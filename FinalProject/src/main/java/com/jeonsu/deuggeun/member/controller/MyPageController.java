@@ -22,4 +22,15 @@ public class MyPageController {
 	public String memberFeed() {
 		return "member/myPage/memberFeed";
 	}
+
+	@GetMapping("/myBoardList")
+	public String myBoardList() {
+		return "member/myPage/myBoardList";
+	}
+
+	@GetMapping("/myPurchaseList")
+	public String myPurchaseList() {
+		return "member/myPage/myPurchaseList";
+	}
+	
 }

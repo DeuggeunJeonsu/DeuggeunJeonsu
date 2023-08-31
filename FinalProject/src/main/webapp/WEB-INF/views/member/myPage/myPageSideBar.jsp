@@ -16,10 +16,10 @@
         <a href="/myPage/followingFollower">
             <div class="sideBarMenu">팔로잉/팔로워</div>
         </a>
-        <a href="#">
+        <a href="/myPage/myBoardList">
             <div class="sideBarMenu">내 게시글</div>
         </a>
-        <a href="#">
+        <a href="/myPage/myPurchaseList">
             <div class="sideBarMenu">구매 내역</div>
         </a>
         <a href="#">
