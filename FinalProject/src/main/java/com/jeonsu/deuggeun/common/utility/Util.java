@@ -55,7 +55,7 @@ public class Util {
 	
 	// sms전송 메소드
 	@SuppressWarnings("unchecked")
-	public void send_msg(String tel) {
+	public static String sendMessage(String tel) {
         // 호스트 URL
         String hostNameUrl = "https://sens.apigw.ntruss.com";
         // 요청 URL
@@ -89,7 +89,7 @@ public class Util {
         }
         
         // 난수와 함께 전송
-        toJson.put("content","Deuggeun Jeonsu 본인인증 ["+numStr+"]");		
+        toJson.put("content","[Deuggeun Jeonsu] 본인확인 \n인증번호는 "+numStr+" 입니다. \n\"타인 노출 금지\"");		
         toJson.put("to",tel);
         toArr.add(toJson);
 	    
@@ -99,7 +99,8 @@ public class Util {
         bodyJson.put("countryCode","82");
         
         // 발신번호 * 사전에 인증/등록된 번호만 사용할 수 있습니다.
-        bodyJson.put("from","01037204583");		
+        bodyJson.put("from","01037204583");
+        bodyJson.put("content","[Deuggeun Jeonsu] 본인확인 \n인증번호는 "+numStr+" 입니다. \n\"타인 노출 금지\"");
         bodyJson.put("messages", toArr);		
 	    
         String body = bodyJson.toJSONString();
@@ -146,6 +147,8 @@ public class Util {
         } catch (Exception e) {
             System.out.println(e);
         }
+        
+        return numStr; // 인증번호
     }
 	
     public static String makeSignature(

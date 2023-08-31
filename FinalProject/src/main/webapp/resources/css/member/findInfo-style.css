@@ -43,14 +43,29 @@ main .title-area p:nth-of-type(2){
 }
 
 /* 서브 타이틀 부분 */
-main section:nth-of-type(2) legend > p{
-    font-size: 25px;
+main section:nth-of-type(2) form legend > p{
+    text-align: center;
+    margin-bottom: 10px;
+    font-size: 20px;
     font-weight: bold;
+    color: black;
+}
+
+/* 폼태그를 감싼 영역 */
+main section:nth-of-type(2){
+    display: flex;
+}
+main section:nth-of-type(2) form{
+    padding: 40px 50px;
 }
 
 /* 휴대폰, 아이디, 인증번호 입력 부분*/
 .input-box {
     position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
     width: 300px;
 }
 
@@ -67,8 +82,8 @@ main section:nth-of-type(2) legend > p{
 .width30{
     width: 30%;
 }
-.width70{
-    width: 70%;
+.width65{
+    width: 65%;
 }
 .width100{
     width: 100%;
@@ -76,10 +91,21 @@ main section:nth-of-type(2) legend > p{
 
 .input-box input:focus{
     outline: 0;
+    border: 2px solid #99E1ED;
+}
+
+/* 타이머 영역 */
+main section:nth-of-type(2) form section:nth-of-type(3){
+    height: 15px;
+    font-size: 15px;
+    color: black;
+    text-align: end;
+    line-height: 5px;
+    padding-right: 25px;
 }
 
 /* 아이디/비밀번호 찾기 버튼 부분*/
-.find-id-btn, .find-pw-btn {
+#findIdBtn, #findPwBtn {
     cursor: pointer;
     display: inline-block;
     width: 100%;
@@ -90,14 +116,27 @@ main section:nth-of-type(2) legend > p{
     font-weight: bold;
     border: 0;
     border-radius: 5px;
-    margin-top: 10px;
-    
+}
+/*인증번호 전송 버튼*/
+#sendSmsBtn, #sendEmailBtn {
+    cursor: pointer;
+    display: inline-block;
+    width: 30%;
+    background: #99E1ED;
+    color : white;
+    padding: 15px 5px;
+    font-size: 12px;
+    font-weight: bold;
+    border: 0;
+    border-radius: 5px;
+    margin-left: 5px;
 }
 
-.find-id-btn:focus, .find-pw-btn:focus {
+
+#findIdBtn:focus, #findPwBtn:focus, #sendSmsBtn:focus, #sendEmailBtn:focus {
     outline: 0;
 }
 
-.find-id-btn:active, .find-pw-btn:active {
+#findIdBtn:active, #findPwBtn:active, #sendSmsBtn:active, #sendEmailBtn:active {
     transform: scale(0.98);
 }
