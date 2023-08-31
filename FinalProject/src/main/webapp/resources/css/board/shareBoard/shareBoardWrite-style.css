@@ -110,6 +110,7 @@ h3{
 .thumbnail-box{
     display: flex;
     /* justify-content: space-around; */
+    padding-top: 10px;
 }
 
 
@@ -293,8 +294,11 @@ h2 {
 .routine-area > div{
     width: 90%;
     margin: auto;
-    padding: 15px 50px;
+    padding: 0 50px;
     
+}
+.routine-area > div > h3{
+    margin: 0;
 }
 .routine-add{
     /* display: flex; */
