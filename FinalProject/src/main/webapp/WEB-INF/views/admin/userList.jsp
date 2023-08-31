@@ -27,9 +27,9 @@
 						관리자님
 
 					</div>
-					<a href="/adminBoardList"><div id="sideList">득근전수 회원 목록</div></a>
+					<a href="/userList"><div id="sideList">득근전수 회원 목록</div></a>
 					<a href="/adminInquiry"><div id="sideList">회원 문의</div></a>
-					<a href="/userList"><div id="sideList">관리자 페이지</div></a>
+					<a href="/adminBoardList"><div id="sideList">관리자 페이지</div></a>
 				</div>
 
 				<div class="userList">

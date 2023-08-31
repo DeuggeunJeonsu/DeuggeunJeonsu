@@ -75,6 +75,7 @@
 			</div>
 		</div>
 	</main>
+	<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
 	<script src="notificationWrite.js"></script>
 </body>
 

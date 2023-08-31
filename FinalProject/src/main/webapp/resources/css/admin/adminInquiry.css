@@ -136,12 +136,23 @@ td{
 }
 
 
+.fa-solid{
+    margin-right: -434px;
+}
+
+#division{
+    font-weight: bold;
+    cursor: pointer;
+    width: 100px;
+    height: 30px;
+    border-radius: 5px;
+}
 .userSearch{
     width: 750px;
     height: 45px;
     display: flex;
     align-items: center;
-    justify-content: right;
+    justify-content: space-between;
 }
 
 .userSearch > input {
