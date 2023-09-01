@@ -10,5 +10,10 @@ public class MainController {
 	public String mainForward() {
 		return "common/main";
 	}
+	
+	@RequestMapping("/survey")
+	public String survey() {
+		return "common/survey/survey";
+	}
 
 }

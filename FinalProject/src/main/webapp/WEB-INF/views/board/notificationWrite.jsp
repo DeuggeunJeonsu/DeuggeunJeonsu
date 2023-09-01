@@ -64,7 +64,7 @@
         
     </main>
     <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
-    <script src="/resources/js/notificationWrite.js"></script>
+    <script src="/resources/js/board/notificationWrite.js"></script>
 </body>
 
 </html>
