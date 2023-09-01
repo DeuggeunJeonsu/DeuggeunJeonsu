@@ -16,7 +16,6 @@
   <title>hc17</title>
 
   <link rel="stylesheet" href="/resources/css/member/signUp-style.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
 </head>
 
