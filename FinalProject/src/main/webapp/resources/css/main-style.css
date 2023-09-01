@@ -343,11 +343,16 @@ html, body{
 .nav-list > li {
     display: list-item;
     margin-right: 20px;
-
     
+}
+
+.nav-list > li:hover {
+ background-color: #99E1ED;
+ transition-duration: 1s;
 }
 .nav-list > li > a{
     padding: 30px 15px;
+    
     font-weight: 600;
     font-size: 20px;
     color: #99E1ED;
@@ -356,6 +361,12 @@ html, body{
     text-decoration: none;
     outline: none;
     touch-action: manipulation;
+}
+.nav-list > li > a:hover{
+    
+    color: #fff;
+    /* transition-duration: 1s; */
+
 }
 
 
