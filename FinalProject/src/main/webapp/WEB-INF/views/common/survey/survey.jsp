@@ -24,30 +24,44 @@
 
 				<div class="svHeader">오늘은 어느 부위를 하시나요?</div>
 				<div class="svGauge">
-					<input id="rangeInput" readonly class="rangeInput" 
-						max="10" min="0" step="1" type="range" />
+					<input id="rangeInput1" readonly class="rangeInput" 
+						max="10" min="0" step="1" value="0" type="range" />
 				</div>
 
 				<div class="checks etrans">
-					<input type="checkbox" id="ex_chk1"> <label for="ex_chk1">상체</label>
+					<input type="checkbox" id="ex_chk1" class="bodycheck0"> <label for="ex_chk1">상체</label>
 
-					<input type="checkbox" id="ex_chk2"> <label for="ex_chk2">하체</label>
-
-					<input type="hidden" id="bodyCheck2" value="">
+					<input type="checkbox" id="ex_chk2" class="bodycheck0"> <label for="ex_chk2">하체</label>
 
 
-					<c:if test="${input[name='bodyCheck1'].value == 2}" >
-						<input type="checkbox" id="ex_chk3"> <label for="ex_chk3">등</label>
 
-						<input type="checkbox" id="ex_chk4"> <label for="ex_chk4">가슴</label>
+					<div class="bodycheck1">
+						<input type="checkbox" id="ex_chk3" > <label for="ex_chk3">등</label>
+					</div>	
 
-						<input type="checkbox" id="ex_chk5"> <label for="ex_chk5">팔</label>
+					<div class="bodycheck1">
+						<input type="checkbox" id="ex_chk4" > <label for="ex_chk4">가슴</label>
+					</div>
 
-						<input type="checkbox" id="ex_chk6"> <label for="ex_chk6">어깨</label>
+					<div class="bodycheck1">
+						<input type="checkbox" id="ex_chk5" > <label for="ex_chk5">팔</label>
+					</div>
 
-						<input type="checkbox" id="ex_chk7"> <label for="ex_chk7">복근</label>
-					</c:if>
-					<button type="button" name="bodyCheck1" id="bodyCheck" value="">다음</button>
+					<div class="bodycheck1">
+						<input type="checkbox" id="ex_chk6" > <label for="ex_chk6">전완</label>
+					</div>
+
+					<div class="bodycheck1">
+						<input type="checkbox" id="ex_chk7" > <label for="ex_chk7">전완2</label>
+					</div>
+
+					<div class="bodycheck1">
+						<input type="checkbox" id="ex_chk8" > <label for="ex_chk8">전완3</label>
+					</div>
+					
+
+
+					<button type="button"  id="bodyCheck" value="">다음</button>
 				</div>
 
 			</div>
