@@ -22,14 +22,16 @@ public class MarketController {
 		return "board/market/marketDetail";
 	}
 	
-	@GetMapping("/payment")
-	public String payment() {
-		return "board/market/payment";
+	@GetMapping("/marketReview")
+	public String marketReview() {
+		return "board/market/marketReview";
 	}
-	
-//	@GetMapping("/marketDetail")
-//	public String marketDetail() {
-//		
-//		return "board/market/marketDetail";
-//	}
+	@GetMapping("/marketQnA")
+	public String marketQnA() {
+		return "board/market/marketQnA";
+	}
+	@GetMapping("/marketCart")
+	public String marketCart() {
+		return "board/market/marketCart";
+	}
 }

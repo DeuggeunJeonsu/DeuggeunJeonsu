@@ -1,0 +1,100 @@
+@font-face {
+    font-family: 'Pretendard-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.main-con {
+    border: 1px solid #99E1ED;
+}
+
+.img-con {
+    display: flex;
+}
+
+/* a태그 속성 제거 */
+a {
+    text-decoration: none;
+    color: #797979;
+}
+
+#main-container {
+    margin: 100px 250px;
+    min-width: 1200px;
+}
+
+
+/* 리뷰 게시판 영역 */
+.board-name {
+    font-size: 2em;
+    margin: 20px 0;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    border: 1px solid #ccc;
+}
+
+th,
+td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ccc;
+    text-align: center;
+}
+
+th {
+    background-color: #99E1ED;
+    color: #565656;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.total-info {
+    text-align: center;
+    padding: 10px;
+}
+
+.text {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.total-amount {
+    font-size: 25px;
+    font-weight: bold;
+    color: #565656;
+}
+
+.total-amount span {
+    font-size: 14px;
+    font-weight: normal;
+}
+
+#paymentBtn {
+    display: inline-block;
+    width: 120px;
+    background-color: #99E1ED;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #fff;
+    border: 2px solid #99E1ED;
+    border-radius: 5px;
+    line-height: 50px;
+    text-align: center;
+    text-decoration: none;
+    /* remove underline for links */
+    cursor: pointer;
+}
+
+#paymentBtn:hover {
+    background-color: #66C2CC;
+    border-color: #66C2CC;
+}

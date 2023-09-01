@@ -10,21 +10,24 @@
 }
 
 .main-con {
-    border: 1px solid #99E1ED;;
+    border: 1px solid #99E1ED;
+    ;
 }
 
 .top-container {
     display: flex;
-    border: 1px solid #99E1ED;;
+    border: 1px solid #99E1ED;
+    ;
 }
 
 .left-content {
     flex: 50%;
-    
+
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid #99E1ED;;
+    border: 1px solid #99E1ED;
+    ;
 
 }
 
@@ -36,7 +39,8 @@
 .right-content {
     flex: 50%;
 
-    border: 1px solid #99E1ED;;
+    border: 1px solid #99E1ED;
+    ;
 
 }
 
@@ -50,35 +54,41 @@ a {
     margin: 100px 250px;
     min-width: 1200px;
 }
-#select{
+
+#select {
     padding: 4px 3px 3px;
     width: 20em;
     height: 2.5em;
     line-height: 2.2em;
     /* height: 100%; */
 }
-#title{
+
+#title {
     font-size: 25px;
     font-weight: 600;
 }
-.right{
+
+.right {
     margin-bottom: 20px;
     line-height: 1.5;
 }
-.min{
+
+.min {
     padding-left: 40px;
     margin-top: 5px;
     margin-bottom: 30px;
 }
+
 .number {
     display: flex;
-    align-items: center; 
+    align-items: center;
 }
 
-.number > div {
+.number>div {
     margin-right: 10px;
 }
-.submit-btn{
+
+.submit-btn {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -92,10 +102,12 @@ a {
     border: 0;
     box-sizing: border-box;
 }
-.submit-btn:hover{
+
+.submit-btn:hover {
     cursor: pointer;
 }
-#now-btn{
+
+#now-btn {
     background-color: #797979;
     color: #fff;
 }
@@ -103,18 +115,20 @@ a {
 /* 상품, 후기, Q&A nav */
 
 /* 상품상세 영역 */
-.item-nav{
+.item-nav {
     display: flex;
     border: 0;
     height: 60px;
     justify-content: center;
     text-align: center;
 }
-.item-nav > li {
+
+.item-nav>li {
     float: left;
     width: 16.66667%;
     list-style: none;
 }
+
 .item-nav a {
     display: block;
     height: 59px;
@@ -135,31 +149,108 @@ a {
     color: #fff;
 
 }
-.item-content{
-    text-align: center;
-}
-.item-content img{
-    width: 1000px;
-    height: 1200px;
+/* 리뷰 게시판 영역 */
+.board-name {
+    font-size: 2em;
+    margin: 20px 0;
 }
 
-/* 제품 상세 영역 */
-.item-detail{
-    width: 1000px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin: auto;
-    color: #333;
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    border: 1px solid #ccc;
 }
-.text2{
+
+th,
+td {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+    text-align: center;
+}
+td{
     font-size: 15px;
-    line-height: 26px;
 }
-strong{
+th {
+    background-color: #f2f2f2;
+    font-size: 1.2em;
     font-weight: bold;
 }
-.text3{
+/* 처리상태 버튼 */
+#btn-status {
+    border: none;
+    width: 80px;
+    height: 30px;
+    background-color: rgba(231, 76, 60, 0.85);
+    color: #fff;
+    font-size: 1.1em;
+    border-radius: 10px;
+}
+
+
+/* 글쓰기 버튼 */
+
+.btn-area {
+    height: 50px;
+    display: flex;
+    justify-content:flex-end;
+    align-items: center;
+}
+
+
+.btn-area>button {
+
+    margin-right: 20px;
+    margin-top: 20px;
+
+    width: 100px;
+    height: 40px;
+    background-color: white;
+    font-size: 1.2em;
     font-weight: bold;
-    font-size: 18px;
+    color:  #797979;
+    border: 2px solid #797979;
+    border-radius: 5px;
+
+    cursor: pointer;
+
+}
+
+/* 페이지네이션 영역 */
+.pagination-area {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.pagination {
+    display: inline-block;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.pagination li {
+    display: inline;
+    margin: 0 5px;
+}
+
+.pagination li a {
+    text-decoration: none;
+    padding: 5px 10px;
+    background-color: #e6e6e6;
+    color: #000;
+    transition: background-color 0.3s, color 0.3s;
+    border-radius: 10px;
+    /* 버튼 둥글게 만듦 */
+}
+
+.pagination li a.current {
+    background-color: #99E1ED;
+    color: #fff;
+}
+
+.pagination li a:hover {
+    background-color: #99E1ED;
+    color: #fff;
+
 }
