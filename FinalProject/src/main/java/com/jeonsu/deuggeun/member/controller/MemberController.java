@@ -34,7 +34,7 @@ public class MemberController {
 	@PostMapping(value="/findId", produces = "application/json; charset=UTF-8")
 	public String findId(@RequestBody Map<String, Object> paramMap) {
 		//System.out.println(String.valueOf(paramMap.get("memberPhone")));
-		return "테스트중, 주석 풀지 마세요"; //Util.sendMessage(String.valueOf(paramMap.get("memberPhone")));
+		return "sms 문자전송 기능 제한중"; //Util.sendMessage(String.valueOf(paramMap.get("memberPhone")));
 	}
 	
 		// 회원 가입 페이지 이동

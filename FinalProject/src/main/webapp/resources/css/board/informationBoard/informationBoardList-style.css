@@ -59,30 +59,28 @@
 
 #sort-btn-area{
     display: flex;
-    
     align-items: center;
 }
 
-#sort-btn-area a{
+#sort-btn-area button{
+    background-color: inherit;
+    border: 1px solid #797979;
+    border-radius: 5px;
     font-size: 16px;
-
-    text-decoration: none;
     color: #797979;
 
-    margin: 0 5px;
+    padding: 5px 10px
 }
 
-#sort-btn-area a:hover{
-    color: #99E1ED;
+#sort-btn-area button:hover{
+    background-color: #99E1ED;
+    color: white;
     font-weight: bold;
 }
 
 /* 해시태그 영역 */
 .hashTag-area{
     display: flex;
-    position: relative;
-
-    right: 50px;
 }
 
 .hashTag-area div{
@@ -195,6 +193,31 @@
     margin-left: 5px;
     width: 50px;
     text-align: end;
+}
+
+/* 이미지 슬라이드쇼 영역*/
+.slide_div img{
+	margin: auto;
+}
+.slide_div_wrap{
+	padding: 15px 0 15px 0;
+    background: #e6e9f6;
+}
+.image_wrap img{
+	max-width: 85%;
+    height: auto;
+    display: block;
+	margin: auto;    
+}
+
+/* 이미지 슬라이드쇼 내부 버튼 */
+.slick-prev{
+	left: 160px;
+    z-index: 1;
+}
+.slick-next{
+	right: 160px;
+    z-index: 1;
 }
 
 /* 페이지네이션 영역 */
