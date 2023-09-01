@@ -23,7 +23,7 @@
 
 <body>
 
-<jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
+<jsp:include page="/WEB-INF/views/common/header.jsp"/>
 
   <form>
 

@@ -37,12 +37,12 @@ public class MemberController {
 		return "테스트중, 주석 풀지 마세요"; //Util.sendMessage(String.valueOf(paramMap.get("memberPhone")));
 	}
 	
-	// 회원 가입 페이지 이동
-	@GetMapping("/signUp")
-	public String signUp() {
+		// 회원 가입 페이지 이동
+		@GetMapping("/signUp")
+		public String signUp() {
 
-		return "member/signUp";
-	}
+			return "member/signUp";
+		}
 	
 
 }
