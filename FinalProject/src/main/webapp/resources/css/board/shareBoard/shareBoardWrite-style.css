@@ -5,11 +5,15 @@
 #main-container{
     margin: 100px 400px;
     height: auto;
-    min-width: ;
+    width: 1000px;
 }
 form{
     display: flex;
     flex-direction: column;
+}
+
+h3{
+    font-size: 1.7rem;
 }
 #title-area > div:nth-of-type(2){
     padding-bottom: 10px;
@@ -17,15 +21,17 @@ form{
 }
 
 .top-write{
+    width: 80%;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin: auto;
 }
 #writer{
     display: flex;
     width: 70%;
     align-items: center;
-    margin: 20px;
+    margin: 20px 0;
 
 }
 #writer span{
@@ -45,7 +51,7 @@ form{
     padding: 10px;
     border: 3px solid #99E1ED;
     border-radius: 10px;
-    font-size: 1rem;
+    font-size: 1.5rem;
     text-align: center;
 }
 
@@ -103,7 +109,8 @@ form{
 }
 .thumbnail-box{
     display: flex;
-    justify-content: space-around;
+    /* justify-content: space-around; */
+    padding-top: 10px;
 }
 
 
@@ -146,6 +153,7 @@ h2 {
 .cont-select {
     position: relative;
     width: 200px;
+    align-items: end;
 }
 
 .btn-select {
@@ -153,7 +161,7 @@ h2 {
     width: 100%;
     /* 위에 부여한 200px의 100%부여  */
     /* 콘텐츠가 늘어나도, 100%보다 더 안 늘어난다. */
-    
+    height: 50px;
     padding: 12px; 
     /* 일단 피그마수치대로 적용, 말줄임 옵션 때문에 조정할 예정  */
     
@@ -286,8 +294,11 @@ h2 {
 .routine-area > div{
     width: 90%;
     margin: auto;
-    padding: 15px 50px;
+    padding: 0 50px;
     
+}
+.routine-area > div > h3{
+    margin: 0;
 }
 .routine-add{
     /* display: flex; */
@@ -306,7 +317,7 @@ h2 {
 }
 
 .routine-write-area{
-    width: 70%;
+    width:65%;
     height: 230px;
     display: flex;
     flex-direction: column;
@@ -340,4 +351,33 @@ h2 {
 
 .routine-add > div{
     margin-bottom: 20px;
+}
+
+.routine-add-btn-area{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+#routineBtn{
+    width: 160px;
+    height: 50px;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.3rem;
+    background-color: #797979;
+
+    margin: auto;
+
+}
+
+#routineBtn:hover{
+    background-color: #99E1ED;
+    color: #797979;
+
+    transition-duration: 0.4s;
+}
+#routineBtn > i{
+    color: #fff;
 }

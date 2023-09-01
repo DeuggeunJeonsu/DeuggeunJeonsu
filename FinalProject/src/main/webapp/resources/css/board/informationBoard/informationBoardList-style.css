@@ -6,7 +6,6 @@
 #main-container{
     margin: 100px 400px;
     height: auto;
-    min-width: 1200px;
 }
 
 #title-area > div:nth-of-type(2){
@@ -83,15 +82,14 @@
     display: flex;
     position: relative;
 
-    /* right: 50px; */
+    right: 50px;
 }
 
 .hashTag-area div{
-    width: 140px;
     background-color: #99e1ed;
 
     margin: 0 7px;
-    padding: 5px;
+    padding: 5px 20px;
 
     color: white;
     font-size: 18px;
@@ -128,7 +126,6 @@
 /* 게시글 썸네일 영역*/
 #list-area{
     margin-top: 70px;
-
     display: grid;
     grid-template-columns: 250px 250px 250px;
     grid-template-rows: 330px 330px 330px;
@@ -142,7 +139,7 @@
     border: 1px solid #ddd;
     
     background-color: white;
-    border-radius: 5px;
+
     cursor: pointer;
 }
 
@@ -157,7 +154,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 5px 5px 0 0;
 
     background-color: #797979;
 
@@ -191,23 +187,14 @@
     margin-top: 20px;
     display: flex;
     align-items: center;
+    justify-content: end;
 }
 
-.profileArea > img{
-    width: 40px;
-    border-radius: 50%;
-}
-
-/* 닉네임 영역 */
-.profile-area > div:nth-of-type(2){
-    width: 200px;
+/* 댓글수, 좋아요 영역 */
+.profile-area > div{
     margin-left: 5px;
-}
-
-/* 좋아요 영역 */
-.profile-area > div:nth-of-type(3){
-    margin-left: 90px;
-    width: 120px;
+    width: 50px;
+    text-align: end;
 }
 
 /* 페이지네이션 영역 */

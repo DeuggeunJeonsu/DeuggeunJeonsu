@@ -44,7 +44,7 @@ ul {
 
 input {
   border: 1px solid #ccc;
-  border-radius: 20px;
+  border-radius: 5px;
   padding: 14px;
   margin: 10px 0;
   font-size: 1rem;
@@ -207,9 +207,6 @@ form .terms> :nth-child(3),
 form .terms :nth-child(4),
 form .terms :nth-child(5) {
   position: relative;
-}
-.tel{
-  
 }
 
 form .terms> :nth-child(3) a,

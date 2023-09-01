@@ -15,4 +15,8 @@ public class ShareBoard {
 	public String shareBoardWrite() {
 		return "board/shareBoard/shareBoardWrite";
 	}
+	@RequestMapping("/shareBoard/boardNo")
+	public String shareBoardDetail() {
+		return "board/shareBoard/shereBoardDetail";
+	}
 }

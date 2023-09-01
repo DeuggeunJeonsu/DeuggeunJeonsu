@@ -10,22 +10,36 @@ public class AdminController {
 	// 관리자 페이지
 	@RequestMapping("/adminBoardList")
 	public String adminBoardList() {
-		
+
 		return "board/adminBoardList";
 	}
-	
+
 	// 회원 목록
 	@RequestMapping("/userList")
 	public String userList() {
-		
+
 		return "admin/userList";
 	}
-	
+
 	// 회원 문의 목록
 	@RequestMapping("/adminInquiry")
 	public String adminInquiry() {
-		
+
 		return "admin/adminInquiry";
+	}
+
+	// 회원 문의 답변 작성페이지
+	@RequestMapping("/adminIqWrite")
+	public String adminIqWrite() {
+
+		return "admin/adminIqWrite";
+	}
+
+	// 회원 문의 답변 작성페이지
+	@RequestMapping("/marketWrite")
+	public String marketWrite() {
+
+		return "admin/marketWrite";
 	}
 
 

@@ -1,37 +1,30 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>공지사항 상세페이지</title>
+    <title>상품문의 답변 작성</title>
 
-    <link rel="stylesheet" href="/resources/css/board/notificationWrite-style.css">
+    <link rel="stylesheet" href="/resources/css/admin/adminIqWrite-style.css">
 </head>
 
 <body>
     <main>
-
-        <div class="Jheader">
-			<jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
-		</div>
+    <jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
 
         <div class="Jbody">
             <div class="Jcenter">
 
-                <div class="ncHead">
-                    <h2>공지사항 게시판</h2>
+                <div class="iqHead">
+                    <h2>상품문의 답변 작성</h2>
                 </div>
 
-                <div class="cnText">
-                    득근전수에서 회원님들에게 공지드립니다.
-                </div>
+              
 
-                <div class="ncTitle">
+                <div class="iqTitle">
                     <input type="text" placeholder="제목 작성" autocomplete="off">
                 </div>
 
@@ -43,10 +36,9 @@
 
                     <div id="ncName">관리자</div>
 
-                    <div id="ncCheckbox"><input type="checkbox"> 중요 공지사항</div>
 
                 </div>
-                <textarea class="ncContent" maxlength="1999" placeholder="내용을 입력해주세요."></textarea>
+                <textarea class="ncContent" maxlength="2000" placeholder="내용을 입력해주세요."></textarea>
 
                 
 
@@ -61,10 +53,9 @@
 
             </div>
         </div>
-        
     </main>
     <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
-    <script src="/resources/js/board/notificationWrite.js"></script>
+    <script src="notificationWrite.js"></script>
 </body>
 
 </html>

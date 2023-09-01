@@ -35,7 +35,7 @@
                 </div>
                 <div class="thumbnail-routineType-area">
                     <div class="thumbnail-area">
-                        <h3>Thumbnail<h3>
+                        <h3>Thumbnail</h3>
                         <div class="thumbnail-box">
                             <div class="boardImg thumbnail">
                                 <label for="img0">
@@ -134,10 +134,19 @@
 
                     </div>
                 </div>
+                <div class="routine-add-btn-area">
+                    <button id="routineBtn">
+                        Routine 
+                        <i class="fa-solid fa-circle-plus"></i>
+                    </button>
+                
+                </div>
             </div>
 
         </form>    
-	</section>
+
+    </section>
+
 
     <!-- footer include -->
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>

@@ -1,0 +1,362 @@
+/* div{
+    border: 1px solid pink;;
+} */
+
+#main-container{
+    margin: 100px 400px;
+    height: auto;
+    width: 1200px;
+}
+
+#title-area > div:nth-of-type(1){
+    padding-bottom: 10px;
+    border-bottom: 2px solid #ddd;
+}
+
+#board-area{
+    height: 100%;
+    display: flex;
+}
+
+#board-area > div:nth-child(1){
+    width: 60%;
+}
+#board-area > div:nth-child(2){
+    /* width: 40%; */
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: right; */
+    align-items: end;
+    /* margin: 20px; */
+    margin-top: 30px;
+}
+#board-info > span{
+padding: 0 10px;
+}
+.thumbnail{
+    width: 400px;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-left: auto;
+    margin-right: auto;
+    
+
+    /* border: 2px solid #99E1ED;; */
+
+}
+
+.thumbnail > img{
+
+    width: 90%;
+}
+#title{
+    font-size: 1.7rem;
+    padding-left: 20px;
+}
+hr{ border-bottom: 2px solid #ddd;}
+#board-info > *{
+    font-size: 1rem;
+    /* padding-left: 2px; */
+}
+#board-info{
+    display: flex;
+    justify-content: end;
+    padding: 20px;
+}
+.boardContent{
+    height: 200px;
+    /* border: none; */
+    padding: 0 20px;
+    font-size: 1.3rem;
+}
+
+.routine-area{
+    height: 230px;
+    background-color: #99E1ED;
+    display: flex;
+    /* justify-content: space-between; */
+    border-radius: 20px;
+    margin-bottom: 20px;
+}
+.img-area{
+    width: 200px;
+    height: 200px;
+    background-color: #fff;
+    border-radius: 10px;
+    border: none;
+    margin: auto;
+}
+.img-area > .img{
+    width: 100%;
+    margin: auto;
+
+}
+.routine-info {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+   
+    
+}
+.routine-info  > div {
+    background-color:  #fff;
+    width: 90%;
+    border-radius: 10px;
+    
+}
+
+.routineNm{
+    
+    height: 40px;
+    border: none;
+    padding: 5px 30px;
+    font-size: 1.2rem;
+    align-items: center;
+    margin: 10px 10px 7px 10px;
+    
+}
+.routine-content{
+    margin-top: 7px;
+    line-height: 20px;
+    padding: 10px 30px;
+    height: 65%;
+    border: none;
+    margin: 0px 10px 10px 10px;
+
+}
+.routine-area > h1{
+    margin-left: 15px;
+    margin-right: 10px;
+    color: #fff;
+    
+}
+
+/* 작성자 정보 */
+#member-area{
+    border: 30px solid #99E1ED;
+    background-color: #fff;
+    border-radius: 20px;
+    /* border: none; */
+    width: 90%;
+    height: 250px;
+}
+#member-area > div:nth-child(1){
+    height: 70%;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-evenly;
+}
+#member-area > div:nth-child(1)  img{
+    width: 100%;
+    border-radius: 50%;
+}
+#member-area > div:nth-child(1)>span{
+    font-size: 1.7rem;
+    font-weight: bold;
+}
+#member-area > div:nth-child(1)>button{
+    background-color: #99E1ED;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    width: 100px;
+    height: 30px;
+    font-size: 18px;
+}
+#member-area > div:nth-child(1)>button:hover{
+    /* font-size: 19px; */
+    color: #fff;
+    transition-duration: 0.5s;
+}
+#profile-area{
+    width: 80px;
+    height: 80px;
+    border:3px solid #ddd;
+    border-radius: 50%;
+}
+
+#member-area > div:nth-child(2){
+    width: 240px;
+    margin: auto;
+    text-align: center;
+}
+#member-area > div:nth-child(2) > span{
+    font-size: 1.4rem;
+}
+#member-area > div:nth-child(2) > span:nth-child(1){
+    margin-right: 20px;
+}
+
+
+/* ____________________ToDoList시작______________________ */
+
+.todolist-area{
+    width: 90%;
+    min-height: 500px;
+    border: 30px solid #99E1ED;
+    border-radius: 20px;
+    margin: 10px 0;
+    padding: 30px;
+    background-color: #FFFFFF;
+}
+/* checkbox 박스  css*/
+.check-area{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    align-items: center;
+    height: 250px;
+}
+.ck{
+    height: 20px;
+    width: 20px;
+    background-color: transparent;
+    border: 2px solid #777;
+    border-radius: 5px;
+    box-sizing: border-box;
+    position: relative;
+    display: inline-block;
+    transition: border-color ease 0.2s;
+    cursor: pointer;
+}
+
+.ck::before, .ck::after {
+  position: absolute;
+  height: 0;
+  width: 4px;
+  background-color: #4285f4;
+  box-sizing: border-box;
+  display: inline-block;
+  transform-origin: left top;
+  border-radius: 5px;
+  content: ' ';
+  transition: opacity ease 0.5;
+}
+.ck::before {
+  background-color: #4285f4;
+}
+
+.ck::before {
+  top: 14.4px;
+  left: 8.2px;
+  box-shadow: 0 0 0 1px transparent;
+  transform: rotate(-135deg);
+}
+.ck::after {
+  top: 7.4px;
+  left: 1px;
+  transform: rotate(-45deg);
+}
+
+.todolist-area input:checked + .ck {
+  border-color: #4285f4;
+}
+
+input[id="ck1"]:checked + .ck::after,
+input[id="ck2"]:checked + .ck::after,
+input[id="ck3"]:checked + .ck::after,
+input[id="ck4"]:checked + .ck::after {
+  height: 10px;
+  animation: bottomcheck 0.2s ease 0s forwards;
+}
+
+input[id="ck1"]:checked + .ck::before,
+input[id="ck2"]:checked + .ck::before,
+input[id="ck3"]:checked + .ck::before,
+input[id="ck4"]:checked + .ck::before {
+  height: 24px;
+  animation: topcheck 0.4s ease 0s forwards;
+}
+.none{
+	display: none;
+}
+@keyframes bottomcheck {
+  0% {
+    height: 0;
+  }
+  100% {
+    height: 10px;
+  }
+}
+@keyframes topcheck {
+  0% {
+    height: 0;
+  }
+  50% {
+    height: 0;
+  }
+  100% {
+    height: 24px;
+  }
+}
+
+.check-area > div{
+    align-items: center;
+    width: 90%;
+    align-content: space-between;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.check-area > div > span{
+    font-size: 16px;
+    font-weight: bold;
+    margin-left: 20px;
+}
+
+.todolist-area > h2{
+    text-align: center;
+    font-size: 2rem;
+    margin-top: 0;
+}
+.todolist-area > hr{
+    margin-bottom: 20px;
+}
+
+/* 투두리스트 버튼 영역 */
+.tdl-btnArea{
+    width: 70%;
+    /* border: 1px solid black; */
+    margin: auto;
+    justify-content: space-between;
+    display: flex;
+}
+
+.tdl-btnArea > a, .tdl-btnArea > a:visited {
+    text-decoration: none;
+    color: #00AE68;
+
+
+    display: block;
+    position: relative;
+    float: left;
+    width: 120px;
+    padding: 0;
+    margin: 10px 20px 10px 0;
+    font-weight: 600;
+    text-align: center;
+    line-height: 50px;
+    color: #FFF;
+    border-radius: 5px;
+    transition: all 0.2s ;
+
+    background: #5DC8CD;
+
+    box-shadow: 0px 5px 0px 0px #1E8185;
+}
+
+.btnPush:hover {
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+
+.btnLightBlue.btnPush:hover {
+    box-shadow: 0px 0px 0px 0px #1E8185;
+  }
