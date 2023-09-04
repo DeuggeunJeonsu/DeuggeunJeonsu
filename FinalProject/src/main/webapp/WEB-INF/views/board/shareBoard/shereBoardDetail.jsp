@@ -118,7 +118,7 @@
                     <div><span>팔로우 390</span><span> 팔로잉 390</span></div>
                 </div>
 
-                <div class="todolist-area">
+                <div class="detaile-todolist-area">
 
                     <h2>My To Do List</h2>
                     <hr>
@@ -147,12 +147,22 @@
                             <span>득근전수 50회 4세트</span>
                         </div>
                         
+                        
+                    </div>
+                    <div class="tdl-btnArea">
+                        <a class="button btnPush btnLightBlue">저장하기</a>
+                        <a class="button btnPush btnLightBlue">수정하기</a>
                     </div>
                 
                 </div>
             </div>
         </div>
-        
+        <div id="btn-area">
+            <div class="board-like"><i class="fa-solid fa-heart" style="color: #ff4242;"></i> <span>99</span></div>
+        </div>
+        <div id="comment-area">
+
+        </div>
 
     </section>
 
@@ -160,7 +170,7 @@
     <!-- footer include -->
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
 
-    <script src="/resources/js/board/shareBoardWrite.js"></script>
+    
 
 </body>
 </html>
