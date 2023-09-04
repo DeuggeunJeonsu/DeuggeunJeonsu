@@ -90,7 +90,7 @@
                                     <p class="total-amount">186,000<span>원</span></p>
                                 </td>
 
-                                <td><button onclick="requestPay()" id="paymentBtn">결제하기</button></td>
+                                <td><a href="/market/marketOrder" id="paymentBtn">주문하기</a></td>
                             </tr>
                         </tbody>
                     </table>

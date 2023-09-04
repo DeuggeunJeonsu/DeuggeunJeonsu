@@ -64,13 +64,13 @@
 
                     <ul class="item-nav">
                         <li>
-                            <a href="">상품정보</a>
+                            <a href="/market/marketDetail">상품정보</a>
                         </li>
                         <li>
-                            <a href="">Review</a>
+                            <a href="/market/marketReview">Review</a>
                         </li>
                         <li>
-                            <a href="">Q&A</a>
+                            <a href="/market/marketQnA">Q&A</a>
                         </li>
                     </ul>
 
@@ -183,11 +183,7 @@
 
                 </div>
 
-
             </section>
-            <div class="page">
-                페이지네이션 영역
-            </div>
 
 
             <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>

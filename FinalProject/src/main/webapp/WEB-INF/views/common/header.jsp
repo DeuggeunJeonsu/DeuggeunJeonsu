@@ -47,7 +47,7 @@
                 <div class="nav-icon">
                     <ul>
                         <li class="basket">
-                            <a href="#">
+                            <a href="/market/marketCart">
                                 <i class="fa fa-solid fa-cart-shopping"></i>
                                 <span class="shopping-count">3</span>
                             </a>
