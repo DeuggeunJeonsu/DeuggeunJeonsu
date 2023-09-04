@@ -10,8 +10,8 @@
     <!-- JQuery lib -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <!-- slick lib -->
-    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
-    <!-- <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/> -->
+    /<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    /<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
     <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     
 </head>
@@ -140,7 +140,7 @@
                         <img src="/resources/images/slideShow/show1.jpg">
                     </a>
                 </div>
-                <div>
+                <!-- <div>
                     <a>
                         <img src="/resources/images/slideShow/show2.jpg">
                     </a>
@@ -149,7 +149,7 @@
                     <a>
                         <img src="/resources/images/slideShow/show3.jpg">
                     </a>
-                </div>				
+                </div>				 -->
             </div>	
         </div>
 

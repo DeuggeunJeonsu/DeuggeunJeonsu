@@ -126,7 +126,7 @@
     margin-top: 70px;
     display: grid;
     grid-template-columns: 250px 250px 250px;
-    grid-template-rows: 330px 330px 330px;
+    grid-template-rows: 330px 330px 0px;
     row-gap: 70px;
     column-gap: 120px;
 
@@ -200,9 +200,20 @@
 	margin: auto;
 }
 .slide_div_wrap{
+    width: 50%;
+    margin-left: 25%;
 	padding: 15px 0 15px 0;
     background: #e6e9f6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
+.slide_div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .image_wrap img{
 	max-width: 85%;
     height: auto;
