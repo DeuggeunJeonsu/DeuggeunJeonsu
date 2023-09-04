@@ -1,0 +1,156 @@
+@font-face {
+    font-family: 'Pretendard-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+}
+
+* {
+    box-sizing: border-box;
+}
+.main-con {
+    /* border: 1px solid #99E1ED; */
+
+}
+
+/* a태그 속성 제거 */
+a {
+    text-decoration: none;
+    color: #797979;
+}
+
+#main-container {
+    margin: 100px 250px;
+    min-width: 1200px;
+}
+
+
+/* 리뷰 게시판 영역 */
+.board-name {
+    font-size: 2em;
+    margin: 20px 0;
+}
+#paymentBtn {
+    display: inline-block;
+    width: 120px;
+    background-color: #99E1ED;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #fff;
+    border: 2px solid #99E1ED;
+    border-radius: 5px;
+    line-height: 50px;
+    text-align: center;
+    text-decoration: none;
+    /* remove underline for links */
+    cursor: pointer;
+}
+
+#paymentBtn:hover {
+    background-color: #66C2CC;
+    border-color: #66C2CC;
+}
+
+table{
+    /* margin: 0 auto; */
+    border-top: 1px solid #e0e0e0;
+    /* border-bottom: 1px solid #e0e0e0; */
+}
+th{
+    padding: 10px 20px;
+    border: 1px solid #e0e0e0;
+    border-width: 0 1px 1px 0;
+    font-size: 14px;
+    font-weight: normal;
+    text-align: left;
+    vertical-align: middle;
+}
+td{
+    padding: 10px 20px;
+    border-bottom: 1px solid #e0e0e0;
+    text-align: left;
+    vertical-align: middle;
+}
+.form_input{
+    /* width: 271px; */
+    height: 35px;
+    padding: 0 10px;
+    border: 1px solid #dcdcdc;
+    font-size: 14px;
+    line-height: 35px;
+    vertical-align: middle;
+}
+#delZip{
+    width: 120px;
+}
+.addr-input{
+    display: flex;
+}
+.addr-search{
+    border: 1px solid #666;
+    background: #fff;
+    color: #666 !important;
+    font-size: 13px;
+    font-weight: bold;
+    height: 35px;
+    padding: 0;
+    line-height: 33px;
+    width: 100px;
+    text-align: center;
+    cursor: pointer;
+}
+.form_address{
+    width: 271px;
+}
+textarea{
+    resize: none;
+}
+
+.notice {
+    background: #fff;
+    border: 1px solid #e5e5e5;
+    box-sizing: border-box;
+    /* margin: 50px; */
+    height: 100%;
+    padding: 30px 0 50px;
+    line-height: 1.5;
+}
+
+.notice ul {
+    display: flex;
+    list-style: none;
+    margin-bottom: 10px;
+}
+
+.notice li {
+    font-weight: bold;
+    margin-right: 20px;
+}
+
+/* 제목 스타일 */
+.notice .title {
+    min-width: 80px; 
+}
+#paymentBtn {
+    position: relative;
+    left: 600px;
+    bottom: 60px;
+    display: inline-block;
+    width: 120px;
+    background-color: #99E1ED;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #fff;
+    border: 2px solid #99E1ED;
+    border-radius: 5px;
+    line-height: 50px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer; 
+}
+
+#paymentBtn:hover {
+    background-color: #66C2CC;
+    border-color: #66C2CC;
+}
+

@@ -32,8 +32,22 @@ function requestPay() {
         //rsp.imp_uid 값으로 결제 단건조회 API를 호출하여 결제결과를 판단합니다.
         if (rsp.success) {
             console.log(rsp);
+            var msg = '결제가 완료되었습니다.';
+			console.log("결제성공 ");
+
+			$.ajax({
+				type: "GET",
+				url: 'payment',
+				data: {
+					amount: 1,
+					imp_uid: rsp.imp_uid,
+					merchant_uid: rsp.merchant_uid
+				}
+			});
         } else {
             console.log(rsp);
+            var msg = '결제에 실패하였습니다.';
+			msg += '에러내용 : ' + rsp.error_msg;
         }
     });
 }
