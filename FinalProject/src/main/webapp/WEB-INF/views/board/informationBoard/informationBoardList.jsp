@@ -10,8 +10,8 @@
     <!-- JQuery lib -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <!-- slick lib -->
-    /<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
-    /<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
     <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     
 </head>
@@ -35,7 +35,7 @@
 
             <div class="hashTag-area">
                 <div>
-                    <span>"어깨통증" 검색어에 대한 검색결과 1개</span>
+                    <span>"어깨통증" 에 대한 검색결과 1개</span>
                     <i class="fa-solid fa-circle-xmark" style="color: #ffffff;"></i>
                 </div>                
             </div>
@@ -134,7 +134,9 @@
         </div>
 
         <div class="slide_div_wrap">
+            
             <div class="slide_div">
+                <div class="slick-prev"><</div>
                 <div>
                     <a>
                         <img src="/resources/images/slideShow/show1.jpg">
@@ -150,7 +152,9 @@
                         <img src="/resources/images/slideShow/show3.jpg">
                     </a>
                 </div>				 -->
-            </div>	
+                <div class="slick-next">></div>	
+            </div>
+
         </div>
 
         <div class="paginationArea">
