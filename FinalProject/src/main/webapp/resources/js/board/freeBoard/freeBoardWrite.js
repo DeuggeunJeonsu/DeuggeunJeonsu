@@ -67,9 +67,33 @@ function handleEnterKeyPress() {
 
     hashtagMakingArea.append(hashtag);
 
+    hashtag.addEventListener("click", () => {
+        hashtag.remove();
+    });
+
     hashtagTextArea.value = "";
 }
 
+// 해시태그 누르면 삭제
+if(document.querySelector('#hashtag-making-area > div:first-of-type')){
+    
+    let hashtags = document.querySelectorAll('#hashtag-making-area > div');
+    
+    for (let h of hashtags) {
+    
+        console.log(h);
+    
+        h.addEventListener("click", ()=>{
+    
+            h.remove();
+    
+        })
+    
+    }
+}
+
+
+// form 태그 유효성 검사
 document.getElementById("write-form").addEventListener("submit", e =>{
 
     for(let key in checkObj){
@@ -89,6 +113,7 @@ document.getElementById("write-form").addEventListener("submit", e =>{
 
 })
 
+// summernote 에디터 불러오기
 $(document).ready(function() {
     $('#summernote').summernote({
 
