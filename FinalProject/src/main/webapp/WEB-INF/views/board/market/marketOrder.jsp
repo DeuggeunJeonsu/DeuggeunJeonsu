@@ -42,7 +42,7 @@
                                 <tr>
                                     <th>이름</th>
                                     <td>
-                                        <input type="text" class="form_input" name="delName" value="" id="del_name">
+                                        <input type="text" class="form_input" name="delName" value="" id="delName">
                                     </td>
                                 </tr>
                                 <tr>
@@ -83,8 +83,11 @@
                             
                             </tbody>
                         </table>
+
+                        
                     </form>
-                    <button onclick="requestPay()" id="paymentBtn" type="submit">결제하기</button>
+
+                    <button onclick="requestPay()" id="paymentBtn" type="submit">결제하기</button> 
     
                 </div>
 
