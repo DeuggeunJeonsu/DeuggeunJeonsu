@@ -39,4 +39,9 @@ public class MyPageController {
 		return "member/myPage/myUpdate";
 	}
 	
+	@GetMapping("/mySecession")
+	public String mySecession() {
+		return "member/myPage/mySecession";
+	}
+	
 }
