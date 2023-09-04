@@ -159,10 +159,101 @@
         </div>
         <div id="btn-area">
             <div class="board-like"><i class="fa-solid fa-heart" style="color: #ff4242;"></i> <span>99</span></div>
+            <div>
+                <button>목록으로</button>
+                
+                <button>수정하기</button>
+                <button>삭제하기</button>
+            
+            </div>
         </div>
         <div id="comment-area">
+            <div class="comment-count-area">
+                <i class="fa-regular fa-comment" ></i> <span>댓글 4</span>
+            </div>
+            <div class="comment-input">
+                <textarea placeholder="댓글을 입력해주세요"></textarea>
+                <button><img src="/resources/images/icon/send-icon.png"></button>
+            </div>
+            <ul id="commentList">
+                <li class="comment-row">
+                    <p class="comment-writer">
+                        <img src="/resources/images/user.png">
+                        <span>닉네임</span>
+                    </p>
+                    <p class="comment-content">부모 댓글 내용입니다</p>
+                    <div>
+                        <div>
+                            <span class="comment-date">2023-09-02</span>
+                            <span>&times</span>
+                        </div>
+                        <span>
+                            <button>수정</button>
+                            <button>답글</button>
+                        </span>
+                    </div>
+                </li>
+                <li class="comment-row child-comment">
+                    <p class="comment-writer">
+                        <img src="/resources/images/user.png">
+                        <span>닉네임</span>
+                    </p>
+                    <p class="comment-content">자식 댓글 내용입니다</p>
+                    <div>
+                        <div>
+                            <span class="comment-date">2023-09-02</span>
+                            <span>&times</span>
+                        </div>
+                        <span>
+                            <button>수정</button>
+                        </span>
+                    </div>
+                </li>
+                <li class="comment-row child-comment">
+                    <p class="comment-writer">
+                        <img src="/resources/images/user.png">
+                        <span>닉네임</span>
+                    </p>
+                    <p class="comment-content">자식 댓글 내용입니다</p>
+                    <div>
+                        <div>
+                            <span class="comment-date">2023-09-02</span>
+                            <span>&times</span>
+                        </div>
+                        <span>
+                            <button>수정</button>
+                        </span>
+                    </div>
+                </li>
+                <li class="comment-row">
+                    <p class="comment-writer">
+                        <img src="/resources/images/user.png">
+                        <span>닉네임</span>
+                    </p>
 
+                    <p class="comment-content">부모 댓글 내용입니다</p>
+                    
+                    <div>
+                        <div>
+                            <span class="comment-date">2023-09-02</span>
+                            <span>&times</span>
+                        </div>
+                        <span>
+                            <button>수정</button>
+                            <button>답글</button>
+                        </span>
+                    </div>
+                </li>
+
+
+            </ul>
+        
+        
+        
         </div>
+
+        
+        
 
     </section>
 
