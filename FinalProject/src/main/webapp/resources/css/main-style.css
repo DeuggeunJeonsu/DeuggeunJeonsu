@@ -454,7 +454,7 @@ footer{
     height: 120px;
     width: 100%;
     background-color: #212121;
-    display: flex;
+    display: flex !important;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -470,7 +470,7 @@ footer i {
     color: #ff0000;
 }
 article{
-    display: flex;
+    display: flex !important;
     font-size: 15px;
 }
 footer p{
