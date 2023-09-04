@@ -247,15 +247,49 @@
 
 
             </ul>
-        
-        
+        </div>
+    </section>
+
+    <div class="TodoList-modal">
+        <div class="model-todolist-area">
+
+            <h2>My To Do List</h2>
+            <hr>
+            <div class="check-area">
+                <div>
+                    <input type="checkbox" id="ck1" class="none">
+                    <label for="ck1" class="ck"></label>
+                    <span>득근전수 50회 4세트</span>
+                </div>
+                
+                <div>
+                    <input type="checkbox" id="ck2" class="none">
+                    <label for="ck2" class="ck"></label>
+                    <span>득근전수 50회 4세트</span>
+                </div>
+                <div>
+                    <input type="checkbox" id="ck3" class="none">
+                    <label for="ck3" class="ck"></label>
+                    <span>득근전수 50회 4세트</span>
+                </div>
+                
+                
+                <div>
+                    <input type="checkbox" id="ck4" class="none">
+                    <label for="ck4" class="ck"></label>
+                    <span>득근전수 50회 4세트</span>
+                </div>
+                
+                
+            </div>
+            <div class="tdl-btnArea">
+                <a class="button btnPush btnLightBlue">저장하기</a>
+                <a class="button btnPush btnLightBlue">수정하기</a>
+            </div>
         
         </div>
-
-        
-        
-
-    </section>
+    
+    </div>
 
 
     <!-- footer include -->
