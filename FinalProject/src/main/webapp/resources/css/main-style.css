@@ -84,7 +84,7 @@ html, body{
     background-color: white;
     z-index: 9;
     padding: 0.5rem 1rem;
-    border-bottom: 1px solid #e0e0e0;
+    /* border-bottom: 1px solid #e0e0e0; */
 }
 
 
@@ -92,7 +92,7 @@ html, body{
     position: sticky;
     top : 0;
     z-index: 9;
-    background-color: #fff;
+    /* background-color: #797979; */
 }
 .nav-padding{
     padding-top: 111px;
@@ -201,18 +201,17 @@ html, body{
 
 
 .no-background{
-    -ms-transition: all 1s ease-in-out;
-	transition: all 1s ease-in-out;
+    -ms-transition: all 0.5s ease-in-out;
+	transition: all 0.5s ease-in-out;
 
 	background-color: transparent;
     border: none;
 }
 .nav-container-bg{
-    transition: all 1s ease-in-out;
-    -ms-transition: all 1s ease-in-out;
+    transition: all 0.5s ease-in-out;
+    -ms-transition: all 0.5s ease-in-out;
 
-    background-color: #fff;
-    border-bottom: solid 3px #e0e0e0;
+    background-color: #797979;
 }
 
 
@@ -346,10 +345,10 @@ html, body{
     
 }
 
-.nav-list > li:hover {
+/* .nav-list > li:hover {
  background-color: #99E1ED;
  transition-duration: 1s;
-}
+} */
 .nav-list > li > a{
     padding: 30px 15px;
     
@@ -364,7 +363,7 @@ html, body{
 }
 .nav-list > li > a:hover{
     
-    color: #fff;
+    color: #FFFFFF;
     /* transition-duration: 1s; */
 
 }
@@ -757,6 +756,7 @@ input[id="ck4"]:checked + .ck::before {
 .tdl-btnArea > a, .tdl-btnArea > a:visited {
     text-decoration: none;
     color: #00AE68;
+    cursor: pointer;
 
 
     display: block;
