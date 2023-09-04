@@ -196,14 +196,18 @@ hr{ border-bottom: 2px solid #ddd;}
 
 /* ____________________ToDoList시작______________________ */
 
-.todolist-area{
-    width: 90%;
+.detaile-todolist-area{
+    width: 432px;
     min-height: 500px;
     border: 30px solid #99E1ED;
     border-radius: 20px;
     margin: 10px 0;
     padding: 30px;
     background-color: #FFFFFF;
+    position: sticky;
+    top: 320px
+    
+
 }
 /* checkbox 박스  css*/
 .check-area{
@@ -254,7 +258,7 @@ hr{ border-bottom: 2px solid #ddd;}
   transform: rotate(-45deg);
 }
 
-.todolist-area input:checked + .ck {
+.detaile-todolist-area input:checked + .ck {
   border-color: #4285f4;
 }
 
@@ -311,12 +315,12 @@ input[id="ck4"]:checked + .ck::before {
     margin-left: 20px;
 }
 
-.todolist-area > h2{
+.detaile-todolist-area > h2{
     text-align: center;
     font-size: 2rem;
     margin-top: 0;
 }
-.todolist-area > hr{
+.datile-todolist-area > hr {
     margin-bottom: 20px;
 }
 
@@ -360,3 +364,33 @@ input[id="ck4"]:checked + .ck::before {
 .btnLightBlue.btnPush:hover {
     box-shadow: 0px 0px 0px 0px #1E8185;
   }
+
+/* 좋아요 영역 */
+#btn-area{
+height: 100px;
+
+}
+
+.board-like{
+    height: 100px;
+    width: 100px;
+    display: flex;
+    flex-direction: column;
+    margin: 10px auto;
+    
+}
+.board-like > i{
+    font-size: 50px;
+    margin: auto;
+}
+.board-like > span{
+    font-size: 20px;
+    margin: auto;
+}
+
+/* 댓글 영역 */
+#comment-area{
+    margin-top: 20px;
+    border-top: 0.5px solid #777;
+    height: 300px;
+}
