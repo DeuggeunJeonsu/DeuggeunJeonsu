@@ -519,14 +519,15 @@ footer span{
 
 /* 달력 */
 #CalendarArea {
-    background-color : white;
-    height: auto;
+    background-color: white;
+    height: 540px;
     min-width: 550px;
-    margin: 0px;
+    margin: 10px 0;
     padding: 20px;
-    margin: 0 auto;
-    border-radius:5px;
-    box-shadow:0px 10px 20px 0px rgba(0,0,0,0.5);
+    /* margin: 0 auto; */
+    border-radius: 5px;
+    box-shadow: 0px 10px 20px 0px rgba(0,0,0,0.5);
+    max-width: 500px;
 }
 
 td {
@@ -620,8 +621,38 @@ td {
 
 /* ____________________ToDoList시작______________________ */
 
+.todolist-area > div:nth-of-type(2){
+    display: flex;
+    justify-content: center;
+}
+.todolist-area > div:nth-of-type(2)>input{
+    width: 85%;
+    display: flex;
+    justify-content: space-between;
+    height: 40px;
+
+    font-size: 18px;
+
+    border:2px solid #99E1ED;
+    outline: none;
+}
+
+.todolist-area > div:nth-of-type(2) button{
+    border: none;
+    background-color: #aaa;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+}
+
+
+
+
+
+
+
 .todolist-area{
-    width: 80%;
+    min-width: 580px;
     min-height: 500px;
     border: 30px solid #99E1ED;
     border-radius: 10px;
@@ -635,7 +666,7 @@ td {
     flex-direction: column;
     padding: 10px;
     align-items: center;
-    height: 250px;
+    height: 340px;
 }
 .ck{
     height: 20px;
@@ -742,6 +773,12 @@ input[id="ck4"]:checked + .ck::before {
 }
 .todolist-area > hr{
     margin-bottom: 20px;
+}
+
+.todolist-area > .check-area  button{
+    border: none;
+    background-color: #aaa;
+    cursor: pointer;
 }
 
 /* 투두리스트 버튼 영역 */

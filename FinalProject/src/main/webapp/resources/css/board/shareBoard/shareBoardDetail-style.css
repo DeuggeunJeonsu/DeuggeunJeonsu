@@ -111,7 +111,8 @@ hr{ border-bottom: 2px solid #ddd;}
 }
 
 .routineNm{
-    
+    display: flex;
+    justify-content: space-between;
     height: 40px;
     border: none;
     padding: 5px 30px;
@@ -120,6 +121,16 @@ hr{ border-bottom: 2px solid #ddd;}
     margin: 10px 10px 7px 10px;
     
 }
+.routineNm > button{
+    width: 80px;
+    height: 30px;
+
+    cursor: pointer;
+    background-color: #ddd;
+    border: none;
+    border-radius: 5px;
+}
+
 .routine-content{
     margin-top: 7px;
     line-height: 20px;
@@ -323,6 +334,34 @@ input[id="ck4"]:checked + .ck::before {
 .datile-todolist-area > hr {
     margin-bottom: 20px;
 }
+.detaile-todolist-area > div:nth-of-type(2){
+    display: flex;
+    justify-content: center;
+}
+.detaile-todolist-area > div:nth-of-type(2)>input{
+    width: 85%;
+    display: flex;
+    justify-content: space-between;
+    height: 40px;
+
+    font-size: 18px;
+
+    border:2px solid #99E1ED;
+    outline: none;
+}
+.check-area  button{
+    border: none;
+    background-color: #aaa;
+    cursor: pointer;
+}
+
+.detaile-todolist-area > div:nth-of-type(2) button{
+    border: none;
+    background-color: #aaa;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+}
 
 /* 투두리스트 버튼 영역 */
 .tdl-btnArea{
@@ -363,7 +402,7 @@ input[id="ck4"]:checked + .ck::before {
 
 .btnLightBlue.btnPush:hover {
     box-shadow: 0px 0px 0px 0px #1E8185;
-  }
+}
 /* 버튼 영역************** */
 /* 좋아요 영역 */
 #btn-area{
@@ -579,7 +618,7 @@ height: 100px;
 }
 
 /* 모달 */
-.TodoList-modal{
+/* .TodoList-modal{
     position: fixed;
     z-index: 1;
     padding-top: 100px;
@@ -593,16 +632,52 @@ height: 100px;
     box-shadow: 0 0 20px 4px rgba(0, 220, 244, 0.1);
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(10px);
-    /* display: none; */
+    display: none;
 }
 .model-todolist-area{
-    width: 432px;
-    min-height: 500px;
+    width: 550px;
+    min-height: 600px;
     border: 30px solid #99E1ED;
     border-radius: 20px;
     margin: 0 auto;
     padding: 30px;
     background-color: #FFFFFF;
-    position: sticky;
-    top: 20%
+    position: relative;
+    top: 20%;
 }
+.model-todolist-area > h2{
+    text-align: center;
+}
+
+/* 모달 checkbox */
+
+/* input[id="modelck1"]:checked + .ck::after,
+input[id="modelck2"]:checked + .ck::after,
+input[id="modelck3"]:checked + .ck::after,
+input[id="modelck4"]:checked + .ck::after {
+  height: 10px;
+  animation: bottomcheck 0.2s ease 0s forwards;
+}
+
+input[id="modelck1"]:checked + .ck::before,
+input[id="modelck2"]:checked + .ck::before,
+input[id="modelck3"]:checked + .ck::before,
+input[id="modelck4"]:checked + .ck::before {
+  height: 24px;
+  animation: topcheck 0.4s ease 0s forwards;
+}  */
+
+
+/* .detalie-todolist-area > span{
+    position: absolute;
+    font-size: 20px;
+    top: 10px; 
+    right: 10px; 
+    cursor: pointer;
+} */
+
+/* .model-todolist-area > span:hover{
+    font-size: 22px;
+    font-weight: bold;
+}
+.save{ width: 30% !important;} */

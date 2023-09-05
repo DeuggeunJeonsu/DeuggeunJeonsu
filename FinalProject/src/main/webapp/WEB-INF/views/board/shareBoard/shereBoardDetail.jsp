@@ -40,7 +40,8 @@
                     </div>
                     <div class="routine-info">
                         <div class="routineNm">
-                        스쿼트 
+                            <span>스쿼트 </span>
+                            <button type="button">Do IT!</button>
                         </div>
                         <div class="routine-content">
                         1. 스쿼트 동작은 이러쿵 저러쿵<br>
@@ -58,7 +59,8 @@
                     </div>
                     <div class="routine-info">
                         <div class="routineNm">
-                        스쿼트 
+                            <span>스쿼트 </span>
+                            <button type="button">Do IT!</button>
                         </div>
                         <div class="routine-content">
                         1. 스쿼트 동작은 이러쿵 저러쿵<br>
@@ -76,7 +78,8 @@
                     </div>
                     <div class="routine-info">
                         <div class="routineNm">
-                        스쿼트 
+                            <span>스쿼트 </span>
+                            <button type="button">Do IT!</button>
                         </div>
                         <div class="routine-content">
                         1. 스쿼트 동작은 이러쿵 저러쿵<br>
@@ -94,7 +97,8 @@
                     </div>
                     <div class="routine-info">
                         <div class="routineNm">
-                        스쿼트 
+                            <span>스쿼트 </span>
+                            <button type="button">Do IT!</button>
                         </div>
                         <div class="routine-content">
                         1. 스쿼트 동작은 이러쿵 저러쿵<br>
@@ -127,17 +131,20 @@
                             <input type="checkbox" id="ck1" class="none">
                             <label for="ck1" class="ck"></label>
                             <span>득근전수 50회 4세트</span>
+                            <button type="button"><i class="fa-solid fa-minus" style="color: #ffffff;"></i></button>
                         </div>
                         
                         <div>
                             <input type="checkbox" id="ck2" class="none">
                             <label for="ck2" class="ck"></label>
                             <span>득근전수 50회 4세트</span>
+                            <button type="button"><i class="fa-solid fa-minus" style="color: #ffffff;"></i></button>
                         </div>
                         <div>
                             <input type="checkbox" id="ck3" class="none">
                             <label for="ck3" class="ck"></label>
                             <span>득근전수 50회 4세트</span>
+                            <button type="button"><i class="fa-solid fa-minus" style="color: #ffffff;"></i></button>
                         </div>
                         
                         
@@ -145,19 +152,24 @@
                             <input type="checkbox" id="ck4" class="none">
                             <label for="ck4" class="ck"></label>
                             <span>득근전수 50회 4세트</span>
+                            <button type="button"><i class="fa-solid fa-minus" style="color: #ffffff;"></i></button>
                         </div>
                         
                         
                     </div>
+                    <div>
+                        <input type="text" name="addList"><button><i class="fa-solid fa-plus" style="color: #ffffff;"></i></button>
+                    </div>
                     <div class="tdl-btnArea">
                         <a class="button btnPush btnLightBlue">저장하기</a>
-                        <a class="button btnPush btnLightBlue">수정하기</a>
+                        <a class="button btnPush btnLightBlue">되돌리기</a>
                     </div>
                 
                 </div>
             </div>
         </div>
         <div id="btn-area">
+            
             <div class="board-like"><i class="fa-solid fa-heart" style="color: #ff4242;"></i> <span>99</span></div>
             <div>
                 <button>목록으로</button>
@@ -250,44 +262,47 @@
         </div>
     </section>
 
-    <div class="TodoList-modal">
+    <%-- <div class="TodoList-modal">
         <div class="model-todolist-area">
 
             <h2>My To Do List</h2>
             <hr>
             <div class="check-area">
                 <div>
-                    <input type="checkbox" id="ck1" class="none">
-                    <label for="ck1" class="ck"></label>
+                    <input type="checkbox" id="modelck1" class="none">
+                    <label for="modelck1" class="ck"></label>
                     <span>득근전수 50회 4세트</span>
                 </div>
                 
                 <div>
-                    <input type="checkbox" id="ck2" class="none">
-                    <label for="ck2" class="ck"></label>
+                    <input type="checkbox" id="modelck2" class="none">
+                    <label for="modelck2" class="ck"></label>
                     <span>득근전수 50회 4세트</span>
                 </div>
                 <div>
-                    <input type="checkbox" id="ck3" class="none">
-                    <label for="ck3" class="ck"></label>
+                    <input type="checkbox" id="modelck3" class="none">
+                    <label for="modelck3" class="ck"></label>
                     <span>득근전수 50회 4세트</span>
                 </div>
                 
                 
                 <div>
-                    <input type="checkbox" id="ck4" class="none">
-                    <label for="ck4" class="ck"></label>
+                    <input type="checkbox" id="modelck4" class="none">
+                    <label for="modelck4" class="ck"></label>
                     <span>득근전수 50회 4세트</span>
                 </div>
+                
                 
                 
             </div>
-            <div class="tdl-btnArea">
-                <a class="button btnPush btnLightBlue">저장하기</a>
-                <a class="button btnPush btnLightBlue">수정하기</a>
+            <div>
+                <input type="text" name="addList"><button><i class="fa-solid fa-plus" style="color: #ffffff;"></i></button>
             </div>
-        
-        </div>
+            <div class="tdl-btnArea save">
+                <a class="button btnPush btnLightBlue ">저장하기</a>
+            </div>
+            <span>&times</span>
+        </div> --%>
     
     </div>
 

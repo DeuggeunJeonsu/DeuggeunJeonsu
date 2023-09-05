@@ -136,6 +136,7 @@ function buildCalendar() {
 
         if (nowDay < today) {                       // 지난날인 경우
             newDIV.className = "pastDay";
+           
             
             newDIV.onclick = function () { choiceDate(this); }
         }
