@@ -19,6 +19,54 @@
 	<jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
 	<main>
 		<div class="svBody">
+             <!-- <div class="popUp">
+                <div class="popTitle">득근전수 추천 운동 !</div>
+                <div class="popContent  popList list"> 
+					
+                        <li > <input type="checkbox" id="1"><label for="1">벤치 프레스 12/4</label></li>
+                        <li >벤치 프레스 12/4 <input type="checkbox"></li>
+                        <li >벤치 프레스 12/4 <input type="checkbox"></li>
+                        <li >벤치 프레스 12/4 <input type="checkbox"></li>
+                        <li >벤치 프레스 12/4 <input type="checkbox"></li>
+                        <li >벤치 프레스 12/4 <input type="checkbox"></li>
+                        <li >벤치 프레스 12/4 <input type="checkbox"></li>
+                        <li >벤치 프레스 12/4 <input type="checkbox"></li>
+                        <li >벤치 프레스 12/4 <input type="checkbox"></li>
+                        <li >벤치 프레스 12/4 <input type="checkbox"></li>
+                        <li >벤치 프레스 12/4 <input type="checkbox"></li>
+                        <li >벤치 프레스 12/4 <input type="checkbox"></li>
+                        <li >벤치 프레스 12/4 <input type="checkbox"></li>
+                        <li >벤치 프레스 12/4 <input type="checkbox"></li>
+                        <li >벤치 프레스 12/4 <input type="checkbox"></li>
+                        <li >벤치 프레스 12/4 <input type="checkbox"></li>
+                        <li >벤치 프레스 12/4 <input type="checkbox"></li>
+                        <li >벤치 프레스 12/4 <input type="checkbox"></li>
+                        <li >벤치 프레스 12/4 <input type="checkbox"></li>
+                        <li >벤치 프레스 12/4 <input type="checkbox"></li>
+                        <li >벤치 프레스 12/4 <input type="checkbox"></li>
+                        <li >벤치 프레스 12/4 <input type="checkbox"></li>
+                        <li >벤치 프레스 12/4 <input type="checkbox"></li>
+                        <li >벤치 프레스 12/4 <input type="checkbox"></li>
+                        <li >벤치 프레스 12/4 <input type="checkbox"></li>
+                        <li >벤치 프레스 12/4 <input type="checkbox"></li>
+                        <li >벤치 프레스 12/4 <input type="checkbox"></li>
+                        <li >벤치 프레스 12/4 <input type="checkbox"></li>
+                        <li >벤치 프레스 12/4 <input type="checkbox"></li>
+                        <li >벤치 프레스 12/4 <input type="checkbox"></li>
+                        <li >벤치 프레스 12/4 <input type="checkbox"></li>
+                        <li >벤치 프레스 12/4 <input type="checkbox"></li>
+                        <li >벤치 프레스 12/4 <input type="checkbox"></li>
+                        <li >벤치 프레스 12/4 <input type="checkbox"></li>
+                        <li >벤치 프레스 12/4 <input type="checkbox"></li>
+                        <li >벤치 프레스 12/4 <input type="checkbox"></li>
+                        <li >벤치 프레스 12/4 <input type="checkbox"></li>
+                        <li >벤치 프레스 12/4 <input type="checkbox"></li>
+
+						<button href="" title="Button border lightblue" class="button btnFloat btnLightBlue"></button>
+
+                </div>
+            </div>  -->
+
 
 			<div class="sv1">
 

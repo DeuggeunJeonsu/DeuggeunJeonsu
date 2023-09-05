@@ -159,12 +159,137 @@
         </div>
         <div id="btn-area">
             <div class="board-like"><i class="fa-solid fa-heart" style="color: #ff4242;"></i> <span>99</span></div>
+            <div>
+                <button>목록으로</button>
+                
+                <button>수정하기</button>
+                <button>삭제하기</button>
+            
+            </div>
         </div>
         <div id="comment-area">
+            <div class="comment-count-area">
+                <i class="fa-regular fa-comment" ></i> <span>댓글 4</span>
+            </div>
+            <div class="comment-input">
+                <textarea placeholder="댓글을 입력해주세요"></textarea>
+                <button><img src="/resources/images/icon/send-icon.png"></button>
+            </div>
+            <ul id="commentList">
+                <li class="comment-row">
+                    <p class="comment-writer">
+                        <img src="/resources/images/user.png">
+                        <span>닉네임</span>
+                    </p>
+                    <p class="comment-content">부모 댓글 내용입니다</p>
+                    <div>
+                        <div>
+                            <span class="comment-date">2023-09-02</span>
+                            <span>&times</span>
+                        </div>
+                        <span>
+                            <button>수정</button>
+                            <button>답글</button>
+                        </span>
+                    </div>
+                </li>
+                <li class="comment-row child-comment">
+                    <p class="comment-writer">
+                        <img src="/resources/images/user.png">
+                        <span>닉네임</span>
+                    </p>
+                    <p class="comment-content">자식 댓글 내용입니다</p>
+                    <div>
+                        <div>
+                            <span class="comment-date">2023-09-02</span>
+                            <span>&times</span>
+                        </div>
+                        <span>
+                            <button>수정</button>
+                        </span>
+                    </div>
+                </li>
+                <li class="comment-row child-comment">
+                    <p class="comment-writer">
+                        <img src="/resources/images/user.png">
+                        <span>닉네임</span>
+                    </p>
+                    <p class="comment-content">자식 댓글 내용입니다</p>
+                    <div>
+                        <div>
+                            <span class="comment-date">2023-09-02</span>
+                            <span>&times</span>
+                        </div>
+                        <span>
+                            <button>수정</button>
+                        </span>
+                    </div>
+                </li>
+                <li class="comment-row">
+                    <p class="comment-writer">
+                        <img src="/resources/images/user.png">
+                        <span>닉네임</span>
+                    </p>
 
+                    <p class="comment-content">부모 댓글 내용입니다</p>
+                    
+                    <div>
+                        <div>
+                            <span class="comment-date">2023-09-02</span>
+                            <span>&times</span>
+                        </div>
+                        <span>
+                            <button>수정</button>
+                            <button>답글</button>
+                        </span>
+                    </div>
+                </li>
+
+
+            </ul>
         </div>
-
     </section>
+
+    <div class="TodoList-modal">
+        <div class="model-todolist-area">
+
+            <h2>My To Do List</h2>
+            <hr>
+            <div class="check-area">
+                <div>
+                    <input type="checkbox" id="ck1" class="none">
+                    <label for="ck1" class="ck"></label>
+                    <span>득근전수 50회 4세트</span>
+                </div>
+                
+                <div>
+                    <input type="checkbox" id="ck2" class="none">
+                    <label for="ck2" class="ck"></label>
+                    <span>득근전수 50회 4세트</span>
+                </div>
+                <div>
+                    <input type="checkbox" id="ck3" class="none">
+                    <label for="ck3" class="ck"></label>
+                    <span>득근전수 50회 4세트</span>
+                </div>
+                
+                
+                <div>
+                    <input type="checkbox" id="ck4" class="none">
+                    <label for="ck4" class="ck"></label>
+                    <span>득근전수 50회 4세트</span>
+                </div>
+                
+                
+            </div>
+            <div class="tdl-btnArea">
+                <a class="button btnPush btnLightBlue">저장하기</a>
+                <a class="button btnPush btnLightBlue">수정하기</a>
+            </div>
+        
+        </div>
+    
+    </div>
 
 
     <!-- footer include -->

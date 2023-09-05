@@ -4,7 +4,7 @@
 
 
 #main-container{
-    margin: 100px 400px;
+    margin: 100px 500px;
     height: auto;
 }
 
@@ -226,7 +226,7 @@
 	left: 160px;
     z-index: 1;
 }
-.slick-next{
+.slick-{
 	right: 160px;
     z-index: 1;
 }
