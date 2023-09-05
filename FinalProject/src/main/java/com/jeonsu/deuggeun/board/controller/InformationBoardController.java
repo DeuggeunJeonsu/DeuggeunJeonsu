@@ -9,17 +9,17 @@ public class InformationBoardController {
 	
 	@RequestMapping("/informationBoardList")
 	public String informationBoardList() {
-		return "/board/informationBoard/informationBoardList";
+		return "board/informationBoard/informationBoardList";
 	}
 	
 	@RequestMapping("/informationBoardDetail")
 	public String informationBoardDetail() {
-		return "/board/informationBoard/informationBoardDetail";
+		return "board/informationBoard/informationBoardDetail";
 	}
 	
 	@RequestMapping("/informationBoardWrite")
 	public String informationBoardWrite() {
-		return "/board/informationBoard/informationBoardWrite";
+		return "board/informationBoard/informationBoardWrite";
 	}
 
 }

@@ -35,7 +35,7 @@
 
             <div class="hashTag-area">
                 <div>
-                    <span>"어깨통증" 에 대한 검색결과 1개</span>
+                    <span>"어깨통증" 에 대한 검색결과</span>
                     <i class="fa-solid fa-circle-xmark" style="color: #ffffff;"></i>
                 </div>                
             </div>
