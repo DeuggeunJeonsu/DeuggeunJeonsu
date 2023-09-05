@@ -22,6 +22,7 @@
             <jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
 
             <section id="main-con">
+                <!-- <form action="/board/${boardCode}/reviewWrite" method="POST" enctype="multipart/form-data"> -->
                 <h1 class="title">스토어 문의글 작성</h1>
                 <div>문의해 주신 내용은 영업일 기준 2~3일 내에 답변 드립니다🍀</div>
                 <hr>
@@ -54,10 +55,7 @@
                         <button id="cancel-button">취소</button>
                     </div>
                 </div>
-
-
-
-
+                <!-- </form> -->
             </section>
 
 

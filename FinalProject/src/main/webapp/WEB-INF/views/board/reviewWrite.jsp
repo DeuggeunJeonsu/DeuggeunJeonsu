@@ -1,5 +1,4 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
         <!DOCTYPE html>
         <html>
@@ -23,34 +22,33 @@
             <jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
 
             <section id="main-con">
-                <h1 class="title">리뷰 작성</h1>
-                <div>구매하신 상품에 대한 리뷰를 작성하여 득근전수 회원님들에게 공유해 보세요🍀</div>
-                <hr>
-                <br>
-                <div>
-                    <input type="text" name="reviewTitle" placeholder="제목" value="" placeholder="제목을 입력해주세요">
-                </div>
-                <div>
-                    <textarea name="reviewContent" id="reviewContent" cols="30" rows="10" placeholder="내용을 입력해주세요"></textarea>
-                </div>
-
-                <div class="fileBox previewImage">
-                    <input class="uploadFileName" value="파일선택" disabled="disabled" style="width: 300px;">
-                    <label for="file1">사진업로드</label>
-                    <input type="file" id="file1" class="inputHidden">
-                </div>
-                <br>
-                <div class="bottom">
+                    <!-- <form action="/board/${boardCode}/reviewWrite" method="POST" enctype="multipart/form-data"> -->
+                    <h1 class="title">리뷰 작성</h1>
+                    <div>구매하신 상품에 대한 리뷰를 작성하여 득근전수 회원님들에게 공유해 보세요🍀</div>
+                    <hr>
+                    <br>
                     <div>
-                        <button id="submit-button">작성</button>
-                        <button id="cancel-button">취소</button>
+                        <input type="text" name="reviewTitle" placeholder="제목" value="" placeholder="제목을 입력해주세요">
                     </div>
-                </div>
+                    <div>
+                        <textarea name="reviewContent" id="reviewContent" cols="30" rows="10"
+                            placeholder="내용을 입력해주세요"></textarea>
+                    </div>
 
-
-
-
-            </section>
+                    <div class="fileBox previewImage">
+                        <input class="uploadFileName" value="파일선택" disabled="disabled" style="width: 300px;">
+                        <label for="file1">사진업로드</label>
+                        <input type="file" name="reviewImage" id="file1" class="inputHidden">
+                    </div>
+                    <br>
+                    <div class="bottom">
+                        <div>
+                            <button type="submit" id="submit-button">작성</button>
+                            <button id="cancel-button">취소</button>
+                        </div>
+                    </div>
+                    <!-- </form> -->
+                </section>
 
 
             <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>

@@ -1,0 +1,126 @@
+@font-face {
+    font-family: 'Pretendard-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.main-con {
+    background-color: #ffffff;
+    padding: 20px;
+    border: 1px solid #99e1ed;
+    max-width: 700px;
+    margin: 100px auto;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+
+.top {
+    text-align: center;
+    padding: 20px 0;
+}
+
+.top img {
+    width: 250px;
+    height: 250px;
+}
+
+#contentProfileImg {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+}
+
+.middle {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    /* justify-content: center; */
+}
+
+.middle>div {
+    margin-right: 10px;
+}
+
+.middle-con {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+}
+
+.nickname {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+}
+
+.date {
+    font-size: 18px;
+    color: #666;
+}
+
+.bottom {
+    font-size: 18px;
+    line-height: 1.6;
+    color: #333;
+    padding: 20px 0;
+}
+
+hr {
+    border: 1px solid #99e1ed;
+}
+
+.btn-area {
+    display: flex;
+    margin-top: 50px;
+    justify-content: flex-end;
+}
+
+#updateBtn {
+    background-color: #ccc;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 3px;
+    font-size: 16px;
+    margin-right: 10px;
+}
+
+#updateBtn:hover {
+    background-color: #999;
+}
+
+/* 취소 버튼 스타일 */
+#deleteBtn {
+    background-color: #ccc;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 3px;
+    margin-right: 10px;
+    font-size: 16px;
+}
+
+#deleteBtn:hover {
+    background-color: #999;
+}
+
+#goToListBtn {
+    background-color: #99e1ed;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 3px;
+    font-size: 16px;
+}
+
+#goToListBtn:hover {
+    background-color: #29c4e0;
+}
