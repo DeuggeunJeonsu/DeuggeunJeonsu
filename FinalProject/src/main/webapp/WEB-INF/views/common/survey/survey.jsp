@@ -19,55 +19,26 @@
 	<jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
 	<main>
 		<div class="svBody">
-             <!-- <div class="popUp">
+
+
+            <!--   <div class="popUp">
                 <div class="popTitle">득근전수 추천 운동 !</div>
-                <div class="popContent  popList list"> 
-					
-                        <li > <input type="checkbox" id="1"><label for="1">벤치 프레스 12/4</label></li>
-                        <li >벤치 프레스 12/4 <input type="checkbox"></li>
-                        <li >벤치 프레스 12/4 <input type="checkbox"></li>
-                        <li >벤치 프레스 12/4 <input type="checkbox"></li>
-                        <li >벤치 프레스 12/4 <input type="checkbox"></li>
-                        <li >벤치 프레스 12/4 <input type="checkbox"></li>
-                        <li >벤치 프레스 12/4 <input type="checkbox"></li>
-                        <li >벤치 프레스 12/4 <input type="checkbox"></li>
-                        <li >벤치 프레스 12/4 <input type="checkbox"></li>
-                        <li >벤치 프레스 12/4 <input type="checkbox"></li>
-                        <li >벤치 프레스 12/4 <input type="checkbox"></li>
-                        <li >벤치 프레스 12/4 <input type="checkbox"></li>
-                        <li >벤치 프레스 12/4 <input type="checkbox"></li>
-                        <li >벤치 프레스 12/4 <input type="checkbox"></li>
-                        <li >벤치 프레스 12/4 <input type="checkbox"></li>
-                        <li >벤치 프레스 12/4 <input type="checkbox"></li>
-                        <li >벤치 프레스 12/4 <input type="checkbox"></li>
-                        <li >벤치 프레스 12/4 <input type="checkbox"></li>
-                        <li >벤치 프레스 12/4 <input type="checkbox"></li>
-                        <li >벤치 프레스 12/4 <input type="checkbox"></li>
-                        <li >벤치 프레스 12/4 <input type="checkbox"></li>
-                        <li >벤치 프레스 12/4 <input type="checkbox"></li>
-                        <li >벤치 프레스 12/4 <input type="checkbox"></li>
-                        <li >벤치 프레스 12/4 <input type="checkbox"></li>
-                        <li >벤치 프레스 12/4 <input type="checkbox"></li>
-                        <li >벤치 프레스 12/4 <input type="checkbox"></li>
-                        <li >벤치 프레스 12/4 <input type="checkbox"></li>
-                        <li >벤치 프레스 12/4 <input type="checkbox"></li>
-                        <li >벤치 프레스 12/4 <input type="checkbox"></li>
-                        <li >벤치 프레스 12/4 <input type="checkbox"></li>
-                        <li >벤치 프레스 12/4 <input type="checkbox"></li>
-                        <li >벤치 프레스 12/4 <input type="checkbox"></li>
-                        <li >벤치 프레스 12/4 <input type="checkbox"></li>
-                        <li >벤치 프레스 12/4 <input type="checkbox"></li>
-                        <li >벤치 프레스 12/4 <input type="checkbox"></li>
-                        <li >벤치 프레스 12/4 <input type="checkbox"></li>
-                        <li >벤치 프레스 12/4 <input type="checkbox"></li>
-                        <li >벤치 프레스 12/4 <input type="checkbox"></li>
+                <div class="popContent list"> 
+                
+                       <div class="popList">
+                           <input type="checkbox" id="check${i}"><label for="check${i}">벤치</label>
+                       </div>
+
+                       <div class="popList">
+                        <input type="checkbox" id="check${i}"><label for="check${i}">벤치</label>
+                      </div>
 
 						<button href="" title="Button border lightblue" class="button btnFloat btnLightBlue"></button>
+						<button href="" title="Button border lightblue" class="button2 btnFloat2 btnLightBlue2"></button>
 
                 </div>
-            </div>  -->
-
-
+            </div>  
+ -->
 			<div class="sv1">
 
 				<div class="svHeader">오늘은 어느 부위를 하시나요?</div>
@@ -84,6 +55,17 @@
 
 
 					<div class="bodycheck1">
+						<input type="checkbox" id="ex_chk3" > <label for="ex_chk3">등</label>
+					</div>	
+                    <div class="bodycheck1">
+						<input type="checkbox" id="ex_chk3" > <label for="ex_chk3">등</label>
+					</div>	
+
+                    <div class="bodycheck1">
+						<input type="checkbox" id="ex_chk3" > <label for="ex_chk3">등</label>
+					</div>	
+
+                    <div class="bodycheck1">
 						<input type="checkbox" id="ex_chk3" > <label for="ex_chk3">등</label>
 					</div>	
 
