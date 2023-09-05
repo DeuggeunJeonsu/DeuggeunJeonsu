@@ -21,7 +21,7 @@
 		<div class="svBody">
 
 
-            <!--   <div class="popUp">
+          <!--   <div class="popUp">
                 <div class="popTitle">득근전수 추천 운동 !</div>
                 <div class="popContent list"> 
                 
@@ -37,8 +37,8 @@
 						<button href="" title="Button border lightblue" class="button2 btnFloat2 btnLightBlue2"></button>
 
                 </div>
-            </div>  
- -->
+            </div>   -->
+ 
 			<div class="sv1">
 
 				<div class="svHeader">오늘은 어느 부위를 하시나요?</div>
