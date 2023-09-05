@@ -1,6 +1,5 @@
 package com.jeonsu.deuggeun.member.controller;
 
-
 import java.util.Map;
 
 import org.springframework.stereotype.Controller;
@@ -23,7 +22,7 @@ public class MemberController {
 		return "member/login";
 	}
 	
-	// 아이디, 비미번호 찾기 화면 이동
+	// 아이디, 비밀번호 찾기 화면 이동
 	@GetMapping("/findInfo")
 	public String findInfo() {
 		return "member/findInfo";
@@ -37,12 +36,12 @@ public class MemberController {
 		return Util.sendMessage(String.valueOf(paramMap.get("memberPhone")));
 	}
 	
-		// 회원 가입 페이지 이동
-		@GetMapping("/signUp")
-		public String signUp() {
+	// 회원 가입 페이지 이동
+	@GetMapping("/signUp")
+	public String signUp() {
 
-			return "member/signUp";
-		}
+		return "member/signUp";
+	}
 	
 
 }
