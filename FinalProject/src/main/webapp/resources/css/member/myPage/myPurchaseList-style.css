@@ -44,7 +44,7 @@
 /* 구매 내역 목록 조회 테이블 */
 #purchaseList{
     width: 750px;
-    height: 730px;
+    height: auto;
 
     text-align: center;
     border-collapse: collapse;
@@ -56,6 +56,10 @@
 th, td{
     border-bottom: 1px solid #ddd;
     white-space: nowrap;
+}
+
+tr{
+    height: 45px;
 }
 
 .theadColor{
