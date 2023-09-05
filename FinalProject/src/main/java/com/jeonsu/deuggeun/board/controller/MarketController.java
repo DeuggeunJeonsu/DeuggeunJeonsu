@@ -41,4 +41,8 @@ public class MarketController {
 	public String Order() {
 		return "board/market/marketOrder";
 	}
+	@GetMapping("/reviewDetail")
+	public String reviewDetail() {
+		return "board/market/reviewDetail";
+	}
 }

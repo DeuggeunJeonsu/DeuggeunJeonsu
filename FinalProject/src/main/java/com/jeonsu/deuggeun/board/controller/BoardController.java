@@ -34,10 +34,12 @@ public class BoardController {
 	public String reivewWrite() {
 		return "board/reviewWrite";
 	}
+	
 	@RequestMapping("/QnAWrite")
 	public String QnAWrite() {
 		return "board/QnAWrite";
 	}
+	
 	@RequestMapping("/inquireWrite")
 	public String inquireWrite() {
 		return "board/inquireWrite";

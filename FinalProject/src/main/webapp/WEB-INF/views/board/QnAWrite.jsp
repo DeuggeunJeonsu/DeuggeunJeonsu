@@ -22,6 +22,7 @@
             <jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
 
             <section id="main-con">
+                <!-- <form action="/board/${boardCode}/QnAWrite" method="POST"> -->
                 <h1 class="title">1:1 문의글 작성</h1>
                 <div>문의해 주신 내용은 영업일 기준 2~3일 내에 답변 드립니다🍀</div>
                 <hr>
@@ -30,7 +31,8 @@
                     <input type="text" name="QnATitle" placeholder="제목" value="" placeholder="제목을 입력해주세요">
                 </div>
                 <div>
-                    <textarea name="reviewContent" id="reviewContent" cols="30" rows="10" placeholder="내용을 입력해주세요"></textarea>
+                    <textarea name="reviewContent" id="reviewContent" cols="30" rows="10"
+                        placeholder="내용을 입력해주세요"></textarea>
                 </div>
                 <br>
                 <div class="bottom">
@@ -39,12 +41,8 @@
                         <button id="cancel-button">취소</button>
                     </div>
                 </div>
-
-
-
-
+                <!-- </form> -->
             </section>
-
 
             <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
 
