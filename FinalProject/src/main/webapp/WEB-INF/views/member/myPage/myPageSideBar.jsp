@@ -22,7 +22,7 @@
         <a href="/myPage/myPurchaseList">
             <div class="sideBarMenu">구매 내역</div>
         </a>
-        <a href="#">
+        <a href="/myPage/myOneByOneInquiry">
             <div class="sideBarMenu">1:1 문의</div>
         </a>
         <a href="#">

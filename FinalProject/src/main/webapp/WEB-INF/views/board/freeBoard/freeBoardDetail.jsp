@@ -20,25 +20,164 @@
             <div>득근전수 회원님들이 자유롭게 이야기를 나누는 공간입니다.</div>
         </div>
 
-        <div>제목입니다.</div>
-        <div>
-            <div><img src="../../../../resources/images/user.png"></div>
-            <div>
-                <div>닉네임</div>
+        <div id="detail-container">
+
+            <!-- 게시글 제목 -->
+            <div id="title-middle-area">
+                <div id="title">제목입니다.</div>
                 <div>
-                    <button>follow</button>
+                    <div id="writing-date">작성일 23.01.01&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div> | <div id="readCount">조회수 999</div>
                 </div>
             </div>
-            <div>
-                <span>작성일 23.01.01&nbsp;|</span>
-                <span>조회수 999</span>
-            </div>
-        </div>
 
-        <div>
-            <div class="hashtag">#오운완</div>
-            <div class="hashtag">#OOTD</div>
-            <div class="hashtag">#운동폼미쳤다</div>
+            <!-- 게시글 작성자 정보 -->
+            <div id="writer-info-area">
+
+                <div id="profile-area">
+                    <img src="../../../../resources/images/user.png">
+                </div>
+
+                <div id="nick-area">
+                    
+                    <div id="nickname"><a href="#">닉네임</a></div>
+                    <div>
+                        <button id="follow-btn">
+                            <i class="fa-solid fa-circle-check whiteChk" style="color: #ffffff;"></i>    
+                            <i class="fa-solid fa-circle-check blueChk" style="color: #99e1ed; display: none;""></i>
+                            following
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+    
+            <!-- 게시글 해시태그 영역 -->
+            <div id="hashtag-area">
+
+                <div class="hashtag">#오운완</div>
+                <div class="hashtag">#OOTD</div>
+                <div class="hashtag">#운동폼미쳤다</div>
+
+            </div>
+    
+            <!-- 게시글 상세 조회 내용 영역 -->
+            <div id="board-detail-area">
+
+                <div id="board-content-area">
+                    <div>
+                        <img src="../../../../resources/images/market/bono.png">
+                    </div>
+                    
+                    <pre>
+안녕하세요
+오늘 가입했습니다
+잘 부탁드려용
+                    </pre>
+                </div>
+    
+                <!-- 게시글 버튼 영역 -->
+                <div class="board-like"><i class="fa-solid fa-heart" style="color: #ff4242;"></i> <span>99</span></div>
+                <div id="btn-area">
+                    <div>
+                        <button>목록으로</button>
+                        
+                        <button>수정하기</button>
+                        <button>삭제하기</button>
+                    
+                    </div>
+                </div>
+
+            </div>
+    
+            <!-- 댓글 영역 -->
+            <div id="comment-area">
+
+                <div class="comment-count-area">
+                    <i class="fa-regular fa-comment" ></i> <span>댓글 4</span>
+                </div>
+
+                <div class="comment-input">
+                    <textarea placeholder="댓글을 입력해주세요"></textarea>
+                    <button><img src="/resources/images/icon/send-icon.png"></button>
+                </div>
+
+                <ul id="commentList">
+                    <li class="comment-row">
+                        <p class="comment-writer">
+                            <img src="/resources/images/user.png">
+                            <span>닉네임</span>
+                        </p>
+                        <p class="comment-content">부모 댓글 내용입니다</p>
+                        <div>
+                            <div>
+                                <span class="comment-date">2023-09-02</span>
+                                <span>&times</span>
+                            </div>
+                            <span>
+                                <button>수정</button>
+                                <button>답글</button>
+                            </span>
+                        </div>
+                    </li>
+
+                    <li class="comment-row child-comment">
+                        <p class="comment-writer">
+                            <img src="/resources/images/user.png">
+                            <span>닉네임</span>
+                        </p>
+                        <p class="comment-content">자식 댓글 내용입니다</p>
+                        <div>
+                            <div>
+                                <span class="comment-date">2023-09-02</span>
+                                <span>&times</span>
+                            </div>
+                            <span>
+                                <button>수정</button>
+                            </span>
+                        </div>
+                    </li>
+
+                    <li class="comment-row child-comment">
+                        <p class="comment-writer">
+                            <img src="/resources/images/user.png">
+                            <span>닉네임</span>
+                        </p>
+                        <p class="comment-content">자식 댓글 내용입니다</p>
+                        <div>
+                            <div>
+                                <span class="comment-date">2023-09-02</span>
+                                <span>&times</span>
+                            </div>
+                            <span>
+                                <button>수정</button>
+                            </span>
+                        </div>
+                    </li>
+
+                    <li class="comment-row">
+                        <p class="comment-writer">
+                            <img src="/resources/images/user.png">
+                            <span>닉네임</span>
+                        </p>
+    
+                        <p class="comment-content">부모 댓글 내용입니다</p>
+                        
+                        <div>
+                            <div>
+                                <span class="comment-date">2023-09-02</span>
+                                <span>&times</span>
+                            </div>
+                            <span>
+                                <button>수정</button>
+                                <button>답글</button>
+                            </span>
+                        </div>
+                    </li>
+
+                </ul>
+
+            </div>
+
         </div>
 
 	</section>
@@ -46,8 +185,9 @@
     <!-- footer include -->
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
 
-    <!-- main.js 연결 -->
-	<script src="../resources/js/main.js"></script>
+    <!-- freeBoardDetail.js 연결 -->
+	<script src="../resources/js/board/freeBoard/freeBoardDetail.js"></script>
 
 </body>
 </html>
+

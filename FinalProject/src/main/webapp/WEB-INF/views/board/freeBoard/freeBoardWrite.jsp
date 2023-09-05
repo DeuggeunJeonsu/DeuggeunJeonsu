@@ -18,7 +18,7 @@
 
 	<jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
 	
-<!-- include libraries(jQuery, bootstrap) -->
+<!-- include libraries(bootstrap) -->
     <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
     <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script> 
 
@@ -67,12 +67,15 @@
                         <input type="text" id="hashtag-textArea" placeholder="#해시태그 추가">
                     </div>
                     <div id="hashtag-making-area">
-                        <!-- <div class="hashtag">#오운완</div>
+                        <!-- <div class="hashtag">
+                        #오운완
+                        <i class="fa-solid fa-circle-xmark" style="color: #ffffff;"></i>
+                        </div>
                         <div class="hashtag">#OOTD</div> -->
                     </div>
                 </div>
 
-                <div id="summernote"></div>
+                <textarea id="summernote"></textarea>
                 
                 <div id="button-area">
                     <button class="btnStyle" id="write-btn">작성</button>

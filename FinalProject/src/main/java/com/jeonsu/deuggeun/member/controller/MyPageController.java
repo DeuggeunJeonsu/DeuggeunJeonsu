@@ -44,4 +44,8 @@ public class MyPageController {
 		return "member/myPage/mySecession";
 	}
 	
+	@GetMapping("/myOneByOneInquiry")
+	public String myOneByOneInquiry() {
+		return "member/myPage/myOneByOneInquiry";
+	}
 }
