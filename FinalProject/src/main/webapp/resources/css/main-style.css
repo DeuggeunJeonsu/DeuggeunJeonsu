@@ -590,16 +590,18 @@ td {
     margin: 2.5px;
     display: block;
     text-align: center;
+    background-color: #eee;
 }
 
-.pastDay {
+.pastDay,.possible-futureDay {
     background-color: #FFFFFF;
     cursor: pointer;
 }
-.pastDay:hover{
+.pastDay:hover,.possible-futureDay:hover{
     background:#eee;
 }
 
+.possible-futureDay.choiceDay,
 .pastDay.choiceDay,
 .today.choiceDay {
     background:  rgba(52, 196, 219, 0.5);
@@ -822,3 +824,9 @@ input[id="ck4"]:checked + .ck::before {
 .btnLightBlue.btnPush:hover {
     box-shadow: 0px 0px 0px 0px #1E8185;
   }
+
+.complete{
+    text-decoration-line: line-through;
+    text-decoration-color: #ee4949 ;
+    text-decoration-thickness: 2px;
+}
