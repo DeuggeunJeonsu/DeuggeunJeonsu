@@ -27,10 +27,11 @@
 
             <section id="main-container">
                 <div class="img-con">
-                    <div><img src="/resources/images/market/freeDelivery.png" alt=""></div>
-                    <div><img src="/resources/images/market/freeDelivery.png" alt=""></div>
-                    <div><img src="/resources/images/market/freeDelivery.png" alt=""></div>
+                    <img src="/resources/images/market/freeD.png" alt="" id="delLogo">
                 </div>
+                <br>
+                <br>
+                <br>
                 <div class="main-con">
                     <h1 class="board-name">주문하기</h1>
                     <h3>늘 사랑을 주신 득근 전수 회원님께
