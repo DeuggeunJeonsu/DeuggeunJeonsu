@@ -229,21 +229,39 @@
 .board-like{
     height: 100px;
     width: 100px;
+
     display: flex;
     flex-direction: column;
-    margin: 20px auto;
+
+    justify-content: center;
+    align-items: center;
+    
+    margin: 10px auto 0 auto;
 }
 
-.board-like > i{
-    font-size: 50px;
-    margin: auto;
-
-    cursor: pointer;
-}
-
-.board-like > span{
+.likeCount{
+    /* margin-top: 10px; */
+    margin: auto; /* 수직 가운데 정렬 */
     font-size: 20px;
-    margin: auto;
+    text-align: center; /* 가운데 정렬 */
+}
+
+.like-cnt{
+    width: 60px;
+    height: 60px;
+
+    border-radius: 50%;
+    background-color: #ddd;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    z-index: 10;
+}
+
+.like-btn{
+    color: #fff;
 }
 
 /* 나머지 버튼 */

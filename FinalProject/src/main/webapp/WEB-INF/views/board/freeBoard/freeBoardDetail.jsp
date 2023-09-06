@@ -7,10 +7,16 @@
 <meta charset="UTF-8">
 <title>게시판 이름</title>
 
+<%-- GSAP 라이브러리 추가 --%>
+<script src = "https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" ></script> 
+
 <%-- freeBoardDetail-style.css 연결 --%>
 <link rel="stylesheet" href="../resources/css/board/freeBoard/freeBoardDetail-style.css">
 </head>
 <body>
+
+    <%-- mojs 라이브러리 추가 --%>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mo-js/1.6.0/mo.umd.min.js"></script>
 
 	<jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
 	
@@ -88,10 +94,12 @@
     
                 <!-- 게시글 버튼 영역 -->
                 <div class="board-like">
-                    <i class="fa-regular fa-heart unlike" style="color: #dddddd;"></i>
-                    <i class="fa-solid fa-heart like" style="color: #ff4242; display: none;"></i>
-                    <span>99</span>
+                    <div class="like-cnt unchecked" id="like-cnt">
+                        <i class="like-btn fa-solid fa-heart fa-2x"></i>
+                    </div>
                 </div>
+
+                <div class="likeCount">99</div>
 
                 <div id="btn-area">
                     <div>
@@ -99,7 +107,6 @@
                         
                         <button>수정하기</button>
                         <button>삭제하기</button>
-                    
                     </div>
                 </div>
 
