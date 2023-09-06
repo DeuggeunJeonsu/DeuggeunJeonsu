@@ -41,53 +41,55 @@
  
 			<div class="sv1">
 
-				<div class="svHeader">오늘은 어느 부위를 하시나요?</div>
+				<div class="svHeader" id="fristHeader">오늘은 어느 부위를 하시나요?</div>
+
 				<div class="svGauge">
-					<input id="rangeInput1" readonly class="rangeInput" 
-						max="10" min="0" step="1" value="0" type="range" />
+					<div id="range" >
+						<div id="rangeblue"></div>
+					</div>
 				</div>
 
 				<div class="checks etrans">
-					<input type="checkbox" id="ex_chk1" class="bodycheck0"> <label for="ex_chk1">상체</label>
 
-					<input type="checkbox" id="ex_chk2" class="bodycheck0"> <label for="ex_chk2">하체</label>
+					<div class="bodycheck0">
+						<input type="checkbox" id="ex_chk1" class="bodycheck0 fristCheck"> <label for="ex_chk1">상체</label>
+					</div>
+
+					<div class="bodycheck0">
+						<input type="checkbox" id="ex_chk2" class="bodycheck0 fristCheck"> <label for="ex_chk2">하체</label>
+					</div>
 
 
 
 					<div class="bodycheck1">
-						<input type="checkbox" id="ex_chk3" > <label for="ex_chk3">등</label>
+						<input type="checkbox"  id="ex_chk3" > <label for="ex_chk3">등</label>
 					</div>	
                     <div class="bodycheck1">
-						<input type="checkbox" id="ex_chk3" > <label for="ex_chk3">등</label>
+						<input type="checkbox"  id="ex_chk4" > <label for="ex_chk4">가슴</label>
 					</div>	
 
                     <div class="bodycheck1">
-						<input type="checkbox" id="ex_chk3" > <label for="ex_chk3">등</label>
+						<input type="checkbox" id="ex_chk5" > <label for="ex_chk5">어깨</label>
 					</div>	
 
                     <div class="bodycheck1">
-						<input type="checkbox" id="ex_chk3" > <label for="ex_chk3">등</label>
+						<input type="checkbox" id="ex_chk6" > <label for="ex_chk6">팔</label>
 					</div>	
 
-					<div class="bodycheck1">
-						<input type="checkbox" id="ex_chk4" > <label for="ex_chk4">가슴</label>
-					</div>
 
-					<div class="bodycheck1">
-						<input type="checkbox" id="ex_chk5" > <label for="ex_chk5">팔</label>
-					</div>
+					<div class="bodycheck2">
+						<input type="checkbox" id="ex_chk7" > <label for="ex_chk7">허벅지 앞쪽</label>
+					</div>	
 
-					<div class="bodycheck1">
-						<input type="checkbox" id="ex_chk6" > <label for="ex_chk6">전완</label>
-					</div>
+                    <div class="bodycheck2">
+						<input type="checkbox" id="ex_chk8" > <label for="ex_chk8">허벅지 뒤쪽</label>
+					</div>	
 
-					<div class="bodycheck1">
-						<input type="checkbox" id="ex_chk7" > <label for="ex_chk7">전완2</label>
-					</div>
+                    <div class="bodycheck2">
+						<input type="checkbox" id="ex_chk9" > <label for="ex_chk9">종아리</label>
+					</div>	
 
-					<div class="bodycheck1">
-						<input type="checkbox" id="ex_chk8" > <label for="ex_chk8">전완3</label>
-					</div>
+				
 					
 
 
