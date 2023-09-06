@@ -33,11 +33,11 @@
 
 #title-textArea{
     height: 40px;
-    width: 800px;
+    width: 850px;
 
     font-size: 20px;
 
-    padding-top: 7px;
+    padding-top: 4px;
     padding-left: 10px;
     padding-right: 10px;
 
@@ -69,7 +69,7 @@
 
 #hashtag-textArea{
     height: 40px;
-    width: 800px;
+    width: 850px;
 
     font-size: 18px;
 
@@ -112,9 +112,23 @@
     padding: 5px;
     text-align: center;
 
-    border-radius: 7px;
+    border-radius: 7px 9px;
 
     cursor: pointer;
+}
+
+#hashtag-making-area div:hover{
+    transform: scale(1.05);
+    transition-duration: 0.5s;
+}
+
+.fa-circle-xmark{
+    font-size: 11px;
+
+    margin-left: 6px;
+
+    position: relative;
+    bottom: 3px;
 }
 
 /* 내용 작성 영역 */

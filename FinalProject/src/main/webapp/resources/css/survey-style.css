@@ -1,8 +1,9 @@
 * {
   box-sizing: border-box;
-  position: relative;
-/*    border: 1px solid black; */ 
+  /* border: 1px solid black;  */
 }
+
+
 
 *::-webkit-scrollbar {
   width: 10px;
@@ -19,7 +20,10 @@
 
 main {
   background-color: ghostwhite; 
-  /* opacity : 0.5; */
+  
+  
+    
+  
 }
 
 .popUp {
@@ -30,7 +34,7 @@ main {
   background-color: #f5f5f5;
   border: 10px solid #5DC8CD;
   width: 600px;
-  height: 900px;
+  height: 800px;
   border-radius: 10px;
 }
 
@@ -43,25 +47,27 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
 }
 
 .popContent{
+	
   position: absolute;
   display: flex;
   flex-direction: column;
-  position: relative;
   overflow: auto;
   align-items: center;
-  height: 840px;
-}
-
-
-
-.popList > li{
+  height: 740px;
   font-size: 20px;
   font-weight: bold;
 }
 
+.popList{
+  display: flex;
+  align-items: center;
+  height: 60px;
+  width: 90%;
+}
 
 .svBody {
   margin: auto;
@@ -72,6 +78,7 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
+  
 }
 
 .sv1 {
@@ -80,6 +87,7 @@ main {
 
   height: 100%;
   background-color: white;
+   /*  -webkit-filter: blur(2px); */  
 
 }
 
@@ -90,6 +98,7 @@ main {
   font-size: 16px;
 
   margin-left: 10px;
+   /*  -webkit-filter: blur(2px); */  
 
   
 }
@@ -178,14 +187,6 @@ strong {
   font-size: 0.8em;
   font-weight: bold;
 }
-
-
-
-
-
-
-
-
 
 
 
@@ -354,11 +355,11 @@ font-family: verdana;
 font-style: italic;
 } */
 
-.popList {
+.popContent {
   position: relative;
 }
 
-.popList input[type="checkbox"] {
+.popContent input[type="checkbox"] {
   /* 실제 체크박스는 화면에서 숨김 */
   position: absolute;
   width: 1px;
@@ -370,7 +371,7 @@ font-style: italic;
   border: 0
 }
 
-.popList input[type="checkbox"]+label {
+.popContent input[type="checkbox"]+label {
   display: inline-block;
   position: relative;
   cursor: pointer;
@@ -379,7 +380,7 @@ font-style: italic;
   -ms-user-select: none;
 }
 
-.popList input[type="checkbox"]+label:before {
+.popContent input[type="checkbox"]+label:before {
   /* 가짜 체크박스 */
   content: ' ';
   display: inline-block;
@@ -398,13 +399,13 @@ font-style: italic;
   box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05), inset 0px -15px 10px -12px rgba(0, 0, 0, 0.05);
 }
 
-.popList input[type="checkbox"]+label:active:before,
-.popList input[type="checkbox"]:checked+label:active:before {
+.popContent input[type="checkbox"]+label:active:before,
+.popContent input[type="checkbox"]:checked+label:active:before {
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), inset 0px 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 
-.popList input[type="checkbox"]:checked+label:before {
+.popContent input[type="checkbox"]:checked+label:before {
   /* 체크박스를 체크했을때 */
   content: '\2714';
   /* 체크표시 유니코드 사용 */
@@ -416,11 +417,11 @@ font-style: italic;
 }
 
 
-.popList.list input[type="checkbox"]+label {
+.popContent.list input[type="checkbox"]+label {
   padding-left: 30px;
 }
 
-.popList.list input[type="checkbox"]+label:before {
+.popContent.list input[type="checkbox"]+label:before {
   position: absolute;
   left: 0;
   top: 0;
@@ -432,7 +433,7 @@ font-style: italic;
   transition: all .12s, border-color .08s;
 }
 
-.popList.list input[type="checkbox"]:checked+label:before {
+.popContent.list input[type="checkbox"]:checked+label:before {
   position: absolute;
   content: "";
   width: 10px;
@@ -449,7 +450,7 @@ font-style: italic;
   transform: rotate(45deg);
 }
 
-.no-csstransforms .popList.list input[type="checkbox"]:checked+label:before {
+.no-csstransforms .popContent.list input[type="checkbox"]:checked+label:before {
   /*content:"\2713";*/
   content: "\2714";
   top: 0;
@@ -491,9 +492,9 @@ a.button {
   background: none;
   box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.5);
   left: 1100px;
-  top: 800px;
+  top: 850px;
   
- 
+ border: none;
 }
 
 .btnFloat:before {
@@ -531,3 +532,68 @@ a.button {
   -webkit-transform: scale(1.1,1.1);
   box-shadow: 0px 5px 5px -2px rgba(0, 0, 0, 0.25);
 }
+
+/* 닫기 버튼2 */
+/* FLOAT */
+a.button2 {
+  display: block;
+  
+  float: left;
+  width: 120px;
+  padding: 0;
+  margin: 10px 20px 10px 0;
+  font-weight: 600;
+  text-align: center;
+  line-height: 50px;
+  color: #FFF;
+  border-radius: 5px;
+  transition: all 0.2s ;
+  
+
+}
+.btnFloat2 {
+  position: fixed;
+  background: none;
+  box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.5);
+  left: 1100px;
+  top: 790px;
+  
+  border: none;
+}
+
+.btnFloat2:before {
+  content: 'toDoList 추가';
+  display: block;
+  top: 0;
+  left: 0;
+  width: 100px;
+  height: 45px;
+  border-radius: 5px;
+  transition: all 0.2s ;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: white;
+  font-weight: bold;
+}
+
+.btnLightBlue2.btnFloat2:before {
+  background: #5DC8CD;
+}
+
+
+.btnFloat2:before {
+  box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.4);
+}
+
+
+.btnFloat2:hover:before {
+  margin-top: -2px;
+  margin-left: 0px;
+  transform: scale(1.1,1.1);
+  -ms-transform: scale(1.1,1.1);
+  -webkit-transform: scale(1.1,1.1);
+  box-shadow: 0px 5px 5px -2px rgba(0, 0, 0, 0.25);
+}
+

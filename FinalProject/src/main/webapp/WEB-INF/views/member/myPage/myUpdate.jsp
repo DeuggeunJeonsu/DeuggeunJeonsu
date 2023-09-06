@@ -7,8 +7,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="/resources/css/member/myPage/myUpdate-style.css">
     <link rel="stylesheet" href="../resources/css/member/myPage/myPageSideBar-style.css">
+    <link rel="stylesheet" href="/resources/css/member/myPage/myUpdate-style.css">
 </head>
 <body>
     <jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
@@ -17,19 +17,15 @@
     <div id="list">
     <jsp:include page="/WEB-INF/views/member/myPage/myPageSideBar.jsp"></jsp:include>
 
+    
+
         <form action="/member/myUpdate" method="POST">
-         <div id="right-content-area">
         <div id="title-area">
                 <div><h2>내 정보 수정</h2></div>
                 <div>회원님의 정보를 수정 할 수 있습니다!</div>
         </div>
+         <div id="right-content-area">
             <table class="tg" id="UserTable">
-            <thead>
-                <td>
-                    <th>
-                    </th>
-                </td>
-            </thead>
         <tbody>
           <tr>
             <td class="tg-0pky firstBox makeOutLine">닉네임</td>
@@ -82,12 +78,27 @@
             </td>
           </tr>
         </tbody>
+
+
+        <form action="profile" method="POST" name="myPageFrm" id="profileFrm" enctype="multipart/form-data">
+
+        <div class="myPageProfile2">
+                <img src="../../../../resources/images/user.png">
+            </div>
+        </div>
+        <span id="deleteImage">x</span>
+
+        <div class="profile-btn-area">
+            <label for="imageInput">이미지 선택</label>
+            <input type="file" name="profileImage" id="imageInput" accept="image/*">
+    </form>   
+        
         </table>
         
         </form>
         </div>
         </div>
-        
+
         <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
         
 </body>
