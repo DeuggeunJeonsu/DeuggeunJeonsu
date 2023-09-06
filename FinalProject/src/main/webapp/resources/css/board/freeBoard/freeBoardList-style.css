@@ -210,6 +210,36 @@
     width: 120px;
 }
 
+/* 글쓰기 버튼 영역 */
+.write-btn-area{
+    width: 83%;
+    margin: auto;
+    
+    display: flex;
+    justify-content: end;
+}
+#writeBtn{
+    padding: 5px 10px;
+    margin: 5px;
+    margin-top: 50px;
+
+    background-color: #99E1ED;
+    border: 1px solid #99E1ED;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+
+    cursor: pointer;
+}
+#writeBtn:hover{
+    background-color: inherit;
+    color: #99E1ED;
+}
+#writeBtn:active{
+    transform: scale(0.90);
+}
+
 /* 페이지네이션 영역 */
 .paginationArea{
     height: 100px;

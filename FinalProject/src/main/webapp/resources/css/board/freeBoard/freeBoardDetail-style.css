@@ -100,16 +100,43 @@
     color: #797979;
 }
 
-/* 팔로우 버튼 */
-#follow-btn{
+/* 팔로잉 버튼 */
+#following-btn{
     margin-top: 5px;
     height: 27px;
+    width: 100px;
 
     font-size: 16px;
     border-radius: 5px;
 
     background-color: #99E1ED;
     color: white;
+    border: 1px solid #99E1ED;
+
+    cursor: pointer;
+}
+
+#following-btn:hover{
+    border-radius: 1px solid #99E1ED;
+
+    color: #99E1ED;
+    background-color: white;
+    border: 1px solid #99E1ED;
+
+    transition-duration: 0.2s;
+}
+
+/* 팔로우 버튼 */
+#follow-btn{
+    margin-top: 5px;
+    height: 27px;
+    width: 100px;
+
+    font-size: 16px;
+    border-radius: 5px;
+
+    color: #99E1ED;
+    background-color: white;
     border: 1px solid #99E1ED;
 
     cursor: pointer;
@@ -125,12 +152,14 @@
     transition-duration: 0.2s;
 }
 
-#follow-btn:hover .whiteChk {
-    display: none;
-}
+#follow-btn:hover{
+    border-radius: 1px solid #99E1ED;
 
-#follow-btn:hover .blueChk {
-    display: inline !important;
+    background-color: #99E1ED;
+    color: white;
+    border: 1px solid #99E1ED;
+
+    transition-duration: 0.2s;
 }
 
 /* 게시글 해시태그 영역 */
@@ -145,6 +174,16 @@
     margin-bottom: 20px;
 
     font-size: 18px;
+}
+
+#hashtag-area a{
+    text-decoration: none;
+    color: #99E1ED;
+}
+
+#hashtag-area a:hover{
+    transform: scale(1.05);
+    transition-duration: 0.5s;
 }
 
 .hashtag{
@@ -198,6 +237,8 @@
 .board-like > i{
     font-size: 50px;
     margin: auto;
+
+    cursor: pointer;
 }
 
 .board-like > span{

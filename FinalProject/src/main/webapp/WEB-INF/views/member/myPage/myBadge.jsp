@@ -38,7 +38,7 @@
 
                     <div class="badge">
                         <div class="badgeImg">
-                            <img src="../../../../resources/images/badge/badge (1).png">
+                            <img src="../../../../resources/images/badge/badge (9).png">
                         </div>
                         <div class="badgeTitle">
                             시작이 반이다
@@ -53,76 +53,121 @@
 
                     <div class="badge">
                         <div class="badgeImg">
-                            <img src="../../../../resources/images/badge/badge (1).png">
+                            <img src="../../../../resources/images/badge/badge (2).png">
                         </div>
                         <div class="badgeTitle">
-                            시작이 반이다
+                            초심자의 행운
                         </div>
                         <div class="badgeContent">
-                            득근전수에서<br>첫 투두리스트를 달성했어요
+                            투두리스트를<br>누적 7일 달성했어요
                         </div>
                         <div class="badgeDate">
                             23.01.01 획득
                         </div>
                     </div>
 
-                    <div class="badge">
+                    <div class="badge notAchieved">
                         <div class="badgeImg">
-                            <img src="../../../../resources/images/badge/badge (1).png">
+                            <img src="../../../../resources/images/badge/badge (3).png">
                         </div>
                         <div class="badgeTitle">
-                            시작이 반이다
+                            성실 끝판왕
                         </div>
                         <div class="badgeContent">
-                            득근전수에서<br>첫 투두리스트를 달성했어요
+                            10일 연속<br>투두리스트를 달성했어요
                         </div>
                         <div class="badgeDate">
-                            23.01.01 획득
+                            미획득
                         </div>
                     </div>
 
-                    <div class="badge">
+                    <div class="badge notAchieved">
                         <div class="badgeImg">
                             <img src="../../../../resources/images/badge/badge (1).png">
                         </div>
                         <div class="badgeTitle">
-                            시작이 반이다
+                            맨날 운동하고십오
                         </div>
                         <div class="badgeContent">
-                            득근전수에서<br>첫 투두리스트를 달성했어요
+                            투두리스트를<br>누적 15일 달성했어요
                         </div>
                         <div class="badgeDate">
-                            23.01.01 획득
+                            미획득
                         </div>
                     </div>
 
-                    <div class="badge">
+                    <div class="badge notAchieved">
                         <div class="badgeImg">
-                            <img src="../../../../resources/images/badge/badge (1).png">
+                            <img src="../../../../resources/images/badge/badge (8).png">
                         </div>
                         <div class="badgeTitle">
-                            시작이 반이다
+                            득근 중독
                         </div>
                         <div class="badgeContent">
-                            득근전수에서<br>첫 투두리스트를 달성했어요
+                            투두리스트를<br>누적 30일 달성했어요
                         </div>
                         <div class="badgeDate">
-                            23.01.01 획득
+                            미획득
                         </div>
                     </div>
 
-                    <div class="badge">
+                    <div class="badge notAchieved">
                         <div class="badgeImg">
-                            <img src="../../../../resources/images/badge/badge (1).png">
+                            <img src="../../../../resources/images/badge/badge (6).png">
                         </div>
                         <div class="badgeTitle">
-                            시작이 반이다
+                            운동은 템빨
                         </div>
                         <div class="badgeContent">
-                            득근전수에서<br>첫 투두리스트를 달성했어요
+                            득근마켓에서<br>첫 구매를 했어요
                         </div>
                         <div class="badgeDate">
-                            23.01.01 획득
+                            미획득
+                        </div>
+                    </div>
+
+                    <div class="badge notAchieved">
+                        <div class="badgeImg">
+                            <img src="../../../../resources/images/badge/badge (7).png">
+                        </div>
+                        <div class="badgeTitle">
+                            득근 인플루언서
+                        </div>
+                        <div class="badgeContent">
+                            팔로워 수<br>100명을 달성했어요
+                        </div>
+                        <div class="badgeDate">
+                            미획득
+                        </div>
+                    </div>
+
+                    <div class="badge notAchieved">
+                        <div class="badgeImg">
+                            <img src="../../../../resources/images/badge/badge (4).png">
+                        </div>
+                        <div class="badgeTitle">
+                            진정한 득근왕
+                        </div>
+                        <div class="badgeContent">
+                            투두리스트를<br>누적 50일 달성했어요
+                        </div>
+                        <div class="badgeDate">
+                            미획득
+                        </div>
+                    </div>
+
+                    <div class="badge notAchieved">
+                        <div class="badgeImg">
+                            <img src="../../../../resources/images/badge/badge (5).png">
+                        </div>
+                        <div class="badgeTitle">
+                            레전드 득근왕
+                        </div>
+                        <div class="badgeContent">
+                            득근전수에서<br>누적 100일을 달성했어요
+                        </div>
+                        <div class="badgeDate">
+                            미획득
                         </div>
                     </div>
 
@@ -131,7 +176,7 @@
                 <div id="badge-count-area">
                     <div>
                         <div>
-                            <div class="badgeCount">6</div>
+                            <div class="badgeCount">2</div>
                             <div>보유 뱃지 수</div>
                         </div>
                         <div>

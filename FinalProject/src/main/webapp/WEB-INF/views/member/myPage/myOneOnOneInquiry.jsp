@@ -11,7 +11,7 @@
 
     <%-- myPageSideBar-style.css 연결 --%>
     <link rel="stylesheet" href="../resources/css/member/myPage/myPageSideBar-style.css">
-    <%-- myOneByOneInquiryList-style.css 연결 --%>
+    <%-- myOneOnOneInquiry-style.css 연결 --%>
     <link rel="stylesheet" href="../resources/css/member/myPage/myOneOnOneInquiry-style.css">
     
 </head>
@@ -55,7 +55,7 @@
                                 <td>10</td>
                                 <td>근육이 안 생겨요</td>
                                 <td>2023.01.09</td>
-                                <td>답변 완료</td>
+                                <td class="answer">답변 완료</td>
                             </tr>
                         </tbody>
                     </table>

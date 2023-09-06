@@ -192,6 +192,11 @@
             
 
         </div>
+
+        <div class="write-btn-area">
+            <button type="button" id="writeBtn">글쓰기</button>
+        </div>
+
         <div class="paginationArea">
             <div>
                 페이지네이션 영역
