@@ -51,7 +51,7 @@ a{
     text-decoration: none;
     color: #797979;
 }
-.search-place input[type="search"] {
+.search-place input[type="text"] {
     width: 300px;
     height: 50px;
     padding: 10px;
@@ -65,8 +65,8 @@ a{
     transition: background-color 0.3s, box-shadow 0.3s;
 }
 
-.search-place input[type="search"]:hover,
-.search-place input[type="search"]:focus {
+.search-place input[type="text"]:hover,
+.search-place input[type="text"]:focus {
     background-color: #99E1ED;;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
@@ -93,7 +93,7 @@ a{
 span{
     font-size: 18px;
 }
-/* 게시글 썸네일 영역*/
+
 /* 게시글 썸네일 영역*/
 #list-area{
     margin-top: 30px;
@@ -148,6 +148,7 @@ img{
     margin-top: 20px;
     position :relative;
     left : 330px;
+    border: none !important;
 }
 
 .pagination {

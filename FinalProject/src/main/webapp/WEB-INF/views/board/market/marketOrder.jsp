@@ -28,15 +28,10 @@
 
             <section id="main-container">
                 <div class="main-con">
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
                     <h1 class="board-name">배송지 정보를 입력해주세요</h1>
                     <br>
-                
-                    <form action="/delivery_info" method="post">
+                    <br>
+                    <form action="/delivery_info" method="post" onSubmit="return false;">
                         <table>
                             <tbody>
                                 <tr>
@@ -61,8 +56,8 @@
                                     <td>
                                         <div class="address">
                                             <div class="addr-input">
-                                                <input type="text" class="form_input" id="delZip" name="delZip"
-                                                    value="" placeholder="우편번호">
+                                                <input type="text" class="form_input" id="delZip" name="delZip" value=""
+                                                    placeholder="우편번호">
                                                 <button type="button" class="addr-search"
                                                     onclick="sample6_execDaumPostcode()">우편번호 찾기</button>
                                             </div>
@@ -76,20 +71,38 @@
                                 <tr>
                                     <th scope="row">배송요청사항</th>
                                     <td>
-                                        <textarea class="form_input form_text" name="delNotes" rows="4"
-                                            cols="50" placeholder="조심히 안전하게 와주세요 :)"></textarea>
+                                        <textarea class="form_input form_text" name="delNotes" rows="4" cols="50"
+                                            placeholder="조심히 안전하게 와주세요 :)"></textarea>
                                     </td>
                                 </tr>
-                            
                             </tbody>
                         </table>
-
-                        
+                        <div class="fixed-con">
+                        <div class="box">
+                            <p class="title-first">유저일이지롱님 결제정보</p>
+                            <div class="tbl_order2">
+                                    <div>총상품금액</div>
+                                    <div>50,000원</div>
+                                </div>
+                                <div class="tbl_order2">
+                                    <div>배송비</div>
+                                    <div>0원</div>
+                                </div>
+                                <dl class="total_ord">
+                                    <div class="total_amount">최종결제금액</div>
+                                    <div class="total">50,000원</div>
+                                </dl>
+                            </div>
+                            <button type="submit" onclick="requestPay()" id="now-btn" class="submit-btn">결제하기</button>
+                            <button type="button" id="cancle-btn" class="submit-btn">취소하기</button>
+                        </div>
                     </form>
 
-                    <button onclick="requestPay()" id="paymentBtn" type="submit">결제하기</button> 
-    
+                
+                    <!-- <button onclick="requestPay()" id="paymentBtn" type="submit">결제하기</button> -->
+
                 </div>
+
 
                 <div class="notice">
 
@@ -113,7 +126,7 @@
                 </div>
 
             </section>
-            
+
 
             <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
             <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>

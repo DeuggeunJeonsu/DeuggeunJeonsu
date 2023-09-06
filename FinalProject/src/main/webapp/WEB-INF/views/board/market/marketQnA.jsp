@@ -60,7 +60,7 @@
                             </div>
                         </div>
                     </div>
-                    <hr style="border: solid 3px #ccc; margin-top: 50px; margin-bottom: 50px;">
+                    <hr style="border: solid 1px #ccc; margin-top: 50px; margin-bottom: 50px;">
 
                     <ul class="item-nav">
                         <li>
@@ -74,7 +74,7 @@
                         </li>
                     </ul>
 
-                    <hr style="border: solid 3px #ccc; margin-top: 50px; margin-bottom: 50px;">
+                    <hr style="border: solid 1px #ccc; margin-top: 50px; margin-bottom: 50px;">
 
                     <section class="reivew-list">
                         <h1 class="board-name">Q&A</h1>

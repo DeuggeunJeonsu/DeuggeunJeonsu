@@ -10,12 +10,12 @@
 }
 
 .main-con {
-    border: 1px solid #99E1ED;;
+    /* border: 1px solid #99E1ED;; */
 }
 
 .top-container {
     display: flex;
-    border: 1px solid #99E1ED;;
+    /* border: 1px solid #99E1ED;; */
 }
 
 .left-content {
@@ -24,7 +24,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid #99E1ED;;
 
 }
 
@@ -35,8 +34,6 @@
 
 .right-content {
     flex: 50%;
-
-    border: 1px solid #99E1ED;;
 
 }
 

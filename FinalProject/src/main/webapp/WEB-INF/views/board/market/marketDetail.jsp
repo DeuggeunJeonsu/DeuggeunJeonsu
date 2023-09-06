@@ -60,7 +60,7 @@
                             </div>
                         </div>
                     </div>
-                    <hr style="border: solid 3px #ccc; margin-top: 50px; margin-bottom: 50px;">
+                    <hr style="border: solid 1px #ccc; margin-top: 50px; margin-bottom: 50px;">
 
                     <ul class="item-nav">
                         <li>
@@ -74,7 +74,7 @@
                         </li>
                     </ul>
 
-                    <hr style="border: solid 3px #ccc; margin-top: 50px; margin-bottom: 50px;">
+                    <hr style="border: solid 1px #ccc; margin-top: 50px; margin-bottom: 50px;">
                     <!-- 상품 상세 -->
                     <div class="item-content">
                         <div><img src="/resources/images/market/test2.jpeg" alt=""></div>

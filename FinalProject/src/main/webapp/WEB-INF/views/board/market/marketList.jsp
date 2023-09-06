@@ -31,7 +31,7 @@
                 <div id="search-area">
                     <div class="search-place">
                         <%-- <input type="text" name="query"  id="searchQuery" placeholder="search..."> --%>
-                        <input type="search" id="market-search" placeholder="search...">
+                        <input type="text" id="market-search" name="query" placeholder="search...">
                         <button id="search-button"><i class="fas fa-search"></i></button>
 
                     </div>
