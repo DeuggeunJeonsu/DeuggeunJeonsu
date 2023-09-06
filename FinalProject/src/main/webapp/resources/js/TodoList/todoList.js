@@ -152,37 +152,97 @@ $(document).ready(function(){
 
 });
 
+const addListBtn = document.querySelector(".addListBtn") 
+addListBtn.addEventListener("click", function(){
+    const addListInput = document.querySelector(".addList");
+    const addListVal = addListInput.value.trim();  // 입력 값의 양 끝 공백을 제거합니다.
+
+    const reqExp = /^[가-힣a-zA-Z\s]{1,10} \d{1,2}회 \d{1,2}세트$/;
+
+    if (!reqExp.test(addListVal)) {
+        if (confirm("운동 횟수와 세트 횟수를 입력해주세요")) {
+            addListInput.focus();
+            addListInput.value = "  회  세트";
+        }
+    } else {
+        alert("정규식 성공! DB에 insert한 후 다시 목록조회 하자!");
+        document.querySelector(".addList").value="";
+
+        // 새로운 div 요소 생성
+        const div = document.createElement("div");
+        const checkboxes = document.querySelectorAll(".ck").length + 1; // 현재 체크박스 개수 + 1
+
+        // input 요소 생성 및 속성 설정
+        const input = document.createElement("input");
+        input.setAttribute("type", "checkbox");
+        input.setAttribute("id", "ck" + checkboxes);
+        input.setAttribute("class", "none checkbox");
+
+        // label 요소 생성 및 연결
+        const label = document.createElement("label");
+        label.setAttribute("for", "ck" + checkboxes);
+        label.setAttribute("class", "ck");
+
+        // span 요소 생성 및 텍스트 설정
+        const span = document.createElement("span");
+        span.textContent = addListVal;
+
+        // button 요소 생성
+        const button = document.createElement("button");
+        button.setAttribute("type", "button");
+        
+        
+        // i 요소 생성 및 클래스 및 스타일 설정
+        const i = document.createElement("i");
+        i.setAttribute("class", "fa-solid fa-minus minus");
+        i.style.color = "#ffffff";
+
+        // 각 요소를 div에 추가
+        div.appendChild(input);
+        div.appendChild(label);
+        div.appendChild(span);
+        div.appendChild(button);
+        button.appendChild(i);
+
+        // div를 원하는 위치에 추가
+        document.querySelector(".check-area").append(div);
+    }
+})
+
+
+
 
 if (document.querySelector(".todolist-area") != null) {
     const checkboxes = document.querySelectorAll(".checkbox");
-     
+    // const addListBtn = document.querySelector(".addListBtn") 
 
     checkboxes.forEach((checkbox) => {
 
-        const minus = checkbox.nextElementSibling.nextElementSibling.nextElementSibling;
-        minus.addEventListener("click", function () {
-            checkboxes.length=0;
-            checkbox.parentElement.remove();
-            const totalCheckboxes= document.querySelectorAll(".ck").length; 
-
-            if (checkbox.checked) {
+            const minus = checkbox.nextElementSibling.nextElementSibling.nextElementSibling;
+            minus.addEventListener("click", function () {
+                checkboxes.length=0;
+                checkbox.parentElement.remove();
+                const totalCheckboxes= document.querySelectorAll(".ck").length; 
+    
+                if (checkbox.checked) {
+                    
+                    checkedCount--;
+                }
+    
                 
-                checkedCount--;
-            }
-
-            
-            const checkedPercentage = (checkedCount / totalCheckboxes) * 100;
-
-            if (checkedCount === 0) {
-                progressNum.style.width = "0%";
-            } else {
-                progressNum.style.width = `${checkedPercentage}%`;
-            }
-        });
+                const checkedPercentage = (checkedCount / totalCheckboxes) * 100;
+    
+                if (checkedCount === 0) {
+                    progressNum.style.width = "0%";
+                } else {
+                    progressNum.style.width = `${checkedPercentage}%`;
+                }
+            });
 
 
 
 
+        
         checkbox.addEventListener("change", function () {
             if (this.checked) {
                 const spanElement = this.nextElementSibling.nextElementSibling;
@@ -204,27 +264,68 @@ if (document.querySelector(".todolist-area") != null) {
             progressNum.style.width = `${checkedPercentage}%`;
         });
 
-        // const minus = checkbox.nextElementSibling.nextElementSibling.nextElementSibling;
-        // minus.addEventListener("click", function () {
-        //     checkboxes.length=0;
-        //     checkbox.parentElement.remove();
-        //     const totalCheckboxes= document.querySelectorAll(".ck").length; 
-
-        //     if (checkbox.checked) {
-                
-        //         checkedCount--;
-        //     }
-
-            
-        //     const checkedPercentage = (checkedCount / totalCheckboxes) * 100;
-
-        //     if (checkedCount === 0) {
-        //         progressNum.style.width = "0%";
-        //     } else {
-        //         progressNum.style.width = `${checkedPercentage}%`;
-        //     }
-        // });
+    
     });
+
+
+    // addListBtn.addEventListener("click", function(){
+    //     const addListInput = document.querySelector(".addList");
+    //     const addListVal = addListInput.value.trim();  // 입력 값의 양 끝 공백을 제거합니다.
+    
+    //     const reqExp = /^[가-힣a-zA-Z\s]{1,10} \d{1,2}회 \d{1,2}세트$/;
+    
+    //     if (!reqExp.test(addListVal)) {
+    //         if (confirm("운동 횟수와 세트 횟수를 입력해주세요")) {
+    //             addListInput.focus();
+    //             addListInput.value = "  회  세트";
+    //         }
+    //     } else {
+    //         alert("정규식 성공! DB에 insert한 후 다시 목록조회 하자!");
+    //         document.querySelector(".addList").value="";
+
+    //         // 새로운 div 요소 생성
+    //         const div = document.createElement("div");
+    //         const checkboxes = document.querySelectorAll(".ck").length + 1; // 현재 체크박스 개수 + 1
+    
+    //         // input 요소 생성 및 속성 설정
+    //         const input = document.createElement("input");
+    //         input.setAttribute("type", "checkbox");
+    //         input.setAttribute("id", "ck" + checkboxes);
+    //         input.setAttribute("class", "none checkbox");
+    
+    //         // label 요소 생성 및 연결
+    //         const label = document.createElement("label");
+    //         label.setAttribute("for", "ck" + checkboxes);
+    //         label.setAttribute("class", "ck");
+    
+    //         // span 요소 생성 및 텍스트 설정
+    //         const span = document.createElement("span");
+    //         span.textContent = addListVal;
+    
+    //         // button 요소 생성
+    //         const button = document.createElement("button");
+    //         button.setAttribute("type", "button");
+            
+            
+    //         // i 요소 생성 및 클래스 및 스타일 설정
+    //         const i = document.createElement("i");
+    //         i.setAttribute("class", "fa-solid fa-minus minus");
+    //         i.style.color = "#ffffff";
+    
+    //         // 각 요소를 div에 추가
+    //         div.appendChild(input);
+    //         div.appendChild(label);
+    //         div.appendChild(span);
+    //         div.appendChild(button);
+    //         button.appendChild(i);
+    
+    //         // div를 원하는 위치에 추가
+    //         document.querySelector(".check-area").append(div);
+    //     }
+    // })
+
+
+
 }
 
 

@@ -500,13 +500,14 @@ footer span{
 }
 .progress{
     background-color: #e0e0e0;
-    width: 80%;
+    width: 82%;
     border-radius: 10px;
 }
 .progress-num{
     background-color: #99E1ED;
     height: 20px;
     border-radius: 10px;
+    transition-duration: 0.5s;
 }
 
 
@@ -627,6 +628,7 @@ td {
     justify-content: space-between;
     height: 40px;
 
+    padding-left: 10px;
     font-size: 18px;
 
     border:2px solid #99E1ED;
@@ -640,11 +642,6 @@ td {
     height: 40px;
     cursor: pointer;
 }
-
-
-
-
-
 
 
 .todolist-area{
@@ -709,18 +706,12 @@ td {
   border-color: #4285f4;
 }
 
-input[id="ck1"]:checked + .ck::after,
-input[id="ck2"]:checked + .ck::after,
-input[id="ck3"]:checked + .ck::after,
-input[id="ck4"]:checked + .ck::after {
+.check-area > div > input:checked +.ck::after {
   height: 10px;
   animation: bottomcheck 0.2s ease 0s forwards;
 }
 
-input[id="ck1"]:checked + .ck::before,
-input[id="ck2"]:checked + .ck::before,
-input[id="ck3"]:checked + .ck::before,
-input[id="ck4"]:checked + .ck::before {
+.check-area > div > input:checked + .ck::before {
   height: 24px;
   animation: topcheck 0.4s ease 0s forwards;
 }
