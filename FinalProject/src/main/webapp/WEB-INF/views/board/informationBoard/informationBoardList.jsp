@@ -132,6 +132,10 @@
                 </div>
             </div>
         </div>
+        
+        <div class="write-btn-area">
+            <button type="button" id="writeBtn">글쓰기</button>
+        </div>
 
         <div class="slide_div_wrap">
             

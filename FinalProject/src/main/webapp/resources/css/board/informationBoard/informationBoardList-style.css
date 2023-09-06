@@ -4,8 +4,9 @@
 
 
 #main-container{
-    margin: 100px 500px;
-    height: auto;
+	width: 1000px;
+	height: auto;
+    margin: auto;
 }
 
 #title-area > div:nth-of-type(2){
@@ -193,6 +194,30 @@
     margin-left: 5px;
     width: 50px;
     text-align: end;
+}
+
+/* 글쓰기 버튼 영역 */
+.write-btn-area{
+    width: 100%;
+    display: flex;
+    justify-content: end;
+}
+#writeBtn{
+    padding: 5px 10px;
+    margin: 5px;
+    background-color: #99E1ED;
+    border: 1px solid #99E1ED;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+}
+#writeBtn:hover{
+    background-color: inherit;
+    color: #99E1ED;
+}
+#writeBtn:active{
+    transform: scale(0.90);
 }
 
 /* 이미지 슬라이드쇼 영역*/
