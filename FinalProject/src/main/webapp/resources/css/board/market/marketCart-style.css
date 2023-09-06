@@ -12,9 +12,9 @@
 .main-con {
     /* border: 1px solid #99E1ED; */
 }
-
-.img-con {
-    display: flex;
+#delLogo{
+    width: 1430px;
+    height: 250px;
 }
 
 /* a태그 속성 제거 */
