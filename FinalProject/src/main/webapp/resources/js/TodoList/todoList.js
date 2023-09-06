@@ -124,83 +124,65 @@ function leftPad(value) {
 
 // *****************************************************
 // TodoList만들기!
+let checkedCount = 0;
+const checkboxes = document.querySelectorAll(".checkbox");
+const progressNum = document.querySelector(".progress-num")
+let totalCheckboxes = checkboxes.length;
+let checkedPercentage =0;
+$(document).ready(function(){
 
-// if (document.querySelector(".todolist-area") != null) {
-//     let checkedConut= 0;
-    
-//     // checkbox 
-//     const checkboxes = document.querySelectorAll(".checkbox");
-//     // checkbox 클릭시 취소선 
-//     checkboxes.forEach((checkbox) => {
-//         checkbox.addEventListener("change", function () {
-//             if (this.checked) {
-//                 const spanElement = this.nextElementSibling.nextElementSibling;
-//                 spanElement.classList.add("complete");
-            
-//             } else {
-//                 const spanElement = this.nextElementSibling.nextElementSibling;
-//                 spanElement.classList.remove("complete");
-//             }
-
-//         });
-
-//         if(checkbox.checked){
-//             checkedConut++;
-//         }
-
-//         // 체크된 체크박스의 비율을 계산합니다.
-//         const totalCheckboxes = checkboxes.length;
-//         const checkedPercentage = (checkedConut / totalCheckboxes) * 100;
-        
-//         // 계산된 비율을 progress-num 요소의 너비로 설정합니다.
-//         const progressNum = document.querySelector(".progress-num");
-//         progressNum.style.width = `${checkedPercentage}%`;
-    
-//     });
-
-//     console.log("checkedConut"+checkedConut)
-
-//     //minus 버튼 눌렀을 시 List 삭제
-//     const minusAll = document.querySelectorAll(".minus");
-//     minusAll.forEach((minus) => {
-//         minus.addEventListener("click", function(){
-//             minus.parentElement.parentElement.remove();
-//         })
-//     })
-// }
-
-// const checkboxes = null;
-// let checkedCount=0;
-// const progressNum=null;
-// const checkedPercentage=null;
-
-
-if (document.querySelector(".todolist-area") != null) {
     
     checkboxes.forEach((checkbox) => {
 
-
-    $(document).ready(function(){
-        const checkboxes = document.querySelectorAll(".checkbox");
-        let checkedConut=0; 
         if(checkbox.checked){
-            checkedConut++;
+            checkbox++;
         }
-        const progressNum= document.querySelector(".progress-num")
-        const checkedPercentage = (checkedConut / checkboxes.length) * 100;
-        if (checkedConut == 0) {
-            progressNum.style.width = "0%";
-        } else {
-            progressNum.style.width = `${checkedPercentage}%`;
-        }
+
+        const totalCheckboxes = checkboxes.length;
+        checkedPercentage = (checkedCount / totalCheckboxes) * 100;
+        // const progressNum = document.querySelector(".progress-num")
+         if (checkedCount === 0) {
+                progressNum.style.width = "0%";
+            } else {
+                progressNum.style.width = `${checkedPercentage}%`;
+            }
+
 
     });
 
-    //let checkedCount = 0;
-    // const checkboxes = document.querySelectorAll(".checkbox");
-    // checkboxes.forEach((checkbox) => {
+});
 
-        
+
+if (document.querySelector(".todolist-area") != null) {
+    const checkboxes = document.querySelectorAll(".checkbox");
+     
+
+    checkboxes.forEach((checkbox) => {
+
+        const minus = checkbox.nextElementSibling.nextElementSibling.nextElementSibling;
+        minus.addEventListener("click", function () {
+            checkboxes.length=0;
+            checkbox.parentElement.remove();
+            const totalCheckboxes= document.querySelectorAll(".ck").length; 
+
+            if (checkbox.checked) {
+                
+                checkedCount--;
+            }
+
+            
+            const checkedPercentage = (checkedCount / totalCheckboxes) * 100;
+
+            if (checkedCount === 0) {
+                progressNum.style.width = "0%";
+            } else {
+                progressNum.style.width = `${checkedPercentage}%`;
+            }
+        });
+
+
+
+
         checkbox.addEventListener("change", function () {
             if (this.checked) {
                 const spanElement = this.nextElementSibling.nextElementSibling;
@@ -212,31 +194,37 @@ if (document.querySelector(".todolist-area") != null) {
                 checkedCount--;
             }
 
-            const totalCheckboxes = checkboxes.length;
-            const checkedPercentage = (checkedCount / totalCheckboxes) * 100;
-            // const progressNum= document.querySelector(".progress-num")
-            // if (checkedCount == 0) {
-            //     progressNum.style.width = "0%";
-            // } else {
-            //     progressNum.style.width = `${checkedPercentage}%`;
-            // }
-        });
-
-        const minus = checkbox.nextElementSibling.nextElementSibling.nextElementSibling;
-        minus.addEventListener("click", function () {
-            checkbox.parentElement.remove();
-            if (checkbox.checked) {
-                checkedCount--;
-            }
-
-            const totalCheckboxes = checkboxes.length;
-            const checkedPercentage = (checkedCount / totalCheckboxes) * 100;
-
-            if (checkedCount == 0) {
+            const totalCheckboxes= document.querySelectorAll(".ck").length; 
+            checkedPercentage = (checkedCount / totalCheckboxes) * 100;
+            // const progressNum = document.querySelector(".progress-num")
+            if (checkedCount === 0) {
                 progressNum.style.width = "0%";
             } else {
-                progressNum.style.width = `${checkedPercentage}%`;
             }
+            progressNum.style.width = `${checkedPercentage}%`;
         });
+
+        // const minus = checkbox.nextElementSibling.nextElementSibling.nextElementSibling;
+        // minus.addEventListener("click", function () {
+        //     checkboxes.length=0;
+        //     checkbox.parentElement.remove();
+        //     const totalCheckboxes= document.querySelectorAll(".ck").length; 
+
+        //     if (checkbox.checked) {
+                
+        //         checkedCount--;
+        //     }
+
+            
+        //     const checkedPercentage = (checkedCount / totalCheckboxes) * 100;
+
+        //     if (checkedCount === 0) {
+        //         progressNum.style.width = "0%";
+        //     } else {
+        //         progressNum.style.width = `${checkedPercentage}%`;
+        //     }
+        // });
     });
 }
+
+
