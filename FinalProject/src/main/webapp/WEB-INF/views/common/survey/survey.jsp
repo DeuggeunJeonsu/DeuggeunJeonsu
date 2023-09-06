@@ -21,7 +21,7 @@
 		<div class="svBody">
 
 
-          <!--   <div class="popUp">
+             <div class="popUp">
                 <div class="popTitle">득근전수 추천 운동 !</div>
                 <div class="popContent list"> 
                 
@@ -37,7 +37,7 @@
 						<button href="" title="Button border lightblue" class="button2 btnFloat2 btnLightBlue2"></button>
 
                 </div>
-            </div>   -->
+            </div>   
  
 			<div class="sv1">
 
@@ -51,51 +51,54 @@
 
 				<div class="checks etrans">
 
-					<div class="bodycheck0">
-						<input type="checkbox" id="ex_chk1" class="bodycheck0 fristCheck"> <label for="ex_chk1">상체</label>
+					<div class="bodycheck0 bodyList">
+						<input type="checkbox" id="ex_chk1" class="bodycheck0 fristCheck"> <label for="ex_chk1" class="bodyList">상체</label>
 					</div>
 
-					<div class="bodycheck0">
-						<input type="checkbox" id="ex_chk2" class="bodycheck0 fristCheck"> <label for="ex_chk2">하체</label>
+					<div class="bodycheck0 bodyList">
+						<input type="checkbox" id="ex_chk2" class="bodycheck0 fristCheck"> <label for="ex_chk2"  class="bodyList-leg">하체</label>
 					</div>
 
 
 
-					<div class="bodycheck1">
-						<input type="checkbox"  id="ex_chk3" > <label for="ex_chk3">등</label>
+					<div class="bodycheck1 ">
+						<input type="checkbox"  id="ex_chk3" > <label for="ex_chk3" class="bodyList">등</label>
 					</div>	
-                    <div class="bodycheck1">
-						<input type="checkbox"  id="ex_chk4" > <label for="ex_chk4">가슴</label>
-					</div>	
-
-                    <div class="bodycheck1">
-						<input type="checkbox" id="ex_chk5" > <label for="ex_chk5">어깨</label>
+                    <div class="bodycheck1 ">
+						<input type="checkbox"  id="ex_chk4" > <label for="ex_chk4" class="bodyList">가슴</label>
 					</div>	
 
-                    <div class="bodycheck1">
-						<input type="checkbox" id="ex_chk6" > <label for="ex_chk6">팔</label>
+                    <div class="bodycheck1 ">
+						<input type="checkbox" id="ex_chk5" > <label for="ex_chk5" class="bodyList">어깨</label>
+					</div>	
+
+                    <div class="bodycheck1 ">
+						<input type="checkbox" id="ex_chk6" > <label for="ex_chk6" class="bodyList">팔</label>
 					</div>	
 
 
-					<div class="bodycheck2">
-						<input type="checkbox" id="ex_chk7" > <label for="ex_chk7">허벅지 앞쪽</label>
+					<div class="bodycheck2 ">
+						<input type="checkbox" id="ex_chk7" > <label for="ex_chk7" class="bodyList">허벅지 앞쪽</label>
 					</div>	
 
-                    <div class="bodycheck2">
-						<input type="checkbox" id="ex_chk8" > <label for="ex_chk8">허벅지 뒤쪽</label>
+                    <div class="bodycheck2 ">
+						<input type="checkbox" id="ex_chk8" > <label for="ex_chk8" class="bodyList">허벅지 뒤쪽</label>
 					</div>	
 
-                    <div class="bodycheck2">
-						<input type="checkbox" id="ex_chk9" > <label for="ex_chk9">종아리</label>
+                    <div class="bodycheck2 ">
+						<input type="checkbox" id="ex_chk9" > <label for="ex_chk9" class="bodyList">종아리</label>
 					</div>	
 
 				
 					
 
-
-					<button type="button"  id="bodyCheck" value="">다음</button>
 				</div>
+				<div class="btnList">
+					<button type="button"  id="beforeBtn" value="">이전</button>
+					<button type="button"  id="bodyCheck" value="">다음</button>
 
+				</div>
+				
 			</div>
 
 			<pre class="sv2">
