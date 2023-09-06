@@ -23,4 +23,9 @@ public class FreeBoardController {
 		return "board/freeBoard/freeBoardDetail";
 	}
 	
+	@GetMapping("/test222")
+	public String boardLikeTest() {
+		return "board/freeBoard/boardLikeTest";
+	}
+	
 }

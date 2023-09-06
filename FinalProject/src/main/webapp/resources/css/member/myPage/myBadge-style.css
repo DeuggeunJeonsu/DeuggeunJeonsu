@@ -37,6 +37,11 @@
 }
 
 /* 뱃지 영역 */
+.notAchieved{
+    color: #ddd;
+    filter: grayscale(1);
+}
+
 #badge-area{
     display: grid;
     grid-template-columns: 130px 130px 130px;

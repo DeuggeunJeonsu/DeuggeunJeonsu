@@ -57,7 +57,7 @@
                             </div>
                         </a>
                         <div class="followStateBtn">
-                            <button class="customBtn followBtn"><div>following</div></button>
+                            <button class="customBtn followingBtn"><div>following</div></button>
                         </div>
                     </div>
 
@@ -73,7 +73,7 @@
                             </div>
                         </a>
                         <div class="followStateBtn">
-                            <button class="customBtn followBtn"><div>following</div></button>
+                            <button class="customBtn followingBtn"><div>following</div></button>
                         </div>
                     </div>
 
@@ -89,7 +89,7 @@
                             </div>
                         </a>
                         <div class="followStateBtn">
-                            <button class="customBtn followBtn"><div>following</div></button>
+                            <button class="customBtn followingBtn"><div>following</div></button>
                         </div>
                     </div>
 
@@ -105,7 +105,7 @@
                             </div>
                         </a>
                         <div class="followStateBtn">
-                            <button class="customBtn followBtn"><div>following</div></button>
+                            <button class="customBtn followingBtn"><div>following</div></button>
                         </div>
                     </div>
 
@@ -121,7 +121,7 @@
                             </div>
                         </a>
                         <div class="followStateBtn">
-                            <button class="customBtn followBtn"><div>following</div></button>
+                            <button class="customBtn followingBtn"><div>following</div></button>
                         </div>
                     </div>
 
@@ -137,7 +137,7 @@
                             </div>
                         </a>
                         <div class="followStateBtn">
-                            <button class="customBtn followBtn"><div>following</div></button>
+                            <button class="customBtn followingBtn"><div>following</div></button>
                         </div>
                     </div>
 
@@ -153,7 +153,7 @@
                             </div>
                         </a>
                         <div class="followStateBtn">
-                            <button class="customBtn followBtn"><div>following</div></button>
+                            <button class="customBtn followingBtn"><div>following</div></button>
                         </div>
                     </div>
 
@@ -167,7 +167,7 @@
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
 
     <!-- main.js 연결 -->
-	<script src="../resources/js/main.js"></script>
+	<script src="../resources/js/member/myPage/followingFollower.js"></script>
 
 </body>
 </html>

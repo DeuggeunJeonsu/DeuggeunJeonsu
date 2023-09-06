@@ -38,7 +38,7 @@ input:autofill:active {
 }
 /* main 스타일 */
 html, body{
-    background-color: #F8F9FA;
+    background-color: #F8F9FA !important;
 	font-size: 14px;
 	color: #797979;
 	width: 100%;
@@ -49,12 +49,6 @@ html, body{
 	font-weight: 400;
 	width: 100%;
 	font-family: 'Raleway', sans-serif;
-}
-
-.mian-content{
-    width: 100%;
-    overflow: hidden;
-    display: flex;
 }
 
 /*헤더 스타일***************************************************/
@@ -506,13 +500,14 @@ footer span{
 }
 .progress{
     background-color: #e0e0e0;
-    width: 80%;
+    width: 82%;
     border-radius: 10px;
 }
 .progress-num{
     background-color: #99E1ED;
     height: 20px;
     border-radius: 10px;
+    transition-duration: 0.5s;
 }
 
 
@@ -590,16 +585,18 @@ td {
     margin: 2.5px;
     display: block;
     text-align: center;
+    background-color: #eee;
 }
 
-.pastDay {
+.pastDay,.possible-futureDay {
     background-color: #FFFFFF;
     cursor: pointer;
 }
-.pastDay:hover{
+.pastDay:hover,.possible-futureDay:hover{
     background:#eee;
 }
 
+.possible-futureDay.choiceDay,
 .pastDay.choiceDay,
 .today.choiceDay {
     background:  rgba(52, 196, 219, 0.5);
@@ -631,6 +628,7 @@ td {
     justify-content: space-between;
     height: 40px;
 
+    padding-left: 10px;
     font-size: 18px;
 
     border:2px solid #99E1ED;
@@ -644,11 +642,6 @@ td {
     height: 40px;
     cursor: pointer;
 }
-
-
-
-
-
 
 
 .todolist-area{
@@ -713,18 +706,12 @@ td {
   border-color: #4285f4;
 }
 
-input[id="ck1"]:checked + .ck::after,
-input[id="ck2"]:checked + .ck::after,
-input[id="ck3"]:checked + .ck::after,
-input[id="ck4"]:checked + .ck::after {
+.check-area > div > input:checked +.ck::after {
   height: 10px;
   animation: bottomcheck 0.2s ease 0s forwards;
 }
 
-input[id="ck1"]:checked + .ck::before,
-input[id="ck2"]:checked + .ck::before,
-input[id="ck3"]:checked + .ck::before,
-input[id="ck4"]:checked + .ck::before {
+.check-area > div > input:checked + .ck::before {
   height: 24px;
   animation: topcheck 0.4s ease 0s forwards;
 }
@@ -822,3 +809,9 @@ input[id="ck4"]:checked + .ck::before {
 .btnLightBlue.btnPush:hover {
     box-shadow: 0px 0px 0px 0px #1E8185;
   }
+
+.complete{
+    text-decoration-line: line-through;
+    text-decoration-color: #ee4949 ;
+    text-decoration-thickness: 2px;
+}

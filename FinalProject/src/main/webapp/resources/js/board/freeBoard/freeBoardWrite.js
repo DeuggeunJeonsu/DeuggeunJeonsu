@@ -6,11 +6,6 @@ const hashtagTextArea = document.getElementById("hashtag-textArea");
 // 해시태그가 추가되는 영역
 const hashtagMakingArea = document.getElementById("hashtag-making-area");
 
-// 유효성 검사 여부 확인용 객체
-const checkObj = {
-    "hashtag" : false
-}
-
 // 해시태그 글자수 제한
 hashtagTextArea.addEventListener("input", e=>{
 
@@ -19,6 +14,7 @@ hashtagTextArea.addEventListener("input", e=>{
         alert("해시태그는 10글자 이하로 입력해 주세요.");
         hashtagTextArea.value = hashtagTextArea.value.trim().substr(0,10);
     }
+
 });
 
 // keyup 됐을 때 해시태그 추가
@@ -137,7 +133,6 @@ document.getElementById("write-form").addEventListener("submit", e =>{
 
         e.preventDefault();
         return;
-
     }
 
 })
@@ -170,3 +165,37 @@ $(document).ready(function() {
 
     })
 });
+
+
+// -----------------------------------------------------------------------------------------------
+
+// form 태그 제출 시
+const writeFrm = document.getElementById("write-form");
+
+writeFrm.addEventListener("submit", e=>{
+
+    // 제목 유효성 검사
+    const title = document.getElementById("itle-textArea");
+
+    if(title.value.trim().length == 0){
+        alert("제목을 입력해 주세요.");
+        title.value = "";
+        title.focus();
+        e.preventDefault();
+
+        return;
+    }
+
+    // 내용 유효성 검사
+    const content = document.getElementById("summernote");
+
+    if(content.value.trim().length == 0){
+        alert("내용을 입력해 주세요.");
+        content.value = "";
+        content.focus();
+        e.preventDefault();
+
+        return;
+    }
+
+})

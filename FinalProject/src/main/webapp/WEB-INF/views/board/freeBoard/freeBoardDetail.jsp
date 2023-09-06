@@ -7,10 +7,16 @@
 <meta charset="UTF-8">
 <title>게시판 이름</title>
 
+<%-- GSAP 라이브러리 추가 --%>
+<script src = "https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" ></script> 
+
 <%-- freeBoardDetail-style.css 연결 --%>
 <link rel="stylesheet" href="../resources/css/board/freeBoard/freeBoardDetail-style.css">
 </head>
 <body>
+
+    <%-- mojs 라이브러리 추가 --%>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mo-js/1.6.0/mo.umd.min.js"></script>
 
 	<jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
 	
@@ -41,10 +47,15 @@
                     
                     <div id="nickname"><a href="#">닉네임</a></div>
                     <div>
-                        <button id="follow-btn">
+                        <button id="following-btn">
                             <i class="fa-solid fa-circle-check whiteChk" style="color: #ffffff;"></i>    
-                            <i class="fa-solid fa-circle-check blueChk" style="color: #99e1ed; display: none;""></i>
+                            <i class="fa-solid fa-circle-check blueChk" style="color: #99e1ed; display: none"></i>
                             following
+                        </button>
+                        <button id="follow-btn" style="display: none">
+                            <i class="fa-solid fa-circle-plus whiteChk2" style="color: #ffffff; display: none"></i>
+                            <i class="fa-solid fa-circle-plus blueChk2" style="color: #99e1ed;"></i>
+                            follow
                         </button>
                     </div>
                 </div>
@@ -54,9 +65,15 @@
             <!-- 게시글 해시태그 영역 -->
             <div id="hashtag-area">
 
-                <div class="hashtag">#오운완</div>
-                <div class="hashtag">#OOTD</div>
-                <div class="hashtag">#운동폼미쳤다</div>
+                <a href="#">
+                    <div class="hashtag">#오운완</div>
+                </a>
+                <a href="#">
+                    <div class="hashtag">#OOTD</div>
+                </a>
+                <a href="#">
+                    <div class="hashtag">#운동폼미쳤다</div>
+                </a>
 
             </div>
     
@@ -76,14 +93,20 @@
                 </div>
     
                 <!-- 게시글 버튼 영역 -->
-                <div class="board-like"><i class="fa-solid fa-heart" style="color: #ff4242;"></i> <span>99</span></div>
+                <div class="board-like">
+                    <div class="like-cnt unchecked" id="like-cnt">
+                        <i class="like-btn fa-solid fa-heart fa-2x"></i>
+                    </div>
+                </div>
+
+                <div class="likeCount">99</div>
+
                 <div id="btn-area">
                     <div>
                         <button>목록으로</button>
                         
                         <button>수정하기</button>
                         <button>삭제하기</button>
-                    
                     </div>
                 </div>
 
