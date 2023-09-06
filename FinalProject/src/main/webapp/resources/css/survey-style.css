@@ -1,6 +1,6 @@
 * {
   box-sizing: border-box;
-  /* border: 1px solid black;  */
+  /* border: 1px solid black; */  
 }
 
 
@@ -127,6 +127,17 @@ strong {
   min-width: 600px;
 }
 
+.svHeader2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  font-weight: bold;
+  height: 45px;
+  width: 100%;
+  min-width: 600px;
+}
+
 .svGauge {
   display: flex;
   width: 80%;
@@ -188,6 +199,20 @@ strong {
   font-weight: bold;
 }
 
+#range{
+  width: 90%;
+  height: 13px;
+  border-radius: 20px;
+  background-color: #cacece;
+}
+
+#rangeblue{
+  width: 20%;
+  height: 100%;
+  border-radius: 20px;
+  background-color: #99E1ED;
+
+}
 
 
 
@@ -321,24 +346,7 @@ font-style: italic;
 }
 
 
-/* input range 스타일 */
-.rangeInput {
-  width: 90%;
-  background: linear-gradient(to right, #99E1ED 0%, #99E1ED 50%, #ececec 50%, #ececec 100%);
-  border-radius: 8px;
-  outline: none;
-  transition: background 450ms ease-in;
-  -webkit-appearance: none;
-  accent-color: #00c7ae;
-}
 
-input[type=range]::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  width: 12px;
-  height: 12px;
-  background: none;
-  border-radius: 50%;
-}
 
 
 /* ------------------------------------------------------------------ */
@@ -597,3 +605,13 @@ a.button2 {
   box-shadow: 0px 5px 5px -2px rgba(0, 0, 0, 0.25);
 }
 
+
+
+
+.bodycheck1{
+  display: none;
+}
+
+.bodycheck2{
+  display: none;
+}
