@@ -42,6 +42,7 @@ function requestPay() {
 					amount: 1,
 					imp_uid: rsp.imp_uid,
 					merchant_uid: rsp.merchant_uid
+
 				}
 			});
         } else {
