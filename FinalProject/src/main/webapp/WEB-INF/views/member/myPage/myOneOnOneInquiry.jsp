@@ -12,7 +12,7 @@
     <%-- myPageSideBar-style.css 연결 --%>
     <link rel="stylesheet" href="../resources/css/member/myPage/myPageSideBar-style.css">
     <%-- myOneByOneInquiryList-style.css 연결 --%>
-    <link rel="stylesheet" href="../resources/css/member/myPage/myOneByOneInquiry-style.css">
+    <link rel="stylesheet" href="../resources/css/member/myPage/myOneOnOneInquiry-style.css">
     
 </head>
 
