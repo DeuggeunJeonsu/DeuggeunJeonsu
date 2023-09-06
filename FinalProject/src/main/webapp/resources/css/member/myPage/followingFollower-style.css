@@ -50,6 +50,7 @@
     width: 300px;
 }
 
+/* 팔로잉/팔로워 리스트 버튼 클릭 활성화 시 */
 .listBtnClick{
     border-bottom: 2px solid #99E1ED;
 }
@@ -127,7 +128,8 @@
     right: 45px;
 }
 
-.followBtn {
+/* 팔로잉 시 버튼 스타일 */
+.followingBtn {
     background: #99E1ED;
     width: 130px;
     height: 40px;
@@ -136,15 +138,15 @@
     border: none;
 }
 
-.followBtn div {
+.followingBtn div {
     position: relative;
     display: block;
     width: 100%;
     height: 100%;
 }
 
-.followBtn:before,
-.followBtn:after {
+.followingBtn:before,
+.followingBtn:after {
     position: absolute;
     content: "";
     right: 0;
@@ -153,35 +155,35 @@
     transition: all 0.3s ease;
 }
 
-.followBtn:before {
+.followingBtn:before {
     height: 0%;
     width: 2px;
 }
 
-.followBtn:after {
+.followingBtn:after {
     width: 0%;
     height: 2px;
 }
 
-.followBtn:hover{
+.followingBtn:hover{
     background: transparent;
     box-shadow: none;
 }
 
-.followBtn:hover:before {
+.followingBtn:hover:before {
     height: 100%;
 }
 
-.followBtn:hover:after {
+.followingBtn:hover:after {
     width: 100%;
 }
 
-.followBtn div:hover{
+.followingBtn div:hover{
     color: #99E1ED;
 }
 
-.followBtn div:before,
-.followBtn div:after {
+.followingBtn div:before,
+.followingBtn div:after {
     position: absolute;
     content: "";
     left: 0;
@@ -190,20 +192,108 @@
     transition: all 0.3s ease;
 }
 
-.followBtn div:before {
+.followingBtn div:before {
     width: 2px;
     height: 0%;
 }
 
-.followBtn div:after {
+.followingBtn div:after {
     width: 0%;
     height: 2px;
 }
 
-.followBtn div:hover:before {
+.followingBtn div:hover:before {
     height: 100%;
 }
 
-.followBtn div:hover:after {
+.followingBtn div:hover:after {
+    width: 100%;
+}
+
+/* 언팔로우 시 버튼 스타일 */
+.unfollowBtn{
+    color: #99E1ED;
+    background-color: transparent;
+
+    width: 130px;
+    height: 40px;
+    line-height: 42px;
+    padding: 0;
+
+    border: 2px solid #99E1ED;
+}
+
+.unfollowBtn div {
+    position: relative;
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    line-height : 38px;
+}
+
+.unfollowBtn:before,
+.unfollowBtn:after {
+    position: absolute;
+    content: "";
+    right: 0;
+    top: 0;
+    background: #99E1ED;
+    transition: all 0.3s ease;
+}
+
+.unfollowBtn:before {
+    height: 0%;
+    width: 2px;
+}
+
+.unfollowBtn:after {
+    width: 0%;
+    height: 2px;
+}
+
+.unfollowBtn:hover{
+    background: #99E1ED;
+    box-shadow: none;
+}
+
+.unfollowBtn:hover:before {
+    height: 100%;
+}
+
+.unfollowBtn:hover:after {
+    width: 100%;
+}
+
+.unfollowBtn div:hover{
+    color: white;
+}
+
+.unfollowBtn div:before,
+.unfollowBtn div:after {
+    position: absolute;
+    content: "";
+    left: 0;
+    bottom: 0;
+    background: #99E1ED;
+    transition: all 0.3s ease;
+}
+
+.unfollowBtn div:before {
+    width: 2px;
+    height: 0%;
+}
+
+.unfollowBtn div:after {
+    width: 0%;
+    height: 2px;
+}
+
+.unfollowBtn div:hover:before {
+    height: 100%;
+}
+
+.unfollowBtn div:hover:after {
     width: 100%;
 }

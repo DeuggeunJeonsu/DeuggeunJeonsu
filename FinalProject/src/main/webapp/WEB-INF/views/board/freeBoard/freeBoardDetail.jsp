@@ -41,10 +41,15 @@
                     
                     <div id="nickname"><a href="#">닉네임</a></div>
                     <div>
-                        <button id="follow-btn">
+                        <button id="following-btn">
                             <i class="fa-solid fa-circle-check whiteChk" style="color: #ffffff;"></i>    
-                            <i class="fa-solid fa-circle-check blueChk" style="color: #99e1ed; display: none;""></i>
+                            <i class="fa-solid fa-circle-check blueChk" style="color: #99e1ed; display: none"></i>
                             following
+                        </button>
+                        <button id="follow-btn" style="display: none">
+                            <i class="fa-solid fa-circle-plus whiteChk2" style="color: #ffffff; display: none"></i>
+                            <i class="fa-solid fa-circle-plus blueChk2" style="color: #99e1ed;"></i>
+                            follow
                         </button>
                     </div>
                 </div>
@@ -54,9 +59,15 @@
             <!-- 게시글 해시태그 영역 -->
             <div id="hashtag-area">
 
-                <div class="hashtag">#오운완</div>
-                <div class="hashtag">#OOTD</div>
-                <div class="hashtag">#운동폼미쳤다</div>
+                <a href="#">
+                    <div class="hashtag">#오운완</div>
+                </a>
+                <a href="#">
+                    <div class="hashtag">#OOTD</div>
+                </a>
+                <a href="#">
+                    <div class="hashtag">#운동폼미쳤다</div>
+                </a>
 
             </div>
     
@@ -76,7 +87,12 @@
                 </div>
     
                 <!-- 게시글 버튼 영역 -->
-                <div class="board-like"><i class="fa-solid fa-heart" style="color: #ff4242;"></i> <span>99</span></div>
+                <div class="board-like">
+                    <i class="fa-regular fa-heart unlike" style="color: #dddddd;"></i>
+                    <i class="fa-solid fa-heart like" style="color: #ff4242; display: none;"></i>
+                    <span>99</span>
+                </div>
+
                 <div id="btn-area">
                     <div>
                         <button>목록으로</button>
