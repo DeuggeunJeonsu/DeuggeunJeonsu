@@ -39,7 +39,6 @@ public class MemberController {
 	// 회원 가입 페이지 이동
 	@GetMapping("/signUp")
 	public String signUp() {
-
 		return "member/signUp";
 	}
 	

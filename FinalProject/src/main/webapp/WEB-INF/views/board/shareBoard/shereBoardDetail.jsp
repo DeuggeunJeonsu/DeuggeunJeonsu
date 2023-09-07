@@ -6,12 +6,14 @@
 <head>
 <meta charset="UTF-8">
 <title>게시판 이름</title>
-
+<%-- GSAP 라이브러리 추가 --%>
+<script src = "https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" ></script> 
 <%-- boardList-style.css 연결 --%>
 <link rel="stylesheet" href="../resources/css/board/shareBoard/shareBoardDetail-style.css">
 </head>
 <body>
-
+     <%-- mojs 라이브러리 추가 --%>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mo-js/1.6.0/mo.umd.min.js"></script>
 	<jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
 	
 	<section id="main-container">
@@ -41,7 +43,7 @@
                     <div class="routine-info">
                         <div class="routineNm">
                             <span>스쿼트 </span>
-                            <button type="button">Do IT!</button>
+                            <button type="button" class="boardAddListBtn">Do IT!</button>
                         </div>
                         <div class="routine-content">
                         1. 스쿼트 동작은 이러쿵 저러쿵<br>
@@ -60,7 +62,7 @@
                     <div class="routine-info">
                         <div class="routineNm">
                             <span>스쿼트 </span>
-                            <button type="button">Do IT!</button>
+                           <button type="button" class="boardAddListBtn">Do IT!</button>
                         </div>
                         <div class="routine-content">
                         1. 스쿼트 동작은 이러쿵 저러쿵<br>
@@ -79,7 +81,7 @@
                     <div class="routine-info">
                         <div class="routineNm">
                             <span>스쿼트 </span>
-                            <button type="button">Do IT!</button>
+                            <button type="button" class="boardAddListBtn">Do IT!</button>
                         </div>
                         <div class="routine-content">
                         1. 스쿼트 동작은 이러쿵 저러쿵<br>
@@ -98,7 +100,7 @@
                     <div class="routine-info">
                         <div class="routineNm">
                             <span>스쿼트 </span>
-                            <button type="button">Do IT!</button>
+                          <button type="button" class="boardAddListBtn">Do IT!</button>
                         </div>
                         <div class="routine-content">
                         1. 스쿼트 동작은 이러쿵 저러쿵<br>
@@ -125,40 +127,42 @@
                 <div class="detaile-todolist-area">
 
                     <h2>My To Do List</h2>
-                    <hr>
+                    <div class="progress">
+						<div class="progress-num" ></div>
+					</div>
                     <div class="check-area">
+					
                         <div>
-                            <input type="checkbox" id="ck1" class="none">
+                            <input type="checkbox" id="ck1" class="none checkbox">
                             <label for="ck1" class="ck"></label>
-                            <span>득근전수 50회 4세트</span>
-                            <button type="button"><i class="fa-solid fa-minus" style="color: #ffffff;"></i></button>
+                            <span>1. 득근전수 50회 4세트</span>
+                            <button type="button"><i class="fa-solid fa-minus minus" style="color: #ffffff;"></i></button>
                         </div>
                         
                         <div>
-                            <input type="checkbox" id="ck2" class="none">
+                            <input type="checkbox" id="ck2" class="none checkbox">
                             <label for="ck2" class="ck"></label>
-                            <span>득근전수 50회 4세트</span>
-                            <button type="button"><i class="fa-solid fa-minus" style="color: #ffffff;"></i></button>
+                            <span>2. 득근전수 50회 4세트</span>
+                            <button type="button"><i class="fa-solid fa-minus minus" style="color: #ffffff;"></i></button>
                         </div>
                         <div>
-                            <input type="checkbox" id="ck3" class="none">
+                            <input type="checkbox" id="ck3" class="none checkbox">
                             <label for="ck3" class="ck"></label>
-                            <span>득근전수 50회 4세트</span>
-                            <button type="button"><i class="fa-solid fa-minus" style="color: #ffffff;"></i></button>
+                            <span>3. 득근전수 50회 4세트</span>
+                            <button type="button"><i class="fa-solid fa-minus minus" style="color: #ffffff;"></i></button>
                         </div>
                         
                         
                         <div>
-                            <input type="checkbox" id="ck4" class="none">
+                            <input type="checkbox" id="ck4" class="none checkbox">
                             <label for="ck4" class="ck"></label>
-                            <span>득근전수 50회 4세트</span>
-                            <button type="button"><i class="fa-solid fa-minus" style="color: #ffffff;"></i></button>
+                            <span>4. 득근전수 50회 4세트</span>
+                            <button type="button"><i class="fa-solid fa-minus minus" style="color: #ffffff;"></i></button>
                         </div>
-                        
-                        
-                    </div>
+					
+				    </div>  
                     <div>
-                        <input type="text" name="addList"><button><i class="fa-solid fa-plus" style="color: #ffffff;"></i></button>
+                       <input type="text" name="addList" class="addList" placeholder="예) 스쿼트 20회 5세트"><button type="button" class="addListBtn"><i class="fa-solid fa-plus" style="color: #ffffff;"></i></button>
                     </div>
                     <div class="tdl-btnArea">
                         <a class="button btnPush btnLightBlue">저장하기</a>
@@ -168,17 +172,26 @@
                 </div>
             </div>
         </div>
+        <!-- 게시글 버튼 영역 -->
+        <div class="board-like">
+            <div class="like-cnt unchecked" id="like-cnt">
+                <i class="like-btn fa-solid fa-heart fa-2x"></i>
+            </div>
+        </div>
+
+        <div class="likeCount">99</div>
+
         <div id="btn-area">
-            
-            <div class="board-like"><i class="fa-solid fa-heart" style="color: #ff4242;"></i> <span>99</span></div>
             <div>
                 <button>목록으로</button>
                 
                 <button>수정하기</button>
                 <button>삭제하기</button>
-            
             </div>
         </div>
+
+
+       
         <div id="comment-area">
             <div class="comment-count-area">
                 <i class="fa-regular fa-comment" ></i> <span>댓글 4</span>
@@ -302,15 +315,17 @@
                 <a class="button btnPush btnLightBlue ">저장하기</a>
             </div>
             <span>&times</span>
-        </div> --%>
+        </div> 
     
-    </div>
+    </div>--%>
 
 
     <!-- footer include -->
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
-
     
+	<script src="/resources/js/board/shareBoard/shareBoardDetail.js"></script>
+	<script src="/resources/js/TodoList/todoList.js"></script>
+	<script src="/resources/js/board/comment.js"></script>
 
 </body>
 </html>

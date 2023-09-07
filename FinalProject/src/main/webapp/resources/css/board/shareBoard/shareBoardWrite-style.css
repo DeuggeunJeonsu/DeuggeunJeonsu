@@ -1,6 +1,4 @@
-/* div{
-    border: 1px solid pink;;
-} */
+
 
 #main-container{
     margin: 100px 400px;
@@ -183,7 +181,7 @@ h2 {
     /* width 100%주는 순간, 자동정렬되어버림  */
     /* text-align으로 left로 붙도록 재배치  */
     
-    background: url("images/icon-Triangle-down.png") center right 14px no-repeat;
+    /* background: url("images/icon-Triangle-down.png") center right 14px no-repeat; */
     
     /* select box 화살표 부분 배치  */
     
@@ -306,6 +304,8 @@ h2 {
 }
 
 .routine{
+    position: relative;
+
     display: flex;
     background-color: hsl(189, 59%, 87%);
     border-radius: 25px;
@@ -380,4 +380,27 @@ h2 {
 }
 #routineBtn > i{
     color: #fff;
+}
+/* 루틴 삭제 버튼 영역 */
+.routine-cancle{
+    position: absolute; /* 절대 위치 지정 */
+    top: 15px; /* 위에서 0px 떨어진 위치 */
+    right: 15px;
+    width: 35px;
+    height: 35px;
+    background-color: rgb(115, 178, 226);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+/* 루틴 삭제 버튼 */
+.routine-cancle >  button{
+    color: #fff;
+    width: 30px;
+    font-size: 23px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
 }

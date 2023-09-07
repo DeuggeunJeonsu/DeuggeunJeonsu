@@ -67,7 +67,7 @@
                     </div>
 
                     <div class="badge notAchieved">
-                        <div class="badgeImg">
+                        <div class="badgeImg notAchievedImg">
                             <img src="../../../../resources/images/badge/badge (3).png">
                         </div>
                         <div class="badgeTitle">
@@ -79,10 +79,13 @@
                         <div class="badgeDate">
                             미획득
                         </div>
+                        <div class="lock">
+                            <i class="fa-solid fa-lock fa-5x" style="color: #fff;"></i>
+                        </div>
                     </div>
 
                     <div class="badge notAchieved">
-                        <div class="badgeImg">
+                        <div class="badgeImg notAchievedImg">
                             <img src="../../../../resources/images/badge/badge (1).png">
                         </div>
                         <div class="badgeTitle">
@@ -94,10 +97,13 @@
                         <div class="badgeDate">
                             미획득
                         </div>
+                        <div class="lock">
+                            <i class="fa-solid fa-lock fa-5x" style="color: #fff;"></i>
+                        </div>
                     </div>
 
                     <div class="badge notAchieved">
-                        <div class="badgeImg">
+                        <div class="badgeImg notAchievedImg">
                             <img src="../../../../resources/images/badge/badge (8).png">
                         </div>
                         <div class="badgeTitle">
@@ -109,10 +115,13 @@
                         <div class="badgeDate">
                             미획득
                         </div>
+                        <div class="lock">
+                            <i class="fa-solid fa-lock fa-5x" style="color: #fff;"></i>
+                        </div>
                     </div>
 
                     <div class="badge notAchieved">
-                        <div class="badgeImg">
+                        <div class="badgeImg notAchievedImg">
                             <img src="../../../../resources/images/badge/badge (6).png">
                         </div>
                         <div class="badgeTitle">
@@ -124,10 +133,13 @@
                         <div class="badgeDate">
                             미획득
                         </div>
+                        <div class="lock">
+                            <i class="fa-solid fa-lock fa-5x" style="color: #fff;"></i>
+                        </div>
                     </div>
 
                     <div class="badge notAchieved">
-                        <div class="badgeImg">
+                        <div class="badgeImg notAchievedImg">
                             <img src="../../../../resources/images/badge/badge (7).png">
                         </div>
                         <div class="badgeTitle">
@@ -139,10 +151,13 @@
                         <div class="badgeDate">
                             미획득
                         </div>
+                        <div class="lock">
+                            <i class="fa-solid fa-lock fa-5x" style="color: #fff;"></i>
+                        </div>
                     </div>
 
                     <div class="badge notAchieved">
-                        <div class="badgeImg">
+                        <div class="badgeImg notAchievedImg">
                             <img src="../../../../resources/images/badge/badge (4).png">
                         </div>
                         <div class="badgeTitle">
@@ -154,10 +169,13 @@
                         <div class="badgeDate">
                             미획득
                         </div>
+                        <div class="lock">
+                            <i class="fa-solid fa-lock fa-5x" style="color: #fff;"></i>
+                        </div>
                     </div>
 
                     <div class="badge notAchieved">
-                        <div class="badgeImg">
+                        <div class="badgeImg notAchievedImg">
                             <img src="../../../../resources/images/badge/badge (5).png">
                         </div>
                         <div class="badgeTitle">
@@ -168,6 +186,9 @@
                         </div>
                         <div class="badgeDate">
                             미획득
+                        </div>
+                        <div class="lock">
+                            <i class="fa-solid fa-lock fa-5x" style="color: #fff;"></i>
                         </div>
                     </div>
 

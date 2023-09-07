@@ -12,6 +12,8 @@
 
 <link rel="stylesheet" href="/resources/css/survey-style.css">
 
+<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
 </head>
 
@@ -26,15 +28,14 @@
                 <div class="popContent list"> 
                 
                        <div class="popList">
-                           <input type="checkbox" id="check${i}"><label for="check${i}">벤치</label>
+                           <input type="checkbox" class="pop_chk" id="check${i}"><label for="check${i}">벤치</label>
                        </div>
 
                        <div class="popList">
-                        <input type="checkbox" id="check${i}"><label for="check${i}">벤치</label>
+                        <input type="checkbox" class="pop_chk" id="check${i}"><label for="check${i}">벤치</label>
                       </div>
 
-						<button href="" title="Button border lightblue" class="button btnFloat btnLightBlue"></button>
-						<button href="" title="Button border lightblue" class="button2 btnFloat2 btnLightBlue2"></button>
+						<button href="" title="Button border lightblue" class="button btnFloat btnLightBlue" id="confirmStart"></button>
 
                 </div>
             </div>   
@@ -62,31 +63,31 @@
 
 
 					<div class="bodycheck1 ">
-						<input type="checkbox"  id="ex_chk3" > <label for="ex_chk3" class="bodyList">등</label>
+						<input type="checkbox" class="up_chk" id="ex_chk3" > <label for="ex_chk3" class="bodyList">등</label>
 					</div>	
                     <div class="bodycheck1 ">
-						<input type="checkbox"  id="ex_chk4" > <label for="ex_chk4" class="bodyList">가슴</label>
-					</div>	
-
-                    <div class="bodycheck1 ">
-						<input type="checkbox" id="ex_chk5" > <label for="ex_chk5" class="bodyList">어깨</label>
+						<input type="checkbox" class="up_chk" id="ex_chk4" > <label for="ex_chk4" class="bodyList">가슴</label>
 					</div>	
 
                     <div class="bodycheck1 ">
-						<input type="checkbox" id="ex_chk6" > <label for="ex_chk6" class="bodyList">팔</label>
+						<input type="checkbox" class="up_chk" id="ex_chk5" > <label for="ex_chk5" class="bodyList">어깨</label>
+					</div>	
+
+                    <div class="bodycheck1 ">
+						<input type="checkbox" class="up_chk" id="ex_chk6" > <label for="ex_chk6" class="bodyList">팔</label>
 					</div>	
 
 
 					<div class="bodycheck2 ">
-						<input type="checkbox" id="ex_chk7" > <label for="ex_chk7" class="bodyList">허벅지 앞쪽</label>
+						<input type="checkbox" class="leg_chk" id="ex_chk7" > <label for="ex_chk7" class="bodyList">허벅지 앞쪽</label>
 					</div>	
 
                     <div class="bodycheck2 ">
-						<input type="checkbox" id="ex_chk8" > <label for="ex_chk8" class="bodyList">허벅지 뒤쪽</label>
+						<input type="checkbox" class="leg_chk" id="ex_chk8" > <label for="ex_chk8" class="bodyList">허벅지 뒤쪽</label>
 					</div>	
 
                     <div class="bodycheck2 ">
-						<input type="checkbox" id="ex_chk9" > <label for="ex_chk9" class="bodyList">종아리</label>
+						<input type="checkbox" class="leg_chk" id="ex_chk9" > <label for="ex_chk9" class="bodyList">종아리</label>
 					</div>	
 
 				
@@ -96,6 +97,7 @@
 				<div class="btnList">
 					<button type="button"  id="beforeBtn" value="">이전</button>
 					<button type="button"  id="bodyCheck" value="">다음</button>
+					<button type="button"  id="finalCheck" value="">결과확인</button>
 
 				</div>
 				

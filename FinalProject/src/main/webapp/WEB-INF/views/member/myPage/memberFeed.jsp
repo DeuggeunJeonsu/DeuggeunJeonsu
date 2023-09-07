@@ -9,6 +9,7 @@
 
 <%-- memberFeed-style.css 연결 --%>
 <link rel="stylesheet" href="../resources/css/member/myPage/memberFeed-style.css">
+
 </head>
 <body">
 
@@ -28,8 +29,8 @@
                     <div>
                         닉네임
                     </div>
-                    <div class="followBtnArea">
-                        <button>following</button>
+                    <div class="followStateBtn">
+                        <button class="customBtn followingBtn"><div>following</div></button>
                     </div>
                 </div>
 
@@ -54,27 +55,56 @@
             <div>획득한 뱃지</div>
 
             <div id="badge-area-middle">
-                <div class="badgeImg">
-                    <img src="../../../../resources/images/badge/badge (1).png">
+                <div class="prev-btn"><i class="fa-solid fa-circle-chevron-left fa-2x" style="color: #99e1ed;"></i></div>
+
+                <div class="container">
+                    <div class="carousel">
+                        <div class="badgeImg">
+                            <img src="../../../../resources/images/badge/badge (1).png">
+                        </div>
+                        <div class="badgeImg">
+                            <img src="../../../../resources/images/badge/badge (2).png">
+                        </div>
+                        <div class="badgeImg">
+                            <img src="../../../../resources/images/badge/badge (3).png">
+                        </div>
+                        <div class="badgeImg">
+                            <img src="../../../../resources/images/badge/badge (4).png">
+                        </div>
+                        <div class="badgeImg">
+                            <img src="../../../../resources/images/badge/badge (5).png">
+                        </div>
+                        <div class="badgeImg">
+                            <img src="../../../../resources/images/badge/badge (6).png">
+                        </div>
+                        <div class="badgeImg">
+                            <img src="../../../../resources/images/badge/badge (7).png">
+                        </div>
+                        <div class="badgeImg">
+                            <img src="../../../../resources/images/badge/badge (1).png">
+                        </div>
+                        <div class="badgeImg">
+                            <img src="../../../../resources/images/badge/badge (2).png">
+                        </div>
+                        <div class="badgeImg">
+                            <img src="../../../../resources/images/badge/badge (3).png">
+                        </div>
+                        <div class="badgeImg">
+                            <img src="../../../../resources/images/badge/badge (4).png">
+                        </div>
+                        <div class="badgeImg">
+                            <img src="../../../../resources/images/badge/badge (5).png">
+                        </div>
+                        <div class="badgeImg">
+                            <img src="../../../../resources/images/badge/badge (6).png">
+                        </div>
+                        <div class="badgeImg">
+                            <img src="../../../../resources/images/badge/badge (7).png">
+                        </div>
+                    </div>
                 </div>
-                <div class="badgeImg">
-                    <img src="../../../../resources/images/badge/badge (2).png">
-                </div>
-                <div class="badgeImg">
-                    <img src="../../../../resources/images/badge/badge (3).png">
-                </div>
-                <div class="badgeImg">
-                    <img src="../../../../resources/images/badge/badge (4).png">
-                </div>
-                <div class="badgeImg">
-                    <img src="../../../../resources/images/badge/badge (5).png">
-                </div>
-                <div class="badgeImg">
-                    <img src="../../../../resources/images/badge/badge (6).png">
-                </div>
-                <div class="badgeImg">
-                    <img src="../../../../resources/images/badge/badge (7).png">
-                </div>
+
+                <div class="next-btn"><i class="fa-solid fa-circle-chevron-right fa-2x" style="color: #99e1ed;"></i></div>
             </div>
 
         </div>
@@ -244,8 +274,8 @@
     <!-- footer include -->
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
 
-    <!-- main.js 연결 -->
-	<script src="../resources/js/main.js"></script>
+    <!-- memberFeed.js 연결 -->
+	<script src="../resources/js/member/myPage/memberFeed.js"></script>
 
 </body>
 </html>

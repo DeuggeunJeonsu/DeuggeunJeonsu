@@ -88,54 +88,15 @@
 꿀팁!
 </textarea>
                             </div>
+                            <div class="routine-cancle"><button type="button" class="cancle">&times;</button></div>
                         </div>
 
-                                                <div class="routine">
-                            <div class="boardImg">
-                                <label for="img0">
-                                    <img class="preview" src="">
-                                </label>
-                                <input type="file" name="images" class="inputImage" id="img0" accept="image/*">
-                                <span class="delete-image">&times;</span>
-                            </div>
-                            <div class="routine-write-area">
-                                <input type="test" placeholder="운동명을 입력해주세요">
-<textarea>
-1. 
-2. 
-3. 
-
-꿀팁!
-</textarea>
-                            </div>
-                        </div>
-
-
-                                                <div class="routine">
-                            <div class="boardImg">
-                                <label for="img0">
-                                    <img class="preview" src="">
-                                </label>
-                                <input type="file" name="images" class="inputImage" id="img0" accept="image/*">
-                                <span class="delete-image">&times;</span>
-                            </div>
-                            <div class="routine-write-area">
-                                <input type="test" placeholder="운동명을 입력해주세요">
-<textarea>
-1. 
-2. 
-3. 
-
-꿀팁!
-</textarea>
-                            </div>
-                        </div>
 
 
                     </div>
                 </div>
                 <div class="routine-add-btn-area">
-                    <button id="routineBtn">
+                    <button id="routineBtn" type="button">
                         Routine 
                         <i class="fa-solid fa-circle-plus"></i>
                     </button>
@@ -151,7 +112,7 @@
     <!-- footer include -->
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
 
-    <script src="/resources/js/board/shareBoardWrite.js"></script>
+    <script src="/resources/js/board/shareBoard/shareBoardWrite.js"></script>
 
 </body>
 </html>

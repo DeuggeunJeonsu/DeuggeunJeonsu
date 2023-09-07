@@ -19,6 +19,16 @@
     <main>
         <div class="adMain">
             <a href="/"><img src="/resources/images/main/log01.png" id="mainImg"></a>
+
+                <div class="inquiry1">
+                    <i class="fa-solid fa-envelope-circle-check" id="inquiry2" name="1"></i>
+                    <label id="inquiry2">회원 문의</label>
+                </div>
+
+                <div class="userList">
+                    <i class="fa-solid fa-users" id="userImg"></i>
+                    <label id="userImg">회원 목록</label>
+                </div>
         </div>
         <div class="adBody">
             
@@ -38,16 +48,7 @@
                 </div>
             
                 
-                <div class="inquiry1">
-
-                    <i class="fa-solid fa-envelope-circle-check" id="inquiry2" name="1"></i>
-                    <label id="inquiry2">회원 문의</label>
-                </div>
-
-                <div class="userList">
-                    <i class="fa-solid fa-users" id="userImg"></i>
-                    <label id="userImg">회원 목록</label>
-                </div>
+                
 
             </div>
             
