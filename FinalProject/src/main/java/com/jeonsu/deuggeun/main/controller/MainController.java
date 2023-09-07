@@ -15,5 +15,10 @@ public class MainController {
 	public String survey() {
 		return "common/survey/survey";
 	}
+	
+	@RequestMapping("/ranking")
+	public String ranking() {
+		return "common/ranking";
+	}
 
 }

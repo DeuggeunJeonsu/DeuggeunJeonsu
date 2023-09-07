@@ -70,14 +70,46 @@
 }
 
 /* 좋아요 영역 */
-.heart-count-area{
-	width: 100%;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	font-size: 25px;
+
+.board-like{
+    height: 100px;
+    width: 100px;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+    
+    margin: 10px auto 0 auto;
 }
+
+.like-cnt{
+    width: 60px;
+    height: 60px;
+
+    border-radius: 50%;
+    background-color: #ddd;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    z-index: 10;
+    cursor: pointer;
+}
+
+.like-btn{
+    color: #fff;
+}
+
+.likeCount{
+    /* margin-top: 10px; */
+    margin: auto; /* 수직 가운데 정렬 */
+    font-size: 20px;
+    text-align: center; /* 가운데 정렬 */
+}
+
 
 /* 목록으로, 수정, 삭제버튼 영역 */
 .detail-btn-area{

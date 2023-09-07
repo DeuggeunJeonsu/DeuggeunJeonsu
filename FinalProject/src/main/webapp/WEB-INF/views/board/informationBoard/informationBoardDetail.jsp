@@ -13,9 +13,13 @@
 
 	<script src="https://kit.fontawesome.com/f7459b8054.js" crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="/resources/css/board/informationBoard/informationBoardDetail-style.css">
+    <%-- GSAP 라이브러리 추가 --%>
+    <script src = "https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" ></script> 
 </head>
 
 <body>
+    <%-- mojs 라이브러리 추가 --%>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mo-js/1.6.0/mo.umd.min.js"></script>
 	<jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
 	
 	<section id="main-container">
@@ -34,7 +38,7 @@
 		</div>
 
 		<div id="content-area">
-			<img src="resources/images/board/detail1.jpg" alt="이미지첨부1">
+			<img src="/resources/images/board/detail1.jpg" alt="이미지첨부1">
 			<p>
 				1. 건강 상태 체크
 
@@ -46,7 +50,7 @@
 			</p>
 			<br><br><br><br><br><br>
 
-			<img src="resources/images/board/detail2.jpg" alt="이미지첨부2">
+			<img src="/resources/images/board/detail2.jpg" alt="이미지첨부2">
 			<p>
 				2. 현실적인 목표와 계획 세우기
 
@@ -60,7 +64,7 @@
 			</p>
 			<br><br><br><br><br><br>
 
-			<img src="resources/images/board/detail3.jpg" alt="이미지첨부3">
+			<img src="/resources/images/board/detail3.jpg" alt="이미지첨부3">
 			<p>
 				3. 습관화하기
 
@@ -77,11 +81,16 @@
 			<br><br><br><br><br><br>
 		</div>
 
-		<div class="heart-count-area">
-			<div><i class="fa-solid fa-heart" style="color: #ff4242;"></i></div>
-			<div id="likeCount">99</div>
-		</div>
+        <!-- 좋아요 영역 -->
+        <div class="board-like">
+            <div class="like-cnt unchecked" id="like-cnt">
+                <i class="like-btn fa-solid fa-heart fa-2x"></i>
+            </div>
+        </div>
 
+        <div class="likeCount">99</div>
+
+        <!-- 버튼 영역 -->
 		<div class="detail-btn-area">
 			<div>
 				<button id="goToListBtn">목록으로</button>
@@ -189,7 +198,7 @@
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
 
     <!-- main.js 연결 -->
-	<script src="/resources/js/main.js"></script>
+	<script src="/resources/js/board/informationBoard/informationBoardDetail.js"></script>
 	
 </body>
 
