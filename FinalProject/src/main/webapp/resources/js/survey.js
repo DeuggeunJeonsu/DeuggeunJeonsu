@@ -25,7 +25,7 @@ const nextleg = document.getElementsByClassName("bodycheck2");
 const header = document.getElementById("fristHeader");
 const nextHeader = document.getElementsByClassName("svHeader2")[0];
 const bodyList = document.getElementsByClassName("bodyList");
-const bodyListLeg = document.getElementsByClassName("bodyList-leg");
+const bodyListLeg = document.getElementsByClassName("bodyList-leg")[0];
 
 const popUp = document.getElementsByClassName("popUp")[0];
 
@@ -119,7 +119,7 @@ for (let i of fristCheck) {
                         finalCheck.style.visibility = "visible";
 
                         finalCheck.addEventListener("click", () => {
-                                
+
                                 if (upChk[0].checked != true &&
                                     upChk[1].checked != true &&
                                     upChk[2].checked != true &&
@@ -148,6 +148,7 @@ for (let i of fristCheck) {
                         beforeBtn.addEventListener("click", () => {
 
                             header.innerHTML = "오늘은 어느 부위를 하시나요?";
+                            next[i].style.display = "none";
 
                             btn.style.visibility = "visible";
 
@@ -155,12 +156,11 @@ for (let i of fristCheck) {
 
                             finalCheck.style.visibility = "hidden";
 
-                            next[i].style.display = "none";
 
                             fristList[i].style.display = "contents";
 
                             bodyList[i].style.marginTop = "35px";
-                            bodyListLeg[i].style.marginTop = "17px";
+                            bodyListLeg.style.marginTop = "17px";
 
                             popUp.style.visibility = "visible";
                             popUp.style.opacity = "10";
@@ -209,7 +209,7 @@ for (let i of fristCheck) {
 
 
 
-                    for (let i = 0; i < next.length; i++) {
+                    for (let i = 0; i < nextleg.length; i++) {
 
                         nextleg[i].style.display = "contents";
 
@@ -233,8 +233,8 @@ for (let i of fristCheck) {
                         finalCheck.addEventListener("click", () => {
 
 
-                                if (legChk[0].checked != true &&
-                                    legChk[1].checked != true &&
+                                if (legChk[0].checked != true ||
+                                    legChk[1].checked != true ||
                                     legChk[2].checked != true ) {
 
                                     Swal.fire({
@@ -244,7 +244,7 @@ for (let i of fristCheck) {
                                     });
                                     return;
                                 }
-
+                                next[0].remove();
                             maindiv1.style.webkitFilter = "blur(2px)";
                             maindiv2.style.webkitFilter = "blur(2px)";
 
@@ -256,18 +256,20 @@ for (let i of fristCheck) {
                         beforeBtn.addEventListener("click", () => {
 
                             header.innerHTML = "오늘은 어느 부위를 하시나요?";
+
+                            nextleg[i].style.display = "none";
+
                             btn.style.visibility = "visible";
 
                             finalCheck.style.visibility = "hidden";
 
                             beforeBtn.style.visibility = "hidden";
 
-                            nextleg[i].style.display = "none";
 
                             fristList[i].style.display = "contents";
 
                             bodyList[i].style.marginTop = "35px";
-                            bodyListLeg[i].style.marginTop = "17px";
+                            bodyListLeg.style.marginTop = "17px";
 
 
                             input.style.width = "20%";
