@@ -1,46 +1,10 @@
-// 팔로잉, 언팔로우 버튼 토글
-const followingBtn = document.getElementById("following-btn");
-const followBtn = document.getElementById("follow-btn");
-
-followingBtn.addEventListener("click", ()=>{
-    followingBtn.style.display = "none";
-    followBtn.style.display = "block";
-})
-
-followBtn.addEventListener("click", ()=>{
-    followBtn.style.display = "none";
-    followingBtn.style.display = "block";
-})
-
-/* 팔로우, 언팔로우 버튼 호버 시 아이콘 색 변경 */
-$(document).ready(function() {
-    $('#follow-btn').hover(function() {
-        $('.whiteChk2').show();
-        $('.blueChk2').hide();
-    }, function() {
-        $('.whiteChk2').hide();
-        $('.blueChk2').show();
-    });
-});
-
-$(document).ready(function() {
-    $('#following-btn').hover(function() {
-        $('.whiteChk').hide();
-        $('.blueChk').show();
-    }, function() {
-        $('.whiteChk').show();
-        $('.blueChk').hide();
-    });
-});
-
 // --------------------------------------------------------------------------------
-
 // 좋아요 버튼 이벤트
 var check_status = false;
 var like_cnt = $("#like-cnt");
 var like_parent = $(".board-like");
 
-var divToUseAsReference = $("#board-content-area");
+var divToUseAsReference = $("#board-area");
 var referencePosition = divToUseAsReference.offset();
 var referenceHeight = divToUseAsReference.height();
 
