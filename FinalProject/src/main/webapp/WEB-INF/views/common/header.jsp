@@ -58,7 +58,7 @@
                             </a>
                         </li>
                         <li class="login-icon dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">로그인</a>
+                            <a href="/member/login" class="dropdown-toggle" data-toggle="dropdown">로그인</a>
                         </li>
                     </ul>
                 </div>
@@ -71,16 +71,16 @@
                 <div class="collapse" id="navbar-menu">
                     <ul class="nav-list" data-in="fadeInDown" data-out="fadeOutUp">
                         <li>
-                            <a href="#">건강/운동정보</a>
+                            <a href="/informationBoard/list">건강/운동정보</a>
                         </li>
                         <li>
-                            <a href="#">운동/공유 게시판</a>
+                            <a href="/shareBoard">운동/공유 게시판</a>
                         </li>
                         <li>
-                            <a href="#">자유 게시판</a>
+                            <a href="/freeBoard/list">자유 게시판</a>
                         </li>
                         <li>
-                            <a href="#">공지사항</a>
+                            <a href="/notificationList">공지사항</a>
                         </li>
                         <li>
                             <a href="/market/marketList">득근마켓</a>

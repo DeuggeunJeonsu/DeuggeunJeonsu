@@ -5,19 +5,20 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
+@RequestMapping("/informationBoard")
 public class InformationBoardController {
 	
-	@RequestMapping("/informationBoardList")
+	@GetMapping("/list")
 	public String informationBoardList() {
 		return "board/informationBoard/informationBoardList";
 	}
 	
-	@RequestMapping("/informationBoardDetail")
+	@GetMapping("/detail")
 	public String informationBoardDetail() {
 		return "board/informationBoard/informationBoardDetail";
 	}
 	
-	@RequestMapping("/informationBoardWrite")
+	@GetMapping("/write")
 	public String informationBoardWrite() {
 		return "board/informationBoard/informationBoardWrite";
 	}

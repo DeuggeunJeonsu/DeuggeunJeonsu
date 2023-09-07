@@ -41,8 +41,8 @@
                 </div>
 
                 <p class="text-area">
-                    <a href="#">회원가입</a>
-                    <a href="#">아이디/비밀번호 찾기</a>
+                    <a href="/signUp">회원가입</a>
+                    <a href="/findInfo">아이디/비밀번호 찾기</a>
                 </p>
 
                 <button class="login-btn">득근전수 로그인</button>
