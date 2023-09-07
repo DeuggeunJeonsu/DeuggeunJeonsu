@@ -441,3 +441,109 @@
     justify-content: center;
     align-items: center;
 }
+
+/* ------------------------------------------------------------------------------------- */
+
+/* 달력 */
+#CalendarArea {
+    background-color: white;
+    height: 300px;
+    min-width: 300px;
+    margin: 10px 0;
+    padding: 20px;
+    /* margin: 0 auto; */
+    border-radius: 5px;
+    box-shadow: 0px 10px 20px 0px rgba(0,0,0,0.5);
+    max-width: 500px;
+}
+
+td {
+    width: 50px;
+    height: 50px;
+}
+
+.Calendar {
+    text-align: center;
+    width: 90%;
+    height: 500px;
+    margin: auto;
+}
+
+.Calendar>thead>tr:first-child>td {
+    font-family: 'Questrial', sans-serif;
+    font-size: 1.7em;
+    font-weight: bold;
+}
+.Calendar>thead>tr:last-child>td:nth-child(1),  .Calendar>thead>tr:last-child>td:nth-child(7){
+    color: #F79DC2;
+}
+
+
+.calenderBtn{
+    color:rgba(52, 196, 219, 0.5);
+    font-size: 50px;
+}
+
+.Calendar>thead>tr:last-child>td {
+    font-family: 'Questrial', sans-serif;
+    font-weight: 600;  
+    font-size: 1.5rem;   
+}
+
+.Calendar>tbody>tr>td>p {
+    font-family: 'Montserrat', sans-serif;
+    height: 35px;
+    width: 35px;
+    border-radius: 45px;
+    transition-duration: .2s;
+    line-height: 35px;
+    margin: 2.5px;
+    display: block;
+    text-align: center;
+    font-size: 1.5rem;
+}        
+
+.futureDay {
+    color: lightgray;
+}
+
+.today {
+    font-family: 'Montserrat', sans-serif;
+    height: 45px;
+    width: 45px;
+    border-radius: 45px;
+    transition-duration: .2s;
+    line-height: 45px;
+    margin: 2.5px;
+    display: block;
+    text-align: center;
+    background-color: #eee;
+}
+
+.pastDay,.possible-futureDay {
+    background-color: #FFFFFF;
+    cursor: pointer;
+}
+.pastDay:hover,.possible-futureDay:hover{
+    background:#eee;
+}
+
+.possible-futureDay.choiceDay,
+.pastDay.choiceDay,
+.today.choiceDay {
+    background:  rgba(52, 196, 219, 0.5);
+    color: #fff;
+    font-weight: 700;
+    cursor: pointer;
+}
+.holiday{
+    color:#F79DC2;
+}
+.triangle{
+    color: #f1c40f;
+    font-size: 30px;
+
+}
+.Circle{
+    color: #ee4949;
+} 
