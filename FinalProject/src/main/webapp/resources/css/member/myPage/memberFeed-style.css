@@ -53,23 +53,195 @@
     margin-left: 9px;
 }
 
-.followBtnArea{
-    width: 33%;
+.followStateBtn{
+    width: auto;
+    position: relative;
+    left: 40px;
 }
 
-.followBtnArea > button{
-    width: 95px;
-    height: 40px;
-
-    font-size: 16px;
-
+/* 팔로우 버튼 스타일 */
+.customBtn{
+    text-decoration: none;
     color: white;
-    background-color: #99E1ED;
-    border: none;
+    font-size: 18px;
+    
+    transition: all 0.3s ease;
 
     cursor: pointer;
+
+    position: relative;
+    right: 45px;
 }
 
+/* 팔로잉 시 버튼 스타일 */
+.followingBtn {
+    background: #99E1ED;
+    width: 130px;
+    height: 40px;
+    line-height: 42px;
+    padding: 0;
+    border: none;
+}
+
+.followingBtn div {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.followingBtn:before,
+.followingBtn:after {
+    position: absolute;
+    content: "";
+    right: 0;
+    top: 0;
+    background: #99E1ED;
+    transition: all 0.3s ease;
+}
+
+.followingBtn:before {
+    height: 0%;
+    width: 2px;
+}
+
+.followingBtn:after {
+    width: 0%;
+    height: 2px;
+}
+
+.followingBtn:hover{
+    background: transparent;
+    box-shadow: none;
+}
+
+.followingBtn:hover:before {
+    height: 100%;
+}
+
+.followingBtn:hover:after {
+    width: 100%;
+}
+
+.followingBtn div:hover{
+    color: #99E1ED;
+}
+
+.followingBtn div:before,
+.followingBtn div:after {
+    position: absolute;
+    content: "";
+    left: 0;
+    bottom: 0;
+    background: #99E1ED;
+    transition: all 0.3s ease;
+}
+
+.followingBtn div:before {
+    width: 2px;
+    height: 0%;
+}
+
+.followingBtn div:after {
+    width: 0%;
+    height: 2px;
+}
+
+.followingBtn div:hover:before {
+    height: 100%;
+}
+
+.followingBtn div:hover:after {
+    width: 100%;
+}
+
+/* 언팔로우 시 버튼 스타일 */
+.unfollowBtn{
+    color: #99E1ED;
+    background-color: transparent;
+
+    width: 130px;
+    height: 40px;
+    line-height: 42px;
+    padding: 0;
+
+    border: 2px solid #99E1ED;
+}
+
+.unfollowBtn div {
+    position: relative;
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    line-height : 38px;
+}
+
+.unfollowBtn:before,
+.unfollowBtn:after {
+    position: absolute;
+    content: "";
+    right: 0;
+    top: 0;
+    background: #99E1ED;
+    transition: all 0.3s ease;
+}
+
+.unfollowBtn:before {
+    height: 0%;
+    width: 2px;
+}
+
+.unfollowBtn:after {
+    width: 0%;
+    height: 2px;
+}
+
+.unfollowBtn:hover{
+    background: #99E1ED;
+    box-shadow: none;
+}
+
+.unfollowBtn:hover:before {
+    height: 100%;
+}
+
+.unfollowBtn:hover:after {
+    width: 100%;
+}
+
+.unfollowBtn div:hover{
+    color: white;
+}
+
+.unfollowBtn div:before,
+.unfollowBtn div:after {
+    position: absolute;
+    content: "";
+    left: 0;
+    bottom: 0;
+    background: #99E1ED;
+    transition: all 0.3s ease;
+}
+
+.unfollowBtn div:before {
+    width: 2px;
+    height: 0%;
+}
+
+.unfollowBtn div:after {
+    width: 0%;
+    height: 2px;
+}
+
+.unfollowBtn div:hover:before {
+    height: 100%;
+}
+
+.unfollowBtn div:hover:after {
+    width: 100%;
+}
 
 /* 팔로워 수 */
 .memberInfoArea > div:nth-of-type(2){
@@ -104,24 +276,57 @@
     height: 15%;
 }
 
-#badge-area-middle{
+/* --------------------------------------------------------------------------------------------- */
+
+/* 뱃지 이미지, 캐러셀 화살표 영역 */
+#badge-area-middle{ 
+    width: 695px;
     height: 75%;
-    
+
+    margin: auto;
+
     display: flex;
+
+    justify-content: center;
     align-items: center;
-    justify-content: space-evenly;
+
 }
 
 .badgeImg{
     height: 100px;
+    width: 100px;
+
+    margin: 0 10px;
 }
 
 .badgeImg > img{
-    height: 100px;
-    width: 100px;
+    height: 100%;
+}
+
+.container{
+    width: 605px;
+    overflow: hidden;
+}
+
+.carousel{
+    display: flex;
+    align-items: center;
+
+    margin-top: 20px;
+    transition: all 0.5s;
 }
 
 
+.prev-btn,
+.next-btn{
+    cursor: pointer;
+    margin-top: 20px;
+    padding: 5px;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+/* --------------------------------------------------------------------------------------------- */
 
 /* 작성한 게시글 목록 조회 영역 */
 #member-board-area{
@@ -129,7 +334,7 @@
 }
 
 #member-board-area > div:first-of-type{
-    margin-top: 40px;
+    margin-top: 10px;
     font-size: 18px;
 
     border-bottom: 2px solid #ddd;
@@ -154,6 +359,7 @@
     width: 250px;
     height: 330px;
     border: 1px solid #ddd;
+    border-radius: 5px;
     
     background-color: white;
 
@@ -174,6 +380,7 @@
 
     background-color: #797979;
 
+    border-radius: 5px 5px 0 0;
 }
 
 .thumbnail > div:first-of-type> img{
@@ -183,6 +390,8 @@
 .thumbnail > div:nth-of-type(2){
     height: 40%;
     padding: 10px;
+
+    border-radius: 0 0 5px 5px;
 }
 
 /* 게시글 제목 */
@@ -209,6 +418,7 @@
 .profileArea > img{
     width: 40px;
     border-radius: 50%;
+    border: 1px solid #ddd;
 }
 
 /* 닉네임 영역 */

@@ -237,6 +237,8 @@
     align-items: center;
     
     margin: 10px auto 0 auto;
+
+    cursor: pointer;
 }
 
 .likeCount{
@@ -257,7 +259,7 @@
     justify-content: center;
     align-items: center;
 
-    z-index: 10;
+    z-index: 2;
 }
 
 .like-btn{
