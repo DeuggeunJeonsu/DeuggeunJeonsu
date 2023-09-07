@@ -76,7 +76,7 @@ hr{ border-bottom: 2px solid #ddd;}
 
 .routine-area{
     height: 230px;
-    background-color: #99E1ED;
+    /* background-color: #99E1ED; */
     display: flex;
     /* justify-content: space-between; */
     border-radius: 20px;
@@ -85,7 +85,7 @@ hr{ border-bottom: 2px solid #ddd;}
 .img-area{
     width: 200px;
     height: 200px;
-    background-color: #fff;
+    /* background-color: #fff; */
     border-radius: 10px;
     border: none;
     margin: auto;
@@ -206,9 +206,34 @@ hr{ border-bottom: 2px solid #ddd;}
 
 
 /* ____________________ToDoList시작______________________ */
+.detaile-todolist-area > div:nth-of-type(3){
+    display: flex;
+    justify-content: center;
+}
+.detaile-todolist-area > div:nth-of-type(3)>input{
+    width: 85%;
+    display: flex;
+    justify-content: space-between;
+    height: 40px;
+
+    padding-left: 10px;
+    font-size: 18px;
+
+    border:2px solid #99E1ED;
+    outline: none;
+}
+
+.detaile-todolist-area > div:nth-of-type(3) button{
+    border: none;
+    background-color: #aaa;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+}
+
 
 .detaile-todolist-area{
-    width: 432px;
+    min-width: 90%;
     min-height: 500px;
     border: 30px solid #99E1ED;
     border-radius: 20px;
@@ -216,8 +241,7 @@ hr{ border-bottom: 2px solid #ddd;}
     padding: 30px;
     background-color: #FFFFFF;
     position: sticky;
-    top: 320px
-    
+    top: 130px
 
 }
 /* checkbox 박스  css*/
@@ -226,7 +250,7 @@ hr{ border-bottom: 2px solid #ddd;}
     flex-direction: column;
     padding: 10px;
     align-items: center;
-    height: 250px;
+    height: 340px;
 }
 .ck{
     height: 20px;
@@ -273,18 +297,12 @@ hr{ border-bottom: 2px solid #ddd;}
   border-color: #4285f4;
 }
 
-input[id="ck1"]:checked + .ck::after,
-input[id="ck2"]:checked + .ck::after,
-input[id="ck3"]:checked + .ck::after,
-input[id="ck4"]:checked + .ck::after {
+.check-area > div > input:checked +.ck::after {
   height: 10px;
   animation: bottomcheck 0.2s ease 0s forwards;
 }
 
-input[id="ck1"]:checked + .ck::before,
-input[id="ck2"]:checked + .ck::before,
-input[id="ck3"]:checked + .ck::before,
-input[id="ck4"]:checked + .ck::before {
+.check-area > div > input:checked + .ck::before {
   height: 24px;
   animation: topcheck 0.4s ease 0s forwards;
 }
@@ -331,35 +349,13 @@ input[id="ck4"]:checked + .ck::before {
     font-size: 2rem;
     margin-top: 0;
 }
-.datile-todolist-area > hr {
+/* .todolist-area > hr{
     margin-bottom: 20px;
-}
-.detaile-todolist-area > div:nth-of-type(2){
-    display: flex;
-    justify-content: center;
-}
-.detaile-todolist-area > div:nth-of-type(2)>input{
-    width: 85%;
-    display: flex;
-    justify-content: space-between;
-    height: 40px;
+} */
 
-    font-size: 18px;
-
-    border:2px solid #99E1ED;
-    outline: none;
-}
-.check-area  button{
+.detaile-todolist-area > .check-area  button{
     border: none;
     background-color: #aaa;
-    cursor: pointer;
-}
-
-.detaile-todolist-area > div:nth-of-type(2) button{
-    border: none;
-    background-color: #aaa;
-    width: 40px;
-    height: 40px;
     cursor: pointer;
 }
 
@@ -375,6 +371,7 @@ input[id="ck4"]:checked + .ck::before {
 .tdl-btnArea > a, .tdl-btnArea > a:visited {
     text-decoration: none;
     color: #00AE68;
+    cursor: pointer;
 
 
     display: block;
@@ -402,29 +399,74 @@ input[id="ck4"]:checked + .ck::before {
 
 .btnLightBlue.btnPush:hover {
     box-shadow: 0px 0px 0px 0px #1E8185;
+  }
+
+.complete{
+    text-decoration-line: line-through;
+    text-decoration-color: #ee4949 ;
+    text-decoration-thickness: 2px;
 }
+
+.progress{
+    background-color: #e0e0e0;
+    width: 100% !important;
+    border-radius: 10px;
+}
+.progress-num{
+    background-color: #99E1ED;
+    height: 20px;
+    border-radius: 10px;
+    transition-duration: 0.5s;
+}
+
+
 /* 버튼 영역************** */
 /* 좋아요 영역 */
+/* 좋아요 영역 */
 #btn-area{
-height: 100px;
-
+    height: 100px;
 }
 
 .board-like{
     height: 100px;
     width: 100px;
+
     display: flex;
     flex-direction: column;
-    margin: 10px auto;
+
+    justify-content: center;
+    align-items: center;
+    
+    margin: 10px auto 0 auto;
+}
+
+.likeCount{
+    /* margin-top: 10px; */
+    margin: auto; /* 수직 가운데 정렬 */
+    font-size: 20px;
+    text-align: center; /* 가운데 정렬 */
+       
+    margin-bottom: 20px;
     
 }
-.board-like > i{
-    font-size: 50px;
-    margin: auto;
+
+.like-cnt{
+    width: 60px;
+    height: 60px;
+
+    border-radius: 50%;
+    background-color: #ddd;
+
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+    align-items: center;
+
+    z-index: 2;
 }
-.board-like > span{
-    font-size: 20px;
-    margin: auto;
+
+.like-btn{
+    color: #fff;
 }
 
 /* 나머지 버튼 */
@@ -456,6 +498,15 @@ height: 100px;
     transition-duration: 0.5s;
 
 }
+
+
+/* DO it 버튼 움직임 */
+.routineNm > button:hover{
+ background-color: #99E1ED;
+ color: #fff;
+ transition-duration: 0.5s;   
+}
+
 
 /* ----------------------------------------------------- */
 /* 댓글 영역 */
