@@ -45,6 +45,38 @@
                     </div>
                 </div>
 
+                <div>
+                    <div id="CalendarArea">
+                            <table class="Calendar">
+                                <thead>
+                                    <tr>
+                                        <td onClick="prevCalendar();" class="calenderBtn">&#60;</td>
+                                        <td colspan="5">
+                                            <span id="calYear"></span>년
+                                            <span id="calMonth"></span>월
+                                        </td>
+                                        <td onClick="nextCalendar();" class="calenderBtn">&#62;</td>
+                                    </tr>
+                                    <tr>
+                                        <td>일</td>
+                                        <td>월</td>
+                                        <td>화</td>
+                                        <td>수</td>
+                                        <td>목</td>
+                                        <td>금</td>
+                                        <td>토</td>
+                                    </tr>
+                                </thead>
+                    
+                                <tbody>
+                                </tbody>
+                            </table>
+                            <i class="fa-solid fa-caret-up triangle"></i>
+                            <i class="fa-solid fa-circle Circle"></i>
+                
+                    </div>
+                </div>
+
             </div>
 
         </div>
@@ -276,6 +308,9 @@
 
     <!-- memberFeed.js 연결 -->
 	<script src="../resources/js/member/myPage/memberFeed.js"></script>
+
+    <!-- memberFeed.js 연결 -->
+	<script src="../resources/js/TodoList/todoList.js"></script>
 
 </body>
 </html>
