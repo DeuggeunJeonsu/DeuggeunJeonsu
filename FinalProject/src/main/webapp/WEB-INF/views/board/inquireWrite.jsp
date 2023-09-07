@@ -22,46 +22,48 @@
             <jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
 
             <section id="main-con">
-                <!-- <form action="/board/${boardCode}/reviewWrite" method="POST" enctype="multipart/form-data"> -->
-                <h1 class="title">스토어 문의글 작성</h1>
-                <div>문의해 주신 내용은 영업일 기준 2~3일 내에 답변 드립니다🍀</div>
-                <hr>
-                <br>
-                <div class="select">
-                    <div class="select-option">
-                        <select class="select-box">
-                            <option value="option1">-- 문의 유형 --</option>
-                            <option value="option1">취소</option>
-                            <option value="option2">교환</option> 
-                        </select>
-                    </div>
-                    <input type="text" name="inquireTitle" placeholder="제목" value="" placeholder="제목을 입력해주세요">
-                    
-                </div>
-                <div>
-                    <textarea name="reviewContent" id="reviewContent" cols="30" rows="10"
-                        placeholder="내용을 입력해주세요"></textarea>
-                </div>
+                <form action="/board/${boardCode}/reviewWrite" method="POST" id="inquireForm"
+                    enctype="multipart/form-data">
+                    <h1 class="title">스토어 문의글 작성</h1>
+                    <div>문의해 주신 내용은 영업일 기준 2~3일 내에 답변 드립니다🍀</div>
+                    <hr>
+                    <br>
+                    <div class="select">
+                        <div class="select-option">
+                            <select class="select-box" name="inquireType" id="inquireType">
+                                <option value="none">-- 문의 유형 --</option>
+                                <option value="cancel">취소</option>
+                                <option value="exchange">교환</option>
+                            </select>
+                        </div>
+                        <input type="text" name="inquireTitle" id="inquireTitle" placeholder="제목" value=""
+                            placeholder="제목을 입력해주세요" maxlength="10">
 
-                <div class="fileBox previewImage">
-                    <input class="uploadFileName" value="파일선택" disabled="disabled" style="width: 300px;">
-                    <label for="file1">사진업로드</label>
-                    <input type="file" id="file1" class="inputHidden">
-                </div>
-                <br>
-                <div class="bottom">
-                    <div>
-                        <button id="submit-button">작성</button>
-                        <button id="cancel-button">취소</button>
                     </div>
-                </div>
-                <!-- </form> -->
+                    <div>
+                        <textarea name="inquireContent" id="inquireContent" cols="30" rows="10"
+                            placeholder="내용을 입력해주세요"></textarea>
+                    </div>
+
+                    <div class="fileBox previewImage">
+                        <input class="uploadFileName" value="파일선택" disabled="disabled" style="width: 300px;">
+                        <label for="file1">사진업로드</label>
+                        <input type="file" id="file1" class="inputHidden">
+                    </div>
+                    <br>
+                    <div class="bottom">
+                        <div>
+                            <button id="submit-button">작성</button>
+                            <button id="cancel-button">취소</button>
+                        </div>
+                    </div>
+                </form>
             </section>
 
 
             <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
 
-            <script src="/resources/js/board/boardWrite.js"></script>
+            <script src="/resources/js/market/inquireWrite.js"></script>
             <script src="/resources/js/main.js"></script>
         </body>
 

@@ -33,16 +33,16 @@ function requestPay() {
         if (rsp.success) {
             console.log(rsp);
             var msg = '결제가 완료되었습니다.';
-			console.log("결제성공 ");
-
+            console.log("결제성공 ");
+            
 			$.ajax({
-				type: "GET",
+                type: "GET",
 				url: 'payment',
 				data: {
-					amount: 1,
+                    amount: 1,
 					imp_uid: rsp.imp_uid,
 					merchant_uid: rsp.merchant_uid
-
+                    
 				}
 			});
         } else {

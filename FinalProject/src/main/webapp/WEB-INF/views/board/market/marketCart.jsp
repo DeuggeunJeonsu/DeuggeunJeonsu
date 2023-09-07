@@ -29,11 +29,9 @@
                 <div class="img-con">
                     <img src="/resources/images/market/freeD.png" alt="" id="delLogo">
                 </div>
-                <br>
-                <br>
-                <br>
                 <div class="main-con">
-                    <h1 class="board-name">주문하기</h1>
+                    <br>
+                    <h1 class="board-name">CART</h1>
                     <h3>늘 사랑을 주신 득근 전수 회원님께
                         감사의 마음을 담아 무료배송 이벤트를 진행합니다
                     </h3>

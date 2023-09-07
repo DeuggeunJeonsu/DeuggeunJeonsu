@@ -22,13 +22,13 @@
             <jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
 
             <section id="main-con">
-                    <!-- <form action="/board/${boardCode}/reviewWrite" method="POST" enctype="multipart/form-data"> -->
+                    <form action="/board/${boardCode}/reviewWrite" method="POST" id="reviewForm" enctype="multipart/form-data">
                     <h1 class="title">리뷰 작성</h1>
                     <div>구매하신 상품에 대한 리뷰를 작성하여 득근전수 회원님들에게 공유해 보세요🍀</div>
                     <hr>
                     <br>
                     <div>
-                        <input type="text" name="reviewTitle" placeholder="제목" value="" placeholder="제목을 입력해주세요">
+                        <input type="text" name="reviewTitle" id="reviewTitle" placeholder="제목" value=""  maxlength="10" placeholder="제목을 입력해주세요" required>
                     </div>
                     <div>
                         <textarea name="reviewContent" id="reviewContent" cols="30" rows="10"
@@ -47,13 +47,13 @@
                             <button id="cancel-button">취소</button>
                         </div>
                     </div>
-                    <!-- </form> -->
+                    </form> 
                 </section>
 
 
             <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
 
-            <script src="/resources/js/board/boardWrite.js"></script>
+            <script src="/resources/js/market/reviewWrite.js"></script>
             <script src="/resources/js/main.js"></script>
         </body>
 
