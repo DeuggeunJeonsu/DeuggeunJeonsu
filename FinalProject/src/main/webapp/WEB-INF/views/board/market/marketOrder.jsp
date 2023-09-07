@@ -93,7 +93,7 @@
                                     <div class="total">50,000원</div>
                                 </dl>
                             </div>
-                            <button type="submit" onclick="requestPay()" id="now-btn" class="submit-btn">결제하기</button>
+                            <button type="submit" onclick="requestPay()" id="payment-btn" class="submit-btn">결제하기</button>
                             <button type="button" id="cancle-btn" class="submit-btn">취소하기</button>
                         </div>
                     </form>

@@ -25,7 +25,7 @@ form{
 
 /* 리뷰 게시판 영역 */
 .board-name {
-    font-size: 2em;
+    font-size: 2.2em;
     margin: 20px 0;
 }
 
@@ -106,29 +106,7 @@ textarea{
 .notice .title {
     min-width: 80px; 
 }
-/*
-#paymentBtn {
-    position: relative;
-    left: 600px;
-    bottom: 60px;
-    display: inline-block;
-    width: 120px;
-    background-color: #99E1ED;
-    font-size: 1.5em;
-    font-weight: bold;
-    color: #fff;
-    border: 2px solid #99E1ED;
-    border-radius: 5px;
-    line-height: 50px;
-    text-align: center;
-    text-decoration: none;
-    cursor: pointer; 
-}
 
-#paymentBtn:hover {
-    background-color: #66C2CC;
-    border-color: #66C2CC;
-} */
 .fixed-con{
 
     position: fixed;
@@ -205,7 +183,7 @@ textarea{
 .submit-btn:hover{
     cursor: pointer;
 }
-#now-btn{
+#payment-btn{
     background-color: #797979;
     color: #fff;
 }
