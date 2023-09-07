@@ -19,3 +19,18 @@ customBtns.forEach((button) => {
     });
 
 });
+
+// 팔로잉, 팔로워 목록 버튼 토글
+const followListBtns = document.querySelectorAll(".followListBtn");
+
+followListBtns.forEach((btn)=>{
+
+    btn.addEventListener("click", () => {
+
+        followListBtns.forEach((otherBtn) => {
+            otherBtn.classList.remove("listBtnClick");
+        });
+        
+        btn.classList.add("listBtnClick");
+    })
+})
