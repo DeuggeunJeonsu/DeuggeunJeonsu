@@ -404,3 +404,9 @@ h2 {
     border: none;
     cursor: pointer;
 }
+
+/* 드래그관련 요소 */
+.dragging {
+    opacity: .5;
+    border: 2px dashed rgb(115, 178, 226);
+}

@@ -20,7 +20,7 @@ const routineBtn = document.querySelector("#routineBtn");
 
 routineBtn.addEventListener("click", function () {
 
-    if(document.querySelectorAll(".routine").length > 5){
+    if(document.querySelectorAll(".routine").length >= 5){
         alert("Routine은 5개까지 작성 가능합니다.🥲");
     }else{
 
@@ -103,35 +103,33 @@ routineBtn.addEventListener("click", function () {
 
         //---------------------------------
         // 루틴 추가 버튼
-        if(document.querySelectorAll(".routine").length == 4 && document.querySelectorAll(".routine").length > 5){
+        // if(document.querySelectorAll(".routine").length == 4 && document.querySelectorAll(".routine").length > 5){
 
-            // 루틴 추가 버튼
-            // 부모 요소 선택
-            const routineAddBtnArea = document.querySelector(".routine-add-btn-area");
+        //     // 루틴 추가 버튼
+        //     // 부모 요소 선택
+        //     const routineAddBtnArea = document.querySelector(".routine-add-btn-area");
     
-            // 버튼 요소 생성
-            const buttonElement = document.createElement("button");
-            buttonElement.setAttribute("id", "routineBtn");
-            buttonElement.setAttribute("type", "button");
+        //     // 버튼 요소 생성
+        //     const buttonElement = document.createElement("button");
+        //     buttonElement.setAttribute("id", "routineBtn");
+        //     buttonElement.setAttribute("type", "button");
     
-            // 버튼 내용 설정
-            buttonElement.textContent = "Routine";
+        //     // 버튼 내용 설정
+        //     buttonElement.textContent = "Routine";
     
-            // Font Awesome 아이콘 요소 생성
-            const iconElement = document.createElement("i");
-            iconElement.setAttribute("class", "fa-solid fa-circle-plus");
+        //     // Font Awesome 아이콘 요소 생성
+        //     const iconElement = document.createElement("i");
+        //     iconElement.setAttribute("class", "fa-solid fa-circle-plus");
     
-            // 버튼에 아이콘 요소 추가
-            buttonElement.appendChild(iconElement);
+        //     // 버튼에 아이콘 요소 추가
+        //     buttonElement.appendChild(iconElement);
     
-            // 버튼을 부모 요소에 추가
-            routineAddBtnArea.appendChild(buttonElement);
-            document.querySelector(".middle-write").append(routineAddBtnArea)
-        }
+        //     // 버튼을 부모 요소에 추가
+        //     routineAddBtnArea.appendChild(buttonElement);
+        //     document.querySelector(".middle-write").append(routineAddBtnArea)
+        // }
 
-        if(document.querySelectorAll(".routine").length == 5){
-            document.querySelector(".routine-add-btn-area").remove();
-        }
+       
 
         
     }
@@ -139,46 +137,33 @@ routineBtn.addEventListener("click", function () {
 })
 
 
-const cancleBtns = document.getElementsByClassName("cancle");
-// 삭제 버튼 눌렀을 때 해당 루틴 삭제하기 
-function cancleRoutine(){
+// const cancleBtns = document.querySelectorAll(".cancle");
+// // 삭제 버튼 눌렀을 때 해당 루틴 삭제하기 
+// function cancleRoutine(e){
     
-    for (const button of cancleBtns) {
-        // console.log(cancleBtns.length)
-        button.addEventListener("click", (e) => {
+//     // for (let button of cancleBtns) {
+//     //     console.log(cancleBtns.length)
+//     //     button.addEventListener("click", (e) => {
        
-            e.target.parentElement.parentElement.remove();
-            // // cancle이 4개일 경우 루틴 추가 버튼 띄우기
-            // if(document.querySelectorAll(".routine").length == 4 && document.querySelectorAll(".routine").length > 5){
+//     //         e.target.parentElement.parentElement.remove();
+           
+//     //     });
+//     // }   
 
-            //     // 루틴 추가 버튼
-            //     // 부모 요소 선택
-            //     const routineAddBtnArea = document.querySelector(".routine-add-btn-area");
-        
-            //     // 버튼 요소 생성
-            //     const buttonElement = document.createElement("button");
-            //     buttonElement.setAttribute("id", "routineBtn");
-            //     buttonElement.setAttribute("type", "button");
-        
-            //     // 버튼 내용 설정
-            //     buttonElement.textContent = "Routine";
-        
-            //     // Font Awesome 아이콘 요소 생성
-            //     const iconElement = document.createElement("i");
-            //     iconElement.setAttribute("class", "fa-solid fa-circle-plus");
-        
-            //     // 버튼에 아이콘 요소 추가
-            //     buttonElement.appendChild(iconElement);
-        
-            //     // 버튼을 부모 요소에 추가
-            //     routineAddBtnArea.appendChild(buttonElement);
-            //     document.querySelector(".middle-write").append(routineAddBtnArea)
-            // }
-        });
-    }   
+//     e.target.parentElement.parentElement.remove();
+// }
+
+// 취소 버튼 이벤트 핸들러를 등록합니다.
+document.addEventListener("click", function (e) {
+    if (e.target.classList.contains("cancle")) {
+        cancleRoutine(e);
+    }
+});
+
+// 취소 버튼 눌렀을 때 해당 루틴 삭제하기
+function cancleRoutine(e) {
+    e.target.parentElement.parentElement.remove();
 }
-
-
 
 
 
