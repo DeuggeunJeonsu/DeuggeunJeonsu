@@ -29,9 +29,9 @@ public class MarketController {
 	public String marketReview() {
 		return "board/market/marketReview";
 	}
-	@GetMapping("/marketQnA")
+	@GetMapping("/marketInquire")
 	public String marketQnA() {
-		return "board/market/marketQnA";
+		return "board/market/marketInquire";
 	}
 	@GetMapping("/marketCart")
 	public String marketCart() {

@@ -29,21 +29,19 @@ public class BoardController {
 		
 		return "board/notificationDetail";
 	}
-	
+	// 리뷰작성 요청
 	@RequestMapping("/reviewWrite")
 	public String reivewWrite() {
 		return "board/reviewWrite";
 	}
-	
-	@RequestMapping("/QnAWrite")
-	public String QnAWrite() {
-		return "board/QnAWrite";
-	}
-	
+	// 상품문의 요청
 	@RequestMapping("/inquireWrite")
 	public String inquireWrite() {
 		return "board/inquireWrite";
 	}
-	
-	
+	// 회원 일반 문의
+	@RequestMapping("/QnAWrite")
+	public String QnAWrite() {
+		return "board/QnAWrite";
+	}
 }

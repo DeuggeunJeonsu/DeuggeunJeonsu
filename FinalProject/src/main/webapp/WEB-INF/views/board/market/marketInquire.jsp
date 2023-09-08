@@ -8,7 +8,7 @@
             <title>게시판 이름</title>
 
             <%-- marketQ&A-style.css 연결 --%>
-                <link rel="stylesheet" href="../resources/css/board/market/marketQ&A-style.css">
+                <link rel="stylesheet" href="../resources/css/board/market/marketInquire-style.css">
 
                 <!-- Font Awesome CDN 추가 -->
                 <link rel="stylesheet"
@@ -70,7 +70,7 @@
                             <a href="/market/marketReview">Review</a>
                         </li>
                         <li>
-                            <a href="/market/marketQnA">Q&A</a>
+                            <a href="/market/marketInquire">상품문의</a>
                         </li>
                     </ul>
 
@@ -188,7 +188,7 @@
 
             <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
 
-            <script src="/resources/js/main.js"></script>
+            <%-- <script src="/resources/js/main.js"></script> --%>
         </body>
 
         </html>
