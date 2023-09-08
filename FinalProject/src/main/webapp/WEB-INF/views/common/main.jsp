@@ -10,8 +10,8 @@
 <body>
 
 	<jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
-	<a href="/survey"><button class="Jbtn"><span>운동 루틴 추천받기!</span></button></a>
 	<section id="main-container">
+	<a href="/survey"><button class="Jbtn"><span>운동 루틴 추천받기!</span></button></a>
 		<div class="video-container">
 			<!--메인 동영상 재생  -->
 			<section id="hello" class="home bg-mega">
@@ -42,7 +42,7 @@
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
 	<input type="hidden" name="mainPage" value="mainPage"/>	
 
-	<script src="../resources/js/main.js"></script>
-	<script src="/resources/js/TodoList/todoList.js"></script>
+	<%-- <script src="../resources/js/main.js"></script> --%>
+	<script src="/resources/js/TodoList/todoList.js"></script> 
 </body>
 </html>
