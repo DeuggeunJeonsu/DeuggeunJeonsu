@@ -35,13 +35,16 @@
             </div>
 
             <div class="ranking-content-area">
-
                 <div class="ranking-table-area"> <!--홈페이지 출석-->
-                    <div id="attendance-ranking">
+                    <div class="my-rank-area">
+                        <p>30</p>
+                        <p>rank : 1</p>
+                    </div>
+                    <div class="you">You</div>
+                    <div class="ranking-table" id="attendanceRanking">
                         <div class="ranking-title">
                             출석 랭킹
                         </div>
-                        
                         <div class="top3-area">
                             <div>
                                 <img class="top3-border-img" src="/resources/images/ranking/top2.png">
@@ -68,7 +71,6 @@
                                 </div>
                             </div>
                         </div>
-
                         <div class="ranking-row">
                             <div>4</div>
                             <div>
@@ -116,15 +118,173 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="ranking-table-area"> <!--투두리스트 실천-->
-                    <table id="execution-ranking">
-                        
-                    </table>
+                    <div class="my-rank-area">
+                        <p>30</p>
+                        <p>rank : 1</p>
+                    </div>
+                    <div class="you">You</div>
+                    <div class="ranking-table" id="executionRanking">
+                        <div class="ranking-title">
+                            실천 랭킹
+                        </div>
+                        <div class="top3-area">
+                            <div>
+                                <img class="top3-border-img" src="/resources/images/ranking/top2.png">
+                                <img class="top3-profile-img top2-border" src="/resources/images/user.png">
+                                <div class="top3-info-area top2-font">
+                                    <div>2ed NickName</div>
+                                    <div>Score icon</div>
+                                </div>
+                            </div>
+                            <div>
+                                <img class="top3-border-img" src="/resources/images/ranking/top1.png">
+                                <img class="top3-profile-img top1-border" src="/resources/images/user.png">
+                                <div class="top3-info-area top1-font">
+                                    <div>1st NickName</div>
+                                    <div>Score icon</div>
+                                </div>
+                            </div>
+                            <div>
+                                <img class="top3-border-img" src="/resources/images/ranking/top3.png">
+                                <img class="top3-profile-img top3-border" src="/resources/images/user.png">
+                                <div class="top3-info-area top3-font">
+                                    <div>3rd NickName</div>
+                                    <div>Score icon</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ranking-row">
+                            <div>4</div>
+                            <div>
+                                <img class="rank-profile-img" src="/resources/images/user.png">
+                            </div>
+                            <div>NickName</div>
+                            <div>Score</div>
+                            <div>icon</div>
+                        </div>
+                        <div class="ranking-row">
+                            <div>5</div>
+                            <div>
+                                <img class="rank-profile-img" src="/resources/images/user.png">
+                            </div>
+                            <div>NickName</div>
+                            <div>Score</div>
+                            <div>icon</div>
+                        </div>
+                        <div class="ranking-row">
+                            <div>6</div>
+                            <div>
+                                <img class="rank-profile-img" src="/resources/images/user.png">
+                            </div>
+                            <div>NickName</div>
+                            <div>Score</div>
+                            <div>icon</div>
+                        </div>
+                        <div class="ranking-row">
+                            <div>7</div>
+                            <div>
+                                <img class="rank-profile-img" src="/resources/images/user.png">
+                            </div>
+                            <div>NickName</div>
+                            <div>Score</div>
+                            <div>icon</div>
+                        </div>
+                        <div class="ranking-row">
+                            <div>8</div>
+                            <div>
+                                <img class="rank-profile-img" src="/resources/images/user.png">
+                            </div>
+                            <div>NickName</div>
+                            <div>Score</div>
+                            <div>icon</div>
+                        </div>
+                    </div>
                 </div>
-                <div class="ranking-table-area"> <!-- 커뮤니티 활동 -->
-                    <table id="community-ranking">
-                        
-                    </table>
+
+                <div class="ranking-table-area"> <!--커뮤니티 활동-->
+                    <div class="my-rank-area">
+                        <p>12308</p>
+                        <p>rank : 1</p>
+                    </div>
+                    <div class="you">You</div>
+                    <div class="ranking-table" id="communityRanking">
+                        <div class="ranking-title">
+                            활동 랭킹
+                        </div>
+                        <div class="top3-area">
+                            <div>
+                                <img class="top3-border-img" src="/resources/images/ranking/top2.png">
+                                <img class="top3-profile-img top2-border" src="/resources/images/user.png">
+                                <div class="top3-info-area top2-font">
+                                    <div>2ed NickName</div>
+                                    <div>Score icon</div>
+                                </div>
+                            </div>
+                            <div>
+                                <img class="top3-border-img" src="/resources/images/ranking/top1.png">
+                                <img class="top3-profile-img top1-border" src="/resources/images/user.png">
+                                <div class="top3-info-area top1-font">
+                                    <div>1st NickName</div>
+                                    <div>Score icon</div>
+                                </div>
+                            </div>
+                            <div>
+                                <img class="top3-border-img" src="/resources/images/ranking/top3.png">
+                                <img class="top3-profile-img top3-border" src="/resources/images/user.png">
+                                <div class="top3-info-area top3-font">
+                                    <div>3rd NickName</div>
+                                    <div>Score icon</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ranking-row">
+                            <div>4</div>
+                            <div>
+                                <img class="rank-profile-img" src="/resources/images/user.png">
+                            </div>
+                            <div>NickName</div>
+                            <div>Score</div>
+                            <div>icon</div>
+                        </div>
+                        <div class="ranking-row">
+                            <div>5</div>
+                            <div>
+                                <img class="rank-profile-img" src="/resources/images/user.png">
+                            </div>
+                            <div>NickName</div>
+                            <div>Score</div>
+                            <div>icon</div>
+                        </div>
+                        <div class="ranking-row">
+                            <div>6</div>
+                            <div>
+                                <img class="rank-profile-img" src="/resources/images/user.png">
+                            </div>
+                            <div>NickName</div>
+                            <div>Score</div>
+                            <div>icon</div>
+                        </div>
+                        <div class="ranking-row">
+                            <div>7</div>
+                            <div>
+                                <img class="rank-profile-img" src="/resources/images/user.png">
+                            </div>
+                            <div>NickName</div>
+                            <div>Score</div>
+                            <div>icon</div>
+                        </div>
+                        <div class="ranking-row">
+                            <div>8</div>
+                            <div>
+                                <img class="rank-profile-img" src="/resources/images/user.png">
+                            </div>
+                            <div>NickName</div>
+                            <div>Score</div>
+                            <div>icon</div>
+                        </div>
+                    </div>
                 </div>
 
             </div>
