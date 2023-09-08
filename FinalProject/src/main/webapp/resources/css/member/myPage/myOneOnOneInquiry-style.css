@@ -41,6 +41,7 @@
 th, td{
     border-bottom: 1px solid #ddd;
     white-space: nowrap;
+    height: 45px;
 }
 
 .theadColor{
@@ -57,3 +58,37 @@ th, td{
     color: #50cbe0;
     font-weight: bold;
 }
+
+/* 문의글 작성하기 버튼 영역 */
+#main-content-area > div:first-of-type{
+    display: flex;
+    justify-content: end;
+}
+
+.inquiryBtn{
+    border: none;
+    border-radius: 5px;
+
+    width: 130px;
+    height: 30px;
+
+    font-size: 15px;
+
+    margin-bottom: 10px;
+
+    transition-duration: 0.2s;
+
+    cursor: pointer;
+}
+
+.inquiryBtnColor1{
+    background-color: white;
+    color: #99E1ED;
+    border: 1px solid #99E1ED;
+}
+
+.inquiryBtnColor1:hover{
+    background-color: #99E1ED;
+    color: white;
+}
+
