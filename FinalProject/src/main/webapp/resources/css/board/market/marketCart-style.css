@@ -31,8 +31,12 @@ a {
 }
 
 #main-container {
-    margin: 100px 250px;
-    min-width: 1200px;
+    margin-left: 250px;
+    margin-right: 250px;
+    margin-bottom: 150px;
+    min-width: 1200px; 
+    /* margin: 100px 250px;
+    min-width: 1200px; */
 }
 
 
