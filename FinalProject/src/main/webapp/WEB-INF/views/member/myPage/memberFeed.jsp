@@ -10,6 +10,8 @@
 <%-- memberFeed-style.css 연결 --%>
 <link rel="stylesheet" href="../resources/css/member/myPage/memberFeed-style.css">
 
+<link rel="stylesheet" href="css/animations.css">
+
 </head>
 <body">
 
@@ -45,7 +47,10 @@
                     </div>
                 </div>
 
-                <div id="CalendarArea">
+            </div>
+
+
+            <div id="CalendarArea">
                     <table class="Calendar">
                         <thead>
                             <tr>
@@ -74,9 +79,12 @@
                     <i class="fa-solid fa-circle Circle"></i>
                 </div>
 
-            </div>
-
         </div>
+
+
+        <div class="ballon floating">
+            닉네임 님의 득근 캘린더를 확인해 보세요! 🎽👟
+        </div
 
         <!-- 획득한 뱃지 영역 -->        
         <div id="member-badge-area">
@@ -302,9 +310,9 @@
 
     <!-- footer include -->
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
-
+<%-- 
     <!-- todoList.js 연결 -->
-	<script src="../resources/js/TodoList/todoList.js"></script>
+	<script src="../resources/js/TodoList/todoList.js"></script> --%>
 
     <!-- memberFeed.js 연결 -->
 	<script src="../resources/js/member/myPage/memberFeed.js"></script>
