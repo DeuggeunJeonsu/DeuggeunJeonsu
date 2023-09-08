@@ -64,8 +64,6 @@
         <br>
       
       <div>
-      <textarea cols="50" rows="10"  placeholder="기타 소중한 의견을 입력해주세요.(1000자 이내)" 
-    style="padding: 10px 8px;border: 1px solid : #eee;"></textarea>
         </div> 
       
       <div style="font-weight : bold;">
@@ -83,9 +81,9 @@
        <br>
                 
       <div>
-     <button type="button"style="border:1px solid #6d26a4;
+     <button type="button"style="border:1px solid rgba(52, 196, 219, 0.5);
      border-radius:20px;width:90px;height:36px;
-     background:#6d26a4 ; color:white;font-size:16px">확인</button>
+     background:rgba(52, 196, 219, 0.5) ; color:white;font-size:16px">확인</button>
     
         <button type="button" style="border : 1px solid rgba(61,69,75,.16);  border-radius:20px ;  width:90px ; height:36px ;
     background-color: #eee ; color : 000; font-size:16px">취소</button>
@@ -93,6 +91,7 @@
           </center>
 
          <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
+
 
         </body>
         </html>
