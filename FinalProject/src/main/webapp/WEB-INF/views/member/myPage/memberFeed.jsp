@@ -37,54 +37,117 @@
                 </div>
 
                 <div>
-                    <div class="followInfoArea followerArea">
-                        <div>팔로워</div>
+                    <div class="followInfoArea followerListBtn" >
+                        <div onclick="toggleFollowList()">팔로워</div>
                         <div>340</div>
                     </div>
-                    <div class="followInfoArea followingArea">
-                        <div>팔로잉</div>
+                    <div class="followInfoArea followingListBtn">
+                        <div onclick="toggleFollowList()">팔로잉</div>
                         <div>290</div>
                     </div>
                 </div>
 
             </div>
 
-
+            <%-- 득근 캘린더 --%>
             <div id="CalendarArea">
-                    <table class="Calendar">
-                        <thead>
-                            <tr>
-                                <td onClick="prevCalendar();" class="calenderBtn">&#60;</td>
-                                <td colspan="5">
-                                    <span id="calYear"></span>년
-                                    <span id="calMonth"></span>월
-                                </td>
-                                <td onClick="nextCalendar();" class="calenderBtn">&#62;</td>
-                            </tr>
-                            <tr>
-                                <td>일</td>
-                                <td>월</td>
-                                <td>화</td>
-                                <td>수</td>
-                                <td>목</td>
-                                <td>금</td>
-                                <td>토</td>
-                            </tr>
-                        </thead>
-            
-                        <tbody>
-                        </tbody>
-                    </table>
-                    <i class="fa-solid fa-caret-up triangle"></i>
-                    <i class="fa-solid fa-circle Circle"></i>
-                </div>
-
+                <table class="Calendar">
+                    <thead>
+                        <tr>
+                            <td onClick="prevCalendar();" class="calenderBtn">&#60;</td>
+                            <td colspan="5">
+                                <span id="calYear"></span>년
+                                <span id="calMonth"></span>월
+                            </td>
+                            <td onClick="nextCalendar();" class="calenderBtn">&#62;</td>
+                        </tr>
+                        <tr>
+                            <td>일</td>
+                            <td>월</td>
+                            <td>화</td>
+                            <td>수</td>
+                            <td>목</td>
+                            <td>금</td>
+                            <td>토</td>
+                        </tr>
+                    </thead>
+        
+                    <tbody>
+                    </tbody>
+                </table>
+                <i class="fa-solid fa-caret-up triangle"></i>
+                <i class="fa-solid fa-circle Circle"></i>
+            </div>
         </div>
 
-
+        <%-- 득근 캘린더 말풍선 --%>
         <div class="ballon floating">
             닉네임 님의 득근 캘린더를 확인해 보세요! 🎽👟
-        </div
+        </div>
+
+        <%-- 피드 주인의 팔로우 리스트 --%>
+        <div class="follow-list-area" id="followListArea" style="display:none;">
+            <div class="follow-list">
+                <a href="#">
+                    <div class="followProfileImg">
+                        <img src="../../../../resources/images/user.png">
+                    </div>
+                </a>
+                <a href="#">
+                    <div class="followNickname">
+                        닉네임
+                    </div>
+                </a>
+            </div>
+            <div class="follow-list">
+                <a href="#">
+                    <div class="followProfileImg">
+                        <img src="../../../../resources/images/user.png">
+                    </div>
+                </a>
+                <a href="#">
+                    <div class="followNickname">
+                        닉네임
+                    </div>
+                </a>
+            </div>
+            <div class="follow-list">
+                <a href="#">
+                    <div class="followProfileImg">
+                        <img src="../../../../resources/images/user.png">
+                    </div>
+                </a>
+                <a href="#">
+                    <div class="followNickname">
+                        닉네임
+                    </div>
+                </a>
+            </div>
+            <div class="follow-list">
+                <a href="#">
+                    <div class="followProfileImg">
+                        <img src="../../../../resources/images/user.png">
+                    </div>
+                </a>
+                <a href="#">
+                    <div class="followNickname">
+                        닉네임
+                    </div>
+                </a>
+            </div>
+            <div class="follow-list">
+                <a href="#">
+                    <div class="followProfileImg">
+                        <img src="../../../../resources/images/user.png">
+                    </div>
+                </a>
+                <a href="#">
+                    <div class="followNickname">
+                        닉네임
+                    </div>
+                </a>
+            </div>
+        </div>
 
         <!-- 획득한 뱃지 영역 -->        
         <div id="member-badge-area">
