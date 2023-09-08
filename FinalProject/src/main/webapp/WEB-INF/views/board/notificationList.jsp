@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>공지사항 게시판</title>
 
-    <link rel="stylesheet" href="/resources/css/board/notification.css">
+    <link rel="stylesheet" href="/resources/css/board/notificationList.css">
 </head>
 
 <body>
@@ -93,8 +93,8 @@
 
                 </div>
 
-                <div class="Jbtn">
-                    <a href="/notificationWrite"><button type="button" class="Jwrite">글쓰기</button></a>
+                <div class="board-Jbtn">
+                    <a href="/notificationWrite"><button type="button" id="writeBtn">글쓰기</button></a>
                 </div>
 
                 <div class="pagination-area">

@@ -37,12 +37,21 @@
                 <div class="ncProfile">
 
                     <div id="ncProfile2">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcmsIcVNgkjQ_BAsCA53PKy_iBXOaetVFJBQ&usqp=CAU" id="adminProfile">
+                        
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcmsIcVNgkjQ_BAsCA53PKy_iBXOaetVFJBQ&usqp=CAU" id="adminProfile" >
                     </div>
 
                     <div id="ncName">관리자</div>
 
-                    <div id="ncCheckbox"><input type="checkbox"> 중요 공지사항</div>
+                    <div id="ncCheckbox">
+                    
+                        <div id="ncBignews">
+                            <input type="checkbox"> 중요 공지사항
+                        </div>
+
+                    <!-- <label for="ncPic" > --><button class="custom-btn nclabel"><span id="ncSpan">사진선택</span></button><!-- </label> -->
+                    <input type="file" id="ncPic" accept="image/*">
+                    </div>
 
                 </div>
                 <textarea class="ncContent" maxlength="1999" placeholder="내용을 입력해주세요."></textarea>

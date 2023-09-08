@@ -1,5 +1,5 @@
 *{ box-sizing: border-box;
-    /*  border: 1px solid black;   */
+   /* border: 1px solid black; */  
     
 }
 a{
@@ -23,13 +23,14 @@ a:hover{
     margin: auto;
     display: flex;
     justify-content: center;
-    min-width: 1000px;
+    min-width: 700px;
 }
 
 .Jcenter{
     width: 80%;
     height: 100%;
-    min-width: 1000px;
+    min-width: 700px;
+    min-height: 624.3px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -107,7 +108,7 @@ main{
 
 .pagination-area{
     width: 100%;
-    min-width: 2000px;
+    min-width: 1000px;
     display: flex;
     flex-direction: column;
 }
@@ -131,21 +132,29 @@ main{
     height: 100%;
 }
 
-.Jwrite{
-    width: 70px;
-    height: 30px;
-    margin-top: 15px;
-    background-color: #99E1ED;
-    color: white;
-    font-weight: bold;
-    border-radius: 2px;
-    border:none;
-    margin-right: 20px;
+/* 글쓰기 버튼 영역 */
+.write-btn-area{
+    width: 100%;
+    display: flex;
+    justify-content: end;
 }
-
-
-.Jwrite:hover{
+#writeBtn{
+    padding: 5px 10px;
+    margin: 5px;
+    background-color: #99E1ED;
+    border: 1px solid #99E1ED;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
     cursor: pointer;
+}
+#writeBtn:hover{
+    background-color: inherit;
+    color: #99E1ED;
+}
+#writeBtn:active{
+    transform: scale(0.90);
 }
 
 #Jpoint{
@@ -168,7 +177,7 @@ tbody > tr:nth-child(1) > td:nth-child(1){
     width: 100%;
 }
 
-.Jbtn{
+.board-Jbtn{
     width: 1000px;
     display: flex;
     justify-content: right;

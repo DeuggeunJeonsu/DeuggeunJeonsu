@@ -54,10 +54,14 @@
 
 
 
-				<div class="ncContent2">
-					<i class="fa-solid fa-heart" id="Jheart"></i>
-					<div id="likeCount">99</div>
-				</div>
+			 <!-- 좋아요 영역 -->
+        <div class="board-like">
+            <div class="like-cnt unchecked" id="like-cnt">
+                <i class="like-btn fa-solid fa-heart fa-2x"></i>
+            </div>
+        </div>
+
+        <div class="likeCount">99</div>
 
 				<div class="ncBtn">
 					<div class="listbtn1">
@@ -76,7 +80,7 @@
 		</div>
 	</main>
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
-	<script src="notificationWrite.js"></script>
+	<script src="/resources/js/board/notification/notificationDetail.js"></script>
 </body>
 
 </html>
