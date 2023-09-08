@@ -3,6 +3,12 @@
       margin: 0;
       
 }
+
+main{
+    background-color: #F8F9FA !important;
+}
+
+
 a{
     text-decoration: none;
     color: black;
