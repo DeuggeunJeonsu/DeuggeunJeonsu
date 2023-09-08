@@ -17,6 +17,7 @@ a {
 #main-container {
     margin: 100px 250px;
     min-width: 1200px;
+    max-width: 1200px;
     /* text-align: center; */
 }
 form{
@@ -31,7 +32,7 @@ form{
 
 table{
     border-top: 1px solid #e0e0e0;
-    width: 700px;
+    width: 850px;
 }
 th{
     padding: 10px 20px;
@@ -83,6 +84,8 @@ textarea{
 }
 
 .notice {
+    /* width: 700px; */
+    width: 850px;
     background: #fff;
     border: 1px solid #e5e5e5;
     box-sizing: border-box;
@@ -108,12 +111,10 @@ textarea{
 }
 
 .fixed-con{
-
     position: fixed;
-    right: 20%;
+    left : 62%;
     top: 20%;
-
-}
+} 
 
 .box {
     width: 310px;
