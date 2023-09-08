@@ -32,7 +32,11 @@
             </div>
 
             <div id="main-content-area">
-
+                <div>
+                    <a href="/QnAWrite">
+                        <button class="inquiryBtn inquiryBtnColor1">문의글 작성하기</button>
+                    </a>
+                </div>
                 <div>
                     <table id="inquiry-list">
                         <thead class="theadColor">
@@ -52,7 +56,55 @@
                                 <td>답변 대기 중</td>
                             </tr>
                             <tr>
-                                <td>10</td>
+                                <td>9</td>
+                                <td>근육이 안 생겨요</td>
+                                <td>2023.01.09</td>
+                                <td>답변 대기 중</td>
+                            </tr>
+                            <tr>
+                                <td>8</td>
+                                <td>근육이 안 생겨요</td>
+                                <td>2023.01.09</td>
+                                <td class="answer">답변 완료</td>
+                            </tr>
+                            <tr>
+                                <td>7</td>
+                                <td>근육이 안 생겨요</td>
+                                <td>2023.01.09</td>
+                                <td class="answer">답변 완료</td>
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td>근육이 안 생겨요</td>
+                                <td>2023.01.09</td>
+                                <td class="answer">답변 완료</td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>근육이 안 생겨요</td>
+                                <td>2023.01.09</td>
+                                <td class="answer">답변 완료</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>근육이 안 생겨요</td>
+                                <td>2023.01.09</td>
+                                <td class="answer">답변 완료</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>근육이 안 생겨요</td>
+                                <td>2023.01.09</td>
+                                <td class="answer">답변 완료</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>근육이 안 생겨요</td>
+                                <td>2023.01.09</td>
+                                <td class="answer">답변 완료</td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
                                 <td>근육이 안 생겨요</td>
                                 <td>2023.01.09</td>
                                 <td class="answer">답변 완료</td>

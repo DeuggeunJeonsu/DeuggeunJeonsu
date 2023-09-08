@@ -10,7 +10,7 @@
 <body>
 
 	<jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
-	
+	<a href="/survey"><button class="Jbtn"><span>운동 루틴 추천받기!</span></button></a>
 	<section id="main-container">
 		<div class="video-container">
 			<!--메인 동영상 재생  -->
