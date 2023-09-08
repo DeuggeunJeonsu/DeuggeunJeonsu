@@ -30,6 +30,7 @@ routineBtn.addEventListener("click", function () {
         const div1 = document.createElement("div");
         // div1.setAttribute("class","routine"); 
         div1.classList.add("routine")
+        div1.setAttribute("draggable", "true")
     
         // 사진 영역(큰 이모)
         const div2 = document.createElement("div");
@@ -101,57 +102,11 @@ routineBtn.addEventListener("click", function () {
         
         routineAdd.append(div1);
 
-        //---------------------------------
-        // 루틴 추가 버튼
-        // if(document.querySelectorAll(".routine").length == 4 && document.querySelectorAll(".routine").length > 5){
-
-        //     // 루틴 추가 버튼
-        //     // 부모 요소 선택
-        //     const routineAddBtnArea = document.querySelector(".routine-add-btn-area");
-    
-        //     // 버튼 요소 생성
-        //     const buttonElement = document.createElement("button");
-        //     buttonElement.setAttribute("id", "routineBtn");
-        //     buttonElement.setAttribute("type", "button");
-    
-        //     // 버튼 내용 설정
-        //     buttonElement.textContent = "Routine";
-    
-        //     // Font Awesome 아이콘 요소 생성
-        //     const iconElement = document.createElement("i");
-        //     iconElement.setAttribute("class", "fa-solid fa-circle-plus");
-    
-        //     // 버튼에 아이콘 요소 추가
-        //     buttonElement.appendChild(iconElement);
-    
-        //     // 버튼을 부모 요소에 추가
-        //     routineAddBtnArea.appendChild(buttonElement);
-        //     document.querySelector(".middle-write").append(routineAddBtnArea)
-        // }
-
-       
-
-        
     }
     
 })
-
-
-// const cancleBtns = document.querySelectorAll(".cancle");
-// // 삭제 버튼 눌렀을 때 해당 루틴 삭제하기 
-// function cancleRoutine(e){
-    
-//     // for (let button of cancleBtns) {
-//     //     console.log(cancleBtns.length)
-//     //     button.addEventListener("click", (e) => {
-       
-//     //         e.target.parentElement.parentElement.remove();
-           
-//     //     });
-//     // }   
-
-//     e.target.parentElement.parentElement.remove();
-// }
+// ------------------------------------------------
+// 루틴 삭제 버튼
 
 // 취소 버튼 이벤트 핸들러를 등록합니다.
 document.addEventListener("click", function (e) {
@@ -165,7 +120,58 @@ function cancleRoutine(e) {
     e.target.parentElement.parentElement.remove();
 }
 
+//-------------------------------------------------
 
+// 루틴 드래그로 위치 바꾸기
+const routineArea =$('.routine-area');
+(()=>{
+    // const $ = (select) => document.querySelectorAll("select");
+    const routines = document.querySelectorAll('.routine');
+
+    for (const el of routines) {
+        // 드래그가 시작되었을 때 dragging 클래스 추가
+        el.addEventListener('dragstart', () => {
+            el.classList.add('dragging');
+        });
+    
+        // 드래그가 끝났을 때 dragging 클래스 제거
+        el.addEventListener('dragend', () => {
+            el.classList.remove('dragging');
+        });
+        el.addEventListener('dragover', e => {
+            e.preventDefault()
+            const afterElement = getDragAfterElement(el, e.clientY);
+            const draggable = document.querySelector('.dragging')
+            // container.appendChild(draggable)
+            el.insertBefore(draggable, afterElement)
+        })
+    };
+
+    function getDragAfterElement( routineArea, y) {
+        
+        const draggableElements = [...routineArea.querySelectorAll('.routine:not(.dragging)')]
+       
+        return draggableElements.reduce((closest, child) => {
+        const box = child.getBoundingClientRect() //해당 엘리먼트에 top값, height값 담겨져 있는 메소드를 호출해 box변수에 할당
+        const offset = y - box.top - box.height / 2 //수직 좌표 - top값 - height값 / 2의 연산을 통해서 offset변수에 할당
+            if (offset < 0 && offset > closest.offset) { // (예외 처리) 0 이하 와, 음의 무한대 사이에 조건
+                return { offset: offset, element: child } // Element를 리턴
+            } else {
+                return closest
+            }
+        }, { offset: Number.NEGATIVE_INFINITY }).element 
+        
+        
+    };
+
+    
+            
+})();
+    
+    
+    
+    
+    
 
 
 
@@ -179,6 +185,7 @@ const preview = document.getElementsByClassName("preview");
 const input = document.getElementsByClassName("inputImage");
 // X버튼 5개 
 const deleteImage = document.getElementsByClassName("delete-image");
+
 
 
 

@@ -70,7 +70,7 @@
                     </div>
                     
                     <div class="routine-add">
-                        <div class="routine">
+                        <div class="routine" draggale="true">
                             <div class="boardImg">
                                 <label for="img0">
                                     <img class="preview" src="">
