@@ -91,6 +91,8 @@ routineBtn.addEventListener("click", function () {
         //routine 취소 버튼 영역 안에 넣을 영역
         const button = document.createElement("button");
         button.setAttribute("type","button");
+        button.classList.add("cancle");
+        button.setAttribute("onclick","cancleRoutine()")
         button.innerHTML="&times;";
         div4.append(button);
     
@@ -100,6 +102,7 @@ routineBtn.addEventListener("click", function () {
         routineAdd.append(div1);
 
         //---------------------------------
+        // 루틴 추가 버튼
         if(document.querySelectorAll(".routine").length == 4 && document.querySelectorAll(".routine").length > 5){
 
             //  루틴 추가 버튼
@@ -134,15 +137,49 @@ routineBtn.addEventListener("click", function () {
 })
 
 
-// 삭제 버튼 눌렀을 때 해당 루틴 삭제하게 하기 
-const routines = document.querySelectorAll(".routines");
-routines.forEach((routine) => {
-    const cancleBtn = routine.lastChild
-    cancleBtn.addEventListener("click", function(){
-        routine.remove();
+const cancleBtns = document.getElementsByClassName("cancle");
+// 삭제 버튼 눌렀을 때 해당 루틴 삭제하기 
+function cancleRoutine(){
+    
+    for (const button of cancleBtns) {
+        console.log(cancleBtns.length)
+        button.addEventListener("click", (e) => {
+        e.target.parentElement.parentElement.remove();
+      });
+    }
 
-    });
-});
+    // cancle이 4개일 경우 루틴 추가 버튼 띄우기
+    if(cancleBtns.length == 4){
+
+        //  루틴 추가 버튼
+        // 부모 요소 선택
+        const routineAddBtnArea = document.querySelector(".routine-add-btn-area");
+
+        // 버튼 요소 생성
+        const buttonElement = document.createElement("button");
+        buttonElement.setAttribute("id", "routineBtn");
+        buttonElement.setAttribute("type", "button");
+
+        // 버튼 내용 설정
+        buttonElement.textContent = "Routine";
+
+        // Font Awesome 아이콘 요소 생성
+        const iconElement = document.createElement("i");
+        iconElement.setAttribute("class", "fa-solid fa-circle-plus");
+
+        // 버튼에 아이콘 요소 추가
+        buttonElement.appendChild(iconElement);
+
+        // 버튼을 부모 요소에 추가
+        routineAddBtnArea.appendChild(buttonElement);
+        document.querySelector(".middle-write").append(routineAddBtnArea)
+
+    }
+}
+
+
+// 
+
 
 
 
