@@ -9,6 +9,8 @@
     height: auto;
 }
 
+/* --------------------------------------------------------------------------------------------- */
+
 /* 회원 정보 영역 */
 #member-info-area{
     height: 250px;
@@ -256,11 +258,91 @@
 
 .followInfoArea {
     display: flex;
+    
+    cursor: pointer;
 }
 
 .followInfoArea > div {
     margin: 0 10px;
 }
+
+/* --------------------------------------------------------------------------------------------- */
+
+/* 팔로잉/팔로워 목록 조회 영역 */
+.follow-list-area{
+    position: absolute;
+    top: 420px;
+    left: 700px;
+
+    overflow-y: scroll;
+
+    width: 300px;
+    height: 400px;
+
+    box-shadow: 0px 0px 5px #ddd;
+    border-radius: 5px;
+    background-color: white;
+}
+
+/* 스크롤바 설정*/
+.follow-list-area::-webkit-scrollbar{
+    width: 6px;
+}
+
+/* 스크롤바 막대 설정*/
+.follow-list-area::-webkit-scrollbar-thumb{
+    height: 17%;
+    background-color: #d1edf1;
+    border-radius: 5px;  
+}
+
+/* 스크롤바 뒷 배경 설정*/
+.follow-list-area::-webkit-scrollbar-track{
+    background-color: white;
+    border-radius: 5px;
+}
+
+.follow-list{
+    display: flex;
+    align-items: center;
+
+    height: 70px;
+    padding: 0 55px;
+    margin: 10px 0;
+}
+
+.follow-list a{
+    text-decoration: none;
+    color: #797979;
+}
+
+.followProfileImg{
+    width: 53px;
+    height: 53px;
+
+    border: 2px solid #ddd;
+    border-radius: 50%;
+}
+
+.followProfileImg > img{
+    width: 50px;
+    height: 50px;
+
+    border-radius: 50%;
+}
+
+.followNickname{
+    font-size: 15px;
+    margin-left: 30px;
+}
+
+/* 팔로우 리스트 클릭 시 효과 */
+.clickList{
+    font-weight: bold;
+    color: #99E1ED;
+}
+
+/* --------------------------------------------------------------------------------------------- */
 
 /* 획득한 뱃지 영역 */
 #member-badge-area{
