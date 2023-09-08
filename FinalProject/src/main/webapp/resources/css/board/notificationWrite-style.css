@@ -1,5 +1,5 @@
 *{ box-sizing: border-box;
- /* border: 1px solid black; */
+   border: 1px solid black;
 }
 
 .Jheader{
@@ -136,11 +136,19 @@ td{
     height: 50px;
     display: flex;
     align-items: center;
+    justify-content: space-between;
     border-left: 2.5px solid gray;
 }
 
 #ncCheckbox > input {
     margin-left: 20px;
+}
+
+#ncBignews{
+    width: 100px;
+    height: 30px;
+    display: flex;
+    align-items: center;
 }
 
 .ncContent2{
@@ -184,5 +192,120 @@ td{
     cursor: pointer;
 }
 
+#ncPic{
+    display: none;
+}
+
+.nclabel{
+    margin-right: 100px;
+    border: none;
+
+}
 
 
+/* 사진 선택 css */
+/* 3 */
+.nclabel {
+    background: rgb(0,172,238);
+  background: linear-gradient(0deg, rgba(0,172,238,1) 0%, rgba(2,126,251,1) 100%);
+    width: 130px;
+    height: 40px;
+    line-height: 42px;
+    padding: 0;
+    border: none;
+    
+  }
+  .nclabel span {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+  .nclabel:before,
+  .nclabel:after {
+    position: absolute;
+    content: "";
+    right: 0;
+    top: 0;
+     background: rgba(2,126,251,1);
+    transition: all 0.3s ease;
+  }
+  .nclabel:before {
+    height: 0%;
+    width: 2px;
+  }
+  .nclabel:after {
+    width: 0%;
+    height: 2px;
+  }
+  .nclabel:hover{
+     background: transparent;
+    box-shadow: none;
+  }
+  .nclabel:hover:before {
+    height: 100%;
+  }
+  .nclabel:hover:after {
+    width: 100%;
+  }
+  .nclabel span:hover{
+     color: rgba(2,126,251,1);
+     
+  }
+  .nclabel span:before,
+  .nclabel span:after {
+    position: absolute;
+    content: "";
+    left: 0;
+    bottom: 0;
+     background: rgba(2,126,251,1);
+    transition: all 0.3s ease;
+    border: none;
+  }
+  .nclabel span:before {
+    width: 2px;
+    height: 0%;
+  }
+  .nclabel span:after {
+    width: 0%;
+    height: 2px;
+  }
+  .nclabel span:hover:before {
+    height: 100%;
+    
+  }
+  .nclabel span:hover:after {
+    width: 100%;
+  }
+
+
+  .custom-btn {
+    width: 130px;
+    height: 40px; 
+    color: #fff;
+    border-radius: 5px;
+     /* padding: 10px 25px; */ 
+    font-family: 'Lato', sans-serif;
+    font-weight: 500;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    display: inline-block;
+     box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+     7px 7px 20px 0px rgba(0,0,0,.1),
+     4px 4px 5px 0px rgba(0,0,0,.1);
+    outline: none;
+  }
+
+  #ncSpan{
+    border: none;
+    text-align: center;
+    background: rgba(2,126,251,1);
+    border-top-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+  }
+
+  #ncSpan:hover{
+    background: white;
+  }
