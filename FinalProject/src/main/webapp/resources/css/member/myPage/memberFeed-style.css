@@ -11,8 +11,7 @@
 
 /* 회원 정보 영역 */
 #member-info-area{
-    height: 200px;
-
+    height: 250px;
     display: flex;
 }
 
@@ -43,7 +42,8 @@
     justify-content: space-between;
     align-items: center;
 
-    height: 50%;
+    height: 30%;
+    margin-top: 40px;
 
     font-size: 25px;
     font-weight: bold;
@@ -268,7 +268,7 @@
 }
 
 #member-badge-area > div:first-of-type{
-    margin-top: 30px;
+    margin-top: 45px;
     font-size: 18px;
 
     border-bottom: 2px solid #ddd;
@@ -447,31 +447,33 @@
 /* 달력 */
 #CalendarArea {
     background-color: white;
-    height: 300px;
-    min-width: 300px;
-    margin: 10px 0;
-    padding: 20px;
-    /* margin: 0 auto; */
+    height: 320px;
+    width: 320px;
+    margin-left: 120px;
+    padding: 18px 0;
     border-radius: 5px;
-    box-shadow: 0px 10px 20px 0px rgba(0,0,0,0.5);
-    max-width: 500px;
+    box-shadow: 0px 10px 10px 0px #ddd;
+    max-width: 320px;
+
+    position: relative;
+    bottom: 30px;
 }
 
-td {
+/* td {
     width: 50px;
     height: 50px;
-}
+} */
 
 .Calendar {
     text-align: center;
-    width: 90%;
-    height: 500px;
+    width: 180px;
+    height: 80px;
     margin: auto;
 }
 
 .Calendar>thead>tr:first-child>td {
     font-family: 'Questrial', sans-serif;
-    font-size: 1.7em;
+    font-size: 1.2em;
     font-weight: bold;
 }
 .Calendar>thead>tr:last-child>td:nth-child(1),  .Calendar>thead>tr:last-child>td:nth-child(7){
@@ -486,21 +488,22 @@ td {
 
 .Calendar>thead>tr:last-child>td {
     font-family: 'Questrial', sans-serif;
-    font-weight: 600;  
-    font-size: 1.5rem;   
+    font-weight: 600;
+    font-size: 1em;   
 }
 
 .Calendar>tbody>tr>td>p {
     font-family: 'Montserrat', sans-serif;
-    height: 35px;
-    width: 35px;
+    height: 30px;
+    width: 30px;
     border-radius: 45px;
     transition-duration: .2s;
     line-height: 35px;
     margin: 2.5px;
+    margin-bottom: 10px;
     display: block;
     text-align: center;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
 }        
 
 .futureDay {
@@ -547,3 +550,67 @@ td {
 .Circle{
     color: #ee4949;
 } 
+
+
+/* 캘린더 말풍선 */
+.ballon {
+    /* display: none; */
+    width: 292px;
+    height: 40px;
+
+    position: absolute;
+    left: 1136px;
+    bottom: 800px;
+    
+    background: #484848;
+    color: white;
+    border-radius: 5px;
+    padding: 12px 12.8px;
+}
+
+
+.ballon:after {
+    border-top: 10px solid #484848;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 0px solid transparent;
+    content: "";
+    position: absolute;
+    top: 40px;
+    left: 50px;
+}
+
+.floating{
+	animation-name: floating;
+	-webkit-animation-name: floating;
+
+	animation-duration: 1.5s;	
+	-webkit-animation-duration: 1.5s;
+
+	animation-iteration-count: infinite;
+	-webkit-animation-iteration-count: infinite;
+}
+
+@keyframes floating {
+	0% {
+		transform: translateY(0%);	
+	}
+	50% {
+		transform: translateY(8%);	
+	}	
+	100% {
+		transform: translateY(0%);
+	}			
+}
+
+@-webkit-keyframes floating {
+	0% {
+		-webkit-transform: translateY(0%);	
+	}
+	50% {
+		-webkit-transform: translateY(8%);	
+	}	
+	100% {
+		-webkit-transform: translateY(0%);
+	}			
+}
