@@ -1,17 +1,19 @@
 //운동타입 SelectBox
-const btn = document.querySelector('.btn-select');
 
+const btn = document.querySelector('.btn-select');
 const list = document.querySelector('.list-member');
-btn.addEventListener('click', () => {
-    btn.classList.toggle('on');
+
+// 버튼에 포커스 이벤트 리스너를 추가합니다.
+btn.addEventListener('focus', () => {
+    btn.classList.add('on');
 });
+
 list.addEventListener('click', (event) => {
     if (event.target.nodeName === "BUTTON") {
         btn.innerText = event.target.innerText;
         btn.classList.remove('on');
     }
 });
-
 
 //-------------------------------------------------------
 
@@ -27,19 +29,23 @@ routineBtn.addEventListener("click", function () {
         const routineAdd = document.querySelector(".routine-add"); 
     
         // routine 설명 영역(할머니)
-        const div1 = document.createElement("div");
+        const li = document.createElement("li");
         // div1.setAttribute("class","routine"); 
-        div1.classList.add("routine")
-        div1.setAttribute("draggable", "true")
+        li.classList.add("routine")
+        li.setAttribute("draggable", "true")
     
         // 사진 영역(큰 이모)
         const div2 = document.createElement("div");
         // div2.setAttribute("class", "boardImg");
         div2.classList.add("boardImg")
         
+        let inputId;
+        do {
+            inputId = "img" + getRandomInt(1, 5); // 1부터 5까지 랜덤한 숫자 생성
+        } while (document.getElementById(inputId));
+
         // 사진 영역에 들어갈 부분
         const lable = document.createElement("label");
-        const inputId = "img" + Date.now(); // 현재 시간을 이용한 난수 생성
         lable.setAttribute("for",inputId);
     
         // lable 안에 담을 사진 영역
@@ -76,10 +82,10 @@ routineBtn.addEventListener("click", function () {
         // 루틴 글 안 영역
         const input2 = document.createElement("input");
         input2.setAttribute("type","test");
-        input2.setAttribute("placeholder","운동명을 입력해주세요");
+        input2.setAttribute("placeholder","예) 스쿼트 20회 30세트");
        
         const textarea = document.createElement("textarea");
-        textarea.innerHTML="1.<br> 2.<br> 3.<br><br>꿀팁! ";
+        textarea.value= "1.\n2.\n3.\n\n꿀팁!";
     
         //루틴 글 작성 (작은 이모) 합체
         div3.append(input2, textarea); 
@@ -98,94 +104,215 @@ routineBtn.addEventListener("click", function () {
         div4.append(button);
     
         // 할머니에 합체 
-        div1.append(div2, div3, div4 );
+        li.append(div2, div3, div4 );
         
-        routineAdd.append(div1);
+        routineAdd.append(li);
 
     }
     
 })
+
+
+
+// 최소값(min)부터 최대값(max)까지의 랜덤한 정수를 생성하는 함수
+function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
 // ------------------------------------------------
 // 루틴 삭제 버튼
+
 
 // 취소 버튼 이벤트 핸들러를 등록합니다.
 document.addEventListener("click", function (e) {
     if (e.target.classList.contains("cancle")) {
-        cancleRoutine(e);
+        if(document.querySelectorAll(".routine").length >= 2){
+            cancleRoutine(e);
+        }else{
+            alert("1개 이상의 루틴을 입력해주세요👌");
+        }
     }
 });
-
+    
 // 취소 버튼 눌렀을 때 해당 루틴 삭제하기
 function cancleRoutine(e) {
     e.target.parentElement.parentElement.remove();
 }
 
+
+
 //-------------------------------------------------
 
 // 루틴 드래그로 위치 바꾸기
-const routineArea =$('.routine-area');
-(()=>{
-    // const $ = (select) => document.querySelectorAll("select");
-    const routines = document.querySelectorAll('.routine');
 
-    for (const el of routines) {
-        // 드래그가 시작되었을 때 dragging 클래스 추가
-        el.addEventListener('dragstart', () => {
-            el.classList.add('dragging');
-        });
-    
-        // 드래그가 끝났을 때 dragging 클래스 제거
-        el.addEventListener('dragend', () => {
-            el.classList.remove('dragging');
-        });
-        el.addEventListener('dragover', e => {
-            e.preventDefault()
-            const afterElement = getDragAfterElement(el, e.clientY);
-            const draggable = document.querySelector('.dragging')
-            // container.appendChild(draggable)
-            el.insertBefore(draggable, afterElement)
-        })
-    };
+const routineArea =document.querySelector(".routine-add")
 
-    function getDragAfterElement( routineArea, y) {
-        
-        const draggableElements = [...routineArea.querySelectorAll('.routine:not(.dragging)')]
-       
-        return draggableElements.reduce((closest, child) => {
-        const box = child.getBoundingClientRect() //해당 엘리먼트에 top값, height값 담겨져 있는 메소드를 호출해 box변수에 할당
-        const offset = y - box.top - box.height / 2 //수직 좌표 - top값 - height값 / 2의 연산을 통해서 offset변수에 할당
-            if (offset < 0 && offset > closest.offset) { // (예외 처리) 0 이하 와, 음의 무한대 사이에 조건
-                return { offset: offset, element: child } // Element를 리턴
-            } else {
-                return closest
-            }
-        }, { offset: Number.NEGATIVE_INFINITY }).element 
-        
-        
-    };
+let currentRoutineIndex = null;
+let currentRoutine = null;
+// 루틴이 두개 이상일 때
+if(document.querySelectorAll(".routine").length >= 2){
 
+    routineArea.addEventListener('dragstart', (e) => {
+        currentRoutine = e.target;
+        const listArr = [...currentRoutine.parentElement.children];
+        currentRoutineIndex = listArr.indexOf(currentRoutine);
+    });
     
-            
-})();
+    routineArea.addEventListener('dragover',(e)=>{
+        e.preventDefault();
+    });
     
+    routineArea.addEventListener('drop',(e)=>{
+        e.preventDefault();
     
+        const currentDropRoutine = e.target;
+        const listArr =[...currentRoutine.parentElement.children];
+        const dropRoutineIndex =  listArr.indexOf(currentDropRoutine);
+        
+        if(currentRoutineIndex< dropRoutineIndex){
+            currentDropRoutine.after(currentRoutine);
+        }else{
+            currentDropRoutine.before(currentRoutine);
+        }
+    });
+}
+
+//-------------------------------------------------------
+
+// form 태그 유효성 검사
+document.getElementById("boardWriteFrm").addEventListener("submit", e => {
+
+    // 각 input과 textArea 대한 유효성 검사 
     
+    // 정규식 : 특수문자를 포함하지 않는 정규식
+    const reqExp1 = /^[a-zA-Z0-9가-힣\#]*$/;
+
+    // 제목을 입력하지 않았을 경우
+    const title = document.querySelector('[name="boardTitle"]');
+    if(title.value.trim().length == 0){
+        alert("제목을 입력해주세요❗");
+        title.value="";
+        title.focus();
+        e.preventDefault();
+        return;
+    }
+
+    //selectbox 선택이 되어 있지 않은 경우 
+    const selectBox = document.querySelector(".btn-select");
+    if(selectBox.innerHTML == '운동타입'){
+        alert("운동타입을 선택해주세요❗");
+        selectBox.focus();
+        e.preventDefault();
+        return;
+    }
+
+    // 루틴 설명이 공백인 경우 
+    const content = document.querySelector('[name="content"]');
+    if(content.value.trim().length == 0){
+        alert("루틴 설명을 입력해주세요😊");
+        content.value="";
+        content.focus();
+        e.preventDefault();
+        return;
+    }
+
+    // 루틴들 유효성 검사
     
-    
+    // 해당 루틴에 대한 제목 유효성 
+    // 자동완성 되게 만들기 ⭐
+    const reqExp2 = /^[가-힣a-zA-Z\s]{1,10} \d{1,2}회 \d{1,2}세트$/;
+
+    const routineName = document.getElementsByName("routineName");
+    for (let i = 0; i < routineName.length; i++) {
+        if (routineName[i].value.trim().length == 0 || !reqExp2.test(routineName[i].value)) {
+            alert("세부 운동을 입력해 주세요😊");
+            routineName[i].focus();
+            routineName[i].value = "회 세트"; 
+            e.preventDefault();
+            return;
+        } 
+    }
+    // 해당 루틴의 설명
+    const  routineContent= document.getElementsByName("routineContent");
+    const reqExp3 = /^1\. \n2\. \n3\. \n\n꿀팁!$/
+    for(let i = 0 ; i< routineContent.length; i++){
+        
+        if(routineContent[i].value.trim().length ==0 || reqExp3.test(routineContent[i].value)){
+            alert("세부 운동 내용을 입력해주세요😊");
+            routineContent[i].focus();
+            routineContent[i].value = "1.\n2.\n3.\n\n꿀팁!";
+            e.preventDefault();
+            return;
+        }
+
+    }
+
+
+
+    // 이미지 파일이 비어 있을 경우 
+    const inputImage = document.getElementsByClassName("inputImage");
+    for(let i = 0; i < inputImage.length; i++ ){
+        if(inputImage[i].value==""){
+            alert("이미지 첨부는 필수입니다.😊")
+            inputImage[i].focus();
+            e.preventDefault();
+            return;
+        }
+    }
+
+});
 
 
 
 
 //-------------------------------------------------------
 // 사진 미리보기 관련 요소 모두 얻어오기
+document.addEventListener("click", function (event) {
+    if(event.target.classList.contains("inputImage")){
 
-// img 5개 
-const preview = document.getElementsByClassName("preview");
-// file 5개
-const input = document.getElementsByClassName("inputImage");
-// X버튼 5개 
-const deleteImage = document.getElementsByClassName("delete-image");
-
+        // img 5개 
+        const preview = document.getElementsByClassName("preview");
+        // file 6개
+        const inputImage = document.getElementsByClassName("inputImage");
+        // X버튼 6개 
+        const deleteImage = document.getElementsByClassName("delete-image");
+        
+        for( let i=0; i<inputImage.length; i++){
+            
+            inputImage[i].addEventListener("change", e=>{
+                
+                const file = e.target.files[0];     
+                
+                if(file != undefined){
+        
+                    const reader = new FileReader();
+        
+                    reader.readAsDataURL(file);
+        
+                    reader.onload = e => {
+                        preview[i].setAttribute("src", e.target.result);
+                    }
+        
+                }else{
+                    preview[i].removeAttribute("src");
+                }
+        
+            });
+        
+            // 미리보기 삭제버튼(x버튼)
+            deleteImage[i].addEventListener("click", ()=>{
+                
+                if(preview[i].getAttribute("src")!= ""){
+        
+                    preview[i].removeAttribute("src");
+                    inputImage[i].value="";
+                }
+            })
+        
+        }
+    }
+})
 
 
 
