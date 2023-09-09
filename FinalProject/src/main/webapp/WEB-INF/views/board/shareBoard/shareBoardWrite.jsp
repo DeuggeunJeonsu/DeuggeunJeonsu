@@ -60,7 +60,7 @@
                                 </ul>
                             </article>
                         </div>
-                        <textarea placeholder="루틴 설명을 입력해주세요"></textarea>
+                        <textarea placeholder="루틴 설명을 입력해주세요" name="content"></textarea>
                     </div>
                 </div>
                 <div class="routine-area">
@@ -69,18 +69,18 @@
                         <hr>
                     </div>
                     
-                    <div class="routine-add">
-                        <div class="routine" draggale="true">
+                    <ul class="routine-add">
+                        <li class="routine" draggale="true">
                             <div class="boardImg">
-                                <label for="img0">
+                                <label for="img1">
                                     <img class="preview" src="">
                                 </label>
-                                <input type="file" name="images" class="inputImage" id="img0" accept="image/*">
+                                <input type="file" name="images" class="inputImage" id="img1" accept="image/*">
                                 <span class="delete-image">&times;</span>
                             </div>
                             <div class="routine-write-area">
-                                <input type="test" placeholder="운동명을 입력해주세요">
-<textarea>
+                                <input type="test" placeholder="예) 스쿼트 20회 30세트" name="routineName">
+<textarea name="routineContent">
 1. 
 2. 
 3. 
@@ -89,11 +89,11 @@
 </textarea>
                             </div>
                             <div class="routine-cancle"><button type="button" class="cancle">&times;</button></div>
-                        </div>
+                        </li>
 
 
 
-                    </div>
+                    </ul>
                 </div>
                 <div class="routine-add-btn-area">
                     <button id="routineBtn" type="button">
