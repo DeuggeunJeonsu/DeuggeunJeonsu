@@ -25,7 +25,7 @@
 								Let's work out<br> with your<br> <span style="color: #99E1ED ;">Deuggeun-Jeonsu</span>
 							</h1>
 							<div class="hello-BtnArea">
-								<button>My health Schedule</button>
+								<button class="schedule-scroll">My health Schedule</button>
 								<button>BMI 측정</button>
 							</div>
 						</div>

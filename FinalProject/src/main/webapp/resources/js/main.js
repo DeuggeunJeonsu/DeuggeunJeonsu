@@ -71,8 +71,16 @@ $(document).ready(function(){
         }
     }
     
+    $(".schedule-scroll").click(function() {
+    // .tdl-btnArea 요소의 위치(offset)를 가져옵니다.
+    var tdlBtnAreaPosition = $("#schedule-area").offset().top - 130;
+
+    // 화면을 tdlBtnArea의 위치로 스크롤합니다.
+    $("html, body").animate({ scrollTop: tdlBtnAreaPosition }, 600); // 500은 스크롤 애니메이션의 속도(ms)를 나타냅니다. 필요에 따라 조절하세요.
+});
 
 });
+
 
 
 
