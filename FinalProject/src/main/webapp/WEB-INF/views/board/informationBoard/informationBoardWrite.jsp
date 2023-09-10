@@ -13,6 +13,10 @@
 
     <%-- <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script> --%>
 
+    <link rel="apple-touch-icon" sizes="180x180" href="/resources/images/favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/resources/images/favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/resources/images/favicon_io/favicon-16x16.png">
+    <link rel="manifest" href="/resources/images/favicon_io/site.webmanifest">
 </head>
 <body>
 
@@ -46,10 +50,6 @@
                 </div>
 
                 <textarea name="summernote" id="summernote"></textarea>
-
-                <div id="charCount-area">
-                    <span id="charCount">0</span>/1000 자
-                </div>
 
                 <div id="button-area">
                     <button class="btnStyle" id="write-btn">작성</button>
