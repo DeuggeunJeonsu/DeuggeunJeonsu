@@ -68,7 +68,10 @@
                         <h3>Routine</h3>
                         <hr>
                     </div>
-                    
+                    <%-- 득근 캘린더 말풍선 --%>
+                    <div class="ballon floating">
+                        드래그를 통해 Routine 순서를 바꿀 수 있어요!👟
+                    </div>
                     <ul class="routine-add">
                         <li class="routine" draggale="true">
                             <div class="boardImg">
@@ -79,14 +82,8 @@
                                 <span class="delete-image">&times;</span>
                             </div>
                             <div class="routine-write-area">
-                                <input type="test" placeholder="예) 스쿼트 20회 30세트" name="routineName">
-<textarea name="routineContent">
-1. 
-2. 
-3. 
-
-꿀팁!
-</textarea>
+                                <input type="text" placeholder="예) 스쿼트 20회 30세트" name="routineName">
+                                <textarea name="routineContent">1.&#10;2.&#10;3.&#10;&#10;꿀팁!</textarea>
                             </div>
                             <div class="routine-cancle"><button type="button" class="cancle">&times;</button></div>
                         </li>

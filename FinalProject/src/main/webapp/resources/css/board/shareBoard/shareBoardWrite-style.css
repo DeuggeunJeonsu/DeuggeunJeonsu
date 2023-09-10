@@ -433,3 +433,67 @@ h2 {
     opacity: .5;
     border: 2px dashed rgb(6, 48, 81);
 }
+
+/* 캘린더 말풍선 */
+.ballon {
+    display: none;
+    width: 300px;
+    height: 40px;
+
+    /* position: absolute; */
+    /* left: 1136px; */
+    /* bottom: 800px; */
+    
+    background: #484848;
+    color: white;
+    border-radius: 5px;
+    padding: 12px 12.8px;
+    margin: 10px auto 20px;
+}
+
+
+.ballon:after {
+    border-top: 10px solid #484848;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 0px solid transparent;
+    content: "";
+    position: absolute;
+    top: 40px;
+    left: 50px;
+}
+
+.floating{
+	animation-name: floating;
+	-webkit-animation-name: floating;
+
+	animation-duration: 1.5s;	
+	-webkit-animation-duration: 1.5s;
+
+	animation-iteration-count: infinite;
+	-webkit-animation-iteration-count: infinite;
+}
+
+@keyframes floating {
+	0% {
+		transform: translateY(0%);	
+	}
+	50% {
+		transform: translateY(8%);	
+	}	
+	100% {
+		transform: translateY(0%);
+	}			
+}
+
+@-webkit-keyframes floating {
+	0% {
+		-webkit-transform: translateY(0%);	
+	}
+	50% {
+		-webkit-transform: translateY(8%);	
+	}	
+	100% {
+		-webkit-transform: translateY(0%);
+	}			
+}

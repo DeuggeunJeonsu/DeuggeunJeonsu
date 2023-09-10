@@ -81,12 +81,14 @@ routineBtn.addEventListener("click", function () {
         div3.classList.add("routine-write-area")
         // 루틴 글 안 영역
         const input2 = document.createElement("input");
-        input2.setAttribute("type","test");
+        input2.setAttribute("type","text");
         input2.setAttribute("placeholder","예) 스쿼트 20회 30세트");
+        input2.setAttribute("name","routineName")
        
         const textarea = document.createElement("textarea");
-        textarea.value= "1.\n2.\n3.\n\n꿀팁!";
-    
+        textarea.value= "1.\n2.\n3.\n\n꿀팁!"
+        textarea.setAttribute("name","routineContent");
+        
         //루틴 글 작성 (작은 이모) 합체
         div3.append(input2, textarea); 
     
@@ -108,6 +110,10 @@ routineBtn.addEventListener("click", function () {
         
         routineAdd.append(li);
 
+        if (document.querySelectorAll(".routine").length >= 2) {
+            const ballon = document.querySelector(".ballon");
+            ballon.style.display = "block"; 
+        }
     }
     
 })
@@ -151,7 +157,7 @@ const routineArea =document.querySelector(".routine-add")
 let currentRoutineIndex = null;
 let currentRoutine = null;
 // 루틴이 두개 이상일 때
-if(document.querySelectorAll(".routine").length >= 2){
+// if(document.querySelectorAll(".routine").length  >1){
 
     routineArea.addEventListener('dragstart', (e) => {
         currentRoutine = e.target;
@@ -160,6 +166,7 @@ if(document.querySelectorAll(".routine").length >= 2){
     });
     
     routineArea.addEventListener('dragover',(e)=>{
+       
         e.preventDefault();
     });
     
@@ -176,7 +183,7 @@ if(document.querySelectorAll(".routine").length >= 2){
             currentDropRoutine.before(currentRoutine);
         }
     });
-}
+// }
 
 //-------------------------------------------------------
 
@@ -234,18 +241,33 @@ document.getElementById("boardWriteFrm").addEventListener("submit", e => {
         } 
     }
     // 해당 루틴의 설명
-    const  routineContent= document.getElementsByName("routineContent");
-    const reqExp3 = /^1\. \n2\. \n3\. \n\n꿀팁!$/
-    for(let i = 0 ; i< routineContent.length; i++){
+    // const  routineContent= document.getElementsByName("routineContent");
+    // const reqExp3 = /^1\.\s2\.\s3\.\s\n\n꿀팁!$/;
+
+    // for(let i = 0 ; i< routineContent.length; i++){
         
-        if(routineContent[i].value.trim().length ==0 || reqExp3.test(routineContent[i].value)){
+    //     if(routineContent[i].value.trim().length ==0 || reqExp3.test(routineContent[i].value)){
+    //         alert("세부 운동 내용을 입력해주세요😊");
+    //         routineContent[i].focus();
+    //         routineContent[i].value = "1.\n2.\n3.\n\n꿀팁!"
+    //         e.preventDefault();
+    //         return;
+    //     }
+
+    // }
+
+    const routineContent = document.querySelectorAll('textarea[name="routineContent"]');
+    const reqExp3 = /^1\.\s2\.\s3\.\s\n\n꿀팁!$/;
+
+    for (let i = 0; i < routineContent.length; i++) {
+        const textareaValue = routineContent[i].value; // textarea의 내용을 가져옴
+        if (textareaValue.trim().length == 0 || reqExp3.test(textareaValue)) {
             alert("세부 운동 내용을 입력해주세요😊");
             routineContent[i].focus();
             routineContent[i].value = "1.\n2.\n3.\n\n꿀팁!";
             e.preventDefault();
             return;
         }
-
     }
 
 
@@ -314,5 +336,18 @@ document.addEventListener("click", function (event) {
     }
 })
 
+/* 캘린더 말풍선 */
+// $(window).scroll(function() {
+//     $('#animatedElement').each(function(){
+//     var imagePos = $(this).offset().top;
 
-
+//     var topOfWindow = $(window).scrollTop();
+//         if (imagePos < topOfWindow+400) {
+//             $(this).addClass("slideUp");
+//         }
+//     });
+// });
+if (document.querySelectorAll(".routine").length >= 2) {
+    const balloon = document.querySelector(".balloon");
+    balloon.style.display = "block"; 
+}
