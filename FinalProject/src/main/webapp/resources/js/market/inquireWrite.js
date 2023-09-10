@@ -47,30 +47,102 @@ $(document).ready(function () {
     });
 });
 
+// const inquireForm = document.getElementById("inquireForm");
+// const inquireTitle = document.getElementById("inquireTitle");
+// const inquireContent = document.getElementById("inquireContent");
+
+// inquireForm.addEventListener("submit", function (e) {
+
+//     // 제목에 특수문자만 있는지 검사
+//     const regEx = /^[~!@#$%^&*()_\-+=|<>,./?"''';]+$/;
+//     if (regEx.test(inquireTitle.value)) {
+//         alert("제목은 특수문자로만 구성될 수 없습니다.");
+//         inquireTitle.focus();
+//         inquireTitle.value = ""; // 제목 내용을 지우기
+//         e.preventDefault(); // 폼 제출 막기
+//     }
+//     // 내용 유효성 검사
+//     if (inquireContent.value.length === 0 || inquireContent.value.length > 500) {
+//         alert("내용을 입력하세요 (1자 이상, 500자 이내).");
+//         e.preventDefault(); // 폼 제출 막기
+//     }
+// });
+
+// inquireContent.addEventListener("focus", function () {
+//     if (inquireTitle.value.trim() === "") {
+//         alert("제목을 입력해주세요.");
+//         inquireTitle.focus(); // 제목 입력란으로 포커스 이동
+//     }
+// });
 const inquireForm = document.getElementById("inquireForm");
+const inquireType = document.getElementById("inquireType");
 const inquireTitle = document.getElementById("inquireTitle");
 const inquireContent = document.getElementById("inquireContent");
 
 inquireForm.addEventListener("submit", function (e) {
+    e.preventDefault(); // 폼 제출 막기
 
-    // 제목에 특수문자만 있는지 검사
-    const regEx = /^[~!@#$%^&*()_\-+=|<>,./?"''';]+$/;
-    if (regEx.test(inquireTitle.value)) {
-        alert("제목은 특수문자로만 구성될 수 없습니다.");
-        inquireTitle.focus();
-        inquireTitle.value = ""; // 제목 내용을 지우기
-        e.preventDefault(); // 폼 제출 막기
+    // 문의 유형 선택 여부 검사
+    if (inquireType.value === "none") {
+        Swal.fire({
+            icon: 'error',
+            title: '문의 유형 오류',
+            text: '문의 유형을 선택하세요.'
+        });
+        return;
     }
+
+    // 제목 유효성 검사
+    let titleValue = inquireTitle.value.trim();
+    if (titleValue === "") {
+        Swal.fire({
+            icon: 'error',
+            title: '제목 오류',
+            text: '제목을 입력하세요 (1자 이상, 10자 이내).'
+        }).then(function () {
+            inquireTitle.focus();
+            inquireTitle.value = ""; // 빈 문자열로 설정
+        });
+        return;
+    }
+
+    if (titleValue.length < 1 || titleValue.length > 10) {
+        Swal.fire({
+            icon: 'error',
+            title: '제목 오류',
+            text: '제목을 1자 이상, 10자 이내로 입력하세요.'
+        }).then(function () {
+            inquireTitle.focus();
+            inquireTitle.value = ""; // 빈 문자열로 설정
+        });
+        return;
+    }
+
     // 내용 유효성 검사
-    if (inquireContent.value.length === 0 || inquireContent.value.length > 500) {
-        alert("내용을 입력하세요 (1자 이상, 500자 이내).");
-        e.preventDefault(); // 폼 제출 막기
+    let contentValue = inquireContent.value.trim();
+    if (contentValue === "") {
+        Swal.fire({
+            icon: 'error',
+            title: '내용 오류',
+            text: '내용을 입력하세요.'
+        }).then(function () {
+            inquireContent.focus();
+        });
+        return;
     }
-});
 
-inquireContent.addEventListener("focus", function () {
-    if (inquireTitle.value.trim() === "") {
-        alert("제목을 입력해주세요.");
-        inquireTitle.focus(); // 제목 입력란으로 포커스 이동
+    // 글씨 500자 제한
+    if (contentValue.length > 500) {
+        Swal.fire({
+            icon: 'error',
+            title: '내용 오류',
+            text: '내용은 500자 이내로 입력하세요.'
+        }).then(function () {
+            inquireContent.focus();
+        });
+        return;
     }
+
+    // 유효성 검사 통과 시 폼 제출
+    inquireForm.submit();
 });

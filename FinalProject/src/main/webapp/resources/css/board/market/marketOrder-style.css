@@ -15,7 +15,9 @@ a {
 }
 
 #main-container {
-    margin: 100px 250px;
+    /* margin: 100px 250px; */
+    margin: 0 auto;
+    margin-bottom: 30px;
     min-width: 1200px;
     max-width: 1200px;
     /* text-align: center; */
@@ -110,10 +112,11 @@ textarea{
     min-width: 80px; 
 }
 
+/* fixed 컨테이너 */
 .fixed-con{
     position: fixed;
-    left : 62%;
-    top: 30%;
+    left : 1150px;
+    top: 250px;
 } 
 
 .box {
