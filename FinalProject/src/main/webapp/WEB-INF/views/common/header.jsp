@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,11 +8,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>header</title>
     
+    <%-- <link rel="apple-touch-icon" sizes="180x180" href="/resources/images/favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/resources/images/favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/resources/images/favicon_io/favicon-16x16.png">
+    <link rel="manifest" href="/resources/images/favicon_io/site.webmanifest"> --%>
+    <link rel="icon" href="/resources/images/favicon_io/favicon.ico" type="image/x-icon">
+
+
     <!-- jquery연결 -->
     <script src="//code.jquery.com/jquery-3.4.1.min.js"></script>
 
-    <!-- <link rel="icon" type="image/png" href="favicon.ico"> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
     <!--Google Font link-->
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Raleway:400,600,700" rel="stylesheet">
@@ -22,12 +30,11 @@
     <!-- 아이콘 사이트 key -->
     <script src="https://kit.fontawesome.com/9e44afcd4a.js" crossorigin="anonymous"></script>
 
-</head>
-<body>
+    </head>
+    <body>
 
     <div class="main-content">
         <nav class="header-nav no-background ">
-
             <!-- search 영역 -->
             <div class="top-search">
                 <div class="search-container">

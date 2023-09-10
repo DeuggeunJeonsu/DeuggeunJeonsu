@@ -15,6 +15,13 @@
                     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
                     integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+Wy4y5AuWn1C4EyyIbJs6YXvPECJwFPa28H"
                     crossorigin="anonymous">
+
+                <!-- SweetAlert2 CSS 파일 추가 -->
+                <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+
+                <!-- SweetAlert2 JavaScript 파일 추가 -->
+                <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
+
         </head>
 
         <body>
@@ -22,13 +29,15 @@
             <jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
 
             <section id="main-con">
-                    <form action="/board/${boardCode}/reviewWrite" method="POST" id="reviewForm" enctype="multipart/form-data">
+                <form action="/board/${boardCode}/reviewWrite" method="POST" id="reviewForm"
+                    enctype="multipart/form-data">
                     <h1 class="title">리뷰 작성</h1>
                     <div>구매하신 상품에 대한 리뷰를 작성하여 득근전수 회원님들에게 공유해 보세요🍀</div>
                     <hr>
                     <br>
                     <div>
-                        <input type="text" name="reviewTitle" id="reviewTitle" placeholder="제목" value=""  maxlength="10" placeholder="제목을 입력해주세요" required>
+                        <input type="text" name="reviewTitle" id="reviewTitle" placeholder="제목" value="" maxlength="10"
+                            placeholder="제목을 입력해주세요">
                     </div>
                     <div>
                         <textarea name="reviewContent" id="reviewContent" cols="30" rows="10"
@@ -43,12 +52,12 @@
                     <br>
                     <div class="bottom">
                         <div>
-                            <button type="submit" id="submit-button">작성</button>
+                            <button type="submit" id="submit-button" onclick="showAlert()">작성</button>
                             <button id="cancel-button">취소</button>
                         </div>
                     </div>
-                    </form> 
-                </section>
+                </form>
+            </section>
 
 
             <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>

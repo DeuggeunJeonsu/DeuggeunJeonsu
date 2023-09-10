@@ -47,33 +47,76 @@ $(document).ready(function () {
     });
 });
 
+
+
 // 제목, 내용 유효성 검사
 // 제목 : 10글자
 // 내용 : 500자
+
 const reviewForm = document.getElementById("reviewForm");
 const reviewTitle = document.getElementById("reviewTitle");
 const reviewContent = document.getElementById("reviewContent");
 
 reviewForm.addEventListener("submit", function (e) {
+    e.preventDefault(); // 폼 제출 막기
 
-    // 제목에 특수문자만 있는지 검사
-    const regEx = /^[~!@#$%^&*()_\-+=|<>,./?"''';]+$/;
-    if (regEx .test(reviewTitle.value)) {
-        alert("제목은 특수문자로만 구성될 수 없습니다.");
-        reviewTitle.focus();
-        reviewTitle.value = ""; // 제목 내용을 지우기
-        e.preventDefault(); // 폼 제출 막기
+    // 제목 유효성 검사
+    let titleValue = reviewTitle.value.trim();
+    if (titleValue === "") {
+        Swal.fire({
+            icon: 'error',
+            title: '제목 오류',
+            text: '제목을 입력하세요 (1자 이상, 10자 이내).'
+        }).then(function () {
+            reviewTitle.focus();
+            reviewTitle.value = ""; // 빈 문자열로 설정
+        });
+        return;
     }
+
+    if (titleValue.length < 1 || titleValue.length > 10) {
+        Swal.fire({
+            icon: 'error',
+            title: '제목 오류',
+            text: '제목을 1자 이상, 10자 이내로 입력하세요.'
+        }).then(function () {
+            reviewTitle.focus();
+            reviewTitle.value = ""; // 빈 문자열로 설정
+        });
+        return;
+    }
+
     // 내용 유효성 검사
-    if (reviewContent.value.length === 0 || reviewContent.value.length > 500) {
-        alert("내용을 입력하세요 (1자 이상, 500자 이내).");
-        e.preventDefault(); // 폼 제출 막기
+    let contentValue = reviewContent.value.trim();
+    
+    if (contentValue === "" || contentValue.length > 500) {
+        Swal.fire({
+            icon: 'error',
+            title: '내용 오류',
+            text: '내용을 입력하세요 (1자 이상, 500자 이내).'
+        }).then(function () {
+            reviewContent.focus();
+            reviewContent.value = ""; // 빈 문자열로 설정
+        });
+        return;
     }
+
+    // 유효성 검사 통과 시 폼 제출
+    reviewTitle.value = titleValue; // 제목 필드 업데이트
+    reviewContent.value = contentValue; // 내용 필드 업데이트
+    reviewForm.submit();
 });
 
-reviewContent.addEventListener("focus", function () {
-    if (reviewTitle.value.trim() === "") {
-        alert("제목을 입력해주세요.");
-        reviewTitle.focus(); // 제목 입력란으로 포커스 이동
+// 엔터 키 눌렀을 때 SweetAlert2 알림 닫기
+document.addEventListener("keydown", function (e) {
+    if (e.key === "Enter" && Swal.isVisible()) {
+        e.preventDefault();
+        Swal.close();
+        
+        if (!reviewTitle.value) {
+            reviewTitle.focus();
+        } else if (!reviewContent.value) {
+            reviewContent.focus();
+        }
     }
 });
