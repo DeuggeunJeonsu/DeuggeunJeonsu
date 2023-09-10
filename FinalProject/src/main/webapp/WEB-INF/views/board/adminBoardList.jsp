@@ -33,7 +33,7 @@
         <div class="adBody">
             
             <div class="workOut">
-                <a href="#"><div id="wo1">
+                <a href="/shareBoard"><div id="wo1">
                     <div id="wo2">
                         
                         <div id="wo3">
@@ -56,7 +56,7 @@
             
 
            <div class="notification">
-    <a href="#"><div id="nc1">
+    <a href="/notificationList"><div id="nc1">
                     <div id="nc2">
                         
                         <div id="nc3">
@@ -73,7 +73,7 @@
            
 
            <div class="information">
-                <a href="#">  <div id="im1">
+                <a href="/informationBoard/list">  <div id="im1">
                     <div id="im2">
                         
                         <div id="im3">
@@ -91,7 +91,7 @@
 
 
             <div class="freeBoard">
-                <a href="#"> <div id="fb1">
+                <a href="/freeBoard/list"> <div id="fb1">
                     <div id="fb2">
                         
                         <div id="fb3">

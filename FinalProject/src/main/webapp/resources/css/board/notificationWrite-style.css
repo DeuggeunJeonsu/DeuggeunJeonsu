@@ -1,5 +1,5 @@
 *{ box-sizing: border-box;
-   border: 1px solid black;
+    /* border: 1px solid black; */ 
 }
 
 .Jheader{
@@ -136,7 +136,7 @@ td{
     height: 50px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: right;
     border-left: 2.5px solid gray;
 }
 
@@ -145,10 +145,20 @@ td{
 }
 
 #ncBignews{
-    width: 100px;
+    width: 120px;
     height: 30px;
+
     display: flex;
     align-items: center;
+    border: none;
+
+}
+
+#ncBignews label{
+    height: 25px;
+    display: flex;
+    align-items: center;
+    font-size: 15px;
 }
 
 .ncContent2{
@@ -176,15 +186,17 @@ td{
 }
 
 .ncBtn > button{
-    margin: 10px;
-    
+    height: 35px;
     width: 70px;
-
     background-color: #99E1ED;
     color: white;
     font-weight: bold;
     border: none;
-    border-radius: 2px;
+    border-radius: 5px;
+}
+
+#ncCancle{
+    margin-right: 60px;
 }
 
 .ncBtn > button:hover{
@@ -196,116 +208,188 @@ td{
     display: none;
 }
 
-.nclabel{
-    margin-right: 100px;
-    border: none;
-
-}
 
 
 /* 사진 선택 css */
-/* 3 */
-.nclabel {
-    background: rgb(0,172,238);
-  background: linear-gradient(0deg, rgba(0,172,238,1) 0%, rgba(2,126,251,1) 100%);
-    width: 130px;
-    height: 40px;
-    line-height: 42px;
+
+.color .cyan   {background: #7fccde;}
+  
+  
+  
+.btn, .btn-two {
+  margin: 9px;
+}
+a[class*="btn"] {text-decoration: none;}
+input[class*="btn"], 
+
+
+.btn.small, 
+.btn-two.small, 
+.btn-gradient.small, 
+.btn-effect.small {
+  padding: 8px 18px;  
+  font-size: 14px;
+}
+
+.btn.cyan, .btn-two.cyan     {background-color: #7fccde;}
+
+
+/* default button style */
+.btn {
+  position: relative;
+  border: 0;
+  padding: 15px 25px;
+  display: inline-block;
+  text-align: center;
+  color: white;
+}
+.btn:active {
+  top: 4px; 
+}
+
+
+
+.btn.cyan {box-shadow:0px 4px 0px #73B9C9;}
+.btn.cyan:active {box-shadow: 0 0 #73B9C9; background-color: #70B4C4;}
+
+
+/* Button two - I have no creativity for names */
+.btn-two {
+  color: white; 
+  padding: 15px 25px;
+  display: inline-block;
+  border: 1px solid rgba(0,0,0,0.21);
+  border-bottom-color: rgba(0,0,0,0.34);
+  text-shadow:0 1px 0 rgba(0,0,0,0.15);
+  box-shadow: 0 1px 0 rgba(255,255,255,0.34) inset, 
+              0 2px 0 -1px rgba(0,0,0,0.13), 
+              0 3px 0 -1px rgba(0,0,0,0.08), 
+              0 3px 13px -1px rgba(0,0,0,0.21);
+}
+.btn-two:active {
+  top: 1px;
+  border-color: rgba(0,0,0,0.34) rgba(0,0,0,0.21) rgba(0,0,0,0.21);
+  box-shadow: 0 1px 0 rgba(255,255,255,0.89),0 1px rgba(0,0,0,0.05) inset;
+  position: relative;
+}
+
+
+
+
+/* ------------------------------------------------------------------ */
+
+/* 체크박스 스타일 */
+
+/* .where {
+display: block;
+margin: 25px 15px;
+font-size: 11px;
+color: #000;
+text-decoration: none;
+font-family: verdana;
+font-style: italic;
+} */
+
+  
+  .popContent input[type="checkbox"] {
+    /* 실제 체크박스는 화면에서 숨김 */
+    position: absolute;
+    width: 1px;
+    height: 1px;
     padding: 0;
-    border: none;
-    
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0
   }
-  .nclabel span {
-    position: relative;
-    display: block;
-    width: 100%;
-    height: 100%;
-  }
-  .nclabel:before,
-  .nclabel:after {
-    position: absolute;
-    content: "";
-    right: 0;
-    top: 0;
-     background: rgba(2,126,251,1);
-    transition: all 0.3s ease;
-  }
-  .nclabel:before {
-    height: 0%;
-    width: 2px;
-  }
-  .nclabel:after {
-    width: 0%;
-    height: 2px;
-  }
-  .nclabel:hover{
-     background: transparent;
-    box-shadow: none;
-  }
-  .nclabel:hover:before {
-    height: 100%;
-  }
-  .nclabel:hover:after {
-    width: 100%;
-  }
-  .nclabel span:hover{
-     color: rgba(2,126,251,1);
-     
-  }
-  .nclabel span:before,
-  .nclabel span:after {
-    position: absolute;
-    content: "";
-    left: 0;
-    bottom: 0;
-     background: rgba(2,126,251,1);
-    transition: all 0.3s ease;
-    border: none;
-  }
-  .nclabel span:before {
-    width: 2px;
-    height: 0%;
-  }
-  .nclabel span:after {
-    width: 0%;
-    height: 2px;
-  }
-  .nclabel span:hover:before {
-    height: 100%;
-    
-  }
-  .nclabel span:hover:after {
-    width: 100%;
-  }
-
-
-  .custom-btn {
-    width: 130px;
-    height: 40px; 
-    color: #fff;
-    border-radius: 5px;
-     /* padding: 10px 25px; */ 
-    font-family: 'Lato', sans-serif;
-    font-weight: 500;
-    background: transparent;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    position: relative;
+  
+  .popContent input[type="checkbox"]+label {
     display: inline-block;
-     box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
-     7px 7px 20px 0px rgba(0,0,0,.1),
-     4px 4px 5px 0px rgba(0,0,0,.1);
-    outline: none;
+    position: relative;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
   }
-
-  #ncSpan{
-    border: none;
+  
+  .popContent input[type="checkbox"]+label:before {
+    /* 가짜 체크박스 */
+    content: ' ';
+    display: inline-block;
+    width: 21px;
+    /* 체크박스의 너비를 지정 */
+    height: 21px;
+    /* 체크박스의 높이를 지정 */
+    line-height: 21px;
+    /* 세로정렬을 위해 높이값과 일치 */
+    margin: -2px 8px 0 0;
     text-align: center;
-    background: rgba(2,126,251,1);
-    border-top-left-radius: 5px;
-    border-bottom-right-radius: 5px;
+    vertical-align: middle;
+    background: #fafafa;
+    border: 1px solid #cacece;
+    border-radius: 3px;
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05), inset 0px -15px 10px -12px rgba(0, 0, 0, 0.05);
   }
-
-  #ncSpan:hover{
-    background: white;
+  
+  .popContent input[type="checkbox"]+label:active:before,
+  .popContent input[type="checkbox"]:checked+label:active:before {
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), inset 0px 1px 3px rgba(0, 0, 0, 0.1);
+  }
+  
+  
+  .popContent input[type="checkbox"]:checked+label:before {
+    /* 체크박스를 체크했을때 */
+    content: '\2714';
+    /* 체크표시 유니코드 사용 */
+    color: #99a1a7;
+    text-shadow: 1px 1px #fff;
+    background: #e9ecee;
+    border-color: #adb8c0;
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05), inset 0px -15px 10px -12px rgba(0, 0, 0, 0.05), inset 15px 10px -12px rgba(255, 255, 255, 0.1);
+  }
+  
+  
+  .popContent.list input[type="checkbox"]+label {
+    padding-left: 30px;
+  }
+  
+  .popContent.list input[type="checkbox"]+label:before {
+    position: absolute;
+    left: 0;
+    top: 0;
+    margin-top: 0;
+    opacity: .6;
+    box-shadow: none;
+    border-color: #6cc0e5;
+    -webkit-transition: all .12s, border-color .08s;
+    transition: all .12s, border-color .08s;
+  }
+  
+  .popContent.list input[type="checkbox"]:checked+label:before {
+    position: absolute;
+    content: "";
+    width: 10px;
+    top: -5px;
+    left: 5px;
+    border-radius: 0;
+    opacity: 1;
+    background: transparent;
+    border-color: transparent #6cc0e5 #6cc0e5 transparent;
+    border-top-color: transparent;
+    border-left-color: transparent;
+    -ms-transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+  
+  .no-csstransforms .popContent.list input[type="checkbox"]:checked+label:before {
+    /*content:"\2713";*/
+    content: "\2714";
+    top: 0;
+    left: 0;
+    width: 21px;
+    line-height: 21px;
+    color: #6cc0e5;
+    text-align: center;
+    border: 1px solid #6cc0e5;
   }

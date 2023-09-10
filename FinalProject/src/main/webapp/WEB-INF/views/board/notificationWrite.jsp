@@ -10,6 +10,9 @@
     <title>공지사항 상세페이지</title>
 
     <link rel="stylesheet" href="/resources/css/board/notificationWrite-style.css">
+
+    <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 </head>
 
 <body>
@@ -43,13 +46,13 @@
 
                     <div id="ncName">관리자</div>
 
-                    <div id="ncCheckbox">
+                    <div id="ncCheckbox" >
                     
-                        <div id="ncBignews">
-                            <input type="checkbox"> 중요 공지사항
+                        <div id="ncBignews" class="popContent list">
+                            <input type="checkbox" id="ncBigCheck"><label for="ncBigCheck">중요 공지사항</label> 
                         </div>
 
-                    <!-- <label for="ncPic" > --><button class="custom-btn nclabel"><span id="ncSpan">사진선택</span></button><!-- </label> -->
+                    <label for="ncPic" class="btn-two cyan small" >사진선택</label>
                     <input type="file" id="ncPic" accept="image/*">
                     </div>
 
