@@ -3,7 +3,7 @@
 <mapper namespace="boardMapper">
 
 
-	<!--<resultMap type="Board" id="board_rm">
+	<resultMap type="Board" id="board_rm">
 		<id property="boardNo" column="BOARD_NO" />
 
 		<result property="boardTitle" column="" />
@@ -22,16 +22,16 @@
 		<result property="likeCount" column="" />
 
 		<collection property="imageList" select="selectImageList"
-			column="BOARD_NO" javaType="java.util.ArrayList" oftype="BoardImage">
+			column="BOARD_NO" javaType="java.util.ArrayList" ofType="BoardImage">
 		</collection>
 
 		<collection property="commentList" select="selectImageList"
-			column="BOARD_NO" javaType="java.util.ArrayList" oftype="Comment">
+			column="BOARD_NO" javaType="java.util.ArrayList" ofType="Comment">
 		</collection>
 
 		<collection property="routineList" select="selectRoutineList" column="BOARD_NO" 
 			javaType="java.util.ArrayList" ofType="Comment"> </collection> 
-	</resultMap> -->
+	</resultMap>
 	
 	
 	<!-- 게시판 종류목록 조회 -->
