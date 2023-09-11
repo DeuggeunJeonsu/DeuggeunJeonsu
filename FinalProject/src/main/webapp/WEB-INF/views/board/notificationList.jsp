@@ -11,6 +11,7 @@
     <title>공지사항 게시판</title>
 
     <link rel="stylesheet" href="/resources/css/board/notificationList.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="/resources/images/favicon_io/apple-touch-icon.png">
 </head>
 
 <body>
@@ -36,8 +37,9 @@
                     득근전수에서 회원님들에게 공지드립니다.
                 </div>
 
-                <div class="Jsearch">
-                    <button class="fa-solid fa-magnifying-glass" ></button> <input type="text">
+                 <div class="search-place">
+                    <input  type="search" id="market-search" placeholder="search...">
+                    <button type="button" id="search-button"><i class="fas fa-search"></i></button>
                 </div>
 
                 <div class="JList">

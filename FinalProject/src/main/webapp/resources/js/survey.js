@@ -88,8 +88,6 @@ for (let i of fristCheck) {
                         text: '둘 중 하나만 체크 해주세요!',
                     });
 
-                    leg.checked = false;
-                    ub.checked = false;
 
                     return;
 
@@ -101,6 +99,7 @@ for (let i of fristCheck) {
 
 
                         fristList[i].style.display = "none";
+                        /* leg.checked = false; */
 
                         header.innerHTML = "상체를 하는 날이군요! 그 중 어느 부위를 하시나요?";
 
@@ -118,18 +117,28 @@ for (let i of fristCheck) {
 
                         finalCheck.style.visibility = "visible";
 
+
                         finalCheck.addEventListener("click", () => {
 
+                            input.style.transitionDuration = "2s, 1s";
+                            input.style.width = "100%";
+                            input.style.backgroundColor = "rgb(46, 204, 113)";
+
+                            
                                 if (upChk[0].checked != true &&
                                     upChk[1].checked != true &&
                                     upChk[2].checked != true &&
                                     upChk[3].checked != true) {
 
-                                    Swal.fire({
-                                        icon: 'error',
-                                        title: '미체크 에러1',
-                                        text: '항목을 체크 해주세요!',
-                                    });
+
+                                    if(leg.checked != true){
+
+                                        Swal.fire({
+                                            icon: 'error',
+                                            title: '미체크 에러1',
+                                            text: '항목을 체크 해주세요!',
+                                        });
+                                    }
                                     return;
                                 }
 
@@ -158,6 +167,8 @@ for (let i of fristCheck) {
 
 
                             fristList[i].style.display = "contents";
+
+                            fristList[i].checked = false;
 
                             bodyList[i].style.marginTop = "35px";
                             bodyListLeg.style.marginTop = "17px";
@@ -189,26 +200,6 @@ for (let i of fristCheck) {
                 } else if (leg.checked == true) {
 
 
-
-                    /*  if(btn.innerHTML == "결과확인"){
- 
-                         btn.addEventListener("click", () => {
-                             maindiv1.style.webkitFilter = "blur(2px)";
-                             maindiv2.style.webkitFilter = "blur(2px)";
-                             popUp.style.visibility ="visible";
-                     
-                         })
-                     
-                     }
-                     
-                     if(btn.innerHTML == "다음"){
-                         popUp.style.visibility ="hidden";
-                     }
-  */
-
-
-
-
                     for (let i = 0; i < nextleg.length; i++) {
 
                         nextleg[i].style.display = "contents";
@@ -233,18 +224,24 @@ for (let i of fristCheck) {
                         finalCheck.addEventListener("click", () => {
 
 
-                                if (legChk[0].checked != true ||
-                                    legChk[1].checked != true ||
-                                    legChk[2].checked != true ) {
+                            input.style.transitionDuration = "2s, 1s";
+                            input.style.width = "100%";
+                            input.style.backgroundColor = "rgb(46, 204, 113)";
 
-                                    Swal.fire({
-                                        icon: 'error',
-                                        title: '미체크 에러2',
-                                        text: '항목을 체크 해주세요!',
-                                    });
+
+                                if (legChk[0].checked != true &&
+                                    legChk[1].checked != true &&
+                                    legChk[2].checked != true &&
+                                    ub.checked != true
+                                    ) {
+
+                                       Swal.fire({
+                                           icon: 'error',
+                                           title: '미체크 에러2',
+                                           text: '항목을 체크 해주세요!',
+                                       });
                                     return;
                                 }
-                                next[0].remove();
                             maindiv1.style.webkitFilter = "blur(2px)";
                             maindiv2.style.webkitFilter = "blur(2px)";
 
@@ -267,6 +264,8 @@ for (let i of fristCheck) {
 
 
                             fristList[i].style.display = "contents";
+
+                            fristList[i].checked = false;
 
                             bodyList[i].style.marginTop = "35px";
                             bodyListLeg.style.marginTop = "17px";
@@ -318,11 +317,13 @@ $("#confirmStart").click(function () {
       
     }).then((result) => {
       if (result.isConfirmed) {
-        Swal.fire(
+          location.href = "/";
+       /*  Swal.fire(
           '승인이 완료되었습니다.',
           '화끈하시네요~!',
           'success'
-        )
-      }
+
+          ) */
+        }
     })
   });
