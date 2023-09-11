@@ -47,8 +47,10 @@
 							<option>1:1문의</option>
 							<option>상품 문의</option>
 						</select>
-						<button class="fa-solid fa-magnifying-glass"></button>
-						<input type="text">
+						<div class="search-place">
+							<input  type="search" id="market-search" placeholder="search...">
+                    		<button type="button" id="search-button"><i class="fas fa-search"></i></button>
+						</div>
 					</div>
 
 					<div class="userList">

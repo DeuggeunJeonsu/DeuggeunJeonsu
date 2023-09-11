@@ -1,6 +1,6 @@
 *{
     box-sizing: border-box;
-    /* border: 1px solid black;  */
+     /* border: 1px solid black; */
 }
 
 
@@ -134,7 +134,7 @@ td{
 
 
 .Jhead{
-    width: 750px;
+    width: 752px;
     display: flex;
     justify-content: center;
 }
@@ -185,6 +185,60 @@ td{
 
     cursor: pointer;
     border: none;
+}
+
+/* 검색창, 조회 정렬 버튼 영역 */
+
+.search-place{
+    width: 752px;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    height: 50px;
+}
+
+#search-area{
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0;
+}
+
+/* 검색창 스타일 */
+.search-place input[type="search"] {
+    width: 250px;
+    height: 35px;
+    padding: 10px;
+    font-size: 16px;
+    background-color: #f5f5f5;
+    border: none;
+    border-radius: 10px;
+    outline: none;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, box-shadow 0.3s;
+    margin-right: 5px;
+}
+
+.search-place input[type="search"]:hover,
+.search-place input[type="search"]:focus {
+    background-color: #99E1ED;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#search-button{
+    width: 35px;
+    height: 35px;
+    border-radius: 10px;
+    padding: 0;
+    font-size: 16px;
+    color: #fff;
+    border: none;
+    background-color: #ccc;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    outline: none;
+}
+
+#search-button:hover{
+    cursor: pointer;
 }
 
 
