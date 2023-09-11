@@ -24,15 +24,18 @@
 
                      </div> 
 
+
+                     <div class="userList">
+                        <a href="/userList" id="userList-link"><div class="fa-solid fa-users" id="userImg"></div>
+                        <label id="userImg">회원 목록</label></a>
+                    </div>
+
                     <div class="inquiry1">
                      <a href="/adminInquiry" id="inquiryList-link"> <div class="fa-solid fa-envelope-circle-check" id="inquiry2" name="1"></div>
                         <label id="inquiry2">회원 문의</label></a>
                     </div>
 
-                    <div class="userList">
-                        <a href="/userList" id="userList-link"><div class="fa-solid fa-users" id="userImg"></div>
-                        <label id="userImg">회원 목록</label></a>
-                    </div>
+                   
                 </div>
                 <div class="adBody">
 
@@ -42,24 +45,17 @@
                                 <div id="wo2">
 
                                     <div id="wo3">
-                                        운동 공유 게시판
+                                        건강/운동정보 
                                     </div>
 
                                     <div id="wo4">
-                                        <img src="/resources/images/admin/admin1.jpg">
+                                        <img src="/resources/images/admin/admin3.jpg">
                                     </div>
 
                                 </div>
                         </a>
                     </div>
-
-
-
-
                 </div>
-
-
-
 
                 <div class="notification">
                     <a href="/notificationList">
@@ -67,11 +63,12 @@
                             <div id="nc2">
 
                                 <div id="nc3">
-                                    공지사항 게시판
+                                    
+                                    운동 공유 게시판
                                 </div>
 
                                 <div id="nc4">
-                                    <img src="/resources/images/admin/admin2.jpg">
+                                    <img src="/resources/images/admin/admin1.jpg">
                                 </div>
 
                             </div>
@@ -86,11 +83,11 @@
                             <div id="im2">
 
                                 <div id="im3">
-                                    건강/운동 정보 컬럼
+                                    공지사항 게시판
                                 </div>
 
                                 <div id="im4">
-                                    <img src="/resources/images/admin/admin3.jpg">
+                                    <img src="/resources/images/admin/admin2.jpg">
                                 </div>
 
                             </div>
