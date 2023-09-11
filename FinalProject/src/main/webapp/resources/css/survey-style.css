@@ -620,7 +620,7 @@ a.button2 {
 }
 
 .btnFloat2:before {
-  content: 'toDoList 추가';
+  content: '운동/공유 게시판으로';
   display: block;
   top: 0;
   left: 0;

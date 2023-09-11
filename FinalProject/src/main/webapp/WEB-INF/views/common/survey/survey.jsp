@@ -28,13 +28,14 @@
                 <div class="popContent list"> 
                 
                        <div class="popList">
-                           <input type="checkbox" class="pop_chk" id="check${i}"><label for="check${i}">벤치</label>
+                           <li  class="pop_chk" id="check${i}">벤치</li>
                        </div>
 
                        <div class="popList">
-                        <input type="checkbox" class="pop_chk" id="check${i}"><label for="check${i}">벤치</label>
+                        <li  class="pop_chk" id="check${i}">벤치</li>
                       </div>
 
+						<%-- <button href="" title="Button2 border lightblue2" class="button2 btnFloat2 btnLightBlue2" id="confirmStart2"></button> --%>
 						<button href="" title="Button border lightblue" class="button btnFloat btnLightBlue" id="confirmStart"></button>
 
                 </div>

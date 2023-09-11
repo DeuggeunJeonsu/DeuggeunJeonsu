@@ -120,37 +120,37 @@ for (let i of fristCheck) {
 
                         finalCheck.addEventListener("click", () => {
 
+                            
+
+
+                            if (upChk[0].checked != true &&
+                                upChk[1].checked != true &&
+                                upChk[2].checked != true &&
+                                upChk[3].checked != true) {
+
+
+                                if (leg.checked != true) {
+
+                                    Swal.fire({
+                                        icon: 'error',
+                                        title: '미체크 에러',
+                                        text: '항목을 체크 해주세요!',
+                                    });
+                                }
+                                return;
+                            }
+
                             input.style.transitionDuration = "2s, 1s";
                             input.style.width = "100%";
                             input.style.backgroundColor = "rgb(46, 204, 113)";
 
-                            
-                                if (upChk[0].checked != true &&
-                                    upChk[1].checked != true &&
-                                    upChk[2].checked != true &&
-                                    upChk[3].checked != true) {
+                            maindiv1.style.webkitFilter = "blur(2px)";
+                            maindiv2.style.webkitFilter = "blur(2px)";
 
+                            popUp.style.visibility = "visible";
+                            popUp.style.opacity = "10";
 
-                                    if(leg.checked != true){
-
-                                        Swal.fire({
-                                            icon: 'error',
-                                            title: '미체크 에러1',
-                                            text: '항목을 체크 해주세요!',
-                                        });
-                                    }
-                                    return;
-                                }
-
-
-
-                                maindiv1.style.webkitFilter = "blur(2px)";
-                                maindiv2.style.webkitFilter = "blur(2px)";
-
-                                popUp.style.visibility = "visible";
-                                popUp.style.opacity = "10";
-
-                            })
+                        })
 
 
 
@@ -191,7 +191,7 @@ for (let i of fristCheck) {
                             })
 
                         })
-                      
+
 
 
 
@@ -224,24 +224,25 @@ for (let i of fristCheck) {
                         finalCheck.addEventListener("click", () => {
 
 
+
+                            if (legChk[0].checked != true &&
+                                legChk[1].checked != true &&
+                                legChk[2].checked != true &&
+                                ub.checked != true
+                            ) {
+
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: '미체크 에러',
+                                    text: '항목을 체크 해주세요!',
+                                });
+                                return;
+                            }
+
                             input.style.transitionDuration = "2s, 1s";
                             input.style.width = "100%";
                             input.style.backgroundColor = "rgb(46, 204, 113)";
 
-
-                                if (legChk[0].checked != true &&
-                                    legChk[1].checked != true &&
-                                    legChk[2].checked != true &&
-                                    ub.checked != true
-                                    ) {
-
-                                       Swal.fire({
-                                           icon: 'error',
-                                           title: '미체크 에러2',
-                                           text: '항목을 체크 해주세요!',
-                                       });
-                                    return;
-                                }
                             maindiv1.style.webkitFilter = "blur(2px)";
                             maindiv2.style.webkitFilter = "blur(2px)";
 
@@ -305,25 +306,25 @@ for (let i of fristCheck) {
 /* 모달창 메인으로 버튼 alert 효과 */
 $("#confirmStart").click(function () {
     Swal.fire({
-      title: '메인으로 이동 하시겠습니까?',
-      text: "다시 되돌릴 수 없습니다.",
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: '승인',
-      cancelButtonText: '취소',
-      reverseButtons: true, // 버튼 순서 거꾸로
-      
-    }).then((result) => {
-      if (result.isConfirmed) {
-          location.href = "/";
-       /*  Swal.fire(
-          '승인이 완료되었습니다.',
-          '화끈하시네요~!',
-          'success'
+        title: '메인으로 이동 하시겠습니까?',
+        text: "다시 되돌릴 수 없습니다.",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: '승인',
+        cancelButtonText: '취소',
+        reverseButtons: true, // 버튼 순서 거꾸로
 
-          ) */
+    }).then((result) => {
+        if (result.isConfirmed) {
+            location.href = "/";
+            /*  Swal.fire(
+               '승인이 완료되었습니다.',
+               '화끈하시네요~!',
+               'success'
+     
+               ) */
         }
     })
-  });
+});
