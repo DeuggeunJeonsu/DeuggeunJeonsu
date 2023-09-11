@@ -14,13 +14,15 @@
 	<typeAliases>
 		<!-- 
 		<typeAlias type="edu.kh.fin.member.model.vo.Member" alias="Member" />
-		
 		 -->
-		
+		<typeAlias type="com\jeonsu\deuggeun\board\model\dto\Board" alias="board" />
+		<typeAlias type="com\jeonsu\deuggeun\board\model\dto\Comment" alias="board" />
 	</typeAliases> 
 	<!-- mapper 파일(SQL 작성되는파일) 위치 등록 부분 -->
 	<mappers>
 		<!-- <mapper resource="/mappers/member-mapper.xml" /> -->
 		<mapper resource="/mappers/market-mapper.xml" />
+		<mapper resource="/mappers/board-mapper.xml" />
+		<mapper resource="/mappers/comment-mapper.xml" />
 	</mappers>
 </configuration>

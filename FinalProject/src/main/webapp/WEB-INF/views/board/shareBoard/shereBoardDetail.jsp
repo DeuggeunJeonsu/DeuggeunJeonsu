@@ -183,10 +183,10 @@
 
         <div id="btn-area">
             <div>
-                <button>목록으로</button>
+                <button id="goToListBtn">목록으로</button>
                 
-                <button>수정하기</button>
-                <button>삭제하기</button>
+                <button id="updateBtn">수정하기</button>
+                <button id="deleteBtn">삭제하기</button>
             </div>
         </div>
 
