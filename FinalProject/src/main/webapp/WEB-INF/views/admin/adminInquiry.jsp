@@ -65,34 +65,34 @@
 							<tbody>
 								<tr>
 									<td>4</td>
-									<td>상품이 이상해요</td>
+									<td><a href="#">상품이 이상해요</a></td>
 									<td>상품 / 환불</td>
 									<td>user04</td>
-									<td>완료</td>
+									<td class="complete">완료</td>
 								</tr>
 
 								<tr>
 									<td>3</td>
-									<td>환불 해주세요.</td>
+									<td><a href="#">환불 해주세요.</a></td>
 									<td>상품 / 환불</td>
 									<td>user03</td>
-									<td><a href="/adminIqWrite"><button id="iqWrite">답변</button></a></td>
+									<td>미답변</td>
 								</tr>
 
 								<tr>
 									<td>2</td>
-									<td>반품 요청합니다</td>
+									<td><a href="#">반품 요청합니다</a></td>
 									<td>상품 / 반품</td>
 									<td>user02</td>
-									<td><a href="/adminIqWrite"><button id="iqWrite">답변</button></a></td>
+									<td>미답변</td>
 								</tr>
 
 								<tr>
 									<td>1</td>
-									<td>배송이 느리네요</td>
+									<td><a href="#">배송이 느리네요</a></td>
 									<td>상품 / 배송 문의</td>
 									<td>user01</td>
-									<td>완료</td>
+									<td class="complete">완료</td>
 								</tr>
 							</tbody>
 						</table>

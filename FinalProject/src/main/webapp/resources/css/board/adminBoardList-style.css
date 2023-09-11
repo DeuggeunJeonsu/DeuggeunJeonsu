@@ -1,8 +1,72 @@
 *{ box-sizing: border-box;
-     /* border: 1px solid black; */ 
+     /*  border: 1px solid black;   */
       margin: 0;
       
 }
+
+.swift-up-text{
+    width: 350px;
+}
+
+:root{
+      --headingSize: 30px;  
+    /* --background-color: black; */
+  }
+  
+ /*  body{
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: var(--background-color);
+  } */
+  
+  h1{
+    margin: 0;
+    letter-spacing: -1px;
+    font-size: var(--headingSize);
+  }
+  
+  .container{
+    margin-left: 20px;
+     width: 600px;
+    color: #99E1ED;
+   /*  flex-direction: row; */
+    /* border-color: #ff0000; */
+  }
+  
+   span{
+   /*  display: inline-block; */
+   /*  overflow: hidden; */
+    animation: .2s swift-up ease-in-out forwards; 
+    /* width: 400px; */
+  } 
+  
+  i{
+    font-style: normal;
+    position: relative; 
+    top: var(--headingSize);
+    animation: .8s swift-up ease-in-out forwards;
+    
+  }
+  
+  @keyframes swift-up {
+    to {
+      top: 0;
+    }
+  }
+  
+  @media screen and (max-width: 400px){
+    .container{
+      width: auto;
+      margin: 0 10%;
+    }
+    
+    :root{
+      --headingSize: 35px;
+    }
+  }
 
 main{
     background-color: #F8F9FA !important;
@@ -16,6 +80,7 @@ a{
 .adMain{
     height: 110px;
     display: flex;
+    align-items: center;
 }
 #mainImg{
     width: 290px;
@@ -106,6 +171,7 @@ main{
     display: flex;
     justify-content: center;
     align-items: center;
+    font-weight: bold;
 
     border-bottom: 2px solid gray;
 
@@ -165,6 +231,7 @@ main{
     display: flex;
     justify-content: center;
     align-items: center;
+    font-weight: bold;
 
     border-bottom: 2px solid gray;
 
@@ -223,6 +290,7 @@ main{
     display: flex;
     justify-content: center;
     align-items: center;
+    font-weight: bold;
 
     border-bottom: 2px solid gray;
 
@@ -281,7 +349,7 @@ main{
     display: flex;
     justify-content: center;
     align-items: center;
-
+    font-weight: bold;
     border-bottom: 2px solid gray;
 
     height: 60px;
