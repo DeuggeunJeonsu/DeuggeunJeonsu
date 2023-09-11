@@ -15,8 +15,8 @@
 		<!-- 
 		<typeAlias type="edu.kh.fin.member.model.vo.Member" alias="Member" />
 		 -->
-		<typeAlias type="com\jeonsu\deuggeun\board\model\dto\Board" alias="board" />
-		<typeAlias type="com\jeonsu\deuggeun\board\model\dto\Comment" alias="board" />
+		<typeAlias type="com.jeonsu.deuggeun.board.model.dto.Board" alias="Board" />
+		<typeAlias type="com.jeonsu.deuggeun.board.model.dto.Comment" alias="Comment" />
 	</typeAliases> 
 	<!-- mapper 파일(SQL 작성되는파일) 위치 등록 부분 -->
 	<mappers>
