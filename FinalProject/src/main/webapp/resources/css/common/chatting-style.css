@@ -1,6 +1,6 @@
 * {
    box-sizing: border-box;
-   border: 1px solid black;
+   /* border: 1px solid black; */
 }
 
 body {
@@ -33,7 +33,6 @@ main {
 /* 타이틀 */
 #titleArea > div:nth-of-type(2){
    padding-bottom: 10px;
-   border-bottom: 2px solid #ddd;
 }
 
 /* 채팅관련 전체 영역 */
@@ -43,19 +42,69 @@ main {
    display: flex;
 }
 
-/* 설정 */
-#settings{
+/* 메뉴 영역 */
+#menus{
    flex-basis: 5%;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
    height: 100%;
+   border : 1px solid #749DA4;
+   border-radius: 10px;
+   background-color: #99E1ED;
+}
+/* 메뉴, 채팅방추가, 팔레트 버튼 */
+.menu-btn{
+   margin-top: 12px;
+   border: none;
+   background-color: inherit;
+   cursor: pointer;
+}
+#addTarget{
+   margin-left: 5px;
+}
+#addTarget, #palette{
+   margin-top: 40px;
 }
 
 /* 채팅방 목록 */
-#chattingRoomList{
-   flex-basis: 30%;
+#chattingRoomListArea{
+   flex-basis: 40%;
+   display: flex;
+   flex-direction: column;
    height: 100%;
-   border : 1px solid black;
+   border : 1px solid #ddd;
    overflow: auto;
+   border-radius: 10px;
+   background-color: whitesmoke;
+   
+   position: relative;
 }
+#roomSearchArea{
+   width: 100%;
+   height: 40px;
+   padding-top: 5px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   border-bottom: 1px solid #ddd;
+}
+#roomSearchInput{
+   height: 30px;
+   width: 80%;
+   border: 0;
+   background-color: inherit;
+   font-size: 1.3em;
+}
+#roomSearchInput:focus{
+   outline: none;
+}
+
+#chattingRoomList{
+   padding: 10px;
+   margin: 0;
+}
+
 #chattingRoomList > ul{
    list-style: none;
    overflow: auto;
@@ -63,118 +112,123 @@ main {
 
 /* 채팅방 내부 */
 #chattingRoomDetail{
-   flex-basis: 65%;
+   flex-basis: 55%;
    height: 100%;
    display: flex;
    flex-direction: column;
+   border : 1px solid #ddd;
+   border-radius: 10px;
+}
+
+/* 채팅방이름 */
+#roomTitleArea{
+   width: 100%;
+   height: 40px;
+   padding-top: 5px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   border-bottom: 1px solid #ddd;
+}
+#roomTitle{
+   font-size: 1.3em;
 }
 
 /* 채팅 내역 */
 #chattingArea{
    width: 100%;
+   height:80%;
    flex: 1;
+   overflow: auto;
 }
 
 /* 채팅 전송 영역 */
 #sendArea{
    width: 100%;
    height: auto;
+   overflow: hidden;
    display: flex;
+   background-color: whitesmoke;
+   border-radius: 10px;
 }
+
+/* 채팅 입력 부분 */
 #inputChatting {
-   padding: 3px;
+   padding: 10px;
    flex: 1;
+   font-size: 1.3em;
    resize: none;
+   border: none;
+   background-color: whitesmoke;
 }
-#sendBtn{
+#inputChatting:focus{
+   outline: none;
+}
+
+/* 이미지첨부, 채팅 전송 버튼 영역 */
+.send-btn-area{
+   height: 100%;
+   display: flex;
+   align-items: end;
+   border-radius: 10px;
+}
+.sendBtns{
+   padding: 10px 5px;
+   border: 1px solid whitesmoke;
    border-radius: 10px;
    background-color: #ddd;
-}
-
-
-/* 채팅방 생성 버튼 */
-#openChatRoom {
-   width: 120px;
-}
-
-/*  채팅방 생성 모달*/
-#chat-modal {
-   justify-content: center;
-   align-items: center;
-}
-
-.modal-body {
-   text-align: center;
-   background-color: white;
-   padding: 50px;
-   border-radius: 20px;
-}
-
-#chatRoomTitle {
-   width: 250px;
-}
-
-/* 추가 버튼 */
-#addTarget{
-   margin: 30px 0 0 70px;
-   width: 100px;
-   height: 30px;
-   background-color: #455BA7;
-   border: none;
-   border-radius: 10px;
-   font-weight: bold;
-   color: white;
    cursor: pointer;
 }
+.sendBtns:hover{
+   background-color: #99E1ED;
+}
 
 
-/* 팝업레이어 */
+/* 채팅방 추가 팝업레이어 */
 #addTargetPopupLayer{
-   position: fixed;
+   position: absolute;
    margin: auto;
-   top: 0;
-   bottom: 0;
-   left: 0;
-   right: 0;
+   top: 45px;
+   left: 1;
    z-index: 1200;
-   background-color: #f5f5f5;
-   border: 5px inset #455ba8;
-   width: 450px;
-   height: 600px;
+   background-color: whitesmoke;
+   border: 5px inset #99E1ED;
+   border-radius: 10px;
+   width: 295px;
+   height: auto;
 
 }
 
 .popup-layer-close{ display: none;  }
 
-#closeBtn{
+.closeBtn{
    position: absolute;
-   top: -15px;
-   right: -30px;
+   top: -2px;
+   right: 4px;
    font-size: 30px;
    cursor: pointer;
 }
 
-
-
-
 .target-input-area{
    width: 100%;
    height: 40px;
-   border-bottom: 2px solid black;
+   border-bottom: 2px solid #498792;
 }
 
-
-
 #targetInput{
-   width: 100%;
+   width: 90%;
    height: 100%;
    outline: none;
    border: none;
    padding: 3px 10px;
-   font-size: 20px;
+   font-size: 14px;
+   background-color: inherit;
 }
 
-#resultArea{list-style: none;}
+#resultArea{
+   list-style: none;
+   padding: 5px 10px;
+}
 
 .result-row{
    width: 100%;
@@ -185,45 +239,124 @@ main {
    align-items: center;
 }
 
-.result-row:hover{   background-color: #dadada;}
+.result-row:hover{   background-color: #99E1ED;}
 
 .result-row > *{ 
    margin-right: 10px;
    user-select: none;
 }
 
-
 .result-row-img{ width: 40px;}
 
+/* 팔레트 팝업 레이어 */
+#palettePopupLayer{
+   position: absolute;
+   margin: auto;
+   top: 120px;
+   left: 1;
+   z-index: 1200;
+   background-color: whitesmoke;
+   border: 5px inset #99E1ED;
+   border-radius: 10px;
+   width: 295px;
+   height: auto;
+   min-height: 100px;
+}
 
-/*  채팅 목록 */
+.palette-title-area{
+   border-bottom: 2px solid #498792;
+}
 
+.palette-title-area > p{
+   margin: 10px;
+   padding-left: 3px;
+}
+
+.thema-input-area{
+   margin: 5px 0;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   padding-top: 10px;
+}
+.paletteName{
+   margin-left: 5%;
+   width: 40%;
+}
+.thema-color-area{
+   display: flex;
+}
+.hex-color-input{
+   width: 30%;
+   margin-left: 10px;
+}
+.rgb-color-input{
+   width: 45%;
+}
+
+.palette-preview{
+   width: 25px;
+   height: 25px;
+   border: 1px solid black;
+}
+#Preview1{
+   background-color: #99E1ED;
+}
+#Preview2{
+   background-color: #F5F5F5;
+}
+#Preview3{
+   background-color: #FFFFFF;
+}
+
+#saveThemaBtnArea{
+   width: 100%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   padding: 10px;
+   margin-bottom: 5px;
+}
+#saveThemaBtn{
+   padding: 5px;
+   border-radius: 5px99;
+   border-color: #ddd;
+   cursor: pointer;
+}
+
+
+/*  채팅방 목록 */
 
 .chatting-item{
-   height: 12%;
+   height: 85px;
    display: flex;
-   padding: 5px 0;
-   border-bottom: 1px solid black;
+   padding: 15px 10px 0;
+   margin-bottom: 5px;
    cursor: pointer;
+   border-radius: 10px;
+   box-shadow: 1px 2px 2px #ddd;
+}
+
+.chatting-item:hover{
+   background-color: white;
 }
 
 .chatting-item * {
    pointer-events: none;
 }
 
-.chatting-item > div{ height: 100%; text-align: center;}
+.chatting-item > div{ height: 100%; text-align: left;}
 .item-header{ width : 25%; }
-.item-body{ 
-   width : 75%; 
-   padding : 2px 0;
-}
+.item-body{  width : 75%;}
 .item-body> p{ 
    display: flex;
    justify-content: space-between;
+   padding: 0;
+   margin: 0;
 }
 
 .chatting-item.select{
-   background-color: #ddd;
+   background-color: white;
 }
 
 
@@ -248,8 +381,8 @@ main {
 }
 
 .recent-message{
-   width: 180px;
-
+   width: 95%;
+   margin-left: 5%;
    /* 여러 줄 말줄임 처리 */
    white-space: normal;
    overflow: hidden;
@@ -262,40 +395,35 @@ main {
 }
 
 .not-read-count{
-   width: 25px;
+   width: 30px;
    height: 25px;
    display: flex;
    justify-content: center;
    align-items: center;
    border-radius: 50%;
-   background-color: red;
+   background-color: #99E1ED;
    color: white;
    font-size: 12px;
    margin: 10px 10px 0 0;
+   box-shadow: 1px 2px 2px #ddd;
 }
 
 
 /* 채팅 내용 */
-.chatting-content{
-   width: 70%;
-}
 
-.display-chatting {
-   width: 100%;
-   height: 570px;
-   border: 1px solid black;
+#chattingArea > ul {
+
    overflow: auto;
    list-style: none;
    padding: 10px 10px;
 }
 
-.display-chatting > li{
-   margin: 10px 0;
-}
-
 .target-chat{
    display: flex;
    align-items: flex-start;
+}
+.target-chat p{
+   background-color: #ddd;
 }
 .target-chat > img{
    width: 50px;
@@ -311,6 +439,7 @@ main {
    max-width: 500px;
    word-break: break-all;
    white-space: pre-wrap;
+   color: rgb(60, 60, 60);
 }
 
 
@@ -319,7 +448,7 @@ main {
 }
 
 .my-chat>p {
-   background-color: yellow;
+   background-color: #99E1ED;
 }
 
 .chatDate {

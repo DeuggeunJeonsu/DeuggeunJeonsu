@@ -40,12 +40,13 @@
 
             <div class="ranking-content-area">
                 <div class="ranking-table-area"> <!--홈페이지 출석-->
-                    <div class="my-rank-area">
-                        <p>30</p>
-                        <p>rank : 1</p>
-                    </div>
-                    <div class="you">You</div>
                     <div class="ranking-table" id="attendanceRanking">
+                        <div class="my-rank-area">
+                            <p>30</p>
+                            <p>rank : 1</p>
+                        </div>
+                        <div class="you">You</div>
+
                         <div class="ranking-title">
                             출석 랭킹
                         </div>
@@ -124,12 +125,13 @@
                 </div>
 
                 <div class="ranking-table-area"> <!--투두리스트 실천-->
-                    <div class="my-rank-area">
-                        <p>30</p>
-                        <p>rank : 1</p>
-                    </div>
-                    <div class="you">You</div>
                     <div class="ranking-table" id="executionRanking">
+                        <div class="my-rank-area">
+                            <p>30</p>
+                            <p>rank : 1</p>
+                        </div>
+                        <div class="you">You</div>
+
                         <div class="ranking-title">
                             실천 랭킹
                         </div>
@@ -208,12 +210,13 @@
                 </div>
 
                 <div class="ranking-table-area"> <!--커뮤니티 활동-->
-                    <div class="my-rank-area">
-                        <p>12308</p>
-                        <p>rank : 1</p>
-                    </div>
-                    <div class="you">You</div>
                     <div class="ranking-table" id="communityRanking">
+                        <div class="my-rank-area">
+                            <p>12308</p>
+                            <p>rank : 1</p>
+                        </div>
+                        <div class="you">You</div>
+                        
                         <div class="ranking-title">
                             활동 랭킹
                         </div>
