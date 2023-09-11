@@ -3,7 +3,7 @@
 <mapper namespace="boardMapper">
 
 
-	<resultMap type="Board" id="board_rm">
+	<!--<resultMap type="Board" id="board_rm">
 		<id property="boardNo" column="BOARD_NO" />
 
 		<result property="boardTitle" column="" />
@@ -29,10 +29,9 @@
 			column="BOARD_NO" javaType="java.util.ArrayList" oftype="Comment">
 		</collection>
 
-		<!-- routineList 생각 좀 해볼게용!!! -->
-		<!-- <collection property="routineList" select="selectRoutineList" column="BOARD_NO" 
-			javaType="java.util.ArrayList" ofType="Comment"> </collection> -->
-	</resultMap>
+		<collection property="routineList" select="selectRoutineList" column="BOARD_NO" 
+			javaType="java.util.ArrayList" ofType="Comment"> </collection> 
+	</resultMap> -->
 	
 	
 	<!-- 게시판 종류목록 조회 -->
