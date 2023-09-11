@@ -20,6 +20,12 @@
                     integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+Wy4y5AuWn1C4EyyIbJs6YXvPECJwFPa28H"
                     crossorigin="anonymous">
                 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+                <link rel="apple-touch-icon" sizes="180x180" href="/resources/images/favicon_io/apple-touch-icon.png">
+                <link rel="icon" type="image/png" sizes="32x32" href="/resources/images/favicon_io/favicon-32x32.png">
+                <link rel="icon" type="image/png" sizes="16x16" href="/resources/images/favicon_io/favicon-16x16.png">
+                <link rel="manifest" href="/resources/images/favicon_io/site.webmanifest">
+                <link rel="icon" href="/resources/images/favicon_io/favicon.ico" type="image/x-icon">
+
         </head>
 
         <body>
