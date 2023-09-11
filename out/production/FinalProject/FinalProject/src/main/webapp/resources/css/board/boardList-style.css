@@ -1,0 +1,12 @@
+#main-container{
+    margin: 0 250px;
+    background-color: red;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#main-container > div:first-of-type{
+    background-color: aqua;
+}

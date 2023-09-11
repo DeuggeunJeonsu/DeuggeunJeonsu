@@ -1,0 +1,698 @@
+* {
+    box-sizing: border-box;
+}
+
+#main-container{
+    margin: auto;
+    margin-top: 100px;
+    width: 1000px;
+    height: auto;
+}
+
+/* --------------------------------------------------------------------------------------------- */
+
+/* 회원 정보 영역 */
+#member-info-area{
+    height: 250px;
+    display: flex;
+}
+
+/* 회원 프로필 */
+.memberProfileArea{
+    width: 25%;
+
+    display: flex;
+    align-items: center;
+}
+
+.memberProfileArea > img{
+    width: 190px;
+    height: 190px;
+
+    border-radius: 50%;
+    border: 2px solid #99E1ED;
+}
+
+/* 회원 닉네임, 팔로워 수 영역 */
+.memberInfoArea{
+    width: 30%;
+}
+
+/* 닉네임 */
+.memberInfoArea > div:first-of-type{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    height: 30%;
+    margin-top: 40px;
+
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.memberInfoArea > div:first-of-type > div:first-of-type{
+    margin-left: 9px;
+}
+
+.followStateBtn{
+    width: auto;
+    position: relative;
+    left: 40px;
+}
+
+/* 팔로우 버튼 스타일 */
+.customBtn{
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    
+    transition: all 0.3s ease;
+
+    cursor: pointer;
+
+    position: relative;
+    right: 45px;
+}
+
+/* 팔로잉 시 버튼 스타일 */
+.followingBtn {
+    background: #99E1ED;
+    width: 130px;
+    height: 40px;
+    line-height: 42px;
+    padding: 0;
+    border: none;
+}
+
+.followingBtn div {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.followingBtn:before,
+.followingBtn:after {
+    position: absolute;
+    content: "";
+    right: 0;
+    top: 0;
+    background: #99E1ED;
+    transition: all 0.3s ease;
+}
+
+.followingBtn:before {
+    height: 0%;
+    width: 2px;
+}
+
+.followingBtn:after {
+    width: 0%;
+    height: 2px;
+}
+
+.followingBtn:hover{
+    background: transparent;
+    box-shadow: none;
+}
+
+.followingBtn:hover:before {
+    height: 100%;
+}
+
+.followingBtn:hover:after {
+    width: 100%;
+}
+
+.followingBtn div:hover{
+    color: #99E1ED;
+}
+
+.followingBtn div:before,
+.followingBtn div:after {
+    position: absolute;
+    content: "";
+    left: 0;
+    bottom: 0;
+    background: #99E1ED;
+    transition: all 0.3s ease;
+}
+
+.followingBtn div:before {
+    width: 2px;
+    height: 0%;
+}
+
+.followingBtn div:after {
+    width: 0%;
+    height: 2px;
+}
+
+.followingBtn div:hover:before {
+    height: 100%;
+}
+
+.followingBtn div:hover:after {
+    width: 100%;
+}
+
+/* 언팔로우 시 버튼 스타일 */
+.unfollowBtn{
+    color: #99E1ED;
+    background-color: transparent;
+
+    width: 130px;
+    height: 40px;
+    line-height: 42px;
+    padding: 0;
+
+    border: 2px solid #99E1ED;
+}
+
+.unfollowBtn div {
+    position: relative;
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    line-height : 38px;
+}
+
+.unfollowBtn:before,
+.unfollowBtn:after {
+    position: absolute;
+    content: "";
+    right: 0;
+    top: 0;
+    background: #99E1ED;
+    transition: all 0.3s ease;
+}
+
+.unfollowBtn:before {
+    height: 0%;
+    width: 2px;
+}
+
+.unfollowBtn:after {
+    width: 0%;
+    height: 2px;
+}
+
+.unfollowBtn:hover{
+    background: #99E1ED;
+    box-shadow: none;
+}
+
+.unfollowBtn:hover:before {
+    height: 100%;
+}
+
+.unfollowBtn:hover:after {
+    width: 100%;
+}
+
+.unfollowBtn div:hover{
+    color: white;
+}
+
+.unfollowBtn div:before,
+.unfollowBtn div:after {
+    position: absolute;
+    content: "";
+    left: 0;
+    bottom: 0;
+    background: #99E1ED;
+    transition: all 0.3s ease;
+}
+
+.unfollowBtn div:before {
+    width: 2px;
+    height: 0%;
+}
+
+.unfollowBtn div:after {
+    width: 0%;
+    height: 2px;
+}
+
+.unfollowBtn div:hover:before {
+    height: 100%;
+}
+
+.unfollowBtn div:hover:after {
+    width: 100%;
+}
+
+/* 팔로워 수 */
+.memberInfoArea > div:nth-of-type(2){
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    height: 50%;
+
+    font-size: 18px;
+}
+
+.followInfoArea {
+    display: flex;
+    
+    cursor: pointer;
+}
+
+.followInfoArea > div {
+    margin: 0 10px;
+}
+
+/* --------------------------------------------------------------------------------------------- */
+
+/* 팔로잉/팔로워 목록 조회 영역 */
+.follow-list-area{
+    position: absolute;
+    top: 420px;
+    left: 700px;
+
+    overflow-y: scroll;
+
+    width: 300px;
+    height: 400px;
+
+    box-shadow: 0px 0px 5px #ddd;
+    border-radius: 5px;
+    background-color: white;
+}
+
+/* 스크롤바 설정*/
+.follow-list-area::-webkit-scrollbar{
+    width: 6px;
+}
+
+/* 스크롤바 막대 설정*/
+.follow-list-area::-webkit-scrollbar-thumb{
+    height: 17%;
+    background-color: #d1edf1;
+    border-radius: 5px;  
+}
+
+/* 스크롤바 뒷 배경 설정*/
+.follow-list-area::-webkit-scrollbar-track{
+    background-color: white;
+    border-radius: 5px;
+}
+
+.follow-list{
+    display: flex;
+    align-items: center;
+
+    height: 70px;
+    padding: 0 55px;
+    margin: 10px 0;
+}
+
+.follow-list a{
+    text-decoration: none;
+    color: #797979;
+}
+
+.followProfileImg{
+    width: 53px;
+    height: 53px;
+
+    border: 2px solid #ddd;
+    border-radius: 50%;
+}
+
+.followProfileImg > img{
+    width: 50px;
+    height: 50px;
+
+    border-radius: 50%;
+}
+
+.followNickname{
+    font-size: 15px;
+    margin-left: 30px;
+}
+
+/* 팔로우 리스트 클릭 시 효과 */
+.clickList{
+    font-weight: bold;
+    color: #99E1ED;
+}
+
+/* --------------------------------------------------------------------------------------------- */
+
+/* 획득한 뱃지 영역 */
+#member-badge-area{
+    height: 200px;
+}
+
+#member-badge-area > div:first-of-type{
+    margin-top: 45px;
+    font-size: 18px;
+
+    border-bottom: 2px solid #ddd;
+
+    height: 15%;
+}
+
+/* --------------------------------------------------------------------------------------------- */
+
+/* 뱃지 이미지, 캐러셀 화살표 영역 */
+#badge-area-middle{ 
+    width: 695px;
+    height: 75%;
+
+    margin: auto;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+}
+
+.badgeImg{
+    height: 100px;
+    width: 100px;
+
+    margin: 0 10px;
+}
+
+.badgeImg > img{
+    height: 100%;
+}
+
+.container{
+    width: 605px;
+    overflow: hidden;
+}
+
+.carousel{
+    display: flex;
+    align-items: center;
+
+    margin-top: 20px;
+    transition: all 0.5s;
+}
+
+
+.prev-btn,
+.next-btn{
+    cursor: pointer;
+    margin-top: 20px;
+    padding: 5px;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+/* --------------------------------------------------------------------------------------------- */
+
+/* 작성한 게시글 목록 조회 영역 */
+#member-board-area{
+    height: 1200px;
+}
+
+#member-board-area > div:first-of-type{
+    margin-top: 10px;
+    font-size: 18px;
+
+    border-bottom: 2px solid #ddd;
+
+    height: 3%;
+}
+
+#board-area-middle{
+    margin-top: 20px;
+
+    display: grid;
+    grid-template-columns: 250px 250px 250px;
+    grid-template-rows: 330px 330px 330px;
+    row-gap: 50px;
+    column-gap: 90px;
+
+    justify-content: center;
+}
+
+/* 게시글 썸네일 */
+.thumbnail{
+    width: 250px;
+    height: 330px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    
+    background-color: white;
+
+    cursor: pointer;
+}
+
+.thumbnail:hover{
+    transform: scale(1.05);
+    transition-duration: 0.5s;
+}
+
+.thumbnail > div:first-of-type{
+    height: 60%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: #797979;
+
+    border-radius: 5px 5px 0 0;
+}
+
+.thumbnail > div:first-of-type> img{
+    width: 200px;
+}
+
+.thumbnail > div:nth-of-type(2){
+    height: 40%;
+    padding: 10px;
+
+    border-radius: 0 0 5px 5px;
+}
+
+/* 게시글 제목 */
+.title{
+    font-size: 20px;
+    /* font-weight: bold; */
+}
+
+/* 게시글 작성일, 좋아요 영역 */
+.createDate-area{
+    display: flex;
+    justify-content: space-between;
+
+    margin-top: 10px;
+}
+
+/* 게시글 작성자 프로필 영역 */
+.profile-area{
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.profileArea > img{
+    width: 40px;
+    border-radius: 50%;
+    border: 1px solid #ddd;
+}
+
+/* 닉네임 영역 */
+.profile-area > div:nth-of-type(2){
+    width: 200px;
+    margin-left: 5px;
+}
+
+/* 좋아요 영역 */
+.profile-area > div:nth-of-type(3){
+    margin-left: 90px;
+    width: 120px;
+}
+
+/* 페이지네이션 영역 */
+#pagination-area{
+    height: 100px;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ------------------------------------------------------------------------------------- */
+
+/* 달력 */
+#CalendarArea {
+    background-color: white;
+    height: 320px;
+    width: 320px;
+    margin-left: 120px;
+    padding: 18px 0;
+    border-radius: 5px;
+    box-shadow: 0px 10px 10px 0px #ddd;
+    max-width: 320px;
+
+    position: relative;
+    bottom: 30px;
+}
+
+/* td {
+    width: 50px;
+    height: 50px;
+} */
+
+.Calendar {
+    text-align: center;
+    width: 180px;
+    height: 80px;
+    margin: auto;
+}
+
+.Calendar>thead>tr:first-child>td {
+    font-family: 'Questrial', sans-serif;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+.Calendar>thead>tr:last-child>td:nth-child(1),  .Calendar>thead>tr:last-child>td:nth-child(7){
+    color: #F79DC2;
+}
+
+
+.calenderBtn{
+    color:rgba(52, 196, 219, 0.5);
+    font-size: 50px;
+}
+
+.Calendar>thead>tr:last-child>td {
+    font-family: 'Questrial', sans-serif;
+    font-weight: 600;
+    font-size: 1em;   
+}
+
+.Calendar>tbody>tr>td>p {
+    font-family: 'Montserrat', sans-serif;
+    height: 30px;
+    width: 30px;
+    border-radius: 45px;
+    transition-duration: .2s;
+    line-height: 35px;
+    margin: 2.5px;
+    margin-bottom: 10px;
+    display: block;
+    text-align: center;
+    font-size: 1.2rem;
+}        
+
+.futureDay {
+    color: lightgray;
+}
+
+.today {
+    font-family: 'Montserrat', sans-serif;
+    height: 45px;
+    width: 45px;
+    border-radius: 45px;
+    transition-duration: .2s;
+    line-height: 45px;
+    margin: 2.5px;
+    display: block;
+    text-align: center;
+    background-color: #eee;
+}
+
+.pastDay,.possible-futureDay {
+    background-color: #FFFFFF;
+    cursor: pointer;
+}
+.pastDay:hover,.possible-futureDay:hover{
+    background:#eee;
+}
+
+.possible-futureDay.choiceDay,
+.pastDay.choiceDay,
+.today.choiceDay {
+    background:  rgba(52, 196, 219, 0.5);
+    color: #fff;
+    font-weight: 700;
+    cursor: pointer;
+}
+.holiday{
+    color:#F79DC2;
+}
+.triangle{
+    color: #f1c40f;
+    font-size: 30px;
+
+}
+.Circle{
+    color: #ee4949;
+} 
+
+
+/* 캘린더 말풍선 */
+.ballon {
+    /* display: none; */
+    width: 292px;
+    height: 40px;
+
+    position: absolute;
+    left: 1136px;
+    bottom: 800px;
+    
+    background: #484848;
+    color: white;
+    border-radius: 5px;
+    padding: 12px 12.8px;
+}
+
+
+.ballon:after {
+    border-top: 10px solid #484848;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 0px solid transparent;
+    content: "";
+    position: absolute;
+    top: 40px;
+    left: 50px;
+}
+
+.floating{
+	animation-name: floating;
+	-webkit-animation-name: floating;
+
+	animation-duration: 1.5s;	
+	-webkit-animation-duration: 1.5s;
+
+	animation-iteration-count: infinite;
+	-webkit-animation-iteration-count: infinite;
+}
+
+@keyframes floating {
+	0% {
+		transform: translateY(0%);	
+	}
+	50% {
+		transform: translateY(8%);	
+	}	
+	100% {
+		transform: translateY(0%);
+	}			
+}
+
+@-webkit-keyframes floating {
+	0% {
+		-webkit-transform: translateY(0%);	
+	}
+	50% {
+		-webkit-transform: translateY(8%);	
+	}	
+	100% {
+		-webkit-transform: translateY(0%);
+	}			
+}

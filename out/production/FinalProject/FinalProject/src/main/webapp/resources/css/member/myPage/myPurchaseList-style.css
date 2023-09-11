@@ -1,0 +1,107 @@
+* {
+    box-sizing: border-box;
+    /* border: 1px solid black; */
+}
+
+#main-container{
+    margin: 100px 400px;
+    height: auto;
+
+    width: 1000px;
+
+    display: flex;
+}
+
+
+/* 마이페이지 상단 제목 영역 */
+#right-content-area{
+    width: 75%;
+}
+
+#title-area{
+    padding-bottom: 10px;
+    border-bottom: 2px solid #ddd;
+}
+
+/* 마이페이지 우측 메인 내용 영역 */
+
+/* 주문처리 상태 select */
+#selectBox{
+    margin: 10px 0;
+    padding-left: 5px;
+    width: 130px;
+    height: 30px;
+
+    appearance: none;
+
+    border: 1px solid #ddd;
+    outline: none;
+
+    background: url('../../../images/myPage/arrowDown.png') no-repeat center right 5px;
+    background-size: 20px;
+}
+
+/* 구매 내역 목록 조회 테이블 */
+#purchaseList{
+    width: 750px;
+    height: auto;
+
+    text-align: center;
+    border-collapse: collapse;
+
+    overflow: auto;
+    table-layout: fixed;
+}
+
+th, td{
+    border-bottom: 1px solid #ddd;
+    white-space: nowrap;
+    height: 45px;
+}
+
+tr{
+    height: 45px;
+}
+
+.theadColor{
+    height: 45px;
+    background-color: #99E1ED;
+    color: white;
+}
+
+.delivery{
+    color: #50cbe0;
+    font-weight: bold;
+}
+
+/* 취소/교환/반품 버튼 */
+.inquiryBtn{
+    border: none;
+
+    width: 100px;
+    height: 30px;
+    
+    cursor: pointer;
+}
+
+.inquiryBtnColor1{
+    background-color: #99E1ED;
+    color: white;
+}
+
+.inquiryBtnColor1:hover{
+    background-color: white;
+    color: #99E1ED;
+    border: 1px solid #99E1ED;
+}
+
+.inquiryBtnColor2{
+    background-color:dimgrey;
+    color: white;
+}
+
+.inquiryBtnColor2:hover{
+    background-color: white;
+    color: dimgrey;
+    border: 1px solid dimgrey;
+}
