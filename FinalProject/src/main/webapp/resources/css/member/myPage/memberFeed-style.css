@@ -271,7 +271,7 @@
 /* 팔로잉/팔로워 목록 조회 영역 */
 .follow-list-area{
     position: absolute;
-    top: 420px;
+    top: 440px;
     left: 700px;
 
     overflow-y: scroll;
@@ -538,7 +538,7 @@
     max-width: 320px;
 
     position: relative;
-    bottom: 30px;
+    bottom: 45px;
 }
 
 /* td {
@@ -642,7 +642,7 @@
 
     position: absolute;
     left: 1136px;
-    bottom: 800px;
+    bottom: 790px;
     
     background: #484848;
     color: white;
