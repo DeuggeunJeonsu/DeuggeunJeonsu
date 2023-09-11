@@ -25,12 +25,12 @@
                      </div> 
 
                     <div class="inquiry1">
-                     <a href="/adminInquiry"> <i class="fa-solid fa-envelope-circle-check" id="inquiry2" name="1"></i>
+                     <a href="/adminInquiry" id="inquiryList-link"> <div class="fa-solid fa-envelope-circle-check" id="inquiry2" name="1"></div>
                         <label id="inquiry2">회원 문의</label></a>
                     </div>
 
                     <div class="userList">
-                        <a href="/userList"><i class="fa-solid fa-users" id="userImg"></i>
+                        <a href="/userList" id="userList-link"><div class="fa-solid fa-users" id="userImg"></div>
                         <label id="userImg">회원 목록</label></a>
                     </div>
                 </div>

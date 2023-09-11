@@ -13,6 +13,12 @@
     <link rel="stylesheet" href="../resources/css/member/myPage/myPageSideBar-style.css">
     <%-- myBadge-style.css 연결 --%>
     <link rel="stylesheet" href="../resources/css/member/myPage/followingFollower-style.css">
+
+    <%-- 헤더 아이콘 --%>
+    <link rel="apple-touch-icon" sizes="180x180" href="/resources/images/favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/resources/images/favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/resources/images/favicon_io/favicon-16x16.png">
+    <link rel="manifest" href="/resources/images/favicon_io/site.webmanifest">
     
 </head>
 
@@ -166,7 +172,7 @@
     <!-- footer include -->
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
 
-    <!-- main.js 연결 -->
+    <!-- followingFollower.js 연결 -->
 	<script src="../resources/js/member/myPage/followingFollower.js"></script>
 
 </body>

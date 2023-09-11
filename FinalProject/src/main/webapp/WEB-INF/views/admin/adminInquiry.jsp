@@ -8,6 +8,9 @@
 <title>회원 문의 목록</title>
 
 <link rel="stylesheet" href="/resources/css/admin/adminInquiry.css">
+
+<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
@@ -27,9 +30,9 @@
 						관리자님
 
 					</div>
-					<a href="/userList"><div id="sideList">득근전수 회원 목록</div> <a
-						href="/adminInquiry"><div id="sideList">회원 문의</div></a> <a
-						href="/adminBoardList"><div id="sideList">관리자 페이지</div></a>
+					<a href="/userList"><div class="sideList" id="user-sideList">득근전수 회원 목록</div> <a
+						href="/adminInquiry"><div class="sideList" id="inquiry-sideList">회원 문의</div></a> <a
+						href="/adminBoardList"><div class="sideList" id="boardList-sideList">관리자 페이지</div></a>
 				</div>
 
 				<div class="userList">
@@ -44,8 +47,10 @@
 							<option>1:1문의</option>
 							<option>상품 문의</option>
 						</select>
-						<button class="fa-solid fa-magnifying-glass"></button>
-						<input type="text">
+						<div class="search-place">
+							<input  type="search" id="market-search" placeholder="search...">
+                    		<button type="button" id="search-button"><i class="fas fa-search"></i></button>
+						</div>
 					</div>
 
 					<div class="userList">
@@ -65,7 +70,7 @@
 							<tbody>
 								<tr>
 									<td>4</td>
-									<td><a href="#">상품이 이상해요</a></td>
+									<td><a href="#" class="iq-update">상품이 이상해요</a></td>
 									<td>상품 / 환불</td>
 									<td>user04</td>
 									<td class="complete">완료</td>
@@ -73,7 +78,7 @@
 
 								<tr>
 									<td>3</td>
-									<td><a href="#">환불 해주세요.</a></td>
+									<td><a href="#" class="market-update">환불 해주세요.</a></td>
 									<td>상품 / 환불</td>
 									<td>user03</td>
 									<td>미답변</td>
@@ -109,6 +114,8 @@
 	</main>
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
 
+
+	<script src="/resources/js/board/admin/adminInquiry.js"></script>
 
 </body>
 </html>

@@ -15,19 +15,19 @@ public class BoardController {
 	@RequestMapping("/notificationList")
 	public String notificationList() {
 		
-		return "board/notificationList";
+		return "board/notification/notificationList";
 	}
 	
 	@RequestMapping("/notificationWrite")
 	public String notificationWrite() {
 		
-		return "board/notificationWrite";
+		return "board/notification/notificationWrite";
 	}
 	
 	@RequestMapping("/notificationDetail")
 	public String notificationDetail() {
 		
-		return "board/notificationDetail";
+		return "board/notification/notificationDetail";
 	}
 	// 리뷰작성 요청
 	@RequestMapping("/reviewWrite")
