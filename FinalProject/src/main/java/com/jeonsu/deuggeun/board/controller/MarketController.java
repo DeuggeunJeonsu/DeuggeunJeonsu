@@ -19,12 +19,10 @@ public class MarketController {
 	public String selectmarketList() {
 		return "board/market/marketList";
 	}
-	
 	@GetMapping("/marketDetail")
 	public String marketDetail() {
 		return "board/market/marketDetail";
 	}
-	
 	@GetMapping("/marketReview")
 	public String marketReview() {
 		return "board/market/marketReview";

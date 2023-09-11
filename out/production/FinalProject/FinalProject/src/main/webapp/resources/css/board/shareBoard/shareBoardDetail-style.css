@@ -1,0 +1,734 @@
+/* div{
+    border: 1px solid pink;;
+} */
+
+#main-container{
+    margin: 100px 400px;
+    height: auto;
+    width: 1200px;
+}
+
+#title-area > div:nth-of-type(1){
+    padding-bottom: 10px;
+    border-bottom: 2px solid #ddd;
+}
+
+#board-area{
+    height: 100%;
+    display: flex;
+}
+
+#board-area > div:nth-child(1){
+    width: 60%;
+}
+#board-area > div:nth-child(2){
+    /* width: 40%; */
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: right; */
+    align-items: end;
+    /* margin: 20px; */
+    margin-top: 30px;
+}
+#board-info > span{
+padding: 0 10px;
+}
+.thumbnail{
+    width: 400px;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-left: auto;
+    margin-right: auto;
+    
+
+    /* border: 2px solid #99E1ED;; */
+
+}
+
+.thumbnail > img{
+
+    width: 90%;
+}
+#title{
+    font-size: 1.7rem;
+    padding-left: 20px;
+}
+hr{ border-bottom: 2px solid #ddd;}
+#board-info > *{
+    font-size: 1rem;
+    /* padding-left: 2px; */
+}
+#board-info{
+    display: flex;
+    justify-content: end;
+    padding: 20px;
+}
+.boardContent{
+    height: 200px;
+    /* border: none; */
+    padding: 0 20px;
+    font-size: 1.3rem;
+}
+
+.routine-area{
+    height: 230px;
+    /* background-color: #99E1ED; */
+    display: flex;
+    /* justify-content: space-between; */
+    border-radius: 20px;
+    margin-bottom: 20px;
+}
+.img-area{
+    width: 200px;
+    height: 200px;
+    /* background-color: #fff; */
+    border-radius: 10px;
+    border: none;
+    margin: auto;
+}
+.img-area > .img{
+    width: 100%;
+    margin: auto;
+
+}
+.routine-info {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+   
+    
+}
+.routine-info  > div {
+    background-color:  #fff;
+    width: 90%;
+    border-radius: 10px;
+    
+}
+
+.routineNm{
+    display: flex;
+    justify-content: space-between;
+    height: 40px;
+    border: none;
+    padding: 5px 30px;
+    font-size: 1.2rem;
+    align-items: center;
+    margin: 10px 10px 7px 10px;
+    
+}
+.routineNm > button{
+    width: 80px;
+    height: 30px;
+
+    cursor: pointer;
+    background-color: #ddd;
+    border: none;
+    border-radius: 5px;
+}
+
+.routine-content{
+    margin-top: 7px;
+    line-height: 20px;
+    padding: 10px 30px;
+    height: 65%;
+    border: none;
+    margin: 0px 10px 10px 10px;
+
+}
+.routine-area > h1{
+    margin-left: 15px;
+    margin-right: 10px;
+    color: #fff;
+    
+}
+
+/* 작성자 정보 */
+#member-area{
+    border: 30px solid #99E1ED;
+    background-color: #fff;
+    border-radius: 20px;
+    /* border: none; */
+    width: 90%;
+    height: 250px;
+}
+#member-area > div:nth-child(1){
+    height: 70%;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-evenly;
+}
+#member-area > div:nth-child(1)  img{
+    width: 100%;
+    border-radius: 50%;
+}
+#member-area > div:nth-child(1)>span{
+    font-size: 1.7rem;
+    font-weight: bold;
+}
+#member-area > div:nth-child(1)>button{
+    background-color: #99E1ED;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    width: 100px;
+    height: 30px;
+    font-size: 18px;
+}
+#member-area > div:nth-child(1)>button:hover{
+    /* font-size: 19px; */
+    color: #fff;
+    transition-duration: 0.5s;
+}
+#profile-area{
+    width: 80px;
+    height: 80px;
+    border:3px solid #ddd;
+    border-radius: 50%;
+}
+
+#member-area > div:nth-child(2){
+    width: 240px;
+    margin: auto;
+    text-align: center;
+}
+#member-area > div:nth-child(2) > span{
+    font-size: 1.4rem;
+}
+#member-area > div:nth-child(2) > span:nth-child(1){
+    margin-right: 20px;
+}
+
+
+/* ____________________ToDoList시작______________________ */
+.detaile-todolist-area > div:nth-of-type(3){
+    display: flex;
+    justify-content: center;
+}
+.detaile-todolist-area > div:nth-of-type(3)>input{
+    width: 85%;
+    display: flex;
+    justify-content: space-between;
+    height: 40px;
+
+    padding-left: 10px;
+    font-size: 18px;
+
+    border:2px solid #99E1ED;
+    outline: none;
+}
+
+.detaile-todolist-area > div:nth-of-type(3) button{
+    border: none;
+    background-color: #aaa;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+}
+
+
+.detaile-todolist-area{
+    min-width: 90%;
+    min-height: 500px;
+    border: 30px solid #99E1ED;
+    border-radius: 20px;
+    margin: 10px 0;
+    padding: 30px;
+    background-color: #FFFFFF;
+    position: sticky;
+    top: 130px
+
+}
+/* checkbox 박스  css*/
+.check-area{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    align-items: center;
+    height: 340px;
+}
+.ck{
+    height: 20px;
+    width: 20px;
+    background-color: transparent;
+    border: 2px solid #777;
+    border-radius: 5px;
+    box-sizing: border-box;
+    position: relative;
+    display: inline-block;
+    transition: border-color ease 0.2s;
+    cursor: pointer;
+}
+
+.ck::before, .ck::after {
+  position: absolute;
+  height: 0;
+  width: 4px;
+  background-color: #4285f4;
+  box-sizing: border-box;
+  display: inline-block;
+  transform-origin: left top;
+  border-radius: 5px;
+  content: ' ';
+  transition: opacity ease 0.5;
+}
+.ck::before {
+  background-color: #4285f4;
+}
+
+.ck::before {
+  top: 14.4px;
+  left: 8.2px;
+  box-shadow: 0 0 0 1px transparent;
+  transform: rotate(-135deg);
+}
+.ck::after {
+  top: 7.4px;
+  left: 1px;
+  transform: rotate(-45deg);
+}
+
+.detaile-todolist-area input:checked + .ck {
+  border-color: #4285f4;
+}
+
+.check-area > div > input:checked +.ck::after {
+  height: 10px;
+  animation: bottomcheck 0.2s ease 0s forwards;
+}
+
+.check-area > div > input:checked + .ck::before {
+  height: 24px;
+  animation: topcheck 0.4s ease 0s forwards;
+}
+.none{
+	display: none;
+}
+@keyframes bottomcheck {
+  0% {
+    height: 0;
+  }
+  100% {
+    height: 10px;
+  }
+}
+@keyframes topcheck {
+  0% {
+    height: 0;
+  }
+  50% {
+    height: 0;
+  }
+  100% {
+    height: 24px;
+  }
+}
+
+.check-area > div{
+    align-items: center;
+    width: 90%;
+    align-content: space-between;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.check-area > div > span{
+    font-size: 16px;
+    font-weight: bold;
+    margin-left: 20px;
+}
+
+.detaile-todolist-area > h2{
+    text-align: center;
+    font-size: 2rem;
+    margin-top: 0;
+}
+/* .todolist-area > hr{
+    margin-bottom: 20px;
+} */
+
+.detaile-todolist-area > .check-area  button{
+    border: none;
+    background-color: #aaa;
+    cursor: pointer;
+}
+
+/* 투두리스트 버튼 영역 */
+.tdl-btnArea{
+    width: 70%;
+    /* border: 1px solid black; */
+    margin: auto;
+    justify-content: space-between;
+    display: flex;
+}
+
+.tdl-btnArea > a, .tdl-btnArea > a:visited {
+    text-decoration: none;
+    color: #00AE68;
+    cursor: pointer;
+
+
+    display: block;
+    position: relative;
+    float: left;
+    width: 120px;
+    padding: 0;
+    margin: 10px 20px 10px 0;
+    font-weight: 600;
+    text-align: center;
+    line-height: 50px;
+    color: #FFF;
+    border-radius: 5px;
+    transition: all 0.2s ;
+
+    background: #5DC8CD;
+
+    box-shadow: 0px 5px 0px 0px #1E8185;
+}
+
+.btnPush:hover {
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+
+.btnLightBlue.btnPush:hover {
+    box-shadow: 0px 0px 0px 0px #1E8185;
+  }
+
+.complete{
+    text-decoration-line: line-through;
+    text-decoration-color: #ee4949 ;
+    text-decoration-thickness: 2px;
+}
+
+.progress{
+    background-color: #e0e0e0;
+    width: 100% !important;
+    border-radius: 10px;
+}
+.progress-num{
+    background-color: #99E1ED;
+    height: 20px;
+    border-radius: 10px;
+    transition-duration: 0.5s;
+}
+
+
+/* 버튼 영역************** */
+/* 좋아요 영역 */
+/* 좋아요 영역 */
+#btn-area{
+    height: 100px;
+}
+
+.board-like{
+    height: 100px;
+    width: 100px;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+    
+    margin: 10px auto 0 auto;
+}
+
+.likeCount{
+    /* margin-top: 10px; */
+    margin: auto; /* 수직 가운데 정렬 */
+    font-size: 20px;
+    text-align: center; /* 가운데 정렬 */
+       
+    margin-bottom: 20px;
+    
+}
+
+.like-cnt{
+    width: 60px;
+    height: 60px;
+
+    border-radius: 50%;
+    background-color: #ddd;
+
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+    align-items: center;
+
+    z-index: 2;
+}
+
+.like-btn{
+    color: #fff;
+}
+
+/* 나머지 버튼 */
+#btn-area{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 100px;
+}
+#btn-area > div:nth-child(2){
+    width: 350px;
+    height: 100px;
+    display: flex;
+    justify-content: space-between;
+    
+
+}
+#btn-area button{
+    width: 100px;
+    height: 50px;
+    background-color: #eee;
+    border:  none;
+    border-radius: 5px;
+    cursor: pointer;
+    
+}
+#btn-area button:hover{
+    background-color: #99E1ED;
+    transition-duration: 0.5s;
+
+}
+
+
+/* DO it 버튼 움직임 */
+.routineNm > button:hover{
+ background-color: #99E1ED;
+ color: #fff;
+ transition-duration: 0.5s;   
+}
+
+
+/* ----------------------------------------------------- */
+/* 댓글 영역 */
+#comment-area{
+   
+    border-top: 0.5px solid #777;
+    /* height: 300px; */
+}
+.comment-count-area {
+    padding :20px 10px 20px 52px;
+}
+.comment-count-area > i {
+    font-size: 35px;
+    text-align: center;
+    color: #777;
+}
+.comment-count-area > span{
+    font-size: 18px;
+    padding-left: 10px;
+    padding-top: 10px;
+}
+
+/* 댓글 입력창 */
+.comment-input {
+    position: relative;
+    width: 1100px;
+    margin: auto;
+}
+
+.comment-input textarea {
+    padding: 20px;
+    width: 100%;
+    height: 100px;
+    resize: none;
+    outline: none;
+    border: 3px solid #eee;
+    background-color: #fff;
+    border-radius: 20px;
+    padding-right: 40px;
+    font-size: 18px;
+
+    overflow: auto;
+}
+.comment-input textarea:focus{
+    border: 3px solid #99E1ED;
+}
+.comment-input button {
+    position: absolute;
+    top: 0;
+    right: 20px;
+    width: 50px;
+    height: 100%;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+.comment-input  img{
+    width: 100%;
+}
+
+
+#commentList{
+    width: 90%;
+    margin: auto;
+    padding: 0;
+    list-style:none;
+}
+.comment-writer {
+    display: flex;
+    align-items: center;
+}
+.comment-writer > img{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 2px solid #aaa;
+}
+.comment-writer > span{
+    font-weight: bold;
+    
+}
+.comment-date{
+    font-size: 0.8em;
+    color: #aaa;
+}
+
+.comment-row{
+    padding : 15px 0;
+    display: flex;
+}
+.comment-row > p:nth-child(1){
+    display: flex;
+    flex-direction: column;
+}
+
+.commentInsertContent{
+    width: 100%;
+    height: 90px;
+    resize: none;
+    margin-top : 20px;
+}
+.comment-row > div{
+    font-size: 18px;
+    width: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.comment-row > div > div:first-child{
+    width: 100%;
+    height: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.comment-row > div > div:first-child > span:last-child{
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.comment-row > div > div:first-child > span:last-child:hover {
+    font-size: 30px;
+    font-weight: bold;
+    transition-duration: 0.5s;
+}
+.comment-row > div > span:last-child {
+    display: flex;
+    justify-content: flex-end;
+    padding-top:10px;
+}
+.comment-row > p:nth-child(3)>span:nth-child(2):hover{
+    font-size: 20px;
+    transition-duration: 0.5s;
+}
+
+/* 댓글 수정버튼 */
+.comment-row button{
+    width: 55px;
+    height: 30px;
+    border: none;
+    cursor: pointer;
+    background-color: #aaa;
+    color: #fff;
+    border-radius: 5px;
+    margin-left: 5px;
+}
+.comment-row button:hover{
+    background-color: #99E1ED;
+    transition-duration: 0.5s;
+}
+
+.comment-content{
+    width: 80%;
+    font-size: 18px;
+    padding-left: 20px;
+}
+.child-comment{
+    padding-left: 50px;
+}
+
+/* 모달 */
+/* .TodoList-modal{
+    position: fixed;
+    z-index: 1;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+   
+    box-shadow: 0 0 20px 4px rgba(0, 220, 244, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(10px);
+    display: none;
+}
+.model-todolist-area{
+    width: 550px;
+    min-height: 600px;
+    border: 30px solid #99E1ED;
+    border-radius: 20px;
+    margin: 0 auto;
+    padding: 30px;
+    background-color: #FFFFFF;
+    position: relative;
+    top: 20%;
+}
+.model-todolist-area > h2{
+    text-align: center;
+}
+
+/* 모달 checkbox */
+
+/* input[id="modelck1"]:checked + .ck::after,
+input[id="modelck2"]:checked + .ck::after,
+input[id="modelck3"]:checked + .ck::after,
+input[id="modelck4"]:checked + .ck::after {
+  height: 10px;
+  animation: bottomcheck 0.2s ease 0s forwards;
+}
+
+input[id="modelck1"]:checked + .ck::before,
+input[id="modelck2"]:checked + .ck::before,
+input[id="modelck3"]:checked + .ck::before,
+input[id="modelck4"]:checked + .ck::before {
+  height: 24px;
+  animation: topcheck 0.4s ease 0s forwards;
+}  */
+
+
+/* .detalie-todolist-area > span{
+    position: absolute;
+    font-size: 20px;
+    top: 10px; 
+    right: 10px; 
+    cursor: pointer;
+} */
+
+/* .model-todolist-area > span:hover{
+    font-size: 22px;
+    font-weight: bold;
+}
+.save{ width: 30% !important;} */

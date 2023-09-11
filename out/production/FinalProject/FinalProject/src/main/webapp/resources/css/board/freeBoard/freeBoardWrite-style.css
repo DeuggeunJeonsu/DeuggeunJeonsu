@@ -1,0 +1,201 @@
+* {
+    box-sizing: border-box;
+    /* border: 1px solid #ddd; */
+}
+
+#main-container{
+    margin: 100px 400px;
+    height: auto;
+    min-width: 1200px;
+}
+
+#title-area > div:nth-of-type(2) {
+    padding-bottom: 10px;
+    border-bottom: 2px solid #ddd;
+}
+
+#title-area h1{
+    font-weight: bold;
+    font-size: 1.5em;
+}
+
+#title-area{
+    color: #797979;
+}
+
+/* 게시글 작성 영역 */
+#middle-area{
+    margin: 10px 0;
+    height: auto;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+}
+
+/* 게시글 제목 영역 */
+#title-middle-area{
+    margin-top: 20px;
+    height: 40px;
+}
+
+#title-textArea{
+    height: 40px;
+    width: 850px;
+
+    font-size: 20px;
+
+    padding-top: 4px;
+    padding-left: 10px;
+    padding-right: 10px;
+
+    resize: none;
+
+    outline: none;
+
+    /* background-color:transparent; */
+
+    border: 2px solid #99E1ED;
+    border-radius: 5px;
+
+    overflow: hidden;
+}
+
+#title-textArea:focus-within{
+    border: 2px solid #ddd;
+}
+
+/* 해시태그 영역 */
+#hashtag-area{
+    margin-top: 5px;
+    height: 90px;
+}
+
+#hashtag-area > div:first-of-type{
+    height: 40px;
+}
+
+#hashtag-textArea{
+    height: 40px;
+    width: 850px;
+
+    font-size: 18px;
+
+    padding-top: 7px;
+    padding-left: 10px;
+    padding-right: 10px;
+
+    resize: none;
+
+    outline: none;
+
+    border: none;
+    background-color:transparent;
+}
+
+#hashtag-textArea:focus-within{
+    border-bottom: 2px solid #99E1ED;
+}
+
+#hashtag-making-area{
+    display: flex;
+
+    height: 40px;
+
+    padding-top: 7px;
+    padding-left: 10px;
+    padding-right: 10px;
+
+    font-size: 18px;
+}
+
+#hashtag-making-area div{
+    width: auto;
+
+    background-color: #99E1ED;
+    color: white;
+
+    margin: 0 5px 0 0;
+
+    padding: 5px;
+    text-align: center;
+
+    border-radius: 7px 9px;
+
+    cursor: pointer;
+}
+
+#hashtag-making-area div:hover{
+    transform: scale(1.05);
+    transition-duration: 0.5s;
+}
+
+.fa-circle-xmark{
+    font-size: 11px;
+
+    margin-left: 6px;
+
+    position: relative;
+    bottom: 3px;
+}
+
+/* 내용 작성 영역 */
+/* #content-area{
+    width: 800px;
+
+    margin-top: 5px;
+}
+
+#content-textArea{
+    height: 600px;
+    width: 800px;
+
+    font-size: 18px;
+
+    padding: 10px;
+
+    resize: none;
+
+    outline: none;
+
+    border: 2px solid #99E1ED;
+    border-radius: 5px;
+}
+
+#content-textArea:focus-within{
+    border: 2px solid #ddd;
+} */
+
+/* 버튼 영역 */
+#button-area{
+    text-align: center;
+    margin: 10px;
+}
+
+#button-area > button{
+    font-size: 15px;
+
+    width: 70px;
+    height: 30px;
+    margin: 0 5px;
+
+    cursor: pointer;
+
+    background-color: #99E1ED;
+    color: white;
+
+    border: none;
+    border-radius: 7px;
+    outline: none;
+
+    transition: 800ms;
+}
+
+#button-area > button:hover{
+    background-color: white;
+    color: #99E1ED;
+
+    border: 1px solid #99E1ED;
+}
+

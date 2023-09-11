@@ -1,0 +1,185 @@
+*{ box-sizing: border-box;
+   /* border: 1px solid black; */  
+    
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+
+.Jheader{
+	height: 100px;
+	width: 100%;
+	
+}
+
+a:hover{
+    
+    color:  #99E1ED;
+}
+
+.Jbody{
+    width: 100%;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    min-width: 700px;
+}
+
+.Jcenter{
+    width: 80%;
+    height: 100%;
+    min-width: 700px;
+    min-height: 624.3px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+table{
+    width: 1000px;
+    border-collapse: collapse;
+}
+
+th{
+    background-color: darkgray;
+    height: 30px;
+}
+
+td{
+    text-align: center;
+    border-bottom: 1px solid grey;
+    height: 35px;
+}
+
+
+.Jhead{
+    width: 1000px;
+}
+.Jtext{
+    display: flex;
+    border-bottom: 2px solid gray;
+    height: 30px;
+    width: 1000px;
+    font-size: 15px;
+}
+
+.Jsearch{
+    width: 1000px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: right;
+}
+
+.Jsearch > input {
+
+    width: 180px;
+    height: 35px;
+    border: 0.5px solid gray;
+    border-radius: 1px;
+    border-left: none;
+    outline: none;
+}
+
+.Jsearch > button {
+
+    border-radius: 1px;
+    border: 0.5px solid gray;
+    border-right: none;
+    height: 35px;
+    width: 35px;
+    
+}
+
+
+.Jsearch > button:hover{
+    
+    cursor: pointer;
+}
+
+main{
+    min-width: 1000px;
+}
+
+.JList{
+    min-width: 1000px;
+}
+
+.pagination-area{
+    width: 100%;
+    min-width: 1000px;
+    display: flex;
+    flex-direction: column;
+}
+
+.pagination{
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+}
+
+.pagination li{
+    width: 20px;
+    margin: 0 5px;
+    text-align: center;
+}
+
+.pagination a{
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+/* 글쓰기 버튼 영역 */
+.write-btn-area{
+    width: 100%;
+    display: flex;
+    justify-content: end;
+}
+#writeBtn{
+    padding: 5px 10px;
+    margin: 5px;
+    background-color: #99E1ED;
+    border: 1px solid #99E1ED;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+}
+#writeBtn:hover{
+    background-color: inherit;
+    color: #99E1ED;
+}
+#writeBtn:active{
+    transform: scale(0.90);
+}
+
+#Jpoint{
+    width: 35px;
+    height: 20px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+    background-color: rgb(46, 204, 113);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+tbody > tr:nth-child(1) > td:nth-child(1){
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.board-Jbtn{
+    width: 1000px;
+    display: flex;
+    justify-content: right;
+}
+

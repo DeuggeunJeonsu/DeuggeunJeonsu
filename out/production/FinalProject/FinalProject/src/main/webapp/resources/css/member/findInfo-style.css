@@ -1,0 +1,140 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    overflow: hidden;
+    margin: 0;
+    min-width: 1200px;
+    min-height: 800px;
+}
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 40px;
+    border-radius: 5px;
+    height: 90vh;
+}
+
+
+/* 타이틀 부분 */
+main .title-area {
+    text-align: center;
+    margin-bottom: 20px;
+}
+main .title-area p:nth-of-type(1){
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: black;
+}
+main .title-area p:nth-of-type(2){
+    font-size: 14px;
+    color: black;
+}
+
+/* 서브 타이틀 부분 */
+main section:nth-of-type(2) form legend > p{
+    text-align: center;
+    margin-bottom: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    color: black;
+}
+
+/* 폼태그를 감싼 영역 */
+main section:nth-of-type(2){
+    display: flex;
+}
+main section:nth-of-type(2) form{
+    padding: 40px 50px;
+}
+
+/* 휴대폰, 아이디, 인증번호 입력 부분*/
+.input-box {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    width: 300px;
+}
+
+.input-box input {
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    background-color: inherit;
+    display: block;
+    padding: 10px 10px;
+    margin: 10px 0;
+    font-size: 18px;
+}
+
+.width30{
+    width: 30%;
+}
+.width65{
+    width: 65%;
+}
+.width100{
+    width: 100%;
+}
+
+.input-box input:focus{
+    outline: 0;
+    border: 2px solid #99E1ED;
+}
+
+/* 타이머 영역 */
+main section:nth-of-type(2) form section:nth-of-type(3){
+    height: 15px;
+    font-size: 15px;
+    color: black;
+    text-align: end;
+    line-height: 5px;
+    padding-right: 25px;
+}
+
+/* 아이디/비밀번호 찾기 버튼 부분*/
+#findIdBtn, #findPwBtn {
+    cursor: pointer;
+    display: inline-block;
+    width: 100%;
+    background: #99E1ED;
+    color : white;
+    padding: 15px;
+    font-size: 18px;
+    font-weight: bold;
+    border: 0;
+    border-radius: 5px;
+}
+/*인증번호 전송 버튼*/
+#sendSmsBtn, #sendEmailBtn {
+    cursor: pointer;
+    display: inline-block;
+    width: 30%;
+    background: #99E1ED;
+    color : white;
+    padding: 15px 5px;
+    font-size: 12px;
+    font-weight: bold;
+    border: 0;
+    border-radius: 5px;
+    margin-left: 5px;
+}
+
+
+#findIdBtn:focus, #findPwBtn:focus, #sendSmsBtn:focus, #sendEmailBtn:focus {
+    outline: 0;
+}
+
+#findIdBtn:active, #findPwBtn:active, #sendSmsBtn:active, #sendEmailBtn:active {
+    transform: scale(0.98);
+}
