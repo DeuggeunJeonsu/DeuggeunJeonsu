@@ -22,16 +22,15 @@
 		<result property="likeCount" column="" />
 
 		<collection property="imageList" select="selectImageList"
-			column="BOARD_NO" javaType="java.util.ArrayList" oftype="BoardImage">
+			column="BOARD_NO" javaType="java.util.ArrayList" ofType="BoardImage">
 		</collection>
 
 		<collection property="commentList" select="selectImageList"
-			column="BOARD_NO" javaType="java.util.ArrayList" oftype="Comment">
+			column="BOARD_NO" javaType="java.util.ArrayList" ofType="Comment">
 		</collection>
 
-		<!-- routineList 생각 좀 해볼게용!!! -->
-		<!-- <collection property="routineList" select="selectRoutineList" column="BOARD_NO" 
-			javaType="java.util.ArrayList" ofType="Comment"> </collection> -->
+		<collection property="routineList" select="selectRoutineList" column="BOARD_NO" 
+			javaType="java.util.ArrayList" ofType="Comment"> </collection> 
 	</resultMap>
 	
 	
