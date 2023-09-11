@@ -16,9 +16,9 @@ public class MainController {
 		return "common/survey/survey";
 	}
 	
-	@RequestMapping("/ranking")
+	@RequestMapping("/bmi")
 	public String ranking() {
-		return "common/ranking";
+		return "common/bmi";
 	}
 
 }

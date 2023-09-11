@@ -1,8 +1,14 @@
 const addTarget = document.querySelector("#addTarget"); // 추가 버튼
 
-const addTargetPopupLayer = document.querySelector("#addTargetPopupLayer"); // 팝업 레이어
+const addTargetPopupLayer = document.querySelector("#addTargetPopupLayer"); // 채팅방 추가 팝업 레이어
 
-const closeBtn = document.querySelector("#closeBtn"); // 닫기 버튼
+const palette = document.querySelector("#palette"); // 팔레트 버튼
+
+const palettePopupLayer = document.querySelector("#palettePopupLayer"); // 팔레트 팝업 레이어
+
+const closeBtn1 = document.querySelector("#addTargetCloseBtn"); // 닫기 버튼
+
+const closeBtn2 = document.querySelector("#paletteCloseBtn"); // 닫기 버튼
 
 const targetInput = document.querySelector("#targetInput"); // 사용자 검색
 
@@ -15,6 +21,21 @@ let selectTargetNo; // 현재 채팅 대상
 let selectTargetName; // 대상의 이름
 let selectTargetProfile; // 대상의 프로필
 
+// textarea 자동으로 늘어나게
+const inputChatting = document.getElementById("inputChatting");
+
+inputChatting.addEventListener("input",()=>{
+   let rowCount = inputChatting.value.split(/\r\n|\r|\n/).length;
+   if(rowCount < 2){ // textarea row=1일 때
+      inputChatting.style.height="41px"; // 최소값
+   }
+   else if(rowCount <= 15){
+      inputChatting.style.height= ((rowCount*21)+20) + "px";
+   }
+})
+
+
+
 
 // 검색 팝업 레이어 열기
 addTarget.addEventListener("click", e => {
@@ -23,9 +44,20 @@ addTarget.addEventListener("click", e => {
 });
 
 // 검색 팝업 레이어  닫기
-closeBtn.addEventListener("click", e => {
+closeBtn1.addEventListener("click", e => {
    addTargetPopupLayer.classList.toggle("popup-layer-close");
    resultArea.innerHTML = "";
+});
+
+// 팔레트 팝업 레이어 열기
+palette.addEventListener("click", e => {
+   palettePopupLayer.classList.toggle("popup-layer-close");
+   targetInput.focus();
+});
+
+// 팔레트 팝업 레이어  닫기
+closeBtn2.addEventListener("click", e => {
+   palettePopupLayer.classList.toggle("popup-layer-close");
 });
 
 
@@ -136,7 +168,7 @@ function selectRoomList(){
       console.log(roomList);
 
       // 채팅방 목록 출력 영역 선택
-      const chattingList = document.querySelector(".chatting-list");
+      const chattingList = document.querySelector("#chattingRoomList");
 
       // 채팅방 목록 지우기
       chattingList.innerHTML = "";
@@ -366,7 +398,7 @@ if(loginMemberNo != ""){
 
 
 // 채팅 입력
-const send = document.getElementById("send");
+const send = document.getElementById("sendBtn");
 
 const sendMessage = () => {
    const inputChatting = document.getElementById("inputChatting");
@@ -477,3 +509,10 @@ document.addEventListener("DOMContentLoaded", ()=>{
    // 보내기 버튼에 이벤트 추가
    send.addEventListener("click", sendMessage);
 });
+
+
+
+
+
+
+
