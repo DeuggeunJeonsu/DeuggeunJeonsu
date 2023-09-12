@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <title>건강/운동정보</title>
-    <link rel="stylesheet" href="../resources/css/board/informationBoard/informationBoardList-style.css">
+    <link rel="stylesheet" href="/resources/css/board/informationBoard/informationBoardList-style.css">
     <!-- JQuery lib -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <!-- slick lib -->
@@ -175,8 +175,8 @@
     <!-- footer include -->
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
 
-    <!-- main.js 연결 -->
-	<script src="/resources/js/main.js"></script>
+    <!-- informationBoardList.js 연결 -->
+	<script src="/resources/js/board/informationBoard/informationBoardList.js"></script>
 
 </body>
 </html>
