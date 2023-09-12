@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class ShareBoardController {
 	
-	@RequestMapping("/shareBoard")
+	@RequestMapping("/board/2")
 	public String shareBoardList() {
 		return "board/shareBoard/shareBoardList";
 	}

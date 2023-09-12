@@ -12,7 +12,7 @@ public class BoardController {
 		return "board/boardList";
 	}
 	
-	@RequestMapping("/notificationList")
+	@RequestMapping("/board/4")
 	public String notificationList() {
 		
 		return "board/notification/notificationList";
