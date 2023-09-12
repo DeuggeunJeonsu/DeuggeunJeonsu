@@ -24,25 +24,26 @@ public class MarketController {
 
 	@GetMapping("/list")
 	public String selectmarketList(
-			@PathVariable("boardCode") int boardCode
-								 , @RequestParam(value="cp", required=false, defaultValue="1") int cp
-								 , Model model
-								 , @RequestParam Map<String, Object> paramMap
+			//@PathVariable("boardCode")
+//			int boardCode
+//								 , @RequestParam(value="cp", required=false, defaultValue="1") int cp
+//								 , Model model
+//								 , @RequestParam Map<String, Object> paramMap
 		) {
 
-		if(paramMap.get("query") == null) {
-
-			Map<String, Object> map = service.selectMarketList(boardCode, cp);
-
-			model.addAttribute("map", map);
-
-		}else{
-			paramMap.put("boardCode", boardCode);
-
-			Map<String, Object> map = service.selectMarketList(paramMap, cp);
-
-			model.addAttribute("map", map);
-		}
+//		if(paramMap.get("query") == null) {
+//
+//			Map<String, Object> map = service.selectMarketList(boardCode, cp);
+//
+//			model.addAttribute("map", map);
+//
+//		}else{
+//			paramMap.put("boardCode", boardCode);
+//
+//			Map<String, Object> map = service.selectMarketList(paramMap, cp);
+//
+//			model.addAttribute("map", map);
+//		}
 
 		return "board/market/marketList";
 	}
