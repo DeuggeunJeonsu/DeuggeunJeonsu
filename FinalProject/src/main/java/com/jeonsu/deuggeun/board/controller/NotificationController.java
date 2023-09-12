@@ -2,6 +2,7 @@ package com.jeonsu.deuggeun.board.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /* 공지사항 Controller */
@@ -31,6 +32,13 @@ public class NotificationController {
 		
 		return "board/notification/notificationDetail";
 	}
+	
+	/*
+	 * @PostMapping("/insert") public String ncinsert() {
+	 * 
+	 * return null; }
+	 */
+	
 	// 리뷰작성 요청
 	@RequestMapping("/reviewWrite")
 	public String reivewWrite() {
