@@ -30,7 +30,9 @@
     transition-duration: 0.5s;
 }
 
-
+.Calendar>thead>tr:first-child> td > .fa-solid{
+    font-size: 10px;
+}
 
 /* 달력 */
 #CalendarArea {
@@ -48,6 +50,7 @@
 td {
     width: 50px;
     height: 50px;
+    text-align: -webkit-center
 }
 
 .Calendar {
