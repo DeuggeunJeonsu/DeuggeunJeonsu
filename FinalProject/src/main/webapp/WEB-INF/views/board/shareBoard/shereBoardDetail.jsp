@@ -9,7 +9,7 @@
 <%-- GSAP 라이브러리 추가 --%>
 <script src = "https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" ></script> 
 <%-- boardList-style.css 연결 --%>
-<link rel="stylesheet" href="../resources/css/board/shareBoard/shareBoardDetail-style.css">
+<link rel="stylesheet" href="/resources/css/board/shareBoard/shareBoardDetail-style.css">
 </head>
 <body>
      <%-- mojs 라이브러리 추가 --%>
@@ -38,7 +38,7 @@
                 <div class="routine-area">
                     <h1>1.</h1>
                     <div class= "img-area">
-                        <img src="../../../../resources/images/badge/badge (1).png" class="img">
+                        <img src="/resources/images/badge/badge (1).png" class="img">
                     </div>
                     <div class="routine-info">
                         <div class="routineNm">
@@ -57,7 +57,7 @@
                 <div class="routine-area">
                     <h1>2.</h1>
                     <div class= "img-area">
-                        <img src="../../../../resources/images/badge/badge (1).png" class="img">
+                        <img src="/resources/images/badge/badge (1).png" class="img">
                     </div>
                     <div class="routine-info">
                         <div class="routineNm">
@@ -76,7 +76,7 @@
                 <div class="routine-area">
                     <h1>3.</h1>
                     <div class= "img-area">
-                        <img src="../../../../resources/images/badge/badge (1).png" class="img">
+                        <img src="/resources/images/badge/badge (1).png" class="img">
                     </div>
                     <div class="routine-info">
                         <div class="routineNm">
@@ -95,7 +95,7 @@
                 <div class="routine-area">
                     <h1>4.</h1>
                     <div class= "img-area">
-                        <img src="../../../../resources/images/badge/badge (1).png" class="img">
+                        <img src="/resources/images/badge/badge (1).png" class="img">
                     </div>
                     <div class="routine-info">
                         <div class="routineNm">
@@ -116,7 +116,7 @@
                 <div id="member-area">
                     <div>
                         <div id="profile-area">
-                            <img src="../resources/images/user.png">
+                            <img src="/resources/images/user.png">
                         </div>
                         <span>닉네임</span>
                         <button>follow</button>

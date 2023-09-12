@@ -150,8 +150,11 @@
     transform: scale(1.05);
     transition-duration: 0.5s;
 }
-
-.thumbnail > div:first-of-type{
+.thumbnail > a {
+    text-decoration: none;
+    color: #797979;
+}
+.thumbnail  >a> div:first-of-type{
     height: 60%;
 
     display: flex;
@@ -163,11 +166,11 @@
 
 }
 
-.thumbnail > div:first-of-type> img{
+.thumbnail >a> div:first-of-type> img{
     width: 200px;
 }
 
-.thumbnail > div:nth-of-type(2){
+.thumbnail >a> div:nth-of-type(2){
     height: 40%;
     padding: 10px;
 }

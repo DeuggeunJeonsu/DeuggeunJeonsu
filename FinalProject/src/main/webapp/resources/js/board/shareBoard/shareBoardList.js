@@ -3,5 +3,5 @@ const writeBtn = document.getElementById("writeBtn");
 
 
     writeBtn.addEventListener("click", ()=>{
-        location.href=`/board2/${location.pathname.split("/")[2]}/write`
+        location.href=`/board/${location.pathname.split("/")[2]}/write`
     })
