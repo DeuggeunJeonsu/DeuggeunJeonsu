@@ -5,10 +5,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/board/")
+@RequestMapping("/board/3")
 public class FreeBoardController {
 
-	@GetMapping("3")
+	@GetMapping("/list")
 	public String FreeBoardList() {
 		return "board/freeBoard/freeBoardList";
 	}

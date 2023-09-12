@@ -14,7 +14,7 @@
 <link rel="manifest" href="/resources/images/favicon_io/site.webmanifest">
 
 <%-- boardList-style.css 연결 --%>
-<link rel="stylesheet" href="../resources/css/board/freeBoard/freeBoardList-style.css">
+<link rel="stylesheet" href="/resources/css/board/freeBoard/freeBoardList-style.css">
 </head>
 <body>
 

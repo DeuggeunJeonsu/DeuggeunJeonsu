@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class BoardDao {
+public class BoardDAO {
 
 	@Autowired
 	private SqlSessionTemplate sqlSession;
