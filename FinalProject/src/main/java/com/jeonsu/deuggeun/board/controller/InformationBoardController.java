@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/informationBoard")
+@RequestMapping("/board/1") /* 건강/운동정보 게시판 */
 public class InformationBoardController {
 	
 	@GetMapping("/list")
@@ -13,14 +13,14 @@ public class InformationBoardController {
 		return "board/informationBoard/informationBoardList";
 	}
 	
+	@GetMapping("/write")
+	public String informationBoardWrite() {
+		return "board/informationBoard/informationBoardWrite";
+	}
+	
 	@GetMapping("/detail")
 	public String informationBoardDetail() {
 		return "board/informationBoard/informationBoardDetail";
 	}
 	
-	@GetMapping("/write")
-	public String informationBoardWrite() {
-		return "board/informationBoard/informationBoardWrite";
-	}
-
 }

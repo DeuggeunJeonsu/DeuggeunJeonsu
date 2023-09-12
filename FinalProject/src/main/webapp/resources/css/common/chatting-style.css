@@ -49,8 +49,7 @@ main {
    flex-direction: column;
    align-items: center;
    height: 100%;
-   border : 1px solid #749DA4;
-   border-radius: 10px;
+   border-radius: 10px 0 0 10px;
    background-color: #99E1ED;
 }
 /* 메뉴, 채팅방추가, 팔레트 버튼 */
@@ -60,12 +59,11 @@ main {
    background-color: inherit;
    cursor: pointer;
 }
-#addTarget{
+#addTarget, #palette, #chatting{
    margin-left: 5px;
-}
-#addTarget, #palette{
    margin-top: 40px;
 }
+
 
 /* 채팅방 목록 */
 #chattingRoomListArea{
@@ -75,7 +73,6 @@ main {
    height: 100%;
    border : 1px solid #ddd;
    overflow: auto;
-   border-radius: 10px;
    background-color: whitesmoke;
    
    position: relative;
@@ -117,7 +114,7 @@ main {
    display: flex;
    flex-direction: column;
    border : 1px solid #ddd;
-   border-radius: 10px;
+   border-radius: 0 10px 10px 0;
 }
 
 /* 채팅방이름 */

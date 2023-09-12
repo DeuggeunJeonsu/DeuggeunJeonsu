@@ -11,7 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.jeonsu.deuggeun.board.service.BoardService;
+import com.jeonsu.deuggeun.board.model.service.BoardService;
 
 // Interceptor : 요청/응답을 가로채는 객체
 // Client <-> Filter <-> Dispatcher Servlet <-> Interceptor <-> Controller
@@ -20,7 +20,6 @@ public class BoardTypeInterceptor implements HandlerInterceptor {
 	@Autowired
 	private BoardService service;
 
-	// 전처리
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {

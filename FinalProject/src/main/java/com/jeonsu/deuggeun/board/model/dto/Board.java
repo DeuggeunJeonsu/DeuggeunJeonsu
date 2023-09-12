@@ -21,6 +21,7 @@ public class Board {
 	private String boardUpdateDate; // 게시글 마지막 수정일
 	private int readCount; // 게시글 조회수
 	private int boardCode; // 게시판 코드(1: 운동정보/ 2:운동공유/ 3:자유/ 4: 공지/ 5:마켓)
+	private String boardName; // 게시판 이름
 	private int tagNo; // 해시태그 번호
 
 	private int memberNo; // 작성자 회원 번호

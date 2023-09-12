@@ -8,7 +8,7 @@
 <title>게시판 이름</title>
 
 <%-- boardList-style.css 연결 --%>
-<link rel="stylesheet" href="../resources/css/board/shareBoard/shareBoardWrite-style.css">
+<link rel="stylesheet" href="/resources/css/board/shareBoard/shareBoardWrite-style.css">
 </head>
 <body style="background-color:#F8F9FA">
 
@@ -19,11 +19,11 @@
             <div><h1>운동 공유 게시판 글쓰기</h1></div>
               <div>득근전수 회원님들과 공유하고 싶은 운동 루틴을 만들어보세요.</div>
         </div>
-        <form action="/board2/${boardCode}/insert" method="POST" class="board-write" id="boardWriteFrm">
+        <form action="/board/${boardCode}/write" method="POST" class="board-write" id="boardWriteFrm">
             <div class="top-write">
                 <div id="writer">
                     <div id="profile-area">
-                        <img src="../resources/images/user.png">
+                        <img src="/resources/images/user.png">
                     </div>
                     <span>닉네임</span>
                 </div>

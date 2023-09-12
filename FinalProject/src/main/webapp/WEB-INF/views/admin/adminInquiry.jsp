@@ -7,9 +7,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>회원 문의 목록</title>
 
+<link rel="apple-touch-icon" sizes="180x180"
+	href="/resources/images/favicon_io/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32"
+	href="/resources/images/favicon_io/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16"
+	href="/resources/images/favicon_io/favicon-16x16.png">
+<link rel="manifest"
+	href="/resources/images/favicon_io/site.webmanifest">
+
 <link rel="stylesheet" href="/resources/css/admin/adminInquiry.css">
 
-<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 </head>
 <body>
@@ -30,9 +39,13 @@
 						관리자님
 
 					</div>
-					<a href="/userList"><div class="sideList" id="user-sideList">득근전수 회원 목록</div> <a
-						href="/adminInquiry"><div class="sideList" id="inquiry-sideList">회원 문의</div></a> <a
-						href="/adminBoardList"><div class="sideList" id="boardList-sideList">관리자 페이지</div></a>
+					<a href="/userList">
+						<div class="sideList" id="user-sideList">회원 목록</div>
+					</a> <a href="/adminInquiry">
+						<div class="sideList" id="inquiry-sideList">회원 문의</div>
+					</a> <a href="/adminBoardList">
+						<div class="sideList" id="boardList-sideList">관리자 페이지</div>
+					</a>
 				</div>
 
 				<div class="userList">
@@ -48,8 +61,10 @@
 							<option>상품 문의</option>
 						</select>
 						<div class="search-place">
-							<input  type="search" id="market-search" placeholder="search...">
-                    		<button type="button" id="search-button"><i class="fas fa-search"></i></button>
+							<input type="search" id="market-search" placeholder="search...">
+							<button type="button" id="search-button">
+								<i class="fas fa-search"></i>
+							</button>
 						</div>
 					</div>
 

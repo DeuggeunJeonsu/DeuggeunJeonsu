@@ -4,18 +4,19 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class ShareBoard {
+@RequestMapping("/board/2")
+public class ShareBoardController {
 	
-	@RequestMapping("/shareBoard")
+	@RequestMapping("/list")
 	public String shareBoardList() {
 		return "board/shareBoard/shareBoardList";
 	}
 	
-	@RequestMapping("/shareBoard/write")
+	@RequestMapping("/write")
 	public String shareBoardWrite() {
 		return "board/shareBoard/shareBoardWrite";
 	}
-	@RequestMapping("/shareBoard/boardNo")
+	@RequestMapping("/boardNo")
 	public String shareBoardDetail() {
 		return "board/shareBoard/shereBoardDetail";
 	}

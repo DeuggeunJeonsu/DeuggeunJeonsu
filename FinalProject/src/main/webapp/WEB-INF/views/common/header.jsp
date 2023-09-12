@@ -77,21 +77,9 @@
                 </div>
                 <div class="collapse" id="navbar-menu">
                     <ul class="nav-list" data-in="fadeInDown" data-out="fadeOutUp">
-                        <li>
-                            <a href="/informationBoard/list">건강/운동정보</a>
-                        </li>
-                        <li>
-                            <a href="/shareBoard">운동/공유 게시판</a>
-                        </li>
-                        <li>
-                            <a href="/freeBoard/list">자유 게시판</a>
-                        </li>
-                        <li>
-                            <a href="/notificationList">공지사항</a>
-                        </li>
-                        <li>
-                            <a href="/market/marketList">득근마켓</a>
-                        </li>
+                        <c:forEach items="${boardTypeList}" var="boardType">
+                            <li><a href="/board/${boardType.BOARD_CODE}/list">${boardType.BOARD_NAME}</a></li>
+                        </c:forEach>
                     </ul>
                 </div>
                 

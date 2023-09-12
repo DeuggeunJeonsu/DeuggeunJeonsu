@@ -45,7 +45,7 @@
                 </div>
 
                 <p class="text-area">
-                    <a href="/signUp">회원가입</a>
+                    <a href="/member/signUp">회원가입</a>
                     <a href="/member/findInfo">아이디/비밀번호 찾기</a>
                 </p>
 
