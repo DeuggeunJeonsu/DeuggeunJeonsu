@@ -31,6 +31,10 @@
 
 		<collection property="routineList" select="selectRoutineList" column="BOARD_NO" 
 			javaType="java.util.ArrayList" ofType="Comment"> </collection> 
+			
+		<collection property="tagList" select="selectTagList" column="BOARD_NO"
+			javaType="java.util.ArrayList" ofType="Hashtag">
+		</collection>
 	</resultMap>
 	
 	

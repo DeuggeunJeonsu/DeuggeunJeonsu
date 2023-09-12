@@ -12,10 +12,11 @@ public interface ashBoardService {
 	/** 게시글 등록
 	 * @param board
 	 * @param images
+	 * @param tagContents
 	 * @param webPath
 	 * @param filePath
 	 * @return boardNo
 	 */
-	int boardInsert(Board board, String webPath, String filePath);
+	int boardInsert(Board board, List<MultipartFile> images, List<String> tagContent, String webPath, String filePath);
 
 }
