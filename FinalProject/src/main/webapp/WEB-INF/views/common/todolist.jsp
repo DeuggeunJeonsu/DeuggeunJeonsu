@@ -14,7 +14,7 @@
     <section id="middle-Container">
 		<div id="schedule-area">
 			<div>
-				<h1>My health Schedule</h1>
+				<h1>My Health Schedule</h1>
 				<div>
 					<div class="progress">
 						<div class="progress-num" ></div>
