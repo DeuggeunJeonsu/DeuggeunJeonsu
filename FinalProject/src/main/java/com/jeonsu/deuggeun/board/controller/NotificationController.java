@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 /* 공지사항 Controller */
 @Controller
+@RequestMapping("/board/4")
 public class NotificationController {
 
 	@RequestMapping("/test")
@@ -13,19 +14,19 @@ public class NotificationController {
 		return "board/boardList";
 	}
 	
-	@RequestMapping("/board/4")
+	@GetMapping("/list")
 	public String notificationList() {
 		
 		return "board/notification/notificationList";
 	}
 	
-	@RequestMapping("/notificationWrite")
+	@GetMapping("/list/notificationWrite")
 	public String notificationWrite() {
 		
 		return "board/notification/notificationWrite";
 	}
 	
-	@RequestMapping("/notificationDetail")
+	@GetMapping("/list/notificationDetail")
 	public String notificationDetail() {
 		
 		return "board/notification/notificationDetail";
