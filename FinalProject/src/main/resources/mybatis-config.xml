@@ -18,6 +18,10 @@
 
 		<typeAlias type="com.jeonsu.deuggeun.board.model.dto.Board" alias="Board" />
 		<typeAlias type="com.jeonsu.deuggeun.board.model.dto.Comment" alias="Comment" />
+		<typeAlias type="com.jeonsu.deuggeun.board.model.dto.Product" alias="Product" />
+		<typeAlias type="com.jeonsu.deuggeun.board.model.dto.Inquiry" alias="Inquiry" />
+		<typeAlias type="com.jeonsu.deuggeun.board.model.dto.ProductImage" alias="ProductImage" />
+
 
 	</typeAliases> 
 	<!-- mapper 파일(SQL 작성되는파일) 위치 등록 부분 -->
