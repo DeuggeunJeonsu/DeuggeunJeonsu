@@ -4,8 +4,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+/* 공지사항 Controller */
 @Controller
-public class BoardController {
+public class NotificationController {
 
 	@RequestMapping("/test")
 	public String boardList() {
