@@ -78,7 +78,7 @@
                 <div class="collapse" id="navbar-menu">
                     <ul class="nav-list" data-in="fadeInDown" data-out="fadeOutUp">
                         <c:forEach items="${boardTypeList}" var="boardType">
-                            <li><a href="board/${boardType.BOARD_CODE}/list">${boardType.BOARD_NAME}</a></li>
+                            <li><a href="/board/${boardType.BOARD_CODE}/list">${boardType.BOARD_NAME}</a></li>
                         </c:forEach>
                     </ul>
                 </div>

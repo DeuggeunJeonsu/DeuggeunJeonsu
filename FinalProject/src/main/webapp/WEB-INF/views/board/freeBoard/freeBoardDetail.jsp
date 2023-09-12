@@ -17,7 +17,7 @@
 <script src = "https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" ></script> 
 
 <%-- freeBoardDetail-style.css 연결 --%>
-<link rel="stylesheet" href="../resources/css/board/freeBoard/freeBoardDetail-style.css">
+<link rel="stylesheet" href="/resources/css/board/freeBoard/freeBoardDetail-style.css">
 </head>
 <body>
 
@@ -46,7 +46,7 @@
             <div id="writer-info-area">
 
                 <div id="profile-area">
-                    <img src="../../../../resources/images/user.png">
+                    <img src="/resources/images/user.png">
                 </div>
 
                 <div id="nick-area">
@@ -88,7 +88,7 @@
 
                 <div id="board-content-area">
                     <div>
-                        <img src="../../../../resources/images/market/bono.png">
+                        <img src="../../../resources/images/market/bono.png">
                     </div>
                     
                     <pre>
@@ -215,7 +215,7 @@
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
 
     <!-- freeBoardDetail.js 연결 -->
-	<script src="../resources/js/board/freeBoard/freeBoardDetail.js"></script>
+	<script src="/resources/js/board/freeBoard/freeBoardDetail.js"></script>
 
 </body>
 </html>
