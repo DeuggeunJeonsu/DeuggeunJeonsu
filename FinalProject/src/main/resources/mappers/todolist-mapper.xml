@@ -2,6 +2,20 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="todolistMapper">
   
+  <resultMap type=""TodoList id="List-rm">
+  
+  	<id property="ListNo" column=""/>
+  
+  	<result property="listContent" column="" />
+  	<result property="listFl" column="" />
+  	<result property="listDetailNo" column="" />
+  	<result property="memberNo" column="" />
+  	<result property="lCreateDt" column="" />
+  
+  </resultMap>
+  
+  
+  
   <select id="selectTodoListAll" resultType="map">
   	SELECT LIST_NO, TO_CHAR(SYSDATE, 'YYYY-MM-DD') L_CREATE_DT
 	FROM TODOLIST
