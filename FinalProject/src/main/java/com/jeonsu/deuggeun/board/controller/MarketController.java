@@ -10,11 +10,11 @@ import com.jeonsu.deuggeun.board.model.service.MarketService;
 
 import java.util.Map;
 
-@SessionAttributes({"loginMember"})
+//@SessionAttributes({"loginMember"})
 @Controller
-@RequestMapping("/market")
+@RequestMapping("/board/5")
 public class MarketController {
-
+// 요청주소 -> http://localhost:8080/board/5/list
 	private final MarketService service;
 
 	@Autowired
@@ -22,14 +22,15 @@ public class MarketController {
 		this.service = service;
 	}
 
-	@GetMapping("/marketList")
-	public String selectmarketList(@PathVariable("boardCode") int boardCode
+	@GetMapping("/list")
+	public String selectmarketList(
+			@PathVariable("boardCode") int boardCode
 								 , @RequestParam(value="cp", required=false, defaultValue="1") int cp
 								 , Model model
 								 , @RequestParam Map<String, Object> paramMap
-	) {
+		) {
 
-		if(paramMap.get("key") == null) {
+		if(paramMap.get("query") == null) {
 
 			Map<String, Object> map = service.selectMarketList(boardCode, cp);
 
@@ -45,15 +46,15 @@ public class MarketController {
 
 		return "board/market/marketList";
 	}
-	@GetMapping("/marketDetail")
+	@GetMapping("/detail")
 	public String marketDetail() {
 		return "board/market/marketDetail";
 	}
-	@GetMapping("/marketReview")
+	@GetMapping("/review")
 	public String marketReview() {
 		return "board/market/marketReview";
 	}
-	@GetMapping("/marketInquire")
+	@GetMapping("/inquire")
 	public String marketQnA() {
 		return "board/market/marketInquire";
 	}
