@@ -61,7 +61,7 @@
                         <div><i class="fa-regular fa-comment" style="color: #ddd;"></i> 4</div>
                     </div>
                     <div class="profile-area">
-                        <div class="profileArea"><img src="../resources/images/user.png"></div>
+                        <div class="profileArea"><img src="/resources/images/user.png"></div>
                         <div>닉네임</div>
                         <div><i class="fa-solid fa-heart" style="color: #ff4242;"></i> 99</div>
                     </div>
@@ -77,7 +77,7 @@
                         <div><i class="fa-regular fa-comment" style="color: #ddd;"></i> 4</div>
                     </div>
                     <div class="profile-area">
-                        <div class="profileArea"><img src="../resources/images/user.png"></div>
+                        <div class="profileArea"><img src="/resources/images/user.png"></div>
                         <div>닉네임</div>
                         <div><i class="fa-solid fa-heart" style="color: #ff4242;"></i> 99</div>
                     </div>
@@ -93,7 +93,7 @@
                         <div><i class="fa-regular fa-comment" style="color: #ddd;"></i> 4</div>
                     </div>
                     <div class="profile-area">
-                        <div class="profileArea"><img src="../resources/images/user.png"></div>
+                        <div class="profileArea"><img src="/resources/images/user.png"></div>
                         <div>닉네임</div>
                         <div><i class="fa-solid fa-heart" style="color: #ff4242;"></i> 99</div>
                     </div>
@@ -109,7 +109,7 @@
                         <div><i class="fa-regular fa-comment" style="color: #ddd;"></i> 4</div>
                     </div>
                     <div class="profile-area">
-                        <div class="profileArea"><img src="../resources/images/user.png"></div>
+                        <div class="profileArea"><img src="/resources/images/user.png"></div>
                         <div>닉네임</div>
                         <div><i class="fa-solid fa-heart" style="color: #ff4242;"></i> 99</div>
                     </div>
@@ -125,7 +125,7 @@
                         <div><i class="fa-regular fa-comment" style="color: #ddd;"></i> 4</div>
                     </div>
                     <div class="profile-area">
-                        <div class="profileArea"><img src="../resources/images/user.png"></div>
+                        <div class="profileArea"><img src="/resources/images/user.png"></div>
                         <div>닉네임</div>
                         <div><i class="fa-solid fa-heart" style="color: #ff4242;"></i> 99</div>
                     </div>
@@ -141,7 +141,7 @@
                         <div><i class="fa-regular fa-comment" style="color: #ddd;"></i> 4</div>
                     </div>
                     <div class="profile-area">
-                        <div class="profileArea"><img src="../resources/images/user.png"></div>
+                        <div class="profileArea"><img src="/resources/images/user.png"></div>
                         <div>닉네임</div>
                         <div><i class="fa-solid fa-heart" style="color: #ff4242;"></i> 99</div>
                     </div>
@@ -157,7 +157,7 @@
                         <div><i class="fa-regular fa-comment" style="color: #ddd;"></i> 4</div>
                     </div>
                     <div class="profile-area">
-                        <div class="profileArea"><img src="../resources/images/user.png"></div>
+                        <div class="profileArea"><img src="/resources/images/user.png"></div>
                         <div>닉네임</div>
                         <div><i class="fa-solid fa-heart" style="color: #ff4242;"></i> 99</div>
                     </div>
@@ -173,7 +173,7 @@
                         <div><i class="fa-regular fa-comment" style="color: #ddd;"></i> 4</div>
                     </div>
                     <div class="profile-area">
-                        <div class="profileArea"><img src="../resources/images/user.png"></div>
+                        <div class="profileArea"><img src="/resources/images/user.png"></div>
                         <div>닉네임</div>
                         <div><i class="fa-solid fa-heart" style="color: #ff4242;"></i> 99</div>
                     </div>
@@ -189,7 +189,7 @@
                         <div><i class="fa-regular fa-comment" style="color: #ddd;"></i> 4</div>
                     </div>
                     <div class="profile-area">
-                        <div class="profileArea"><img src="../resources/images/user.png"></div>
+                        <div class="profileArea"><img src="/resources/images/user.png"></div>
                         <div>닉네임</div>
                         <div><i class="fa-solid fa-heart" style="color: #ff4242;"></i> 99</div>
                     </div>

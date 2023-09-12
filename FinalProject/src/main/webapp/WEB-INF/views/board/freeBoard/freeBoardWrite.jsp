@@ -15,7 +15,7 @@
 <link rel="manifest" href="/resources/images/favicon_io/site.webmanifest">
 
 <%-- freeBoardWrite-style.css 연결 --%>
-<link rel="stylesheet" href="../resources/css/board/freeBoard/freeBoardWrite-style.css">
+<link rel="stylesheet" href="/resources/css/board/freeBoard/freeBoardWrite-style.css">
 
 <%-- <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script> --%>
 
@@ -97,7 +97,7 @@
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
     
     <!-- freeBoardWrite.js 연결 -->
-	<script src="../resources/js/board/freeBoard/freeBoardWrite.js"></script>
+	<script src="/resources/js/board/freeBoard/freeBoardWrite.js"></script>
 
 </body>
 </html>
