@@ -190,9 +190,15 @@
                 </div>
             </div>
             
-
-        <div id="ad"></div>
+            <%-- 광고 영역 --%>
+            <div id="ad"></div>
         </div>
+
+        <div class="write-btn-area">
+            <button type="button" id="writeBtn">글쓰기</button>
+        </div>
+
+        <%-- 페이지네이션 --%>
         <div class="pagination-area">
 
             <ul class="pagination">
@@ -235,6 +241,6 @@
     <!-- footer include -->
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
 
-
+    <script src="/resources/js/shareBoard/shareBoardList"></script>
 </body>
 </html>
