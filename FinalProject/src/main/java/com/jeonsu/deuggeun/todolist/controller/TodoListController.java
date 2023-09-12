@@ -29,23 +29,25 @@ public class TodoListController {
 	
 	
 	@PostMapping(value = "/todolist" )
-	public Map<String, Object> TodoList(@RequestParam("memberNo") int loginMemberNo) {
+	public List<Map<String, Object>> TodoList(@RequestParam("memberNo") int loginMemberNo) {
 	    List<Map<String, Object>> todoList = service.selectTodoListAll();
 	    
-	    Map<String, Object> selectedTodo = null;
-
-	    Set<String> daySet = null;
-	    if (!todoList.isEmpty()) {
-	    	
-	    	daySet=new HashSet<>(datesList)
-	        selectedTodo = todoList.get(0);
+	    for (Map<String, Object> todoItem : todoList) {
+	    
+	    	// "LIST_NO"와 "L_CREATE_DT" 값을 추출
+	        int listNo = (int) todoItem.get("LIST_NO");
+	        String createDate = (String) todoItem.get("L_CREATE_DT");
+	        
+	        // 추출한 값으로 원하는 작업 수행
+	        System.out.println("LIST_NO: " + listNo);
+	        System.out.println("L_CREATE_DT: " + createDate);
+	        
+	        // 여기서 필요한 작업을 수행하십시오.
 	    }
-	    System.out.println(selectedTodo); // 연속해서 많이 찍히니 주의할 것
-	    
-	    
-	    selectedTodo.get("L_CREATE_DT");
-	    System.out.println(selectedTodo.get("L_CREATE_DT"));
-	    return selectedTodo;
+	   
+
+	   
+	    return todoList;
 	}
 
 }
