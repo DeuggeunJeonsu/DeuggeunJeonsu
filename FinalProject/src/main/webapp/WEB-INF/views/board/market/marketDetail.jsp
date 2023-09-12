@@ -8,7 +8,7 @@
             <title>게시판 이름</title>
 
             <%-- marketDetail-style.css 연결 --%>
-                <link rel="stylesheet" href="../resources/css/board/market/marketDetail-style.css">
+                <link rel="stylesheet" href="/resources/css/board/market/marketDetail-style.css">
 
                 <!-- Font Awesome CDN 추가 -->
                 <link rel="stylesheet"
@@ -73,10 +73,10 @@
                             <a href="/market/marketDetail">상품정보</a>
                         </li>
                         <li>
-                            <a href="/market/marketReview">Review</a>
+                            <a href="/board/5/review">Review</a>
                         </li>
                         <li>
-                            <a href="/market/marketInquire">상품문의</a>
+                            <a href="/board/5/inquire">상품문의</a>
                         </li>
                     </ul>
 

@@ -1,5 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<%-- map에 저장된 값들을 각각 변수에 저장 --%>
+<c:set var="pagination" value="${map.pagination}" />
+<c:set var="boardList" value="${map.boardList}" />
+
+<c:forEach items="${boardTypeList}" var="boardType">
+    <c:if test="${boardType.BOARD_CODE == boardCode}" >
+        <c:set var="boardName" value="${boardType.BOARD_NAME}"/>
+    </c:if>
+</c:forEach>
+
         <!DOCTYPE html>
         <html>
 
@@ -8,7 +19,7 @@
             <title>게시판 이름</title>
 
             <%-- marketList-style.css 연결 --%>
-                <link rel="stylesheet" href="../resources/css/board/market/marketList-style.css">
+                <link rel="stylesheet" href="/resources/css/board/market/marketList-style.css">
 
                 <!-- Font Awesome CDN 추가 -->
                 <link rel="stylesheet"
@@ -28,6 +39,13 @@
 
             <jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
 
+
+            <%-- 검색을 진행한 경우 파라미터(key, query)를 쿼리스트링 형태로 저장한 변수를 선언 --%>
+            <c:if test="${!empty param.key}">
+                <c:set var="sp" value="&key=${param.key}&query=${param.query}"/>
+            </c:if>
+
+
             <section id="main-container">
                 <div id="title-area">
                     <div class="board-title">득근 마켓</div>
@@ -36,27 +54,53 @@
                     </div>
                 </div>
                 <div id="search-area">
-                    <div class="search-place">
-                        <%-- <input type="text" name="query"  id="searchQuery" placeholder="search..."> --%>
-                        <input type="text" id="market-search" name="query" placeholder="search...">
-                        <button id="search-button"><i class="fas fa-search"></i></button>
+                        <form action="${boardCode}" method="get" id="boardSearch">
+                            <div class="search-place">
+                            <input type="text" id="market-search" name="query" placeholder="search...">
+                            <button id="search-button"><i class="fas fa-search"></i></button>
 
-                    </div>
+                            </div>
+                        </form>
+
                     <div id="sort-btn-area">
                         <a href="#"><span>최신순</span></a> |
                         <a href="#"><span>인기순</span></a>
                     </div>
                 </div>
 
+                <c:if test="${!empty param.key}" >
+                    <h3 style="margin:30px">"${param.query}" 검색 결과</h3>
+                </c:if>
+
                 <div id="list-area" class="font-weight">
+                    <c:forEach items="${boardList}" var="board">
+                        <div class="thumbnail">
+                            <div>
+                                <a href="/board/${board.boardCode}/detail/${board.boardNo}">
+                                    <img src="${board.productImagePath}">
+                                </a>
+                            </div>
+                            <div class="list-content">
+                                <div class="title">
+                                    <a href="/board/${board.boardCode}/detail/${board.boardNo}">
+                                        [${board.boardTitle}]
+                                    </a>
+                                </div>
+                                <div>${board.productPrice}원</div>
+                            </div>
+                        </div>
+                    </c:forEach>
+                </div>
+
+            <%--                <div id="list-area" class="font-weight">
                     <div class="thumbnail">
                         <div>
-                            <a href="/market/marketDetail">
+                            <a href="/board/5/detail">
                                 <img src="/resources/images/market/test2-main.jpeg">
                             </a>
                         </div>
                         <div class="list-content">
-                            <div class="title"><a href="/market/marketDetail">[프리미엄 프로틴 파우더]</a></div>
+                            <div class="title"><a href="/board/5/detail">[프리미엄 프로틴 파우더]</a></div>
                             <div>70,000원</div>
                         </div>
                     </div>
@@ -146,7 +190,7 @@
                             <div class="title"><a href="">상품명입니다</a></div>
                             <div>내용 영역</div>
                         </div>
-                    </div>
+                    </div> --%>
 
                 <div class="pagination-area">
 
