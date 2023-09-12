@@ -8,7 +8,7 @@
             <title>게시판 이름</title>
 
             <%-- marketReview-style.css 연결 --%>
-                <link rel="stylesheet" href="../resources/css/board/market/marketReview-style.css">
+                <link rel="stylesheet" href="/resources/css/board/market/marketReview-style.css">
 
                 <!-- Font Awesome CDN 추가 -->
                 <link rel="stylesheet"

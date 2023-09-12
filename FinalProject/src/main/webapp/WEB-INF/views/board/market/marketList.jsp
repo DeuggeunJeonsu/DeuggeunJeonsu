@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 
 <%-- map에 저장된 값들을 각각 변수에 저장 --%>
 <c:set var="pagination" value="${map.pagination}" />
@@ -27,11 +28,11 @@
                     integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+Wy4y5AuWn1C4EyyIbJs6YXvPECJwFPa28H"
                     crossorigin="anonymous">
                 
-    <link rel="apple-touch-icon" sizes="180x180" href="/resources/images/favicon_io/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/resources/images/favicon_io/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/resources/images/favicon_io/favicon-16x16.png">
-    <link rel="manifest" href="/resources/images/favicon_io/site.webmanifest">
-    <link rel="icon" href="/resources/images/favicon_io/favicon.ico" type="image/x-icon">
+                <link rel="apple-touch-icon" sizes="180x180" href="/resources/images/favicon_io/apple-touch-icon.png">
+                <link rel="icon" type="image/png" sizes="32x32" href="/resources/images/favicon_io/favicon-32x32.png">
+                <link rel="icon" type="image/png" sizes="16x16" href="/resources/images/favicon_io/favicon-16x16.png">
+                <link rel="manifest" href="/resources/images/favicon_io/site.webmanifest">
+                <link rel="icon" href="/resources/images/favicon_io/favicon.ico" type="image/x-icon">
 
         </head>
 
@@ -68,31 +69,40 @@
                     </div>
                 </div>
 
-                <c:if test="${!empty param.key}" >
-                    <h3 style="margin:30px">"${param.query}" 검색 결과</h3>
-                </c:if>
+<%--                <c:if test="${!empty param.key}" >--%>
+<%--                    <h3 style="margin:30px">"${param.query}" 검색 결과</h3>--%>
+<%--                </c:if>--%>
 
-                <div id="list-area" class="font-weight">
-                    <c:forEach items="${boardList}" var="board">
-                        <div class="thumbnail">
-                            <div>
-                                <a href="/board/${board.boardCode}/detail/${board.boardNo}">
-                                    <img src="${board.productImagePath}">
-                                </a>
-                            </div>
-                            <div class="list-content">
-                                <div class="title">
-                                    <a href="/board/${board.boardCode}/detail/${board.boardNo}">
-                                        [${board.boardTitle}]
-                                    </a>
-                                </div>
-                                <div>${board.productPrice}원</div>
-                            </div>
-                        </div>
-                    </c:forEach>
-                </div>
+<%--                <div id="list-area" class="font-weight">--%>
+<%--                    <c:forEach items="${boardList}" var="board">--%>
+<%--                        <div class="thumbnail">--%>
+<%--                            <div>--%>
+<%--                                <a href="/board/${board.boardCode}/detail/${board.boardNo}">--%>
+<%--                                    <img src="${board.productImagePath}">--%>
+<%--                                </a>--%>
+<%--                            </div>--%>
+<%--                            <div class="list-content">--%>
+<%--                                <div class="title">--%>
+<%--                                    <a href="/board/${board.boardCode}/detail/${board.boardNo}">--%>
+<%--                                        [${board.boardTitle}]--%>
+<%--                                    </a>--%>
+<%--                                </div>--%>
+<%--                                <div>${board.pImagePath}원</div>--%>
+<%--                            </div>--%>
+<%--                        </div>--%>
+<%--                    </c:forEach>--%>
+<%--                </div>--%>
+<%--                <c:choose>--%>
+<%--                    <c:when test="${empty boardList}">--%>
 
-            <%--                <div id="list-area" class="font-weight">
+<%--                            <h1>게시글이 존재하지 않습니다.</h1>--%>
+
+<%--                    </c:when>--%>
+
+
+<%--                </c:choose>--%>
+
+            <div id="list-area" class="font-weight">
                     <div class="thumbnail">
                         <div>
                             <a href="/board/5/detail">
@@ -190,7 +200,7 @@
                             <div class="title"><a href="">상품명입니다</a></div>
                             <div>내용 영역</div>
                         </div>
-                    </div> --%>
+                    </div>
 
                 <div class="pagination-area">
 
