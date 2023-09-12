@@ -1,7 +1,9 @@
 package com.jeonsu.deuggeun.todolist.controller;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -27,11 +29,23 @@ public class TodoListController {
 	
 	
 	@PostMapping(value = "/todolist" )
-	public List<Map<String, Object>> TodoList(@RequestParam("memberNo") int loginMemberNo) {
+	public Map<String, Object> TodoList(@RequestParam("memberNo") int loginMemberNo) {
 	    List<Map<String, Object>> todoList = service.selectTodoListAll();
 	    
-	    System.out.println(todoList);
-	    return todoList;
+	    Map<String, Object> selectedTodo = null;
+
+	    Set<String> daySet = null;
+	    if (!todoList.isEmpty()) {
+	    	
+	    	daySet=new HashSet<>(datesList)
+	        selectedTodo = todoList.get(0);
+	    }
+	    System.out.println(selectedTodo); // 연속해서 많이 찍히니 주의할 것
+	    
+	    
+	    selectedTodo.get("L_CREATE_DT");
+	    System.out.println(selectedTodo.get("L_CREATE_DT"));
+	    return selectedTodo;
 	}
 
 }
