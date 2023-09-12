@@ -39,7 +39,16 @@
 		SELECT * FROM
 		BOARD_TYPE ORDER BY 1
 	</select>
-
-
+	
+	<!-- 자유게시판 게시글 삽입 -->
+	<insert id="freeBoardInsert" parameterType="Board" useGeneratedKeys="true">
+		<selectKey order="BEFORE" resultType="_int" keyProperty="boardNo">
+			SELECT SEQ_BOARD_NO.NEXTVAL FROM DUAL
+		</selectKey>		
+		INSERT INTO BOARD
+		VALUES(#{boardNo}, #{boardTitle}, #{boardContent},
+				DEFAULT, DEFAULT, DEFAULT, DEFAULT,
+				#{memberNo}, #{boardCode})
+	</insert>
 
 </mapper>

@@ -146,6 +146,11 @@ $(document).ready(function() {
         height: 600,                 // 에디터 높이
         focus: true,                  // 에디터 로딩후 포커스를 맞출지 여부
         lang: "ko-KR",					// 한글 설정
+        collbacks: {
+            onImageUpload : function(files){
+                sendFile(files[0], this);
+            }
+        },
         placeholder: '회원님의 이야기를 들려주세요 :)',
         disableResizeEditor: true,	// 크기 조절 기능 삭제
         toolbar: [
@@ -165,6 +170,32 @@ $(document).ready(function() {
 
     })
 });
+
+function sendFile(file, editor){
+    var data = new FormData();
+    data.append("file", file);
+    console.log(file);
+
+    $.ajax({
+
+        data : data,
+        type : "POST",
+        url : "SummerNoteImageFile",
+        contentType : false,
+        processData : false,
+        success : function(data){
+            console.log(data);
+            console.log(editor);
+            $(editor).summernote("insertImage", data.url);
+        },
+
+        error : function(){
+            console.log("에러 발생ㅠㅠ");
+        }
+
+    })
+
+}
 
 
 // -----------------------------------------------------------------------------------------------
