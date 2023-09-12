@@ -12,6 +12,7 @@ import com.jeonsu.deuggeun.board.model.dao.BoardDAO;
 import com.jeonsu.deuggeun.board.model.dao.ashBoardDAO;
 import com.jeonsu.deuggeun.board.model.dto.Board;
 import com.jeonsu.deuggeun.board.model.dto.BoardImage;
+import com.jeonsu.deuggeun.board.model.dto.Hashtag;
 import com.jeonsu.deuggeun.common.utility.Util;
 
 @Service
@@ -22,7 +23,7 @@ public class ashBoardServiceImpl implements ashBoardService{
 
 	@Transactional(rollbackFor = Exception.class)
 	@Override
-	public int boardInsert(Board board, String webPath, String filePath) {
+	public int boardInsert(Board board, List<MultipartFile> images, List<String> tagContent, String webPath, String filePath) {
 		
 		board.setBoardTitle(Util.XSSHandling(board.getBoardTitle()));
 		board.setBoardContent(Util.XSSHandling(board.getBoardContent()));
@@ -30,16 +31,23 @@ public class ashBoardServiceImpl implements ashBoardService{
 		// 게시글 삽입
 		int boardNo = dao.boardInsert(board);
 		
-//		// 이미지 삽입
+		// 해시태그 삽입
+		if(boardNo > 0) {
+			
+			List<Hashtag> tagList = new ArrayList<>();
+			
+		}
+		
+		// 이미지 삽입
 //		if(boardNo > 0) {
 //			
-//			List<BoardImage> uploadList = new ArrayList<>();
-//			
+//
+//			}
 //			
 //			
 //			
 //		}
-//		
+		
 		return boardNo;
 	}
 

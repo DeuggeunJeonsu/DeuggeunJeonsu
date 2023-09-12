@@ -23,6 +23,7 @@ public class Board {
 	private int boardCode; // 게시판 코드(1: 운동정보/ 2:운동공유/ 3:자유/ 4: 공지/ 5:마켓)
 	private String boardName; // 게시판 이름
 	private int tagNo; // 해시태그 번호
+	private String tagContent; // 해시태그 내용
 
 	private int memberNo; // 작성자 회원 번호
 	private String memberNickname; // 작성자 닉네임
