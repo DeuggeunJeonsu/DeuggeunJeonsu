@@ -39,7 +39,7 @@
         </div>
 
         <div id="middle-area">
-            <form action="#" id="write-form">
+            <form action="/board2/3/insert" method="POST" id="write-form" enctype="multipart/form-data">
                 
                 <%-- <div id="title-middle-area">
                     <textarea placeholder="제목을 입력해 주세요." id="title-textArea"></textarea>
@@ -65,12 +65,12 @@
                 </div> --%>
 
                 <div id="title-middle-area">
-                    <textarea placeholder="제목을 입력해 주세요." id="title-textArea"></textarea>
+                    <textarea placeholder="제목을 입력해 주세요." name="boardTitle" id="title-textArea"></textarea>
                 </div>
 
                 <div id="hashtag-area">
                     <div>
-                        <input type="text" id="hashtag-textArea" placeholder="#해시태그 추가">
+                        <input type="text" id="hashtag-textArea" name="tagContent" placeholder="#해시태그 추가">
                     </div>
                     <div id="hashtag-making-area">
                         <!-- <div class="hashtag">
@@ -81,11 +81,11 @@
                     </div>
                 </div>
 
-                <textarea id="summernote"></textarea>
+                <textarea id="summernote" name="boardContent"></textarea>
                 
                 <div id="button-area">
                     <button class="btnStyle" id="write-btn">작성</button>
-                    <button class="btnStyle" id="cancel-btn">취소</button>
+                    <button type="cancel" class="btnStyle" id="cancel-btn">취소</button>
                 </div>
 
             </form>

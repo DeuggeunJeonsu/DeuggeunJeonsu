@@ -217,7 +217,9 @@
         </div>
 
         <div class="write-btn-area">
-            <button type="button" id="writeBtn">글쓰기</button>
+            <a href="/board2/3/insert">
+                <button type="button" id="writeBtn">글쓰기</button>
+            </a>
         </div>
 
         <div class="paginationArea">

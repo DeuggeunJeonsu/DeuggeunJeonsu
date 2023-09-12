@@ -16,6 +16,6 @@ public interface ashBoardService {
 	 * @param filePath
 	 * @return boardNo
 	 */
-	int boardInsert(Board board, List<MultipartFile> images, String webPath, String filePath);
+	int boardInsert(Board board, String webPath, String filePath);
 
 }

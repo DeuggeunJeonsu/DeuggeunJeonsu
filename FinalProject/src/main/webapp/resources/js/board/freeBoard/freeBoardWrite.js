@@ -128,7 +128,6 @@ document.getElementById("write-form").addEventListener("submit", e =>{
             switch(key){
                 case "hashtag" : break;
             }
-
         }
 
         e.preventDefault();
@@ -148,7 +147,7 @@ $(document).ready(function() {
         lang: "ko-KR",					// 한글 설정
         collbacks: {
             onImageUpload : function(files){
-                sendFile(files[0], this);
+                uploadSummernoteImageFile(files[0], this);
             }
         },
         placeholder: '회원님의 이야기를 들려주세요 :)',
@@ -171,7 +170,7 @@ $(document).ready(function() {
     })
 });
 
-function sendFile(file, editor){
+function uploadSummernoteImageFile(file, editor){
     var data = new FormData();
     data.append("file", file);
     console.log(file);
@@ -180,19 +179,14 @@ function sendFile(file, editor){
 
         data : data,
         type : "POST",
-        url : "SummerNoteImageFile",
+        url : "/uploadSummernoteImageFile",
+        dataType : "JSON",
         contentType : false,
         processData : false,
         success : function(data){
-            console.log(data);
-            console.log(editor);
+
             $(editor).summernote("insertImage", data.url);
-        },
-
-        error : function(){
-            console.log("에러 발생ㅠㅠ");
         }
-
     })
 
 }

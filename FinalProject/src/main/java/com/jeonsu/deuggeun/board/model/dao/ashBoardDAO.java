@@ -12,7 +12,15 @@ public class ashBoardDAO {
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 	
+	/** 자유게시판 게시글 삽입
+	 * @param board
+	 * @return boardNo(result)
+	 */
 	public int boardInsert(Board board) {
-		return sqlSession.insert("boardMapper.freeBoardInsert", board);
+		int result = sqlSession.insert("boardMapper.freeBoardInsert", board);
+		
+		if(result > 0) result = board.getBoardNo();
+		
+		return result;
 	}
 }
