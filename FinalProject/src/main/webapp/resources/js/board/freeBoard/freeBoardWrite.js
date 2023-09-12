@@ -89,6 +89,8 @@ function handleEnterKeyPress() {
     // 해시태그 div에 내용 추가
     hashtag.innerText = hashtagTextArea.value;
 
+    hashtag.setAttribute("name", "tagContent");
+
     hashtag.append(xBtn);
 
     hashtagMakingArea.append(hashtag);
@@ -128,7 +130,6 @@ document.getElementById("write-form").addEventListener("submit", e =>{
             switch(key){
                 case "hashtag" : break;
             }
-
         }
 
         e.preventDefault();
@@ -146,7 +147,12 @@ $(document).ready(function() {
         height: 600,                 // 에디터 높이
         focus: true,                  // 에디터 로딩후 포커스를 맞출지 여부
         lang: "ko-KR",					// 한글 설정
-        placeholder: '회원님의 이야기를 들려주세요 :)',
+        callbacks: {
+            onImageUpload : function(files){
+                uploadSummernoteImageFile(files[0], this);
+            }
+        },
+        placeholder: '최대 2048자까지 쓸 수 있습니다. :)',
         disableResizeEditor: true,	// 크기 조절 기능 삭제
         toolbar: [
           ['fontname', ['fontname']],
@@ -166,6 +172,27 @@ $(document).ready(function() {
     })
 });
 
+// summernote 에디터 내에서 이미지 업로드 했을 때 이미지 경로 변경
+function uploadSummernoteImageFile(file, editor){
+    var data = new FormData();
+    data.append("file", file);
+    console.log(file);
+
+    $.ajax({
+
+        data : data,
+        type : "POST",
+        url : "uploadSummernoteImageFile",
+        dataType : "JSON",
+        contentType : false,
+        processData : false,
+        success : function(data){
+
+            $(editor).summernote("insertImage", data.url);
+        }
+    });
+
+}
 
 // -----------------------------------------------------------------------------------------------
 

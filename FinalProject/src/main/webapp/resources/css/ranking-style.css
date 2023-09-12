@@ -9,9 +9,9 @@
     height: 800px;
 }
 .ranking-container{
-    width: 1300px;
+    width: 80%;
     height: 80%;
-    margin: 0 300px
+    margin: auto;
 }
 
 /* 컨탠츠 제목 */
@@ -20,10 +20,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 30px;
-}
-.ranking-title-area h1{
-    font-size: 30px;
 }
 
 /* 컨탠츠 내용 */
@@ -37,7 +33,7 @@
 
 /* 랭킹 표 영역 */
 .ranking-table-area{
-    width: 30%;
+    width: 25%;
     margin: 20px;
     position: relative;
 }
@@ -75,13 +71,13 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    /* border: 3px solid #ddd; */
+    border: 3px solid #ddd;
     border-radius: 10px;
     box-shadow: 0px 0px 10px gray;
 }
 .ranking-table:hover{
-    transform: scale(1.02);
-    transition-duration: 0.5s;
+    transform: scale(1.05);
+    transition-duration: 0.3s;
 }
 
 /* 랭킹별 제목*/
@@ -92,8 +88,6 @@
     font-weight: bold;
     padding: 10px;
     background-color: #99E1ED;
-    color: #fff;
-    border-radius: 10px 10px 0 0;
 }
 
 /* top3 영역 */
@@ -177,7 +171,7 @@
 .ranking-row{
     display: flex;
     margin: 2px;
-    /* border-top: 2px solid #99E1ED; */
+    border-top: 2px solid #99E1ED;
     border-radius: 5px;
     font-weight: bold;
     color: gray;

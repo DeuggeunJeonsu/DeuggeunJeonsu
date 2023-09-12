@@ -1,33 +1,61 @@
 package com.jeonsu.deuggeun.board.controller;
 
+import com.jeonsu.deuggeun.board.model.service.MarketServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 
 import com.jeonsu.deuggeun.board.model.service.MarketService;
 
+import java.util.Map;
 
+//@SessionAttributes({"loginMember"})
 @Controller
-@RequestMapping("/market")
+@RequestMapping("/board/5")
 public class MarketController {
+// 요청주소 -> http://localhost:8080/board/5/list
+	private final MarketService service;
 
-//	@Autowired
-//	private MarketService service;
+	@Autowired
+	public MarketController(MarketService service) {
+		this.service = service;
+	}
 
-	@GetMapping("/marketList")
-	public String selectmarketList() {
+	@GetMapping("/list")
+	public String selectmarketList(
+			//@PathVariable("boardCode")
+//			int boardCode
+//								 , @RequestParam(value="cp", required=false, defaultValue="1") int cp
+//								 , Model model
+//								 , @RequestParam Map<String, Object> paramMap
+		) {
+
+//		if(paramMap.get("query") == null) {
+//
+//			Map<String, Object> map = service.selectMarketList(boardCode, cp);
+//
+//			model.addAttribute("map", map);
+//
+//		}else{
+//			paramMap.put("boardCode", boardCode);
+//
+//			Map<String, Object> map = service.selectMarketList(paramMap, cp);
+//
+//			model.addAttribute("map", map);
+//		}
+
 		return "board/market/marketList";
 	}
-	@GetMapping("/marketDetail")
+	@GetMapping("/detail")
 	public String marketDetail() {
 		return "board/market/marketDetail";
 	}
-	@GetMapping("/marketReview")
+	@GetMapping("/review")
 	public String marketReview() {
 		return "board/market/marketReview";
 	}
-	@GetMapping("/marketInquire")
+	@GetMapping("/inquire")
 	public String marketQnA() {
 		return "board/market/marketInquire";
 	}

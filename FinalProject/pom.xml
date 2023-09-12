@@ -94,14 +94,6 @@
 			<artifactId>spring-security-config</artifactId>
 			<version>5.7.1</version>
 		</dependency>
-
-		<!-- Jackson-databind -->
-		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
-		<dependency>
-			<groupId>com.fasterxml.jackson.core</groupId>
-			<artifactId>jackson-databind</artifactId>
-			<version>2.14.2</version>
-		</dependency>
 	
 		<!-- 이메일 인증 -->
 		<!-- https://mvnrepository.com/artifact/javax.mail/mail -->
@@ -225,6 +217,22 @@
 			<artifactId>spring-test</artifactId>
 			<version>${org.springframework-version}</version>
 			<scope>test</scope>
+		</dependency>
+
+		<!--Java에서 JSON을 쉽게 다룰 수 있게 해주는 구글 라이브러리 -->
+		<!-- GSON 라이브러리 -->
+		<!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
+		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+			<version>2.9.0</version>
+		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
+		<dependency>
+		    <groupId>commons-io</groupId>
+		    <artifactId>commons-io</artifactId>
+		    <version>2.6</version>
 		</dependency>
 
 	</dependencies>

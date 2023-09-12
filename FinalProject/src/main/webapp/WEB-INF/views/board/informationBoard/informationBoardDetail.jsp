@@ -202,7 +202,7 @@
     <!-- footer include -->
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
 
-    <!-- main.js 연결 -->
+    <!-- informationBoardDetail.js 연결 -->
 	<script src="/resources/js/board/informationBoard/informationBoardDetail.js"></script>
 	
 </body>

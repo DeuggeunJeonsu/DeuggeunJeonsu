@@ -4,27 +4,29 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+/* 공지사항 Controller */
 @Controller
-public class BoardController {
+@RequestMapping("/board/4")
+public class NotificationController {
 
 	@RequestMapping("/test")
 	public String boardList() {
 		return "board/boardList";
 	}
 	
-	@RequestMapping("/board/4")
+	@GetMapping("/list")
 	public String notificationList() {
 		
 		return "board/notification/notificationList";
 	}
 	
-	@RequestMapping("/notificationWrite")
+	@GetMapping("/list/notificationWrite")
 	public String notificationWrite() {
 		
 		return "board/notification/notificationWrite";
 	}
 	
-	@RequestMapping("/notificationDetail")
+	@GetMapping("/list/notificationDetail")
 	public String notificationDetail() {
 		
 		return "board/notification/notificationDetail";

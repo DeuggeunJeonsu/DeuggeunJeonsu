@@ -11,10 +11,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>공지사항 상세페이지</title>
 
+<link rel="apple-touch-icon" sizes="180x180"
+	href="/resources/images/favicon_io/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32"
+	href="/resources/images/favicon_io/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16"
+	href="/resources/images/favicon_io/favicon-16x16.png">
+<link rel="manifest"
+	href="/resources/images/favicon_io/site.webmanifest">
+
 <script src="https://kit.fontawesome.com/f7459b8054.js"
 	crossorigin="anonymous"></script>
 <link rel="stylesheet"
-	href="/resources/css/board/notificationDetail-style.css">
+	href="/resources/css/board/notification/notificationDetail-style.css">
 </head>
 
 <body>
@@ -54,14 +63,14 @@
 
 
 
-			 <!-- 좋아요 영역 -->
-        <div class="board-like">
-            <div class="like-cnt unchecked" id="like-cnt">
-                <i class="like-btn fa-solid fa-heart fa-2x"></i>
-            </div>
-        </div>
+				<!-- 좋아요 영역 -->
+				<div class="board-like">
+					<div class="like-cnt unchecked" id="like-cnt">
+						<i class="like-btn fa-solid fa-heart fa-2x"></i>
+					</div>
+				</div>
 
-        <div class="likeCount">99</div>
+				<div class="likeCount">99</div>
 
 				<div class="ncBtn">
 					<div class="listbtn1">
