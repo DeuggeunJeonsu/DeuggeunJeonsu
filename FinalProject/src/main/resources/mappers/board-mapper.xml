@@ -61,5 +61,11 @@
 		INSERT INTO HASHTAG
 		VALUES(#{tagNo}, #{tagContent})
 	</insert>
+	
+	<!-- 자유게시판 Board_hashtag 테이블 삽입 -->
+	<insert id="boardHashtagInsert" parameterType="Hashtag">
+		INSERT INTO BOARD_HASHTAG
+		VALUES(#{boardNo}, #{tagNo})
+	</insert>
 
 </mapper>

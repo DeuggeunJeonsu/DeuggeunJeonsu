@@ -28,20 +28,49 @@ public class ashBoardDAO {
 		return result;
 	}
 
+	/** 자유게시판 해시태그 삽입
+	 * @param boardNo
+	 * @param tagContent
+	 * @return boardNo(result)
+	 */
 	public int hashtagInsert(int boardNo, List<String> tagContent) {
 		
-		int result=0;
+		// 결과 저장용 변수
+		int result = 0;
 		
-		for( int i=0; i<tagContent.size(); i++) {
+		List<Hashtag> tagList = new ArrayList<Hashtag>();
+		
+		for(int i=0; i<tagContent.size(); i++) {
 			
 			Hashtag hashtag = new Hashtag();
 			
 			hashtag.setTagContent(tagContent.get(i));
 			
-			result += sqlSession.insert("boardMapper.hashtagInsert", hashtag);
+			sqlSession.insert("boardMapper.hashtagInsert", hashtag);
+
+			int generatedTagNo = hashtag.getTagNo();
+			
+			tagList.add(hashtag);
+			
+			result++;
 		}
+
+		int result2 = 0;
 		
-		return result;
+		if(result > 0) {
+			
+			for(Hashtag hashtag : tagList) {
+				
+				hashtag.setBoardNo(boardNo);
+				
+				result2 += sqlSession.insert("boardMapper.boardHashtagInsert", hashtag);
+			}
+			
+		}
+
+		if(result2 > 0) result2 = boardNo;
+		
+		return result2;
 	}
 
 }
