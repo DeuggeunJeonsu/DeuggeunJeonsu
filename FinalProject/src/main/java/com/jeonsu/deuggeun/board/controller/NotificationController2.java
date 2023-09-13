@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.google.gson.JsonObject;
 import com.jeonsu.deuggeun.board.model.dto.Board;
@@ -26,16 +27,30 @@ public class NotificationController2 {
 	@Autowired
 	private jhjBoardService service;
 
+	/* 공지사항 게시글 작성 */
 	@PostMapping("/insert") 
-	public String ncinsert(Board board) {
-
-		System.out.println(board.getBoardContent());
-		System.out.println(board.getBoardTitle());
-		System.out.println(board.getTagNo());
+	public String ncinsert(Board board, RedirectAttributes ra) {
+		
+		board.setMemberNo(1);
+		board.setBoardCode(4);
 
 		int result = service.ncInsert(board);
-
-		return "board/notification/notificationList"; 
+		
+		String message = null;
+		String path = null;;
+		if(result > 0) {
+			message = "작성 되었습니다.";
+			path = "board/notification/notificationList";
+			
+		}else {
+			message = "[error] 작성 실패";
+			path = "/insert";
+			
+		}
+		ra.addFlashAttribute("message", message);
+			
+		
+		return path; 
 	}
 
 	@PostMapping(value="/uploadSummernoteImageFileNC", produces = "application/json")
