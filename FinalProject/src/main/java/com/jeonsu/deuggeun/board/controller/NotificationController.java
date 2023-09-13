@@ -9,6 +9,7 @@ import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -22,7 +23,7 @@ import com.jeonsu.deuggeun.board.model.service.jhjBoardService;
 
 /* 공지사항 화면 Controller */
 @Controller
-@RequestMapping("/board/4")
+@RequestMapping("/board")
 public class NotificationController {
 
 	
@@ -32,19 +33,20 @@ public class NotificationController {
 		return "board/boardList";
 	}
 
-	@GetMapping("/list")
-	public String notificationList() {
+	@GetMapping("/{boardCode:[0-9]+}/list")
+	public String notificationList(@PathVariable("boardCode") int boardCode
+					) {
 
 		return "board/notification/notificationList";
 	}
 
-	@GetMapping("/list/notificationWrite")
+	@GetMapping("/{boardCode:[0-9]+}/list/notificationWrite")
 	public String notificationWrite() {
 
 		return "board/notification/notificationWrite";
 	}
 
-	@GetMapping("/list/notificationDetail")
+	@GetMapping("/{boardCode:[0-9]+}/list/notificationDetail")
 	public String notificationDetail() {
 
 		return "board/notification/notificationDetail";

@@ -67,5 +67,20 @@
 		INSERT INTO BOARD_HASHTAG
 		VALUES(#{boardNo}, #{tagNo})
 	</insert>
+	
+	
+	<!-- 공지사항 게시글 삽입 -->
+	<insert id="ncInsert" useGeneratedKeys="true">
+		<selectKey order="BEFORE" resultType="_int" keyProperty="boardNo">
+			SELECT SEQ_BOARD_NO.NEXTVAL FROM DUAL
+		</selectKey>
+		INSERT INTO BOARD
+		VALUES(#{boardNo}, #{boardTitle}, #{boardContent},
+				DEFAULT, DEFAULT, DEFAULT, DEFAULT,
+				#{memberNo}, #{boardCode})
+		
+	</insert>
+	
+	
 
 </mapper>
