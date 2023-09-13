@@ -30,174 +30,122 @@
         <div>
           <div class="cont_unit search_result">
             <div class="text_wrap big result mt40">
-              <strong class="tit">""<em>(5) 정보 공유 결과</em></strong>
+              <strong class="tit">""<em>정보 공유 결과</em>(5)</strong>
               <span class="right_cont">
-              <a href="#" class="txt arrow_r">정보 공유 더보기</a>
+              <a href="/board/1/list" class="txt arrow_r">정보 공유 더보기</a>
               </span>
             </div>
             <div class="prod_list_wrap mtm30">
              <ul>
-      <li>
+      <li class="line">
         <a href="#">
-          <time datetime="2018-08-20">08/20</time>
-          <div class="text">데이터센터 유지 보수를 수행합니다.</div>
+          <div class="text"><a href="#" class="txtd">데이터센터 유지 보수를 수행합니다.</a></div>
         </a>
       </li>
 
-        <hr>
-
-      <li>
+      <li class="line">
         <a href="#">
-          <time datetime="2018-08-21">08/21</time>
-          <div class="text">안드로이드 애플리케이션 버전 1.2를 출시했습니다.</div>
+          <div class="text"><a href="#" class="txtd">안드로이드 애플리케이션 버전 1.2를 출시했습니다.</a></div>
         </a>
       </li>
 
-       <hr>
-
-      <li>
+      <li class="line">
         <a href="#">
-          <time datetime="2018-08-19">08/19</time>
-          <div class="text">세미나/캠페인과 관련된 공지사항</div>
+          <div class="text"><a href="#" class="txtd">세미나/캠페인과 관련된 공지사항</a></div>
         </a>
       </li>
-
     </ul>
 
      <div class="text_wrap big result mt40">
               <strong class="tit">""<em>(5) 루틴 공유 결과</em></strong>
               <span class="right_cont">
-              <a href="#" class="txt arrow_r">"" 더보기</a>
+              <a href="/board/2/list" class="txt arrow_r">루틴 공유 더보기</a>
               </span>
             </div>
             <div class="prod_list_wrap mtm30">
              <ul>
-      <li>
+      <li class="line">
         <a href="#">
-          <time datetime="2018-08-20">08/20</time>
-          <div class="text">데이터센터 유지 보수를 수행합니다.</div>
+          <div class="text"><a href="#" class="txtd">데이터센터 유지 보수를 수행합니다.</a></div>
         </a>
       </li>
 
-        <hr>
-
-      <li>
+      <li class="line">
         <a href="#">
-          <time datetime="2018-08-21">08/21</time>
-          <div class="text">안드로이드 애플리케이션 버전 1.2를 출시했습니다.</div>
+          <div class="text"><a href="#" class="txtd">안드로이드 애플리케이션 버전 1.2를 출시했습니다.</a></div>
         </a>
       </li>
 
-       <hr>
-
-      <li>
+      <li class="line">
         <a href="#">
-          <time datetime="2018-08-19">08/19</time>
-          <div class="text">세미나/캠페인과 관련된 공지사항</div>
+          <div class="text"><a href="#" class="txtd">세미나/캠페인과 관련된 공지사항</a></div>
         </a>
       </li>
-
     </ul>
 
      <div class="text_wrap big result mt40">
               <strong class="tit">""<em>(5) 자유 게시판 결과</em></strong>
               <span class="right_cont">
-              <a href="#" class="txt arrow_r">"" 더보기</a>
+              <a href="/board/3/list" class="txt arrow_r">자유 게시판 더보기</a>
               </span>
             </div>
             <div class="prod_list_wrap mtm30">
              <ul>
-      <li>
+      <li class="line">
         <a href="#">
-          <time datetime="2018-08-20">08/20</time>
-          <div class="text">데이터센터 유지 보수를 수행합니다.</div>
+          <div class="text"><a href="#" class="txtd">데이터센터 유지 보수를 수행합니다.</a></div>
         </a>
       </li>
 
-        <hr>
-
-      <li>
+      <li class="line">
         <a href="#">
-          <time datetime="2018-08-21">08/21</time>
-          <div class="text">안드로이드 애플리케이션 버전 1.2를 출시했습니다.</div>
+          <div class="text"><a href="#" class="txtd">안드로이드 애플리케이션 버전 1.2를 출시했습니다.</a></div>
         </a>
       </li>
 
-       <hr>
-
-      <li>
+      <li class="line">
         <a href="#">
-          <time datetime="2018-08-19">08/19</time>
-          <div class="text">세미나/캠페인과 관련된 공지사항</div>
+          <div class="text"><a href="#" class="txtd">세미나/캠페인과 관련된 공지사항</a></div>
         </a>
       </li>
-
     </ul>
-
-    
-
-
-
                   </div>
                 </li>
               </ul>
-
-    
 
          <div class="text_wrap big result mt40">
               <strong class="tit">""<em>(5) 공지사항 결과</em></strong>
               <span class="right_cont">
-              <a href="#" class="txt arrow_r">"" 더보기</a>
+              <a href="/board/4/list" class="txt arrow_r">공지사항 더보기</a>
               </span>
             </div>
             <div class="prod_list_wrap mtm30">
              <ul>
-      <li>
+      <li class="line">
         <a href="#">
-          <time datetime="2018-08-20">08/20</time>
-          <div class="text">데이터센터 유지 보수를 수행합니다.</div>
+          <div class="text"><a href="#" class="txtd">데이터센터 유지 보수를 수행합니다.</a></div>
         </a>
       </li>
 
-        <hr>
-
-      <li>
+      <li class="line">
         <a href="#">
-          <time datetime="2018-08-21">08/21</time>
-          <div class="text">안드로이드 애플리케이션 버전 1.2를 출시했습니다.</div>
+          <div class="text"><a href="#" class="txtd">안드로이드 애플리케이션 버전 1.2를 출시했습니다.</a></div>
         </a>
       </li>
 
-       <hr>
-
-      <li>
+      <li class="line"> 
         <a href="#">
-          <time datetime="2018-08-19">08/19</time>
-          <div class="text">세미나/캠페인과 관련된 공지사항</div>
+          <div class="text"><a href="#" class="txtd">세미나/캠페인과 관련된 공지사항</a></div>
         </a>
       </li>
-
-    </ul>
-
-    
-
-
-
                   </div>
                 </li>
               </ul>
-
-
                   </div>
                 </li>
               </ul>
-
-              
-
 
             <br><br>
-
-
 
                   </div>
                 </li>
