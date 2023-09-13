@@ -57,17 +57,25 @@
 				<hr>
 				<div class="check-area">
 					
+					<div>
+						<input type="checkbox" id="ck1" class="none checkbox">
+						<label for="ck1" class="ck"></label>
+						<span>1. 득근전수 50회 4세트</span>
+						<button type="button"><i class="fa-solid fa-minus minus" style="color: #ffffff;"></i></button>
+					</div>
+					
+					
 				</div>
 				
 				<div>
 					<input type="text" name="addList" class="addList" placeholder="예) 스쿼트 20회 5세트"><button type="button" class="addListBtn"><i class="fa-solid fa-plus" style="color: #ffffff;"></i></button>
 				</div>
 
-				<div class="tdl-btnArea">
+				<%-- <div class="tdl-btnArea">
 					<a class="button btnPush btnLightBlue">저장하기</a>
 					<a class="button btnPush btnLightBlue">수정하기</a>
 					
-				</div>
+				</div> --%>
 				
 			
 			
@@ -77,7 +85,6 @@
 		</div>
 	</section>
 
-    
 	<script src="/resources/js/TodoList/todoList.js"></script>
 	<script>
 		const loginMemberNo = '1';
