@@ -5,6 +5,7 @@ import java.util.Map;
 
 public interface TodoListService  {
 
-	List<Map<String, Object>> selectTodoListAll();
+	//켈린더에 출력될 todolist 목록 
+	List<Map<String, Object>> selectTodoListAll(int loginMemberNo);
 
 }

@@ -15,8 +15,8 @@ public class TodoListServiceImp implements TodoListService{
 	private TodoListDao dao;
 	
 	@Override
-	public List<Map<String, Object>> selectTodoListAll() {
-		return dao.selectTodoListAll();
+	public List<Map<String, Object>> selectTodoListAll(int loginMemberNo) {
+		return dao.selectTodoListAll(loginMemberNo);
 	}
 	
 }

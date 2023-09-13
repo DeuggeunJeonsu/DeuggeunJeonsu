@@ -14,10 +14,10 @@
   
   
   <select id="selectTodoListAll" resultType="map">
-  	SELECT LIST_NO, TO_CHAR(SYSDATE, 'YYYY-MM-DD') L_CREATE_DT
+  	SELECT LIST_NO, TO_CHAR(L_CREATE_DT, 'YYYY-MM-DD') L_CREATE_DT, LIST_FL
 	FROM TODOLIST
 	JOIN TODOLIST_DATE USING(LIST_NO)
-	WHERE MEMBER_NO = 1
+	WHERE MEMBER_NO = #{loginMemberNo}
   </select>
   
   
