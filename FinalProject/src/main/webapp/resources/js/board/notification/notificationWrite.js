@@ -7,6 +7,16 @@ const imgChange = document.getElementById("ncPic");
 
 const input = document.getElementById("title-textArea");
 
+const inputCheck = document.getElementById("ncBigCheck");
+const checkFL = document.getElementById("checkFL");
+
+inputCheck.addEventListener("change", () => {
+
+  if(inputCheck.checked != false){
+    checkFL.value = 1;
+  }
+})
+
 
 
 
@@ -70,26 +80,55 @@ $(document).ready(function() {
 
       height: 600,                 // 에디터 높이
       focus: true,                  // 에디터 로딩후 포커스를 맞출지 여부
-      lang: "ko-KR",					// 한글 설정
-      placeholder: '내용을 입력해주세요',
-      disableResizeEditor: true,	// 크기 조절 기능 삭제
+      lang: "ko-KR",               // 한글 설정
+      callbacks: {
+          onImageUpload : function(files){
+              uploadSummernoteImageFile(files[0], this);
+          }
+      },
+      placeholder: '최대 2048자까지 쓸 수 있습니다. :)',
+      disableResizeEditor: true,   // 크기 조절 기능 삭제
       toolbar: [
-          ['fontname', ['fontname']],
-          ['fontsize', ['fontsize']],
-          ['style', ['bold', 'italic', 'underline','strikethrough', 'clear']],
-          ['color', ['forecolor','color']],
-          ['table', ['table']],
-          ['para', ['ul', 'ol', 'paragraph']],
-          ['height', ['height']],
-          ['insert',['picture','link','video']],
-          ['view', ['fullscreen', 'help']]
+        ['fontname', ['fontname']],
+        ['fontsize', ['fontsize']],
+        ['style', ['bold', 'italic', 'underline','strikethrough', 'clear']],
+        ['color', ['forecolor','color']],
+        ['table', ['table']],
+        ['para', ['ul', 'ol', 'paragraph']],
+        ['height', ['height']],
+        ['insert',['picture','link','video']],
+        ['view', ['fullscreen', 'help']]
       ],
 
-      fontNames: ['Arial', 'Arial Black', 'Comic Sans MS', 'Courier New','맑은 고딕','궁서','굴림체','돋움체','바탕체'],
-      fontSizes: ['9','10','11','12','14','16','18','20','22','24','28','30']
+    fontNames: ['Arial', 'Arial Black', 'Comic Sans MS', 'Courier New','맑은 고딕','궁서','굴림체','돋움체','바탕체'],
+    fontSizes: ['9','10','11','12','14','16','18','20','22','24','28','30']
 
   })
 });
+
+// summernote 에디터 내에서 이미지 업로드 했을 때 이미지 경로 변경
+function uploadSummernoteImageFile(file, editor){
+  var data = new FormData();
+  data.append("file", file);
+  console.log(file);
+
+  $.ajax({
+
+      data : data,
+      type : "POST",
+      url : "uploadSummernoteImageFile",
+      dataType : "JSON",
+      contentType : false,
+      processData : false,
+      success : function(data){
+
+          $(editor).summernote("insertImage", data.url);
+      }
+  });
+
+}
+
+
 
 
 
