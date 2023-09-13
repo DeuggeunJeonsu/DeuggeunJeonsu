@@ -17,7 +17,7 @@ public class MainController {
 	}
 	
 	@RequestMapping("/bmi")
-	public String ranking() {
+	public String bmi() {
 		return "common/bmi";
 	}
 
