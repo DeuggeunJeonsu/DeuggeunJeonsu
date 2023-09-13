@@ -38,16 +38,6 @@ public class ashBoardServiceImpl implements ashBoardService{
 			
 		}
 		
-		// 이미지 삽입
-//		if(boardNo > 0) {
-//			
-//
-//			}
-//			
-//			
-//			
-//		}
-		
 		return boardNo;
 	}
 
