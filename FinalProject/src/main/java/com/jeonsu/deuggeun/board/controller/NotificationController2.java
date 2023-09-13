@@ -38,10 +38,9 @@ public class NotificationController2 {
 		return "board/notification/notificationList"; 
 	}
 
-	@PostMapping(value="/uploadSummernoteImageFile", produces = "application/json")
+	@PostMapping(value="/uploadSummernoteImageFileNC", produces = "application/json")
 	@ResponseBody
 	public JsonObject uploadSummernoteImageFile(@RequestParam("file") MultipartFile multipartFile) {
-
 		JsonObject jsonObject = new JsonObject();
 
 		String fileRoot = "C:\\summernote_image\\"; // 저장될 외부 파일 경로
@@ -49,9 +48,9 @@ public class NotificationController2 {
 		String extension = originalFileName.substring(originalFileName.lastIndexOf(".")); // 파일 확장자
 
 		String savedFileName = UUID.randomUUID() + extension; // 저장될 파일명
-
+		
 		File targetFile = new File(fileRoot + savedFileName);
-
+		
 		try {
 			InputStream fileStream = multipartFile.getInputStream();
 			FileUtils.copyInputStreamToFile(fileStream, targetFile); // 파일 저장
