@@ -131,9 +131,9 @@
 
         <div class="write-btn-area">
             <a href="/board2/3/insert">
-                <c:if test="${!empty loginMember}" >
+                <%-- <c:if test="${!empty loginMember}" > --%>
                     <button id="writeBtn">글쓰기</button>
-                </c:if>
+                <%-- </c:if> --%>
             </a>
         </div>
 

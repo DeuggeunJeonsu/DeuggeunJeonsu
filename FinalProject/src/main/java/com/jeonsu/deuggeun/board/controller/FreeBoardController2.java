@@ -57,18 +57,16 @@ public class FreeBoardController2 {
 	@PostMapping("/insert")
 	public String boardInsert(
 			Board board
-			, @RequestParam(value = "tagContent") List<String> tagContent
+			, @RequestParam(value = "tagContent", required = false) List<String> tagContent
+			, @RequestParam(value = "imgSrc", required = false) List<String> imgSrc
 //			, @SessionAttribute("loginMember") Member loginMember
 			, RedirectAttributes ra
 			, HttpSession session) {
 		
 		board.setMemberNo(1);
 		board.setBoardCode(3);
-		
-		String webPath = "/resources/images/freeBoard/";
-		String filePath = session.getServletContext().getRealPath(webPath);
 
-		int boardNo = service2.boardInsert(board, tagContent, webPath, filePath);
+		int boardNo = service2.boardInsert(board, tagContent, imgSrc);
 		
 		String message = null;
 		String path = "redirect:";

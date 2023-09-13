@@ -18,6 +18,7 @@
 
 		<typeAlias type="com.jeonsu.deuggeun.board.model.dto.Board" alias="Board" />
 		<typeAlias type="com.jeonsu.deuggeun.board.model.dto.Comment" alias="Comment" />
+		<typeAlias type="com.jeonsu.deuggeun.board.model.dto.BoardImage" alias="BoardImage" />
 
 		<typeAlias type="com.jeonsu.deuggeun.todolist.model.dto.TodoList" alias="TodoList" />
 

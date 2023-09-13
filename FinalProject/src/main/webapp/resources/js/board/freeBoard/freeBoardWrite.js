@@ -232,4 +232,18 @@ writeFrm.addEventListener("submit", e=>{
         return;
     }
 
+    // 이미지 삽입
+    const summernote = document.getElementById("summernote");
+    const htmlContent = summernote.value;
+
+    const imgSrcMatches = htmlContent.match(/<img[^>]+src="([^"]+)"/);
+
+    // 이미지가 있다면
+    if(imgSrcMatches && imgSrcMatches.length > 1){
+        const imgSrc = imgSrcMatches[1];
+
+        const imgSrcInput = document.querySelector('input[name="imgSrc"]');
+        imgSrcInput.value = imgSrc;
+    }
+
 })

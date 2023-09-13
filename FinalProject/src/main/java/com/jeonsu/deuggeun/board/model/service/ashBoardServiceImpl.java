@@ -26,7 +26,7 @@ public class ashBoardServiceImpl implements ashBoardService{
 	// 게시글 삽입
 	@Transactional(rollbackFor = Exception.class)
 	@Override
-	public int boardInsert(Board board, List<String> tagContent, String webPath, String filePath) {
+	public int boardInsert(Board board, List<String> tagContent, List<String> imgSrc) {
 		
 		board.setBoardTitle(Util.XSSHandling(board.getBoardTitle()));
 		board.setBoardContent(Util.XSSHandling(board.getBoardContent()));
@@ -34,9 +34,18 @@ public class ashBoardServiceImpl implements ashBoardService{
 		// 게시글 삽입
 		int boardNo = dao.boardInsert(board);
 		
+		int result = 0;
+		
 		// 해시태그 삽입
 		if(boardNo > 0) {
-			int result = dao.hashtagInsert(boardNo, tagContent);
+			result = dao.hashtagInsert(boardNo, tagContent);
+		}
+		
+		int result2 = 0;
+		
+		// 이미지 삽입
+		if(result > 0) {
+			result2 = dao.freeBoardImageInsert(boardNo, imgSrc);
 		}
 
 		return boardNo;
