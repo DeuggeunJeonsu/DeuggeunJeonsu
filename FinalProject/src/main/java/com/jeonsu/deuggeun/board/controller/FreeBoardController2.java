@@ -47,11 +47,13 @@ public class FreeBoardController2 {
 	@Autowired
 	private ashBoardService service2;
 
+	// 게시글 작성 화면 전환
 	@GetMapping("/insert")
 	public String boardInsert() {
 		return "board/freeBoard/freeBoardWrite";
 	}
 	
+	// 게시글 삽입
 	@PostMapping("/insert")
 	public String boardInsert(
 			Board board
@@ -65,9 +67,7 @@ public class FreeBoardController2 {
 		
 		String webPath = "/resources/images/freeBoard/";
 		String filePath = session.getServletContext().getRealPath(webPath);
-		
-		System.out.println(tagContent);
-		
+
 		int boardNo = service2.boardInsert(board, tagContent, webPath, filePath);
 		
 		String message = null;
@@ -87,19 +87,22 @@ public class FreeBoardController2 {
 		return path;
 	}
 	
+	// summernote 이미지 주소 변환
 	@PostMapping(value="/uploadSummernoteImageFile", produces = "application/json")
 	@ResponseBody
-	public JsonObject uploadSummernoteImageFile(@RequestParam("file") MultipartFile multipartFile) {
+	public JsonObject uploadSummernoteImageFile(@RequestParam("file") MultipartFile multipartFile, HttpSession session) {
 		
 		JsonObject jsonObject = new JsonObject();
+
+		String fileRoot = "/resources/images/freeBoard/";
+		String webPath = session.getServletContext().getRealPath(fileRoot);
 		
-		String fileRoot = "C:\\summernote_image\\"; // 저장될 외부 파일 경로
 		String originalFileName = multipartFile.getOriginalFilename(); // 오리지널 파일명
 		String extension = originalFileName.substring(originalFileName.lastIndexOf(".")); // 파일 확장자
 		
 		String savedFileName = UUID.randomUUID() + extension; // 저장될 파일명
 		
-		File targetFile = new File(fileRoot + savedFileName);
+		File targetFile = new File(webPath + savedFileName);
 		
 		try {
 			InputStream fileStream = multipartFile.getInputStream();
