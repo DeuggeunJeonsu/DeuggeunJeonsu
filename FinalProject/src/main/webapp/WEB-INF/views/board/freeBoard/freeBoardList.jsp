@@ -5,12 +5,13 @@
 <%-- map에 저장된 값 변수에 저장 --%>
 <c:set var="pagination" value="${map.pagination}"/>
 <c:set var="boardList" value="${map.boardList}"/>
+<c:set var="boardCode" value="3"/>
 
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>게시판 이름</title>
+<title>자유 게시판</title>
 
 <%-- 헤더 아이콘 --%>
 <link rel="apple-touch-icon" sizes="180x180" href="/resources/images/favicon_io/apple-touch-icon.png">
@@ -75,7 +76,11 @@
                             <a href="/board/3/${board.boardNo}?cp=${pagination.currentPage}">
                                 <div>
                                     <c:if test="${empty board.thumbnail}" >
-                                        <img src="/resources/images/main/log02.png">
+                                        <img src="/resources/images/main/log02.png" id="default-logo">
+                                    </c:if>
+
+                                    <c:if test="${!empty board.thumbnail}">
+                                        <img src="${board.thumbnail}">
                                     </c:if>
                                 </div>
                                 <div>
@@ -105,27 +110,6 @@
 
                </c:otherwise>
             </c:choose>
-
-
-
-
-            <%-- <div class="thumbnail">
-                <a href="#">
-                    <div><img src="/resources/images/main/log02.png"></div>
-                    <div>
-                        <div class="title ">제목입니다</div>
-                        <div class="createDate-area">
-                            <div>작성일 23.01.01</div>
-                            <div><i class="fa-regular fa-comment" style="color: #ddd;"></i> 4</div>
-                        </div>
-                        <div class="profile-area">
-                            <div class="profileArea"><img src="/resources/images/user.png"></div>
-                            <div>닉네임</div>
-                            <div><i class="fa-solid fa-heart" style="color: #ff4242;"></i> 99</div>
-                        </div>
-                    </div>
-                </a>
-            </div> --%>
 
         </div>
 

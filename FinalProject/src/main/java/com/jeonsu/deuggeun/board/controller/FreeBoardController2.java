@@ -35,7 +35,6 @@ import com.jeonsu.deuggeun.board.model.service.BoardService;
 import com.jeonsu.deuggeun.board.model.service.ashBoardService;
 import com.jeonsu.deuggeun.member.model.dto.Member;
 
-@CrossOrigin(origins = "http://localhost:81")
 @Controller
 @RequestMapping("/board2/3")
 //@SessionAttributes({"loginMember"})
