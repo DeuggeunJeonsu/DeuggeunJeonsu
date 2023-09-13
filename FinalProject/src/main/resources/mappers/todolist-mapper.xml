@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="todolistMapper">
+  
+	<resultMap type="TodoList" id="">
+	    <id property="ListNo" column=""/>
+	    <result property="listContent" column=""/>
+	    <result property="listFl" column=""/>
+	    <result property="listDetailNo" column=""/>
+	    <result property="memberNo" column=""/>
+	    <result property="lCreateDt" column=""/>
+	</resultMap>
+  
+  
+  
+  <select id="selectTodoListAll" resultType="map">
+  	SELECT LIST_NO, TO_CHAR(L_CREATE_DT, 'YYYY-MM-DD') L_CREATE_DT, LIST_FL
+	FROM TODOLIST
+	JOIN TODOLIST_DATE USING(LIST_NO)
+	WHERE MEMBER_NO = #{loginMemberNo}
+  </select>
+  
+  
+</mapper>

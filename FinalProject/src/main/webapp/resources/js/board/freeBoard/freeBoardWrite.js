@@ -88,10 +88,17 @@ function handleEnterKeyPress() {
 
     // 해시태그 div에 내용 추가
     hashtag.innerText = hashtagTextArea.value;
-
-    hashtag.setAttribute("name", "tagContent");
+    
+    // hashtag.setAttribute("name", "tagContent");
 
     hashtag.append(xBtn);
+    
+    const input = document.createElement("input");
+    input.setAttribute("type", "hidden");
+    input.setAttribute("name", "tagContent");
+    input.setAttribute("value", hashtag.innerText);
+
+    hashtag.append(input);
 
     hashtagMakingArea.append(hashtag);
 
@@ -202,7 +209,7 @@ const writeFrm = document.getElementById("write-form");
 writeFrm.addEventListener("submit", e=>{
 
     // 제목 유효성 검사
-    const title = document.getElementById("itle-textArea");
+    const title = document.getElementById("title-textArea");
 
     if(title.value.trim().length == 0){
         alert("제목을 입력해 주세요.");
@@ -223,6 +230,20 @@ writeFrm.addEventListener("submit", e=>{
         e.preventDefault();
 
         return;
+    }
+
+    // 이미지 삽입
+    const summernote = document.getElementById("summernote");
+    const htmlContent = summernote.value;
+
+    const imgSrcMatches = htmlContent.match(/<img[^>]+src="([^"]+)"/);
+
+    // 이미지가 있다면
+    if(imgSrcMatches && imgSrcMatches.length > 1){
+        const imgSrc = imgSrcMatches[1];
+
+        const imgSrcInput = document.querySelector('input[name="imgSrc"]');
+        imgSrcInput.value = imgSrc;
     }
 
 })

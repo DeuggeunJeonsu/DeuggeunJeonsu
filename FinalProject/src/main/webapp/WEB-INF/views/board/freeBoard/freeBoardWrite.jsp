@@ -37,10 +37,10 @@
         </div>
 
         <div id="middle-area">
-            <form action="/board2/3/insert" method="POST" id="write-form" enctype="multipart/form-data">
-                
-                <%-- <div id="title-middle-area">
-                    <textarea placeholder="제목을 입력해 주세요." id="title-textArea"></textarea>
+            <form action="/board2/3/insert" method="POST" id="write-form">
+
+                <div id="title-middle-area">
+                    <input placeholder="제목을 입력해 주세요." name="boardTitle" id="title-textArea">
                 </div>
 
                 <div id="hashtag-area">
@@ -48,47 +48,64 @@
                         <input type="text" id="hashtag-textArea" placeholder="#해시태그 추가">
                     </div>
                     <div id="hashtag-making-area">
-                        <!-- <div class="hashtag">#오운완</div>
-                        <div class="hashtag">#OOTD</div> -->
-                    </div>
-                </div>
-
-                <div id="content-area">
-                    <textarea placeholder="회원님의 이야기를 들려주세요." id="content-textArea"></textarea>
-                </div>
-
-                <div id="button-area">
-                    <button class="btnStyle" id="write-btn">작성</button>
-                    <button class="btnStyle" id="cancel-btn">취소</button>
-                </div> --%>
-
-                <div id="title-middle-area">
-                    <textarea placeholder="제목을 입력해 주세요." name="boardTitle" id="title-textArea"></textarea>
-                </div>
-
-                <div id="hashtag-area">
-                    <div>
-                        <input type="text" id="hashtag-textArea" name="tagContent" placeholder="#해시태그 추가">
-                    </div>
-                    <div id="hashtag-making-area">
-                        <!-- <div class="hashtag">
+                        <!-- <input type="text" readonly class="hashtag">
                         #오운완
                         <i class="fa-solid fa-circle-xmark" style="color: #ffffff;"></i>
-                        </div>
+                        </input>
                         <div class="hashtag">#OOTD</div> -->
                     </div>
                 </div>
 
                 <textarea id="summernote" name="boardContent"></textarea>
+                <input type="hidden" name="imgSrc" value="">
                 
                 <div id="button-area">
                     <button class="btnStyle" id="write-btn">작성</button>
                     <button type="cancel" class="btnStyle" id="cancel-btn">취소</button>
                 </div>
 
+                <input type="hidden" name="hashtags">
             </form>
         </div>
 
+        <div class="pagination-area">
+        
+            <ul class="pagination">
+
+                <!-- 첫 페이지로 이동 -->
+                <li><a href="/board/${boardCode}?cp=1${sp}">&lt;&lt;</a></li>
+
+                <!-- 이전 목록 마지막 번호로 이동 -->
+                <li><a href="/board/${boardCode}?cp=${pagination.prevPage}${sp}">&lt;</a></li>
+
+
+                <!-- 특정 페이지로 이동 -->
+                <c:forEach var="i" begin="${pagination.startPage}" end="${pagination.endPage}" step="1">
+
+                    <c:choose>
+                        <c:when test="${ i == pagination.currentPage}">
+                            <!-- 현재 보고있는 페이지 -->
+                            <li><a class="current">${i}</a></li>
+                        </c:when>
+
+                        <c:otherwise>
+                            <!-- 현재 페이지를 제외한 나머지 -->
+                            <li><a href="/board/${boardCode}?cp=${i}${sp}">${i}</a></li>
+
+                        </c:otherwise>
+                    </c:choose>
+
+                </c:forEach>
+
+                <!-- 다음 목록 시작 번호로 이동 -->
+                <li><a href="/board/${boardCode}?cp=${pagination.nextPage}${sp}">&gt;</a></li>
+
+                <!-- 끝 페이지로 이동 -->
+                <li><a href="/board/${boardCode}?cp=${pagination.maxPage}${sp}">&gt;&gt;</a></li>
+
+            </ul>
+
+        </div>
 	</section>
 
     <!-- footer include -->

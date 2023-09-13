@@ -15,6 +15,7 @@ import org.apache.commons.io.FileUtils;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -29,10 +30,12 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.google.gson.JsonObject;
 import com.jeonsu.deuggeun.board.model.dto.Board;
+import com.jeonsu.deuggeun.board.model.dto.Hashtag;
 import com.jeonsu.deuggeun.board.model.service.BoardService;
 import com.jeonsu.deuggeun.board.model.service.ashBoardService;
 import com.jeonsu.deuggeun.member.model.dto.Member;
 
+@CrossOrigin(origins = "http://localhost:81")
 @Controller
 @RequestMapping("/board2/3")
 //@SessionAttributes({"loginMember"})
@@ -44,27 +47,26 @@ public class FreeBoardController2 {
 	@Autowired
 	private ashBoardService service2;
 
+	// 게시글 작성 화면 전환
 	@GetMapping("/insert")
 	public String boardInsert() {
 		return "board/freeBoard/freeBoardWrite";
 	}
 	
+	// 게시글 삽입
 	@PostMapping("/insert")
 	public String boardInsert(
 			Board board
-			, @RequestParam(value = "images", required = false) List<MultipartFile> images
-			, List<String> tagContent
+			, @RequestParam(value = "tagContent", required = false) List<String> tagContent
+			, @RequestParam(value = "imgSrc", required = false) List<String> imgSrc
 //			, @SessionAttribute("loginMember") Member loginMember
 			, RedirectAttributes ra
 			, HttpSession session) {
 		
 		board.setMemberNo(1);
 		board.setBoardCode(3);
-		
-		String webPath = "/resources/images/freeBoard/";
-		String filePath = session.getServletContext().getRealPath(webPath);
-		
-		int boardNo = service2.boardInsert(board, images, tagContent, webPath, filePath);
+
+		int boardNo = service2.boardInsert(board, tagContent, imgSrc);
 		
 		String message = null;
 		String path = "redirect:";
@@ -83,19 +85,22 @@ public class FreeBoardController2 {
 		return path;
 	}
 	
+	// summernote 이미지 주소 변환
 	@PostMapping(value="/uploadSummernoteImageFile", produces = "application/json")
 	@ResponseBody
-	public JsonObject uploadSummernoteImageFile(@RequestParam("file") MultipartFile multipartFile) {
+	public JsonObject uploadSummernoteImageFile(@RequestParam("file") MultipartFile multipartFile, HttpSession session) {
 		
 		JsonObject jsonObject = new JsonObject();
+
+		String fileRoot = "/resources/images/freeBoard/";
+		String webPath = session.getServletContext().getRealPath(fileRoot);
 		
-		String fileRoot = "C:\\summernote_image\\"; // 저장될 외부 파일 경로
 		String originalFileName = multipartFile.getOriginalFilename(); // 오리지널 파일명
 		String extension = originalFileName.substring(originalFileName.lastIndexOf(".")); // 파일 확장자
 		
 		String savedFileName = UUID.randomUUID() + extension; // 저장될 파일명
 		
-		File targetFile = new File(fileRoot + savedFileName);
+		File targetFile = new File(webPath + savedFileName);
 		
 		try {
 			InputStream fileStream = multipartFile.getInputStream();

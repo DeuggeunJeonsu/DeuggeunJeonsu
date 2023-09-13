@@ -18,6 +18,10 @@ let nowMonth = new Date();  // 현재 달을 페이지를 로드한 날의 달�
 let today = new Date();     // 페이지를 로드한 날짜를 저장
 today.setHours(0, 0, 0, 0);    // 비교 편의를 위해 today의 시간을 초기화
 
+
+
+
+
 // 달력 생성 : 해당 달에 맞춰 테이블을 만들고, 날짜를 채워 넣는다.
 function buildCalendar() {
     
@@ -48,7 +52,7 @@ function buildCalendar() {
         let newDIV = document.createElement("p");
         let newDIV2 = document.createElement("i");
         newDIV.innerHTML = leftPad(nowDay.getDate());
-        nowColumn.append(newDIV, newDIV2);
+        nowColumn.append(newDIV);
 
         if (nowDay < today) {
             newDIV.className = "pastDay";
@@ -75,15 +79,95 @@ function buildCalendar() {
             nowRow = tbody_Calendar.insertRow();
         }
 
-        // ajax,, 여기서 만들어야해
-        // i 태그에db에서 가져와서 넣어보기 
-        // 동그라미 또는 세모
-
-
-
-
-
+       
+        // console.log(loginMemberNo)
+        
+       
     }
+    // ajax,, 여기서 만들어야해
+    // i 태그에db에서 가져와서 넣어보기 
+    // 동그라미 또는 세모
+
+    // 로그인 되었을 때 todolist 캘린더에 
+    // 결과 보여주기 
+
+    
+    var newDIV2 = ""
+    // 로그인 되었을 때 todolist 캘린더에 결과 보여주기
+    if (loginMemberNo != "") {
+        // console.log('로그인됨')
+        $.ajax({
+            url: "/todolist",
+            method: "POST",
+            data: { "memberNo": loginMemberNo },
+            dataType: "JSON",
+            success: function (todolistMap) {
+                for (let todos of todolistMap) {
+                   
+                    const todoFl = todos.LIST_FL; // 진행여부! 'Y'- 동그라미 'N'- 세모
+                    const todoDays = todos.L_CREATE_DT.split("-");
+                    const todoYear2 = todoDays[0]; //년
+                    const todoMonth2 = todoDays[1]; //월
+                    const todoDay2 = todoDays[2]; //일
+
+                    // newDIV2 엘리먼트 생성
+                    newDIV2 = document.createElement("i");
+                    if (todoFl === 'Y') {
+                        newDIV2.classList.add("fa-solid", "fa-circle", "Circle");
+                    } else {
+                        newDIV2.classList.add("fa-solid", "fa-caret-up", "triangle");
+                    }
+
+                    // 달력 셀을 찾고 newDIV2를 해당 셀에 추가
+                    const dateCell = findDateCell(todoYear2, todoMonth2, todoDay2);
+                    // findDateCell() -> 해당 날짜을 달력에서 찾는 함수 
+                    if (dateCell) {
+                        dateCell.appendChild(newDIV2);
+                    }
+                }
+            },
+            error: function () {
+                console.log("실패");
+            }
+        });
+
+    }else{ // 로그인 안되어 있을 때 
+        // console.log('로그인 안됨')
+        const todoContent = document.querySelector(".check-area");
+        todoContent.innerHTML=""
+
+        // 비회원 일시
+        const guest = document.createElement("div");
+        guest.innerText="로그인후 나만의 ToDoList를 득근해보세요💪";
+        guest.classList.add("guest");
+        
+        todoContent.append(guest);
+    }
+
+
+
+
+    // 달력 셀을 찾는 함수
+    function findDateCell(year, month, day) {
+        
+        const calenderYaer = document.getElementById("calYear").innerText;  // 년
+        const calendeMath = document.getElementById("calMonth").innerText; // 월
+        const calendeDays = document.querySelectorAll("tbody p");
+            // 현재 화면에 보이는 '일'을 배열로 가지고 옴!
+
+        if(calenderYaer  == year){
+            if(calendeMath == month){
+                for ( let calendeDay of calendeDays) {
+                    
+                    if(calendeDay.innerText == day){
+                        // console.log(calendeDay)
+                        calendeDay.append(newDIV2);
+                    }
+                }
+            }
+        }
+    }
+
     // 마지막 tr이 비어 있을 경우 삭제
     if (nowRow.cells.length === 0) {
         tbody_Calendar.deleteRow(tbody_Calendar.rows.length - 1);
@@ -95,7 +179,52 @@ function choiceDate(newDIV) {
     if (document.getElementsByClassName("choiceDay")[0]) {                              // 기존에 선택한 날짜가 있으면
         document.getElementsByClassName("choiceDay")[0].classList.remove("choiceDay");  // 해당 날짜의 "choiceDay" class 제거
     }
-    newDIV.classList.add("choiceDay");           // 선택된 날짜에 "choiceDay" class 추가
+    newDIV.classList.add("choiceDay"); // 선택된 날짜에 "choiceDay" class 추가 
+    
+    // 선택한 날짜 변수에 담아 불러오기 
+    const yaer = document.getElementById("calYear").innerText;  // 년
+    const math = document.getElementById("calMonth").innerText; // 월
+    const day =  newDIV.innerText; // 일
+    const choiceTodoList = yaer+'-' + math+'-' + day
+    console.log('선택한 날짜 :'+ choiceTodoList)
+
+    // 오늘 날짜 가져오기
+    const todayYear = today.getFullYear();
+    const todayMonth = today.getMonth()+1;
+    const todayDate = today.getDate();
+    //오늘 날짜
+    const sysDate = todayYear + "-" + (todayMonth < 10 ? "0" : "") + todayMonth + "-" + (todayDate < 10 ? "0" : "") + todayDate;
+    console.log('오늘 날짜 :'+ sysDate)
+
+
+
+    // ajax을 할 예정
+    if( loginMemberNo != ""){
+        $.ajax({
+            url: "/todolist",
+            method: "POST",
+            data: { "choiceTodoList": choiceTodoList },
+            dataType: "JSON",
+            success: function (todolistMap) {
+                console.log('날짜 선택 성공')
+            },
+            error: function(){
+                console.log('날짜 선택 실패')
+            }
+        })
+
+    }
+
+
+
+
+
+
+
+
+
+
+
 }
 
 // 이전달 버튼 클릭
@@ -123,10 +252,6 @@ function leftPad(value) {
 // *****************************************************
 // TodoList만들기!
 
-//var checkboxes = document.querySelectorAll(".checkbox");
-//var progressNum = document.querySelector(".progress-num")
-// let totalCheckboxes = checkboxes.length;
-// let checkedPercentage =0;
 if(document.querySelector(".addListBtn")!= null){
 
     const addListBtn = document.querySelector(".addListBtn");
@@ -140,7 +265,10 @@ if(document.querySelector(".addListBtn")!= null){
         const maxCheckboxes = 10;
         const currentCheckboxes = document.querySelectorAll(".checkbox").length;
         
-
+        if(loginMemberNo == ""){
+            alert("로그인후 이용해 주세요💪");
+            return;
+        }
 
         if(addListVal.length == 0 ){
             alert("내용을 입력해주세요👀");
@@ -230,8 +358,8 @@ function generateRandomId() {
 
 // 페이지가 실행 되었을 때, 
 $(document).ready(function(){
-    initializeTodoList()
-    updateCheckedPercentage()
+    initializeTodoList();
+    updateCheckedPercentage();
 });
 
 
@@ -260,7 +388,7 @@ function initializeTodoList() {
                 spanElement.classList.remove("complete");
             }
             
-            updateCheckedPercentage(  )
+            updateCheckedPercentage();
         });
     });
 
@@ -372,3 +500,6 @@ if(document.querySelector(".boardAddListBtn") != null){
     });
     
 }
+
+
+

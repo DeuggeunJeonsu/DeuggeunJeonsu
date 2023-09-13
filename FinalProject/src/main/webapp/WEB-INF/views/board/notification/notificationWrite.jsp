@@ -1,96 +1,84 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+    pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+    <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"  %>
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>공지사항 상세페이지</title>
+    <meta charset="UTF-8">
+    <title>건강/운동정보</title>
 
-<link rel="apple-touch-icon" sizes="180x180"
-	href="/resources/images/favicon_io/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32"
-	href="/resources/images/favicon_io/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16"
-	href="/resources/images/favicon_io/favicon-16x16.png">
-<link rel="manifest"
-	href="/resources/images/favicon_io/site.webmanifest">
+    <%-- freeBoardWrite-style.css 연결 --%>
+    <link rel="stylesheet" href="/resources/css/board/notification/notificationWrite-style.css">
 
-<link rel="stylesheet"
-	href="/resources/css/board/notification/notificationWrite-style.css">
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
 
-<script src="http://code.jquery.com/jquery-latest.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <link rel="apple-touch-icon" sizes="180x180" href="/resources/images/favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/resources/images/favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/resources/images/favicon_io/favicon-16x16.png">
+    <link rel="manifest" href="/resources/images/favicon_io/site.webmanifest">
+
+
+	<!-- alert창 링크 -->
+	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 </head>
-
 <body>
-	<main>
 
-		<div class="Jheader">
-			<jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
-		</div>
+	<jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
+	
+<!-- include libraries(bootstrap) -->
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script> 
 
-		<div class="Jbody">
-			<div class="Jcenter">
+    <!-- include summernote css/js-->
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.css" rel="stylesheet">
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.js"></script>
 
-				<div class="ncHead">
-					<h2>공지사항 게시판</h2>
-				</div>
 
-				<div class="cnText">득근전수에서 회원님들에게 공지드립니다.</div>
+	
 
-				<div class="ncTitle">
-					<input type="text" placeholder="제목 작성" autocomplete="off">
-				</div>
+	<section id="main-container">
+        <div id="title-area">
+            <div><h1> 공지사항</h1> <h3>ㅣ 게시글 작성</h3></div>
+            <div>득근전수에서 회원님들에게 공지드립니다.</div>
+        </div>
 
-				<div class="ncProfile">
-
-					<div id="ncProfile2">
-
-						<img
-							src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcmsIcVNgkjQ_BAsCA53PKy_iBXOaetVFJBQ&usqp=CAU"
-							id="adminProfile">
-					</div>
-
-					<div id="ncName">관리자</div>
-
+        <div id="middle-area">
+            <form action="/board/4/insert" method="post" id="write-form" 
+				>
+                
+                <div id="title-middle-area">
 					<div id="ncCheckbox">
 
 						<div id="ncBignews" class="popContent list">
-							<input type="checkbox" id="ncBigCheck"><label
-								for="ncBigCheck">중요 공지사항</label>
+							<input type="checkbox" id="ncBigCheck">
+							<label for="ncBigCheck" id="ncCheck-text">중요 공지사항</label>
+                            <%-- <input type="hidden" id="checkFL" name="tagNo"> --%>
 						</div>
 
-						<label for="ncPic" class="btn-two cyan small">사진선택</label> <input
-							type="file" id="ncPic" accept="image/*">
+						
 					</div>
+                    <textarea name="boardTitle" id="title-textArea" placeholder="제목을 입력해 주세요."></textarea>
+                </div>
 
-				</div>
-				<textarea class="ncContent" maxlength="1999"
-					placeholder="내용을 입력해주세요."></textarea>
+                <textarea name="boardContent" id="summernote"></textarea>
 
+                <div id="button-area">
+                    <button class="btnStyle" id="write-btn" onclick="return insertBtn()">작성</button>
+                    <button class="btnStyle" id="cancel-btn">취소</button>
+                </div>
 
+            </form>
+        </div>
 
-				<div class="ncContent2">
-					<div id="ncContentText">
-						<span id="ncTextCount">0</span> / 2000 자
-					</div>
-				</div>
+	</section>
 
-				<div class="ncBtn">
-					<button id="ncCancle">취소</button>
-					<button id="ncInsert">작성</button>
-				</div>
-
-			</div>
-		</div>
-
-	</main>
+    <!-- footer include -->
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
-	<script src="/resources/js/board/notificationWrite.js"></script>
-</body>
+    
+    <!-- freeBoardWrite.js 연결 -->
+	<script src="/resources/js/board/notification/notificationWrite.js"></script>
 
+</body>
 </html>

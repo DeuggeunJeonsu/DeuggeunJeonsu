@@ -45,8 +45,6 @@
 							<tbody>
 							</tbody>
 						</table>
-						<i class="fa-solid fa-caret-up triangle"></i>
-						<i class="fa-solid fa-circle Circle"></i>
 			
 					</div>
 				</div>
@@ -58,34 +56,6 @@
 				<h2>My To Do List</h2>
 				<hr>
 				<div class="check-area">
-					
-					<div>
-						<input type="checkbox" id="ck1" class="none checkbox">
-						<label for="ck1" class="ck"></label>
-						<span>1. 득근전수 50회 4세트</span>
-						<button type="button"><i class="fa-solid fa-minus minus" style="color: #ffffff;"></i></button>
-					</div>
-					
-					<div>
-						<input type="checkbox" id="ck2" class="none checkbox">
-						<label for="ck2" class="ck"></label>
-						<span>2. 득근전수 50회 4세트</span>
-						<button type="button"><i class="fa-solid fa-minus minus" style="color: #ffffff;"></i></button>
-					</div>
-					<div>
-						<input type="checkbox" id="ck3" class="none checkbox">
-						<label for="ck3" class="ck"></label>
-						<span>3. 득근전수 50회 4세트</span>
-						<button type="button"><i class="fa-solid fa-minus minus" style="color: #ffffff;"></i></button>
-					</div>
-					
-					
-					<div>
-						<input type="checkbox" id="ck4" class="none checkbox">
-						<label for="ck4" class="ck"></label>
-						<span>4. 득근전수 50회 4세트</span>
-						<button type="button"><i class="fa-solid fa-minus minus" style="color: #ffffff;"></i></button>
-					</div>
 					
 				</div>
 				
@@ -109,5 +79,8 @@
 
     
 	<script src="/resources/js/TodoList/todoList.js"></script>
+	<script>
+		const loginMemberNo = '1';
+	</script>
 </body>
 </html>

@@ -1,6 +1,7 @@
 package com.jeonsu.deuggeun.board.model.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.web.multipart.MultipartFile;
 
@@ -13,10 +14,16 @@ public interface ashBoardService {
 	 * @param board
 	 * @param images
 	 * @param tagContents
-	 * @param webPath
-	 * @param filePath
+	 * @param imgSrc
 	 * @return boardNo
 	 */
-	int boardInsert(Board board, List<MultipartFile> images, List<String> tagContent, String webPath, String filePath);
+	int boardInsert(Board board, List<String> tagContent, List<String> imgSrc);
+
+	/** 게시글 목록 조회
+	 * @param boardCode
+	 * @param cp
+	 * @return
+	 */
+	Map<String, Object> selectFreeBoardList(int boardCode, int cp);
 
 }

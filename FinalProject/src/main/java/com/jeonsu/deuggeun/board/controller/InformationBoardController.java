@@ -10,6 +10,7 @@ public class InformationBoardController {
 	
 	@GetMapping("/list")
 	public String informationBoardList() {
+
 		return "board/informationBoard/informationBoardList";
 	}
 	

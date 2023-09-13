@@ -1,277 +1,128 @@
-*{ box-sizing: border-box;
-    /* border: 1px solid black; */ 
+* {
+  box-sizing: border-box;
+ /*  border: 1px solid black; */
 }
 
-.Jheader{
-	height: 100px;
-	width: 100%;
-	
+#ncCheck-text{
+  font-size: 18px;
+  height: 30px;
+  width: 160px;
+  line-height: 38px;
 }
 
-a{
-    text-decoration: none;
-    color: black;
+#main-container{
+width: 1000px;
+height: auto;
+  margin: auto;
 }
 
-a:hover{
-    
-    color:  #99E1ED;
+#title-area > div:nth-of-type(1){
+  display: flex;
+  align-items: center;
 }
 
-main{
-    min-width: 1000px;
+#title-area > div:nth-of-type(2){
+  padding-bottom: 10px;
+  border-bottom: 2px solid #ddd;
 }
 
-.Jbody{
-    margin: auto;
-    display: flex;
-    justify-content: center;
-    min-width: 1000px;
+/* 게시글 작성 영역 */
+#middle-area{
+  margin: 10px auto;
+  height: auto;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.Jcenter{
-    
-    width: 80%;
-    min-width: 1000px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+/* 게시글 제목 영역 */
+#title-middle-area{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 0;
+  height: 40px;
+  width: 100%;
+}
+#write-form{
+  width: 100%;
+  margin: auto;
 }
 
-table{
-    width: 1000px;
-    border-collapse: collapse;
+/* 태그 선택 영역 */
+#tagSelect{
+  height: 40px;
+  width: 15%;
+  border: 2px solid #ddd;
+  border-radius: 5px;
+  padding-left: 22px;
+  font-size: 18px;
+  font-weight: 400;
+  color: gray;
+}
+#tagSelect:focus{
+  border: 2px solid #99E1ED;
 }
 
-th{
-    background-color: darkgray;
-    height: 30px;
+/* 게시글 제목 영역 */
+#title-textArea{
+  height: 40px;
+  width: 80%;
+
+  font-size: 20px;
+
+  padding-top: 4px;
+  padding-left: 10px;
+  padding-right: 10px;
+
+  resize: none;
+
+  outline: none;
+
+  /* background-color:transparent; */
+  border: 2px solid #ddd;
+  border-radius: 5px;
+
+  overflow: hidden;
+}
+#title-textArea:focus{
+  border: 2px solid #99E1ED;
 }
 
-td{
-    text-align: center;
-    border-bottom: 1px solid grey;
-    height: 35px;
-}
-
-
-.ncHead{
-    width: 1000px;
-}
-.cnText{
-    display: flex;
-    border-bottom: 2px solid gray;
-    height: 30px;
-    width: 1000px;
-    margin-bottom: 10px;
-}
-
-.ncTitle{
-    width: 1000px;
-    height: 65px;
-    display: flex;
-    align-items: center;
-    justify-content: right;
-}
-
-.ncTitle > input {
-    width: 100%;
-    height: 65px;
-    border: 0.5px solid gray;
-    border-radius: 5px;
-    outline: none;
-    font-size: 23px;
-    font-weight: bold;
-}
-
-.ncContent{
-    width: 1000px;
-    height: 700px;
-    resize: none;
-    overflow: hidden;
-    border-radius: 5px;
-    font-size: 17px;
-    font-weight: bolder;
-    outline: none;
-}
-
-.ncProfile{
-    display: flex;
-    width: 1000px;
-    height: 160px;
-    align-items: center;
-}
-
-#ncProfile2{
-    width: 15%;
-    border: 3px solid #ccc;
-    border-radius: 50%;
-    height: 140px;
-
-    position: relative;
-
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-content: center;
-}
-
-#adminProfile{
-    height: 100%;
-}
-
-#ncName{
-    width: 10%;
-    height: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-weight: bold;
-
-    font-size: 20px;
-}
-
-#ncCheckbox{
-    width: 75%;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: right;
-    border-left: 2.5px solid gray;
-}
-
-#ncCheckbox > input {
-    margin-left: 20px;
-}
-
-#ncBignews{
-    width: 120px;
-    height: 30px;
-
-    display: flex;
-    align-items: center;
-    border: none;
-
-}
-
-#ncBignews label{
-    height: 25px;
-    display: flex;
-    align-items: center;
-    font-size: 15px;
-}
-
-.ncContent2{
-    width: 1000px;
-    height: 50px;
-    display: flex;
-    justify-content: right;
-    align-items: center;
-
-    font-size: 17px;
-
-}
-
-#ncContentText{
-    height: 30px;
-
-}
-
-.ncBtn{
-    width: 1000px;
-    height: 50px;
-    display: flex;
-    justify-content: center;
-
-}
-
-.ncBtn > button{
-    height: 35px;
-    width: 70px;
-    background-color: #99E1ED;
-    color: white;
-    font-weight: bold;
-    border: none;
-    border-radius: 5px;
-}
-
-#ncCancle{
-    margin-right: 60px;
-}
-
-.ncBtn > button:hover{
-
-    cursor: pointer;
-}
-
-#ncPic{
-    display: none;
-}
-
-
-
-/* 사진 선택 css */
-
-.color .cyan   {background: #7fccde;}
-  
-  
-  
-.btn, .btn-two {
-  margin: 9px;
-}
-a[class*="btn"] {text-decoration: none;}
-input[class*="btn"], 
-
-
-.btn.small, 
-.btn-two.small, 
-.btn-gradient.small, 
-.btn-effect.small {
-  padding: 8px 18px;  
-  font-size: 14px;
-}
-
-.btn.cyan, .btn-two.cyan     {background-color: #7fccde;}
-
-
-/* default button style */
-.btn {
-  position: relative;
-  border: 0;
-  padding: 15px 25px;
-  display: inline-block;
+/* 버튼 영역 */
+#button-area{
   text-align: center;
+  margin: 10px;
+}
+
+#button-area > button{
+  font-size: 15px;
+
+  width: 70px;
+  height: 30px;
+  margin: 0 5px;
+
+  cursor: pointer;
+
+  background-color: #99E1ED;
   color: white;
+
+  border: none;
+  border-radius: 7px;
+  outline: none;
+
+  transition: 800ms;
 }
-.btn:active {
-  top: 4px; 
+
+#button-area > button:hover{
+  background-color: white;
+  color: #99E1ED;
+
+  border: 1px solid #99E1ED;
 }
 
 
-
-.btn.cyan {box-shadow:0px 4px 0px #73B9C9;}
-.btn.cyan:active {box-shadow: 0 0 #73B9C9; background-color: #70B4C4;}
-
-
-/* Button two - I have no creativity for names */
-.btn-two {
-  color: white; 
-  padding: 15px 25px;
-  display: inline-block;
-  border: 1px solid rgba(0,0,0,0.21);
-  border-bottom-color: rgba(0,0,0,0.34);
-  text-shadow:0 1px 0 rgba(0,0,0,0.15);
-  box-shadow: 0 1px 0 rgba(255,255,255,0.34) inset, 
-              0 2px 0 -1px rgba(0,0,0,0.13), 
-              0 3px 0 -1px rgba(0,0,0,0.08), 
-              0 3px 13px -1px rgba(0,0,0,0.21);
-}
-.btn-two:active {
-  top: 1px;
-  border-color: rgba(0,0,0,0.34) rgba(0,0,0,0.21) rgba(0,0,0,0.21);
-  box-shadow: 0 1px 0 rgba(255,255,255,0.89),0 1px rgba(0,0,0,0.05) inset;
-  position: relative;
-}
 
 
 
@@ -329,6 +180,7 @@ font-style: italic;
     border: 1px solid #cacece;
     border-radius: 3px;
     box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05), inset 0px -15px 10px -12px rgba(0, 0, 0, 0.05);
+
   }
   
   .popContent input[type="checkbox"]+label:active:before,
@@ -356,7 +208,7 @@ font-style: italic;
   .popContent.list input[type="checkbox"]+label:before {
     position: absolute;
     left: 0;
-    top: 0;
+    top: 9px;
     margin-top: 0;
     opacity: .6;
     box-shadow: none;
@@ -369,7 +221,7 @@ font-style: italic;
     position: absolute;
     content: "";
     width: 10px;
-    top: -5px;
+    top: 4px;
     left: 5px;
     border-radius: 0;
     opacity: 1;
