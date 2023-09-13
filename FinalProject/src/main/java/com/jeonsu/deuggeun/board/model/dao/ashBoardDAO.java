@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.jeonsu.deuggeun.board.model.dto.Board;
+import com.jeonsu.deuggeun.board.model.dto.BoardImage;
 import com.jeonsu.deuggeun.board.model.dto.Hashtag;
 import com.jeonsu.deuggeun.board.model.dto.Pagination;
 
@@ -78,6 +79,35 @@ public class ashBoardDAO {
 		if(result2 > 0) result2 = boardNo;
 		
 		return result2;
+	}
+
+	/** 자유게시판 이미지 삽입
+	 * @param boardNo
+	 * @param imgSrc
+	 * @return boardNo(result)
+	 */
+	public int freeBoardImageInsert(int boardNo, List<String> imgSrc) {
+		
+		int result = 0;
+		
+		List<BoardImage> imageList = new ArrayList<>();
+		
+		for(int i=0; i<imgSrc.size(); i++) {
+			
+			BoardImage image = new BoardImage();
+			
+			image.setImagePath("/resources/images/freeBoard/realPath/");
+			image.setImageReName(imgSrc.get(i));
+			image.setImageOriginal("dg_image");
+			image.setBoardNo(boardNo);
+			image.setImageLevel(i);
+			
+			sqlSession.insert("boardMapper.freeBoardImageInsert", image);
+		}
+		
+		if(result > 0) result = boardNo;
+		
+		return result;
 	}
 
 	public int getListCount(int boardCode) {

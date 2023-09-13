@@ -57,6 +57,7 @@
                 </div>
 
                 <textarea id="summernote" name="boardContent"></textarea>
+                <input type="hidden" name="imgSrc" value="">
                 
                 <div id="button-area">
                     <button class="btnStyle" id="write-btn">작성</button>
