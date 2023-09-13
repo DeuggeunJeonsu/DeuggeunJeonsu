@@ -18,6 +18,10 @@ let nowMonth = new Date();  // 현재 달을 페이지를 로드한 날의 달�
 let today = new Date();     // 페이지를 로드한 날짜를 저장
 today.setHours(0, 0, 0, 0);    // 비교 편의를 위해 today의 시간을 초기화
 
+
+
+
+
 // 달력 생성 : 해당 달에 맞춰 테이블을 만들고, 날짜를 채워 넣는다.
 function buildCalendar() {
     
@@ -79,6 +83,33 @@ function buildCalendar() {
         // i 태그에db에서 가져와서 넣어보기 
         // 동그라미 또는 세모
 
+        // 로그인 되었을 때 todolist 캘린더에 
+        // 결과 보여주기 
+
+        // console.log(loginMemberNo)
+        if(loginMemberNo != ""){
+
+            $.ajax({
+
+                url :"/todolist",
+                method: "POST",
+                data: { memberNo: loginMemberNo },
+                dataType : "JSON",
+                success : function(todolistMap){
+                    console.log("성공:", todolistMap);
+                },
+                error: function(){
+                    console.log("실패")
+                }
+
+
+
+            })
+        }
+        
+
+        // newDIV2.classList.add("fa-solid", "fa-caret-up", "triangle");
+        newDIV2.classList.add("fa-solid", "fa-circle" ,"Circle");
 
 
 
@@ -95,7 +126,38 @@ function choiceDate(newDIV) {
     if (document.getElementsByClassName("choiceDay")[0]) {                              // 기존에 선택한 날짜가 있으면
         document.getElementsByClassName("choiceDay")[0].classList.remove("choiceDay");  // 해당 날짜의 "choiceDay" class 제거
     }
-    newDIV.classList.add("choiceDay");           // 선택된 날짜에 "choiceDay" class 추가
+    newDIV.classList.add("choiceDay"); // 선택된 날짜에 "choiceDay" class 추가 
+    
+    // 선택한 날짜 변수에 담아 불러오기 
+    const yaer = document.getElementById("calYear").innerText;  // 년
+    const math = document.getElementById("calMonth").innerText; // 월
+    const day =  newDIV.innerText; // 일
+    const choiceTodoList = yaer+'-' + math+'-' + day
+    console.log('선택한 날짜 :'+ choiceTodoList)
+
+    // 오늘 날짜 가져오기
+    const todayYear = today.getFullYear();
+    const todayMonth = today.getMonth()+1;
+    const todayDate = today.getDate();
+    //오늘 날짜
+    const sysDate = todayYear + "-" + (todayMonth < 10 ? "0" : "") + todayMonth + "-" + (todayDate < 10 ? "0" : "") + todayDate;
+    console.log('오늘 날짜 :'+ sysDate)
+
+
+
+    // ajax을 할 예정
+    // if()
+
+
+
+
+
+
+
+
+
+
+
 }
 
 // 이전달 버튼 클릭
@@ -230,8 +292,8 @@ function generateRandomId() {
 
 // 페이지가 실행 되었을 때, 
 $(document).ready(function(){
-    initializeTodoList()
-    updateCheckedPercentage()
+    initializeTodoList();
+    updateCheckedPercentage();
 });
 
 
@@ -260,7 +322,7 @@ function initializeTodoList() {
                 spanElement.classList.remove("complete");
             }
             
-            updateCheckedPercentage(  )
+            updateCheckedPercentage();
         });
     });
 
@@ -372,3 +434,6 @@ if(document.querySelector(".boardAddListBtn") != null){
     });
     
 }
+
+
+

@@ -1,5 +1,7 @@
 package com.jeonsu.deuggeun.board.model.dao;
 
+import java.util.List;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -23,4 +25,8 @@ public class ashBoardDAO {
 		
 		return result;
 	}
+
+//	public int hashTagInsert(int boardNo, List<String> tagContents) {
+//		return sqlSession.insert("boardMapper.hashTagInsert", tagContents);
+//	}
 }

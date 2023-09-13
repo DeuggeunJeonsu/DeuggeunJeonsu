@@ -109,5 +109,8 @@
 
     
 	<script src="/resources/js/TodoList/todoList.js"></script>
+	<script>
+		const loginMemberNo = 1;
+	</script>
 </body>
 </html>

@@ -53,6 +53,7 @@ public class FreeBoardController2 {
 	public String boardInsert(
 			Board board
 			, @RequestParam(value = "images", required = false) List<MultipartFile> images
+			, List<String> tagContent
 //			, @SessionAttribute("loginMember") Member loginMember
 			, RedirectAttributes ra
 			, HttpSession session) {
@@ -60,10 +61,10 @@ public class FreeBoardController2 {
 		board.setMemberNo(1);
 		board.setBoardCode(3);
 		
-		String webPath = "/resources/images/board/";
+		String webPath = "/resources/images/freeBoard/";
 		String filePath = session.getServletContext().getRealPath(webPath);
 		
-		int boardNo = service2.boardInsert(board, webPath, filePath);
+		int boardNo = service2.boardInsert(board, images, tagContent, webPath, filePath);
 		
 		String message = null;
 		String path = "redirect:";
@@ -88,25 +89,24 @@ public class FreeBoardController2 {
 		
 		JsonObject jsonObject = new JsonObject();
 		
-		String fileRoot = "C:\\summernote_image\\";
-		String originalFileName = multipartFile.getOriginalFilename();
-		String extension = originalFileName.substring(originalFileName.lastIndexOf("."));
+		String fileRoot = "C:\\summernote_image\\"; // 저장될 외부 파일 경로
+		String originalFileName = multipartFile.getOriginalFilename(); // 오리지널 파일명
+		String extension = originalFileName.substring(originalFileName.lastIndexOf(".")); // 파일 확장자
 		
-		String savedFileName = UUID.randomUUID() + extension;
+		String savedFileName = UUID.randomUUID() + extension; // 저장될 파일명
 		
 		File targetFile = new File(fileRoot + savedFileName);
 		
 		try {
 			InputStream fileStream = multipartFile.getInputStream();
-			FileUtils.copyInputStreamToFile(fileStream, targetFile);	//파일 저장
+			FileUtils.copyInputStreamToFile(fileStream, targetFile); // 파일 저장
 			jsonObject.addProperty("url", "/summernoteImage/" + savedFileName);
 			jsonObject.addProperty("responseCode", "success");
 			
 		} catch(IOException e) {
-			FileUtils.deleteQuietly(targetFile);
+			FileUtils.deleteQuietly(targetFile); // 저장된 파일 삭제
 			jsonObject.addProperty("responseCode", "error");
 			e.printStackTrace();
-			
 		}
 		
 		return jsonObject;
