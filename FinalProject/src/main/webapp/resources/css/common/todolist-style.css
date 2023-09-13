@@ -338,3 +338,10 @@ td {
     text-decoration-color: #ee4949 ;
     text-decoration-thickness: 2px;
 }
+
+/* ---------------------------------------- */
+.guest{
+    font-size: 20px;
+    justify-content: center;
+    font-weight: bold;
+}

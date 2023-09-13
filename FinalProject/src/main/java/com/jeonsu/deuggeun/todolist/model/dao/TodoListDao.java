@@ -13,8 +13,7 @@ public class TodoListDao {
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 
-	public List<Map<String, Object>> selectTodoListAll() {
-		return sqlSession.selectList("todolistMapper.selectTodoListAll");
+	public List<Map<String, Object>> selectTodoListAll( int loginMemberNo) {
+		return sqlSession.selectList("todolistMapper.selectTodoListAll", loginMemberNo);
 	}
-
 }
