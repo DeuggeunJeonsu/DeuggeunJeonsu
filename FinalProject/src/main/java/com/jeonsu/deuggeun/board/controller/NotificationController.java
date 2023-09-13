@@ -3,11 +3,13 @@ package com.jeonsu.deuggeun.board.controller;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Map;
 import java.util.UUID;
 
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -26,16 +28,37 @@ import com.jeonsu.deuggeun.board.model.service.jhjBoardService;
 @RequestMapping("/board")
 public class NotificationController {
 
-	
+
+	@Autowired
+	private jhjBoardService service;
 
 	@RequestMapping("/test")
 	public String boardList() {
 		return "board/boardList";
 	}
 
-	@GetMapping("/{boardCode:[0-9]+}/list")
-	public String notificationList(@PathVariable("boardCode") int boardCode
-					) {
+	@GetMapping("/{boardCode:[0-9]+}/notificationList")
+	public String notificationList(@PathVariable("boardCode") int boardCode,
+			@RequestParam Map<String, Object> boardMap,
+			Model model,
+			@RequestParam(value="cp", required = false, defaultValue = "1") int cp
+			) {
+
+
+		if(boardMap.get("key") == null) {
+
+			// 공지사랑 목록 조회
+			Map<String, Object> map = service.selectNcBoardList(boardCode, cp);
+
+			model.addAttribute("map", map);
+
+		}else {
+			boardMap.put("boardCode", boardCode);
+			
+			/* Map<String, Object> map = service.selectBoardList(boardMap, cp); */
+		}
+
+
 
 		return "board/notification/notificationList";
 	}
@@ -53,7 +76,7 @@ public class NotificationController {
 	}
 
 
-	
+
 
 
 	// 리뷰작성 요청
