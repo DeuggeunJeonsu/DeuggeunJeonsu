@@ -3,12 +3,14 @@ package com.jeonsu.deuggeun.board.model.dao;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.ibatis.session.RowBounds;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.jeonsu.deuggeun.board.model.dto.Board;
 import com.jeonsu.deuggeun.board.model.dto.Hashtag;
+import com.jeonsu.deuggeun.board.model.dto.Pagination;
 
 @Repository
 public class ashBoardDAO {
@@ -76,6 +78,19 @@ public class ashBoardDAO {
 		if(result2 > 0) result2 = boardNo;
 		
 		return result2;
+	}
+
+	public int getListCount(int boardCode) {
+		return sqlSession.selectOne("boardMapper.getFreeBoardListCount", boardCode);
+	}
+
+	public List<Board> selectBoardList(Pagination pagination, int boardCode) {
+		
+		int offset = (pagination.getCurrentPage() - 1) * pagination.getLimit();
+		
+		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
+		
+		return sqlSession.selectList("boardMapper.selectFreeBoardList", boardCode, rowBounds);
 	}
 
 }
