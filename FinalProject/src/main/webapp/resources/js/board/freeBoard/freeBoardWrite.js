@@ -236,7 +236,7 @@ writeFrm.addEventListener("submit", e=>{
     const summernote = document.getElementById("summernote");
     const htmlContent = summernote.value;
 
-    const imgSrcMatches = htmlContent.match(/<img[^>]+src="([^"]+)"/);
+    const imgSrcMatches = htmlContent.match(/<img[^>]+src="\/summernoteImage\/([^"]+)"/);
 
     // 이미지가 있다면
     if(imgSrcMatches && imgSrcMatches.length > 1){

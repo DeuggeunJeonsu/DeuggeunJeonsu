@@ -96,7 +96,7 @@ public class ashBoardDAO {
 			
 			BoardImage image = new BoardImage();
 			
-			image.setImagePath("/resources/images/freeBoard/realPath/");
+			image.setImagePath("/resources/images/freeBoard/");
 			image.setImageReName(imgSrc.get(i));
 			image.setImageOriginal("dg_image");
 			image.setBoardNo(boardNo);
