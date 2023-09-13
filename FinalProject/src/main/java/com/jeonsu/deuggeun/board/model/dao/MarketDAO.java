@@ -25,6 +25,9 @@ public class MarketDAO {
 
 		return sqlSession.selectOne("marketMapper.getListCount", boardCode);
 	}
+//		public int getListCount(int boardCode) {
+//		return sqlSession.selectOne("boardMapper.getListCount", boardCode);
+//	}
 
 	// 현재 페이지에 해당하는 부분에 대한 득근마켓 게시글 목록 조회
 	public List<Board> selectMarketList(Pagination pagination, int boardCode) {
@@ -35,6 +38,18 @@ public class MarketDAO {
 
 		return sqlSession.selectList("marketMapper.selectMarketList", boardCode, rowBounds);
 	}
+
+//	public List<Board> selectBoardList(Pagination pagination, int boardCode)
+//		// 1) offset 계산
+//		int offset
+//		= (pagination.getCurrentPage() -1) * pagination.getLimit();
+//
+//		// 2) RowBounds 객체 생성
+//		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
+//
+//		// 3) selectList("namespace.id", 파라미터, RowBounds) 호출
+//		return sqlSession.selectList("boardMapper.selectBoardList", boardCode, rowBounds);
+//	}
 
 	// 검색했을때 마켓 목록 수 조회
 	public int getListCount(Map<String, Object> paramMap) {

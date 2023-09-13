@@ -31,7 +31,19 @@ public class Board {
 	
 	private int commentCount; // 댓글 수
 	private int likeCount;    // 좋아요 수
-	
+
+	// 상품 관련
+	private int productPrice;
+	private String pImagePath;
+
+	public String getpImagePath() {
+		return pImagePath;
+	}
+
+	public void setpImagePath(String pImagePath) {
+		this.pImagePath = pImagePath;
+	}
+
 	// 이미지 목록
 //	private List<BoardImage> imageList;
 

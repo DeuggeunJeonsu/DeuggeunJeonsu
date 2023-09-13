@@ -4,7 +4,7 @@
 
 <%-- map에 저장된 값들을 각각 변수에 저장 --%>
 <c:set var="pagination" value="${map.pagination}" />
-<c:set var="boardList" value="${map.boardList}" />
+<c:set var="marketList" value="${map.marketList}" />
 
 <c:forEach items="${boardTypeList}" var="boardType">
     <c:if test="${boardType.BOARD_CODE == boardCode}" >
@@ -57,9 +57,8 @@
                 <div id="search-area">
                         <form action="${boardCode}" method="get" id="boardSearch">
                             <div class="search-place">
-                            <input type="text" id="market-search" name="query" placeholder="search...">
-                            <button id="search-button"><i class="fas fa-search"></i></button>
-
+                                <input type="text" id="market-search" name="query" placeholder="search...">
+                                <button id="search-button"><i class="fas fa-search"></i></button>
                             </div>
                         </form>
 
@@ -69,138 +68,142 @@
                     </div>
                 </div>
 
-<%--                <c:if test="${!empty param.key}" >--%>
-<%--                    <h3 style="margin:30px">"${param.query}" 검색 결과</h3>--%>
-<%--                </c:if>--%>
+                <c:if test="${!empty param.key}" >
+                    <h3 style="margin:30px">"${param.query}" 검색 결과</h3>
+                </c:if>
 
-<%--                <div id="list-area" class="font-weight">--%>
-<%--                    <c:forEach items="${boardList}" var="board">--%>
-<%--                        <div class="thumbnail">--%>
-<%--                            <div>--%>
-<%--                                <a href="/board/${board.boardCode}/detail/${board.boardNo}">--%>
-<%--                                    <img src="${board.productImagePath}">--%>
-<%--                                </a>--%>
-<%--                            </div>--%>
-<%--                            <div class="list-content">--%>
-<%--                                <div class="title">--%>
-<%--                                    <a href="/board/${board.boardCode}/detail/${board.boardNo}">--%>
-<%--                                        [${board.boardTitle}]--%>
-<%--                                    </a>--%>
-<%--                                </div>--%>
-<%--                                <div>${board.pImagePath}원</div>--%>
-<%--                            </div>--%>
+                <div id="list-area" class="font-weight">
+                    <c:forEach items="${marketList}" var="market">
+                        <div class="thumbnail">
+                            <div>
+                                <a href="/board/${boardCode}/detail/${market.boardNo}">
+                                    <img src="${market.pImagePath}">
+                                </a>
+                            </div>
+                            <div class="list-content">
+                                <div class="title">
+                                    <a href="/board/${boardCode}/detail/${market.boardNo}">
+                                        ${market.boardTitle}
+                                    </a>
+                                </div>
+                                <div class="price" id="formattedPrice">${market.productPrice}원</div>
+
+                            </div>
+                        </div>
+                    </c:forEach>
+                </div>
+
+
+
+            <%--                    <c:when test="${empty boardList}">
+
+                                  <h1>게시글이 존재하지 않습니다.</h1>
+
+                         </c:when>
+
+
+                       </c:choose>--%>
+
+<%--            <div id="list-area" class="font-weight">--%>
+<%--                    <div class="thumbnail">--%>
+<%--                        <div>--%>
+<%--                            <a href="/board/5/detail">--%>
+<%--                                <img src="/resources/images/market/test2-main.jpeg">--%>
+<%--                            </a>--%>
 <%--                        </div>--%>
-<%--                    </c:forEach>--%>
-<%--                </div>--%>
-<%--                <c:choose>--%>
-<%--                    <c:when test="${empty boardList}">--%>
+<%--                        <div class="list-content">--%>
+<%--                            <div class="title"><a href="/board/5/detail">[프리미엄 프로틴 파우더]</a></div>--%>
+<%--                            <div>70,000원</div>--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
+<%--                    <div class="thumbnail">--%>
+<%--                        <div> <a href="/marketDetail">--%>
+<%--                                <img src="/resources/images/main/log02.png">--%>
+<%--                            </a>--%>
+<%--                        </div>--%>
+<%--                        <div class="list-content">--%>
+<%--                            <div class="title"><a href="">상품명입니다</a></div>--%>
+<%--                            <div>내용 영역</div>--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
 
-<%--                            <h1>게시글이 존재하지 않습니다.</h1>--%>
+<%--                    <div class="thumbnail">--%>
+<%--                        <div> <a href="/marketDetail">--%>
+<%--                                <img src="/resources/images/main/log02.png">--%>
+<%--                            </a>--%>
+<%--                        </div>--%>
+<%--                        <div class="list-content">--%>
+<%--                            <div class="title"><a href="">상품명입니다</a></div>--%>
+<%--                            <div>내용 영역</div>--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
 
-<%--                    </c:when>--%>
+<%--                    <div class="thumbnail">--%>
+<%--                        <div> <a href="/marketDetail">--%>
+<%--                                <img src="/resources/images/main/log02.png">--%>
+<%--                            </a>--%>
+<%--                        </div>--%>
+<%--                        <div class="list-content">--%>
+<%--                            <div class="title"><a href="">상품명입니다</a></div>--%>
+<%--                            <div>내용 영역</div>--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
 
+<%--                    <div class="thumbnail">--%>
+<%--                        <div> <a href="/marketDetail">--%>
+<%--                                <img src="/resources/images/main/log02.png">--%>
+<%--                            </a>--%>
+<%--                        </div>--%>
+<%--                        <div class="list-content">--%>
+<%--                            <div class="title"><a href="">상품명입니다</a></div>--%>
+<%--                            <div>내용 영역</div>--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
 
-<%--                </c:choose>--%>
+<%--                    <div class="thumbnail">--%>
+<%--                        <div> <a href="/marketDetail">--%>
+<%--                                <img src="/resources/images/main/log02.png">--%>
+<%--                            </a>--%>
+<%--                        </div>--%>
+<%--                        <div class="list-content">--%>
+<%--                            <div class="title"><a href="">상품명입니다</a></div>--%>
+<%--                            <div>내용 영역</div>--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
 
-            <div id="list-area" class="font-weight">
-                    <div class="thumbnail">
-                        <div>
-                            <a href="/board/5/detail">
-                                <img src="/resources/images/market/test2-main.jpeg">
-                            </a>
-                        </div>
-                        <div class="list-content">
-                            <div class="title"><a href="/board/5/detail">[프리미엄 프로틴 파우더]</a></div>
-                            <div>70,000원</div>
-                        </div>
-                    </div>
-                    <div class="thumbnail">
-                        <div> <a href="/marketDetail">
-                                <img src="/resources/images/main/log02.png">
-                            </a>
-                        </div>
-                        <div class="list-content">
-                            <div class="title"><a href="">상품명입니다</a></div>
-                            <div>내용 영역</div>
-                        </div>
-                    </div>
+<%--                    <div class="thumbnail">--%>
+<%--                        <div> <a href="/marketDetail">--%>
+<%--                                <img src="/resources/images/main/log02.png">--%>
+<%--                            </a>--%>
+<%--                        </div>--%>
+<%--                        <div class="list-content">--%>
+<%--                            <div class="title"><a href="">상품명입니다</a></div>--%>
+<%--                            <div>내용 영역</div>--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
 
-                    <div class="thumbnail">
-                        <div> <a href="/marketDetail">
-                                <img src="/resources/images/main/log02.png">
-                            </a>
-                        </div>
-                        <div class="list-content">
-                            <div class="title"><a href="">상품명입니다</a></div>
-                            <div>내용 영역</div>
-                        </div>
-                    </div>
+<%--                    <div class="thumbnail">--%>
+<%--                        <div> <a href="/marketDetail">--%>
+<%--                                <img src="/resources/images/main/log02.png">--%>
+<%--                            </a>--%>
+<%--                        </div>--%>
+<%--                        <div class="list-content">--%>
+<%--                            <div class="title"><a href="">상품명입니다</a></div>--%>
+<%--                            <div>내용 영역</div>--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
 
-                    <div class="thumbnail">
-                        <div> <a href="/marketDetail">
-                                <img src="/resources/images/main/log02.png">
-                            </a>
-                        </div>
-                        <div class="list-content">
-                            <div class="title"><a href="">상품명입니다</a></div>
-                            <div>내용 영역</div>
-                        </div>
-                    </div>
+<%--                    <div class="thumbnail">--%>
+<%--                        <div> <a href="/marketDetail">--%>
+<%--                                <img src="/resources/images/main/log02.png">--%>
+<%--                            </a>--%>
+<%--                        </div>--%>
+<%--                        <div class="list-content">--%>
+<%--                            <div class="title"><a href="">상품명입니다</a></div>--%>
+<%--                            <div>내용 영역</div>--%>
+<%--                        </div>--%>
 
-                    <div class="thumbnail">
-                        <div> <a href="/marketDetail">
-                                <img src="/resources/images/main/log02.png">
-                            </a>
-                        </div>
-                        <div class="list-content">
-                            <div class="title"><a href="">상품명입니다</a></div>
-                            <div>내용 영역</div>
-                        </div>
-                    </div>
-
-                    <div class="thumbnail">
-                        <div> <a href="/marketDetail">
-                                <img src="/resources/images/main/log02.png">
-                            </a>
-                        </div>
-                        <div class="list-content">
-                            <div class="title"><a href="">상품명입니다</a></div>
-                            <div>내용 영역</div>
-                        </div>
-                    </div>
-
-                    <div class="thumbnail">
-                        <div> <a href="/marketDetail">
-                                <img src="/resources/images/main/log02.png">
-                            </a>
-                        </div>
-                        <div class="list-content">
-                            <div class="title"><a href="">상품명입니다</a></div>
-                            <div>내용 영역</div>
-                        </div>
-                    </div>
-
-                    <div class="thumbnail">
-                        <div> <a href="/marketDetail">
-                                <img src="/resources/images/main/log02.png">
-                            </a>
-                        </div>
-                        <div class="list-content">
-                            <div class="title"><a href="">상품명입니다</a></div>
-                            <div>내용 영역</div>
-                        </div>
-                    </div>
-
-                    <div class="thumbnail">
-                        <div> <a href="/marketDetail">
-                                <img src="/resources/images/main/log02.png">
-                            </a>
-                        </div>
-                        <div class="list-content">
-                            <div class="title"><a href="">상품명입니다</a></div>
-                            <div>내용 영역</div>
-                        </div>
-                    </div>
+<%--                    </div>--%>
 
                 <div class="pagination-area">
 
@@ -245,7 +248,10 @@
 
 
             <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
-
+            <script>
+                var market = ${marketList};
+            </script>
+            <script src="/resources/js/market/marketList.js"></script>
             <%-- <script src="/resources/js/main.js"></script> --%>
         </body>
 
