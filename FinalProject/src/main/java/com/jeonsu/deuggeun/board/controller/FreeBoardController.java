@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.jeonsu.deuggeun.board.model.service.BoardService;
 
+
 @Controller
 @RequestMapping("/board/3")
 //@SessionAttributes({"loginMember"})

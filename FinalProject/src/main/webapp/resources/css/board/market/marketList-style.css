@@ -132,7 +132,8 @@ img{
 
 /* 게시글 제목 */
 .title{
-    font-size: 20px;
+    font-size: 18px;
+    color: #000;
     font-weight: bold;
 }
 
@@ -141,13 +142,20 @@ img{
     justify-content: center;
     margin-bottom: 30px;
 }
+.price{
+    font-size: 20px;
+    font-weight: bold;
+    color: #000;
+    margin-left: 5px;
+    font-family: 'Montserrat','Nanum Gothic',sans-serif !important;
+}
 
 /* 페이지네이션 영역 */
 .pagination-area {
     text-align: center;
     margin-top: 20px;
     position :relative;
-    left : 330px;
+    /*left : 330px;*/
     border: none !important;
 }
 

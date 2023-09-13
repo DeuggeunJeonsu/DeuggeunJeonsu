@@ -1,10 +1,11 @@
 package com.jeonsu.deuggeun.board.controller;
 
-import com.jeonsu.deuggeun.board.model.service.MarketServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.jeonsu.deuggeun.board.model.service.MarketService;
 
@@ -12,7 +13,7 @@ import java.util.Map;
 
 //@SessionAttributes({"loginMember"})
 @Controller
-@RequestMapping("/board/5")
+@RequestMapping("/board")
 public class MarketController {
 // 요청주소 -> http://localhost:8080/board/5/list
 	private final MarketService service;
@@ -22,31 +23,42 @@ public class MarketController {
 		this.service = service;
 	}
 
-	@GetMapping("/list")
+	@RequestMapping("/{boardCode:[0-9]+}/list")
 	public String selectmarketList(
-			//@PathVariable("boardCode")
-//			int boardCode
-//								 , @RequestParam(value="cp", required=false, defaultValue="1") int cp
-//								 , Model model
-//								 , @RequestParam Map<String, Object> paramMap
+			@PathVariable(value = "boardCode") int boardCode
+			, @RequestParam(value="cp", required=false, defaultValue="1") int cp
+			, Model model
+			, @RequestParam Map<String, Object> paramMap
 		) {
+		System.out.println(boardCode);
 
-//		if(paramMap.get("query") == null) {
-//
-//			Map<String, Object> map = service.selectMarketList(boardCode, cp);
-//
-//			model.addAttribute("map", map);
-//
-//		}else{
-//			paramMap.put("boardCode", boardCode);
-//
-//			Map<String, Object> map = service.selectMarketList(paramMap, cp);
-//
-//			model.addAttribute("map", map);
-//		}
+		if(boardCode == 5){
+
+			if(paramMap.get("query") == null) {
+
+				Map<String, Object> map = service.selectMarketList(boardCode, cp);
+
+				if(map.isEmpty()){
+					System.out.println("map이 비어있음");
+				}else{
+					System.out.println(map);
+
+				}
+				model.addAttribute("map", map);
+
+		}else{
+				paramMap.put("boardCode", boardCode);
+
+				Map<String, Object> map = service.selectMarketList(paramMap, cp);
+
+				model.addAttribute("map", map);
+		}
+
+	}
 
 		return "board/market/marketList";
 	}
+
 	@GetMapping("/detail")
 	public String marketDetail() {
 		return "board/market/marketDetail";

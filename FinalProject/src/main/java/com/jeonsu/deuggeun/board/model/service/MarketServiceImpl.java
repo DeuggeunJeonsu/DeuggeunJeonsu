@@ -31,12 +31,23 @@ public class MarketServiceImpl implements MarketService{
 
 		List<Board> marketList = dao.selectMarketList(pagination, boardCode);
 
-		// 4. pagination, boardList를  Map에 담아서 반환
+		// 4. pagination, marketList를  Map에 담아서 반환
 		Map<String, Object> map = new HashMap<>();
 		map.put("pagination", pagination);
 		map.put("marketList", marketList);
 
+		System.out.println(marketList);
+
 		return map;
+
+//		int listCount = dao.getListCount(boardCode);
+//		Pagination pagination = new Pagination(cp, listCount);
+//		List<Board> boardList = dao.selectBoardList(pagination, boardCode);
+//		Map<String, Object> map = new HashMap<>();
+//		map.put("pagination", pagination);
+//		map.put("boardList", boardList);
+//
+//		return map;
 	}
 
 	@Override
