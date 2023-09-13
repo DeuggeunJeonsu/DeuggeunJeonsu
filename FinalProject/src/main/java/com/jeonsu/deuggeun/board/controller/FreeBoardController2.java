@@ -29,6 +29,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.google.gson.JsonObject;
 import com.jeonsu.deuggeun.board.model.dto.Board;
+import com.jeonsu.deuggeun.board.model.dto.Hashtag;
 import com.jeonsu.deuggeun.board.model.service.BoardService;
 import com.jeonsu.deuggeun.board.model.service.ashBoardService;
 import com.jeonsu.deuggeun.member.model.dto.Member;
@@ -52,8 +53,7 @@ public class FreeBoardController2 {
 	@PostMapping("/insert")
 	public String boardInsert(
 			Board board
-			, @RequestParam(value = "images", required = false) List<MultipartFile> images
-			, List<String> tagContent
+			, @RequestParam(value = "tagContent") List<String> tagContent
 //			, @SessionAttribute("loginMember") Member loginMember
 			, RedirectAttributes ra
 			, HttpSession session) {
@@ -64,7 +64,9 @@ public class FreeBoardController2 {
 		String webPath = "/resources/images/freeBoard/";
 		String filePath = session.getServletContext().getRealPath(webPath);
 		
-		int boardNo = service2.boardInsert(board, images, tagContent, webPath, filePath);
+		System.out.println(tagContent);
+		
+		int boardNo = service2.boardInsert(board, tagContent, webPath, filePath);
 		
 		String message = null;
 		String path = "redirect:";

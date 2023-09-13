@@ -37,7 +37,7 @@
         </div>
 
         <div id="middle-area">
-            <form action="/board2/3/insert" method="POST" id="write-form" enctype="multipart/form-data">
+            <form action="/board2/3/insert" method="POST" id="write-form" accept-charset="UTF-8">
                 
                 <%-- <div id="title-middle-area">
                     <textarea placeholder="제목을 입력해 주세요." id="title-textArea"></textarea>
@@ -63,29 +63,30 @@
                 </div> --%>
 
                 <div id="title-middle-area">
-                    <textarea placeholder="제목을 입력해 주세요." name="boardTitle" id="title-textArea"></textarea>
+                    <textarea placeholder="제목을 입력해 주세요." name="boardTitle" id="title-textArea" value="제목"></textarea>
                 </div>
 
                 <div id="hashtag-area">
                     <div>
-                        <input type="text" id="hashtag-textArea" name="tagContent" placeholder="#해시태그 추가">
+                        <input type="text" id="hashtag-textArea" placeholder="#해시태그 추가">
                     </div>
                     <div id="hashtag-making-area">
-                        <!-- <div class="hashtag">
+                        <!-- <input type="text" readonly class="hashtag">
                         #오운완
                         <i class="fa-solid fa-circle-xmark" style="color: #ffffff;"></i>
-                        </div>
+                        </input>
                         <div class="hashtag">#OOTD</div> -->
                     </div>
                 </div>
 
-                <textarea id="summernote" name="boardContent"></textarea>
+                <textarea id="summernote" name="boardContent">내용입니다.</textarea>
                 
                 <div id="button-area">
                     <button class="btnStyle" id="write-btn">작성</button>
                     <button type="cancel" class="btnStyle" id="cancel-btn">취소</button>
                 </div>
 
+                <input type="hidden" name="hashtags">
             </form>
         </div>
 

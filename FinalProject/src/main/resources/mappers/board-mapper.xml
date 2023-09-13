@@ -32,9 +32,7 @@
 		<collection property="routineList" select="selectRoutineList" column="BOARD_NO" 
 			javaType="java.util.ArrayList" ofType="Comment"> </collection> 
 			
-		<collection property="tagList" select="selectTagList" column="BOARD_NO"
-			javaType="java.util.ArrayList" ofType="Hashtag">
-		</collection>
+
 	</resultMap>
 	
 	
@@ -53,6 +51,15 @@
 		VALUES(#{boardNo}, #{boardTitle}, #{boardContent},
 				DEFAULT, DEFAULT, DEFAULT, DEFAULT,
 				#{memberNo}, #{boardCode})
+	</insert>
+	
+	<!-- 자유게시판 해시태그 삽입 -->
+	<insert id="hashtagInsert" parameterType="Hashtag" useGeneratedKeys="true">
+		<selectKey order="BEFORE" resultType="_int" keyProperty="tagNo">
+			SELECT SEQ_TAG_NO.NEXTVAL FROM DUAL
+		</selectKey>
+		INSERT INTO HASHTAG
+		VALUES(#{tagNo}, #{tagContent})
 	</insert>
 
 </mapper>
