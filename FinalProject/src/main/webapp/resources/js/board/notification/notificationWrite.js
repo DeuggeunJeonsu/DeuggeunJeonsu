@@ -116,7 +116,7 @@ function uploadSummernoteImageFile(file, editor){
 
       data : data,
       type : "POST",
-      url : "uploadSummernoteImageFile",
+      url : "/board/4/uploadSummernoteImageFileNC",
       dataType : "JSON",
       contentType : false,
       processData : false,

@@ -15,6 +15,7 @@ import org.apache.commons.io.FileUtils;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -34,6 +35,7 @@ import com.jeonsu.deuggeun.board.model.service.BoardService;
 import com.jeonsu.deuggeun.board.model.service.ashBoardService;
 import com.jeonsu.deuggeun.member.model.dto.Member;
 
+@CrossOrigin(origins = "http://localhost:81")
 @Controller
 @RequestMapping("/board2/3")
 //@SessionAttributes({"loginMember"})
