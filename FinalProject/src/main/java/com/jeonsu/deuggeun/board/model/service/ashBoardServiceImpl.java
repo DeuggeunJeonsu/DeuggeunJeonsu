@@ -1,6 +1,5 @@
 package com.jeonsu.deuggeun.board.model.service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,11 +32,9 @@ public class ashBoardServiceImpl implements ashBoardService{
 		
 		// 해시태그 삽입
 		if(boardNo > 0) {
-			
 			int result = dao.hashtagInsert(boardNo, tagContent);
-			
 		}
-		
+
 		return boardNo;
 	}
 

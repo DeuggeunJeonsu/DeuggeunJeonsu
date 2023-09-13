@@ -35,7 +35,9 @@ public class ashBoardDAO {
 	 */
 	public int hashtagInsert(int boardNo, List<String> tagContent) {
 		
-		// 결과 저장용 변수
+		// 1. BOARD_HASHTAG 테이블 삽입
+		
+		// hashtagInsert sql문 결과 저장용 변수
 		int result = 0;
 		
 		List<Hashtag> tagList = new ArrayList<Hashtag>();
@@ -55,6 +57,9 @@ public class ashBoardDAO {
 			result++;
 		}
 
+		// 2. HASHTAG 테이블 삽입
+		
+		// boardHashtagInsert sql문 결과 저장용 변수
 		int result2 = 0;
 		
 		if(result > 0) {

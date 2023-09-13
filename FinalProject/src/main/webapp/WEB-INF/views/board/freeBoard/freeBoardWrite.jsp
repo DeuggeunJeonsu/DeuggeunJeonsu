@@ -37,33 +37,10 @@
         </div>
 
         <div id="middle-area">
-            <form action="/board2/3/insert" method="POST" id="write-form" accept-charset="UTF-8">
-                
-                <%-- <div id="title-middle-area">
-                    <textarea placeholder="제목을 입력해 주세요." id="title-textArea"></textarea>
-                </div>
-
-                <div id="hashtag-area">
-                    <div>
-                        <input type="text" id="hashtag-textArea" placeholder="#해시태그 추가">
-                    </div>
-                    <div id="hashtag-making-area">
-                        <!-- <div class="hashtag">#오운완</div>
-                        <div class="hashtag">#OOTD</div> -->
-                    </div>
-                </div>
-
-                <div id="content-area">
-                    <textarea placeholder="회원님의 이야기를 들려주세요." id="content-textArea"></textarea>
-                </div>
-
-                <div id="button-area">
-                    <button class="btnStyle" id="write-btn">작성</button>
-                    <button class="btnStyle" id="cancel-btn">취소</button>
-                </div> --%>
+            <form action="/board2/3/insert" method="POST" id="write-form">
 
                 <div id="title-middle-area">
-                    <textarea placeholder="제목을 입력해 주세요." name="boardTitle" id="title-textArea" value="제목"></textarea>
+                    <input placeholder="제목을 입력해 주세요." name="boardTitle" id="title-textArea">
                 </div>
 
                 <div id="hashtag-area">
@@ -79,7 +56,7 @@
                     </div>
                 </div>
 
-                <textarea id="summernote" name="boardContent">내용입니다.</textarea>
+                <textarea id="summernote" name="boardContent"></textarea>
                 
                 <div id="button-area">
                     <button class="btnStyle" id="write-btn">작성</button>
