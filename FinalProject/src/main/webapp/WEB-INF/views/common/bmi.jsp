@@ -6,7 +6,7 @@
     <head>
         <meta charset="UTF-8">
         <title>로그인 페이지</title>
-        <link rel="stylesheet" href="/resources/css/member/bmi-style.css">
+        <link rel="stylesheet" href="/resources/css/common/bmi-style.css">
         <link rel="apple-touch-icon" sizes="180x180" href="/resources/images/favicon_io/apple-touch-icon.png">
         <link rel="icon" type="image/png" sizes="32x32" href="/resources/images/favicon_io/favicon-32x32.png">
         <link rel="icon" type="image/png" sizes="16x16" href="/resources/images/favicon_io/favicon-16x16.png">
@@ -17,22 +17,33 @@
 
         <jsp:include page="/WEB-INF/views/common/header.jsp"/>
         
-        <main>
-
-            <section class="title-area">
-                <p>BMI 계산하기</p>
+        <section id="mainContainer">
+            <div class="title-area">
+                <p>나의 체질량지수(BMI)</p>
                 <p>비만도 체크하고 건강관리 해보세요 </p>
-            </section>
+            </div>
 
-            <form action="/member/login" method="post" id="loginFrm">
-                
-            </form>
+            <div class="content-area">
+                <div>
+                    타이틀
+                </div>
 
-        </main>
+                <div>
+                    
+                </div>
+            </div>
+
+            <p>신장 <input type="text">cm / 체중 <input type="text">kg</p>
+                <button>계산</button>
+                <button>초기화</button>
+
+            <div>
+
+            </div>
+        </section>
         
     </body>
 
-    <script src="/resources/js/main.js"></script>
     <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 
 </html>

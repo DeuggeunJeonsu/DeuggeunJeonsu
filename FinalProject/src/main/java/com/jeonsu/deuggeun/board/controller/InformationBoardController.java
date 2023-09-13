@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/board/1") /* 건강/운동정보 게시판 */
+@RequestMapping("/board/1") /* 정보공유 게시판 */
 public class InformationBoardController {
 	
 	@GetMapping("/list")

@@ -34,7 +34,7 @@
                 </section>
 
                 <%-- 쿠키에 saveId가 있는 경우--%>
-                <c:if test="${ !empty cookie.saveId.value}">
+                <c:if test="${!empty cookie.saveId.value}">
                     <%-- chk 변수 생성(page scope)--%>
                     <c:set var="chk" value="checked"/>
                 </c:if>
@@ -49,16 +49,15 @@
                     <a href="/member/findInfo">아이디/비밀번호 찾기</a>
                 </p>
 
-                <button class="login-btn">득근전수 로그인</button>
+                <button type="submit" class="login-btn">득근전수 로그인</button>
 
-                <button class="kakao-login-btn">카카오톡 로그인</button>
+                <button type="button" class="kakao-login-btn">카카오톡 로그인</button>
             </form>
 
         </main>
         
     </body>
 
-    <script src="/resources/js/main.js"></script>
     <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 
 </html>
