@@ -1,5 +1,6 @@
 package com.jeonsu.deuggeun.board.model.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -7,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.jeonsu.deuggeun.board.model.dto.Board;
+import com.jeonsu.deuggeun.board.model.dto.Hashtag;
 
 @Repository
 public class ashBoardDAO {
@@ -26,7 +28,20 @@ public class ashBoardDAO {
 		return result;
 	}
 
-//	public int hashTagInsert(int boardNo, List<String> tagContents) {
-//		return sqlSession.insert("boardMapper.hashTagInsert", tagContents);
-//	}
+	public int hashtagInsert(int boardNo, List<String> tagContent) {
+		
+		int result=0;
+		
+		for( int i=0; i<tagContent.size(); i++) {
+			
+			Hashtag hashtag = new Hashtag();
+			
+			hashtag.setTagContent(tagContent.get(i));
+			
+			result += sqlSession.insert("boardMapper.hashtagInsert", hashtag);
+		}
+		
+		return result;
+	}
+
 }

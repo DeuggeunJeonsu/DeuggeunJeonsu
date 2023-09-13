@@ -23,7 +23,7 @@ public class ashBoardServiceImpl implements ashBoardService{
 
 	@Transactional(rollbackFor = Exception.class)
 	@Override
-	public int boardInsert(Board board, List<MultipartFile> images, List<String> tagContent, String webPath, String filePath) {
+	public int boardInsert(Board board, List<String> tagContent, String webPath, String filePath) {
 		
 		board.setBoardTitle(Util.XSSHandling(board.getBoardTitle()));
 		board.setBoardContent(Util.XSSHandling(board.getBoardContent()));
@@ -34,7 +34,7 @@ public class ashBoardServiceImpl implements ashBoardService{
 		// 해시태그 삽입
 		if(boardNo > 0) {
 			
-			List<Hashtag> tagList = new ArrayList<>();
+			int result = dao.hashtagInsert(boardNo, tagContent);
 			
 		}
 		
