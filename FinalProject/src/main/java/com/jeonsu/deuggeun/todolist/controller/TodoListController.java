@@ -36,6 +36,7 @@ public class TodoListController {
 
 		List<Map<String, Object>> todoList = service.selectTodoListAll(loginMemberNo);
 
+		//List<Map<String, Object>> completedTodoList = new ArrayList<>();
 		// 중복된 "L_CREATE_DT" 값을 제거하기 위한 Set
 		Set<String> uniqueDates = new HashSet<>();
 
