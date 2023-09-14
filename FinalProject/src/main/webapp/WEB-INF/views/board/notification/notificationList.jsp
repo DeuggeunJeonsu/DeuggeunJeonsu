@@ -2,8 +2,13 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<c:set var="boardList" value="${map.boardList}">
-</c:set>
+<%-- 공지사항 게시글 목록 조회 시 필요한 변수 선언 --%>
+<c:set var="boardList" value="${map.boardList}" />
+<c:set var="pagination" value="${map.pagination}" />
+<c:set var="tag" value="${board.tagNo}" />
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -30,11 +35,14 @@
 <body>
 	<main>
 
-		<div class="Jheader">
-			<jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
-		</div>
+		<c:if test="${!empty param.key}">
+			<c:set var="sp" value="&key=${param.key}&query=${param.query}" />
+		</c:if>
 
-		<form action="/notification" method="GET">
+		<jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
+
+		
+		<form action="/notification" method="GET"></form>
 
 
 
@@ -48,12 +56,14 @@
 
 					<div class="Jtext">득근전수에서 회원님들에게 공지드립니다.</div>
 
-					<div class="search-place">
-						<input type="search" id="market-search" placeholder="search...">
-						<button type="button" id="search-button">
-							<i class="fas fa-search"></i>
-						</button>
-					</div>
+					<form action="/board/4/list" method="get"> 
+						<div class="search-place">
+							<input type="search" id="market-search" name="searchTitle" placeholder="search...">
+							<button id="search-button">
+								<i class="fas fa-search"></i>
+							</button>
+						</div>
+					</form>
 
 					<div class="JList">
 
@@ -70,15 +80,9 @@
 							</thead>
 
 							<tbody>
-								<tr>
-									<td><div id="Jpoint">중요!</div></td>
-									<td><a href="/board/4/list/notificationDetail">회원가입 시
-											필수 약관동의에 대하여</a></td>
-									<td>관리자</td>
-									<td>2023-08-20</td>
-									<td>1</td>
-								</tr>
+
 								<c:choose>
+
 								   <c:when test="${empty boardList}">
 										<tr>
 											<td colspan="6">
@@ -108,7 +112,7 @@
 					</div>
 
 					<div class="board-Jbtn">
-						<a href="/board/4/list/notificationWrite"><button
+						<a href="/board/${boardCode}/list/notificationWrite"><button
 								type="button" id="writeBtn">글쓰기</button></a>
 					</div>
 
@@ -119,26 +123,25 @@
 						<ul class="pagination">
 
 							<!-- 첫 페이지로 이동 -->
-							<li><a href="/board/${boardCode}?cp=1">&lt;&lt;</a></li>
+							<li><a href="/board/${boardCode}/list?cp=1${sp}">&lt;&lt;</a></li>
 
 							<!-- 이전 목록 마지막 번호로 이동 -->
-							<li><a href="/board/${boardCode}?cp=${pagination.prevPage}">&lt;</a></li>
+							<li><a href="/board/${boardCode}/list?cp=${pagination.prevPage}${sp}">&lt;</a></li>
 
 
 							<!-- 특정 페이지로 이동 -->
 							<c:forEach var="i" begin="${pagination.startPage}"
 								end="${pagination.endPage}" step="1">
-
 								<c:choose>
 
 									<c:when test="${i == pagination.currentPage}">
 										<!-- 현재 보고있는 페이지 -->
-										<li><a class="current"></a></li>
+										<li><a class="current">${i}</a></li>
 									</c:when>
 
 									<c:otherwise>
 										<!-- 현재 페이지를 제외한 나머지 -->
-										<li><a href="#"></a></li>
+										<li><a href="/board/${boardCode}/list?cp=${i}${sp}">${i}</a></li>
 									</c:otherwise>
 								</c:choose>
 
@@ -147,18 +150,19 @@
 
 
 							<!-- 다음 목록 시작 번호로 이동 -->
-							<li><a href="#">&gt;</a></li>
+							<li><a href="/board/${boardCode}/list?cp=${pagination.nextPage}${sp}">&gt;</a></li>
 
 							<!-- 끝 페이지로 이동 -->
-							<li><a href="#">&gt;&gt;</a></li>
+							<li><a href="/board/${boardCode}/list?cp=${pagination.maxPage}${sp}">&gt;&gt;</a></li>
 
 						</ul>
 					</div>
 				</div>
 			</div>
-		</form>
-		<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
+		 <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
 	</main>
 </body>
+
+	
 
 </html>
