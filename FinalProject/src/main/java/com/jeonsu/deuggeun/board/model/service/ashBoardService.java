@@ -26,4 +26,29 @@ public interface ashBoardService {
 	 */
 	Map<String, Object> selectFreeBoardList(int boardCode, int cp);
 
+	/** 게시글 상세 조회
+	 * @param map
+	 * @return board
+	 */
+	Board selectFreeBoard(Map<String, Object> map);
+
+	/** 좋아요 여부 확인
+	 * @param map
+	 * @return result
+	 */
+	int freeBoardLikeCheck(Map<String, Object> map);
+
+	/** 좋아요 처리
+	 * @param paramMap
+	 * @return count
+	 */
+	int freeBoardLike(Map<String, Integer> paramMap);
+	
+	/** 조회수 증가
+	 * @param boardNo
+	 * @return result
+	 */
+	int updateFreeBoardReadCount(int boardNo);
+
+
 }

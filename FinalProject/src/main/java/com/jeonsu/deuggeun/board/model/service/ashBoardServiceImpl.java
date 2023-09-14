@@ -23,13 +23,12 @@ public class ashBoardServiceImpl implements ashBoardService{
 	@Autowired
 	private ashBoardDAO dao;
 
-	// 게시글 삽입
+	// 자유게시판 게시글 삽입
 	@Transactional(rollbackFor = Exception.class)
 	@Override
 	public int boardInsert(Board board, List<String> tagContent, List<String> imgSrc) {
 		
 		board.setBoardTitle(Util.XSSHandling(board.getBoardTitle()));
-		board.setBoardContent(Util.XSSHandling(board.getBoardContent()));
 		
 		// 게시글 삽입
 		int boardNo = dao.boardInsert(board);
@@ -51,7 +50,7 @@ public class ashBoardServiceImpl implements ashBoardService{
 		return boardNo;
 	}
 
-	// 게시글 목록 조회
+	// 자유게시판 게시글 목록 조회
 	@Override
 	public Map<String, Object> selectFreeBoardList(int boardCode, int cp) {
 		
@@ -69,5 +68,46 @@ public class ashBoardServiceImpl implements ashBoardService{
 		
 		return map;
 	}
+
+	// 자유게시판 게시글 상세 조회
+	@Override
+	public Board selectFreeBoard(Map<String, Object> map) {
+		return dao.selectFreeBoard(map);
+	}
+
+	// 좋아요 여부 확인
+	@Override
+	public int freeBoardLikeCheck(Map<String, Object> map) {
+		return dao.freeBoardLikeCheck(map);
+	}
+	
+	// 좋아요 처리
+	@Transactional(rollbackFor = Exception.class)
+	@Override
+	public int freeBoardLike(Map<String, Integer> paramMap) {
+		
+		int result = 0;
+		
+		if(paramMap.get("check") == 0) {
+			result = dao.insertFreeBoardLike(paramMap);
+		
+		} else {
+			result = dao.deleteFreeBoardLike(paramMap);			
+		}
+		
+		if(result == 0) return -1;
+		
+		int count = dao.countFreeBoardLike(paramMap.get("boardNo"));
+		
+		return count;
+		
+	}
+	
+	// 조회 수 증가
+	@Override
+	public int updateFreeBoardReadCount(int boardNo) {
+		return dao.updateFreeBoardReadCount(boardNo);
+	}
+
 
 }

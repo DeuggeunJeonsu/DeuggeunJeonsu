@@ -2,6 +2,7 @@ package com.jeonsu.deuggeun.board.model.dao;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.RowBounds;
 import org.mybatis.spring.SqlSessionTemplate;
@@ -110,10 +111,19 @@ public class ashBoardDAO {
 		return result;
 	}
 
+	/** 자유게시판 삭제되지 않은 게시글 수 조회
+	 * @param boardCode
+	 * @return listCount
+	 */
 	public int getListCount(int boardCode) {
 		return sqlSession.selectOne("boardMapper.getFreeBoardListCount", boardCode);
 	}
 
+	/** 자유게시판 현재 페이지에 해당하는 부분에 대한 게시글 목록 조회
+	 * @param pagination
+	 * @param boardCode
+	 * @return boardList
+	 */
 	public List<Board> selectBoardList(Pagination pagination, int boardCode) {
 		
 		int offset = (pagination.getCurrentPage() - 1) * pagination.getLimit();
@@ -121,6 +131,54 @@ public class ashBoardDAO {
 		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
 		
 		return sqlSession.selectList("boardMapper.selectFreeBoardList", boardCode, rowBounds);
+	}
+
+	/** 자유게시판 게시글 상세 조회
+	 * @param map
+	 * @return board
+	 */
+	public Board selectFreeBoard(Map<String, Object> map) {
+		return sqlSession.selectOne("freeBoardMapper.selectFreeBoard", map);
+	}
+
+	/** 자유게시판 조회 수 증가
+	 * @param boardNo
+	 * @return result
+	 */
+	public int updateFreeBoardReadCount(int boardNo) {
+		return sqlSession.update("freeBoardMapper.updateFreeBoardReadCount", boardNo);
+	}
+
+	/** 자유게시판 좋아요 여부 확인
+	 * @param map
+	 * @return result
+	 */
+	public int freeBoardLikeCheck(Map<String, Object> map) {
+		return sqlSession.selectOne("freeBoardMapper.freeBoardLikeCheck", map);
+	}
+
+	/** 자유게시판 좋아요 처리
+	 * @param paramMap
+	 * @return result
+	 */
+	public int insertFreeBoardLike(Map<String, Integer> paramMap) {
+		return sqlSession.insert("freeBoardMapper.insertFreeBoardLike", paramMap);
+	}
+
+	/** 자유게시판 좋아요 취소(삭제)
+	 * @param paramMap
+	 * @return
+	 */
+	public int deleteFreeBoardLike(Map<String, Integer> paramMap) {
+		return sqlSession.delete("freeBoardMapper.deleteFreeBoardLike", paramMap);
+	}
+
+	/** 자유게시판 좋아요 수 조회
+	 * @param integer
+	 * @return
+	 */
+	public int countFreeBoardLike(Integer boardNo) {
+		return sqlSession.selectOne("freeBoardMapper.countFreeBoardLike", boardNo);
 	}
 
 }

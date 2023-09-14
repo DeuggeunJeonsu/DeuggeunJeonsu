@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+    <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 <%-- map에 저장된 값 변수에 저장 --%>
 <c:set var="pagination" value="${map.pagination}"/>
@@ -64,7 +65,7 @@
             <c:choose>
                <c:when test="${empty boardList}">
                     <div>
-                        게시글이 존재하지 않습니다.
+                        <h1>게시글이 존재하지 않습니다. 첫 게시글의 주인공이 되어 보세요!</h1>
                     </div>
                </c:when>
             
@@ -87,7 +88,7 @@
                                     <div class="title">${board.boardTitle}</div>
                                     <div class="createDate-area">
                                         <div>작성일 ${board.boardCreateDate}</div>
-                                        <div><i class="fa-regular fa-comment" style="color: #ddd;"></i> 4</div>
+                                        <div><i class="fa-regular fa-comment" style="color: #ddd;"></i>&nbsp;${board.commentCount}</div>
                                     </div>
                                     <div class="profile-area">
                                         <div class="profileArea">
@@ -100,7 +101,7 @@
                                             </c:if>
                                         </div>
                                         <div>닉네임</div>
-                                        <div><i class="fa-solid fa-heart" style="color: #ff4242;"></i> 99</div>
+                                        <div><i class="fa-solid fa-heart" style="color: #ff4242;"></i>&nbsp;${board.likeCount}</div>
                                     </div>
                                 </div>
                             </a>
