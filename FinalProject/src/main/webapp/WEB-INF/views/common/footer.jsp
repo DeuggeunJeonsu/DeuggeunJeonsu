@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -33,12 +33,10 @@
         <p class="footer-row2">"득근전수"는 포트폴리오 프로젝트를 위해 개발된 사이트입니다. 무단 도용 및 배포를 금지합니다.</p>
     </footer>
 
-    <!-- <c:if test="${!empty message}">
+    <c:if test="${!empty message}">
         <script>
             alert("${message}");
         </script>
-        <c:remove var="message" scope="session"/>
     </c:if>
-    <% session.removeAttribute("message"); %> -->
 </body>
 </html>
