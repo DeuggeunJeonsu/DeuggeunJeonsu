@@ -33,8 +33,9 @@
   	<update id="todoUpdate">
 	    UPDATE TODOLIST SET LIST_FL =
 	    <choose>
-	        <when test="{listFl}">'Y'</when>
-	        <otherwise>'N'</otherwise>
+	        <when test ="listFl == true">'Y'</when>
+	        <when test ="listFl == false">'N'</when>
+	        
 	    </choose>
 	    WHERE LIST_NO = #{listNo}
 	</update>
