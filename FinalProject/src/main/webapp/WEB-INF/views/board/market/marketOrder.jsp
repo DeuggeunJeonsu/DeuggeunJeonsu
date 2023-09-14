@@ -139,7 +139,7 @@
 
             <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
             <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-            <script src="/resources/js/main.js"></script>
+<%--            <script src="/resources/js/main.js"></script>--%>
             <script src="/resources/js/market/marketOrder.js"></script>
         </body>
 

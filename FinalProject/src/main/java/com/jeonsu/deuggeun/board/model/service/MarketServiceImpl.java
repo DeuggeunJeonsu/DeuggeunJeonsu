@@ -1,8 +1,6 @@
 package com.jeonsu.deuggeun.board.model.service;
 
-import com.jeonsu.deuggeun.board.model.dto.Board;
-import com.jeonsu.deuggeun.board.model.dto.Pagination;
-import com.jeonsu.deuggeun.board.model.dto.Product;
+import com.jeonsu.deuggeun.board.model.dto.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -29,27 +27,19 @@ public class MarketServiceImpl implements MarketService{
 
 		Pagination pagination = new Pagination(cp, listCount);
 
-		List<Board> marketList = dao.selectMarketList(pagination, boardCode);
+		List<Product> marketList = dao.selectMarketList(pagination, boardCode);
 
 		// 4. pagination, marketList를  Map에 담아서 반환
 		Map<String, Object> map = new HashMap<>();
 		map.put("pagination", pagination);
 		map.put("marketList", marketList);
 
-		System.out.println(marketList);
+		System.out.println("marketList의 값 : " + marketList);
 
 		return map;
-
-//		int listCount = dao.getListCount(boardCode);
-//		Pagination pagination = new Pagination(cp, listCount);
-//		List<Board> boardList = dao.selectBoardList(pagination, boardCode);
-//		Map<String, Object> map = new HashMap<>();
-//		map.put("pagination", pagination);
-//		map.put("boardList", boardList);
-//
-//		return map;
 	}
 
+	// 검색했을때 게시글 목록
 	@Override
 	public Map<String, Object> selectMarketList(Map<String, Object> paramMap, int cp) {
 
@@ -57,7 +47,7 @@ public class MarketServiceImpl implements MarketService{
 
 		Pagination pagination = new Pagination(cp, listCount);
 
-		List<Board> boardList = dao.selectMarketList(pagination, paramMap);
+		List<Product> boardList = dao.selectMarketList(pagination, paramMap);
 
 		Map<String, Object> map = new HashMap<>();
 		map.put("pagination", pagination);
@@ -65,4 +55,26 @@ public class MarketServiceImpl implements MarketService{
 
 		return map;
 	}
+
+	// 상품 게시글 상세조회
+	@Override
+	public Product selectProduct(Map<String, Object> map) {
+
+		return dao.selectProduct(map);
+
+	}
+
+	// 상품 이미지 가져오기
+	@Override
+	public List<ProductImage> selectImageList(int productNo) {
+
+		return dao.selectImageList(productNo);
+	}
+
+	// 리뷰 리스트 조회
+	@Override
+	public List<Review> selectReviewList(Map<String, Object> map) {
+		return dao.selectReviewList(map);
+	}
+
 }
