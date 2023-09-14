@@ -36,7 +36,7 @@ $(document).ready(function() {
 // --------------------------------------------------------------------------------
 
 // 좋아요 버튼 이벤트
-var check_status = false;
+var check_status = false; // 좋아요 상태를 나타내는 변수
 var like_cnt = $("#like-cnt");
 var like_parent = $(".board-like");
 
@@ -65,28 +65,63 @@ var burst = new mojs.Burst({
     }
   });
 
-$("#like-cnt").click(function(){
+document.getElementById("like-cnt").addEventListener("click", e => {
 
-var t1 = new TimelineLite();
-var t2 = new TimelineLite();
-if(!check_status){
-    t1.set(like_cnt, {scale:0});
-    t1.set('.like-btn', {scale: 0});
-    t1.to(like_cnt, 0.6, {scale:1, background: '#99E1ED',ease: Expo.easeOut});
-    t2.to('.like-btn', 0.65, {scale: 1, ease: Elastic.easeOut.config(1, 0.3)}, '+=0.2');
-//    t1.timeScale(5);
-    check_status=true;
-    //circleShape.replay();
-    burst.replay();
-}
-else{
-    // t1.to(like_cnt, 1, {scale:1})
-    // .to(like_cnt, 1, {scale:1, background: 'rgba(255,255,255,0.3)', ease: Power4.easeOut});
-    // t1.timeScale(7);
-    like_cnt.css('background-color', '#ddd');
-    check_status=false;
-}
+    if(loginMemberNo == ""){
+        alert("로그인 후 이용해 주세요.");
+        return;
+    }
+    
+    let check;
+    
+    var t1 = new TimelineLite();
+    var t2 = new TimelineLite();
+    
+    // 좋아요 버튼이 눌리지 않은 상태
+    if(!check_status){
+        like_cnt.css('background-color', '#ddd');
+        check_status=true;
+        check = 1;
+    }
+    
+    // 좋아요 버튼이 눌린 상태
+    else{
+        t1.set(like_cnt, {scale:0});
+        t1.set('.like-btn', {scale: 0});
+        t1.to(like_cnt, 0.6, {scale:1, background: '#99E1ED',ease: Expo.easeOut});
+        t2.to('.like-btn', 0.65, {scale: 1, ease: Elastic.easeOut.config(1, 0.3)}, '+=0.2');
+        burst.replay();
 
+        check_status=false;
+        check = 0;
+    }
+    
+    const data = {
+        "boardNo" : boardNo,
+        "memberNo" : loginMemberNo,
+        "check" : check
+    };
+    
+    fetch("/board/3/like", {
+        method : "POST",
+        headers : {"Content-Type" : "application/json"},
+        body : JSON.stringify(data)
+    })
+    .then(resp => resp.text())
+    .then(count => {
+        
+        console.log("count : " + count);
+    
+        if(count == -1){
+            console.log("좋아요 처리 실패");
+            return;
+        }
+
+    document.getElementsByClassName("likeCount")[0].innerHTML = count;
+    
+    })
+    .catch(err => console.log(err))
+    
 })
 
 // -------------------------------------------------------------------------------

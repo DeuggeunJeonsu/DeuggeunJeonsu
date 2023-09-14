@@ -37,7 +37,7 @@ import com.jeonsu.deuggeun.member.model.dto.Member;
 
 @Controller
 @RequestMapping("/board2/3")
-//@SessionAttributes({"loginMember"})
+@SessionAttributes({"loginMember"})
 public class FreeBoardController2 {
 
 	@Autowired
@@ -58,11 +58,11 @@ public class FreeBoardController2 {
 			Board board
 			, @RequestParam(value = "tagContent", required = false) List<String> tagContent
 			, @RequestParam(value = "imgSrc", required = false) List<String> imgSrc
-//			, @SessionAttribute("loginMember") Member loginMember
+			, @SessionAttribute("loginMember") Member loginMember
 			, RedirectAttributes ra
 			, HttpSession session) {
 		
-		board.setMemberNo(1);
+		board.setMemberNo(loginMember.getMemberNo());
 		board.setBoardCode(3);
 
 		int boardNo = service2.boardInsert(board, tagContent, imgSrc);
