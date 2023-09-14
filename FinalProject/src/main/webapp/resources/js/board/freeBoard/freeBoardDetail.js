@@ -125,3 +125,67 @@ document.getElementById("like-cnt").addEventListener("click", e => {
 })
 
 // -------------------------------------------------------------------------------
+
+// 게시글 수정 버튼 클릭 시
+
+const updateBtn = document.getElementById("updateBtn");
+if(updateBtn != null){
+
+    updateBtn.addEventListener("click", ()=>{
+    
+        location.href
+                = location.pathname.replace("board", "board2")
+                + "/update"
+                + location.search;
+    })
+}
+
+// -------------------------------------------------------------------------------
+
+// 게시글 삭제 버튼 클릭 시
+
+const deleteBtn = document.getElementById("deleteBtn");
+if(deleteBtn != null){
+    
+    deleteBtn.addEventListener("click", () => {
+    
+        if(confirm("정말 삭제하시겠습니까?")){
+            location.href
+            = location.pathname.replace("board","board2")
+                + "/delete";
+                + location.search;
+        }
+    })
+}
+
+// -------------------------------------------------------------------------------
+
+// 목록으로
+
+const goToListBtn = document.getElementById("goToListBtn");
+
+goToListBtn.addEventListener("click", ()=>{
+
+    let url = "/board/3/list";
+
+    const params = new URL(location.href).searchParams;
+
+    let cp;
+    if(params.get("cp") != ""){ // 쿼리스트링에 cp가 있을 경우
+        cp = "?cp=" + params.get("cp");
+    } else {
+        cp = "?cp=1";
+    }
+
+    url += cp;
+
+    if(params.get("key") != null){
+        const key = "&key=" + params.get("key");
+        const query = "&query=" + params.get("query");
+
+        url += key + query;
+    }
+
+    location.href = url;
+
+})

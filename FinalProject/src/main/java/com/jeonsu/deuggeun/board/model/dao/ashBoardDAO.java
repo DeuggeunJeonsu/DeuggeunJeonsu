@@ -181,4 +181,70 @@ public class ashBoardDAO {
 		return sqlSession.selectOne("freeBoardMapper.countFreeBoardLike", boardNo);
 	}
 
+	/** 게시글 수정
+	 * @param board
+	 * @return
+	 */
+	public int freeBoardUpdate(Board board) {
+		return sqlSession.update("freeBoardMapper.freeBoardUpdate", board);
+	}
+
+	/** 해시태그 삭제
+	 * @param deleteMap
+	 * @return
+	 */
+	public int hashtagDelete(Map<String, Object> deleteMap) {
+		return sqlSession.delete("freeBoardMapper.hashtagDelete", deleteMap);
+	}
+	
+
+	public int hashtagDelete2(Map<String, Object> deleteMap) {
+		return sqlSession.delete("freeBoardMapper.hashtagDelete2", deleteMap);
+	}
+
+	/** 게시글 수정 시 해시태그 추가
+	 * @param boardNo
+	 * @param insertList
+	 * @return
+	 */
+	public int hashtagUpdate(int boardNo, List<String> insertList) {
+		
+		int result = 0;
+		
+		List<Hashtag> tagList = new ArrayList<Hashtag>();
+		
+		for(int i=0; i<insertList.size(); i++) {
+			
+			Hashtag hashtag = new Hashtag();
+			
+			hashtag.setTagContent(insertList.get(i));
+			
+			sqlSession.insert("boardMapper.hashtagInsert", hashtag);
+
+			int generatedTagNo = hashtag.getTagNo();
+			
+			tagList.add(hashtag);
+			
+			result++;
+		}
+		
+		int result2 = 0;
+		
+		if(result > 0) {
+			
+			for(Hashtag hashtag : tagList) {
+				
+				hashtag.setBoardNo(boardNo);
+				
+				result2 += sqlSession.insert("boardMapper.boardHashtagInsert", hashtag);
+			}
+			
+		}
+
+		if(result2 > 0) result2 = boardNo;
+		
+		return result2;
+	}
+
+
 }

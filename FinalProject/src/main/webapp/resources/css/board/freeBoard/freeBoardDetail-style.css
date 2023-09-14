@@ -194,7 +194,7 @@
 
     margin: 0 5px 0 0;
 
-    padding: 4px 5px;
+    padding: 4px 10px;
     text-align: center;
 
     border-radius: 7px 9px;
@@ -268,16 +268,10 @@
 
 /* 나머지 버튼 */
 #btn-area{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
     margin: 20px 0;
 }
 
-#btn-area > div:nth-child(2){
-    width: 350px;
-    height: 100px;
+#btn-area > div{
     display: flex;
     justify-content: space-between;
 }

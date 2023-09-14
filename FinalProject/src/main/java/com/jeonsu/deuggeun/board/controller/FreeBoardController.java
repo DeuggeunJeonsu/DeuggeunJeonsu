@@ -58,8 +58,17 @@ public class FreeBoardController {
 			Map<String, Object> map = service2.selectFreeBoardList(boardCode, cp);
 			
 			model.addAttribute("map", map);
-		}
 		
+		} 
+		
+		// 검색한 경우
+//		else {
+//			
+//			paramMap.put("boardCode", 3);
+//			Map<String, Object> map = service2.selectFreeBoardList(paramMap, cp);
+//			model.addAttribute("map", map);
+//		}
+//		
 		return "board/freeBoard/freeBoardList";
 	}
 
@@ -98,7 +107,7 @@ public class FreeBoardController {
 			}
 			
 			// 쿠키로 조회 수 증가 (비회원, 글쓴이 아닌 경우에만)
-			if(loginMember != null || board.getMemberNo() != loginMember.getMemberNo()) {
+			if(loginMember == null || board.getMemberNo() != loginMember.getMemberNo()) {
 				
 				Cookie c = null;
 				
