@@ -30,7 +30,7 @@
         <div>
           <div class="cont_unit search_result">
             <div class="text_wrap big result mt40">
-              <strong class="tit">""<em>정보 공유 결과</em>(5)</strong>
+              <strong class="tit">"검색" <em>(5) 정보 공유 결과</em></strong>
               <span class="right_cont">
               <a href="/board/1/list" class="txt arrow_r">정보 공유 더보기</a>
               </span>
@@ -57,7 +57,7 @@
     </ul>
 
      <div class="text_wrap big result mt40">
-              <strong class="tit">""<em>(5) 루틴 공유 결과</em></strong>
+              <strong class="tit">"검색" <em>(5) 루틴 공유 결과</em></strong>
               <span class="right_cont">
               <a href="/board/2/list" class="txt arrow_r">루틴 공유 더보기</a>
               </span>
@@ -84,7 +84,7 @@
     </ul>
 
      <div class="text_wrap big result mt40">
-              <strong class="tit">""<em>(5) 자유 게시판 결과</em></strong>
+              <strong class="tit">"검색" <em>(5) 자유 게시판 결과</em></strong>
               <span class="right_cont">
               <a href="/board/3/list" class="txt arrow_r">자유 게시판 더보기</a>
               </span>
@@ -114,7 +114,7 @@
               </ul>
 
          <div class="text_wrap big result mt40">
-              <strong class="tit">""<em>(5) 공지사항 결과</em></strong>
+              <strong class="tit">"검색" <em>(5) 공지사항 결과</em></strong>
               <span class="right_cont">
               <a href="/board/4/list" class="txt arrow_r">공지사항 더보기</a>
               </span>
@@ -144,6 +144,44 @@
                   </div>
                 </li>
               </ul>
+
+              <div class="text_wrap big result mt40">
+                <strong class="tit">"검색" <em>(5) 득근마켓 결과</em></strong>
+                <span class="right_cont">
+                <a href="/board/4/list" class="txt arrow_r">덕건마켓 더보기</a>
+                </span>
+              </div>
+              <div class="prod_list_wrap mtm30">
+               <ul>
+        <li class="line">
+          <a href="#">
+            <div class="text"><a href="#" class="txtd"><img src="https://th.bing.com/th/id/OIP.Ii-Y80FYlmTcDz3IYWq3MwHaHa?pid=ImgDet&rs=1">
+                <br>
+                데이터센터 유지 보수를 수행합니다.</a></div>
+          </a>
+        </li>
+  
+        <li class="line">
+          <a href="#">
+            <div class="text"><a href="#" class="txtd"><img src="https://th.bing.com/th/id/OIP.Ii-Y80FYlmTcDz3IYWq3MwHaHa?pid=ImgDet&rs=1">
+                <br>
+                안드로이드 애플리케이션 버전 1.2를 출시했습니다.</a></div>
+          </a>
+        </li>
+  
+        <li class="line"> 
+          <a href="#">
+            <div class="text"><a href="#" class="txtd"><img src="https://th.bing.com/th/id/OIP.Ii-Y80FYlmTcDz3IYWq3MwHaHa?pid=ImgDet&rs=1">
+                <br>
+                세미나/캠페인과 관련된 공지사항</a></div>
+          </a>
+        </li>
+                    </div>
+                  </li>
+                </ul>
+                    </div>
+                  </li>
+                </ul>
 
             <br><br>
 
