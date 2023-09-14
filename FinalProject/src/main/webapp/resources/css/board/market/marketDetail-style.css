@@ -1,16 +1,21 @@
-@font-face {
-    font-family: 'Pretendard-Regular';
-    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
-    font-weight: 500;
-    font-style: normal;
-}
+/*@font-face {*/
+/*    font-family: 'Pretendard-Regular';*/
+/*    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');*/
+/*    font-weight: 500;*/
+/*    font-style: normal;*/
+/*}*/
 
 * {
     box-sizing: border-box;
 }
-
-.main-con {
-    /* border: 1px solid #99E1ED;; */
+#main-photo{
+    border: 1px solid #e5e5e5;
+    width: 500px;
+    height: 500px;
+    display: block;
+}
+.place{
+    height: 100px;
 }
 
 .top-container {
@@ -34,6 +39,7 @@
 
 .right-content {
     flex: 50%;
+    margin-right: 40px;
 
 }
 
@@ -46,6 +52,11 @@ a {
 #main-container {
     margin: 100px 250px;
     min-width: 1200px;
+    background-color: #fff;
+}
+.main-con{
+    /*height: 1000px;*/
+    /*padding: 100px;*/
 }
 #select{
     padding: 4px 3px 3px;
@@ -54,13 +65,33 @@ a {
     line-height: 2.2em;
     /* height: 100%; */
 }
+#amount{
+    font-size: 20px;
+    font-weight: bold;
+    color: #000;
+    margin-left: 5px;
+    font-family: 'Montserrat','Nanum Gothic',sans-serif !important;
+}
+#amount h3{
+    font-family: 'Montserrat','Nanum Gothic',sans-serif;
+}
 #title{
+    /*font-size: 22px;*/
+    color: #565656;
+    letter-spacing: -1px;
+    margin-top: 7px;
+    padding-bottom: 20px;
     font-size: 25px;
     font-weight: 600;
+    font-family: 'Montserrat','Nanum Gothic',sans-serif;
 }
 .right{
     margin-bottom: 20px;
+    font-size: 16px;
     line-height: 1.5;
+}
+.right h3{
+    font-family: 'Montserrat','Nanum Gothic',sans-serif;
 }
 .min{
     padding-left: 40px;
@@ -96,6 +127,7 @@ a {
     background-color: #797979;
     color: #fff;
 }
+
 
 /* 상품, 후기, Q&A nav */
 
@@ -137,7 +169,7 @@ a {
 }
 .item-content img{
     width: 1000px;
-    height: 1200px;
+    height: 1350px;
 }
 
 /* 제품 상세 영역 */
@@ -162,9 +194,11 @@ strong{
 }
 .notice {
     background: #fff;
-    border: 1px solid #e5e5e5;
+    border: 3px solid #e5e5e5;
     box-sizing: border-box;
-    margin: 100px;
+    margin-top: 80px;
+    margin-left: 80px;
+    margin-right: 80px;
     height: 100%;
     padding: 30px 0 50px;
     line-height: 1.5;

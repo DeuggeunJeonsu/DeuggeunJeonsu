@@ -1,7 +1,9 @@
 package com.jeonsu.deuggeun.board.model.service;
-import org.springframework.stereotype.Repository;
-import org.springframework.stereotype.Service;
+import com.jeonsu.deuggeun.board.model.dto.Product;
+import com.jeonsu.deuggeun.board.model.dto.ProductImage;
+import com.jeonsu.deuggeun.board.model.dto.Review;
 
+import java.util.List;
 import java.util.Map;
 
 public interface MarketService {
@@ -13,4 +15,13 @@ public interface MarketService {
 
     // 검색했을때 게시글 목록
     Map<String, Object> selectMarketList(Map<String, Object> paramMap, int cp);
+
+    // 게시글 상세 조회
+    Product selectProduct(Map<String, Object> map);
+
+    // 게시글 상세 사진
+    List<ProductImage> selectImageList(int productNo);
+
+    // 리뷰 리스트 조회
+    List<Review> selectReviewList(Map<String, Object> map);
 }

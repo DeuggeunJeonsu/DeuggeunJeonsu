@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<c:set var="product" value="${product}" />
+<c:set var="productImageList" value="${productImageList}" />
+<c:set var="reviewList" value="${reviewList}" />
         <!DOCTYPE html>
         <html>
 
@@ -8,8 +12,7 @@
             <title>게시판 이름</title>
 
             <%-- marketReview-style.css 연결 --%>
-                <link rel="stylesheet" href="/resources/css/board/market/marketReview-style.css">
-
+            <link rel="stylesheet" href="/resources/css/board/market/marketReview-style.css">
                 <!-- Font Awesome CDN 추가 -->
                 <link rel="stylesheet"
                     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
@@ -29,22 +32,22 @@
 
             <section id="main-container">
                 <div class="main-con">
+                    <div class="place"></div>
                     <div class="top-container">
                         <div class="left-content">
-                            <img src="/resources/images/market/test2-main.jpeg" alt="" id="main-photo">
+                            <img src="${product.productImg}" id="main-photo">
                         </div>
+                        <%--                        <p>Image Path: ${product.pImagePath}</p>--%>
                         <div class="right-content">
-                            <div id="title">[황금비율 프리미엄 프로틴 파우더]</div>
+                            <div id="title">${product.productTitle}</div>
                             <hr>
                             <div id="amount">
-                                <h3>70,000원</h3>
+                                <h3>판매가 : ${product.productPrice}원</h3>
                             </div>
                             <div class="right" id="text">
-                                <h3>칼로바이 퍼펙트 파워쉐이크 대용량 2kg</h3>
+                                <h3>${product.productContent}</h3>
                             </div>
-                            <div class="right">근피로 회복, 질좋은 수면, 고중량 훈련+다이어트 서포트 스틸 그린™은 신체의 항산화 시스템, 소화 기능 및 면역 건강을 지원하면서
-                                자연스럽고 기분 좋은 에너지를 제공하도록 설계되었습니다. 수퍼 푸드 채소 이외에도 Steel Greens ™에는 최대 흡수를위한 DigeZyme® 소화 효소
-                                및 LactoSpore® (Bacillus coagulans MTCC 5856)가 포함되어 있습니다.</div>
+                            <div class="right">${product.subTitle}</div>
                             <div class="number-con">
                                 <div class="number">
                                     <div>수량</div>
@@ -73,7 +76,7 @@
                             <a href="/market/marketDetail">상품정보</a>
                         </li>
                         <li>
-                            <a href="/market/marketReview">Review</a>
+                            <a href="#">Review</a>
                         </li>
                         <li>
                             <a href="/market/marketInquire">상품문의</a>
@@ -98,41 +101,45 @@
                                 </tr>
                             </thead>
                             <tbody>
+                            <c:forEach var="review" items="${reviewList}">
+                                <c:if test="${review.productNo == product.productNo}">
                                 <tr>
-                                    <td>5</td>
-                                    <td><a href="#">다섯번째 게시글</a></td>
-                                    <td>유저일이지롱</td>
-                                    <td>2023-08-31</td>
-                                    <td>100</td>
+                                    <td>${review.boardNo}</td>
+                                    <td><a href="#">${review.boardTitle}</a></td>
+                                    <td>${review.memberNickname}</td>
+                                    <td>${review.createDate}</td>
+                                    <td>${review.readCount}</td>
                                 </tr>
-                                <tr>
-                                    <td>4</td>
-                                    <td><a href="#">네번째 게시글</a></td>
-                                    <td>유저일이지롱</td>
-                                    <td>2023-09-01</td>
-                                    <td>85</td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td><a href="#">세번째 게시글</a></td>
-                                    <td>유저일이지롱</td>
-                                    <td>2023-09-01</td>
-                                    <td>85</td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td><a href="#">두번째 게시글</a></td>
-                                    <td>유저일이지롱</td>
-                                    <td>2023-09-01</td>
-                                    <td>85</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td><a href="#">첫번째 게시글</a></td>
-                                    <td>유저일이지롱</td>
-                                    <td>2023-09-01</td>
-                                    <td>85</td>
-                                </tr>
+                                </c:if>
+                            </c:forEach>
+                            <%--                                <tr>--%>
+<%--                                    <td>4</td>--%>
+<%--                                    <td><a href="#">네번째 게시글</a></td>--%>
+<%--                                    <td>유저일이지롱</td>--%>
+<%--                                    <td>2023-09-01</td>--%>
+<%--                                    <td>85</td>--%>
+<%--                                </tr>--%>
+<%--                                <tr>--%>
+<%--                                    <td>3</td>--%>
+<%--                                    <td><a href="#">세번째 게시글</a></td>--%>
+<%--                                    <td>유저일이지롱</td>--%>
+<%--                                    <td>2023-09-01</td>--%>
+<%--                                    <td>85</td>--%>
+<%--                                </tr>--%>
+<%--                                <tr>--%>
+<%--                                    <td>2</td>--%>
+<%--                                    <td><a href="#">두번째 게시글</a></td>--%>
+<%--                                    <td>유저일이지롱</td>--%>
+<%--                                    <td>2023-09-01</td>--%>
+<%--                                    <td>85</td>--%>
+<%--                                </tr>--%>
+<%--                                <tr>--%>
+<%--                                    <td>1</td>--%>
+<%--                                    <td><a href="#">첫번째 게시글</a></td>--%>
+<%--                                    <td>유저일이지롱</td>--%>
+<%--                                    <td>2023-09-01</td>--%>
+<%--                                    <td>85</td>--%>
+<%--                                </tr>--%>
                             </tbody>
                         </table>
 

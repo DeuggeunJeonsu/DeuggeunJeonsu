@@ -16,6 +16,6 @@ public class ProductImage {
     //PRODUCT_NO
     private int pImageNo;
     private int productNo;
-    private String pImagePath;
+    private String productImg;
 
 }

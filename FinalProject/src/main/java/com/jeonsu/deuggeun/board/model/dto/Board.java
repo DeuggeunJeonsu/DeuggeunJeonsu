@@ -35,15 +35,10 @@ public class Board {
 
 	// 상품 관련
 	private int productPrice;
-	private String pImagePath;
-
-	public String getpImagePath() {
-		return pImagePath;
-	}
-
-	public void setpImagePath(String pImagePath) {
-		this.pImagePath = pImagePath;
-	}
+	private String productImg;
+	private int productNo;
+	private String productTitle;
+	private String productContent;
 
 	// 이미지 목록
 //	private List<BoardImage> imageList;

@@ -46,7 +46,7 @@
                 <c:set var="sp" value="&key=${param.key}&query=${param.query}"/>
             </c:if>
 
-
+            <div class="place"></div>
             <section id="main-container">
                 <div id="title-area">
                     <div class="board-title">득근 마켓</div>
@@ -55,12 +55,18 @@
                     </div>
                 </div>
                 <div id="search-area">
-                        <form action="${boardCode}" method="get" id="boardSearch">
-                            <div class="search-place">
-                                <input type="text" id="market-search" name="query" placeholder="search...">
-                                <button id="search-button"><i class="fas fa-search"></i></button>
-                            </div>
-                        </form>
+                    <form action="${boardCode}" method="get" id="boardSearch">
+                        <div class="search-place">
+                            <input type="text" id="market-search" name="query" placeholder="search...">
+                            <button id="search-button"><i class="fas fa-search"></i></button>
+                        </div>
+                    </form>
+<%--                <form action="${pageContext.request.contextPath}/${boardCode}/list" method="get" id="boardSearch">--%>
+<%--                    <div class="search-place">--%>
+<%--                        <input type="text" id="market-search" name="query" placeholder="search...">--%>
+<%--                        <button id="search-button"><i class="fas fa-search"></i></button>--%>
+<%--                    </div>--%>
+<%--                </form>--%>
 
                     <div id="sort-btn-area">
                         <a href="#"><span>최신순</span></a> |
@@ -76,14 +82,14 @@
                     <c:forEach items="${marketList}" var="market">
                         <div class="thumbnail">
                             <div>
-                                <a href="/board/${boardCode}/detail/${market.boardNo}">
-                                    <img src="${market.pImagePath}">
+                                <a href="/board/${boardCode}/detail/${market.productNo}">
+                                    <img src="${market.productImg}">
                                 </a>
                             </div>
                             <div class="list-content">
                                 <div class="title">
-                                    <a href="/board/${boardCode}/detail/${market.boardNo}">
-                                        ${market.boardTitle}
+                                    <a href="/board/${boardCode}/detail/${market.productNo}?cp=${pagination.currentPage}${sp}">
+                                        ${market.productTitle}
                                     </a>
                                 </div>
                                 <div class="price" id="formattedPrice">${market.productPrice}원</div>

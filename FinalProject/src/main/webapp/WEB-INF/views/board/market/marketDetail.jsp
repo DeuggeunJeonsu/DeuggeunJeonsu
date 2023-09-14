@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<c:set var="product" value="${product}" />
+<c:set var="productImageList" value="${productImageList}" />
         <!DOCTYPE html>
         <html>
 
@@ -29,22 +32,22 @@
 
             <section id="main-container">
                 <div class="main-con">
+                    <div class="place"></div>
                     <div class="top-container">
                         <div class="left-content">
-                            <img src="/resources/images/market/test2-main.jpeg" alt="" id="main-photo">
+                            <img src="${product.productImg}" id="main-photo">
                         </div>
+                    <%--                        <p>Image Path: ${product.pImagePath}</p>--%>
                         <div class="right-content">
-                            <div id="title">[황금비율 프리미엄 프로틴 파우더]</div>
+                            <div id="title">${product.productTitle}</div>
                             <hr>
                             <div id="amount">
-                                <h3>70,000원</h3>
+                                <h3>판매가 : ${product.productPrice}원</h3>
                             </div>
                             <div class="right" id="text">
-                                <h3>칼로바이 퍼펙트 파워쉐이크 대용량 2kg</h3>
+                                <h3>${product.productContent}</h3>
                             </div>
-                            <div class="right">근피로 회복, 질좋은 수면, 고중량 훈련+다이어트 서포트 스틸 그린™은 신체의 항산화 시스템, 소화 기능 및 면역 건강을 지원하면서
-                                자연스럽고 기분 좋은 에너지를 제공하도록 설계되었습니다. 수퍼 푸드 채소 이외에도 Steel Greens ™에는 최대 흡수를위한 DigeZyme® 소화 효소
-                                및 LactoSpore® (Bacillus coagulans MTCC 5856)가 포함되어 있습니다.</div>
+                            <div class="right">${product.subTitle}</div>
                             <div class="number-con">
                                 <div class="number">
                                     <div>수량</div>
@@ -73,7 +76,7 @@
                             <a href="/market/marketDetail">상품정보</a>
                         </li>
                         <li>
-                            <a href="/board/5/review">Review</a>
+                            <a href="/board/${boardCode}/review/${product.productNo}" id="reviewList">Review</a>
                         </li>
                         <li>
                             <a href="/board/5/inquire">상품문의</a>
@@ -82,53 +85,42 @@
 
                     <hr style="border: solid 1px #ccc; margin-top: 50px; margin-bottom: 50px;">
                     <!-- 상품 상세 -->
+
                     <div class="item-content">
-                        <div><img src="/resources/images/market/test2.jpeg" alt=""></div>
-                        <br>
-                        <div><img src="/resources/images/market/test2-detail1.jpeg" alt=""></div>
-                        <br>
-                        <div><img src="/resources/images/market/test2-detail2.jpeg" alt=""></div>
-                        <br>
-                        <div><img src="/resources/images/market/test2-detail3.jpeg" alt=""></div>
-                        <br>
-                        <div><img src="/resources/images/market/test2-detail4.jpeg" alt=""></div>
-                        <br>
-                        <div><img src="/resources/images/market/test2-detail5.jpeg" alt=""></div>
-                        <br>
-                        <div><img src="/resources/images/market/test2-detail6.jpeg" alt=""></div>
-                        <br>
-                        <div><img src="/resources/images/market/test2-detail7.jpeg" alt=""></div>
-                        <br>
+
+<%--                        <c:forEach var="productImg" items="${productImageList}">--%>
+<%--                            <div><img src="/resources/images/market/${productImg.pImagePath}"></div>--%>
+<%--                            <br>--%>
+<%--                        </c:forEach>--%>
+                        <c:forEach var="productImg" items="${productImageList}">
+                            <div><img src="${productImg.productImg}" class="itemDetail"></div>
+                            <br>
+                        </c:forEach>
                     </div>
 
                     <div class="notice">
                         <ul>
                             <li class="title">제품명</li>
-                            <li>퍼펙트 파워쉐이크 초코맛(대용량)</li>
+                            <li>${product.productName}</li>
                         </ul>
                         <ul>
                             <li class="title">제품유형</li>
-                            <li>기타가공품</li>
+                            <li>${product.productType}</li>
                         </ul>
+
                         <ul>
                             <li class="title">내용량</li>
-                            <li>2kg</li>
+                            <li>${product.productContain}</li>
                         </ul>
                         <ul>
                             <li class="title">원료 및 함량</li>
-                            <li>[퍼펙트 파워쉐이크 초코맛]분리유청단백분말(미국산), 농축유청단백분말(미국산), 혼합탈지분유(네덜란드산), 코코아분말 6 %(네덜란드산), 분말유크림,
-                                혼합제재초콜릿향분말[말토덱스트린, 덱스트린, 프로필렌글리콜, 정제수, 카라멜색소, 합성향료(초콜릿향), 아라비아검, 주정, 코코아분말, 설탕, 잔탄검,
-                                고과당], 혼합제재초코렛향분말[덱스트린, 혼합제재(초코렛향베이스(합성향료), 에틸말톨)], 혼합제재밀크향분말[덱스트린, 유당,
-                                혼합제재(밀크향키베이스(합성향료), 아라비아검], 비타민미네랄프리믹스[분말비타민A, 분말비타민E, 비타민C, 비타민B6염산염, 비타민B1질산염, 엽산,
-                                니코틴산아미드, 비타민B2, 제삼인산칼슘(칼슘), 푸마르산제일철(철분), 산화아연(아연)], 효소처리스테비아,
-                                수크랄로스(감미료),아미노산혼합분말(L-트레오닌, 글리신, L-발린, L-이소로이신, L-로이신, L-페닐알라닌, L-히스티딘, L-라이신, L-메티오닌,
-                                L-트립토판) 알레르기 유발물질 : 대두, 밀, 우유</li>
+                            <li>${product.productMaterial}</li>
                         </ul>
                         <ul>
                             <li class="title">섭취방법</li>
-                            <li>1일 1~2회, 1회 (44 g)을 물 또는 우유 200~250 ml에 타서 섭취하십시오.
-                                운동 전 또는 운동 후 30분 이내에 섭취하시면 더욱 좋습니다.</li>
+                            <li>${product.productIntake}</li>
                         </ul>
+
                         <ul>
                             <li class="title">배송정보</li>
                             <li>- 배송 방법 : CJ대한통운 <br>
@@ -142,14 +134,18 @@
                     </div>
 
 
-
                 </div>
+
+                <div class="place"></div>
 
 
             </section>
 
 
+            <!-- jQuery 라이브러리 추가 -->
+            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
             <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
+            <script src="/resources/js/market/marketDetail.js"></script>
 
             <%-- <script src="/resources/js/main.js"></script> --%>
         </body>

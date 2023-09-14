@@ -21,7 +21,7 @@
 		<typeAlias type="com.jeonsu.deuggeun.board.model.dto.BoardImage" alias="BoardImage" />
 
 		<typeAlias type="com.jeonsu.deuggeun.todolist.model.dto.TodoList" alias="TodoList" />
-
+		<typeAlias type="com.jeonsu.deuggeun.board.model.dto.Review" alias="Review" />
 		<typeAlias type="com.jeonsu.deuggeun.board.model.dto.Product" alias="Product" />
 		<typeAlias type="com.jeonsu.deuggeun.board.model.dto.Inquiry" alias="Inquiry" />
 		<typeAlias type="com.jeonsu.deuggeun.board.model.dto.ProductImage" alias="ProductImage" />
