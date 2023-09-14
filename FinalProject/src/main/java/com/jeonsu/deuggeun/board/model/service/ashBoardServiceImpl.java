@@ -109,5 +109,47 @@ public class ashBoardServiceImpl implements ashBoardService{
 		return dao.updateFreeBoardReadCount(boardNo);
 	}
 
+	// 게시글 수정
+	@Transactional(rollbackFor = Exception.class)
+	@Override
+	public int freeBoardUpdate(Board board, int cp, List<String> insertList, List<String> imgSrc, String deleteList) {
+		
+		board.setBoardTitle(Util.XSSHandling(board.getBoardTitle()));
+		
+		int rowCount = dao.freeBoardUpdate(board);
+		
+		// 게시글 수정(제목, 내용)을 성공했을 때
+		if(rowCount > 0) {
+
+			if(!deleteList.equals("")) {
+				// 삭제할 해시태그가 있다면!
+				
+				int result = 0;
+				
+				Map<String, Object> deleteMap = new HashMap<>();
+				deleteMap.put("boardNo", board.getBoardNo());
+				deleteMap.put("deleteList", deleteList);
+				
+				result = dao.hashtagDelete(deleteMap);
+				
+				if(result > 0) {
+					rowCount += dao.hashtagDelete2(deleteMap);
+				}
+			}
+			
+			// 새로 추가할 해시태그가 있다면,,,
+			if(insertList != null) {
+				rowCount += dao.hashtagUpdate(board.getBoardNo(), insertList);
+			}
+		}
+		
+		return rowCount;
+	}
+
+	@Override
+	public int freeBoardDelete(Map<String, Object> map) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 
 }

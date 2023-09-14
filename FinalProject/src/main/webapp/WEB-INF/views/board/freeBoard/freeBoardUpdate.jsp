@@ -32,15 +32,15 @@
 
 	<section id="main-container">
         <div id="title-area">
-            <div><h1>자유 게시판 ㅣ 글쓰기</h1></div>
-            <div>자유 게시판 게시글을 작성할 수 있습니다.</div>
+            <div><h1>자유 게시판 ㅣ 수정하기</h1></div>
+            <div>자유 게시판 게시글을 수정할 수 있습니다.</div>
         </div>
 
         <div id="middle-area">
-            <form action="/board2/3/insert" method="POST" id="write-form">
+            <form action="update" method="POST" id="write-form">
 
                 <div id="title-middle-area">
-                    <input placeholder="제목을 입력해 주세요." name="boardTitle" id="title-textArea">
+                    <input placeholder="제목을 입력해 주세요." name="boardTitle" id="title-textArea" value="${board.boardTitle}">
                 </div>
 
                 <div id="hashtag-area">
@@ -48,23 +48,28 @@
                         <input type="text" id="hashtag-textArea" placeholder="#해시태그 추가">
                     </div>
                     <div id="hashtag-making-area">
-                        <!-- <input type="text" readonly class="hashtag">
-                        #오운완
-                        <i class="fa-solid fa-circle-xmark" style="color: #ffffff;"></i>
-                        </input>
-                        <div class="hashtag">#OOTD</div> -->
+                        <c:if test="${!empty board.tagList}" >
+                            <c:forEach items="${board.tagList}" var="hashtag">
+                                <div class="hashtag" data-tagno="${hashtag.tagNo}">
+                                    ${hashtag.tagContent}
+                                    <i class="fa-solid fa-circle-xmark" style="color: #ffffff;"></i>
+                                </div>
+                            </c:forEach>
+                        </c:if>
                     </div>
                 </div>
 
-                <textarea id="summernote" name="boardContent"></textarea>
+                <textarea id="summernote" name="boardContent">${board.boardContent}</textarea>
                 <input type="hidden" name="imgSrc" value="">
                 
                 <div id="button-area">
-                    <button class="btnStyle" id="write-btn">작성</button>
+                    <button class="btnStyle" id="write-btn">수정</button>
                     <button type="cancel" class="btnStyle" id="cancel-btn">취소</button>
                 </div>
 
                 <input type="hidden" name="hashtags">
+                <input type="hidden" name="cp" value="${param.cp}">
+                <input type="hidden" name="deleteList" value="">
             </form>
         </div>
 
@@ -72,9 +77,9 @@
 
     <!-- footer include -->
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
-    
-    <!-- freeBoardWrite.js 연결 -->
-	<script src="/resources/js/board/freeBoard/freeBoardWrite.js"></script>
+
+    <!-- freeBoardUpdate.js 연결 -->
+	<script src="/resources/js/board/freeBoard/freeBoardUpdate.js"></script>
 
 </body>
 </html>

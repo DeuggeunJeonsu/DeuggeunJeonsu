@@ -73,16 +73,16 @@
             <!-- 게시글 해시태그 영역 -->
             <div id="hashtag-area">
 
-                <a href="#">
-                    <div class="hashtag">#오운완</div>
-                </a>
-                <a href="#">
-                    <div class="hashtag">#OOTD</div>
-                </a>
-                <a href="#">
-                    <div class="hashtag">#운동폼미쳤다</div>
-                </a>
+                <c:if test="${!empty board.tagList}" >
 
+                    <c:forEach items="${board.tagList}" var="hashtag">
+                        <a href="#">
+                            <div class="hashtag">#${hashtag.tagContent}</div>
+                        </a>
+                    </c:forEach>
+
+                </c:if>
+                
             </div>
     
             <!-- 게시글 상세 조회 내용 영역 -->
@@ -109,10 +109,14 @@
 
                 <div id="btn-area">
                     <div>
-                        <button>목록으로</button>
+                        <button id="goToListBtn">목록으로</button>
                         
-                        <button>수정하기</button>
-                        <button>삭제하기</button>
+                        <c:if test="${loginMember.memberNo == board.memberNo}">
+                            <div>
+                                <button id="updateBtn">수정하기</button>
+                                <button id="deleteBtn">삭제하기</button>
+                            </div>
+                        </c:if>
                     </div>
                 </div>
 

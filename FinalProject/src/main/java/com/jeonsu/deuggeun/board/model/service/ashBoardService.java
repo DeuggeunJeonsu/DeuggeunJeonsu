@@ -50,5 +50,20 @@ public interface ashBoardService {
 	 */
 	int updateFreeBoardReadCount(int boardNo);
 
+	/** 게시글 수정
+	 * @param board
+	 * @param cp
+	 * @param tagContent
+	 * @param imgSrc
+	 * @param deleteList
+	 * @return rowCount
+	 */
+	int freeBoardUpdate(Board board, int cp, List<String> insertList, List<String> imgSrc, String deleteList);
+
+	/** 게시글 삭제
+	 * @param map
+	 * @return
+	 */
+	int freeBoardDelete(Map<String, Object> map);
 
 }
