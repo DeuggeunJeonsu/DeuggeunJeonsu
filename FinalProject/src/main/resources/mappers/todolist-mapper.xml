@@ -2,23 +2,41 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="todolistMapper">
   
-	<resultMap type="TodoList" id="">
-	    <id property="ListNo" column=""/>
-	    <result property="listContent" column=""/>
-	    <result property="listFl" column=""/>
-	    <result property="listDetailNo" column=""/>
-	    <result property="memberNo" column=""/>
-	    <result property="lCreateDt" column=""/>
+	<resultMap type="TodoList" id="list_rm">
+	    <id property="listNo" column="LIST_NO"/>
+	    <result property="listContent" column="LIST_CONTENT"/>
+	    <result property="listFl" column="LIST_FL"/>
+	    <result property="listDetailNo" column="LIST_DETAIL_NO"/>
+	    <result property="memberNo" column="MEMBER_NO"/>
+	    <result property="lCreateDt" column="L_CREATE_DT"/>
 	</resultMap>
   
   
   
-  <select id="selectTodoListAll" resultType="map">
-  	SELECT LIST_NO, TO_CHAR(SYSDATE, 'YYYY-MM-DD') L_CREATE_DT
-	FROM TODOLIST
-	JOIN TODOLIST_DATE USING(LIST_NO)
-	WHERE MEMBER_NO = 1
-  </select>
+	<select id="selectTodoListAll" resultType="map">
+		SELECT LIST_NO, TO_CHAR(L_CREATE_DT, 'YYYY-MM-DD') L_CREATE_DT, LIST_FL
+		FROM TODOLIST
+		JOIN TODOLIST_DATE USING(LIST_NO)
+		WHERE MEMBER_NO = #{loginMemberNo}
+	</select>
+	 
+	 
+	<select id="DetailedTodoList" resultMap="list_rm">
+		SELECT LIST_NO, LIST_CONTENT, LIST_FL, LIST_DETAIL_NO, MEMBER_NO, TO_CHAR(L_CREATE_DT, 'YYYY-MM-DD')L_CREATE_DT
+		FROM TODOLIST
+		JOIN TODOLIST_DATE USING(LIST_NO)
+		WHERE MEMBER_NO = 1
+		AND L_CREATE_DT = #{choiceTodoDate}
+	</select>
   
+  
+  	<update id="todoUpdate">
+	    UPDATE TODOLIST SET LIST_FL =
+	    <choose>
+	        <when test="{listFl}">'Y'</when>
+	        <otherwise>'N'</otherwise>
+	    </choose>
+	    WHERE LIST_NO = #{listNo}
+	</update>
   
 </mapper>

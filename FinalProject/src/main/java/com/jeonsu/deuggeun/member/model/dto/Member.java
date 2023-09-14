@@ -22,7 +22,7 @@ public class Member {
 	private String memberDeleteFlag; // 탈퇴 여부(N: 탈퇴X, Y: 탈퇴O)
 	private int authority; // 회원 권한(1:일반, 2:관리자)
 	
-	private String attendenceDate; // 출석일
+//	private String attendenceDate; // 출석일
 	
 //	private List<Bmi> bmiList; // 회원 bmi 번호
 	

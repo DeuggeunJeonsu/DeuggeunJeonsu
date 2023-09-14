@@ -46,7 +46,12 @@ th{
     height: 30px;
 }
 
+tr{
+    width: 1000px;
+}
+
 td{
+    width: 1000px;
     text-align: center;
     border-bottom: 1px solid grey;
     height: 35px;
@@ -127,7 +132,7 @@ main{
 }
 
 .pagination a{
-    display: block;
+    /* display: block; */
     width: 100%;
     height: 100%;
 }
@@ -236,4 +241,47 @@ tbody > tr:nth-child(1) > td:nth-child(1){
 
 #search-button:hover{
     cursor: pointer;
+}
+
+
+/* 페이지네이션 영역 */
+.pagination-area {
+    text-align: center;
+    margin-top: 20px;
+    position :relative;
+    /*left : 330px;*/
+    border: none !important;
+}
+
+.pagination {
+    display: inline-block;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.pagination li {
+    display: inline;
+    margin: 0 5px;
+}
+
+.pagination li a {
+    text-decoration: none;
+    padding: 5px 10px;
+    background-color: #e6e6e6;
+    color: #000;
+    transition: background-color 0.3s, color 0.3s;
+    border-radius: 10px;
+    /* 버튼 둥글게 만듦 */
+}
+
+.pagination li a.current {
+    background-color: #99E1ED;
+    color: #fff;
+}
+
+.pagination li a:hover {
+    background-color: #99E1ED;
+    color: #fff;
+
 }

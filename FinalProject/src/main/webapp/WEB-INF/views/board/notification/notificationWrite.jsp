@@ -11,7 +11,7 @@
     <%-- freeBoardWrite-style.css 연결 --%>
     <link rel="stylesheet" href="/resources/css/board/notification/notificationWrite-style.css">
 
-    <%-- <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script> --%>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
 
     <link rel="apple-touch-icon" sizes="180x180" href="/resources/images/favicon_io/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/resources/images/favicon_io/favicon-32x32.png">
@@ -45,8 +45,8 @@
         </div>
 
         <div id="middle-area">
-            <form action="/board/4/notificationWrite/insert" method="post" id="write-form" 
-				enctype="multipart/form-data">
+            <form action="/board/4/insert" method="post" id="write-form" 
+				>
                 
                 <div id="title-middle-area">
 					<div id="ncCheckbox">
@@ -54,14 +54,15 @@
 						<div id="ncBignews" class="popContent list">
 							<input type="checkbox" id="ncBigCheck">
 							<label for="ncBigCheck" id="ncCheck-text">중요 공지사항</label>
+                            <%-- <input type="hidden" id="checkFL" name="tagNo"> --%>
 						</div>
 
 						
 					</div>
-                    <textarea name="nctitle" id="title-textArea" placeholder="제목을 입력해 주세요."></textarea>
+                    <textarea name="boardTitle" id="title-textArea" placeholder="제목을 입력해 주세요."></textarea>
                 </div>
 
-                <textarea name="ncSummernote" id="summernote"></textarea>
+                <textarea name="boardContent" id="summernote"></textarea>
 
                 <div id="button-area">
                     <button class="btnStyle" id="write-btn" onclick="return insertBtn()">작성</button>

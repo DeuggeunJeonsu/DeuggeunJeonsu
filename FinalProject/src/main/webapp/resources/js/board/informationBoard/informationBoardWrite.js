@@ -20,7 +20,7 @@ document.getElementById("write-form").addEventListener("submit", e =>{
 
 // -----------------------------------------------------------------------------------------------
 
-// summernote 에디터 불러오기
+//summernote 에디터 불러오기
 $(document).ready(function() {
     $('#summernote').summernote({
 
@@ -50,3 +50,4 @@ $(document).ready(function() {
 const editer =  document.getElementById("summernote");
 let charCount = document.getElementById("charCount");
 
+editer.innerHTML = '<p>ㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴ<img src="/summernoteImage/af40b409-d888-49e8-861d-42d603efc6b6.png" style="width: 256px;"></p><p><img src="/summernoteImage/ccde27d0-f17a-48df-8b7b-c6387d0c58b8.png" style="width: 256px;">ㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴ<br></p>';

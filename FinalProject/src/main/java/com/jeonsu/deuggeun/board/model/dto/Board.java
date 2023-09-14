@@ -48,5 +48,7 @@ public class Board {
 	
 	// 운동 루틴 목록
 //	private List<Routine> routineList;
-	
+
+	// 해시태그 목록
+	private List<Hashtag> tagList;
 }

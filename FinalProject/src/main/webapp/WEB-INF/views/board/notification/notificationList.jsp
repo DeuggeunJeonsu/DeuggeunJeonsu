@@ -2,6 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
+<c:set var="boardList" value="${map.boardList}">
+</c:set>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -76,30 +78,28 @@
 									<td>2023-08-20</td>
 									<td>1</td>
 								</tr>
+								<c:choose>
+								   <c:when test="${empty boardList}">
+										<tr>
+											<td colspan="6">
+												페이지가 존재하지 않습니다.
+											</td>
+										</tr>
+								   </c:when>
+									
+								   <c:otherwise>
+										<c:forEach items="${boardList}" var="board">
+												<tr>
+													<td>${board.boardNo}</td>
+													<td><a href="#">${board.boardTitle}</a></td>
+													<td>${board.memberNickname}</td>
+													<td>${board.boardCreateDate}</td>
+													<td>1</td>
+												</tr>
+										</c:forEach>
+								   </c:otherwise>
+								</c:choose>
 
-								<tr>
-									<td>3</td>
-									<td>회원가입 시 필수 약관동의에 대하여</td>
-									<td>관리자</td>
-									<td>2023-08-20</td>
-									<td>1</td>
-								</tr>
-
-								<tr>
-									<td>2</td>
-									<td>회원가입 시 필수 약관동의에 대하여</td>
-									<td>관리자</td>
-									<td>2023-08-20</td>
-									<td>1</td>
-								</tr>
-
-								<tr>
-									<td>1</td>
-									<td>회원가입 시 필수 약관동의에 대하여</td>
-									<td>관리자</td>
-									<td>2023-08-20</td>
-									<td>1</td>
-								</tr>
 							</tbody>
 						</table>
 
@@ -111,6 +111,7 @@
 						<a href="/board/4/list/notificationWrite"><button
 								type="button" id="writeBtn">글쓰기</button></a>
 					</div>
+
 
 					<div class="pagination-area">
 
@@ -153,7 +154,6 @@
 
 						</ul>
 					</div>
-
 				</div>
 			</div>
 		</form>

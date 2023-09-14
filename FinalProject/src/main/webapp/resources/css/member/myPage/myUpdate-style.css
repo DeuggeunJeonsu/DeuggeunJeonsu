@@ -30,7 +30,6 @@
   border-radius: 3px;
   }
   .aboutUserInfoEdit:focus{
-  background-color:rgba(52, 196, 219, 0.5);
   outline:1px solid rgba(52, 196, 219, 0.5);
   }
   #updateUserInfo{
@@ -151,6 +150,10 @@ form[name='myPageFrm']{position: relative;}
   border-radius: 50%;
 }
 
-.myPageProfile{
+.myPageProfile img{
   display: none;
+}
+
+.myPageProfile{
+  border-color: #00ff0000;
 }

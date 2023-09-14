@@ -25,10 +25,10 @@
         <a href="/myPage/oneOnOneInquiry">
             <div class="sideBarMenu">1:1 문의</div>
         </a>
-        <a href="#">
+        <a href="/myPage/myUpdate">
             <div class="sideBarMenu">내 정보 수정</div>
         </a>
-        <a href="#">
+        <a href="/myPage/mySecession">
             <div class="sideBarMenu">회원 탈퇴</div>
         </a>
     </div>
