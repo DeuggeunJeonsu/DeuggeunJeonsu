@@ -8,6 +8,8 @@ import java.util.UUID;
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -21,30 +23,38 @@ import com.jeonsu.deuggeun.board.model.service.jhjBoardService;
 
 /* 공지사항 기능 Controller */
 @Controller
-@RequestMapping("/board/4")
+@RequestMapping("/board")
 public class NotificationController2 {
 
 	@Autowired
 	private jhjBoardService service;
 
 	/* 공지사항 게시글 작성 */
-	@PostMapping("/insert") 
-	public String ncinsert(Board board, RedirectAttributes ra) {
+	@PostMapping("/{boardCode:[4]}/insert") 
+	public String ncinsert(Board board,
+			RedirectAttributes ra,
+			@PathVariable("boardCode") int boardCode,
+			Model model
+			) {
 		
 		board.setMemberNo(1);
 		board.setBoardCode(4);
+		
+		System.out.println(board.getTagNo() + "중요 체크");
 
 		int result = service.ncInsert(board);
 		
 		String message = null;
-		String path = null;;
+		String path = "redirect:/";
 		if(result > 0) {
 			message = "작성 되었습니다.";
-			path = "board/notification/notificationList";
+			path += "board/"+ boardCode +"/list";
+			
+			model.addAttribute("board",board);
 			
 		}else {
 			message = "[error] 작성 실패";
-			path = "/insert";
+			path += "insert";
 			
 		}
 		ra.addFlashAttribute("message", message);
@@ -53,7 +63,7 @@ public class NotificationController2 {
 		return path; 
 	}
 
-	@PostMapping(value="/uploadSummernoteImageFileNC", produces = "application/json")
+	@PostMapping(value="/{boardCode:[4]}/uploadSummernoteImageFileNC", produces = "application/json")
 	@ResponseBody
 	public JsonObject uploadSummernoteImageFile(@RequestParam("file") MultipartFile multipartFile) {
 		JsonObject jsonObject = new JsonObject();

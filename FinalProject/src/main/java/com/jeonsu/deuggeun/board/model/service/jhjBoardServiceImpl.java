@@ -37,13 +37,38 @@ public class jhjBoardServiceImpl implements jhjBoardService{
 		
 		Pagination pagination = new Pagination(cp, listCount); 
 		
+		
 		List<Board> boardList = dao.selectNcBoardList(pagination, boardCode);
 		
-		Map<String , Object> map = new HashMap();
+		
+		Map<String , Object> map = new HashMap<>();
+		
 		
 		map.put("boardList",boardList );
+		map.put("pagination", pagination);
 		
 		return map;
 	}
+
+	// 공지사항 목록 게시글 검색
+	@Override
+	public Map<String, Object> selectNcBoardList(Map<String, Object> boardMap, int cp) {
+		
+		int listCount = dao.getListCount(boardMap);
+		
+		Pagination pagination = new Pagination(cp, listCount);
+		
+		List<Board> boardList = dao.selectNcBoardList(pagination, boardMap);
+		
+		Map<String, Object> map = new HashMap<>();
+		
+		map.put("pagination", pagination);
+		map.put("boardList", boardList);
+		
+		
+		return map;
+	}
+
+	
 
 }
