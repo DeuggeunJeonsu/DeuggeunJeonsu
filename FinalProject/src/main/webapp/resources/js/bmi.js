@@ -48,7 +48,7 @@ bmiCalculate.addEventListener("click", ()=>{
         alert("신장을 입력해주세요");
         return;
     }
-    if(!reqExp.text(heightInput.value.trim())){
+    if(!reqExp.text(heightInput.value)){
         alert("신장이 제대로 입력되지 않았습니다");
         return;
     }
@@ -57,7 +57,7 @@ bmiCalculate.addEventListener("click", ()=>{
         alert("체중을 입력해주세요");
         return;
     }
-    if(!reqExp.text(weightInput.value.trim())){
+    if(!reqExp.text(weightInput.value)){
         alert("체중이 제대로 입력되지 않았습니다");
         return;
     }
