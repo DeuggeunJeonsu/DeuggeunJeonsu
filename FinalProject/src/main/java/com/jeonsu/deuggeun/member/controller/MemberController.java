@@ -124,7 +124,7 @@ public class MemberController {
 		int result = service.signUp(inputMember);
 		
 		// INSERT 성공/실패 시 메세지 설정
-		String message = result>0 ? (inputMember.getMemberNickname() + "님의 가입을 환영합니다.") : "회원 가입에 실패했습니다.";
+		String message = result> 0 ? (inputMember.getMemberNickname() + "님의 가입을 환영합니다.") : "회원 가입에 실패했습니다.";
 		
 		// INSERT 성공시 메인페이지로, 실패시 다시 회원가입 페이지로
 		String path = "redirect:"+(result>0 ? "/" : "signUp");
