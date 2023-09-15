@@ -1,7 +1,6 @@
 // 첨부한 이미지 미리보기
 $(document).ready(function () {
     var fileTarget = $('.fileBox .inputHidden');
-    console.log(test);
 
     fileTarget.on('change', function () {
         if (window.FileReader) {
