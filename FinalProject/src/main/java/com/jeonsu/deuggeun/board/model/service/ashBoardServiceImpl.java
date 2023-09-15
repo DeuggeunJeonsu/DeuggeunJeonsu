@@ -121,8 +121,8 @@ public class ashBoardServiceImpl implements ashBoardService{
 		// 게시글 수정(제목, 내용)을 성공했을 때
 		if(rowCount > 0) {
 
+			// 삭제할 해시태그가 있다면!
 			if(!deleteList.equals("")) {
-				// 삭제할 해시태그가 있다면!
 				
 				int result = 0;
 				
@@ -130,8 +130,11 @@ public class ashBoardServiceImpl implements ashBoardService{
 				deleteMap.put("boardNo", board.getBoardNo());
 				deleteMap.put("deleteList", deleteList);
 				
-				result = dao.hashtagDelete(deleteMap); // BOARD_HASHTAG 테이블에서 해시태그 삭제
-				result += dao.hastagDelete2(deleteMap); // HASHTAG 테이블에서 해시태그 삭제
+				// BOARD_HASHTAG 테이블에서 해시태그 삭제
+				result = dao.hashtagDelete(deleteMap); 
+				
+				// HASHTAG 테이블에서 해시태그 삭제
+				result += dao.hastagDelete2(deleteMap); 
 			}
 			
 			// 새로 추가할 해시태그가 있을 경우 해시태그 새로 삽입
@@ -155,8 +158,39 @@ public class ashBoardServiceImpl implements ashBoardService{
 		if(result > 0) {
 		
 			// 게시글에 포함되어 있던 해시태그 삭제
-			result = dao.freeBoardHashtagDelete(map);
+			result += dao.freeBoardHashtagDelete(map);
+			result += dao.freeBoardImageDelete(map);
 		}
+		
+		return result;
+	}
+
+	// 팔로우 여부 확인
+	@Override
+	public int memberFollowCheck(Map<String, Object> map) {
+		return dao.memberFollowCheck(map);
+	}
+
+	// 멤버 팔로우
+	@Transactional(rollbackFor = Exception.class)
+	@Override
+	public int memberFollow(Map<String, Integer> paramMap) {
+		
+		int result = dao.memberFollow(paramMap);
+		
+		if(result == 0) return -1;
+		
+		return result;
+	}
+
+	// 멤버 언팔로우
+	@Transactional(rollbackFor = Exception.class)
+	@Override
+	public int memberUnfollow(Map<String, Integer> paramMap) {
+		
+		int result = dao.memberUnfollow(paramMap);
+		
+		if(result == 0) return -1;
 		
 		return result;
 	}

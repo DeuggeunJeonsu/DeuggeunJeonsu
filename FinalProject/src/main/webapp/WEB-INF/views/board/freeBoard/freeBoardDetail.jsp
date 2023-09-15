@@ -20,6 +20,10 @@
 
 <%-- freeBoardDetail-style.css 연결 --%>
 <link rel="stylesheet" href="/resources/css/board/freeBoard/freeBoardDetail-style.css">
+
+<script>
+    const followCheck = "${followCheck}";
+</script>
 </head>
 <body>
 
@@ -48,23 +52,38 @@
             <div id="writer-info-area">
 
                 <div id="profile-area">
-                    <img src="/resources/images/user.png">
+                    <c:if test="${empty board.profileImage}" >
+                        <img src="/resources/images/user.png">
+                    </c:if>
+
+                    <c:if test="${!empty board.profileImage}" >
+                        <img src="${board.profileImage}">
+                    </c:if>
                 </div>
 
                 <div id="nick-area">
                     
                     <div id="nickname"><a href="#">${board.memberNickname}</a></div>
                     <div>
-                        <button id="following-btn">
-                            <i class="fa-solid fa-circle-check whiteChk" style="color: #ffffff;"></i>    
-                            <i class="fa-solid fa-circle-check blueChk" style="color: #99e1ed; display: none"></i>
-                            following
-                        </button>
-                        <button id="follow-btn" style="display: none">
-                            <i class="fa-solid fa-circle-plus whiteChk2" style="color: #ffffff; display: none"></i>
-                            <i class="fa-solid fa-circle-plus blueChk2" style="color: #99e1ed;"></i>
-                            follow
-                        </button>
+                        <c:if test="${board.memberNo != loginMember.memberNo && loginMember != null}">
+
+                            <c:if test="${empty followCheck}">
+                                <button id="follow-btn">
+                                    <i class="fa-solid fa-circle-plus whiteChk2" style="color: #ffffff; display: none"></i>
+                                    <i class="fa-solid fa-circle-plus blueChk2" style="color: #99e1ed;"></i>
+                                    follow
+                                </button>
+                            </c:if>
+
+                            <c:if test="${!empty followCheck}">
+                                <button id="following-btn">
+                                    <i class="fa-solid fa-circle-check whiteChk" style="color: #ffffff;"></i>    
+                                    <i class="fa-solid fa-circle-check blueChk" style="color: #99e1ed; display: none"></i>
+                                    following
+                                </button>
+                            </c:if>
+
+                        </c:if>
                     </div>
                 </div>
 
@@ -218,6 +237,7 @@
     <script>
 
         const boardNo = "${board.boardNo}";
+        const boardMemberNo = "${board.memberNo}";
         const loginMemberNo = "${loginMember.memberNo}";
 
     </script>

@@ -66,4 +66,22 @@ public interface ashBoardService {
 	 */
 	int freeBoardDelete(Map<String, Object> map);
 
+	/** 팔로우 여부 확인
+	 * @param map
+	 * @return
+	 */
+	int memberFollowCheck(Map<String, Object> map);
+
+	/** 멤버 팔로우
+	 * @param paramMap
+	 * @return result
+	 */
+	int memberFollow(Map<String, Integer> paramMap);
+
+	/** 멤버 언팔로우
+	 * @param paramMap
+	 * @return result
+	 */
+	int memberUnfollow(Map<String, Integer> paramMap);
+
 }
