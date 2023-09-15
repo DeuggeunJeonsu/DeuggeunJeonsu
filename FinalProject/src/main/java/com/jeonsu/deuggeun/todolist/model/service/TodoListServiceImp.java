@@ -33,4 +33,14 @@ public class TodoListServiceImp implements TodoListService{
 		return dao.todoUpdate(updateTodo);
 	}
 	
+	@Override
+	public int todoDelete(int todoNo) {
+		return dao.todoDelete(todoNo);
+	}
+	
+	@Override
+	public int todoInsert() {
+		return dao.todoInsert();
+	}
+	
 }

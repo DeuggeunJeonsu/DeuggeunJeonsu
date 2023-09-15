@@ -29,4 +29,21 @@ public class TodoListDao {
 	public int todoUpdate(TodoList updateTodo) {
 		return sqlSession.update("todolistMapper.todoUpdate", updateTodo );
 	}
+
+	//  체크박스 내용 삭제 시
+	public int todoDelete(int todoNo) {
+		return sqlSession.delete("todolistMapper.todoDelete", todoNo);
+	}
+
+	// 체크박스 내용 추가
+	public int todoInsert() {
+		int result = sqlSession.delete("todolistMapper.todoInsert");
+		
+		int result2 = 0;
+		if(result > 0 ) {
+			result2 = sqlSession.delete("todolistMapper.todoDateInsert");
+		}
+		return result2; 
+		
+	}
 }
