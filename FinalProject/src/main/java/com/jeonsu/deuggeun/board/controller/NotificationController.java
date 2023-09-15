@@ -44,8 +44,7 @@ public class NotificationController {
 			@RequestParam(value="cp", required = false, defaultValue = "1") int cp
 			) {
 		
-		System.out.println(cp);
-
+		
 		if(boardMap.get("searchTitle") == null) {
 
 			// 공지사랑 목록 조회
