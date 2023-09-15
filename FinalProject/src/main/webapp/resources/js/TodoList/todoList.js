@@ -56,31 +56,18 @@ function buildCalendar() {
         newDIV.innerHTML = leftPad(nowDay.getDate());
         nowColumn.append(newDIV);
 
-        // console.log("nowDate"+ nowDay.getDate())
-        // if (document.querySelector(".hiddenEl") !=  null && nowDay.getDate() == document.querySelector(".hiddenEl").value) {
-                
-        //     newDIV.onclick = function () { choiceDate(this); }
-        //      choiceDate(newDIV);
-             
-        // }
-        
-
-
-
         if (nowDay < today) {
             newDIV.className = "pastDay";
             newDIV.onclick = function () { choiceDate(this); }
         } else if (nowDay.getFullYear() == today.getFullYear() && nowDay.getMonth() == today.getMonth() && nowDay.getDate() == today.getDate()) {
            
             newDIV.className = "today";
-           
-            // newDIV.onclick = function () { choiceDate(this); }
-            // choiceDate(newDIV);
-           
-            
+            newDIV.classList.add("choiceDay")
+            newDIV.onclick = function() { choiceDate(this); }
 
         } else {
             newDIV.className = "futureDay";
+            newDIV.onclick = function () { choiceDate(this); }
 
             // 날짜가 오늘부터 14일 이내인지 확인합니다.
             let fourteenDaysFromNow = new Date();
@@ -92,20 +79,76 @@ function buildCalendar() {
                 newDIV.classList.add("possible-futureDay");
             }
         }
+       
 
         if (nowDay.getDay() == 6) {
             nowRow = tbody_Calendar.insertRow();
         }
-       
-    }
+        
+        // if(document.querySelector(".hiddenEl") != null&&document.querySelector(".hiddenEl").value !=  "" ){
+        //     if(newDIV.innerText == null&&document.querySelector(".hiddenEl").value ){
+        //         newDIV.onclick = function () { choiceDate(this); }
+        //     }
+        //     // break;
+        // }
+        // else{
+        //     clickDate(nowDay,firstDate,lastDate,nowDay)
+        // }
 
+        
+
+    }
+    // 삭제해도됨
+    function clickDate(firstDate,lastDate,nowDay){
+
+        // 2주치 선택 가능하게 만들기
+        for (let nowDay = firstDate; nowDay <= lastDate; nowDay.setDate(nowDay.getDate() + 1)) {
+            let nowColumn = nowRow.insertCell();
+            var newDIV = document.createElement("p");
+            let newDIV2 = document.createElement("i");
+            newDIV.innerHTML = leftPad(nowDay.getDate());
+            nowColumn.append(newDIV);
+    
+           
+    
+           if (nowDay < today) {
+                newDIV.className = "pastDay";
+                newDIV.onclick = function () { choiceDate(this); }
+            } else if (nowDay.getFullYear() == today.getFullYear() && nowDay.getMonth() == today.getMonth() && nowDay.getDate() == today.getDate()) {
+               
+                newDIV.className = "today";
+                newDIV.classList.add("choiceDay")
+                newDIV.onclick = function() { choiceDate(this); }
+    
+            } else {
+                newDIV.className = "futureDay";
+                newDIV.onclick = function () { choiceDate(this); }
+    
+                // 날짜가 오늘부터 14일 이내인지 확인합니다.
+                let fourteenDaysFromNow = new Date();
+                fourteenDaysFromNow.setDate(today.getDate() + 14);
+    
+                if (nowDay >= today && nowDay <= fourteenDaysFromNow) {
+                    newDIV.onclick = function () { choiceDate(this); }
+                    newDIV.classList.remove("futureDay");
+                    newDIV.classList.add("possible-futureDay");
+                }
+            }
+           
+    
+            if (nowDay.getDay() == 6) {
+                nowRow = tbody_Calendar.insertRow();
+            }
+           
+        }
+    }
     // ajax,, 여기서 만들어야해
     // i 태그에db에서 가져와서 넣어보기 
     // 동그라미 또는 세모
 
     // 로그인 되었을 때 todolist 캘린더에 
     // 결과 보여주기 
-    
+    console.log(loginMemberNo)
     var newDIV2 = ""
     // 로그인 되었을 때 todolist 캘린더에 결과 보여주기
     if (loginMemberNo != "") {
@@ -253,8 +296,8 @@ function todoslist(choiceTodoDate){
                     // 체크 상세의 번호를 담은 input type = heddin
                     const input2 = document.createElement("input");
                     input2.setAttribute("type" , "hidden");
-                    input2.classList.add("list_no");
                     input2.value = todo.listNo;
+                    input2.classList.add("list_no");
                 
             
                     // 랜덤 아이디 생성
@@ -300,8 +343,8 @@ function todoslist(choiceTodoDate){
                     // 각 요소를 div에 추가
                     // div.append(DateDIV)
                     div.appendChild(input);
-                    div.appendChild(input2);
                     div.appendChild(label);
+                    div.appendChild(input2);
                     div.appendChild(span);
                     div.appendChild(button);
                     button.appendChild(i);
@@ -504,7 +547,7 @@ function updateTodo(checkbox,listFl,choiceTodoDate ) {
     // 체크 상태 저장 변수
     const completed = listFl;
     console.log(listFl)
-    const ListNo = checkbox.nextElementSibling.value;
+    const ListNo = checkbox.nextElementSibling.nextElementSibling.value;
     const todosToUpdate = { listNo: ListNo, listFl: completed };
 
     // 서버로 업데이트할 정보를 전송
@@ -530,7 +573,7 @@ function updateTodo(checkbox,listFl,choiceTodoDate ) {
                 // .choiceDay 요소의 텍스트 내용을 가져와서 inputHidden의 value에 할당
                 const choiceDayText = choiceDayElement.innerText;
 
-            
+                
                 inputHidden.value = choiceDayText;
 
                 // body에 inputHidden 요소 추가
