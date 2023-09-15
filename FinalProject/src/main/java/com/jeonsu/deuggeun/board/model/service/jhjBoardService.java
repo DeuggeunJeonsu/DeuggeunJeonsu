@@ -19,4 +19,12 @@ public interface jhjBoardService {
 	 */
 	Map<String, Object> selectNcBoardList(int boardCode, int cp);
 
+	/** 공지사항 목록 게시글 검색
+	 * @param boardMap
+	 * @param cp
+	 * @return
+	 */
+	Map<String, Object> selectNcBoardList(Map<String, Object> boardMap, int cp);
+
+
 }

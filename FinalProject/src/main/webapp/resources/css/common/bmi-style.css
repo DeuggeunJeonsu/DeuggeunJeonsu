@@ -1,42 +1,219 @@
 * {
     box-sizing: border-box;
-    border: 1px;
+    /* border: 1px solid black; */
 }
 
+/* 컨테이너 영역 */
 body {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    width: 100vw;
     height: 100vh;
-    overflow: hidden;
-    margin: 0;
+    overflow: auto;
     min-width: 1200px;
     min-height: 800px;
 }
+
 #mainContainer {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     border-radius: 5px;
-    height: 90vh;
+    min-width: 800px;
+    height: 100vh;
 }
 
+#contentContainer{
+    min-width:440px;
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    margin: 100px 0 50px;
+}
 
 /* 타이틀 부분 */
-main .title-area {
-    text-align: center;
-    margin-bottom: 20px;
+#titleArea {
+    text-align: start;
+    width: 100%;
+    padding: 0;
 }
-main .title-area p:nth-of-type(1){
+#titleArea p:nth-of-type(1){
     font-size: 30px;
     font-weight: bold;
     margin-bottom: 10px;
-    color: black;
 }
-main .title-area p:nth-of-type(2){
+#titleArea > p:nth-of-type(2){
     font-size: 14px;
-    color: black;
 }
 
+/* 컨탠츠 헤더 */
+#contentHeader{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    padding: 10px 0;
+    border-top: 2px solid #ddd;
+}
+#contentHeader > p{
+    font-size: 20px;
+    margin: 0;
+}
+
+/* BMI관련 전체영역 */
+#bmiArea{
+    display: flex;
+    margin: 10px 0;
+}
+
+/* BMI계산 영역 */
+#calculate-container{
+    display: flex;
+    flex-direction: column;
+    width: 65%;
+    border: 1px solid #ddd;
+}
+.calculate-area{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    padding: 5px 10px;
+}
+
+/* 내부 정렬 설정 */
+.content{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+.content p{
+    margin: 0 10px;
+}
+
+/* 표 좌측 내용 div */
+.input-output-area{
+    display: flex;
+    justify-content: center;
+    padding: 20px 0;
+}
+/* 신장, 체중 div */
+.first-input{
+    padding-left: 10%;
+}
+/* 신장, 체중 input */
+#heightInput, #weightInput{
+    width: 50px;
+    background-color: inherit;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+/* 버튼 영역 */
+.buttonArea{
+    display: flex;
+    align-items: center;
+    width: 25%;
+    margin-left: 20px;
+
+    margin-right: 10px;
+}
+
+/* 계산, 초기화 버튼 */
+#bmiCalculate, #bmiReset{
+    width: 50%;
+    min-width: 55px;
+    margin: 0 5px;
+}
+
+/* 계산법 표시부분 */
+.calculus-title{padding-left: 30%;}
+.calculus-content{
+    display: flex;
+    justify-content: center;
+    padding: 20px 0;
+    width: 40%;
+    margin: auto;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+}
+.calculus{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.calculus > p{
+    margin: 0;
+}
+
+/* BMI 결과표시 부분 */
+.my-bmi{
+    padding-left: 30%;
+}
+#bmiResult{
+    width: 60px;
+    margin-left: 5px;
+    font-size: 30px;
+    border-bottom: 2px solid gray;
+}
+
+/* 내 정보에 저장하기 버튼 */
+#bmiSave{
+    width: 100%;
+    min-width: 120px;
+    margin: 0 5px;
+}
+
+/* BMI 수치별 비만 판정 그래프 */
+.obesity-graph{
+    width: 19%;
+    text-align: center;
+    font-weight: bold;
+    color: black;
+}
+/* 비만 판정 그래프 색상 설정 */
+.obesity-color1{background-color: #8FACCA;}
+.obesity-color2{background-color: #98CB00;}
+.obesity-color3{background-color: #FFD600;}
+.obesity-color4{background-color: #FF8901;}
+.obesity-color5{background-color: #FE2D04;}
+
+/* BMI 아바타 이미지 영역 */
+#bmiAvatarArea{
+    width: 35%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #ddd;
+}
+/* 아바타 */
+#bmiAvatarArea > i{
+    font-size: 20em;
+    color: #FFD600;;
+}
+/* 비만도 결과 */
+#bmiAvatarArea > span{
+    margin-top: 10px;
+    font-size: 15px;
+    font-weight: bold;
+    color: gray;
+}
+
+/* BMI 히스토리 영역 */
+#bmiHistoryArea{
+    width: 100%;
+    height: 200px;
+    margin-bottom: 50px;
+}
+/* 차트 내부 */
+#lineChart{
+    padding-left: 20px;
+}

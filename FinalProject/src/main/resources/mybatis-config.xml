@@ -37,5 +37,6 @@
 		<mapper resource="/mappers/board-mapper.xml" />
 		<mapper resource="/mappers/comment-mapper.xml" />
 		<mapper resource="/mappers/todolist-mapper.xml" />
+		<mapper resource="/mappers/freeBoard-mapper.xml" />
 	</mappers>
 </configuration>

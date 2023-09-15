@@ -1,10 +1,14 @@
 *{ box-sizing: border-box;
-   /* border: 1px solid black;  */ 
+  /*  border: 1px solid black;  */
     
 }
 a{
     text-decoration: none;
     color: black;
+}
+
+body{
+    overflow: hidden;
 }
 
 .Jheader{
@@ -30,10 +34,11 @@ a:hover{
     width: 80%;
     height: 100%;
     min-width: 700px;
-    min-height: 624.3px;
+    min-height: 685px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    
 }
 
 table{
@@ -243,6 +248,25 @@ tbody > tr:nth-child(1) > td:nth-child(1){
     cursor: pointer;
 }
 
+tr > td:nth-child(1){
+    width: 50px;
+}
+
+tr > td:nth-child(2){
+    width: 550px;
+}
+
+tr > td:nth-child(3){
+    width: 100px;
+}
+
+tr > td:nth-child(4){
+    width: 200px;
+}
+
+tr > td:nth-child(5){
+    width: 100px;
+}
 
 /* 페이지네이션 영역 */
 .pagination-area {

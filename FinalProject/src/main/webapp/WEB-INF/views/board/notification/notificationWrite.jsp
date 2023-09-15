@@ -54,7 +54,7 @@
 						<div id="ncBignews" class="popContent list">
 							<input type="checkbox" id="ncBigCheck">
 							<label for="ncBigCheck" id="ncCheck-text">중요 공지사항</label>
-                            <%-- <input type="hidden" id="checkFL" name="tagNo"> --%>
+                            <input type="hidden" id="checkFL" name="tagNo" value="2">
 						</div>
 
 						
@@ -81,4 +81,8 @@
 	<script src="/resources/js/board/notification/notificationWrite.js"></script>
 
 </body>
+
+    <script>
+		const boardCode = ${boardCode}
+	</script>
 </html>

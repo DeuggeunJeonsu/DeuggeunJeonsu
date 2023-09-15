@@ -13,7 +13,7 @@ public class MainController {
 	
 	@RequestMapping("/survey")
 	public String survey() {
-		return "common/survey/survey";
+		return "common/survey";
 	}
 	
 	@RequestMapping("/bmi")

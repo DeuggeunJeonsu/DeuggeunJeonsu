@@ -37,15 +37,16 @@ public class NotificationController {
 		return "board/boardList";
 	}
 
-	@GetMapping("/{boardCode:[0-9]+}/notificationList")
+	@GetMapping("/{boardCode:[4]}/list")
 	public String notificationList(@PathVariable("boardCode") int boardCode,
 			@RequestParam Map<String, Object> boardMap,
 			Model model,
 			@RequestParam(value="cp", required = false, defaultValue = "1") int cp
 			) {
+		
+		System.out.println(cp);
 
-
-		if(boardMap.get("key") == null) {
+		if(boardMap.get("searchTitle") == null) {
 
 			// 공지사랑 목록 조회
 			Map<String, Object> map = service.selectNcBoardList(boardCode, cp);
@@ -55,7 +56,10 @@ public class NotificationController {
 		}else {
 			boardMap.put("boardCode", boardCode);
 			
-			/* Map<String, Object> map = service.selectBoardList(boardMap, cp); */
+			// 게시글 검색
+			 Map<String, Object> map = service.selectNcBoardList(boardMap, cp);
+			 
+			 model.addAttribute("map",map);
 		}
 
 
@@ -64,14 +68,18 @@ public class NotificationController {
 	}
 
 	@GetMapping("/{boardCode:[0-9]+}/list/notificationWrite")
-	public String notificationWrite() {
+	public String notificationWrite(@PathVariable("boardCode") int boardCode,
+			Model model) {
 
+		model.addAttribute("boardCode", boardCode);
 		return "board/notification/notificationWrite";
 	}
 
 	@GetMapping("/{boardCode:[0-9]+}/list/notificationDetail")
-	public String notificationDetail() {
+	public String notificationDetail(
+			) {
 
+		
 		return "board/notification/notificationDetail";
 	}
 

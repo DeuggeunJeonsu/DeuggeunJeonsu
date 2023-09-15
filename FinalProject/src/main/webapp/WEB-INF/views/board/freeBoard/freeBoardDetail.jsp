@@ -1,11 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+    <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>게시판 이름</title>
+<title>자유 게시판</title>
 
 <%-- 헤더 아이콘 --%>
 <link rel="apple-touch-icon" sizes="180x180" href="/resources/images/favicon_io/apple-touch-icon.png">
@@ -36,9 +38,9 @@
 
             <!-- 게시글 제목 -->
             <div id="title-middle-area">
-                <div id="title">제목입니다.</div>
+                <div id="title">${board.boardTitle}</div>
                 <div>
-                    <div id="writing-date">작성일 23.01.01&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div> | <div id="readCount">조회수 999</div>
+                    <div id="writing-date">작성일&nbsp;&nbsp;${board.boardCreateDate}&nbsp;&nbsp;&nbsp;&nbsp;</div> | <div id="readCount">조회수&nbsp;&nbsp;${board.readCount}</div>
                 </div>
             </div>
 
@@ -51,7 +53,7 @@
 
                 <div id="nick-area">
                     
-                    <div id="nickname"><a href="#">닉네임</a></div>
+                    <div id="nickname"><a href="#">${board.memberNickname}</a></div>
                     <div>
                         <button id="following-btn">
                             <i class="fa-solid fa-circle-check whiteChk" style="color: #ffffff;"></i>    
@@ -71,48 +73,50 @@
             <!-- 게시글 해시태그 영역 -->
             <div id="hashtag-area">
 
-                <a href="#">
-                    <div class="hashtag">#오운완</div>
-                </a>
-                <a href="#">
-                    <div class="hashtag">#OOTD</div>
-                </a>
-                <a href="#">
-                    <div class="hashtag">#운동폼미쳤다</div>
-                </a>
+                <c:if test="${!empty board.tagList}" >
 
+                    <c:forEach items="${board.tagList}" var="hashtag">
+                        <a href="#">
+                            <div class="hashtag">#${hashtag.tagContent}</div>
+                        </a>
+                    </c:forEach>
+
+                </c:if>
+                
             </div>
     
             <!-- 게시글 상세 조회 내용 영역 -->
             <div id="board-detail-area">
 
-                <div id="board-content-area">
-                    <div>
-                        <img src="../../../resources/images/market/bono.png">
-                    </div>
-                    
-                    <pre>
-안녕하세요
-오늘 가입했습니다
-잘 부탁드려용
-                    </pre>
-                </div>
+                <div id="board-content-area">${board.boardContent}</div>
     
                 <!-- 게시글 버튼 영역 -->
                 <div class="board-like">
-                    <div class="like-cnt unchecked" id="like-cnt">
-                        <i class="like-btn fa-solid fa-heart fa-2x"></i>
-                    </div>
+                    <c:if test="${empty likeCheck}" >
+                        <div class="like-cnt" id="like-cnt">
+                            <i class="like-btn fa-solid fa-heart fa-2x"></i>
+                        </div>
+                    </c:if>
+
+                    <c:if test="${!empty likeCheck}" >
+                        <div class="like-cnt" id="like-cnt" style="background-color: #99E1ED">
+                            <i class="like-btn fa-solid fa-heart fa-2x"></i>
+                        </div>
+                    </c:if>
                 </div>
 
-                <div class="likeCount">99</div>
+                <div class="likeCount">${board.likeCount}</div>
 
                 <div id="btn-area">
                     <div>
-                        <button>목록으로</button>
+                        <button id="goToListBtn">목록으로</button>
                         
-                        <button>수정하기</button>
-                        <button>삭제하기</button>
+                        <c:if test="${loginMember.memberNo == board.memberNo}">
+                            <div>
+                                <button id="updateBtn">수정하기</button>
+                                <button id="deleteBtn">삭제하기</button>
+                            </div>
+                        </c:if>
                     </div>
                 </div>
 
@@ -210,6 +214,13 @@
         </div>
 
 	</section>
+
+    <script>
+
+        const boardNo = "${board.boardNo}";
+        const loginMemberNo = "${loginMember.memberNo}";
+
+    </script>
 
     <!-- footer include -->
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
