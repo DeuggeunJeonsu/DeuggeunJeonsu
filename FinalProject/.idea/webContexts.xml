@@ -5,6 +5,7 @@
       <map>
         <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/board/market/marketDetail.jsp" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/board/market" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/board/market/marketReview.jsp" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/board/market" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/board/reviewWrite.jsp" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/board" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/common/footer.jsp" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/common" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/common/header.jsp" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/common" />
       </map>

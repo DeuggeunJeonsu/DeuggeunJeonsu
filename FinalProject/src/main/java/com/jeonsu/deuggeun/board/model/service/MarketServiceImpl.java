@@ -75,20 +75,6 @@ public class MarketServiceImpl implements MarketService{
 
 		return dao.selectImageList(productNo);
 	}
-//
-//	// 리뷰 리스트 조회
-//	@Override
-//	public List<Review> selectReviewList(Map<String, Object> map, int boardCode, int cp) {
-//
-//		int listCount = dao.getReviewListCount(boardCode);
-//
-//		Pagination pagination = new Pagination(cp, listCount);
-//
-//		map.put("pagination", pagination);
-//
-//		return dao.selectReviewList(pagination, map);
-//
-//	}
 
 	// 리뷰 게시글 작성
 	@Transactional(rollbackFor = Exception.class)
@@ -97,23 +83,23 @@ public class MarketServiceImpl implements MarketService{
 
 		// 리뷰 정보 저장
 
-			review.setUploadImage(webPath);
+		review.setUploadImage(webPath);
 
-			String fileName = image.getOriginalFilename();
+		String fileName = image.getOriginalFilename();
 
-			// 이미지 업로드 및 경로 저장
-			String originalFilename = image.getOriginalFilename();
-			String savedFilename = Util.fileRename(originalFilename);
+		// 이미지 업로드 및 경로 저장
+		String originalFilename = image.getOriginalFilename();
+		String savedFilename = Util.fileRename(originalFilename);
 
-			File uploadFile = new File(filePath, savedFilename);
-			image.transferTo(uploadFile);
+		File uploadFile = new File(filePath, savedFilename);
+		image.transferTo(uploadFile);
 
-			// 리뷰 테이블에 이미지 경로 업데이트
-			review.setReviewNo(review.getReviewNo());
+		// 리뷰 테이블에 이미지 경로 업데이트
+		review.setReviewNo(review.getReviewNo());
 
-			review.setUploadImage(webPath + savedFilename);
+		review.setUploadImage(webPath + savedFilename);
 
-			int result = dao.reviewInsert(review);
+		int result = dao.reviewInsert(review);
 
 
 //			dao.updateReviewImage(review);

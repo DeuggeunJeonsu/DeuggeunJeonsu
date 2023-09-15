@@ -115,22 +115,16 @@ public class MarketController {
 
 		Product product = service.selectProduct(map);
 
-//		Map<String, Object> reviewMap = service.selectReview(productNo, cp);
-//		System.out.println("reviewMap의 값 : " + reviewMap);
-//
 		Map<String, Object> map2 = service.selectReview(boardCode, cp, productNo);
-//		List<Review> reviewList = service.selectReviewList(map, boardCode, cp);
 
 		List<ProductImage> productImageList = service.selectImageList(productNo);
-
-//		System.out.println("reviewList의 값 : " + reviewList);
 
 		String path = null;
 
 		if(product != null){
 
 			path = "board/market/marketReview";
-			// model.addAttribute("reviewList", reviewList);
+
 			model.addAttribute("map2", map2);
 			model.addAttribute("productImageList", productImageList);
 			model.addAttribute("product", product);
@@ -141,14 +135,6 @@ public class MarketController {
 		}
 		return path;
 	}
-
-
-	//	@GetMapping("/review")
-	//	public String marketReview() {
-	//		return "board/market/marketReview";
-	//	}
-
-	// "/board/${boardCode}/review/#{productNo}/insert"
 
 	// 리뷰 작성 페이지로 이동
 	@GetMapping("/{boardCode}/review/{productNo}/insert")
@@ -181,8 +167,6 @@ public class MarketController {
 		// 리뷰 정보 저장 및 이미지 업로드 처리
 		String webPath = "/resources/images/review/"; // 이미지 저장 경로
 		String filePath = session.getServletContext().getRealPath(webPath); // 서버 경로
-
-//		System.out.println("로그인 회원 닉네임 : " + loginMember.getMemberNickname());
 
 		int result = service.reviewInsert(boardCode, productNo, review, image, webPath, filePath);
 
