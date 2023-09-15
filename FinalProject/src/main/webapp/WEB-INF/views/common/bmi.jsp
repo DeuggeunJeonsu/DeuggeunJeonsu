@@ -47,7 +47,7 @@
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <div class="calculate-area">
                                 <div class="calculus-title">계산법</div>
                                 <div class="calculus-content">
@@ -64,11 +64,11 @@
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <div class="calculate-area">
                                 <div class="content">
                                     <div class="input-output-area my-bmi">
-                                        <p>나의 BMI : <div id="bmiResult"></div></p>
+                                        <p>나의 BMI :<div id="bmiResult"></div></p>
                                     </div>
                                     <div class="buttonArea">
                                         <button class="bmi-btn" id="bmiSave">내정보에 저장하기</button>
