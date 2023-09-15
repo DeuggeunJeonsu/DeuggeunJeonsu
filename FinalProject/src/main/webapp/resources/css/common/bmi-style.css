@@ -197,7 +197,7 @@ body {
 /* 아바타 */
 #bmiAvatarArea > i{
     font-size: 20em;
-    color: #FFD600;;
+    color: #ddd;
 }
 /* 비만도 결과 */
 #bmiAvatarArea > span{

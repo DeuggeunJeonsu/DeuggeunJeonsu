@@ -23,3 +23,43 @@ new Chart(document.getElementById("lineChart"), {
         }
     }
 });
+
+// 신장 입력 input
+const heightInput = document.getElementById("heightInput");
+// 체중 입력 input
+const weightInput = document.getElementById("weightInput");
+// bmi 결과 div
+const bmiResult = document.getElementById("bmiResult");
+// 계산버튼
+const bmiCalculate = document.getElementById("bmiCalculate");
+// 초기화버튼
+const bmiReset = document.getElementById("bmiReset");
+// 내 정보에 저장하기 버튼
+const bmiSave = document.getElementById("bmiSave");
+// 비만도 아바타
+const bmiAvatar = document.getElementById("bmiAvatar");
+
+
+// bmi 계산버튼이 눌리면
+bmiCalculate.addEventListener("click", ()=>{
+    const reqExp = /^\d{3}(\.\d{1,2})?$/;
+
+    if(heightInput.value.trim().length==0){
+        alert("신장을 입력해주세요");
+        return;
+    }
+    if(!reqExp.text(heightInput.value.trim())){
+        alert("신장이 제대로 입력되지 않았습니다");
+        return;
+    }
+
+    if(weightInput.value.trim().length==0){
+        alert("체중을 입력해주세요");
+        return;
+    }
+    if(!reqExp.text(weightInput.value.trim())){
+        alert("체중이 제대로 입력되지 않았습니다");
+        return;
+    }
+})
+
