@@ -1,5 +1,7 @@
 package com.jeonsu.deuggeun.board.model.service;
 
+import java.lang.reflect.Array;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -64,7 +66,7 @@ public class jhjBoardServiceImpl implements jhjBoardService{
 		
 		map.put("pagination", pagination);
 		map.put("boardList", boardList);
-		
+		map.put("boardMap", boardMap);
 		
 		return map;
 	}

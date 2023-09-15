@@ -67,6 +67,7 @@ public class jhjBoardDAO {
 		
 		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
 		
+		
 		return sqlSession.selectList("boardMapper.selectNcBoardTitle_search", boardMap, rowBounds);
 	}
 	 

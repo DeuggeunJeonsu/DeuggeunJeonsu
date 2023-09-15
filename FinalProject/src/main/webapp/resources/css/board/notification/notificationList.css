@@ -1,5 +1,5 @@
 *{ box-sizing: border-box;
-  /*  border: 1px solid black;  */
+   /* border: 1px solid black; */
     
 }
 a{
@@ -114,6 +114,10 @@ main{
 
 .JList{
     min-width: 1000px;
+}
+
+#ListArea{
+    height: 351px;
 }
 
 .pagination-area{
@@ -268,6 +272,14 @@ tr > td:nth-child(5){
     width: 100px;
 }
 
+
+#noPage{
+    background: white;
+}
+
+
+
+
 /* 페이지네이션 영역 */
 .pagination-area {
     text-align: center;
@@ -309,3 +321,5 @@ tr > td:nth-child(5){
     color: #fff;
 
 }
+
+

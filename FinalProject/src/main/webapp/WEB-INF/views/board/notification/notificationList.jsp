@@ -5,7 +5,6 @@
 <%-- 공지사항 게시글 목록 조회 시 필요한 변수 선언 --%>
 <c:set var="boardList" value="${map.boardList}" />
 <c:set var="pagination" value="${map.pagination}" />
-<c:set var="tag" value="${board.tagNo}" />
 
 
 
@@ -35,9 +34,10 @@
 <body>
 	<main>
 
-		<c:if test="${!empty param.key}">
-			<c:set var="sp" value="&key=${param.key}&query=${param.query}" />
-		</c:if>
+
+		<c:if test="${!empty param.searchTitle}">
+            <c:set var="sp" value="&searchTitle=${param.searchTitle}"  />
+        </c:if>
 
 		<jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
 
@@ -65,98 +65,102 @@
 						</div>
 					</form>
 
-					<div class="JList">
+					<div id="ListArea">
+						<div class="JList">
 
-						<table>
-							<thead>
+							<table>
+								<thead>
 
-								<tr>
-									<th>번호</th>
-									<th>제목</th>
-									<th>작성자</th>
-									<th>작성날짜</th>
-									<th>조회수</th>
-								</tr>
-							</thead>
+									<tr>
+										<th>번호</th>
+										<th>제목</th>
+										<th>작성자</th>
+										<th>작성날짜</th>
+										<th>조회수</th>
+									</tr>
+								</thead>
 
-							<tbody>
+								<tbody>
 
-								<c:choose>
+									<c:choose>
 
-								   <c:when test="${empty boardList}">
-										<tr>
-											<td colspan="6">
-												페이지가 존재하지 않습니다.
-											</td>
-										</tr>
-								   </c:when>
-									
-								   <c:otherwise>
-										<c:forEach items="${boardList}" var="board">
-												<tr>
-													<td>${board.boardNo}</td>
-													<td><a href="#">${board.boardTitle}</a></td>
-													<td>${board.memberNickname}</td>
-													<td>${board.boardCreateDate}</td>
-													<td>1</td>
-												</tr>
-										</c:forEach>
-								   </c:otherwise>
-								</c:choose>
+									<c:when test="${empty boardList}">
+											<tr>
+												<th id="noPage" colspan="6">
+													페이지가 존재하지 않습니다.
+												</th>
+											</tr>
+									</c:when>
+										
+									<c:otherwise>
+											<c:forEach items="${boardList}" var="board">
+													<tr>
+														<td>${board.boardNo}</td>
+														<td><a href="#">${board.boardTitle}</a></td>
+														<td>${board.memberNickname}</td>
+														<td>${board.boardCreateDate}</td>
+														<td>1</td>
+													</tr>
+											</c:forEach>
+									</c:otherwise>
+									</c:choose>
 
-							</tbody>
-						</table>
+								</tbody>
+							</table>
 
-
-
+						</div>
 					</div>
 
 					<div class="board-Jbtn">
 						<a href="/board/${boardCode}/list/notificationWrite"><button
 								type="button" id="writeBtn">글쓰기</button></a>
 					</div>
-
+					<%-- 로그인 상태일 경우일 시 버튼 노출 --%>
+				<%-- 	<c:if test="${!empty loginMember}" >
+					</c:if> --%>
 
 					<div class="pagination-area">
 
 
-						<ul class="pagination">
+                <ul class="pagination">
+                
+                    <!-- 첫 페이지로 이동 -->
+                    <li><a href="/board/${boardCode}/list?cp=1${sp}">&lt;&lt;</a></li>
 
-							<!-- 첫 페이지로 이동 -->
-							<li><a href="/board/${boardCode}/list?cp=1${sp}">&lt;&lt;</a></li>
+                    <!-- 이전 목록 마지막 번호로 이동 -->
+                    <li><a href="/board/${boardCode}/list?cp=${pagination.prevPage}${sp}">&lt;</a></li>
 
-							<!-- 이전 목록 마지막 번호로 이동 -->
-							<li><a href="/board/${boardCode}/list?cp=${pagination.prevPage}${sp}">&lt;</a></li>
+               
+                    <!-- 특정 페이지로 이동 -->
+                    <c:forEach var="i" begin="${pagination.startPage}"
+                            end="${pagination.endPage}" step="1">
 
+                            <c:choose>
 
-							<!-- 특정 페이지로 이동 -->
-							<c:forEach var="i" begin="${pagination.startPage}"
-								end="${pagination.endPage}" step="1">
-								<c:choose>
+                               <c:when test="${i == pagination.currentPage}">
+                                    <!-- 현재 보고있는 페이지 -->
+                                    <li><a class="current">${i}</a></li>
+                               </c:when>
+                            
+                               <c:otherwise>
+                                    <!-- 현재 페이지를 제외한 나머지 -->
+                                    <li><a href="/board/${boardCode}/list?cp=${i}${sp}">${i}</a></li>
+                               </c:otherwise>
+                            </c:choose>
+                            
+                    </c:forEach>
+                    
+                   
+                    
+                    <!-- 다음 목록 시작 번호로 이동 -->
+                    <li><a href="/board/${boardCode}/list?cp=${pagination.nextPage}${sp}">&gt;</a></li>
 
-									<c:when test="${i == pagination.currentPage}">
-										<!-- 현재 보고있는 페이지 -->
-										<li><a class="current">${i}</a></li>
-									</c:when>
+                    <!-- 끝 페이지로 이동 -->
+                    <li><a href="/board/${boardCode}/list?cp=${pagination.maxPage}${sp}">&gt;&gt;</a></li>
 
-									<c:otherwise>
-										<!-- 현재 페이지를 제외한 나머지 -->
-										<li><a href="/board/${boardCode}/list?cp=${i}${sp}">${i}</a></li>
-									</c:otherwise>
-								</c:choose>
+                </ul>
+            </div>
 
-							</c:forEach>
-
-
-
-							<!-- 다음 목록 시작 번호로 이동 -->
-							<li><a href="/board/${boardCode}/list?cp=${pagination.nextPage}${sp}">&gt;</a></li>
-
-							<!-- 끝 페이지로 이동 -->
-							<li><a href="/board/${boardCode}/list?cp=${pagination.maxPage}${sp}">&gt;&gt;</a></li>
-
-						</ul>
-					</div>
 				</div>
 			</div>
 		 <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
