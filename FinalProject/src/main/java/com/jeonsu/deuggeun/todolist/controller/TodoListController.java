@@ -84,6 +84,21 @@ public class TodoListController {
 		
 		return service.todoUpdate(updateTodo);
 	}
+	
+	// 체크리스트 삭제
+	@PostMapping("todo/delete")
+	public int todoDelete (@RequestParam("todoNo") int todoNo) {
+		System.out.println(todoNo);
+		return service.todoDelete(todoNo);
+	}
+	
+	// 체크리스트 추가
+	@PostMapping("/todo/insert")
+	public int todoInssert(@RequestBody TodoList insertTodo) {
+		System.out.println(insertTodo);
+		
+		return service.todoInsert();
+	}
 
 
 }

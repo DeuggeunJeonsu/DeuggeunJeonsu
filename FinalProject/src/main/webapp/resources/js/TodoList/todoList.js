@@ -62,9 +62,10 @@ function buildCalendar() {
         } else if (nowDay.getFullYear() == today.getFullYear() && nowDay.getMonth() == today.getMonth() && nowDay.getDate() == today.getDate()) {
            
             newDIV.className = "today";
-            newDIV.classList.add("choiceDay")
             newDIV.onclick = function() { choiceDate(this); }
-
+            newDIV.classList.add("choiceDay")
+            newDIV.onclick();
+            
         } else {
             newDIV.className = "futureDay";
             newDIV.onclick = function () { choiceDate(this); }
@@ -85,63 +86,9 @@ function buildCalendar() {
             nowRow = tbody_Calendar.insertRow();
         }
         
-        // if(document.querySelector(".hiddenEl") != null&&document.querySelector(".hiddenEl").value !=  "" ){
-        //     if(newDIV.innerText == null&&document.querySelector(".hiddenEl").value ){
-        //         newDIV.onclick = function () { choiceDate(this); }
-        //     }
-        //     // break;
-        // }
-        // else{
-        //     clickDate(nowDay,firstDate,lastDate,nowDay)
-        // }
-
-        
 
     }
-    // 삭제해도됨
-    function clickDate(firstDate,lastDate,nowDay){
-
-        // 2주치 선택 가능하게 만들기
-        for (let nowDay = firstDate; nowDay <= lastDate; nowDay.setDate(nowDay.getDate() + 1)) {
-            let nowColumn = nowRow.insertCell();
-            var newDIV = document.createElement("p");
-            let newDIV2 = document.createElement("i");
-            newDIV.innerHTML = leftPad(nowDay.getDate());
-            nowColumn.append(newDIV);
-    
-           
-    
-           if (nowDay < today) {
-                newDIV.className = "pastDay";
-                newDIV.onclick = function () { choiceDate(this); }
-            } else if (nowDay.getFullYear() == today.getFullYear() && nowDay.getMonth() == today.getMonth() && nowDay.getDate() == today.getDate()) {
-               
-                newDIV.className = "today";
-                newDIV.classList.add("choiceDay")
-                newDIV.onclick = function() { choiceDate(this); }
-    
-            } else {
-                newDIV.className = "futureDay";
-                newDIV.onclick = function () { choiceDate(this); }
-    
-                // 날짜가 오늘부터 14일 이내인지 확인합니다.
-                let fourteenDaysFromNow = new Date();
-                fourteenDaysFromNow.setDate(today.getDate() + 14);
-    
-                if (nowDay >= today && nowDay <= fourteenDaysFromNow) {
-                    newDIV.onclick = function () { choiceDate(this); }
-                    newDIV.classList.remove("futureDay");
-                    newDIV.classList.add("possible-futureDay");
-                }
-            }
-           
-    
-            if (nowDay.getDay() == 6) {
-                nowRow = tbody_Calendar.insertRow();
-            }
-           
-        }
-    }
+   
     // ajax,, 여기서 만들어야해
     // i 태그에db에서 가져와서 넣어보기 
     // 동그라미 또는 세모
@@ -246,6 +193,7 @@ function choiceDate(newDIV) {
     const math = document.getElementById("calMonth").innerText; // 월
     let day= newDIV.innerText
 
+
     // if (document.querySelector(".hiddenEl") != null&&document.querySelector(".hiddenEl").value !=  "" ) {
         
     //     console.log("hiddenEl"+ document.querySelector(".hiddenEl").value)
@@ -283,7 +231,7 @@ function todoslist(choiceTodoDate){
             dataType: "JSON",
             success: function (detailedTodoList) {
                 // console.log('날짜 선택 성공');
-                //console.log(detailedTodoList);
+                console.log(detailedTodoList);
 
                 document.querySelector(".check-area").innerHTML="";
                 for(let todo of detailedTodoList){
@@ -326,11 +274,9 @@ function todoslist(choiceTodoDate){
                     // button 요소 생성
                     const button = document.createElement("button");
                     button.setAttribute("type", "button");
-            
-                    // i 요소 생성 및 클래스 및 스타일 설정
-                    const i = document.createElement("i");
-                    i.setAttribute("class", "fa-solid fa-minus minus");
-                    i.style.color = "#ffffff";
+                    button.classList.add("minusBtn");
+                    button.innerText="-";
+                   
 
                     const input3 = document.createElement("input")
                     input3.setAttribute("type", "hidden");
@@ -344,15 +290,14 @@ function todoslist(choiceTodoDate){
                     // div.append(DateDIV)
                     div.appendChild(input);
                     div.appendChild(label);
-                    div.appendChild(input2);
                     div.appendChild(span);
                     div.appendChild(button);
-                    button.appendChild(i);
+                    div.appendChild(input2);
                     div.append(input3)
             
                     // div를 원하는 위치에 추가
                     
-                    document.querySelector(".check-area").append(DateDIV);
+                    // document.querySelector(".check-area").append(DateDIV);
                     document.querySelector(".check-area").append(div);
             
                     // initializeTodoList(choiceTodoDate);
@@ -394,104 +339,101 @@ function leftPad(value) {
 // *****************************************************
 // TodoList만들기!
 
-if(document.querySelector(".addListBtn")!= null){
+// if(document.querySelector(".addListBtn")!= null){
 
-    const addListBtn = document.querySelector(".addListBtn");
+//     const addListBtn = document.querySelector(".addListBtn");
     
-    addListBtn.addEventListener("click", function() {
-        const addListInput = document.querySelector(".addList");
-        const addListVal = addListInput.value.trim(); // 입력 값의 양 끝 공백을 제거합니다.
+//     addListBtn.addEventListener("click", function() {
+//         const addListInput = document.querySelector(".addList");
+//         const addListVal = addListInput.value.trim(); // 입력 값의 양 끝 공백을 제거합니다.
     
-        const reqExp = /^[가-힣a-zA-Z\s]{1,10} \d{1,2}회 \d{1,2}세트$/;
+//         const reqExp = /^[가-힣a-zA-Z\s]{1,10} \d{1,2}회 \d{1,2}세트$/;
     
-        const maxCheckboxes = 10;
-        const currentCheckboxes = document.querySelectorAll(".checkbox").length;
+//         const maxCheckboxes = 10;
+//         const currentCheckboxes = document.querySelectorAll(".checkbox").length;
         
-        if(loginMemberNo == ""){
-            alert("로그인후 이용해 주세요💪");
-            return;
-        }
+//         if(loginMemberNo == ""){
+//             alert("로그인후 이용해 주세요💪");
+//             return;
+//         }
 
-        if(addListVal.length == 0 ){
-            alert("내용을 입력해주세요👀");
-            return;
-        }else{
+//         if(addListVal.length == 0 ){
+//             alert("내용을 입력해주세요👀");
+//             return;
+//         }else{
 
-            let spanContent = document.querySelectorAll('.check-area > div >span');
+//             let spanContent = document.querySelectorAll('.check-area > div >span');
             
-            for(let i of spanContent){
-                if(addListVal == i.innerText){
-                    alert("이미 입력한 루틴입니다.😊");
-                    addListInput.value = "";
-                    return;
-                }
+//             for(let i of spanContent){
+//                 if(addListVal == i.innerText){
+//                     alert("이미 입력한 루틴입니다.😊");
+//                     addListInput.value = "";
+//                     return;
+//                 }
                 
-            }
+//             }
 
-            if(currentCheckboxes >= maxCheckboxes){
-                alert("10개 이상 입력할 수 없습니다. 😢");
-                addListInput.value = "";
-                return; // 입력 막기
-            }else{
+//             if(currentCheckboxes >= maxCheckboxes){
+//                 alert("10개 이상 입력할 수 없습니다. 😢");
+//                 addListInput.value = "";
+//                 return; // 입력 막기
+//             }else{
         
-                if (!reqExp.test(addListVal)) {
-                    if (confirm("운동 횟수와 세트 횟수를 입력해주세요💗")) {
-                        addListInput.focus();
-                        addListInput.value = "  회  세트";
-                    }
-                } else {
+//                 if (!reqExp.test(addListVal)) {
+//                     if (confirm("운동 횟수와 세트 횟수를 입력해주세요💗")) {
+//                         addListInput.focus();
+//                         addListInput.value = "  회  세트";
+//                     }
+//                 } else {
             
-                    alert("정규식 성공! DB에 insert한 후 다시 목록조회 하자!");
-                    addListInput.value = "";
+//                     alert("정규식 성공! DB에 insert한 후 다시 목록조회 하자!");
+//                     addListInput.value = "";
             
-                    // 새로운 div 요소 생성
-                    const div = document.createElement("div");
+//                     // 새로운 div 요소 생성
+//                     const div = document.createElement("div");
             
-                    // 랜덤 아이디 생성
-                    const randomId = "ck" + generateRandomId();
+//                     // 랜덤 아이디 생성
+//                     const randomId = "ck" + generateRandomId();
             
-                    // input 요소 생성 및 속성 설정
-                    const input = document.createElement("input");
-                    input.setAttribute("type", "checkbox");
-                    input.setAttribute("id", randomId);
-                    input.setAttribute("class", "none checkbox");
+//                     // input 요소 생성 및 속성 설정
+//                     const input = document.createElement("input");
+//                     input.setAttribute("type", "checkbox");
+//                     input.setAttribute("id", randomId);
+//                     input.setAttribute("class", "none checkbox");
             
-                    // label 요소 생성 및 연결
-                    const label = document.createElement("label");
-                    label.setAttribute("for", randomId);
-                    label.setAttribute("class", "ck");
+//                     // label 요소 생성 및 연결
+//                     const label = document.createElement("label");
+//                     label.setAttribute("for", randomId);
+//                     label.setAttribute("class", "ck");
             
-                    // span 요소 생성 및 텍스트 설정
-                    const span = document.createElement("span");
-                    span.textContent = addListVal;
+//                     // span 요소 생성 및 텍스트 설정
+//                     const span = document.createElement("span");
+//                     span.textContent = addListVal;
             
-                    // button 요소 생성
-                    const button = document.createElement("button");
-                    button.setAttribute("type", "button");
+//                     // button 요소 생성
+//                     const button = document.createElement("button");
+//                     button.setAttribute("type", "button");
+//                     button.classList.add("minusBtn");
+//                     button.innerHTML="-";
+                    
             
-                    // i 요소 생성 및 클래스 및 스타일 설정
-                    const i = document.createElement("i");
-                    i.setAttribute("class", "fa-solid fa-minus minus");
-                    i.style.color = "#ffffff";
+//                     // 각 요소를 div에 추가
+//                     div.appendChild(input);
+//                     div.appendChild(label);
+//                     div.appendChild(span);
+//                     div.appendChild(button);
             
-                    // 각 요소를 div에 추가
-                    div.appendChild(input);
-                    div.appendChild(label);
-                    div.appendChild(span);
-                    div.appendChild(button);
-                    button.appendChild(i);
+//                     // div를 원하는 위치에 추가
+//                     document.querySelector(".check-area").append(div);
             
-                    // div를 원하는 위치에 추가
-                    document.querySelector(".check-area").append(div);
-            
-                    initializeTodoList(choiceTodoDate);
-                    updateCheckedPercentage();
-                }
-            }
-        }
+//                     initializeTodoList();
+//                     updateCheckedPercentage();
+//                 }
+//             }
+//         }
         
-    });
-}
+//     });
+// }
 
 // 랜덤 아이디 생성 함수
 function generateRandomId() {
@@ -500,30 +442,40 @@ function generateRandomId() {
 
 // 페이지가 실행 되었을 때, 
 $(document).ready(function(){
-    // initializeTodoList(choiceTodoDate);
     updateCheckedPercentage();
 });
 
 
-function initializeTodoList(choiceTodoDate) {
-    const checkboxes = document.querySelectorAll(".checkbox");
+document.addEventListener("click", function (e){
+    
+    if(e.target.classList.contains("minusBtn")){
+        console.log(e.target)
 
-    checkboxes.forEach((checkbox) => {
-        const minus = checkbox.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling;
-       if(minus){
+        const todoNo = e.target.nextElementSibling.value;
+        $.ajax({
+            url: "/todo/delete",
+            method: "POST",
+            data: { "todoNo": todoNo },
+            dataType: "JSON",
+            success: function (result) {
+                if(result > 0){
+                    
+                    e.target.parentElement.remove();
+                    updateCheckedPercentage();
 
-           minus.addEventListener("click", function () {
-               checkboxes.length = 0;
-               checkbox.parentElement.remove();
-           
-               updateCheckedPercentage();
-           });
-       }
+                }else{
+                    console.log("투두 삭제 실패");
+                }
+            },
+            error: function(){
+                console.log("에러")
+            }
+        })
 
-        
-    });
+    }
+});
 
-}
+
 
 // 체크박스의 상태를 저장할 객체
 //  var checkboxStates = {};
@@ -547,7 +499,9 @@ function updateTodo(checkbox,listFl,choiceTodoDate ) {
     // 체크 상태 저장 변수
     const completed = listFl;
     console.log(listFl)
-    const ListNo = checkbox.nextElementSibling.nextElementSibling.value;
+    const ListNo = checkbox.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.value
+
+    console.log(ListNo)        
     const todosToUpdate = { listNo: ListNo, listFl: completed };
 
     // 서버로 업데이트할 정보를 전송
@@ -623,6 +577,7 @@ function updateCheckedPercentage( ) {
 // todolist 목록에 추가하기 
 
 
+
 if(document.querySelector(".boardAddListBtn") != null){
     const addLists = document.querySelectorAll(".boardAddListBtn");
     const routineNmSpan = document.querySelector(".routineNm span");
@@ -634,13 +589,74 @@ if(document.querySelector(".boardAddListBtn") != null){
     
         addListBtn.addEventListener("click", function() {
             
+            // 입력한 내용 가져오기
+            const todoInput = document.querySelector(".addList").value;
+
+
+            const todayYear = today.getFullYear();
+            const todayMonth = today.getMonth()+1;
+            const todayDate = today.getDate();
+            //오늘 날짜
+            const sysDate = todayYear + "-" + (todayMonth < 10 ? "0" : "") + todayMonth + "-" + (todayDate < 10 ? "0" : "") + todayDate;
+            
             // 현재 체크박스 개수를 가져옵니다.
             const currentCheckboxes = document.querySelectorAll(".checkbox").length;
+
 
             if (currentCheckboxes >= maxCheckboxes) {
             alert("10개 이상 입력할 수 없습니다. 😢");
             return; // 입력 막기
             }
+            
+            $.ajax({
+                url: "/todo/insert",
+                method: "POST",
+                data: {"listContent": todoInput},
+                dataType: "JSON",
+                success: function (result) {
+                    if(result > 0){
+                        console.log("추가완료!")
+                    }else{
+                        console.log("투두 추가시 오류발생")
+                    }
+                },
+                error: function(){
+                    console.log("오류")
+                }
+            })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             
             // span 요소의 텍스트 내용을 가져옵니다.
             const routineText = routineNmSpan.textContent;
@@ -681,12 +697,11 @@ if(document.querySelector(".boardAddListBtn") != null){
             div.appendChild(label);
             div.appendChild(span);
             div.appendChild(button);
-            button.appendChild(i);
 
             // div를 원하는 위치에 추가
             document.querySelector(".check-area").append(div);
 
-            initializeTodoList(choiceTodoDate);
+            
             updateCheckedPercentage();
         
             // 진행률 표시 바를 업데이트하거나 관련 작업을 수행합니다.
