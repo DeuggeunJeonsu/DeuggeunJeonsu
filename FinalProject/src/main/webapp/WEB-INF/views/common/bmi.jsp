@@ -88,7 +88,7 @@
 
                         </div>
                         <div id="bmiAvatarArea">
-                            <i class="fa-solid fa-person"></i>
+                            <i class="fa-solid fa-person" id="bmiAvatar"></i>
                             <span>내 비만도</span>
                         </div>
                     </div>
