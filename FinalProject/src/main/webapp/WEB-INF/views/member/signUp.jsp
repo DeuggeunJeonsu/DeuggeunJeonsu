@@ -28,37 +28,43 @@
 
 <jsp:include page="/WEB-INF/views/common/header.jsp"/>
 
-  <form>
+  <form action ="/signUp" method = "POST" name = "signUpFrm" id = "signUpFrm">
 
     <div class="membership">
 
       <div>
-        <label class="imp">아이디(이메일)</label>
+        <label class="imp" for="memberEmail">아이디(이메일)</label>
         <div>
-          <input type="text" placeholder="예 : email@gmail.com" required>
+          <input type="text" name = "memberEmail" id = "memberEmail" placeholder="예 : email@gmail.com"  required>
           <button type="button">중복확인</button>
         </div>
+      <p class="signUp-message" id="emailMessage">메일을 받을 이메일을 작성해주세요.</p>
       </div>
+      
+
+      <br>
 
       <div>
         <label class="imp">비밀번호</label>
-        <input type="password" placeholder="비밀번호를 입력해주세요." required>
+        <input type="password" placeholder="비밀번호를 입력해주세요." name = "memberPw" id = "memberPw" required>
       </div>
 
       <div>
         <label class="imp">비밀번호 확인</label>
-        <input type="password" placeholder="비밀번호를 한번 더 입력해주세요." required>
+        <input type="password" placeholder="비밀번호를 한번 더 입력해주세요." name = "memberPwConfirm" id = "memberPwConfirm" required>
+        <p class="signUp-message" id="pwMessage">영어,숫자,특수문자 8~16자 사이로 입력해주세요.</p>
       </div>
 
       <div>
         <label class="imp">닉네임</label>
-        <input type="text" placeholder="닉네임을 입력해주세요" required>
+        
+        <input type="text" placeholder="닉네임을 입력해주세요" name = "memberNickname" id = "memberNickname" required>
       </div>
 
       <div>
         <label class="imp">휴대폰</label>
         <div>
-          <input type="tel" placeholder="숫자만 입력해주세요" required>
+          <input type="tel" placeholder="숫자만 입력해주세요" name = "memberTel" id = "memberTel" required>
           <button type="button">인증번호받기</button>
         </div>
       </div>
@@ -73,7 +79,7 @@
       <div>
         <label class="imp">주소</label>
         <div>
-          <input type="text" placeholder="도로명, 지번, 건물명 검색" required>
+          <input type="text" placeholder="도로명, 지번, 건물명 검색" name = "memberAdr" id = "memberAdr" required>
           <button type="button" id="adr">주소 찾기</button>
         </div>
 
@@ -86,7 +92,7 @@
       <div>
         <label>생년월일</label>
         <div>
-          <input type="date" name="birth_year" fontid="birth_year" pattern="[0-9]*" value label="생년월일" size="4" maxlength="4"
+          <input type="date" name="memberBirth" id="memberBirth" fontid="birth_year" pattern="[0-9]*" value label="생년월일" size="4" maxlength="4"
             placeholder="YYYY" >
         </div>
       </div>
@@ -535,4 +541,3 @@
 
 
 </html>
-
