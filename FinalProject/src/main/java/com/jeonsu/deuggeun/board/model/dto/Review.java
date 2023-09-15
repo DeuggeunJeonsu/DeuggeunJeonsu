@@ -10,15 +10,15 @@ import lombok.ToString;
 public class Review {
 
     private int memberNo;
+    private int reviewNo;
     private int productNo;
+    private String reviewTitle;
+    private String reviewContent;
     private String uploadImage;
-    private int boardNo;
-    private int inquiryType;
-    private String boardTitle;
-    private String boardContent;
-    private String memberNickname;
-    private String CreateDate;
-    private int readCount;
     private int boardCode;
+    private String memberNickname;
+    private String reviewCreateDate;
+    private int readCount;
+    private String reviewFlag;
 
 }

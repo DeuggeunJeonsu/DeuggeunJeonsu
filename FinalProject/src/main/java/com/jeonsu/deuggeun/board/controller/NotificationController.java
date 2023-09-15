@@ -80,10 +80,10 @@ public class NotificationController {
 
 
 	// 리뷰작성 요청
-	@RequestMapping("/reviewWrite")
-	public String reivewWrite() {
-		return "board/reviewWrite";
-	}
+//	@RequestMapping("/reviewWrite")
+//	public String reivewWrite() {
+//		return "board/reviewWrite";
+//	}
 	// 상품문의 요청
 	@RequestMapping("/inquireWrite")
 	public String inquireWrite() {

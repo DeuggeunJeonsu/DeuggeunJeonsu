@@ -64,11 +64,6 @@
                     </div>
                 </section>
 
-
-
-
-
-
             <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
 
             <script src="/resources/js/board/boardWrite.js"></script>

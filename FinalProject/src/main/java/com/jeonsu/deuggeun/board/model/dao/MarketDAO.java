@@ -67,8 +67,52 @@ public class MarketDAO {
 	}
 
 	// 리뷰 리스트 조회
-	public List<Review> selectReviewList(Map<String, Object> map) {
+//	public List<Review> selectReviewList(Pagination pagination, Map<String, Object> map) {
+//
+//		int offset = (pagination.getCurrentPage() -1) * pagination.getLimit();
+//
+//		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
+//
+//		return sqlSession.selectList("marketMapper.selectReviewList", map, rowBounds);
+//	}
 
-		return sqlSession.selectList("marketMapper.selectReviewList", map);
+	// 리뷰 작성 + 사진첨부
+	public int reviewInsert(Review review) {
+		return sqlSession.insert("marketMapper.reviewInsert", review);
 	}
+
+	// 리뷰게시판 삭제되지 않은 게시글 목록
+	public int getReviewListCount(int boardCode) {
+		return sqlSession.selectOne("marketMapper.getReviewListCount", boardCode);
+	}
+
+//	public List<Review> selectReview(Pagination pagination, int boardCode) {
+//
+//		int offset
+//				= (pagination.getCurrentPage() -1) * pagination.getLimit();
+//
+//		// 2) RowBounds 객체 생성
+//		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
+//
+//		// 3) selectList("namespace.id", 파라미터, RowBounds) 호출
+//		return sqlSession.selectList("marketMapper.selectReview", boardCode, rowBounds);
+//	}
+	public List<Review> selectReview(Pagination pagination, Map<String, Object> params) {
+
+		int offset = (pagination.getCurrentPage() - 1) * pagination.getLimit();
+
+		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
+
+		return sqlSession.selectList("marketMapper.selectReview", params, rowBounds);
+	}
+
+
+//	public List<Review> selectReview(Pagination pagination, int productNo) {
+//
+//		int offset = (pagination.getCurrentPage() -1) * pagination.getLimit();
+//
+//		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
+//
+//		return sqlSession.selectList("marketMapper.selectReview", productNo, rowBounds);
+//	}
 }
