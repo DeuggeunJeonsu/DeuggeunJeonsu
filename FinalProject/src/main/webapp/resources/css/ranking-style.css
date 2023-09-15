@@ -7,6 +7,8 @@
 .ranking-section{
     width: 100%;
     height: 800px;
+    display: flex;
+    justify-content: center;
 }
 .ranking-container{
     width: 1300px;
