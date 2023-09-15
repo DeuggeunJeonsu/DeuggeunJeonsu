@@ -8,7 +8,9 @@
 * {
     box-sizing: border-box;
 }
-
+body{
+    height: 90vh;
+}
 .fileBox input[type="file"] {
     position: absolute;
     width: 1px;
