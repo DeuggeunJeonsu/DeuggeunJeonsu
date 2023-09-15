@@ -35,12 +35,12 @@
 
 
 
-    <!-- <c:if test="${!empty message}">
+    <c:if test="${!empty message}">
 
         <script>
             alert("${message}");
         </script>
     </c:if>
-    -->
+    
 </body>
 </html>
