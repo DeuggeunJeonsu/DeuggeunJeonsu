@@ -219,4 +219,29 @@
 		)
 	</delete>
 	
+	<!-- 게시글 삭제 시 이미지 삭제 -->
+	<delete id="freeBoardImageDelete">
+		DELETE FROM BOARD_IMG
+		WHERE BOARD_NO = #{boardNo}
+	</delete>
+
+	<!-- 팔로우 여부 확인 -->	
+	<select id="memberFollowCheck" resultType="_int">
+		SELECT COUNT(*) FROM FOLLOW
+		WHERE FOLLOWER_NO = #{boardMemberNo}
+		AND MEMBER_NO = #{memberNo}
+	</select>
+	
+	<!-- 멤버 팔로우 -->	
+	<insert id="memberFollow">
+		INSERT INTO FOLLOW
+		VALUES(#{boardMemberNo}, #{loginMemberNo})
+	</insert>
+	
+	<!-- 멤버 언팔로우 -->	
+	<delete id="memberUnfollow">
+		DELETE FROM FOLLOW
+		WHERE FOLLOWER_NO = #{boardMemberNo}
+		AND MEMBER_NO = #{loginMemberNo}
+	</delete>
 </mapper>

@@ -270,4 +270,32 @@ public class ashBoardDAO {
 		return sqlSession.delete("freeBoardMapper.freeBoardHashtagDelete", map);
 	}
 
+	/** 게시글 삭제 시 이미지 삭제
+	 * @param map
+	 * @return result
+	 */
+	public int freeBoardImageDelete(Map<String, Object> map) {
+		return sqlSession.delete("freeBoardMapper.freeBoardImageDelete", map);
+	}
+
+	/** 팔로우 여부 확인
+	 * @param map
+	 * @return result
+	 */
+	public int memberFollowCheck(Map<String, Object> map) {
+		return sqlSession.selectOne("freeBoardMapper.memberFollowCheck", map);
+	}
+
+	/** 멤버 팔로우
+	 * @param paramMap
+	 * @return result
+	 */
+	public int memberFollow(Map<String, Integer> paramMap) {
+		return sqlSession.insert("freeBoardMapper.memberFollow", paramMap);
+	}
+
+	public int memberUnfollow(Map<String, Integer> paramMap) {
+		return sqlSession.delete("freeBoardMapper.memberUnfollow", paramMap);
+	}
+
 }

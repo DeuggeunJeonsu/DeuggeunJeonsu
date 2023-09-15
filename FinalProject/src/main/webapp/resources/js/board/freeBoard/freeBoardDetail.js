@@ -1,18 +1,12 @@
-// 팔로잉, 언팔로우 버튼 토글
-const followingBtn = document.getElementById("following-btn");
+// 팔로우, 언팔로우 버튼 토글
+
+// 팔로우 버튼
 const followBtn = document.getElementById("follow-btn");
 
-followingBtn.addEventListener("click", ()=>{
-    followingBtn.style.display = "none";
-    followBtn.style.display = "block";
-})
+// 언팔로우 버튼
+const followingBtn = document.getElementById("following-btn");
 
-followBtn.addEventListener("click", ()=>{
-    followBtn.style.display = "none";
-    followingBtn.style.display = "block";
-})
-
-/* 팔로우, 언팔로우 버튼 호버 시 아이콘 색 변경 */
+// /* 팔로우, 언팔로우 버튼 호버 시 아이콘 색 변경 */
 $(document).ready(function() {
     $('#follow-btn').hover(function() {
         $('.whiteChk2').show();
@@ -20,7 +14,7 @@ $(document).ready(function() {
     }, function() {
         $('.whiteChk2').hide();
         $('.blueChk2').show();
-    });
+    })
 });
 
 $(document).ready(function() {
@@ -30,8 +24,63 @@ $(document).ready(function() {
     }, function() {
         $('.whiteChk').show();
         $('.blueChk').hide();
-    });
+    })
 });
+
+const data = {
+    "boardMemberNo" : boardMemberNo,
+    "loginMemberNo" : loginMemberNo
+}
+
+// 팔로우
+if(followBtn != null){
+    followBtn.addEventListener("click", (e) =>{
+
+        fetch("/board/3/follow", {
+            method : "POST",
+            headers : {"Content-Type" : "application/json"},
+            body : JSON.stringify(data)
+        })
+        .then(resp => resp.text())
+        .then(result => {
+
+            if(result == -1){
+                console.log("처리 실패");
+                return;
+            } else {
+                console.log("처리 성공")
+                location.reload();
+            }
+
+        })
+        .catch(err => console.log(err))
+    })
+}
+
+// 언팔로우
+if(followingBtn != null){
+    followingBtn.addEventListener("click", () => {
+    
+        fetch("/board/3/unfollow", {
+            method : "POST",
+            headers : {"Content-Type" : "application/json"},
+            body : JSON.stringify(data)
+        })
+        .then(resp => resp.text())
+        .then(result => {
+            
+            if(result == -1){
+                console.log("처리 실패");
+                return;
+            } else {
+                console.log("처리 성공");
+                location.reload();
+            }
+        })
+        .catch(err => console.log(err))
+    })
+}
+
 
 // --------------------------------------------------------------------------------
 
@@ -109,8 +158,6 @@ document.getElementById("like-cnt").addEventListener("click", e => {
     })
     .then(resp => resp.text())
     .then(count => {
-        
-        console.log("count : " + count);
     
         if(count == -1){
             console.log("좋아요 처리 실패");
@@ -171,7 +218,7 @@ goToListBtn.addEventListener("click", ()=>{
     const params = new URL(location.href).searchParams;
 
     let cp;
-    if(params.get("cp") != ""){ // 쿼리스트링에 cp가 있을 경우
+    if(params.get("cp") != null){ // 쿼리스트링에 cp가 있을 경우
         cp = "?cp=" + params.get("cp");
     } else {
         cp = "?cp=1";

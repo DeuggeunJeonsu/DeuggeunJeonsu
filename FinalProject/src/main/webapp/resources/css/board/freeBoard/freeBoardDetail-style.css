@@ -162,6 +162,40 @@
     transition-duration: 0.2s;
 }
 
+/* 공통 버튼 스타일 */
+.follow-button {
+    margin-top: 5px;
+    height: 27px;
+    width: 100px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    border: 1px solid #99E1ED;
+    transition-duration: 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #99E1ED;
+    color: white;
+}
+
+/* 버튼 텍스트 스타일 */
+.button-text {
+    margin-left: 5px;
+}
+
+/* 호버 스타일 */
+.follow-button:hover {
+    background-color: white;
+    color: #99E1ED;
+    border-radius: 1px solid #99E1ED;
+}
+
+/* 아이콘 스타일 */
+.follow-button i {
+    margin-right: 5px;
+}
+
 /* 게시글 해시태그 영역 */
 #hashtag-area{
     display: flex;
