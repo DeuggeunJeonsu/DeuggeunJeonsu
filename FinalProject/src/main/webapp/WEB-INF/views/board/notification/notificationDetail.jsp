@@ -2,6 +2,9 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
+<c:set var="boardCode" value="${board.boardCode}" />
+<c:set var="boardContent" value="${board.boardContent}" />
+
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -42,7 +45,7 @@
 				<div class="ncText">득근전수에서 회원님들에게 공지드립니다.</div>
 
 				<div class="ncTitle">
-					<input type="text" autocomplete="off" value="공지사항 제목" readonly>
+					<input type="text"  value="${board.boardTitle}"  readonly>
 				</div>
 
 				<div class="ncProfile">
@@ -53,13 +56,18 @@
 							id="adminProfile">
 					</div>
 
-					<div id="ncName">관리자</div>
+					<div id="ncName">${board.memberNickname}</div>
 
-					<div id="ncCheckbox">작성일 : 2023.08.29 | 조회수 : 999</div>
+					<div id="ncCheckbox">작성일 :${board.boardCreateDate} | 조회수 : 0
+
+					<c:if test="${!empty board.boardUpdateDate}" >
+							| 수정일 : ${board.boardUpdateDate}
+					</c:if>
+					</div>
 
 				</div>
 
-				<textarea class="ncContent" readonly>공지사항 내용</textarea>
+				<div class="ncContent"  ></div>
 
 
 
@@ -70,7 +78,7 @@
 					</div>
 				</div>
 
-				<div class="likeCount">99</div>
+				<div class="likeCount">${board.likeCount}</div>
 
 				<div class="ncBtn">
 					<div class="listbtn1">
@@ -79,11 +87,12 @@
 					</div>
 
 					<div class="ncBtnList">
-						<button id="ncUpdate">수정</button>
-						<button id="ncDelete">삭제</button>
+						<button id="ncUpdate" onclick="return boardUpdate()">수정</button>
+						<button id="ncDelete" onclick="return boardDelete()">삭제</button>
 
 					</div>
 				</div>
+
 				<div class="JJ"></div>
 			</div>
 		</div>
@@ -91,5 +100,16 @@
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
 	<script src="/resources/js/board/notification/notificationDetail.js"></script>
 </body>
+	<script>
+		const boardCode = ${boardCode};
+
+		window.onload = function() {
+   		 
+			// 여기에 JavaScript 코드를 넣으세요.
+			document.getElementsByClassName("ncContent")[0].innerHTML = '${boardContent}';
+		};
+
+
+	</script>
 
 </html>

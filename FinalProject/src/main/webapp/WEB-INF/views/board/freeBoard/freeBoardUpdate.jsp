@@ -64,7 +64,7 @@
                 
                 <div id="button-area">
                     <button class="btnStyle" id="write-btn">수정</button>
-                    <button type="cancel" class="btnStyle" id="cancel-btn">취소</button>
+                    <button type="button" class="btnStyle" id="cancel-btn">취소</button>
                 </div>
 
                 <input type="hidden" name="hashtags">
@@ -74,6 +74,10 @@
         </div>
 
 	</section>
+
+    <script>
+        const boardNo = "${board.boardNo}";
+    </script>
 
     <!-- footer include -->
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>

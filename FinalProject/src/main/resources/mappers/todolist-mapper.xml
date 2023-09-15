@@ -6,7 +6,6 @@
 	    <id property="listNo" column="LIST_NO"/>
 	    <result property="listContent" column="LIST_CONTENT"/>
 	    <result property="listFl" column="LIST_FL"/>
-	    <result property="listDetailNo" column="LIST_DETAIL_NO"/>
 	    <result property="memberNo" column="MEMBER_NO"/>
 	    <result property="lCreateDt" column="L_CREATE_DT"/>
 	</resultMap>
@@ -22,7 +21,7 @@
 	 
 	 
 	<select id="DetailedTodoList" resultMap="list_rm">
-		SELECT LIST_NO, LIST_CONTENT, LIST_FL, LIST_DETAIL_NO, MEMBER_NO, TO_CHAR(L_CREATE_DT, 'YYYY-MM-DD')L_CREATE_DT
+		SELECT LIST_NO, LIST_CONTENT, LIST_FL, MEMBER_NO, TO_CHAR(L_CREATE_DT, 'YYYY-MM-DD')L_CREATE_DT
 		FROM TODOLIST
 		JOIN TODOLIST_DATE USING(LIST_NO)
 		WHERE MEMBER_NO = 1
@@ -39,5 +38,21 @@
 	    </choose>
 	    WHERE LIST_NO = #{listNo}
 	</update>
+	
+	
+	<delete id="todoDelete">
+		DELETE  FROM "TODOLIST"
+		WHERE LIST_NO= #{todoNo}
+	</delete>
+	
+	<insert id="todoInsert">
+		INSERT INTO "TODOLIST"
+		VALUES(SEQ_LIST_NO.NEXTVAL,'', DEFAULT, 1, );
+	</insert>
+	
+	<insert id="todoDateInsert">
+		INSERT INTO "TODOLIST_DATE"
+		VALUES (5, TO_CHAR(SYSDATE, 'YYYY-MM-DD'));
+	</insert>
   
 </mapper>

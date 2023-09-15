@@ -26,6 +26,10 @@
 <body>
 
 	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
+
+    <c:if test="${!empty param.key}" >
+        <c:set var="sp" value="&key=${param.key}&query=${param.query}"/>
+    </c:if>
 	
 	<section id="main-container">
         <div id="title-area">
@@ -64,8 +68,8 @@
 
             <c:choose>
                <c:when test="${empty boardList}">
-                    <div>
-                        <h1>게시글이 존재하지 않습니다. 첫 게시글의 주인공이 되어 보세요!</h1>
+                    <div class="no-board-list">
+                        <h1>게시글이 존재하지 않습니다. 첫 게시글의 주인공이 되어 보세요! 😅</h1>
                     </div>
                </c:when>
             
@@ -92,15 +96,15 @@
                                     </div>
                                     <div class="profile-area">
                                         <div class="profileArea">
-                                            <c:if test="${empty loginMember.profileImage}" >
+                                            <c:if test="${empty board.profileImage}" >
                                                 <img src="/resources/images/user.png">
                                             </c:if>
 
-                                            <c:if test="${!empty loginMember.profileImage}" >
-                                                <img src="${loginMember.profileImage}">
+                                            <c:if test="${!empty board.profileImage}" >
+                                                <img src="${board.profileImage}">
                                             </c:if>
                                         </div>
-                                        <div>닉네임</div>
+                                        <div>${board.memberNickname}</div>
                                         <div><i class="fa-solid fa-heart" style="color: #ff4242;"></i>&nbsp;${board.likeCount}</div>
                                     </div>
                                 </div>
@@ -116,9 +120,9 @@
 
         <div class="write-btn-area">
             <a href="/board2/3/insert">
-                <%-- <c:if test="${!empty loginMember}" > --%>
+                <c:if test="${!empty loginMember}" >
                     <button id="writeBtn">글쓰기</button>
-                <%-- </c:if> --%>
+                </c:if>
             </a>
         </div>
 

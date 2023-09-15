@@ -14,7 +14,7 @@ public interface jhjBoardService {
 
 	/** 공지사항 목록 조회
 	 * @param boardCode
-	 * @param cp 
+	 * @param cp
 	 * @return boardList
 	 */
 	Map<String, Object> selectNcBoardList(int boardCode, int cp);
@@ -25,6 +25,31 @@ public interface jhjBoardService {
 	 * @return
 	 */
 	Map<String, Object> selectNcBoardList(Map<String, Object> boardMap, int cp);
+
+	/** 공지시항 게시글 상세조회
+	 * @param map
+	 * @return
+	 */
+	Board selectNcBoardDetail(Map map);
+
+	/** 공지사항 게시글 수정
+	 * @param board
+	 * @return
+	 */
+	int ncUpdate(Board board);
+
+	/** 공지사항 게시글 수정을 위한 게시글 조회
+	 * @param map
+	 * @return
+	 */
+	Board ncUpdateSelect(Map<String, Object> map);
+
+	/** 공지사항 게시글 삭제
+	 * @param board
+	 * @return result
+	 */
+	int ncDelete(Board board);
+
 
 
 }

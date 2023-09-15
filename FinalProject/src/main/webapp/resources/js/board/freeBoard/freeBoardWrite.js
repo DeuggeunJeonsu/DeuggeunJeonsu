@@ -127,26 +127,6 @@ if(document.querySelector('#hashtag-making-area > div:first-of-type')){
 
 // -----------------------------------------------------------------------------------------------
 
-// form 태그 유효성 검사
-document.getElementById("write-form").addEventListener("submit", e =>{
-
-    for(let key in checkObj){
-
-        if(!checkObj[key]){
-
-            switch(key){
-                case "hashtag" : break;
-            }
-        }
-
-        e.preventDefault();
-        return;
-    }
-
-})
-
-// -----------------------------------------------------------------------------------------------
-
 // summernote 에디터 불러오기
 $(document).ready(function() {
     $('#summernote').summernote({
@@ -236,14 +216,41 @@ writeFrm.addEventListener("submit", e=>{
     const summernote = document.getElementById("summernote");
     const htmlContent = summernote.value;
 
-    const imgSrcMatches = htmlContent.match(/<img[^>]+src="\/summernoteImage\/([^"]+)"/);
+    const images = htmlContent.match(/<img[^>]+src="([^"]+)"/g);
 
-    // 이미지가 있다면
-    if(imgSrcMatches && imgSrcMatches.length > 1){
-        const imgSrc = imgSrcMatches[1];
+    // 이미지가 있는지 확인
+    if (images && images.length > 0) {
+    
+        // 첫 번째 이미지의 소스 속성을 추출합니다.
+        const imgSrcMatch = images[0].match(/<img[^>]+src="\/summernoteImage\/([^"]+)"/);
 
-        const imgSrcInput = document.querySelector('input[name="imgSrc"]');
-        imgSrcInput.value = imgSrc;
+        if (imgSrcMatch && imgSrcMatch.length > 1) {
+            const imgSrc = imgSrcMatch[1];
+            
+            const imgSrcInput = document.querySelector('input[name="imgSrc"]');
+            imgSrcInput.value = imgSrc;
+        }
     }
 
+})
+
+// 취소 버튼 클릭 시
+const cancelBtn = document.getElementById("cancel-btn");
+cancelBtn.addEventListener("click", ()=>{
+
+    let url = "/board/3/list";
+
+    const params = new URL(location.href).searchParams;
+
+    let cp;
+
+    if(params.get("cp") != null){ // 쿼리스트링에 cp가 있을 경우
+        cp = "?cp=" + params.get("cp");
+    } else {
+        cp = "?cp=1";
+    }
+
+    url += cp;
+
+    location.href = url;
 })

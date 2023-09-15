@@ -16,4 +16,10 @@ public interface TodoListService  {
 	// 체크박스 상태에 따라 바꾸기 
 	int todoUpdate(TodoList updateTodo);
 
+	// 체크리스트 삭제하기
+	int todoDelete(int todoNo);
+
+	// 체크리스트에 추가하기
+	int todoInsert();
+
 }

@@ -57,12 +57,12 @@
 				<hr>
 				<div class="check-area">
 					
-					<div>
+					<%-- <div>
 						<input type="checkbox" id="ck1" class="none checkbox">
 						<label for="ck1" class="ck"></label>
 						<span>1. 득근전수 50회 4세트</span>
-						<button type="button"><i class="fa-solid fa-minus minus" style="color: #ffffff;"></i></button>
-					</div>
+						<button type="button">-</button>
+					</div> --%>
 					
 					
 				</div>

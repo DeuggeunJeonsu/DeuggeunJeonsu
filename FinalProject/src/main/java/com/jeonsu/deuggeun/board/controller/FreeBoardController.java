@@ -65,10 +65,12 @@ public class FreeBoardController {
 //		else {
 //			
 //			paramMap.put("boardCode", 3);
+//			
 //			Map<String, Object> map = service2.selectFreeBoardList(paramMap, cp);
+//			
 //			model.addAttribute("map", map);
 //		}
-//		
+		
 		return "board/freeBoard/freeBoardList";
 	}
 
@@ -97,6 +99,7 @@ public class FreeBoardController {
 			if(loginMember != null) {
 				
 				map.put("memberNo", loginMember.getMemberNo());
+				map.put("boardMemberNo", board.getMemberNo());
 				
 				// 좋아요 여부 확인
 				int result = service2.freeBoardLikeCheck(map);
@@ -104,6 +107,10 @@ public class FreeBoardController {
 				// 좋아요 누른 적 있을 때
 				if(result > 0) model.addAttribute("likeCheck", "on");
 				
+				// 팔로우 여부 확인
+				int result2 = service2.memberFollowCheck(map);
+				
+				if(result2 > 0) model.addAttribute("followCheck", "on");
 			}
 			
 			// 쿠키로 조회 수 증가 (비회원, 글쓴이 아닌 경우에만)
@@ -183,6 +190,20 @@ public class FreeBoardController {
 	@ResponseBody
 	public int freeBoardLike(@RequestBody Map<String, Integer> paramMap) {
 		return service2.freeBoardLike(paramMap);
+	}
+	
+	// 멤버 팔로우
+	@PostMapping("/follow")
+	@ResponseBody
+	public int memberFollow(@RequestBody Map<String, Integer> paramMap) {
+		return service2.memberFollow(paramMap);
+	}
+	
+	// 멤버 언팔로우
+	@PostMapping("/unfollow")
+	@ResponseBody
+	public int memberUnfollow(@RequestBody Map<String, Integer> paramMap) {
+		return service2.memberUnfollow(paramMap);
 	}
 	
 }

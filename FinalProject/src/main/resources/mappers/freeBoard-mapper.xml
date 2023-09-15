@@ -47,6 +47,38 @@
 		<result property="boardNo" column="BOARD_NO" />
 		<result property="tagContent" column="TAG_CONTENT" />
 	</resultMap>
+	
+	<!-- 자유게시판 삭제되지 않은 게시글 수 조회 -->
+	<select id="getFreeBoardListCount" resultType="_int">
+		SELECT COUNT(*)
+		FROM BOARD
+		WHERE BOARD_ST = 'N'
+		AND BOARD_CODE = #{boardCode}
+	</select>
+	
+	<!-- 자유게시판 게시글 목록 조회 -->
+	<select id="selectFreeBoardList" resultMap="freeBoard_rm">
+		SELECT BOARD_NO,
+		BOARD_TITLE, MEMBER_NICKNAME, TO_CHAR(CREATE_DT, 'YY.MM.DD')
+		CREATE_DT,
+
+		(SELECT COUNT(*) FROM "COMMENT" C
+		WHERE C.BOARD_NO = B.BOARD_NO) COMMENT_COUNT,
+
+		(SELECT COUNT(*) FROM LIKE_POST L
+		WHERE L.BOARD_NO = B.BOARD_NO) LIKE_COUNT,
+
+		(SELECT IMG_PATH || IMG_RENAME FROM BOARD_IMG I
+		WHERE I.BOARD_NO = B.BOARD_NO
+		AND IMG_LEVEL = 0) THUMBNAIL
+
+		FROM "BOARD" B
+		JOIN "MEMBER" USING(MEMBER_NO)
+		WHERE BOARD_ST = 'N'
+		AND
+		BOARD_CODE = #{boardCode}
+		ORDER BY BOARD_NO DESC
+	</select>
 
 	<!-- 자유게시판 게시글 상세 조회 -->
 	<select id="selectFreeBoard" resultMap="freeBoard_rm">
@@ -103,6 +135,48 @@
 		ORDER BY TAG_NO
 	</select>
 	
+	<!-- 자유게시판 게시글 삽입 -->
+	<insert id="freeBoardInsert" parameterType="Board"
+		useGeneratedKeys="true">
+		<selectKey order="BEFORE" resultType="_int"
+			keyProperty="boardNo">
+			SELECT SEQ_BOARD_NO.NEXTVAL FROM DUAL
+		</selectKey>
+		INSERT INTO BOARD
+		VALUES(#{boardNo}, #{boardTitle}, #{boardContent},
+		DEFAULT, DEFAULT, DEFAULT, DEFAULT,
+		#{memberNo}, #{boardCode})
+	</insert>
+
+	<!-- 자유게시판 HASHTAG 테이블 해시태그 삽입 -->
+	<insert id="hashtagInsert" parameterType="Hashtag"
+		useGeneratedKeys="true">
+		<selectKey order="BEFORE" resultType="_int"
+			keyProperty="tagNo">
+			SELECT SEQ_TAG_NO.NEXTVAL FROM DUAL
+		</selectKey>
+		INSERT INTO HASHTAG
+		VALUES(#{tagNo}, #{tagContent})
+	</insert>
+
+	<!-- 자유게시판 BOARD_HASHTAG 테이블 해시태그 삽입 -->
+	<insert id="hashtagInsert2" parameterType="Hashtag">
+		INSERT INTO
+		BOARD_HASHTAG
+		VALUES(#{boardNo}, #{tagNo})
+	</insert>
+	
+	<!-- 자유게시판 이미지 삽입 -->
+	<insert id="freeBoardImageInsert" parameterType="BoardImage">
+		<selectKey order="BEFORE" resultType="_int"
+			keyProperty="imageNo">
+			SELECT SEQ_IMG_NO.NEXTVAL FROM DUAL
+		</selectKey>
+		INSERT INTO BOARD_IMG
+		VALUES(#{imageNo}, #{imagePath},
+		#{imageOriginal}, #{imageReName}, #{boardNo}, #{imageLevel})
+	</insert>
+	
 	<!-- 자유게시판 게시글 수정 -->
 	<update id="freeBoardUpdate">
 		UPDATE BOARD SET
@@ -113,16 +187,61 @@
 		AND BOARD_NO = #{boardNo}
 	</update>
 	
-	<!-- 자유게시판 BOARD_HASHTAG 해시태그 삭제 -->
+	<!-- 자유게시판 게시글 수정 시 삭제된 해시태그 BOARD_HASHTAG 테이블에서 삭제 -->
 	<delete id="hashtagDelete">
 		DELETE FROM BOARD_HASHTAG
 		WHERE BOARD_NO = #{boardNo}
 		AND TAG_NO IN ( ${deleteList} )
 	</delete>
 	
-	<!-- 자유게시판 HASHTAG 해시태그 삭제 -->
-	<insert id="hashtagDelete2">
+	<!-- 자유게시판 게시글 수정 시 삭제된 해시태그 HASHTAG 테이블에서 삭제 -->
+	<delete id="hashtagDelete2">
 		DELETE FROM HASHTAG
 		WHERE TAG_NO IN ( ${deleteList} )
+	</delete>
+	
+	<!-- 자유게시판 게시글 삭제 -->
+	<update id="freeBoardDelete">
+		UPDATE BOARD SET
+		BOARD_ST = 'Y'
+		WHERE BOARD_NO = #{boardNo}
+	</update>
+	
+	<!-- 게시글 삭제 시 해시태그 삭제 (HASHTAG) -->
+	<delete id="freeBoardHashtagDelete">
+		DELETE FROM HASHTAG
+		WHERE TAG_NO IN (
+		SELECT TAG_NO
+		FROM HASHTAG
+		JOIN BOARD_HASHTAG USING(TAG_NO)
+		JOIN BOARD USING(BOARD_NO)
+		WHERE BOARD_NO = #{boardNo}
+		)
+	</delete>
+	
+	<!-- 게시글 삭제 시 이미지 삭제 -->
+	<delete id="freeBoardImageDelete">
+		DELETE FROM BOARD_IMG
+		WHERE BOARD_NO = #{boardNo}
+	</delete>
+
+	<!-- 팔로우 여부 확인 -->	
+	<select id="memberFollowCheck" resultType="_int">
+		SELECT COUNT(*) FROM FOLLOW
+		WHERE FOLLOWER_NO = #{boardMemberNo}
+		AND MEMBER_NO = #{memberNo}
+	</select>
+	
+	<!-- 멤버 팔로우 -->	
+	<insert id="memberFollow">
+		INSERT INTO FOLLOW
+		VALUES(#{boardMemberNo}, #{loginMemberNo})
 	</insert>
+	
+	<!-- 멤버 언팔로우 -->	
+	<delete id="memberUnfollow">
+		DELETE FROM FOLLOW
+		WHERE FOLLOWER_NO = #{boardMemberNo}
+		AND MEMBER_NO = #{loginMemberNo}
+	</delete>
 </mapper>

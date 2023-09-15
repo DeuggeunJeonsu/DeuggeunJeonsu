@@ -70,5 +70,39 @@ public class jhjBoardDAO {
 		
 		return sqlSession.selectList("boardMapper.selectNcBoardTitle_search", boardMap, rowBounds);
 	}
+
+	/** 공지사항 게시글 상세조회
+	 * @param map
+	 * @return
+	 */
+	public Board selectNcBoardDetail(Map map) {
+		
+		return sqlSession.selectOne("boardMapper.selectNcBoardDetail", map);
+	}
+
+	/** 게시글 수정
+	 * @param board
+	 * @return
+	 */
+	public int ncUpdate(Board board) {
+		
+		return sqlSession.update("boardMapper.ncUpdate", board);
+	}
+
+	/** 공지사항 게시글 수정을 위한 게시글 조회
+	 * @param map
+	 * @return 
+	 */
+	public Board ncUpdateSelect(Map<String, Object> map) {
+		return sqlSession.selectOne("boardMapper.ncUpdateSelect", map);
+	}
+
+	/** 공지사항 게시글 삭제
+	 * @param board
+	 * @return
+	 */
+	public int ncDelete(Board board) {
+		return sqlSession.update("boardMapper.ncDelete", board);
+	}
 	 
 }

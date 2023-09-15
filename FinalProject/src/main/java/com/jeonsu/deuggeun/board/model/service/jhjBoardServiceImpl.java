@@ -71,6 +71,35 @@ public class jhjBoardServiceImpl implements jhjBoardService{
 		return map;
 	}
 
+	// 공지사항 게시글 상세조회
+	@Override
+	public Board selectNcBoardDetail(Map map) {
+		return dao.selectNcBoardDetail(map);
+	}
+
+	// 공지사항 게시글 수정
+	@Override
+	public int ncUpdate(Board board) {
+		
+		// XSS 방지 처리(제목만)
+		board.setBoardTitle( Util.XSSHandling( board.getBoardTitle() ) ); 
+		
+		return dao.ncUpdate(board);
+	}
+
+	// 공지사항 게시글 수정을 위한 게시글 조회
+	@Override
+	public Board ncUpdateSelect(Map<String, Object> map) {
+		
+		return dao.ncUpdateSelect(map);
+	}
+
+	// 공지사항 게시글 삭제
+	@Override
+	public int ncDelete(Board board) {
+		return dao.ncDelete(board);
+	}
+
 	
 
 }

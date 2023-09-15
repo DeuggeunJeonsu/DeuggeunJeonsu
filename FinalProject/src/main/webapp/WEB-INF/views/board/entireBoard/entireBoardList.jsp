@@ -148,7 +148,7 @@
               <div class="text_wrap big result mt40">
                 <strong class="tit">"검색" <em>(5) 득근마켓 결과</em></strong>
                 <span class="right_cont">
-                <a href="/board/4/list" class="txt arrow_r">덕건마켓 더보기</a>
+                <a href="/board/5/list" class="txt arrow_r">득근마켓 더보기</a>
                 </span>
               </div>
               <div class="prod_list_wrap mtm30">

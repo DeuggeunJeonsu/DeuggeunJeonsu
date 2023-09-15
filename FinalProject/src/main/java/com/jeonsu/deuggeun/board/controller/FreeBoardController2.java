@@ -69,6 +69,8 @@ public class FreeBoardController2 {
 		board.setMemberNo(loginMember.getMemberNo());
 		board.setBoardCode(3);
 
+		System.out.println(imgSrc);
+		
 		int boardNo = service2.boardInsert(board, tagContent, imgSrc);
 		
 		String message = null;
@@ -88,7 +90,7 @@ public class FreeBoardController2 {
 		return path;
 	}
 	
-	// summernote 이미지 주소 변환
+	// 게시글 작성 시 summernote 이미지 주소 변환
 	@PostMapping(value="/uploadSummernoteImageFile", produces = "application/json")
 	@ResponseBody
 	public JsonObject uploadSummernoteImageFile(@RequestParam("file") MultipartFile multipartFile, HttpSession session) {
@@ -120,6 +122,7 @@ public class FreeBoardController2 {
 		return jsonObject;
 	}
 	
+	// 게시글 수정 화면 전환
 	@GetMapping("/{boardNo}/update")
 	public String boardUpdate(
 			@PathVariable("boardNo") int boardNo
@@ -137,7 +140,8 @@ public class FreeBoardController2 {
 		
 		return "board/freeBoard/freeBoardUpdate";
 	}
-	
+
+	// 게시글 수정
 	@PostMapping("/{boardNo}/update")
 	public String boardUpdate(
 			@PathVariable("boardNo") int boardNo
@@ -174,6 +178,42 @@ public class FreeBoardController2 {
 		return path;
 	}
 	
+	// 게시글 수정 시 summernote 이미지 주소 변환
+	@PostMapping(value="/{boardNo}/uploadSummernoteImageFile2", produces = "application/json")
+	@ResponseBody
+	public JsonObject uploadSummernoteImageFile2(
+			@PathVariable("boardNo") int boardNo
+			,@RequestParam("file") MultipartFile multipartFile, HttpSession session) {
+		
+		JsonObject jsonObject = new JsonObject();
+
+		String fileRoot = "/resources/images/freeBoard/";
+		String webPath = session.getServletContext().getRealPath(fileRoot);
+		
+		String originalFileName = multipartFile.getOriginalFilename(); // 오리지널 파일명
+		String extension = originalFileName.substring(originalFileName.lastIndexOf(".")); // 파일 확장자
+		
+		String savedFileName = UUID.randomUUID() + extension; // 저장될 파일명
+		
+		File targetFile = new File(webPath + savedFileName);
+		
+		try {
+			InputStream fileStream = multipartFile.getInputStream();
+			FileUtils.copyInputStreamToFile(fileStream, targetFile); // 파일 저장
+			jsonObject.addProperty("url", "/summernoteImage/" + savedFileName);
+			jsonObject.addProperty("responseCode", "success");
+			
+		} catch(IOException e) {
+			FileUtils.deleteQuietly(targetFile); // 저장된 파일 삭제
+			jsonObject.addProperty("responseCode", "error");
+			e.printStackTrace();
+		}
+		
+		return jsonObject;
+	}
+	
+	// 게시글 삭제
+	@GetMapping("/{boardNo}/delete")
 	public String boardDelete(
 			@PathVariable("boardNo") int boardNo
 			, RedirectAttributes ra
@@ -181,6 +221,7 @@ public class FreeBoardController2 {
 			) {
 		
 		Map<String, Object> map = new HashMap<>();
+		map.put("boardCode", 3);
 		map.put("boardNo", boardNo);
 		
 		int result = service2.freeBoardDelete(map);
