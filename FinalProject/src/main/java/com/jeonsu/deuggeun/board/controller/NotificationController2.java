@@ -9,6 +9,7 @@ import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -38,9 +39,8 @@ public class NotificationController2 {
 			) {
 		
 		board.setMemberNo(1);
-		board.setBoardCode(4);
+		board.setBoardCode(boardCode);
 		
-		System.out.println(board.getTagNo() + "중요 체크");
 
 		int result = service.ncInsert(board);
 		
@@ -63,6 +63,90 @@ public class NotificationController2 {
 		return path; 
 	}
 
+	// 공지사항 수정
+	@PostMapping("/{boardCode:[4]}/{boardNo}/update")
+	public String ncUpdate(Board board,
+			RedirectAttributes ra,
+			@PathVariable("boardCode") int boardCode,
+			@PathVariable("boardNo") int boardNo,
+			Model model,
+			@RequestParam(value="cp", required = false, defaultValue= "1") int cp
+			) {
+		
+		board.setMemberNo(1);
+		board.setBoardCode(boardCode);
+		board.setBoardNo(boardNo);
+		
+		int result = service.ncUpdate(board);
+		
+		
+		System.out.println(board.getBoardCode());
+		System.out.println(board.getBoardNo());
+		System.out.println(board.getBoardTitle());
+		System.out.println(board.getBoardContent());
+		
+		String message = null;
+		String path = "redirect:/";
+		if(result > 0) {
+			
+			message = "게시굴 수정 성공";
+			path += "board/" + boardCode + "/"+boardNo + "?cp=" + cp;
+			
+			ra.addFlashAttribute("message", message);
+			
+		}else {
+			message = "수정 실패, 다시 시도해주세요.";
+			
+			path += "board/" + boardCode + "/list";
+			
+			ra.addFlashAttribute("message", message);
+			
+		}
+		
+		return path;
+		
+	}
+	
+	// 공지사항 게시글 삭제
+	@GetMapping("/{boardCode:[4]}/{boardNo}/delete")
+	public String ncDelete(
+			@PathVariable("boardCode") int boardCode,
+			@PathVariable("boardNo") int boardNo,
+			RedirectAttributes ra,
+			@RequestParam(value="cp", required = false, defaultValue= "1") int cp
+			) {
+		
+		Board board = new Board();
+		
+		board.setBoardCode(boardCode);
+		board.setBoardNo(boardNo);
+		
+		int result = service.ncDelete(board);
+		
+		
+		String message = null;
+		String path = "redirect:/";
+		if(result > 0) {
+			
+			message = "게시글 삭제 성공";
+			path =  "/"+ "board/"+ "notification" +"/notificationList";
+			
+			ra.addFlashAttribute("message", message);
+			
+		}else {
+			
+			message = "게시글 삭제 실패";
+			path += "board/" + boardCode + "/" +boardNo + "?cp=" + cp;
+			
+			ra.addFlashAttribute("message", message);
+		}
+			
+		
+		
+		return path;
+	}
+	
+	
 	@PostMapping(value="/{boardCode:[4]}/uploadSummernoteImageFileNC", produces = "application/json")
 	@ResponseBody
 	public JsonObject uploadSummernoteImageFile(@RequestParam("file") MultipartFile multipartFile) {
