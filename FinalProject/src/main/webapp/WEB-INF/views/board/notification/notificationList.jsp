@@ -96,7 +96,7 @@
 											<c:forEach items="${boardList}" var="board">
 													<tr>
 														<td>${board.boardNo}</td>
-														<td><a href="#">${board.boardTitle}</a></td>
+														<td><a href="/board/${boardCode}/${board.boardNo}?cp=${pagination.currentPage}${cp}">${board.boardTitle}</a></td>
 														<td>${board.memberNickname}</td>
 														<td>${board.boardCreateDate}</td>
 														<td>1</td>
