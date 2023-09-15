@@ -140,26 +140,6 @@ clickedHashtags.forEach(function(clickedHashtag){
 
 // -----------------------------------------------------------------------------------------------
 
-// form 태그 유효성 검사
-document.getElementById("write-form").addEventListener("submit", e =>{
-
-    for(let key in checkObj){
-
-        if(!checkObj[key]){
-
-            switch(key){
-                case "hashtag" : break;
-            }
-        }
-
-        e.preventDefault();
-        return;
-    }
-
-})
-
-// -----------------------------------------------------------------------------------------------
-
 // summernote 에디터 불러오기
 $(document).ready(function() {
     $('#summernote').summernote({
@@ -169,7 +149,7 @@ $(document).ready(function() {
         lang: "ko-KR",					// 한글 설정
         callbacks: {
             onImageUpload : function(files){
-                uploadSummernoteImageFile(files[0], this);
+                uploadSummernoteImageFile2(files[0], this);
             }
         },
         placeholder: '최대 2048자까지 쓸 수 있습니다. :)',
@@ -193,7 +173,7 @@ $(document).ready(function() {
 });
 
 // summernote 에디터 내에서 이미지 업로드 했을 때 이미지 경로 변경
-function uploadSummernoteImageFile(file, editor){
+function uploadSummernoteImageFile2(file, editor){
     var data = new FormData();
     data.append("file", file);
     console.log(file);
@@ -202,7 +182,7 @@ function uploadSummernoteImageFile(file, editor){
 
         data : data,
         type : "POST",
-        url : "uploadSummernoteImageFile",
+        url : "uploadSummernoteImageFile2",
         dataType : "JSON",
         contentType : false,
         processData : false,
@@ -245,23 +225,22 @@ writeFrm.addEventListener("submit", e=>{
         return;
     }
 
-    // 이미지 삽입
-    const summernote = document.getElementById("summernote");
-    const htmlContent = summernote.value;
-
-    const imgSrcMatches = htmlContent.match(/<img[^>]+src="\/summernoteImage\/([^"]+)"/);
-
-    // 이미지가 있다면
-    if(imgSrcMatches && imgSrcMatches.length > 1){
-        const imgSrc = imgSrcMatches[1];
-
-        const imgSrcInput = document.querySelector('input[name="imgSrc"]');
-        imgSrcInput.value = imgSrc;
-    }
-
     // 기존 해시태그를 삭제
     document.querySelector("[name='deleteList']").value
     = Array.from(deleteSet);
 })
 
+// 취소 버튼 클릭 시
+const cancelBtn = document.getElementById("cancel-btn");
+cancelBtn.addEventListener("click", ()=>{
 
+    let url = "/board/3/" + boardNo + "?cp="
+    
+    const params = new URL(location.href).searchParams;
+
+    let cp = params.get("cp");
+
+    url += cp;
+
+    location.href = url;
+})

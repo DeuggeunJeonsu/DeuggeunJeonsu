@@ -33,17 +33,17 @@ public class ashBoardServiceImpl implements ashBoardService{
 		// 게시글 삽입
 		int boardNo = dao.boardInsert(board);
 		
+		// 해시태그가 있을 경우 해시태그 삽입
 		int result = 0;
-		
-		// 해시태그 삽입
-		if(boardNo > 0) {
+
+		if(boardNo > 0 && tagContent != null) {
 			result = dao.hashtagInsert(boardNo, tagContent);
 		}
 		
+		// 이미지가 있을 경우 이미지 삽입
 		int result2 = 0;
 		
-		// 이미지 삽입
-		if(result > 0) {
+		if(boardNo > 0 && imgSrc != null) {
 			result2 = dao.freeBoardImageInsert(boardNo, imgSrc);
 		}
 
@@ -130,14 +130,11 @@ public class ashBoardServiceImpl implements ashBoardService{
 				deleteMap.put("boardNo", board.getBoardNo());
 				deleteMap.put("deleteList", deleteList);
 				
-				result = dao.hashtagDelete(deleteMap);
-				
-				if(result > 0) {
-					rowCount += dao.hashtagDelete2(deleteMap);
-				}
+				result = dao.hashtagDelete(deleteMap); // BOARD_HASHTAG 테이블에서 해시태그 삭제
+				result += dao.hastagDelete2(deleteMap); // HASHTAG 테이블에서 해시태그 삭제
 			}
 			
-			// 새로 추가할 해시태그가 있다면,,,
+			// 새로 추가할 해시태그가 있을 경우 해시태그 새로 삽입
 			if(insertList != null) {
 				rowCount += dao.hashtagUpdate(board.getBoardNo(), insertList);
 			}
@@ -146,10 +143,22 @@ public class ashBoardServiceImpl implements ashBoardService{
 		return rowCount;
 	}
 
+	// 게시글 삭제
+	@Transactional(rollbackFor = Exception.class)
 	@Override
 	public int freeBoardDelete(Map<String, Object> map) {
-		// TODO Auto-generated method stub
-		return 0;
+		
+		// 게시글 내용 삭제
+		int result = dao.freeBoardDelete(map);
+		
+		// 게시글 내용 삭제에 성공했을 때
+		if(result > 0) {
+		
+			// 게시글에 포함되어 있던 해시태그 삭제
+			result = dao.freeBoardHashtagDelete(map);
+		}
+		
+		return result;
 	}
 
 }

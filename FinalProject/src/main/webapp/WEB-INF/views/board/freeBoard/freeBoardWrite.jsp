@@ -61,14 +61,16 @@
                 
                 <div id="button-area">
                     <button class="btnStyle" id="write-btn">작성</button>
-                    <button type="cancel" class="btnStyle" id="cancel-btn">취소</button>
+                    <button type="button" class="btnStyle" id="cancel-btn">취소</button>
                 </div>
 
                 <input type="hidden" name="hashtags">
+                <input type="hidden" name="cp" value="${param.cp}">
             </form>
         </div>
 
 	</section>
+
 
     <!-- footer include -->
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
