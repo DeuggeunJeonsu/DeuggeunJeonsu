@@ -270,5 +270,4 @@ public class ashBoardDAO {
 		return sqlSession.delete("freeBoardMapper.freeBoardHashtagDelete", map);
 	}
 
-
 }
