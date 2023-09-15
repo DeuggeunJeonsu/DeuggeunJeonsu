@@ -16,7 +16,7 @@ $(document).ready(function () {
         $(this).siblings('.uploadFileName').val(filename);
     });
 
-    //preview image 
+    //preview image
     var imgTarget = $('.previewImage .inputHidden');
 
     imgTarget.on('change', function () {
@@ -46,9 +46,6 @@ $(document).ready(function () {
         }
     });
 });
-
-
-
 // 제목, 내용 유효성 검사
 // 제목 : 10글자
 // 내용 : 500자

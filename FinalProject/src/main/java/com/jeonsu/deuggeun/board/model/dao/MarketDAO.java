@@ -68,7 +68,23 @@ public class MarketDAO {
 
 	// 리뷰 작성 + 사진첨부
 	public int reviewInsert(Review review) {
-		return sqlSession.insert("marketMapper.reviewInsert", review);
+
+		int result =  sqlSession.insert("marketMapper.reviewInsert", review);
+
+		if(result>0) result = review.getReviewNo();
+
+		return result;
+
+	}
+
+	// 리뷰 사진 없을때
+	public int reviewInsert2(Review review) {
+
+		int result =  sqlSession.insert("marketMapper.reviewInsert2", review);
+
+		if(result>0) result = review.getReviewNo();
+
+		return result;
 	}
 
 	// 리뷰게시판 삭제되지 않은 게시글 목록
@@ -85,13 +101,13 @@ public class MarketDAO {
 		return sqlSession.selectList("marketMapper.selectReview", params, rowBounds);
 	}
 
+	public Review selectReviewDetail(Map<String, Object> map) {
 
-//	public List<Review> selectReview(Pagination pagination, int productNo) {
-//
-//		int offset = (pagination.getCurrentPage() -1) * pagination.getLimit();
-//
-//		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
-//
-//		return sqlSession.selectList("marketMapper.selectReview", productNo, rowBounds);
-//	}
+		return sqlSession.selectOne("marketMapper.selectReviewDetail", map);
+	}
+
+	public int updateReadCount(int reviewNo) {
+
+		return sqlSession.update("marketMapper.updateReadCount", reviewNo);
+	}
 }

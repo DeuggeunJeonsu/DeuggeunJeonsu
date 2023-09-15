@@ -81,26 +81,37 @@ public class MarketServiceImpl implements MarketService{
 	@Override
 	public int reviewInsert(int boardCode, int productNo, Review review, MultipartFile image, String webPath, String filePath) throws IOException {
 
-		// 리뷰 정보 저장
+//		int reviewNo = 0; // result 변수를 밖에서 선언 및 초기화
+		int reviewNo = review.getReviewNo();
 
-		review.setUploadImage(webPath);
+		if (image.isEmpty()) {
 
-		String fileName = image.getOriginalFilename();
+//			review.setReviewNo(review.getReviewNo());
 
-		// 이미지 업로드 및 경로 저장
-		String originalFilename = image.getOriginalFilename();
-		String savedFilename = Util.fileRename(originalFilename);
+			reviewNo = dao.reviewInsert2(review); // 이미지가 없는 경우 dao.reviewInsert2 호출
 
-		File uploadFile = new File(filePath, savedFilename);
-		image.transferTo(uploadFile);
+		} else {
+			review.setUploadImage(webPath);
 
-		// 리뷰 테이블에 이미지 경로 업데이트
-		review.setReviewNo(review.getReviewNo());
+			String fileName = image.getOriginalFilename();
 
-		review.setUploadImage(webPath + savedFilename);
+			// 이미지 업로드 및 경로 저장
+			String originalFilename = image.getOriginalFilename();
+			String savedFilename = Util.fileRename(originalFilename);
 
-		int result = dao.reviewInsert(review);
+			File uploadFile = new File(filePath, savedFilename);
+			image.transferTo(uploadFile);
 
+			// 리뷰 테이블에 이미지 경로 업데이트
+			review.setReviewNo(review.getReviewNo());
+			review.setUploadImage(webPath + savedFilename);
+
+			// 리뷰 정보 저장
+			reviewNo = dao.reviewInsert(review); // 이미지가 있는 경우 dao.reviewInsert 호출
+		}
+
+		return reviewNo;
+	}
 
 //			dao.updateReviewImage(review);
 //		int result = dao.reviewInsert(review);
@@ -133,8 +144,6 @@ public class MarketServiceImpl implements MarketService{
 //
 //			dao.updateReviewImage(review);
 
-		return result;
-	}
 
 	@Override
 	public Map<String, Object> selectReview(int boardCode, int cp, int productNo) {
@@ -158,22 +167,16 @@ public class MarketServiceImpl implements MarketService{
 
 	}
 
-//	@Override
-//	public Map<String, Object> selectReview(int productNo, int cp) {
-//
-//		int listCount = dao.getListCount(productNo);
-//
-//		Pagination pagination = new Pagination(cp, listCount);
-//
-//		List<Review> rList = dao.selectReview(pagination, productNo);
-//
-//		Map<String, Object> map = new HashMap<>();
-//
-//		map.put("pagination", pagination);
-//		map.put("rList", rList);
-//
-//		return map;
-//	}
+	@Override
+	public Review selectReviewDetail(Map<String, Object> map) {
+		return dao.selectReviewDetail(map);
+	}
 
+	// 조회 수 증가 서비스
 
+	@Transactional
+	@Override
+	public int updateReadCount(int reviewNo) {
+		return dao.updateReadCount(reviewNo);
+	}
 }

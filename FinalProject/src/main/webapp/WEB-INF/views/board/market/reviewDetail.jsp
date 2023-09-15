@@ -1,73 +1,101 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-        <!DOCTYPE html>
-        <html>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-        <head>
-            <meta charset="UTF-8">
-            <title>게시판 이름</title>
 
-            <%--boardWrite-style.css 연결 --%>
-                <link rel="stylesheet" href="../resources/css/board/market/reviewDetail-style.css">
+<!DOCTYPE html>
+<html>
 
-                <!-- Font Awesome CDN 추가 -->
-                <link rel="stylesheet"
-                    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-                    integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+Wy4y5AuWn1C4EyyIbJs6YXvPECJwFPa28H"
-                    crossorigin="anonymous">
+<head>
+    <meta charset="UTF-8">
+    <title>상품 리뷰 상세페이지</title>
 
-                <link rel="apple-touch-icon" sizes="180x180" href="/resources/images/favicon_io/apple-touch-icon.png">
-                <link rel="icon" type="image/png" sizes="32x32" href="/resources/images/favicon_io/favicon-32x32.png">
-                <link rel="icon" type="image/png" sizes="16x16" href="/resources/images/favicon_io/favicon-16x16.png">
-                <link rel="manifest" href="/resources/images/favicon_io/site.webmanifest">
-                <link rel="icon" href="/resources/images/favicon_io/favicon.ico" type="image/x-icon">
+    <%-- 헤더 아이콘 --%>
+    <link rel="apple-touch-icon" sizes="180x180" href="/resources/images/favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/resources/images/favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/resources/images/favicon_io/favicon-16x16.png">
+    <link rel="manifest" href="/resources/images/favicon_io/site.webmanifest">
 
-        </head>
+    <%-- reviewDetail-style.css 연결 --%>
+    <link rel="stylesheet" href="/resources/css/board/market/reviewDetail-style.css">
+</head>
 
-        <body>
+<body>
 
-            <jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
+<%-- mojs 라이브러리 추가 --%>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mo-js/1.6.0/mo.umd.min.js"></script>
 
-            <section class="main-con">
+<jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
 
-                <div class="top">
-                    <img src="/resources/images/market/test2-main.jpeg" alt="">
+<section id="main-container">
+    <div id="title-area">
+        <div>
+            <h1>상품 리뷰</h1>
+        </div>
+        <div>득근전수 회원님들이 자유롭게 상품 후기를 나누는 공간입니다.</div>
+    </div>
+
+    <div id="detail-container">
+
+        <!-- 게시글 제목 -->
+        <div id="title-middle-area">
+            <div id="title">${review.reviewTitle}</div>
+            <div>
+                <div id="writing-date">작성일&nbsp;&nbsp;${review.reviewCreateDate}&nbsp;&nbsp;&nbsp;&nbsp;
+                </div>|<div id="readCount">조회수&nbsp;&nbsp;<${review.rReadCount}
+            </div>
+            </div>
+        </div>
+
+        <!-- 게시글 작성자 정보 -->
+        <div id="writer-info-area">
+
+            <div id="profile-area">
+                <img src="/resources/images/user.png">
+            </div>
+
+            <div id="nick-area">
+                <div id="nickname"><a href="#">${review.memberNickname}</a></div>
+            </div>
+
+        </div>
+
+        <!-- 게시글 상세 조회 내용 영역 -->
+        <div id="board-detail-area">
+
+            <div id="board-content-area">${review.reviewContent}</div>
+
+            <div id="btn-area">
+                <div>
+                    <button id="goToListBtn">목록으로</button>
+
+                    <c:if test="${loginMember.memberNo == review.memberNo}">
+                        <div>
+                            <button id="updateBtn">수정하기</button>
+                            <button id="deleteBtn">삭제하기</button>
+                        </div>
+                    </c:if>
                 </div>
-                <hr>
-                <div class="middle">
-                    <div id="reviewProfileImage">
-                        <img id="contentProfileImg" src="/resources/images/user2.png">
-                    </div>
+            </div>
 
-                    <div class="nickname">유저일이지롱</div>
-                    <div>2023.09.05</div>
-                </div>
-                <hr>
-                <div class="bottom">
-                    맛도 좋고 소화가 잘 되는 프로틴 파우더를 찾고 있었는데, 이번에 산 프로틴이 밸런스가
+        </div>
 
-                    딱 맞네요ㅎㅎㅎㅎ 아침 운동 후 섭취 하고 있는데 살도 빠짐요 ㅋㅋ 맛있는데 살 빠짐;;;;
+    </div>
 
-                    그리고 제티 맛 너무 달아~~~ㅠㅠㅠ 댕꿀맛 다 먹으면 또 사러 올께요 그럼 20000
-                </div>
-                <!-- 버튼 영역-->
-                <div class="btn-area">
-                    
-                    <!-- 로그인한 회원과 게시글 작성자 번호가 같은 경우-->
-                    <!-- <c:if test="${loginMember.memberNo == board.memberNo}"> -->
-                        <!-- </c:if> -->
-                        <button id="updateBtn">수정</button>
-                        <button id="deleteBtn">삭제</button>
-                        
-                        
-                        <button id="goToListBtn">목록으로</button>
-                    </div>
-                </section>
+</section>
 
-            <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
+<script>
 
-            <script src="/resources/js/board/boardWrite.js"></script>
-            <script src="/resources/js/main.js"></script>
-        </body>
+    const reviewNo = "${review.reviewNo}";
+    const loginMemberNo = "${loginMember.memberNo}";
 
-        </html>
+</script>
+
+<!-- footer include -->
+<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
+
+<!-- boardWrite.js 연결 -->
+<script src="/resources/js/board/boardWrite.js"></script>
+
+</body>
+
+</html>

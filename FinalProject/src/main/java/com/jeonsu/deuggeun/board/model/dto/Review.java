@@ -18,7 +18,8 @@ public class Review {
     private int boardCode;
     private String memberNickname;
     private String reviewCreateDate;
-    private int readCount;
     private String reviewFlag;
+    private int rReadCount;
+    private String profileImage;
 
 }
