@@ -1,9 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <c:set var="product" value="${product}" />
 <c:set var="productImageList" value="${productImageList}" />
-<c:set var="reviewList" value="${reviewList}" />
+<%--<c:set var="reviewList" value="${reviewList}" />--%>
+
+<%-- map에 저장된 값들을 각각 변수에 저장 --%>
+<c:set var="pagination" value="${map2.pagination}" />
+<c:set var="rList" value="${map2.rList}" />
+
         <!DOCTYPE html>
         <html>
 
@@ -23,6 +29,7 @@
                 <link rel="icon" type="image/png" sizes="16x16" href="/resources/images/favicon_io/favicon-16x16.png">
                 <link rel="manifest" href="/resources/images/favicon_io/site.webmanifest">
                 <link rel="icon" href="/resources/images/favicon_io/favicon.ico" type="image/x-icon">
+                <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
         </head>
 
@@ -73,10 +80,10 @@
 
                     <ul class="item-nav">
                         <li>
-                            <a href="/market/marketDetail">상품정보</a>
+                            <a href="/board/${boardCode}/detail/${productNo}">상품정보</a>
                         </li>
                         <li>
-                            <a href="#">Review</a>
+                            <a href="/board/${boardCode}/review/${productNo}">Review</a>
                         </li>
                         <li>
                             <a href="/market/marketInquire">상품문의</a>
@@ -101,17 +108,27 @@
                                 </tr>
                             </thead>
                             <tbody>
-                            <c:forEach var="review" items="${reviewList}">
-                                <c:if test="${review.productNo == product.productNo}">
-                                <tr>
-                                    <td>${review.boardNo}</td>
-                                    <td><a href="#">${review.boardTitle}</a></td>
-                                    <td>${review.memberNickname}</td>
-                                    <td>${review.createDate}</td>
-                                    <td>${review.readCount}</td>
-                                </tr>
-                                </c:if>
-                            </c:forEach>
+                            <c:choose>
+                                <c:when test="${empty rList}">
+                                    <tr>
+                                        <td colspan="5">작성된 리뷰 게시글이 없습니다.</td>
+                                    </tr>
+                                </c:when>
+                                <c:otherwise>
+                                    <c:forEach var="review" items="${rList}">
+                                        <c:if test="${review.productNo == product.productNo}">
+                                            <tr>
+                                                <td>${review.reviewNo}</td>
+                                                <td><a href="/board/market/reviewDetail">${review.reviewTitle}</a></td>
+                                                <td>${review.memberNickname}</td>
+                                                <td>${review.reviewCreateDate}</td>
+                                                <td>100</td>
+                                            </tr>
+                                        </c:if>
+                                    </c:forEach>
+                                </c:otherwise>
+                            </c:choose>
+
                             <%--                                <tr>--%>
 <%--                                    <td>4</td>--%>
 <%--                                    <td><a href="#">네번째 게시글</a></td>--%>
@@ -143,16 +160,20 @@
                             </tbody>
                         </table>
 
-
+                        <br>
+                        <br>
                         <div class="btn-area">
 
-                            <button id="insertBtn">글쓰기</button>
-                            <!-- 로그인 상태일 경우 글쓰기 버튼 노출 -->
 
-                            <!-- <c:if test="${!empty loginMember}"> -->
-                            <!-- </c:if> -->
+                            <!-- 로그인 상태일 경우 글쓰기 버튼 노출 -->
+<%--                            <!-- <c:if test="${!empty loginMember}"> -->--%>
+                                    <a href="/board/${boardCode}/review/${productNo}/insert" id="insertBtn">글쓰기</a>
+<%--                            <button id="insertBtn">글쓰기</button>--%>
+<%--                            <!-- </c:if> -->--%>
 
                         </div>
+
+
 
                         <div class="pagination-area">
 
@@ -193,15 +214,17 @@
                             </ul>
 
                         </div>
+                    </section>
+                <div class="place"></div>
 
                 </div>
-
             </section>
 
 
             <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
-
             <%-- <script src="/resources/js/main.js"></script> --%>
+
         </body>
+        <script src="/resources/js/board/market/marketReviewList.js"></script>
 
         </html>

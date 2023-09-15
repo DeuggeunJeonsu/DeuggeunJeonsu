@@ -56,16 +56,17 @@
         <id property="productNo" column="PRODUCT_NO"/>
 
         <result property="memberNo" column="MEMBER_NO"/>
-        <result property="boardNo" column="BOARD_NO"/>
-        <result property="inquiryType" column="INQUIRY_TYPE"/>
-        <result property="boardTitle" column="BOARD_TITLE"/>
-        <result property="boardContent" column="BOARD_CONTENT"/>
+        <result property="reviewTitle" column="REVIEW_TITLE"/>
+        <result property="reviewContent" column="REVIEW_CONTENT"/>
         <result property="memberNickname" column="MEMBER_NICKNAME"/>
-        <result property="CreateDate" column="CREATE_DT"/>
+        <result property="reviewCreateDate" column="REVIEW_CD"/>
         <result property="readCount" column="READ_COUNT"/>
-        <result property="uploadImage" column="UPLOAD_IMG"/>
-
+        <result property="boardCode" column="BOARD_CODE"/>
+        <result property="reviewNo" column="REVIEW_NO"/>
+        <result property="reviewFlag" column="REVIEW_FLAG" />
     </resultMap>
+
+
 
 
     <!-- ProductImage에 대한 resultMap -->
@@ -117,15 +118,31 @@
 
     <!-- 리뷰 게시판 목록조회   -->
     <select id="selectReviewList"  parameterType="map" resultMap="review_rm">
-        SELECT B.BOARD_NO, B.BOARD_TITLE, M.MEMBER_NICKNAME, TO_CHAR(B.CREATE_DT, 'YYYY-MM-DD') AS CREATE_DATE, B.READ_COUNT, P.PRODUCT_NO, I.INQUIRY_TYPE
-        FROM BOARD B
-                 JOIN MEMBER M ON B.MEMBER_NO = M.MEMBER_NO
-                 JOIN PRODUCT P ON B.MEMBER_NO = P.MEMBER_NO
-                 JOIN INQUIRY I ON B.BOARD_NO = I.BOARD_NO
-        WHERE P.PRODUCT_NO = #{productNo}
-          AND P.BOARD_CODE = #{boardCode}
-          AND I.INQUIRY_TYPE = 2
+        SELECT PRODUCT_NO, REVIEW_TITLE, REVIEW_CONTENT, MEMBER_NO
+             , MEMBER_NICKNAME, BOARD_CODE, TO_CHAR(REVIEW_CD, 'YYYY"년" MM"월" DD"일"')REVIEW_CD, REVIEW_NO
+        FROM REVIEW
+                 JOIN MEMBER USING (MEMBER_NO)
+        WHERE PRODUCT_NO = #{productNo}
+        ORDER BY REVIEW_NO DESC
     </select>
+
+    <!-- 특정 게시판의 삭제되지 않은 게시글 수 조회 -->
+    <select id="getReviewListCount" resultType="_int">
+        SELECT COUNT(*) FROM REVIEW
+        WHERE REVIEW_FLAG = 'N'
+        AND BOARD_CODE = #{boardCode}
+    </select>
+
+
+    <select id="selectReview" resultMap="review_rm">
+        SELECT PRODUCT_NO, REVIEW_TITLE, REVIEW_CONTENT, MEMBER_NO-->
+             , MEMBER_NICKNAME, BOARD_CODE, TO_CHAR(REVIEW_CD, 'YYYY"년" MM"월" DD"일"')REVIEW_CD, REVIEW_NO
+        FROM REVIEW
+                 JOIN MEMBER USING (MEMBER_NO)
+        WHERE PRODUCT_NO = #{productNo}
+        ORDER BY REVIEW_NO DESC
+    </select>
+
 
     <!-- 검색했을때 마켓 목록 수 조회 -->
     <select id="getListCount_search" resultType="int" parameterType="java.util.Map">
@@ -149,7 +166,33 @@
         ORDER BY PRODUCT_NO DESC
     </select>
 
+    <!-- 게시글 삽입 -->
+    <insert id="reviewInsert" parameterType="Review">
+        INSERT INTO REVIEW (PRODUCT_NO, REVIEW_TITLE, REVIEW_CONTENT, MEMBER_NO, UPLOAD_IMAGE, BOARD_CODE, REVIEW_NO)
+        VALUES (#{productNo}, #{reviewTitle}, #{reviewContent}, #{memberNo}, #{uploadImage}, #{boardCode}, SEQ_REVIEW_NO.NEXTVAL)
+    </insert>
 
+
+    <!-- 이미지.. -->
+<!--    <insert id="updateReviewImage" parameterType="Review">-->
+<!--        UPDATE REVIEW-->
+<!--        SET UPLOAD_IMAGE = #{uploadImage}-->
+<!--        WHERE REVIEW_NO = #{reviewNo}-->
+<!--    </insert>-->
+
+
+    <!--    <insert id="reviewInsert" parameterType="Review" useGeneratedKeys="true">-->
+
+<!--        <selectKey order="BEFORE" resultType="_int" keyProperty="reviewNo">-->
+<!--            SELECT SEQ_REVIEW_NO.NEXTVAL FROM DUAL-->
+<!--        </selectKey>-->
+<!--        INSERT INTO REVIEW-->
+<!--        VALUES( #{productNo}, #{reviewTitle}, #{reviewContent},-->
+<!--                #{memberNo}, #{memberNickname}, '이미지경로',-->
+<!--                5, DEFAULT, #{reviewNo}-->
+<!--    </insert>-->
+
+    <!--  이미지 삽입  -->
 
 
 

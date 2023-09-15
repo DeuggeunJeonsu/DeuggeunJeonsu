@@ -2,7 +2,9 @@ package com.jeonsu.deuggeun.board.model.service;
 import com.jeonsu.deuggeun.board.model.dto.Product;
 import com.jeonsu.deuggeun.board.model.dto.ProductImage;
 import com.jeonsu.deuggeun.board.model.dto.Review;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
@@ -23,5 +25,14 @@ public interface MarketService {
     List<ProductImage> selectImageList(int productNo);
 
     // 리뷰 리스트 조회
-    List<Review> selectReviewList(Map<String, Object> map);
+//    List<Review> selectReviewList(Map<String, Object> map, int boardCode, int cp);
+    //List<Review> selectReviewListt(Map<String, Object> map, int cp);
+
+    // 리뷰 작성
+    int reviewInsert(int boardCode, int productNo, Review review, MultipartFile image, String webPath, String filePath) throws IOException;
+
+    Map<String, Object> selectReview(int boardCode, int cp, int productNo);
+
+
+//    Map<String, Object> selectReview(int productNo, int cp);
 }
