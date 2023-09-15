@@ -62,7 +62,7 @@ public interface ashBoardService {
 
 	/** 게시글 삭제
 	 * @param map
-	 * @return
+	 * @return result
 	 */
 	int freeBoardDelete(Map<String, Object> map);
 

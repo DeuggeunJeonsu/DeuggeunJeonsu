@@ -138,6 +138,13 @@
     justify-content: center;
 }
 
+.no-board-list{
+    text-align: center;
+    width: 900px;
+    min-width: 900px;
+    margin: auto;
+}
+
 .thumbnail{
     border: 1px solid #ddd;
     

@@ -64,8 +64,8 @@
 
             <c:choose>
                <c:when test="${empty boardList}">
-                    <div>
-                        <h1>게시글이 존재하지 않습니다. 첫 게시글의 주인공이 되어 보세요!</h1>
+                    <div class="no-board-list">
+                        <h1>게시글이 존재하지 않습니다. 첫 게시글의 주인공이 되어 보세요! 😅</h1>
                     </div>
                </c:when>
             
