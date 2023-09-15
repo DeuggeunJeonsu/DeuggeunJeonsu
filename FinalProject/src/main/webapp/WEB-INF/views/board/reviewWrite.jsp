@@ -67,15 +67,15 @@
                             </div>
                     </section>
                 </form>
+<%--                <div class="place"></div>--%>
 
-
-            <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
 
             <script src="/resources/js/market/reviewWrite.js"></script>
 <%--            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>--%>
             <script>
                 const loginMember = "${loginMember}";
             </script>
+            <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
         </body>
 
         </html>

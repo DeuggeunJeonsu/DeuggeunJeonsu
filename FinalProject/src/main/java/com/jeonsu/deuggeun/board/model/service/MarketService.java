@@ -13,7 +13,6 @@ public interface MarketService {
 
     // 득근마켓 게시글 목록조회
     Map<String, Object> selectMarketList(int boardCode, int cp);
-//    Map<String, Object> selectBoardList(int boardCode, int cp);
 
     // 검색했을때 게시글 목록
     Map<String, Object> selectMarketList(Map<String, Object> paramMap, int cp);
@@ -24,11 +23,16 @@ public interface MarketService {
     // 게시글 상세 사진
     List<ProductImage> selectImageList(int productNo);
 
+    // 리뷰 목록 조회
+    Map<String, Object> selectReview(int boardCode, int cp, int productNo);
+
     // 리뷰 작성
     int reviewInsert(int boardCode, int productNo, Review review, MultipartFile image, String webPath, String filePath) throws IOException;
 
-    Map<String, Object> selectReview(int boardCode, int cp, int productNo);
+    // 리뷰 상세 페이지
+    Review selectReviewDetail(Map<String, Object> map);
 
+    // * 조회 수 증가 서비스
+    int updateReadCount(int reviewNo);
 
-//    Map<String, Object> selectReview(int productNo, int cp);
 }

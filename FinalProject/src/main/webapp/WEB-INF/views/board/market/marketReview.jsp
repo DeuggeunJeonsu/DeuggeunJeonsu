@@ -4,7 +4,6 @@
 
 <c:set var="product" value="${product}" />
 <c:set var="productImageList" value="${productImageList}" />
-<%--<c:set var="reviewList" value="${reviewList}" />--%>
 
 <%-- map에 저장된 값들을 각각 변수에 저장 --%>
 <c:set var="pagination" value="${map2.pagination}" />
@@ -119,44 +118,15 @@
                                         <c:if test="${review.productNo == product.productNo}">
                                             <tr>
                                                 <td>${review.reviewNo}</td>
-                                                <td><a href="/board/market/reviewDetail">${review.reviewTitle}</a></td>
+                                                <td><a href="/board/${boardCode}/review/${review.reviewNo}/detail">${review.reviewTitle}</a></td>
                                                 <td>${review.memberNickname}</td>
                                                 <td>${review.reviewCreateDate}</td>
-                                                <td>100</td>
+<%--                                                <td>${review.rReadCount}</td>--%>
                                             </tr>
                                         </c:if>
                                     </c:forEach>
                                 </c:otherwise>
                             </c:choose>
-
-                            <%--                                <tr>--%>
-<%--                                    <td>4</td>--%>
-<%--                                    <td><a href="#">네번째 게시글</a></td>--%>
-<%--                                    <td>유저일이지롱</td>--%>
-<%--                                    <td>2023-09-01</td>--%>
-<%--                                    <td>85</td>--%>
-<%--                                </tr>--%>
-<%--                                <tr>--%>
-<%--                                    <td>3</td>--%>
-<%--                                    <td><a href="#">세번째 게시글</a></td>--%>
-<%--                                    <td>유저일이지롱</td>--%>
-<%--                                    <td>2023-09-01</td>--%>
-<%--                                    <td>85</td>--%>
-<%--                                </tr>--%>
-<%--                                <tr>--%>
-<%--                                    <td>2</td>--%>
-<%--                                    <td><a href="#">두번째 게시글</a></td>--%>
-<%--                                    <td>유저일이지롱</td>--%>
-<%--                                    <td>2023-09-01</td>--%>
-<%--                                    <td>85</td>--%>
-<%--                                </tr>--%>
-<%--                                <tr>--%>
-<%--                                    <td>1</td>--%>
-<%--                                    <td><a href="#">첫번째 게시글</a></td>--%>
-<%--                                    <td>유저일이지롱</td>--%>
-<%--                                    <td>2023-09-01</td>--%>
-<%--                                    <td>85</td>--%>
-<%--                                </tr>--%>
                             </tbody>
                         </table>
 
@@ -176,44 +146,31 @@
 
 
                         <div class="pagination-area">
-
-
                             <ul class="pagination">
-
                                 <!-- 첫 페이지로 이동 -->
-                                <li><a href="/board/${boardCode}?cp=1${sp}">&lt;&lt;</a></li>
-
+                                <li><a href="/board/${boardCode}/review/${productNo}?cp=1${sp}">&lt;&lt;</a></li>
                                 <!-- 이전 목록 마지막 번호로 이동 -->
-                                <li><a href="/board/${boardCode}?cp=${pagination.prevPage}${sp}">&lt;</a></li>
-
-
+                                <li><a href="/board/${boardCode}/review/${productNo}?cp=${pagination.prevPage}${sp}">&lt;</a></li>
                                 <!-- 특정 페이지로 이동 -->
                                 <c:forEach var="i" begin="${pagination.startPage}" end="${pagination.endPage}" step="1">
-
                                     <c:choose>
                                         <c:when test="${ i == pagination.currentPage}">
                                             <!-- 현재 보고있는 페이지 -->
                                             <li><a class="current">${i}</a></li>
                                         </c:when>
-
                                         <c:otherwise>
                                             <!-- 현재 페이지를 제외한 나머지 -->
-                                            <li><a href="/board/${boardCode}?cp=${i}${sp}">${i}</a></li>
-
+                                            <li><a href="/board/${boardCode}/review/${productNo}?cp=${i}${sp}">${i}</a></li>
                                         </c:otherwise>
                                     </c:choose>
-
                                 </c:forEach>
-
                                 <!-- 다음 목록 시작 번호로 이동 -->
-                                <li><a href="/board/${boardCode}?cp=${pagination.nextPage}${sp}">&gt;</a></li>
-
+                                <li><a href="/board/${boardCode}/review/${productNo}?cp=${pagination.nextPage}${sp}">&gt;</a></li>
                                 <!-- 끝 페이지로 이동 -->
-                                <li><a href="/board/${boardCode}?cp=${pagination.maxPage}${sp}">&gt;&gt;</a></li>
-
+                                <li><a href="/board/${boardCode}/review/${productNo}?cp=${pagination.maxPage}${sp}">&gt;&gt;</a></li>
                             </ul>
-
                         </div>
+
                     </section>
                 <div class="place"></div>
 
