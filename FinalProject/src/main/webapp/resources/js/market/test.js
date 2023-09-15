@@ -1,7 +1,6 @@
 // 첨부한 이미지 미리보기
 $(document).ready(function () {
     var fileTarget = $('.fileBox .inputHidden');
-    console.log(test);
 
     fileTarget.on('change', function () {
         if (window.FileReader) {
@@ -17,7 +16,7 @@ $(document).ready(function () {
         $(this).siblings('.uploadFileName').val(filename);
     });
 
-    //preview image 
+    //preview image
     var imgTarget = $('.previewImage .inputHidden');
 
     imgTarget.on('change', function () {
@@ -53,7 +52,6 @@ $(document).ready(function () {
 // 제목, 내용 유효성 검사
 // 제목 : 10글자
 // 내용 : 500자
-
 const reviewForm = document.getElementById("reviewForm");
 const reviewTitle = document.getElementById("reviewTitle");
 const reviewContent = document.getElementById("reviewContent");
@@ -89,7 +87,7 @@ reviewForm.addEventListener("submit", function (e) {
 
     // 내용 유효성 검사
     let contentValue = reviewContent.value.trim();
-    
+
     if (contentValue === "" || contentValue.length > 500) {
         Swal.fire({
             icon: 'error',
@@ -113,7 +111,7 @@ document.addEventListener("keydown", function (e) {
     if (e.key === "Enter" && Swal.isVisible()) {
         e.preventDefault();
         Swal.close();
-        
+
         if (!reviewTitle.value) {
             reviewTitle.focus();
         } else if (!reviewContent.value) {

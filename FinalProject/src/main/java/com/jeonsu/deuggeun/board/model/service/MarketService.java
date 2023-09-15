@@ -24,10 +24,6 @@ public interface MarketService {
     // 게시글 상세 사진
     List<ProductImage> selectImageList(int productNo);
 
-    // 리뷰 리스트 조회
-//    List<Review> selectReviewList(Map<String, Object> map, int boardCode, int cp);
-    //List<Review> selectReviewListt(Map<String, Object> map, int cp);
-
     // 리뷰 작성
     int reviewInsert(int boardCode, int productNo, Review review, MultipartFile image, String webPath, String filePath) throws IOException;
 

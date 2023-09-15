@@ -28,6 +28,8 @@
                 <link rel="manifest" href="/resources/images/favicon_io/site.webmanifest">
                 <link rel="icon" href="/resources/images/favicon_io/favicon.ico" type="image/x-icon">
 
+            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 
         </head>
 
@@ -69,8 +71,10 @@
 
             <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
 
+<%--            <script src="/resources/js/market/test.js"></script>--%>
             <script src="/resources/js/market/reviewWrite.js"></script>
-            <script src="/resources/js/main.js"></script>
+<%--            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>--%>
+<%--            <script src="/resources/js/main.js"></script>--%>
             <script>
                 const loginMember = "${loginMember}";
             </script>

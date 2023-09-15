@@ -172,26 +172,6 @@
         VALUES (#{productNo}, #{reviewTitle}, #{reviewContent}, #{memberNo}, #{uploadImage}, #{boardCode}, SEQ_REVIEW_NO.NEXTVAL)
     </insert>
 
-
-    <!-- 이미지.. -->
-<!--    <insert id="updateReviewImage" parameterType="Review">-->
-<!--        UPDATE REVIEW-->
-<!--        SET UPLOAD_IMAGE = #{uploadImage}-->
-<!--        WHERE REVIEW_NO = #{reviewNo}-->
-<!--    </insert>-->
-
-
-    <!--    <insert id="reviewInsert" parameterType="Review" useGeneratedKeys="true">-->
-
-<!--        <selectKey order="BEFORE" resultType="_int" keyProperty="reviewNo">-->
-<!--            SELECT SEQ_REVIEW_NO.NEXTVAL FROM DUAL-->
-<!--        </selectKey>-->
-<!--        INSERT INTO REVIEW-->
-<!--        VALUES( #{productNo}, #{reviewTitle}, #{reviewContent},-->
-<!--                #{memberNo}, #{memberNickname}, '이미지경로',-->
-<!--                5, DEFAULT, #{reviewNo}-->
-<!--    </insert>-->
-
     <!--  이미지 삽입  -->
 
 
