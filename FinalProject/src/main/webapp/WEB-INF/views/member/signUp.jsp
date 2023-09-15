@@ -36,7 +36,7 @@
         <label class="imp">아이디(이메일)</label>
         <div>
           <input type="text" placeholder="예 : email@gmail.com" required>
-          <button type="button">인증번호 받기</button>
+          <button type="button">중복확인</button>
         </div>
       </div>
 
@@ -49,8 +49,6 @@
         <label class="imp">비밀번호 확인</label>
         <input type="password" placeholder="비밀번호를 한번 더 입력해주세요." required>
       </div>
-
-      <p class="signUp-message" id="pwMessage">영어,숫자,특수문자(!,@,#,-,_) 6~20글자 사이로 입력해주세요. </p>
 
       <div>
         <label class="imp">닉네임</label>
