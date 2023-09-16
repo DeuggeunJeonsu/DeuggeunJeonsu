@@ -1,5 +1,6 @@
 package com.jeonsu.deuggeun.main.controller;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.jeonsu.deuggeun.common.utility.Util;
 import com.jeonsu.deuggeun.member.model.dto.Member;
+import com.jeonsu.deuggeun.member.model.dto.MemberBMI;
 import com.jeonsu.deuggeun.member.model.service.MemberService;
 
 @Controller
@@ -38,6 +40,13 @@ public class MainController {
 	@RequestMapping("/bmi")
 	public String bmi() {
 		return "common/bmi";
+	}
+	
+	// 내 BMI 히스토리 불러오기
+	@ResponseBody
+	@RequestMapping(value="/bmi/loadBMI", produces = "application/json; charset=UTF-8")
+	public List<MemberBMI> loadBMI(@RequestBody Map<String, Object> paramMap) {
+		return service.loadBMI(paramMap);
 	}
 	
 	// 내 회원정보에 BMI 저장

@@ -98,7 +98,15 @@
                     </div>
 
                     <div id="bmiHistoryArea">
-                        <canvas id="lineChart" style="height:100%; width:100%"></canvas>
+                        <c:if test="${empty loginMember}">
+                            <div id="NonMembersArea">
+                                로그인 후 BMI 히스토리 기능을 사용하실 수 있습니다<br>
+                                아직 회원이 아니신가요? <a href="/member/signUp">회원가입 하러가기</a>
+                            </div>
+                        </c:if>
+                        <c:if test="${!empty loginMember}">
+                            <canvas id="lineChart" style="height:100%; width:100%"></canvas>
+                        </c:if>
                     </div>
                 </div>
             </div>
