@@ -1,6 +1,5 @@
 * {
     box-sizing: border-box;
-    /* border: 1px solid black; */
 }
 
 /* 컨테이너 영역 */
@@ -68,7 +67,7 @@ body {
 /* BMI관련 전체영역 */
 #bmiArea{
     display: flex;
-    margin: 10px 0;
+    margin-top: 10px;
 }
 
 /* BMI계산 영역 */
@@ -201,6 +200,7 @@ body {
     justify-content: center;
     align-items: center;
     border: 1px solid #ddd;
+    border-left: 0;
 }
 /* 아바타 */
 #bmiAvatarArea > i{
@@ -220,8 +220,30 @@ body {
     width: 100%;
     height: 200px;
     margin-bottom: 50px;
+    border: 1px solid #ddd;
+    border-top: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 /* 차트 내부 */
 #lineChart{
     padding-left: 20px;
+}
+
+/* 비회원일 경우 표시될 BMI 히스토리 영역 div */
+#NonMembersArea{
+    font-size: 20px;
+    color: gray;
+    text-align: center;
+    line-height: 1.5em;
+}
+
+#NonMembersArea > a{
+    font-weight: bold;
+    color: black;
+}
+#NonMembersArea > a:hover{
+    text-decoration: underline;
 }
