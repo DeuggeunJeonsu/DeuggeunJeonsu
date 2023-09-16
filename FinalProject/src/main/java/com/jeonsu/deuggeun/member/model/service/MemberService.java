@@ -1,5 +1,7 @@
 package com.jeonsu.deuggeun.member.model.service;
 
+import java.util.Map;
+
 import com.jeonsu.deuggeun.member.model.dto.Member;
 
 public interface MemberService {
@@ -16,5 +18,10 @@ public interface MemberService {
 	 */
 	int signUp(Member inputMember);
 
-	
+	/** 회원 정보에 BMI 히스토리 추가하기
+	 * @param paramMap
+	 * @return result(0 : 실패, 1 : 성공)
+	 */
+	int addBMI(Map<String, Object> paramMap);
+
 }

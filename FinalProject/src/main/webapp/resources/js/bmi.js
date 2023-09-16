@@ -1,3 +1,5 @@
+
+
 new Chart(document.getElementById("lineChart"), {
     type: 'line',
     data: {
@@ -73,4 +75,33 @@ bmiReset.addEventListener("click", ()=>{
 // 저장하기 버튼이 눌리면
 bmiSave.addEventListener("click", ()=>{
     
-})
+    if(loginMemberNo !=""){ // 로그인 상태일 경우
+
+        if(bmiResult.innerText != ""){  // bmi 계산값이 있으면
+            const data = {"loginMemberNo" : loginMemberNo,
+                            "myBMI" : bmiResult.innerText};
+            // ajax 코드 작성
+            fetch("/bmi/addBMI", {
+                method : "POST",
+                headers : {"Content-Type" : "application/json"},
+                body : JSON.stringify(data)
+            })
+            .then(resp => resp.json() ) // 응답 객체를 필요한 형태로 파싱하여 리턴
+            .then(result => {
+                console.log("result : "+result);
+                alert("오늘의 내 BMI 저장 완료!");
+            })
+            .catch(err =>{
+                console.log("예외 발생");
+                console.log(err);
+            }) // 예외 발생 시 처리하는 부분
+        }
+        else{ // bmi 계산 값이 없으면
+            alert("저장할 BMI값이 없습니다");
+        }
+    }
+    else{
+        alert("로그인 후 저장 가능합니다");
+    }
+
+});

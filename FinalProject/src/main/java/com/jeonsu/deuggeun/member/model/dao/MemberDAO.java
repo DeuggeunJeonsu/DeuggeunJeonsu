@@ -1,5 +1,7 @@
 package com.jeonsu.deuggeun.member.model.dao;
 
+import java.util.Map;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -26,5 +28,13 @@ public class MemberDAO {
 	 */
 	public int signUp(Member inputMember) {
 		return sqlSession.insert("memberMapper.signUp", inputMember);
+	}
+
+	/** 회원 정보에 BMI 히스토리 추가하기
+	 * @param paramMap
+	 * @return result
+	 */
+	public int addBMI(Map<String, Object> paramMap) {
+		return sqlSession.insert("memberMapper.insertBMI", paramMap);
 	}
 }
