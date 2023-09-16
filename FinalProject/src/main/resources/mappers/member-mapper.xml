@@ -41,5 +41,11 @@
    		, NULL, DEFAULT, DEFAULT, DEFAULT)
    </insert>
    
+   <!-- 회원 정보에 BMI 히스토리 추가하기 -->
+   <insert id="insertBMI">
+      INSERT INTO BMI
+      VALUES (SEQ_BMI_NO.NEXTVAL, #{loginMemberNo}, #{myBMI}, DEFAULT)
+   </insert>
+   
 
 </mapper>

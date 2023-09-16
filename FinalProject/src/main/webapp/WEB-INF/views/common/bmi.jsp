@@ -13,6 +13,10 @@
         <link rel="manifest" href="/resources/images/favicon_io/site.webmanifest">
 
         <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+
+        <script>
+            const loginMemberNo = "${loginMember.memberNo}"; // 로그인한 회원 번호
+        </script>
     </head>
 
     <body>
