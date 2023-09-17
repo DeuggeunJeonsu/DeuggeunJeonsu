@@ -36,12 +36,11 @@ public class TodoListDao {
 	}
 
 	// 체크박스 내용 추가
-	public int todoInsert() {
-		int result = sqlSession.delete("todolistMapper.todoInsert");
-		
+	public int todoInsert(TodoList insertTodo) {
+		int result = sqlSession.delete("todolistMapper.todoInsert", insertTodo);
 		int result2 = 0;
 		if(result > 0 ) {
-			result2 = sqlSession.delete("todolistMapper.todoDateInsert");
+			result2 = sqlSession.delete("todolistMapper.todoDateInsert", insertTodo);
 		}
 		return result2; 
 		
