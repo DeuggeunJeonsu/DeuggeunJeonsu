@@ -66,32 +66,94 @@
 
 #sort-btn-area a{
     font-size: 16px;
+    margin: 0 5px;
 
     text-decoration: none;
     color: #797979;
-
-    margin: 0 5px;
 }
 
-#sort-btn-area a:hover{
+#sort-btn-area span:hover{
     color: #99E1ED;
     font-weight: bold;
+    cursor: pointer;
+}
+
+/* 팔로잉순 말풍선 */
+.ballon {
+    /* display: none; */
+    width: 279px;
+    height: 40px;
+
+    position: absolute;
+    left: 1428px;
+    bottom: 635px;
+    
+    background: #484848;
+    color: white;
+    border-radius: 5px;
+    padding: 12px 12.8px;
+}
+
+
+.ballon:after {
+    border-top: 10px solid #484848;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 0px solid transparent;
+    content: "";
+    position: absolute;
+    top: 40px;
+    left: 130px;
+}
+
+.floating{
+	animation-name: floating;
+	-webkit-animation-name: floating;
+
+	animation-duration: 1.5s;	
+	-webkit-animation-duration: 1.5s;
+
+	animation-iteration-count: infinite;
+	-webkit-animation-iteration-count: infinite;
+}
+
+@keyframes floating {
+	0% {
+		transform: translateY(0%);	
+	}
+	50% {
+		transform: translateY(8%);	
+	}	
+	100% {
+		transform: translateY(0%);
+	}			
+}
+
+@-webkit-keyframes floating {
+	0% {
+		-webkit-transform: translateY(0%);	
+	}
+	50% {
+		-webkit-transform: translateY(8%);	
+	}	
+	100% {
+		-webkit-transform: translateY(0%);
+	}			
 }
 
 /* 해시태그 영역 */
 .hashTag-area{
-    display: flex;
-    position: relative;
-
-    /* right: 50px; */
+    position: absolute;
+    left: 780px;
 }
 
 .hashTag-area div{
-    width: 140px;
+    width: auto;
+    height: 50px;
     background-color: #99e1ed;
 
     margin: 0 7px;
-    padding: 5px;
+    padding: 20px;
 
     color: white;
     font-size: 18px;

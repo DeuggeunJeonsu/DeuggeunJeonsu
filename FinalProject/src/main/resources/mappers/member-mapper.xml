@@ -18,7 +18,18 @@
       <result property="authority" column="AUTHORITY" />
    </resultMap>
    
+   <resultMap type="MemberBMI" id="memberBMI_rm">
+      <!-- DB의 기본 키(복합키면 여러 개 작성) -->
+      <id property="bmiNo" column="BMI_NO" />
+      
+      <!-- DB의 일반 컬럼들 -->
+      <result property="memberNo" column="MEMBER_NO" />
+      <result property="bmi" column="BMI" />
+      <result property="bmiDate" column="BMI_DATE" />
+   </resultMap>
    
+   
+   <!-- 로그인 -->
    <select id="login" parameterType="Member" resultMap="member_rm">
       SELECT MEMBER_NO, MEMBER_EMAIL, MEMBER_NICKNAME, MEMBER_PW,
          MEMBER_TEL, MEMBER_ADDR, PROFILE_IMG, AUTHORITY,
@@ -40,6 +51,37 @@
 		, #{memberAddress}
    		, NULL, DEFAULT, DEFAULT, DEFAULT)
    </insert>
+   
+   <!-- 회원 BMI 히스토리 불러오기 -->
+   <select id="selectBMI" parameterType="Member" resultMap="memberBMI_rm">
+      SELECT TO_CHAR(BMI_DATE, 'YYYY"년" MM"월" DD"일"') AS BMI_DATE, BMI
+      FROM "BMI"
+      WHERE MEMBER_NO = #{loginMemberNo}
+      ORDER BY BMI_NO
+   </select>
+   
+   <!-- 오늘 BMI를 저장 했는지 판별 -->
+   <select id="checkBMI" parameterType="Member" resultType="_int">
+      SELECT COUNT(BMI)
+      FROM "BMI"
+      WHERE MEMBER_NO = #{loginMemberNo}
+      AND TO_CHAR(BMI_DATE, 'YYYY"년" MM"월" DD"일"') = TO_CHAR(SYSDATE, 'YYYY"년" MM"월" DD"일"')
+   </select>
+   
+   <!-- 회원 정보에 BMI 히스토리 추가하기 -->
+   <insert id="insertBMI">
+      INSERT INTO BMI
+      VALUES (SEQ_BMI_NO.NEXTVAL, #{loginMemberNo}, #{myBMI}, DEFAULT)
+   </insert>
+   
+   <!-- 회원 정보에 BMI 히스토리 업데이트 -->
+   <update id="updateBMI">
+	  UPDATE BMI SET BMI = #{myBMI}
+	  WHERE MEMBER_NO = #{loginMemberNo}
+	  AND TO_CHAR(BMI_DATE, 'YYYY"년" MM"월" DD"일"') = TO_CHAR(SYSDATE, 'YYYY"년" MM"월" DD"일"')
+   </update>
+   
+   
    
 
 </mapper>

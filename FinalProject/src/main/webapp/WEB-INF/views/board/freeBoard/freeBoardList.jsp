@@ -27,6 +27,7 @@
 
 	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
 
+    <%-- 검색어가 있을 경우 --%>
     <c:if test="${!empty param.key}" >
         <c:set var="sp" value="&key=${param.key}&query=${param.query}"/>
     </c:if>
@@ -36,33 +37,73 @@
             <div><h1>자유 게시판</h1></div>
             <div>득근전수 회원님들이 자유롭게 이야기를 나누는 공간입니다.</div>
         </div>
+
+        <%-- 게시글 상세 검색 --%>
         <div id="search-area">
             <div class="search-place">
-                <form action="" method="get" id="boardSearch">
-                    <input type="search" name="query" id="searchQuery" placeholder="search...">
+                <form method="get" id="boardSearch">
+                    <input type="hidden" name="key" value="tc">
+                    <input type="search" name="query" id="searchQuery" placeholder="search..." autocomplete="off" value=${param.query}>
                     <button id="search-button"><i class="fas fa-search"></i></button>
                 </form>
             </div>
-            <div class="hashTag-area">
-                <%-- <div>
-                    #오운완
-                    <i class="fa-solid fa-circle-xmark" style="color: #ffffff;"></i>
-                </div>                
-                <div>
-                    #OOTD
-                    <i class="fa-solid fa-circle-xmark" style="color: #ffffff;"></i>
-                </div>                
-                <div>
-                    #단백질쉐이커
-                    <i class="fa-solid fa-circle-xmark" style="color: #ffffff;"></i>
-                </div>                 --%>
-            </div>
+
+            <%-- 검색 결과 화면에서 검색어 해시태그로 표현 --%>
+            <c:if test="${!empty param.query}" >
+                <div class="hashTag-area">
+                    <div class="hashtag">
+                        #${param.query}
+                        <i class="fa-solid fa-circle-xmark" style="color: #ffffff;"></i>
+                    </div>
+                </div>
+            </c:if>
+
+            <%-- 게시글 정렬 영역 --%>
             <div id="sort-btn-area">
-                <a href="#"><span name="key" value="l">최신순</span></a> |
-                <a href="#"><span name="key" value="p">인기순</span></a> |
-                <a href="#"><span name="key" value="f">팔로워</span></a>
+
+                <%-- 최신순 --%>
+                <a href="/board/3/list?key=r">
+                    <c:if test="${param.key == 'r'}" >
+                        <span name="key" value="r" style="font-weight:bold; color:#99E1ED" id="recent-sort-btn">최신순</span>
+                    </c:if>
+                    <c:if test="${param.key != 'r'}" >
+                        <span name="key" value="r" id="recent-sort-btn">최신순</span>
+                    </c:if>
+                </a> |
+
+                <%-- 인기순 --%>
+                <a href="/board/3/list?key=p">
+                    <c:if test="${param.key == 'p'}" >
+                        <span name="key" value="p" style="font-weight:bold; color:#99E1ED" id="popular-sort-btn">인기순</span>
+                    </c:if>
+                    <c:if test="${param.key != 'p'}" >
+                        <span name="key" value="p" id="popular-sort-btn">인기순</span>
+                    </c:if>
+                </a>
+
+                <%-- 팔로잉순 --%>
+                <c:if test="${!empty loginMember}">
+                |
+                </c:if>
+                <c:if test="${!empty loginMember}">
+                    <a href="/board/3/list?key=f">
+                        <c:if test="${param.key == 'f'}" >
+                            <span name="key" value="f" style="font-weight:bold; color:#99E1ED" id="following-sort-btn">팔로잉순</span>
+                        </c:if>
+                        <c:if test="${param.key != 'f'}" >
+                            <span name="key" value="f" id="following-sort-btn">팔로잉순</span>
+                        </c:if>
+                    </a>
+                </c:if>
             </div>
         </div>
+
+        <%-- 팔로잉순 말풍선 --%>
+        <c:if test="${!empty loginMember}" >
+            <div class="ballon floating">
+                내가 팔로잉한 회원의 게시글 확인하기! 👀💬
+            </div>
+        </c:if>
 
         <div id="list-area">
 
@@ -166,6 +207,9 @@
 
     <!-- footer include -->
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
+
+    <%-- freeBoardList.js 연결 --%>
+    <script src="/resources/js/board/freeBoard/freeBoardList.js"></script>
 
 </body>
 </html>

@@ -195,4 +195,24 @@ public class ashBoardServiceImpl implements ashBoardService{
 		return result;
 	}
 
+	// 자유게시판 게시글 상세 검색
+	@Override
+	public Map<String, Object> selectFreeBoardList(Map<String, Object> paramMap, int cp) {
+		
+		// 검색된 게시글 수 조회
+		int listCount = dao.getFreeBoardListCount(paramMap);
+		
+		// 페이지네이션
+		Pagination pagination = new Pagination(cp, listCount);
+		
+		// 현재 페이지에 해당하는 게시글 목록만 조회
+		List<Board> boardList = dao.selectFreeBoardList(pagination, paramMap);
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("pagination", pagination);
+		map.put("boardList", boardList);
+		
+		return map;
+	}
+
 }

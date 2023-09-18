@@ -49,6 +49,6 @@
 	<input type="hidden" name="mainPage" value="mainPage"/>	
 
 	<%-- <script src="../resources/js/main.js"></script> --%>
-	<script src="/resources/js/TodoList/todoList.js"></script> 
+	<!-- <script src="/resources/js/TodoList/todoList.js"></script>  -->
 </body>
 </html>

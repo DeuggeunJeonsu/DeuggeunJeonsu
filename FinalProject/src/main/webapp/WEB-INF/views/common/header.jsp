@@ -64,9 +64,40 @@
                                 <i class="fa fa-solid fa-magnifying-glass"></i>
                             </a>
                         </li>
-                        <li class="login-icon dropdown">
-                            <a href="/member/login" class="dropdown-toggle" data-toggle="dropdown">로그인</a>
-                        </li>
+
+                        <%-- 로그인 X --%>
+                        <c:if test="${empty loginMember}">
+                            <li class="login-icon dropdown">
+                                <a href="/member/login" class="dropdown-toggle" data-toggle="dropdown">로그인</a>
+                            </li>
+                        </c:if>
+
+                        <%-- 로그인 O --%>
+                        <c:if test="${!empty loginMember}">
+                            <li>
+                                <div class="login-profile-area">
+
+                                    <label for="headerMenuToggle">
+                                        <%-- 프로필 이미지 X --%>
+                                        <c:if test="${empty loginMember.profileImage}">
+                                            <img src="/resources/images/user.png">
+                                        </c:if>
+
+                                        <%-- 프로필 이미지 O --%>
+                                        <c:if test="${!empty loginMember.profileImage}">
+                                            <img src="${loginMember.profileImage}">
+                                        </c:if>
+
+                                        <input type="checkbox" id="headerMenuToggle">
+                                        <div class="header-menu">
+                                            <a href="/myPage/myBadge">마이 페이지</a>
+                                            <a href="/member/logout">로그아웃</a>
+                                        </div>
+                                    </label>
+                                </div>
+                            </li>
+                        </c:if>
+
                     </ul>
                 </div>
                 <div class="log-area">

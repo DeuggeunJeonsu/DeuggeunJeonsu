@@ -39,8 +39,8 @@ public class TodoListServiceImp implements TodoListService{
 	}
 	
 	@Override
-	public int todoInsert() {
-		return dao.todoInsert();
+	public int todoInsert(TodoList insertTodo) {
+		return dao.todoInsert(insertTodo);
 	}
 	
 }

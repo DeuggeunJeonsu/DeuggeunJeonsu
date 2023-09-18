@@ -1,10 +1,14 @@
 package com.jeonsu.deuggeun.member.model.dao;
 
+import java.util.List;
+import java.util.Map;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.jeonsu.deuggeun.member.model.dto.Member;
+import com.jeonsu.deuggeun.member.model.dto.MemberBMI;
 
 @Repository
 public class MemberDAO {
@@ -27,4 +31,26 @@ public class MemberDAO {
 	public int signUp(Member inputMember) {
 		return sqlSession.insert("memberMapper.signUp", inputMember);
 	}
+
+	/** 회원 BMI 히스토리 불러오기
+	 * @param paramMap
+	 * @return bmiHistorys
+	 */
+	public List<MemberBMI> loadBMI(Map<String, Object> paramMap) {		
+		return sqlSession.selectList("memberMapper.selectBMI", paramMap);
+	}
+	
+	/** 회원 정보에 BMI 히스토리 추가/업데이트하기
+	 * @param paramMap
+	 * @return result
+	 */
+	public int addBMI(Map<String, Object> paramMap) {
+		// 오늘날짜에 저장된 BMI 히스토리가 있는지
+		int checkResult = sqlSession.selectOne("memberMapper.checkBMI", paramMap);
+
+		// 없으면 insert, 있으면 update
+		if(checkResult==0) return sqlSession.insert("memberMapper.insertBMI", paramMap);
+		else return sqlSession.update("memberMapper.updateBMI", paramMap);
+	}
+
 }

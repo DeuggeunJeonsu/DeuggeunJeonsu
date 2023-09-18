@@ -68,7 +68,7 @@ public interface ashBoardService {
 
 	/** 팔로우 여부 확인
 	 * @param map
-	 * @return
+	 * @return int
 	 */
 	int memberFollowCheck(Map<String, Object> map);
 
@@ -83,5 +83,12 @@ public interface ashBoardService {
 	 * @return result
 	 */
 	int memberUnfollow(Map<String, Integer> paramMap);
+
+	/** 자유게시판 게시글 상세 검색
+	 * @param paramMap
+	 * @param cp
+	 * @return map
+	 */
+	Map<String, Object> selectFreeBoardList(Map<String, Object> paramMap, int cp);
 
 }

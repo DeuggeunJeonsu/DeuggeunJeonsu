@@ -1,5 +1,8 @@
 package com.jeonsu.deuggeun.member.model.service;
 
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -7,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.jeonsu.deuggeun.member.model.dao.MemberDAO;
 import com.jeonsu.deuggeun.member.model.dto.Member;
+import com.jeonsu.deuggeun.member.model.dto.MemberBMI;
 
 @Service
 public class MemberServiceImpl implements MemberService {
@@ -49,6 +53,19 @@ public class MemberServiceImpl implements MemberService {
 		// 회원가입 
 		return dao.signUp(inputMember);
 		
+	}
+
+	// 회원 BMI 히스토리 불러오기
+	@Override
+	public List<MemberBMI> loadBMI(Map<String, Object> paramMap) {
+		return dao.loadBMI(paramMap);
+	}
+	
+	// 회원 정보에 BMI 히스토리 추가/업데이트하기
+	@Transactional(rollbackFor = {Exception.class})
+	@Override
+	public int addBMI(Map<String, Object> paramMap) {
+		return dao.addBMI(paramMap);
 	}
 
 }

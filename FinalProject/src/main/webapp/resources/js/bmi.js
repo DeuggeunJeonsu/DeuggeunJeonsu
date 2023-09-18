@@ -1,28 +1,57 @@
-new Chart(document.getElementById("lineChart"), {
-    type: 'line',
-    data: {
-        labels: ["2023-09-01","2023-09-02","2023-09-03","2023-09-04","2023-09-05","2023-09-06","2023-09-07","2023-09-08","2023-09-09","2023-09-10","2023-09-11",],
-        datasets: [{ 
-            data: [24,23,25,24,23,21,20,18,21,23,25,28,15,35],
-            label: "BMI",
-            borderColor: "#99E1ED",
-            fill: false
-            }
-        ]
-    },
-    options: {
-        responsive: true,
-        plugins: {
-            legend: {
-                position: 'top',
-            },
-            title: {
-                display: true,
-                text: '내 BMI 히스토리'
+if(loginMemberNo !=""){ // 로그인 상태일 경우 bmi 히스토리 불러오기
+    const data = {"loginMemberNo" : loginMemberNo};
+    // ajax
+    fetch("/bmi/loadBMI", {
+        method : "POST",
+        headers : {"Content-Type" : "application/json"},
+        body : JSON.stringify(data)
+    })
+    .then(resp => resp.json() )
+    .then(bmiHistorys => {
+        let i=0;
+        let bmis = [];
+        let bmiDates = [];
+        for(memberBMI of bmiHistorys){
+            bmis[i]= memberBMI.bmi;
+            bmiDates[i]= memberBMI.bmiDate;
+            i++;
+        }
+        drawingChart(bmis,bmiDates); // 불러온 정보로 차트 그리기
+    })
+    .catch(err =>{
+        console.log("예외 발생");
+        console.log(err);
+    })
+}
+
+// 차트 그리기 함수 내용
+const drawingChart = (bmis, bmiDates)=>{
+    new Chart(document.getElementById("lineChart"), {
+        type: 'line',
+        data: {
+            labels: bmiDates,
+            datasets: [{ 
+                data: bmis,
+                label: "my BMI",
+                backgroundColor: 'transparent',
+                borderColor: "#99E1ED",
+                pointBackgroundColor: '#99E1ED',
+                fill: false
+                }]
+        },
+        options: {
+            responsive: true,
+            pointRadius: 6,
+            plugins: {
+                legend: {display: false},
+                title: {
+                    display: true,
+                    text: 'My BMI History'
+                }
             }
         }
-    }
-});
+    });
+}
 
 // 신장 입력 input
 const heightInput = document.getElementById("heightInput");
@@ -38,7 +67,6 @@ const bmiReset = document.getElementById("bmiReset");
 const bmiSave = document.getElementById("bmiSave");
 // 비만도 아바타
 const bmiAvatar = document.getElementById("bmiAvatar");
-
 
 // 계산버튼이 눌리면
 bmiCalculate.addEventListener("click", ()=>{
@@ -73,4 +101,35 @@ bmiReset.addEventListener("click", ()=>{
 // 저장하기 버튼이 눌리면
 bmiSave.addEventListener("click", ()=>{
     
-})
+    if(loginMemberNo !=""){ // 로그인 상태일 경우만
+
+        if(bmiResult.innerText != ""){  // bmi 계산값이 있으면
+            const data = {"loginMemberNo" : loginMemberNo,
+                            "myBMI" : bmiResult.innerText};
+            // ajax
+            fetch("/bmi/addBMI", {
+                method : "POST",
+                headers : {"Content-Type" : "application/json"},
+                body : JSON.stringify(data)
+            })
+            .then(resp => resp.json() )
+            .then(result => {
+                if(result>0){
+                    alert("오늘의 내 BMI 저장 완료!");
+                    location.reload();
+                }
+            })
+            .catch(err =>{
+                console.log("예외 발생");
+                console.log(err);
+            })
+        }
+        else{ // bmi 계산 값이 없으면
+            alert("저장할 BMI값이 없습니다");
+        }
+    }
+    else{
+        alert("로그인 후 저장 가능합니다");
+    }
+
+});
