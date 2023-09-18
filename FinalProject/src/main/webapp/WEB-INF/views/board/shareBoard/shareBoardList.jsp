@@ -112,11 +112,9 @@
         <div id="ad"></div> --%>
 
         <div class="write-btn-area">
-            <a href="/board2/3/insert">
-                <c:if test="${!empty loginMember}" >
-                    <button id="writeBtn">글쓰기</button>
-                </c:if>
-            </a>
+            <c:if test="${!empty loginMember}" >
+                <button id="writeBtn">글쓰기</button>
+            </c:if>
         </div>
 
         <%-- 페이지네이션 --%>

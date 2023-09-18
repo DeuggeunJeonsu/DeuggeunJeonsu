@@ -316,8 +316,9 @@ if(document.querySelector("#middle-Container")){
                     
                     if(detailedTodoList == ""){
                         const none =document.createElement("div");
-                        none.innerText="운동 계획이 비어있어요! 계획를 세워보세요 💪";
+                        none.innerText="운동계획이 비어있어요! 계획를 세워 득근해보세요💪";
                         none.classList.add("guest");
+                        none.style.fontSize="19px"
 
                         document.querySelector(".check-area").append(none);
                     }
