@@ -82,6 +82,26 @@ $(document).ready(function(){
 });
 
 
+const adminPageBtn = document.getElementById("adminPage");
+const logoutBtn = document.getElementById("logoutBtn");
+
+(() => {
+
+    if(adminPageBtn != null){
+
+        logoutBtn.style.borderBottomLeftRadius = "0px";
+        logoutBtn.style.borderBottomRightRadius = "0px";
+        logoutBtn.style.borderBottom = "1px solid #ccc";
+
+
+        adminPageBtn.style.borderTopLeftRadius = "0px";
+        adminPageBtn.style.borderTopRightRadius = "0px";
+
+    }
+
+
+})();
+
 
 
 
