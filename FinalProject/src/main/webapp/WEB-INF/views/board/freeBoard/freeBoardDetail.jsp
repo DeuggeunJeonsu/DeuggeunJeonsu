@@ -95,7 +95,7 @@
                 <c:if test="${!empty board.tagList}" >
 
                     <c:forEach items="${board.tagList}" var="hashtag">
-                        <a href="#">
+                        <a href="/board/3/list?key=ht&query=${hashtag.tagContent}">
                             <div class="hashtag">#${hashtag.tagContent}</div>
                         </a>
                     </c:forEach>

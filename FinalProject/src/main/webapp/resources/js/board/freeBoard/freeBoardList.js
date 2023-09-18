@@ -41,7 +41,9 @@ boardSearch.addEventListener("submit", e=>{
 // 해시태그 클릭 시 삭제 이벤트 추가
 const hashtag = document.getElementsByClassName("hashtag")[0];
 
-hashtag.addEventListener("click", () => {
-    hashtag.remove();
-    location.href = "/board/3/list";
-});
+if(hashtag != null){
+    hashtag.addEventListener("click", () => {
+        hashtag.remove();
+        location.href = "/board/3/list";
+    });
+}
