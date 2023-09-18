@@ -13,3 +13,21 @@ $(document).ready(function(){
         autoplaySpeed: 5000
     });
 });
+
+
+const searchInput = document.getElementById("market-search");
+
+
+(() => {
+
+    const params = new URL(location.href).searchParams;
+
+
+    const searchTitle = params.get("searchTitle");
+
+    console.log(searchTitle);
+
+    if(searchTitle != ""){
+        searchInput.value = params.get("searchTitle");;
+    }
+})();

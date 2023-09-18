@@ -93,9 +93,9 @@
 	
 	<!-- 공지사항 상세 페이지 -->
 	<select id="selectNcBoardDetail" resultMap="board_rm">
-		SELECT BOARD_TITLE, MEMBER_NICKNAME, PROFILE_IMG, 
-        TO_CHAR(CREATE_DT, 'YYYY-MM-DD'),
-        TO_CHAR(UPDATE_DT, 'YYYY-MM-DD'),
+		SELECT BOARD_NO, BOARD_CODE ,BOARD_TITLE, MEMBER_NICKNAME, PROFILE_IMG, 
+        TO_CHAR(CREATE_DT, 'YYYY-MM-DD') CREATE_DT,
+        TO_CHAR(UPDATE_DT, 'YYYY-MM-DD') UPDATE_DT,
         READ_COUNT , 
         BOARD_CONTENT, 
             

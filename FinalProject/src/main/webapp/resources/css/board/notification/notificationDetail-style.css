@@ -1,6 +1,6 @@
 * {
 	box-sizing: border-box;
-	/* border: 1px solid black; */
+ /* border: 1px solid black;  */
 }
 
 .Jheader {
@@ -77,7 +77,7 @@ td {
 }
 
 .ncTitle>input {
-	width: 100%;
+	width: 97%;
 	height: 65px;
 	border: 0.5px solid gray;
 	background-color: #F8F9FA;
@@ -98,6 +98,7 @@ td {
 	font-weight: bolder;
 	outline: none;
 	border: none;
+	background-color: white;
 }
 
 .ncProfile {
@@ -130,16 +131,16 @@ td {
 	justify-content: center;
 	align-items: center;
 	font-weight: bold;
-	font-size: 20px;
+	font-size: 17px;
 }
 
 #ncCheckbox {
-	width: 73%;
+	width: 90%;
 	height: 50px;
 	display: flex;
 	align-items: center;
 	justify-content: right;
-	border-left: 2.5px solid gray;
+	border-left: 2px solid gray;
 }
 
 #ncCheckbox>input {

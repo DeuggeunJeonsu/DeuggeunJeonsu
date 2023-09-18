@@ -45,8 +45,7 @@
         </div>
 
         <div id="middle-area">
-            <form action="/board/4/insert" method="post" id="write-form" 
-				>
+            <form action="/board/4/insert" method="post" id="write-form" >
                 
                 <div id="title-middle-area">
 					<div id="ncCheckbox">
