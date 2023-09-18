@@ -96,10 +96,10 @@
 											<c:forEach items="${boardList}" var="board">
 													<tr>
 														<td>${board.boardNo}</td>
-														<td><a href="/board/${boardCode}/${board.boardNo}?cp=${pagination.currentPage}${cp}">${board.boardTitle}</a></td>
+														<td><a href="/board/${boardCode}/${board.boardNo}?cp=${pagination.currentPage}${cp}${sp}">${board.boardTitle}</a></td>
 														<td>${board.memberNickname}</td>
 														<td>${board.boardCreateDate}</td>
-														<td>1</td>
+														<td>${board.readCount}</td>
 													</tr>
 											</c:forEach>
 									</c:otherwise>
@@ -112,12 +112,12 @@
 					</div>
 
 					<div class="board-Jbtn">
-						<a href="/board/${boardCode}/list/notificationWrite"><button
+						<%-- 관리자 상태일 경우일 시 버튼 노출 --%>
+						<c:if test="${loginMember.authority == 2}" >
+							<a href="/board/${boardCode}/list/notificationWrite"><button
 								type="button" id="writeBtn">글쓰기</button></a>
+						</c:if> 
 					</div>
-					<%-- 로그인 상태일 경우일 시 버튼 노출 --%>
-				<%-- 	<c:if test="${!empty loginMember}" >
-					</c:if> --%>
 
 					<div class="pagination-area">
 
