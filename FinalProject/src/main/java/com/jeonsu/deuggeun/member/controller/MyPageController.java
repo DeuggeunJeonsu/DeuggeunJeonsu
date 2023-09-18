@@ -1,13 +1,27 @@
 package com.jeonsu.deuggeun.member.controller;
 
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttribute;
+import org.springframework.web.bind.annotation.SessionAttributes;
+
+import com.jeonsu.deuggeun.member.model.dto.Member;
+import com.jeonsu.deuggeun.member.model.service.MyPageService;
 
 @RequestMapping("/myPage")
 @Controller
+@SessionAttributes({"loginMember"})
 public class MyPageController {
+	
+	@Autowired
+	private MyPageService service;
 
 	@GetMapping("/myBadge")
 	public String myBadge() {
@@ -25,7 +39,18 @@ public class MyPageController {
 	}
 
 	@GetMapping("/myBoardList")
-	public String myBoardList() {
+	public String myBoardList(
+			@RequestParam(value = "cp", required = false, defaultValue = "1") int cp
+			, @SessionAttribute(value = "loginMember", required = false) Member loginMember
+			, Model model
+			, @RequestParam Map<String, Object> paramMap) {
+		
+		int memberNo = loginMember.getMemberNo();
+		
+		Map<String, Object> map = service.selectMyBoardList(memberNo, cp);
+		
+		model.addAttribute("map", map);
+		
 		return "member/myPage/myBoardList";
 	}
 
