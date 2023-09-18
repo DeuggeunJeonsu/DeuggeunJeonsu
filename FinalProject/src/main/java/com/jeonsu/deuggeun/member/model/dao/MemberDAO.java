@@ -23,6 +23,14 @@ public class MemberDAO {
 	public Member login(Member inputMember) {
 		return sqlSession.selectOne("memberMapper.login", inputMember);
 	}
+	
+	/** 전화번호로 아이디 찾기
+	 * @param memberTel
+	 * @return selectMember
+	 */
+	public Member selectMemberByTel(String memberTel) {
+		return sqlSession.selectOne("memberMapper.selectMemberByTel",memberTel);
+	}
 
 	/** 회원 가입 DAO
 	 * @param inputMember
