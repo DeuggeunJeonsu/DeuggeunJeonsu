@@ -17,4 +17,5 @@ public class TodoList {
 	private String listDetailNo;	//투두리스트 상세번호
 	private int memberNo; 			// 투두리스트 작성자 
 	private String lCreateDt; 		// 투두리스트 작성일
+	
 }
