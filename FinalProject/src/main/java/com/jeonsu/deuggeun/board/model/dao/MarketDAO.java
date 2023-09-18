@@ -1,9 +1,6 @@
 package com.jeonsu.deuggeun.board.model.dao;
 
-import com.jeonsu.deuggeun.board.model.dto.Pagination;
-import com.jeonsu.deuggeun.board.model.dto.Product;
-import com.jeonsu.deuggeun.board.model.dto.ProductImage;
-import com.jeonsu.deuggeun.board.model.dto.Review;
+import com.jeonsu.deuggeun.board.model.dto.*;
 import org.apache.ibatis.session.RowBounds;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,7 +49,7 @@ public class MarketDAO {
 
 		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
 
-		return sqlSession.selectList("boardMapper.selectMarketList_search", paramMap, rowBounds);
+		return sqlSession.selectList("marketMapper.selectMarketList_search", paramMap, rowBounds);
 	}
 
 	// 상품 게시글 상세조회
@@ -109,5 +106,80 @@ public class MarketDAO {
 	public int updateReadCount(int reviewNo) {
 
 		return sqlSession.update("marketMapper.updateReadCount", reviewNo);
+	}
+
+	// 리뷰 게시글 수정
+	public int reviewUpdate(Review review) {
+
+		return sqlSession.update("marketMapper.reviewUpdate", review);
+	}
+
+	public int updateImagePath(Review review) {
+
+		return sqlSession.update("marketMapper.updateImagePath", review);
+	}
+
+	// 리뷰 삭제
+	public int reviewDelete(Map<String, Object> map) {
+		return sqlSession.update("marketMapper.reviewDelete", map);
+	}
+
+	public int updateImagePath2(Review review) {
+		return sqlSession.update("marketMapper.updateImagePath2", review);
+	}
+
+	// 상품문의 게시판 삭제되지 않은 게시글
+	public int getInquiryListCount(int boardCode) {
+		return sqlSession.selectOne("marketMapper.getInquiryListCount", boardCode);
+	}
+
+	// 상품문의 게시판 목록
+	public List<Inquiry> selectInquiry(Pagination pagination, Map<String, Object> params) {
+
+		int offset = (pagination.getCurrentPage() - 1) * pagination.getLimit();
+
+		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
+
+		return sqlSession.selectList("marketMapper.selectInquiry", params, rowBounds);
+	}
+
+	// 상풍문의 상세페이지
+	public Inquiry selectInquiryDetail(Map<String, Object> map) {
+		return sqlSession.selectOne("marketMapper.selectInquiryDetail", map);
+	}
+
+	// 상품문의 등록
+	public int inquiryInsert(Inquiry inquiry) {
+
+		int result =  sqlSession.insert("marketMapper.inquiryInsert", inquiry);
+
+		if(result>0) result = inquiry.getInquiryNo();
+
+		return result;
+	}
+
+	public int inquiryInsert2(Inquiry inquiry) {
+
+		int result = sqlSession.insert("marketMapper.inquiryInsert2", inquiry);
+
+		if(result > 0)result = inquiry.getInquiryNo();
+		return result;
+	}
+
+	public int inquiryDelete(Map<String, Object> map) {
+		return sqlSession.update("marketMapper.inquiryDelete", map);
+	}
+
+//	상품문의 게시글 수정
+	public int inquiryUpdate(Inquiry inquiry) {
+		return sqlSession.update("marketMapper.inquiryUpdate", inquiry);
+	}
+
+	public int updateImagePath3(Inquiry inquiry) {
+		return sqlSession.update("marketMapper.updateImagePath3", inquiry);
+	}
+
+	public int updateImagePath4(Inquiry inquiry) {
+		return sqlSession.update("marketMapper.updateImagePath4", inquiry);
 	}
 }

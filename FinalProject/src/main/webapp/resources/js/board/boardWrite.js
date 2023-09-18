@@ -16,7 +16,7 @@ $(document).ready(function () {
         $(this).siblings('.uploadFileName').val(filename);
     });
 
-    //preview image 
+    //preview image
     var imgTarget = $('.previewImage .inputHidden');
 
     imgTarget.on('change', function () {
@@ -45,4 +45,44 @@ $(document).ready(function () {
             img[0].style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(enable='true',sizingMethod='scale',src=\"" + imgSrc + "\")";
         }
     });
+});
+
+// 게시글 삭제 버튼 클릭 시
+const deleteBtn = document.getElementById("deleteBtn");
+if (deleteBtn !== null) {
+    deleteBtn.addEventListener("click", () => {
+        if (confirm("정말 삭제하시겠습니까?")) {
+            const deleteUrl = `/board/${reviewNo}/delete/${productNo}`;
+            location.href = deleteUrl;
+        }
+    });
+}
+
+// 목록으로 버튼
+const goToListBtn = document.getElementById("goToListBtn");
+
+goToListBtn.addEventListener("click", () => {
+    const boardCode = 5;
+
+    let url = `/board/${boardCode}/review/${productNo}`;
+
+    const params = new URL(location.href).searchParams;
+
+    let cp;
+    if (params.get("cp") !== null) { // 쿼리스트링에 cp가 있을 경우
+        cp = params.get("cp");
+    } else {
+        cp = 1; // 기본값
+    }
+
+    url += `?cp=${cp}`;
+
+    if (params.get("key") !== null) {
+        const key = params.get("key");
+        const query = params.get("query");
+
+        url += `&key=${key}&query=${query}`;
+    }
+
+    location.href = url;
 });

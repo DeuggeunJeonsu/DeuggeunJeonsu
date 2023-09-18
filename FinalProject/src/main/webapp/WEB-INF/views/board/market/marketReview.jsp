@@ -85,7 +85,7 @@
                             <a href="/board/${boardCode}/review/${productNo}">Review</a>
                         </li>
                         <li>
-                            <a href="/market/marketInquire">상품문의</a>
+                            <a href="/board/${boardCode}/inquire/${product.productNo}">상품문의</a>
                         </li>
                     </ul>
 
@@ -118,10 +118,11 @@
                                         <c:if test="${review.productNo == product.productNo}">
                                             <tr>
                                                 <td>${review.reviewNo}</td>
-                                                <td><a href="/board/${boardCode}/review/${review.reviewNo}/detail">${review.reviewTitle}</a></td>
+<%--                                                <td><a href="/board/${boardCode}/review/${review.reviewNo}/detail">${review.reviewTitle}</a></td>--%>
+                                                <td><a href="/board/${boardCode}/review/${review.reviewNo}/detail?cp=${param.cp}">${review.reviewTitle}</a></td>
                                                 <td>${review.memberNickname}</td>
                                                 <td>${review.reviewCreateDate}</td>
-<%--                                                <td>${review.rReadCount}</td>--%>
+                                                <td>${review.count}</td>
                                             </tr>
                                         </c:if>
                                     </c:forEach>

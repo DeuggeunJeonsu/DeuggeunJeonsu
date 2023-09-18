@@ -1,4 +1,5 @@
 package com.jeonsu.deuggeun.board.model.service;
+import com.jeonsu.deuggeun.board.model.dto.Inquiry;
 import com.jeonsu.deuggeun.board.model.dto.Product;
 import com.jeonsu.deuggeun.board.model.dto.ProductImage;
 import com.jeonsu.deuggeun.board.model.dto.Review;
@@ -35,4 +36,24 @@ public interface MarketService {
     // * 조회 수 증가 서비스
     int updateReadCount(int reviewNo);
 
+    // 리뷰 수정
+    int reviewUpdate(Review review, MultipartFile image, String webPath, String filePath) throws IOException;
+
+    // 리뷰 삭제
+    int reviewDelete(Map<String, Object> map);
+
+    // 상품문의 페이지 목록조회
+    Map<String, Object> selectInquiry(int boardCode, int cp, int productNo);
+
+    // 상품문의 상세페이지
+    Inquiry selectInquiryDetail(Map<String, Object> map);
+
+    // 상품문의 글 작성
+    int inquiryInsert(int boardCode, int productNo, Inquiry inquiry, MultipartFile image, String webPath, String filePath) throws IOException;
+
+    // 상품문의 삭제
+    int inquiryDelete(Map<String, Object> map);
+
+    // 상품문의 수정
+    int inquiryUpdate(Inquiry inquiry, MultipartFile image, String webPath, String filePath) throws IOException;
 }

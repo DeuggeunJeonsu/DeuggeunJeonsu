@@ -146,8 +146,11 @@ a {
 }
 /* 리뷰 게시판 영역 */
 .board-name {
-    font-size: 2em;
+    font-size: 2.5em;
     margin: 20px 0;
+}
+section .reivew-list h3 {
+    font-size: 1.4em;
 }
 
 table {
@@ -159,13 +162,13 @@ table {
 
 th,
 td {
+    font-size: 1.2em;
     padding: 10px;
+    text-align: left;
     border-bottom: 1px solid #ccc;
     text-align: center;
 }
-td{
-    font-size: 15px;
-}
+
 th {
     background-color: #f2f2f2;
     font-size: 1.2em;
@@ -186,31 +189,29 @@ th {
 /* 글쓰기 버튼 */
 
 .btn-area {
-    height: 50px;
     display: flex;
     justify-content:flex-end;
     align-items: center;
 }
 
 
-.btn-area>button {
+.btn-area>a {
 
-    margin-right: 20px;
-    margin-top: 20px;
-
-    width: 100px;
-    height: 40px;
-    background-color: white;
-    font-size: 1.2em;
-    font-weight: bold;
-    color:  #797979;
-    border: 2px solid #797979;
-    border-radius: 5px;
-
-    cursor: pointer;
-
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 25px;
+    background-color: #99E1ED;
+    color: #FFF;
+    font-size: 1.7em;
+    text-decoration: none;
+    border: 1px solid #99E1ED;
+    border-radius: 4px;
+    transition: background-color 0.3s, color 0.3s;
 }
-
+#insertBtn:hover {
+    background-color: #007BFF;
+    color: #FFF;
+}
 /* 페이지네이션 영역 */
 .pagination-area {
     text-align: center;
