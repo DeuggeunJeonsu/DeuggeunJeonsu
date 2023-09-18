@@ -71,6 +71,7 @@ public class TodoListController {
 	@PostMapping(value = "/todoDetaile", produces = "application/json; charset=UTF-8")
 	public List<TodoList> todoListDetail  ( @RequestParam("choiceTodoDate") String choiceTodoDate ){
 		List<TodoList> detailedTodoList = service.DetailedTodoList(choiceTodoDate);
+//		System.out.println(detailedTodoList);
 		return detailedTodoList;
 	}
 
@@ -89,6 +90,7 @@ public class TodoListController {
 	// 체크리스트 추가
 	@PostMapping("/todo/insert")
 	public int todoInsert(@RequestBody TodoList insertTodo) {
+		System.out.println(insertTodo);
 		return service.todoInsert(insertTodo);
 	}
 
