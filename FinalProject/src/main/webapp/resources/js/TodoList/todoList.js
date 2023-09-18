@@ -152,7 +152,7 @@ if(document.querySelector("#middle-Container")){
 
             // 비회원 일시
             const guest = document.createElement("div");
-            guest.innerText="로그인후 나만의 ToDoList를 득근해보세요💪";
+            guest.innerText="로그인 후 나만의 ToDoList를 득근해보세요💪";
             guest.classList.add("guest");
             
             todoContent.append(guest);
@@ -293,7 +293,7 @@ if(document.querySelector("#middle-Container")){
                         const input3 = document.createElement("input")
                         input3.setAttribute("type", "hidden");
                         input3.classList.add("lCreateDt");
-                        input3.value = todo.lcreateDt;
+                        input3.value = todo.lCreateDt;
 
                         // 각 요소를 div에 추가
                         // div.append(DateDIV)
@@ -372,7 +372,7 @@ document.addEventListener("click", function (e){
         
 
         if(loginMemberNo == ""){
-            alert("로그인후 이용해 주세요💪");
+            alert("로그인 후 이용해 주세요💪");
             return;
         }
     
@@ -411,7 +411,7 @@ document.addEventListener("click", function (e){
                     }
                     return;
                 } else {
-                    const insertTodo = {listContent: addListVal , lcreateDt : choiceTodoDate, memberNo : loginMemberNo}
+                    const insertTodo = {listContent: addListVal , lCreateDt : choiceTodoDate, memberNo : loginMemberNo}
 
                     fetch("/todo/insert",{
                         method : "POST", 
@@ -424,7 +424,7 @@ document.addEventListener("click", function (e){
                             addListInput.value="";
 
                             todoslist(choiceTodoDate)
-                            //buildCalendar();
+                            buildCalendar();
                             updateCheckedPercentage();
 
                         }else{
@@ -463,6 +463,7 @@ document.addEventListener("click", function (e){
                 if(result > 0){
                     
                     e.target.parentElement.remove();
+                    buildCalendar();
                     updateCheckedPercentage();
 
                 }else{
