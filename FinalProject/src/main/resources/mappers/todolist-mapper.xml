@@ -45,14 +45,19 @@
 		WHERE LIST_NO= #{todoNo}
 	</delete>
 	
-	<insert id="todoInsert">
+	<insert id="todoInsert" parameterType="TodoList"
+		useGeneratedKeys="true">
+		<selectKey order="BEFORE" resultType="_int"
+			keyProperty="listNo">
+			SELECT SEQ_LIST_NO.NEXTVAL FROM DUAL
+		</selectKey>
 		INSERT INTO "TODOLIST"
-		VALUES(SEQ_LIST_NO.NEXTVAL,'', DEFAULT, 1, );
+		VALUES(#{listNo},#{listContent}, DEFAULT, 1)
 	</insert>
 	
 	<insert id="todoDateInsert">
 		INSERT INTO "TODOLIST_DATE"
-		VALUES (5, TO_CHAR(SYSDATE, 'YYYY-MM-DD'));
+		VALUES (${listNo}, TO_CHAR(SYSDATE, 'YYYY-MM-DD'))
 	</insert>
   
 </mapper>

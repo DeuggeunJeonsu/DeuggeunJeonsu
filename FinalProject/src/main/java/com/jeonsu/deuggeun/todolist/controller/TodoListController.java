@@ -70,34 +70,26 @@ public class TodoListController {
 	// 상세 투두리스트 가져오기 
 	@PostMapping(value = "/todoDetaile", produces = "application/json; charset=UTF-8")
 	public List<TodoList> todoListDetail  ( @RequestParam("choiceTodoDate") String choiceTodoDate ){
-		//System.out.println("연결 성공");
-
 		List<TodoList> detailedTodoList = service.DetailedTodoList(choiceTodoDate);
-
-		//System.out.println(detailedTodoList);
 		return detailedTodoList;
 	}
 
 	//  체크박스 상태에 대한 결과 DB반영
 	@PostMapping("/todo/update" )
 	public int todoUpdate (@RequestBody TodoList updateTodo) {
-		
 		return service.todoUpdate(updateTodo);
 	}
 	
 	// 체크리스트 삭제
 	@PostMapping("todo/delete")
 	public int todoDelete (@RequestParam("todoNo") int todoNo) {
-		System.out.println(todoNo);
 		return service.todoDelete(todoNo);
 	}
 	
 	// 체크리스트 추가
 	@PostMapping("/todo/insert")
-	public int todoInssert(@RequestBody TodoList insertTodo) {
-		System.out.println(insertTodo);
-		
-		return service.todoInsert();
+	public int todoInsert(@RequestBody TodoList insertTodo) {
+		return service.todoInsert(insertTodo);
 	}
 
 

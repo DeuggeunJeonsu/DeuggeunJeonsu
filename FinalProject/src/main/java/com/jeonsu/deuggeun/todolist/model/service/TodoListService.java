@@ -20,6 +20,6 @@ public interface TodoListService  {
 	int todoDelete(int todoNo);
 
 	// 체크리스트에 추가하기
-	int todoInsert();
+	int todoInsert(TodoList insertTodo);
 
 }
