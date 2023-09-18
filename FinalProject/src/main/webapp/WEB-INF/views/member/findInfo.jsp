@@ -26,45 +26,45 @@
             </section>
 
             <section>
-                <form action="/member/findId" method="post" id="findIdFrm">
-                    <legend><p>아이디 찾기</p></legend>
+                <div class="findArea" id="idArea">
+                    <p>아이디 찾기</p>
                     <section class="input-box">
-                        <input class="width30" type="text" name="memberPhone" placeholder="휴대폰"/>
+                        <input type="text" class="width30" name="memberTel" placeholder="휴대폰" autocomplete="off"/>
                         -
-                        <input class="width30" type="text" name="memberPhone" />
+                        <input type="text" class="width30" name="memberTel" autocomplete="off"/>
                         -
-                        <input class="width30" type="text" name="memberPhone" />
+                        <input type="text" class="width30" name="memberTel" autocomplete="off"/>
                     </section>
 
                     <section class="input-box">
-                        <input class="width65" type="text" name="idAuthenticationKey" placeholder="인증번호 입력" />
-                        <button type="button" id="sendSmsBtn">인증번호 전송</button>
+                        <input class="width65" type="text" id="idAuthenticationKey" placeholder="인증번호 입력" autocomplete="off"/>
+                        <button class="findInfo-btn" id="sendSmsBtn">인증번호 전송</button>
                     </section>
 
-                    <section>
-                        <!-- <span id="smsTimer">타이머</span> -->
+                    <section class="timerSection">
+                        <div id="smsTimer"></div> <!-- 아이디 찾기 인증번호 타이머 -->
                     </section>
 
-                    <button id="findIdBtn">등록 정보로 아이디 찾기</button>
-                </form>
+                    <button class="findInfo-btn" id="findIdBtn">등록 정보로 아이디 찾기</button>
+                </div>
 
-                <form action="/member/findPw" method="post" id="findPwFrm">
-                    <legend><p>비밀번호 찾기</p></legend>
+                <div class="findArea" id="pwArea">
+                    <p>비밀번호 찾기</p>
                     <section class="input-box">
-                        <input class="width100" type="text" name="memberEmail" placeholder="아이디(이메일)"/>
+                        <input class="width100" type="text" id="memberEmail" placeholder="아이디(이메일)" autocomplete="off"/>
                     </section>
 
                     <section class="input-box">
-                        <input class="width65" type="text" name="pwAuthenticationKey" placeholder="인증번호 입력" />
-                        <button type="button" id="sendEmailBtn">인증번호 전송</button>
+                        <input class="width65" type="text" id="pwAuthenticationKey" placeholder="인증번호 입력" autocomplete="off"/>
+                        <button type="button" class="findInfo-btn" id="sendEmailBtn">인증번호 전송</button>
                     </section>
 
-                    <section>
-                        <!-- <span id="emailTimer">05:00</span> -->
+                    <section class="timerSection">
+                        <div id="emailTimer"></div> <!-- 비밃번호 변경 인증번호 타이머 -->
                     </section>
 
-                    <button id="findPwBtn">등록 정보로 비밀번호 찾기</button>
-                </form>
+                    <button class="findInfo-btn" id="findPwBtn">등록 정보로 비밀번호 찾기</button>
+                </div>
             </section>
 
         </main>

@@ -20,6 +20,12 @@ public interface MemberService {
 	 */
 	int signUp(Member inputMember);
 
+	/** 전화번호로 아이디 찾기
+	 * @param memberTel
+	 * @return selectMember
+	 */
+	Member selectMemberByTel(String memberTel);
+	
 	/** 회원 BMI 히스토리 불러오기
 	 * @param paramMap
 	 * @return BmiHistorys

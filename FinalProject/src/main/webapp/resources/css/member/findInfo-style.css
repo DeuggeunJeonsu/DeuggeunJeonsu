@@ -23,7 +23,6 @@ main {
     height: 90vh;
 }
 
-
 /* 타이틀 부분 */
 main .title-area {
     text-align: center;
@@ -41,7 +40,7 @@ main .title-area p:nth-of-type(2){
 }
 
 /* 서브 타이틀 부분 */
-main section:nth-of-type(2) form legend > p{
+.findArea > p{
     text-align: center;
     margin-bottom: 10px;
     font-size: 20px;
@@ -49,12 +48,18 @@ main section:nth-of-type(2) form legend > p{
     color: black;
 }
 
-/* 폼태그를 감싼 영역 */
+/* 아이디, 비밀번호 찾기 영역 */
 main section:nth-of-type(2){
     display: flex;
 }
-main section:nth-of-type(2) form{
+.findArea{
+    width: 400px;
+    height: 320px;
     padding: 40px 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 /* 휴대폰, 아이디, 인증번호 입력 부분*/
@@ -66,7 +71,6 @@ main section:nth-of-type(2) form{
     text-align: center;
     width: 300px;
 }
-
 .input-box input {
     border: 2px solid #ccc;
     border-radius: 5px;
@@ -76,29 +80,22 @@ main section:nth-of-type(2) form{
     margin: 10px 0;
     font-size: 18px;
 }
-
-.width30{
-    width: 30%;
-}
-.width65{
-    width: 65%;
-}
-.width100{
-    width: 100%;
-}
-
 .input-box input:focus{
     outline: 0;
     border: 2px solid #99E1ED;
 }
+.width30{width: 30%;}
+.width65{width: 65%;}
+.width100{width: 100%;}
 
 /* 타이머 영역 */
-main section:nth-of-type(2) form section:nth-of-type(3){
+.timerSection{
     height: 15px;
+    width: 100%;
     font-size: 15px;
     color: black;
     text-align: end;
-    line-height: 5px;
+    line-height: 0px;
     padding-right: 25px;
 }
 
@@ -110,6 +107,7 @@ main section:nth-of-type(2) form section:nth-of-type(3){
     background: #99E1ED;
     color : white;
     padding: 15px;
+    margin-top: 10px;
     font-size: 18px;
     font-weight: bold;
     border: 0;
@@ -130,11 +128,14 @@ main section:nth-of-type(2) form section:nth-of-type(3){
     margin-left: 5px;
 }
 
-
-#findIdBtn:focus, #findPwBtn:focus, #sendSmsBtn:focus, #sendEmailBtn:focus {
+/* 모든 버튼 */
+.findInfo-btn:focus {
     outline: 0;
 }
-
-#findIdBtn:active, #findPwBtn:active, #sendSmsBtn:active, #sendEmailBtn:active {
+.findInfo-btn:hover{
+    transform: scale(1.02);
+    transition-duration: 0.3s;
+}
+.findInfo-btn:active {
     transform: scale(0.98);
 }

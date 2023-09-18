@@ -91,13 +91,13 @@ main .title-area p:nth-of-type(2){
     margin-top: 10px;
 }
 
+.login-btn:focus, .kakao-login-btn:focus {
+    outline: 0;
+}
+
 .login-btn:hover, .kakao-login-btn:hover{
     transform: scale(1.02);
     transition-duration: 0.3s;
-}
-
-.login-btn:focus, .kakao-login-btn:focus {
-    outline: 0;
 }
 
 .login-btn:active, .kakao-login-btn:active {

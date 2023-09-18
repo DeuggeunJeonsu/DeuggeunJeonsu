@@ -39,8 +39,7 @@
       AND MEMBER_EMAIL = #{memberEmail}
    </select>
    
-   
-   <!-- 회원가입 -->	   <!-- mybatis-config.xml에 지정된 별칭 -->
+   <!-- 회원가입 -->
    <insert id="signUp" parameterType = "Member">
    INSERT INTO "MEMBER"
    VALUES(SEQ_MEMBER_NO.NEXTVAL
@@ -51,6 +50,36 @@
 		, #{memberAddress}
    		, NULL, DEFAULT, DEFAULT, DEFAULT)
    </insert>
+   
+   <!-- 회원탈퇴 -->
+   <update id="seccession">
+	  UPDATE MEMBER SET MEMBER_DEL_FL = 'Y'
+	  WHERE MEMBER_NO = #{memberNo}
+	  AND MEMBER_PW = #{memberPw}
+   </update>
+   
+   <!-- 전화번호로 회원 조회 -->
+   <select id="selectMemberByTel" parameterType="string" resultMap="member_rm">
+      SELECT MEMBER_EMAIL, MEMBER_NO
+      FROM "MEMBER"
+      WHERE MEMBER_DEL_FL = 'N'
+      AND MEMBER_TEL = #{memberTel}
+   </select>
+   
+   <!-- 아이디로 회원 조회 -->
+   <select id="selectMemberEmail" parameterType="string" resultType="_int">
+      SELECT COUNT(*)
+      FROM "MEMBER"
+      WHERE MEMBER_DEL_FL = 'N'
+      AND MEMBER_EMAIL = #{memberEmail}
+   </select>
+   
+   <!-- 비밀번호 변경 -->
+   <update id="changePw">
+	  UPDATE MEMBER SET MEMBER_PW = #{newMemberPw}
+	  WHERE MEMBER_EMAIL = #{memberEmail}
+	  AND MEMBER_PW = #{memberPw}
+   </update>
    
    <!-- 회원 BMI 히스토리 불러오기 -->
    <select id="selectBMI" parameterType="Member" resultMap="memberBMI_rm">
