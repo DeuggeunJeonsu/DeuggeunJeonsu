@@ -8,7 +8,7 @@
             <title>게시판 이름</title>
 
             <%-- marketReview-style.css 연결 --%>
-                <link rel="stylesheet" href="../resources/css/board/market/marketCart-style.css">
+                <link rel="stylesheet" href="/resources/css/board/market/marketCart-style.css">
                 <!-- jQuery -->
                 <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
                 <!-- iamport.payment.js -->

@@ -80,10 +80,6 @@ public class NotificationController2 {
 		int result = service.ncUpdate(board);
 		
 		
-		System.out.println(board.getBoardCode());
-		System.out.println(board.getBoardNo());
-		System.out.println(board.getBoardTitle());
-		System.out.println(board.getBoardContent());
 		
 		String message = null;
 		String path = "redirect:/";
@@ -125,24 +121,26 @@ public class NotificationController2 {
 		
 		
 		String message = null;
-		String path = "redirect:/";
+		String path = "";
 		if(result > 0) {
 			
+			System.out.println("삭제 성공하면 여기");
 			message = "게시글 삭제 성공";
-			path =  "/"+ "board/"+ "notification" +"/notificationList";
+			path = "redirect:" +   "/board/"+ boardCode +"/list";
 			
 			ra.addFlashAttribute("message", message);
 			
 		}else {
 			
+			System.out.println("삭제 실패하면 여기");
 			message = "게시글 삭제 실패";
-			path += "board/" + boardCode + "/" +boardNo + "?cp=" + cp;
+			path += "redirect:/" + "board/" + boardCode + "/" +boardNo + "?cp=" + cp;
 			
 			ra.addFlashAttribute("message", message);
 		}
 			
 		
-		
+		System.out.println(path);
 		return path;
 	}
 	

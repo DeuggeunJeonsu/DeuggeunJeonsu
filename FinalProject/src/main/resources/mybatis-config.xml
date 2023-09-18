@@ -38,5 +38,6 @@
 		<mapper resource="/mappers/todolist-mapper.xml" />
 		<mapper resource="/mappers/freeBoard-mapper.xml" />
 		<mapper resource="/mappers/myPage-mapper.xml" />
+		<mapper resource="/mappers/shareBoard-mapper.xml" />
 	</mappers>
 </configuration>

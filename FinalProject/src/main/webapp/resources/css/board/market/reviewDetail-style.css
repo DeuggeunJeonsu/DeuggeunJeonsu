@@ -42,7 +42,7 @@ h1{
 }
 
 #title-middle-area > div:nth-of-type(2){
-    width: 40%;
+    width: 60%;
     display: flex;
 
     justify-content: center;
@@ -62,7 +62,9 @@ h1{
 
     margin-bottom: 20px;
 }
-
+.rightCon{
+    font-size: 1.2em;
+}
 /* 프로필 사진 영역 */
 #profile-area{
     width: 80px;
@@ -90,6 +92,7 @@ h1{
 }
 
 #nickname{
+    font-size: 1.2em;
     text-align: center;
 }
 
@@ -98,8 +101,18 @@ h1{
     color: #797979;
 }
 
-
 /* 게시글 상세 조회 내용 영역 */
+.uploadImg{
+    text-align: center;
+}
+/* 첨부한 사진 */
+.uploadImg img{
+    width: 270px;
+}
+.content{
+    padding: 0 15px;
+    font-size: 1.1em;
+}
 #board-detail-area{
     height: auto;
 }

@@ -6,9 +6,11 @@ const img = document.getElementsByClassName("imgView")[0];
 const imgChange = document.getElementById("ncPic");
 
 const input = document.getElementById("title-textArea");
+const summernote = document.getElementById("summernote");
 
 const inputCheck = document.getElementById("ncBigCheck");
 const checkFL = document.getElementById("checkFL");
+const formTag = document.getElementById("write-form");
 
 inputCheck.addEventListener("change", () => {
 
@@ -130,15 +132,6 @@ function uploadSummernoteImageFile(file, editor){
 
 
 
-
-
-
-
-
-
-
-
-
 /* 모달창 메인으로 버튼 alert 효과 */
 $("#cancel-btn").click(function () {
     Swal.fire({
@@ -163,6 +156,37 @@ $("#cancel-btn").click(function () {
     })
   });
 
+  /* form 태그 제출 시 */
+ formTag.addEventListener("submit", e => {
+
+  if(input.value.trim().length == 0){
+
+    Swal.fire(
+      '제목 미작성',
+      '제목을 작성해주세요.',
+      'error'
+
+      )
+      input.focus();
+      e.preventDefault();
+
+      return;
+  }
+   if(summernote.value.trim().length == 0){
+
+    Swal.fire(
+      '내용 미작성',
+      '내용을 작성해주세요.',
+      'error'
+    )
+    summernote.focus();
+    e.preventDefault();
+
+    return;
+
+  }
+
+ })
  
 
 
@@ -205,3 +229,5 @@ console.log("Text:", text);
   
 
  }
+
+ 

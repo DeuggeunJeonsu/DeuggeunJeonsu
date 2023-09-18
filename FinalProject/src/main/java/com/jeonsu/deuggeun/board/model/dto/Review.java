@@ -20,6 +20,7 @@ public class Review {
     private String reviewCreateDate;
     private String reviewFlag;
     private int rReadCount;
+    private int count;
     private String profileImage;
 
 }

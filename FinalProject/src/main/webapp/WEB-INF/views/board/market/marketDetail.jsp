@@ -79,7 +79,7 @@
                             <a href="/board/${boardCode}/review/${product.productNo}" id="reviewList">Review</a>
                         </li>
                         <li>
-                            <a href="/board/5/inquire">상품문의</a>
+                            <a href="/board/${boardCode}/inquire/${product.productNo}">상품문의</a>
                         </li>
                     </ul>
 
@@ -147,7 +147,6 @@
             <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
             <script src="/resources/js/market/marketDetail.js"></script>
 
-            <%-- <script src="/resources/js/main.js"></script> --%>
         </body>
 
         </html>

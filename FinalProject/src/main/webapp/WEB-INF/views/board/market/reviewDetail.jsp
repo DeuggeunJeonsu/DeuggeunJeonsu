@@ -39,10 +39,10 @@
         <!-- 게시글 제목 -->
         <div id="title-middle-area">
             <div id="title">${review.reviewTitle}</div>
-            <div>
+            <div class="rightCon">
                 <div id="writing-date">작성일&nbsp;&nbsp;${review.reviewCreateDate}&nbsp;&nbsp;&nbsp;&nbsp;
-                </div>|<div id="readCount">조회수&nbsp;&nbsp;<${review.rReadCount}
-            </div>
+                </div>
+                |<div id="readCount">조회수&nbsp;&nbsp;${review.count}</div>
             </div>
         </div>
 
@@ -62,16 +62,28 @@
         <!-- 게시글 상세 조회 내용 영역 -->
         <div id="board-detail-area">
 
-            <div id="board-content-area">${review.reviewContent}</div>
-
+            <div id="board-content-area">
+                <div class="uploadImg">
+                    <c:if test="${!empty review.uploadImage}">
+                        <img src="${review.uploadImage}" alt="">
+                    </c:if>
+                </div>
+                <c:if test="${!empty review.uploadImage}">
+                    <br>
+                    <br>
+                </c:if>
+                <div class="content">${review.reviewContent}</div>
+            </div>
             <div id="btn-area">
                 <div>
                     <button id="goToListBtn">목록으로</button>
 
                     <c:if test="${loginMember.memberNo == review.memberNo}">
                         <div>
-                            <button id="updateBtn">수정하기</button>
-                            <button id="deleteBtn">삭제하기</button>
+                            <a href="/board/${reviewNo}/update">
+                                <button id="updateBtn">수정하기</button>
+                            </a>
+                                <button id="deleteBtn">삭제하기</button>
                         </div>
                     </c:if>
                 </div>
@@ -83,16 +95,15 @@
 
 </section>
 
-<script>
-
-    const reviewNo = "${review.reviewNo}";
-    const loginMemberNo = "${loginMember.memberNo}";
-
-</script>
 
 <!-- footer include -->
 <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
 
+<script>
+    const productNo = "${review.productNo}";
+    const reviewNo = "${review.reviewNo}";
+    const loginMemberNo = "${loginMember.memberNo}";
+</script>
 <!-- boardWrite.js 연결 -->
 <script src="/resources/js/board/boardWrite.js"></script>
 

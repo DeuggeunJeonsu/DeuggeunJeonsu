@@ -1,5 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<c:set var="product" value="${product}" />
+<c:set var="productImageList" value="${productImageList}" />
+
+<c:set var="pagination" value="${map2.pagination}" />
+<c:set var="iList" value="${map2.iList}" />
         <!DOCTYPE html>
         <html>
 
@@ -31,20 +37,18 @@
                 <div class="main-con">
                     <div class="top-container">
                         <div class="left-content">
-                            <img src="/resources/images/market/test2-main.jpeg" alt="" id="main-photo">
+                            <img src="${product.productImg}" id="main-photo">
                         </div>
                         <div class="right-content">
-                            <div id="title">[황금비율 프리미엄 프로틴 파우더]</div>
+                            <div id="title">${product.productTitle}</div>
                             <hr>
                             <div id="amount">
-                                <h3>70,000원</h3>
+                                <h3>판매가 : ${product.productPrice}원</h3>
                             </div>
                             <div class="right" id="text">
-                                <h3>칼로바이 퍼펙트 파워쉐이크 대용량 2kg</h3>
+                                <h3>${product.productContent}</h3>
                             </div>
-                            <div class="right">근피로 회복, 질좋은 수면, 고중량 훈련+다이어트 서포트 스틸 그린™은 신체의 항산화 시스템, 소화 기능 및 면역 건강을 지원하면서
-                                자연스럽고 기분 좋은 에너지를 제공하도록 설계되었습니다. 수퍼 푸드 채소 이외에도 Steel Greens ™에는 최대 흡수를위한 DigeZyme® 소화 효소
-                                및 LactoSpore® (Bacillus coagulans MTCC 5856)가 포함되어 있습니다.</div>
+                            <div class="right">${product.subTitle}</div>
                             <div class="number-con">
                                 <div class="number">
                                     <div>수량</div>
@@ -70,13 +74,13 @@
 
                     <ul class="item-nav">
                         <li>
-                            <a href="/market/marketDetail">상품정보</a>
+                            <a href="/board/${boardCode}/detail/${productNo}">상품정보</a>
                         </li>
                         <li>
-                            <a href="/market/marketReview">Review</a>
+                            <a href="/board/${boardCode}/review/${productNo}">Review</a>
                         </li>
                         <li>
-                            <a href="/market/marketInquire">상품문의</a>
+                            <a href="/board/${boardCode}/inquire/${product.productNo}">상품문의</a>
                         </li>
                     </ul>
 
@@ -98,48 +102,44 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>5</td>
-                                    <td><a href="#">다섯번째 게시글</a></td>
-                                    <td>유저일이지롱</td>
-                                    <td>2023-08-31</td>
-                                    <td><button type="button" id="btn-status">처리대기</button></td>
-                                </tr>
-                                <tr>
-                                    <td>4</td>
-                                    <td><a href="#">네번째 게시글</a></td>
-                                    <td>유저일이지롱</td>
-                                    <td>2023-09-01</td>
-                                    <td><button type="button" id="btn-status">처리대기</button></td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td><a href="#">세번째 게시글</a></td>
-                                    <td>유저일이지롱</td>
-                                    <td>2023-09-01</td>
-                                    <td><button type="button" id="btn-status">처리대기</button></td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td><a href="#">두번째 게시글</a></td>
-                                    <td>유저일이지롱</td>
-                                    <td>2023-09-01</td>
-                                    <td><button type="button" id="btn-status">처리대기</button></td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td><a href="#">첫번째 게시글</a></td>
-                                    <td>유저일이지롱</td>
-                                    <td>2023-09-01</td>
-                                    <td><button type="button" id="btn-status">처리대기</button></td>
-                                </tr>
-                            </tbody>
+                                    <c:choose>
+                                        <c:when test="${empty iList}">
+                                            <tr>
+                                                <td colspan="5">작성된 리뷰 게시글이 없습니다.</td>
+                                            </tr>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <c:forEach var="inquiry" items="${iList}">
+                                                <c:if test="${inquiry.productNo == product.productNo}">
+                                                    <tr>
+                                                        <td>${inquiry.inquiryNo}</td>
+                                                        <%--td><a href="/board/${boardCode}/review/${review.reviewNo}/detail?cp=${param.cp}">${review.reviewTitle}</a></td>--%>
+                                                        <td><a href="/board/${boardCode}/inquiry/${inquiry.inquiryNo}/detail?cp=${param.cp}">${inquiry.inquiryTitle}</a></td>
+                                                        <td>${inquiry.memberNickname}</td>
+                                                        <td>${inquiry.inquiryCreateDate}</td>
+                                                        <td>
+                                                            <c:choose>
+                                                                <c:when test="${inquiry.adminFlag == 'N'}">
+                                                                    <button type="button" id="btn-status">처리대기</button>
+                                                                </c:when>
+                                                                <c:otherwise>
+                                                                    <button type="button" id="btn-status">답변완료</button>
+                                                                </c:otherwise>
+                                                            </c:choose>
+                                                        </td>
+                                                    </tr>
+                                                </c:if>
+                                            </c:forEach>
+                                        </c:otherwise>
+                                    </c:choose>
+                              </tbody>
                         </table>
 
 
                         <div class="btn-area">
-
-                            <button id="insertBtn">문의하기</button>
+<%--                    <a href="/board/${boardCode}/review/${productNo}/insert" id="insertBtn">글쓰기</a>--%>
+                        <a href="/board/${boardCode}/inquiry/${productNo}/insert" id="insertBtn">문의하기</a>
+<%--                        <button id="insertBtn">문의하기</button>--%>
                             <!-- 로그인 상태일 경우 글쓰기 버튼 노출 -->
 
                             <!-- <c:if test="${!empty loginMember}"> -->
@@ -148,49 +148,35 @@
                         </div>
 
                         <div class="pagination-area">
-
-
                             <ul class="pagination">
-
                                 <!-- 첫 페이지로 이동 -->
-                                <li><a href="/board/${boardCode}?cp=1${sp}">&lt;&lt;</a></li>
-
+                                <li><a href="/board/${boardCode}/inquire/${productNo}?cp=1${sp}">&lt;&lt;</a></li>
                                 <!-- 이전 목록 마지막 번호로 이동 -->
-                                <li><a href="/board/${boardCode}?cp=${pagination.prevPage}${sp}">&lt;</a></li>
-
-
+                                <li><a href="/board/${boardCode}/inquire/${productNo}?cp=${pagination.prevPage}${sp}">&lt;</a></li>
                                 <!-- 특정 페이지로 이동 -->
                                 <c:forEach var="i" begin="${pagination.startPage}" end="${pagination.endPage}" step="1">
-
                                     <c:choose>
                                         <c:when test="${ i == pagination.currentPage}">
                                             <!-- 현재 보고있는 페이지 -->
                                             <li><a class="current">${i}</a></li>
                                         </c:when>
-
                                         <c:otherwise>
                                             <!-- 현재 페이지를 제외한 나머지 -->
-                                            <li><a href="/board/${boardCode}?cp=${i}${sp}">${i}</a></li>
-
+                                            <li><a href="/board/${boardCode}/inquire/${productNo}?cp=${i}${sp}">${i}</a></li>
                                         </c:otherwise>
                                     </c:choose>
-
                                 </c:forEach>
-
                                 <!-- 다음 목록 시작 번호로 이동 -->
-                                <li><a href="/board/${boardCode}?cp=${pagination.nextPage}${sp}">&gt;</a></li>
-
+                                <li><a href="/board/${boardCode}/inquire/${productNo}?cp=${pagination.nextPage}${sp}">&gt;</a></li>
                                 <!-- 끝 페이지로 이동 -->
-                                <li><a href="/board/${boardCode}?cp=${pagination.maxPage}${sp}">&gt;&gt;</a></li>
-
+                                <li><a href="/board/${boardCode}/inquire/${productNo}?cp=${pagination.maxPage}${sp}">&gt;&gt;</a></li>
                             </ul>
-
                         </div>
 
                 </div>
-
-
             </section>
+
+
 
             <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
 
