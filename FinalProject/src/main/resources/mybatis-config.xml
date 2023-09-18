@@ -25,6 +25,9 @@
 		<typeAlias type="com.jeonsu.deuggeun.board.model.dto.Inquiry" alias="Inquiry" />
 		<typeAlias type="com.jeonsu.deuggeun.board.model.dto.ProductImage" alias="ProductImage" />
 		<typeAlias type="com.jeonsu.deuggeun.board.model.dto.Hashtag" alias="Hashtag" />
+		
+		
+		<typeAlias type="com.jeonsu.deuggeun.adminController.model.dto.AdminMember" alias="AdminMember" />
 
 
 
@@ -39,5 +42,6 @@
 		<mapper resource="/mappers/freeBoard-mapper.xml" />
 		<mapper resource="/mappers/myPage-mapper.xml" />
 		<mapper resource="/mappers/shareBoard-mapper.xml" />
+		<mapper resource="/mappers/adminPage-mapper.xml" />
 	</mappers>
 </configuration>
