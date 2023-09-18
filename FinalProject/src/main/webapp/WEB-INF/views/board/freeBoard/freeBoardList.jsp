@@ -38,25 +38,21 @@
         </div>
         <div id="search-area">
             <div class="search-place">
-                <form action="" method="get" id="boardSearch">
-                    <input type="search" name="query" id="searchQuery" placeholder="search...">
+                <form method="get" id="boardSearch">
+                    <%-- <input type="hidden" name="key" value="tc"> --%>
+                    <input type="search" name="query" id="searchQuery" placeholder="search..." autocomplete="off" value=${param.query}>
                     <button id="search-button"><i class="fas fa-search"></i></button>
                 </form>
             </div>
-            <div class="hashTag-area">
-                <%-- <div>
-                    #오운완
-                    <i class="fa-solid fa-circle-xmark" style="color: #ffffff;"></i>
-                </div>                
-                <div>
-                    #OOTD
-                    <i class="fa-solid fa-circle-xmark" style="color: #ffffff;"></i>
-                </div>                
-                <div>
-                    #단백질쉐이커
-                    <i class="fa-solid fa-circle-xmark" style="color: #ffffff;"></i>
-                </div>                 --%>
-            </div>
+
+            <c:if test="${!empty param.query}" >
+                <div class="hashTag-area">
+                    <div class="hashtag">
+                        #${param.query}
+                        <i class="fa-solid fa-circle-xmark" style="color: #ffffff;"></i>
+                    </div>
+                </div>
+            </c:if>
             <div id="sort-btn-area">
                 <a href="#"><span name="key" value="l">최신순</span></a> |
                 <a href="#"><span name="key" value="p">인기순</span></a> |
@@ -166,6 +162,9 @@
 
     <!-- footer include -->
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
+
+    <%-- freeBoardList.js 연결 --%>
+    <script src="/resources/js/board/freeBoard/freeBoardList.js"></script>
 
 </body>
 </html>
