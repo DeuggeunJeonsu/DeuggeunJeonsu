@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+		<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+		<c:set var="memberList" value="${map.memberList}" ></c:set>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -76,33 +79,32 @@
 							</thead>
 
 							<tbody>
-								<tr>
-									<td>4</td>
-									<td>user01</td>
-									<td>유저일</td>
-									<td><button class="userDel">탈퇴</button></td>
-								</tr>
 
-								<tr>
-									<td>3</td>
-									<td>user02</td>
-									<td>유저이</td>
-									<td><button class="userDel">탈퇴</button></td>
-								</tr>
+							<c:choose>
 
+							<c:when test="${empty memberList}">
 								<tr>
-									<td>2</td>
-									<td>user03</td>
-									<td>유저삼</td>
-									<td><button class="userDel">탈퇴</button></td>
+									<th id="noPage" colspan="6">
+										페이지가 존재하지 않습니다.
+									</th>
 								</tr>
+							</c:when>
+							
+							<c:otherwise>
+								<c:forEach items="${memberList}" var="member">
+									<tr>
+										<td>${member.memberNo}</td>
+										<td>${member.memberEmail}</td>
+										<td>${member.memberNickname}</td>
+										<td><button class="userDel">탈퇴</button></td>
+									</tr>
+								</c:forEach>
+							</c:otherwise>
+						
+							</c:choose>
+							
 
-								<tr>
-									<td>1</td>
-									<td>user04</td>
-									<td>유저사</td>
-									<td><button class="userDel">탈퇴</button></td>
-								</tr>
+							
 							</tbody>
 						</table>
 

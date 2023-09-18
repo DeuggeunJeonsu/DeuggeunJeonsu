@@ -1,12 +1,22 @@
 package com.jeonsu.deuggeun.adminController;
 
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.jeonsu.deuggeun.adminController.model.dto.AdminMember;
+import com.jeonsu.deuggeun.adminController.model.service.AdminService;
 
 @Controller
 public class AdminController {
 
+	@Autowired
+	private AdminService service;
+	
 	// 관리자 페이지
 	@RequestMapping("/adminBoardList")
 	public String adminBoardList() {
@@ -16,8 +26,18 @@ public class AdminController {
 
 	// 회원 목록
 	@RequestMapping("/userList")
-	public String userList() {
+	public String userList(Model model) {
 
+		
+		Map<String, Object> map = service.selectMember();
+		
+		if(map.get("memberList") != null) {
+			
+			
+			model.addAttribute("map", map);
+		}
+		
+		
 		return "admin/userList";
 	}
 
