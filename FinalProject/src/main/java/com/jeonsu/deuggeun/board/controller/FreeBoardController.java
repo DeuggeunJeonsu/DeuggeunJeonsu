@@ -46,6 +46,7 @@ public class FreeBoardController {
 	@GetMapping("/list")
 	public String FreeBoardList(
 			@RequestParam(value = "cp", required = false, defaultValue = "1") int cp
+			, @SessionAttribute(value = "loginMember", required = false) Member loginMember
 			, Model model
 			, @RequestParam Map<String, Object> paramMap) {
 		
@@ -53,7 +54,7 @@ public class FreeBoardController {
 		int boardCode = 3;
 
 		// 검색을 안 한 경우
-		if(paramMap.get("query") == null) {
+		if(paramMap.get("key") == null) {
 	
 			Map<String, Object> map = service2.selectFreeBoardList(boardCode, cp);
 			
@@ -63,6 +64,11 @@ public class FreeBoardController {
 		
 		// 검색한 경우
 		else {
+			
+			// 팔로잉 필터로 검색하기 위해
+			if(loginMember != null) {
+				paramMap.put("loginMemberNo", loginMember.getMemberNo());
+			}
 			
 			paramMap.put("boardCode", 3);
 			
