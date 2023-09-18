@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>게시판 이름</title>
+<title>루틴공유게시판</title>
 <%-- GSAP 라이브러리 추가 --%>
 <script src = "https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" ></script> 
 <%-- boardList-style.css 연결 --%>
@@ -18,7 +18,7 @@
 	
 	<section id="main-container">
         <div id="title-area">
-            <div><h1>운동 공유 게시판</h1></div>
+            <div><h1>루틴 공유 게시판</h1></div>
         </div>
         <div id="board-area">
             <div>
@@ -26,14 +26,13 @@
                     
                     <img src="/resources/images/main/log01.png" class = "img">
                 </div>
-                <h2 id="title">야 너도 할 수 있어! 하체!</h2>
+                <h2 id="title">${board.boardTitle}</h2>
                 <hr>
                 <div id="board-info">
-                    <span>by.닉네임</span> | <span>2023-08-21</span> | <span>조회수 100</span>
+                    <span>by.${board.memberNickname}</span> | <span>${board.boardCreateDate}</span> | <span>조회수 ${board.readCount}</span>
                 </div>
                 <div class="boardContent">
-                    천자만홍이 어디 있으며 인생을 풍부하게 하는 온갖 과실이 어디 있으랴? 이상! 우리의 청춘이 가장 많이 품고 있는 이상! 이것이야말로 무한한 가치를 가진 것이다 사람은 크고 작고 간에 이상이 있음으로써 용감하고 굳세게 살
-                    천자만홍이 어디 있으며 인생을 풍부하게 하는 온갖 과실이 어디 있으랴? 이상! 우리의 청춘이 가장 많이 품고 있는 이상! 이것이야말로 무한한 가치를 가진 것이다 사람은 크고 작고 간에 이상이 있음으로써 용감하고 굳세게 살
+                   ${board.boardContent}
                 </div>
                 <div class="routine-area">
                     <h1>1.</h1>
@@ -116,9 +115,17 @@
                 <div id="member-area">
                     <div>
                         <div id="profile-area">
-                            <img src="/resources/images/user.png">
+                            <c:choose>
+                                <c:when test="${empty board.profileImage}">
+                                    <img src="/resources/images/user.png">
+                                </c:when>
+                                <c:otherwise>
+                                    <img src="${board.profile}">
+                                </c:otherwise>
+                            </c:choose>
+
                         </div>
-                        <span>닉네임</span>
+                        <span>${board.memberNickname}</span>
                         <button>follow</button>
                     </div>
                     <div><span>팔로우 390</span><span> 팔로잉 390</span></div>
@@ -174,12 +181,20 @@
         </div>
         <!-- 게시글 버튼 영역 -->
         <div class="board-like">
-            <div class="like-cnt unchecked" id="like-cnt">
-                <i class="like-btn fa-solid fa-heart fa-2x"></i>
-            </div>
+            <c:if test="${empty likeCheck}" >
+                <div class="like-cnt" id="like-cnt">
+                    <i class="like-btn fa-solid fa-heart fa-2x"></i>
+                </div>
+            </c:if>
+
+            <c:if test="${!empty likeCheck}" >
+                <div class="like-cnt" id="like-cnt" style="background-color: #99E1ED">
+                    <i class="like-btn fa-solid fa-heart fa-2x"></i>
+                </div>
+            </c:if>
         </div>
 
-        <div class="likeCount">99</div>
+        <div class="likeCount">${board.likeCount}</div>
 
         <div id="btn-area">
             <div>
@@ -323,6 +338,15 @@
     <!-- footer include -->
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
     
+    <script>
+
+        const boardNo = "${board.boardNo}";
+        const boardMemberNo = "${board.memberNo}";
+        const loginMemberNo = "${loginMember.memberNo}";
+
+    </script>
+
+
 	<script src="/resources/js/board/shareBoard/shareBoardDetail.js"></script>
 	<script src="/resources/js/TodoList/todoList.js"></script>
 	<script src="/resources/js/board/comment.js"></script>
