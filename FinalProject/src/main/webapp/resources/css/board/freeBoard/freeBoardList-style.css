@@ -80,18 +80,17 @@
 
 /* 해시태그 영역 */
 .hashTag-area{
-    display: flex;
-    position: relative;
-
-    /* right: 50px; */
+    position: absolute;
+    left: 780px;
 }
 
 .hashTag-area div{
-    width: 140px;
+    width: auto;
+    height: 50px;
     background-color: #99e1ed;
 
     margin: 0 7px;
-    padding: 5px;
+    padding: 20px;
 
     color: white;
     font-size: 18px;

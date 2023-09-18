@@ -298,4 +298,26 @@ public class ashBoardDAO {
 		return sqlSession.delete("freeBoardMapper.memberUnfollow", paramMap);
 	}
 
+	/** 게시글 수 조회(검색)
+	 * @param paramMap
+	 * @return result
+	 */
+	public int getFreeBoardListCount(Map<String, Object> paramMap) {
+		return sqlSession.selectOne("freeBoardMapper.getFreeBoardListCount_search", paramMap);
+	}
+
+	/** 자유게시판 게시글 상세 검색
+	 * @param pagination
+	 * @param paramMap
+	 * @return list
+	 */
+	public List<Board> selectFreeBoardList(Pagination pagination, Map<String, Object> paramMap) {
+		
+		int offset = (pagination.getCurrentPage() - 1) * pagination.getLimit();
+		
+		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
+		
+		return sqlSession.selectList("freeBoardMapper.selectFreeBoardList_search", paramMap, rowBounds);
+	}
+
 }

@@ -53,7 +53,7 @@ public class FreeBoardController {
 		int boardCode = 3;
 
 		// 검색을 안 한 경우
-		if(paramMap.get("key") == null) {
+		if(paramMap.get("query") == null) {
 	
 			Map<String, Object> map = service2.selectFreeBoardList(boardCode, cp);
 			
@@ -62,14 +62,14 @@ public class FreeBoardController {
 		} 
 		
 		// 검색한 경우
-//		else {
-//			
-//			paramMap.put("boardCode", 3);
-//			
-//			Map<String, Object> map = service2.selectFreeBoardList(paramMap, cp);
-//			
-//			model.addAttribute("map", map);
-//		}
+		else {
+			
+			paramMap.put("boardCode", 3);
+			
+			Map<String, Object> map = service2.selectFreeBoardList(paramMap, cp);
+			
+			model.addAttribute("map", map);
+		}
 		
 		return "board/freeBoard/freeBoardList";
 	}

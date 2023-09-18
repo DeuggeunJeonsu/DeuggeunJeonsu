@@ -241,7 +241,6 @@ public class FreeBoardController2 {
 		ra.addFlashAttribute("message", message);
 		
 		return path;
-		
 	}
 	
 }
