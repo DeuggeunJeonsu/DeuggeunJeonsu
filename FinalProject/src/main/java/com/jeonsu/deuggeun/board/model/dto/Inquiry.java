@@ -11,7 +11,17 @@ public class Inquiry {
     //BOARD_NO
     //ADMIN_CHECK_FL
     //INQUIRY_TYPE
+    private int inquiryNo;
+    private int productNo;
+    private String uploadImage;
     private int boardNo;
-    private String adminCheckFlag;
-    private int inquiryType;
+    private String inquiryTitle;
+    private String inquiryContent;
+    private String inquiryCreateDate;
+    private String adminFlag;
+    private String inquiryFlag;
+    private String memberNickname;
+    private String profileImage;
+    private int boardCode;
+    private int memberNo;
 }

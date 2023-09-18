@@ -3,8 +3,13 @@
   <component name="WebContextManager">
     <option name="state">
       <map>
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/board/inquireWrite.jsp" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/board" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/board/market/inquiryUpdate.jsp" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/board/market" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/board/market/marketDetail.jsp" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/board/market" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/board/market/marketInquire.jsp" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/board/market" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/board/market/marketList.jsp" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/board/market" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/board/market/marketReview.jsp" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/board/market" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/board/market/reviewDetail.jsp" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/board/market" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/board/reviewWrite.jsp" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/board" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/common/footer.jsp" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/common" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/common/header.jsp" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/common" />

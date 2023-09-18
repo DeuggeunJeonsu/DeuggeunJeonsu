@@ -52,11 +52,11 @@ public class MarketServiceImpl implements MarketService{
 
 		Pagination pagination = new Pagination(cp, listCount);
 
-		List<Product> boardList = dao.selectMarketList(pagination, paramMap);
+		List<Product> mList = dao.selectMarketList(pagination, paramMap);
 
 		Map<String, Object> map = new HashMap<>();
 		map.put("pagination", pagination);
-		map.put("boardList", boardList);
+		map.put("mList", mList);
 
 		return map;
 	}
@@ -81,14 +81,11 @@ public class MarketServiceImpl implements MarketService{
 	@Override
 	public int reviewInsert(int boardCode, int productNo, Review review, MultipartFile image, String webPath, String filePath) throws IOException {
 
-//		int reviewNo = 0; // result 변수를 밖에서 선언 및 초기화
 		int reviewNo = review.getReviewNo();
 
 		if (image.isEmpty()) {
 
-//			review.setReviewNo(review.getReviewNo());
-
-			reviewNo = dao.reviewInsert2(review); // 이미지가 없는 경우 dao.reviewInsert2 호출
+			reviewNo = dao.reviewInsert2(review);
 
 		} else {
 			review.setUploadImage(webPath);
@@ -113,38 +110,7 @@ public class MarketServiceImpl implements MarketService{
 		return reviewNo;
 	}
 
-//			dao.updateReviewImage(review);
-//		int result = dao.reviewInsert(review);
-//
-//		if (result > 0 && image != null) {
-//
-//			System.out.println("두번째 사진if문 실행");
-//
-//			review.setUploadImage(webPath);
-//
-//			String fileName = image.getOriginalFilename();
-//
-//			// 이미지 업로드 및 경로 저장
-//			String originalFilename = image.getOriginalFilename();
-//			String savedFilename = Util.fileRename(originalFilename);
-//
-//			System.out.println("filePath : " + filePath);
-//			System.out.println("saveFilename : " + savedFilename);
-//
-//			File uploadFile = new File(filePath, savedFilename);
-//			image.transferTo(uploadFile);
-//
-//			System.out.println("upload 파일명" + uploadFile);
-//			System.out.println(webPath);
-//
-//			// 리뷰 테이블에 이미지 경로 업데이트
-//			review.setReviewNo(review.getReviewNo());
-//			System.out.println("webPAth + save명 : " + webPath + savedFilename);
-//			review.setUploadImage(webPath + savedFilename);
-//
-//			dao.updateReviewImage(review);
-
-
+	// 리뷰 목록 조회
 	@Override
 	public Map<String, Object> selectReview(int boardCode, int cp, int productNo) {
 
@@ -173,10 +139,162 @@ public class MarketServiceImpl implements MarketService{
 	}
 
 	// 조회 수 증가 서비스
-
 	@Transactional
 	@Override
 	public int updateReadCount(int reviewNo) {
 		return dao.updateReadCount(reviewNo);
 	}
+
+	// 리뷰 수정
+	@Transactional(rollbackFor = Exception.class)
+	@Override
+	public int reviewUpdate(Review review, MultipartFile image, String webPath, String filePath) throws IllegalStateException, IOException {
+
+		// 1. 리뷰 제목/내용 수정 (XSS 방지 처리)
+		review.setReviewTitle(Util.XSSHandling(review.getReviewTitle()));
+		review.setReviewContent(Util.XSSHandling(review.getReviewContent()));
+
+
+		// 2. 리뷰 업데이트
+		int rowCount = dao.reviewUpdate(review);
+
+		// 3. 업데이트 성공 시 이미지 관련 작업
+		if (rowCount > 0) {
+
+			if ("null".equals(review.getUploadImage())) {
+				rowCount = dao.updateImagePath2(review);
+			}else if (image.getSize() > 0) {
+				// 이미지 원본명과 저장될 이름을 얻어옴
+				String originalFilename = image.getOriginalFilename();
+				String savedFilename = Util.fileRename(originalFilename);
+
+				// 서버에 파일 저장
+				File uploadFile = new File(filePath, savedFilename);
+				image.transferTo(uploadFile);
+
+				// 리뷰 객체에 이미지 웹 경로 설정
+				review.setUploadImage(webPath + savedFilename);
+
+				// DB에 이미지 경로 업데이트 (선택적)
+				rowCount = dao.updateImagePath(review);
+			}
+		}
+		return rowCount;
+	}
+
+	// 리뷰 삭제
+	@Override
+	public int reviewDelete(Map<String, Object> map) {
+
+		int result = dao.reviewDelete(map);
+
+		return result;
+	}
+
+	// 상품 문의 목록조회
+	@Override
+	public Map<String, Object> selectInquiry(int boardCode, int cp, int productNo) {
+
+		int listCount = dao.getInquiryListCount(boardCode);
+		Pagination pagination = new Pagination(cp, listCount);
+
+		Map<String, Object> params = new HashMap<>();
+
+		params.put("boardCode", boardCode);
+		params.put("productNo", productNo);
+
+		List<Inquiry> iList = dao.selectInquiry(pagination, params);
+
+		Map<String, Object> map = new HashMap<>();
+		map.put("pagination", pagination);
+		map.put("iList", iList);
+
+		return map;
+
+	}
+
+	// 상품문의 상세페이지
+	@Override
+	public Inquiry selectInquiryDetail(Map<String, Object> map) {
+		return dao.selectInquiryDetail(map);
+	}
+
+	@Transactional(rollbackFor = Exception.class)
+	@Override
+	public int inquiryInsert(int boardCode, int productNo, Inquiry inquiry, MultipartFile image, String webPath, String filePath) throws IOException {
+
+		int  inquiryNo = inquiry.getInquiryNo();
+
+		if (image.isEmpty()) {
+
+			inquiryNo = dao.inquiryInsert2(inquiry);
+
+		} else {
+			inquiry.setUploadImage(webPath);
+
+			String fileName = image.getOriginalFilename();
+
+			// 이미지 업로드 및 경로 저장
+			String originalFilename = image.getOriginalFilename();
+			String savedFilename = Util.fileRename(originalFilename);
+
+			File uploadFile = new File(filePath, savedFilename);
+			image.transferTo(uploadFile);
+
+			// 문의 테이블에 이미지 경로 업데이트
+			inquiry.setInquiryNo(inquiry.getInquiryNo());
+			inquiry.setUploadImage(webPath + savedFilename);
+
+			// 문의 정보 저장
+			inquiryNo = dao.inquiryInsert(inquiry); // 이미지가 있는 경우
+		}
+
+		return inquiryNo;
+	}
+
+	// 상품문의 게시글 삭제
+	@Override
+	public int inquiryDelete(Map<String, Object> map) {
+		int result = dao.inquiryDelete(map);
+
+		return result;
+	}
+
+	// 상품문의 게시글 수정
+	@Transactional(rollbackFor = Exception.class)
+	@Override
+	public int inquiryUpdate(Inquiry inquiry, MultipartFile image, String webPath, String filePath) throws IOException {
+		// 1. 리뷰 제목/내용 수정 (XSS 방지 처리)
+		inquiry.setInquiryTitle(Util.XSSHandling(inquiry.getInquiryTitle()));
+		inquiry.setInquiryContent(Util.XSSHandling(inquiry.getInquiryContent()));
+
+		// 2. 리뷰 업데이트
+		int rowCount = dao.inquiryUpdate(inquiry);
+		// 3. 업데이트 성공 시 이미지 관련 작업
+		if (rowCount > 0) {
+
+			if ("null".equals(inquiry.getUploadImage())) {
+				rowCount = dao.updateImagePath4(inquiry);
+
+			}else if (image.getSize() > 0) {
+
+				// 이미지 원본명과 저장될 이름을 얻어옴
+				String originalFilename = image.getOriginalFilename();
+				String savedFilename = Util.fileRename(originalFilename);
+
+				// 서버에 파일 저장
+				File uploadFile = new File(filePath, savedFilename);
+				image.transferTo(uploadFile);
+
+				// 리뷰 객체에 이미지 웹 경로 설정
+				inquiry.setUploadImage(webPath + savedFilename);
+
+				// DB에 이미지 경로 업데이트 (선택적)
+				rowCount = dao.updateImagePath3(inquiry);
+			}
+		}
+		return rowCount;
+
+	}
+
 }

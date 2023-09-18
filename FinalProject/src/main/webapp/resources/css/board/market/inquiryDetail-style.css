@@ -11,6 +11,7 @@ h1{
     font-size: 2em;
 }
 #title-area > div:nth-of-type(2){
+    font-size: 1.2em;
     padding-bottom: 10px;
     border-bottom: 2px solid #ddd;
 }
@@ -45,7 +46,7 @@ h1{
     width: 60%;
     display: flex;
 
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
 }
 
@@ -102,50 +103,41 @@ h1{
 }
 
 /* 게시글 상세 조회 내용 영역 */
-.uploadImg{
-    text-align: center;
-}
-/* 첨부한 사진 */
-.uploadImg img{
-    width: 270px;
-}
-.content{
-    padding: 0 15px;
-    font-size: 1.1em;
-}
-#board-detail-area{
-    height: auto;
+#board-detail-area {
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #acd0e8;
+    margin-top: 20px;
 }
 
-#board-content-area{
-    /*height: 500px;*/
-    height: auto;
-    padding: 30px;
-    font-size: 18px;
-    /*text-align: center;*/
-    background-color: white;
-    border-radius: 5px;
-}
-
-/* 게시글 버튼 영역 */
-/* 좋아요 영역 */
-#btn-area{
-    height: 100px;
-}
-
-.board-like{
-    height: 100px;
-    width: 100px;
-
+#board-content-area {
     display: flex;
     flex-direction: column;
-
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
+    padding: 30px;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-size: 18px;
+}
 
-    margin: 10px auto 0 auto;
+.content {
+    padding: 0 15px;
+    font-size: 1.1em;
+    line-height: 1.6;
+}
 
-    cursor: pointer;
+.uploadImg {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.uploadImg img {
+    width: 270px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 /* 나머지 버튼 */
@@ -171,4 +163,30 @@ h1{
     background-color: #99E1ED;
     transition-duration: 0.5s;
 }
+
+#board-content-area {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.uploadImg-area{
+    text-align: center;
+}
+.uploadImg-area, .content-area {
+    width: 50%;
+    padding: 10px;
+}
+
+.uploadImg-area img {
+    max-width: 100%;
+    height: auto;
+}
+
+.content-area {
+    padding: 20px;
+    font-size: 18px;
+    /* text-align: center; */
+    border-left: 1px solid #ccc; /* 여기에 선을 추가 */
+}
+
 
