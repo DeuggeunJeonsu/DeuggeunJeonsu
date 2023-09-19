@@ -66,43 +66,43 @@
                 
                 <c:otherwise>
 
-                        <c:forEach items="${boardList}" var="board">
+                    <c:forEach items="${boardList}" var="board">
 
-                            <div class="thumbnail">
-                                <a href="/board/2/${board.boardNo}?cp=${pagination.currentPage}">
-                                    <div>
-                                        <c:if test="${empty board.thumbnail}" >
-                                            <img src="/resources/images/main/log02.png" id="default-logo">
-                                        </c:if>
+                        <div class="thumbnail">
+                            <a href="/board/2/${board.boardNo}?cp=${pagination.currentPage}">
+                                <div>
+                                    <c:if test="${empty board.thumbnail}" >
+                                        <img src="/resources/images/main/log02.png" id="default-logo">
+                                    </c:if>
 
-                                        <c:if test="${!empty board.thumbnail}">
-                                            <img src="${board.thumbnail}">
-                                        </c:if>
+                                    <c:if test="${!empty board.thumbnail}">
+                                        <img src="${board.thumbnail}">
+                                    </c:if>
+                                </div>
+                                <div>
+                                    <div class="title">${board.boardTitle}</div>
+                                    <div class="createDate-area">
+                                        <div>작성일 ${board.boardCreateDate}</div>
+                                        <div><i class="fa-regular fa-comment" style="color: #ddd;"></i>&nbsp;${board.commentCount}</div>
                                     </div>
-                                    <div>
-                                        <div class="title">${board.boardTitle}</div>
-                                        <div class="createDate-area">
-                                            <div>작성일 ${board.boardCreateDate}</div>
-                                            <div><i class="fa-regular fa-comment" style="color: #ddd;"></i>&nbsp;${board.commentCount}</div>
-                                        </div>
-                                        <div class="profile-area">
-                                            <div class="profileArea">
-                                                <c:if test="${empty board.profileImage}" >
-                                                    <img src="/resources/images/user.png">
-                                                </c:if>
+                                    <div class="profile-area">
+                                        <div class="profileArea">
+                                            <c:if test="${empty board.profileImage}" >
+                                                <img src="/resources/images/user.png">
+                                            </c:if>
 
-                                                <c:if test="${!empty board.profileImage}" >
-                                                    <img src="${board.profileImage}">
-                                                </c:if>
-                                            </div>
-                                            <div>${board.memberNickname}</div>
-                                            <div><i class="fa-solid fa-heart" style="color: #ff4242;"></i>&nbsp;${board.likeCount}</div>
+                                            <c:if test="${!empty board.profileImage}" >
+                                                <img src="${board.profileImage}">
+                                            </c:if>
                                         </div>
+                                        <div>${board.memberNickname}</div>
+                                        <div><i class="fa-solid fa-heart" style="color: #ff4242;"></i>&nbsp;${board.likeCount}</div>
                                     </div>
-                                </a>
-                            </div>
+                                </div>
+                            </a>
+                        </div>
 
-                        </c:forEach>
+                    </c:forEach>
 
                 </c:otherwise>
                 </c:choose>

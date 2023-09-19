@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+    <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"  %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,9 +24,18 @@
         <div id="board-area">
             <div>
                 <div class="boardImg thumbnail">
-                    
-                    <img src="/resources/images/main/log01.png" class = "img">
+                     <img src="${board.imageList[0].imagePath}${board.imageList[0].imageReName}">
+                    <%-- <img src="/resources/images/main/log01.png" class = "img"> --%>
                 </div>
+
+                 <%-- 썸네일을 제외하고 나머지 이미지의 시작인덱스 번호 지정 --%>
+                <c:if test="${board.imageList[0].imageLevel == 0}" >
+                    <c:set var="start" value="1"/>
+                </c:if>
+
+
+
+
                 <h2 id="title">${board.boardTitle}</h2>
                 <hr>
                 <div id="board-info">
@@ -34,82 +44,28 @@
                 <div class="boardContent">
                    ${board.boardContent}
                 </div>
-                <div class="routine-area">
-                    <h1>1.</h1>
-                    <div class= "img-area">
-                        <img src="/resources/images/badge/badge (1).png" class="img">
-                    </div>
-                    <div class="routine-info">
-                        <div class="routineNm">
-                            <span>스쿼트 </span>
-                            <button type="button" class="boardAddListBtn">Do IT!</button>
+
+                <c:forEach var="i" begin="${start}" end="${fn:length(board.imageList)-1}">
+
+                    <div class="routine-area">
+                        <h1>${board.imageList[i].imageLevel + 1}.</h1>
+                        <div class= "img-area">
+                            <c:set var="path" value="${board.imageList[i].imagePath}${board.imageList[i].imageReName}"/>
+                           
+                            <img src="${path}" class="img">
                         </div>
-                        <div class="routine-content">
-                        1. 스쿼트 동작은 이러쿵 저러쿵<br>
-                        2. 스쿼트 동작은 이러쿵 저러쿵<br>
-                        3. 스쿼트 동작은 이러쿵 저러쿵<br>
-                        <br>
-                        꿀팁! 오늘은 피자 먹을 거다!
-                        </div>
-                    </div>
-                </div>
-                <div class="routine-area">
-                    <h1>2.</h1>
-                    <div class= "img-area">
-                        <img src="/resources/images/badge/badge (1).png" class="img">
-                    </div>
-                    <div class="routine-info">
-                        <div class="routineNm">
-                            <span>스쿼트 </span>
-                           <button type="button" class="boardAddListBtn">Do IT!</button>
-                        </div>
-                        <div class="routine-content">
-                        1. 스쿼트 동작은 이러쿵 저러쿵<br>
-                        2. 스쿼트 동작은 이러쿵 저러쿵<br>
-                        3. 스쿼트 동작은 이러쿵 저러쿵<br>
-                        <br>
-                        꿀팁! 오늘은 피자 먹을 거다!
+                        <div class="routine-info">
+                            <div class="routineNm">
+                                <span>${board.routineList[i - 1].rtTitle} </span>
+                                <button type="button" class="boardAddListBtn">Do IT!</button>
+                            </div>
+                            <div class="routine-content">
+                            ${board.routineList[i -1].rtContent}
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="routine-area">
-                    <h1>3.</h1>
-                    <div class= "img-area">
-                        <img src="/resources/images/badge/badge (1).png" class="img">
-                    </div>
-                    <div class="routine-info">
-                        <div class="routineNm">
-                            <span>스쿼트 </span>
-                            <button type="button" class="boardAddListBtn">Do IT!</button>
-                        </div>
-                        <div class="routine-content">
-                        1. 스쿼트 동작은 이러쿵 저러쿵<br>
-                        2. 스쿼트 동작은 이러쿵 저러쿵<br>
-                        3. 스쿼트 동작은 이러쿵 저러쿵<br>
-                        <br>
-                        꿀팁! 오늘은 피자 먹을 거다!
-                        </div>
-                    </div>
-                </div>
-                <div class="routine-area">
-                    <h1>4.</h1>
-                    <div class= "img-area">
-                        <img src="/resources/images/badge/badge (1).png" class="img">
-                    </div>
-                    <div class="routine-info">
-                        <div class="routineNm">
-                            <span>스쿼트 </span>
-                          <button type="button" class="boardAddListBtn">Do IT!</button>
-                        </div>
-                        <div class="routine-content">
-                        1. 스쿼트 동작은 이러쿵 저러쿵<br>
-                        2. 스쿼트 동작은 이러쿵 저러쿵<br>
-                        3. 스쿼트 동작은 이러쿵 저러쿵<br>
-                        <br>
-                        꿀팁! 오늘은 피자 먹을 거다!
-                        </div>
-                    </div>
-                </div>
+                </c:forEach>
+                
             </div>
             <div id="todolist-area">
                 <div id="member-area">
@@ -139,33 +95,14 @@
 					</div>
                     <div class="check-area">
 					
-                        <div>
+                        <%-- <div>
                             <input type="checkbox" id="ck1" class="none checkbox">
                             <label for="ck1" class="ck"></label>
                             <span>1. 득근전수 50회 4세트</span>
                             <button type="button"><i class="fa-solid fa-minus minus" style="color: #ffffff;"></i></button>
-                        </div>
+                        </div> --%>
                         
-                        <div>
-                            <input type="checkbox" id="ck2" class="none checkbox">
-                            <label for="ck2" class="ck"></label>
-                            <span>2. 득근전수 50회 4세트</span>
-                            <button type="button"><i class="fa-solid fa-minus minus" style="color: #ffffff;"></i></button>
-                        </div>
-                        <div>
-                            <input type="checkbox" id="ck3" class="none checkbox">
-                            <label for="ck3" class="ck"></label>
-                            <span>3. 득근전수 50회 4세트</span>
-                            <button type="button"><i class="fa-solid fa-minus minus" style="color: #ffffff;"></i></button>
-                        </div>
-                        
-                        
-                        <div>
-                            <input type="checkbox" id="ck4" class="none checkbox">
-                            <label for="ck4" class="ck"></label>
-                            <span>4. 득근전수 50회 4세트</span>
-                            <button type="button"><i class="fa-solid fa-minus minus" style="color: #ffffff;"></i></button>
-                        </div>
+                       
 					
 				    </div>  
                     <div>
@@ -348,7 +285,6 @@
 
 
 	<script src="/resources/js/board/shareBoard/shareBoardDetail.js"></script>
-	<script src="/resources/js/TodoList/todoList.js"></script>
 	<script src="/resources/js/board/comment.js"></script>
 
 </body>

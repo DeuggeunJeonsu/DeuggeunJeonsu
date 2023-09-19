@@ -47,7 +47,7 @@ public class ljyBoardServiceImpl implements ljyBoardService{
 		Map<String, Object> map = new HashMap<>();
 		map.put("pagination", pagination);
 		map.put("boardList", boardList);
-
+		
 		return map;
 	}
 
