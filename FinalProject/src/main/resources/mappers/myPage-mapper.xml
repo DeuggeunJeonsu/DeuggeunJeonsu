@@ -94,4 +94,9 @@
 		JOIN MEMBER M ON (F.MEMBER_NO = M.MEMBER_NO)
 		WHERE F.FOLLOWER_NO = #{memberNo}
 	</select>
+	
+	<!-- 마이페이지 멤버 피드 조회 -->
+	<select id="selectFeedMember" resultMap="myPageMember_rm">
+	
+	</select>
 </mapper>

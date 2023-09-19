@@ -51,11 +51,20 @@ public class MyPageController {
 		return "member/myPage/followingFollower";
 	}
 	
+	// 마이페이지 언팔로우
 	@PostMapping(value = "/followingFollower/unfollow", produces = "application/json")
 	@ResponseBody
 	public int unfollow(@RequestBody Map<String, Object> paramMap){
 		
 		return service.unfollow(paramMap);
+	}
+	
+	// 마이페이지 팔로우
+	@PostMapping(value = "/followingFollower/follow", produces = "application/json")
+	@ResponseBody
+	public int follow(@RequestBody Map<String, Object> paramMap){
+		
+		return service.follow(paramMap);
 	}
 	
 	// 마이페이지 팔로잉/팔로워 - 팔로워 목록 조회
@@ -74,7 +83,17 @@ public class MyPageController {
 	@GetMapping("/memberFeed/{memberNo}")
 	public String memberFeed(
 			@PathVariable("memberNo") int memberNo
+			, @SessionAttribute(value = "loginMember", required = false) Member loginMember
+			, Model model
+			, @RequestParam Map<String, Object> paramMap
 			) {
+		
+		int loginMemberNo = loginMember.getMemberNo();
+		
+		Member member = service.selectFeedMember(memberNo);
+		
+//		model.addAttribute("map", map);
+		
 		return "member/myPage/memberFeed";
 	}
 

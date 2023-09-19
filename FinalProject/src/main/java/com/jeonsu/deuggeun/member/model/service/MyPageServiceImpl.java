@@ -58,14 +58,14 @@ public class MyPageServiceImpl implements MyPageService {
 	@Override
 	public Map<String, Object> selectFollowerList(int memberNo) {
 		
-		int followerTotalCount = dao.getFollowerTotalCount(memberNo);
-		
 		List<Member> followerList = dao.selectFollowerList(memberNo);
+		
+		List<Member> followingList = dao.selectFollowingList(memberNo);
 		
 		Map<String, Object> map = new HashMap<>();
 		
-		map.put("followerTotalCount", followerTotalCount);
 		map.put("followerList", followerList);
+		map.put("followingList", followingList);
 		
 		return map;
 	}
@@ -75,6 +75,19 @@ public class MyPageServiceImpl implements MyPageService {
 	@Override
 	public int unfollow(Map<String, Object> paramMap) {
 		return dao.unfollow(paramMap);
+	}
+
+	// 마이페이지 팔로우
+	@Transactional(rollbackFor = Exception.class)
+	@Override
+	public int follow(Map<String, Object> paramMap) {
+		return dao.follow(paramMap);
+	}
+
+	// 마이페이지 멤버 피드 조회
+	@Override
+	public Member selectFeedMember(int memberNo) {
+		return dao.selectFeedMember(memberNo);
 	}
 
 }
