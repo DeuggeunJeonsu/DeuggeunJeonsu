@@ -93,7 +93,7 @@
                                             <a href="/myPage/myBadge">마이 페이지</a>
                                             <a href="/member/logout" id="logoutBtn">로그아웃</a>
                                             <c:if test="${loginMember.authority == 2}" >
-                                                <a href="/adminBoardList" id="adminPage">관리자 페이지</a>
+                                                <a href="/admin/adminBoardList" id="adminPage">관리자 페이지</a>
                                             </c:if>
                                         </div>
                                     </label>
