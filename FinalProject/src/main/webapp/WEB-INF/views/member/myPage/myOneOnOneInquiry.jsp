@@ -39,7 +39,7 @@
 
             <div id="main-content-area">
                 <div>
-                    <a href="/QnAWrite">
+                    <a href="/board/myPage/QnAWrite">
                         <button class="inquiryBtn inquiryBtnColor1">문의글 작성하기</button>
                     </a>
                 </div>
