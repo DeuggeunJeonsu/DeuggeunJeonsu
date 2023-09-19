@@ -14,5 +14,6 @@ public class Routine {
 	private String rtContent;
 	private int boardNo;
 	private int rtLevel;
+	
 
 }

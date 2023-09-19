@@ -43,5 +43,16 @@
 				class="com.jeonsu.deuggeun.common.interceptor.BoardTypeInterceptor" />
 		</interceptor>
 	</interceptors>
+	
+	<!-- namespaces 탭에서 aop, tx 체크 -->
+	<!-- 스프링스케줄러 어노테이션으로 인식 -->
+	<task:annotation-driven />
+	
+	<!-- @Transactional 어노테이션 인식/활성화 -->
+	<tx:annotation-driven
+		transaction-manager="transactionManager" />
+		
+	<!-- AOP Proxy를 이용한 관점 제어 자동 활성화 -->
+	<aop:aspectj-autoproxy />
 
 </beans:beans>

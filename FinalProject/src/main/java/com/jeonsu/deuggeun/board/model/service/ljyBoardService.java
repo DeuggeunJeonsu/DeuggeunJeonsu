@@ -1,8 +1,13 @@
 package com.jeonsu.deuggeun.board.model.service;
 
+import java.io.IOException;
+import java.util.List;
 import java.util.Map;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import com.jeonsu.deuggeun.board.model.dto.Board;
+import com.jeonsu.deuggeun.board.model.dto.Routine;
 
 public interface ljyBoardService {
 
@@ -29,6 +34,14 @@ public interface ljyBoardService {
 
 	// 팔로우 여부 확인 
 	int memberFollowCheck(Map<String, Object> map);
+
+	//---------------------------------------------
+	/*board2*/
+	
+	// 게시글 삽입 
+	int boardInsert(Board board, List<MultipartFile> images, String webPath, String filePath, List<Routine> routines)
+			throws IllegalStateException, IOException;
+
 	
 
 

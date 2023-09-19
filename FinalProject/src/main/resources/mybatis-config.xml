@@ -25,6 +25,7 @@
 		<typeAlias type="com.jeonsu.deuggeun.board.model.dto.Inquiry" alias="Inquiry" />
 		<typeAlias type="com.jeonsu.deuggeun.board.model.dto.ProductImage" alias="ProductImage" />
 		<typeAlias type="com.jeonsu.deuggeun.board.model.dto.Hashtag" alias="Hashtag" />
+		<typeAlias type="com.jeonsu.deuggeun.board.model.dto.Routine" alias="Routine" />
 		
 		
 		<typeAlias type="com.jeonsu.deuggeun.adminController.model.dto.AdminMember" alias="AdminMember" />
