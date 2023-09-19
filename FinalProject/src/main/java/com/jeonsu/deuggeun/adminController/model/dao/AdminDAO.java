@@ -1,6 +1,7 @@
 package com.jeonsu.deuggeun.adminController.model.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,10 +26,18 @@ public class AdminDAO {
 
 	/** 회원 탈퇴
 	 * @param member
-	 * @return
+	 * @return result
 	 */
 	public int userDel(AdminMember member) {
 		return sqlSession.update("adminMapper.userDel", member);
+	}
+
+
+	/** 회원 문의 목록 조회
+	 * @return boardList
+	 */
+	public List<AdminMember> selectInquiryList() {
+		return sqlSession.selectList("adminMapper.selectInquiryList", null);
 	}
 
 }

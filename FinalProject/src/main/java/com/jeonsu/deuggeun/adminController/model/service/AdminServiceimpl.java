@@ -1,6 +1,7 @@
 package com.jeonsu.deuggeun.adminController.model.service;
 
 import java.util.HashMap;
+
 import java.util.List;
 import java.util.Map;
 
@@ -15,18 +16,18 @@ public class AdminServiceimpl implements AdminService{
 
 	@Autowired
 	private AdminDAO dao;
-	
+
 	// 회원 목록 조회
 	@Override
 	public Map<String, Object> selectMember() {
-		
+
 		List<AdminMember> memberList = dao.selectMember();
-		
+
 		Map<String, Object> map = new HashMap<>();
-		
+
 		map.put("memberList", memberList);
-		
-		
+
+
 		return map;
 	}
 
@@ -34,6 +35,18 @@ public class AdminServiceimpl implements AdminService{
 	@Override
 	public int userDel(AdminMember member) {
 		return dao.userDel(member);
+	}
+
+	// 회원 문의 목록 조회
+	@Override
+	public Map<String, Object> selectInquiryList() {
+		List<AdminMember> boardList = dao.selectInquiryList();
+
+		Map<String, Object> map = new HashMap<>();
+
+		map.put("boardList", boardList);
+
+		return map;
 	}
 
 }
