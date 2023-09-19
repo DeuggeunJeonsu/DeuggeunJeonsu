@@ -9,7 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.jeonsu.deuggeun.board.model.dto.Board;
+import com.jeonsu.deuggeun.board.model.dto.BoardImage;
 import com.jeonsu.deuggeun.board.model.dto.Pagination;
+import com.jeonsu.deuggeun.board.model.dto.Routine;
 
 @Repository
 public class ljyBoardDAO {
@@ -62,6 +64,24 @@ public class ljyBoardDAO {
 	// 공유게시판 좋아요 여부 확인
 	public int freeBoardLikeCheck(Map<String, Object> map) {
 		return sqlSession.selectOne("freeBoardMapper.freeBoardLikeCheck", map);
+	}
+
+	// 게시글 삽입
+	public int boardInsert(Board board) {
+		int result = sqlSession.insert("shareBoardMapper.boardInsert", board);
+		
+		if(result > 0) result = board.getBoardNo();
+		return result;
+	}
+
+	// 이미지 리스트 여러개 삽입
+	public int insertImageList(List<BoardImage> uploadList) {
+		return sqlSession.insert("shareBoardMapper.insertImageList", uploadList);
+	}
+
+	// 루틴 여러개 삽입 
+	public int insertRoutineList(List<Routine> routines) {
+		return sqlSession.insert("shareBoardMapper.insertRoutineList", routines);
 	}
 
 }

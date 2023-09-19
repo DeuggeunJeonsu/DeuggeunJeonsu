@@ -41,13 +41,13 @@ public class Board {
 	private String productContent;
 
 	// 이미지 목록
-//	private List<BoardImage> imageList;
+	private List<BoardImage> imageList;
 
 	// 댓글 목록
 //	private List<Comment> commentList;
 	
 	// 운동 루틴 목록
-//	private List<Routine> routineList;
+	private List<Routine> routineList;
 
 	// 해시태그 목록
 	private List<Hashtag> tagList;

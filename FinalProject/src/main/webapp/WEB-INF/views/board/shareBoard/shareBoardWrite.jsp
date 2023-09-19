@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>게시판 이름</title>
+<title>루틴공유게시판</title>
 
 <%-- boardList-style.css 연결 --%>
 <link rel="stylesheet" href="/resources/css/board/shareBoard/shareBoardWrite-style.css">
@@ -16,10 +16,11 @@
 	
 	<section id="main-container">
         <div id="title-area">
-            <div><h1>운동 공유 게시판 글쓰기</h1></div>
+            <div><h1>루틴 공유 게시판 글쓰기</h1></div>
               <div>득근전수 회원님들과 공유하고 싶은 운동 루틴을 만들어보세요.</div>
         </div>
-        <form action="/board/${boardCode}/write" method="POST" class="board-write" id="boardWriteFrm">
+        <form action="/board2/2/insert" method="POST"
+             class="board-write" id="boardWriteFrm" enctype="multipart/form-data">
             <div class="top-write">
                 <div id="writer">
                     <div id="profile-area">
@@ -60,7 +61,7 @@
                                 </ul>
                             </article>
                         </div>
-                        <textarea placeholder="루틴 설명을 입력해주세요" name="content"></textarea>
+                        <textarea placeholder="루틴 설명을 입력해주세요" name="boardContent"></textarea>
                     </div>
                 </div>
                 <div class="routine-area">
