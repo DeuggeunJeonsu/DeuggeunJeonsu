@@ -346,3 +346,19 @@ td {
     justify-content: center;
     font-weight: bold;
 }
+
+/*---------------------------------------------- */
+/* 마이너스 버튼 */
+.minusBtn{
+    color : #fff;
+    width: 25px;
+    height: 25px;
+
+    font-weight: bold;
+}
+/* 플러스 버튼 */
+.addListBtn{
+    color : #fff;
+    font-weight: bold;
+    font-size: 20px;
+}
