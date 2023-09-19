@@ -6,7 +6,6 @@ import com.jeonsu.deuggeun.board.model.dto.ProductImage;
 import com.jeonsu.deuggeun.board.model.dto.Review;
 import com.jeonsu.deuggeun.member.model.dto.Member;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -15,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.io.IOException;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.*;
 
 import com.jeonsu.deuggeun.board.model.service.MarketService;

@@ -182,4 +182,18 @@ public class MarketDAO {
 	public int updateImagePath4(Inquiry inquiry) {
 		return sqlSession.update("marketMapper.updateImagePath4", inquiry);
 	}
+
+	// 장바구니 검사
+	public Cart getCartItem(Cart cart) {
+		return sqlSession.selectOne("marketMapper.getCartItem", cart);
+	}
+	// 장바구니에 담기
+	public int addToCart(Cart cart) {
+		return sqlSession.insert("marketMapper.addToCart", cart);
+	}
+
+	// 상품이 이미 있는 경우 수량만 업데이트
+	public int updateCart(Cart cart) {
+		return sqlSession.update("marketMapper.updateCart", cart);
+	}
 }

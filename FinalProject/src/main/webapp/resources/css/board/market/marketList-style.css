@@ -113,7 +113,10 @@ span{
 
     justify-content: center;
 }
-
+#list-area2{
+    margin-top: 30px;
+    height: 460px;
+}
 #list-area > div{
     border: 1px solid #ddd;
 }
@@ -202,3 +205,8 @@ img{
     color: #fff;
 
 }
+.no-posts {
+    /*background-color: #99e1ed;*/
+    /*font-size: 1.7em;*/
+}
+

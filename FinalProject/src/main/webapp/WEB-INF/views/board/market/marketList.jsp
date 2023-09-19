@@ -5,8 +5,7 @@
 <%-- map에 저장된 값들을 각각 변수에 저장 --%>
 <c:set var="pagination" value="${map.pagination}" />
 <c:set var="marketList" value="${map.marketList}" />
-
-
+<%--<c:set var="marketList" value="${map2.marketList}" />--%>
 <c:forEach items="${boardTypeList}" var="boardType">
     <c:if test="${boardType.BOARD_CODE == boardCode}" >
         <c:set var="boardName" value="${boardType.BOARD_NAME}"/>
@@ -96,62 +95,121 @@
 <%--                        </c:otherwise>--%>
 <%--                    </c:choose>--%>
 <%--                </div>--%>
-                <div id="list-area" class="font-weight">
+<%--                <c:out value="${marketList}"/>--%>
+<%--                <c:choose>--%>
+<%--                    <c:when test="${empty marketList}">--%>
+<%--                        <div id="list-area" class="font-weight no-posts">--%>
+<%--                            <h1>게시글이 존재하지 않습니다.</h1>--%>
+<%--                        </div>--%>
+<%--                    </c:when>--%>
+<%--                    <c:otherwise>--%>
+<%--                        <div id="list-area" class="font-weight">--%>
+<%--                            <c:forEach items="${marketList}" var="market">--%>
+<%--                                <div class="thumbnail">--%>
+<%--                                    <div>--%>
+<%--                                        <a href="/board/${boardCode}/detail/${market.productNo}">--%>
+<%--                                            <img src="${market.productImg}">--%>
+<%--                                        </a>--%>
+<%--                                    </div>--%>
+<%--                                    <div class="list-content">--%>
+<%--                                        <div class="title">--%>
+<%--                                            <a href="/board/${boardCode}/detail/${market.productNo}?cp=${pagination.currentPage}${sp}">--%>
+<%--                                                    ${market.productTitle}--%>
+<%--                                            </a>--%>
+<%--                                        </div>--%>
+<%--                                        <div class="price" id="formattedPrice">${market.productPrice}원</div>--%>
+<%--                                    </div>--%>
+<%--                                </div>--%>
+<%--                            </c:forEach>--%>
+<%--                        </div>--%>
+<%--                    </c:otherwise>--%>
+<%--                </c:choose>--%>
+
+
+
+<%--                <div class="pagination-area">--%>
+
+
+<%--                    <ul class="pagination">--%>
+<%--                        <li><a href="/${boardCode}/list?cp=1${sp}">&lt;&lt;</a></li>--%>
+<%--                        <li><a href="/${boardCode}/list?cp=${pagination.prevPage}${sp}">&lt;</a></li>--%>
+
+<%--                        <c:forEach var="i" begin="${pagination.startPage}" end="${pagination.endPage}" step="1">--%>
+<%--                            <c:choose>--%>
+<%--                                <c:when test="${ i == pagination.currentPage}">--%>
+<%--                                    <li><a class="current">${i}</a></li>--%>
+<%--                                </c:when>--%>
+<%--                                <c:otherwise>--%>
+<%--                                    <li><a href="/${boardCode}/list?cp=${i}${sp}">${i}</a></li>--%>
+<%--                                </c:otherwise>--%>
+<%--                            </c:choose>--%>
+<%--                        </c:forEach>--%>
+
+<%--                        <li><a href="/${boardCode}/list?cp=${pagination.nextPage}${sp}">&gt;</a></li>--%>
+<%--                        <li><a href="/${boardCode}/list?cp=${pagination.maxPage}${sp}">&gt;&gt;</a></li>--%>
+<%--                    </ul>--%>
+<%--                </div>--%>
                 <c:choose>
                     <c:when test="${empty marketList}">
-                        <h1>게시글이 존재하지 않습니다.</h1>
+<%--                        <div id="list-area" class="font-weight no-posts">--%>
+                            <h1 id="list-area2">게시글이 존재하지 않습니다.</h1>
+<%--                        </div>--%>
+                        <!-- 페이지네이션은 렌더링되지 않음 -->
                     </c:when>
                     <c:otherwise>
-                        <c:forEach items="${marketList}" var="market">
-                            <div class="thumbnail">
-                                <div>
-                                    <a href="/board/${boardCode}/detail/${market.productNo}">
-                                        <img src="${market.productImg}">
-                                    </a>
-                                </div>
-                                <div class="list-content">
-                                    <div class="title">
-                                        <a href="/board/${boardCode}/detail/${market.productNo}?cp=${pagination.currentPage}${sp}">
-                                                ${market.productTitle}
+                        <div id="list-area" class="font-weight">
+                            <c:forEach items="${marketList}" var="market">
+                                <div class="thumbnail">
+                                    <div>
+                                        <a href="/board/${boardCode}/detail/${market.productNo}">
+                                            <img src="${market.productImg}">
                                         </a>
                                     </div>
-                                    <div class="price" id="formattedPrice">${market.productPrice}원</div>
+                                    <div class="list-content">
+                                        <div class="title">
+                                            <a href="/board/${boardCode}/detail/${market.productNo}?cp=${pagination.currentPage}${sp}">
+                                                    ${market.productTitle}
+                                            </a>
+                                        </div>
+                                        <div class="price" id="formattedPrice">${market.productPrice}원</div>
+                                    </div>
                                 </div>
-                            </div>
-                        </c:forEach>
+                            </c:forEach>
+                        </div>
+
+                        <!-- 페이지네이션 -->
+                        <div class="pagination-area">
+                            <ul class="pagination">
+                                <li><a href="/${boardCode}/list?cp=1${sp}">&lt;&lt;</a></li>
+                                <li><a href="/${boardCode}/list?cp=${pagination.prevPage}${sp}">&lt;</a></li>
+                                <c:forEach var="i" begin="${pagination.startPage}" end="${pagination.endPage}" step="1">
+                                    <c:choose>
+                                        <c:when test="${ i == pagination.currentPage}">
+                                            <li><a class="current">${i}</a></li>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <li><a href="/${boardCode}/list?cp=${i}${sp}">${i}</a></li>
+                                        </c:otherwise>
+                                    </c:choose>
+                                </c:forEach>
+                                <li><a href="/${boardCode}/list?cp=${pagination.nextPage}${sp}">&gt;</a></li>
+                                <li><a href="/${boardCode}/list?cp=${pagination.maxPage}${sp}">&gt;&gt;</a></li>
+                            </ul>
+                        </div>
                     </c:otherwise>
                 </c:choose>
-                </div>
 
 
-                <div class="pagination-area">
 
 
-                    <ul class="pagination">
-                        <li><a href="/${boardCode}/list?cp=1${sp}">&lt;&lt;</a></li>
-                        <li><a href="/${boardCode}/list?cp=${pagination.prevPage}${sp}">&lt;</a></li>
 
-                        <c:forEach var="i" begin="${pagination.startPage}" end="${pagination.endPage}" step="1">
-                            <c:choose>
-                                <c:when test="${ i == pagination.currentPage}">
-                                    <li><a class="current">${i}</a></li>
-                                </c:when>
-                                <c:otherwise>
-                                    <li><a href="/${boardCode}/list?cp=${i}${sp}">${i}</a></li>
-                                </c:otherwise>
-                            </c:choose>
-                        </c:forEach>
 
-                        <li><a href="/${boardCode}/list?cp=${pagination.nextPage}${sp}">&gt;</a></li>
-                        <li><a href="/${boardCode}/list?cp=${pagination.maxPage}${sp}">&gt;&gt;</a></li>
-                    </ul>
-                </div>
             </section>
 
 
             <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
             <script>
-                var market = ${marketList};
+                <%--var market = ${marketList};--%>
             </script>
             <script src="/resources/js/market/marketList.js"></script>
         </body>

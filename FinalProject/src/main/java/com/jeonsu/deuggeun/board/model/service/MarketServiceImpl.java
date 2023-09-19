@@ -52,11 +52,11 @@ public class MarketServiceImpl implements MarketService{
 
 		Pagination pagination = new Pagination(cp, listCount);
 
-		List<Product> mList = dao.selectMarketList(pagination, paramMap);
+		List<Product> marketList = dao.selectMarketList(pagination, paramMap);
 
 		Map<String, Object> map = new HashMap<>();
 		map.put("pagination", pagination);
-		map.put("mList", mList);
+		map.put("marketList", marketList);
 
 		return map;
 	}
@@ -295,6 +295,43 @@ public class MarketServiceImpl implements MarketService{
 		}
 		return rowCount;
 
+	}
+	// 장바구니에 담기
+	@Transactional(rollbackFor = Exception.class)
+	@Override
+	public int addToCart(Cart cart) {
+		Cart cartForQuery = new Cart();
+		cartForQuery.setMemberNo(cart.getMemberNo());
+		cartForQuery.setProductNo(cart.getProductNo());
+
+		// 1. 먼저, 장바구니에 상품이 있는지 확인합니다.
+		Cart existingCartItem = dao.getCartItem(cartForQuery);
+
+		if (existingCartItem != null) {
+			// 2. 상품이 이미 장바구니에 있는 경우, 수량만 업데이트합니다.
+			int updatedQuantity = existingCartItem.getQuantity() + cart.getQuantity();
+			existingCartItem.setQuantity(updatedQuantity);
+
+			// 상품 번호를 가져옵니다.
+			int productNo = existingCartItem.getProductNo();
+
+			// 상품 번호와 업데이트된 수량을 이용하여 업데이트
+			int result = dao.updateCart(existingCartItem);
+
+			if (result > 0) {
+				return result;
+			} else {
+				return -1; // 업데이트 실패
+			}
+		} else {
+			// 3. 상품이 장바구니에 없는 경우, 새로운 레코드를 추가합니다.
+			int result = dao.addToCart(cart);
+			if (result > 0) {
+				return result;
+			} else {
+				return -1; // 추가 실패
+			}
+		}
 	}
 
 }
