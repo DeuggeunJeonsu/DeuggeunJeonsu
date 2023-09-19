@@ -34,13 +34,14 @@ followListBtns.forEach((btn)=>{
     })
 })
 
-// 팔로워 목록 조회
+// 팔로우 목록 조회 영역
 const followListArea = document.getElementById("follow-list-area");
 
-// 팔로잉 목록 버튼
+// 팔로우 목록 버튼
 const followingListBtn = document.getElementsByClassName("followingListBtn")[0];
 const followerListBtn = document.getElementsByClassName("followerListBtn")[0];
 
+// 팔로잉 목록 버튼 클릭 + 팔로잉 목록 조회
 followingListBtn.addEventListener("click", ()=>{
 
     location.href = "/myPage/followingFollower";
@@ -68,8 +69,9 @@ function unfollowBtnClick(followingMemberNo){
         .catch(err => console.log(err))
 }
 
-followerListBtn.addEventListener("click", ()=>{
-
+// 팔로워 목록 조회
+function selectFollowerList(){
+    
     fetch("/myPage/followingFollower/follower", {
         method : "POST",
         headers : {"Content-Type" : "application/json"},
@@ -77,12 +79,12 @@ followerListBtn.addEventListener("click", ()=>{
     })
     .then(resp => resp.json())
     .then(map => {
-        
-        // 팔로워 수
-        const followerTotalCount = map.followerTotalCount;
-        
+
         // 팔로워 리스트
         const followerList = map.followerList;
+
+        // 팔로잉 리스트
+        const followingList = map.followingList;
         
         // 팔로워 목록 조회 영역
         const followListArea = document.getElementById("follow-list-area");
@@ -98,7 +100,15 @@ followerListBtn.addEventListener("click", ()=>{
             const profileImage = follower.profileImage;
             const memberNickname = follower.memberNickname;
 
-            
+            // 맞팔로우 여부 저장 변수
+            let flag = 0;
+
+            // 팔로잉 목록에서 팔로워가 있는지 조회
+            for(const follow of followingList){
+                // 맞팔 상태라면
+                if(follow.memberNo == memberNo) flag = 1;
+            }
+
             // 팔로워 리스트 목록 생성
             
             // jsp 내 58 ~ 59번째 줄 생성(follow-list 클래스 있는 div)
@@ -135,10 +145,22 @@ followerListBtn.addEventListener("click", ()=>{
             const div5 = document.createElement("div");
             const btn = document.createElement("button");
             
-            div4.classList.add("followStateBtn");
-            btn.classList.add("customBtn", "followingBtn");
-            div5.innerText = "following";
-            div4.appendChild(btn).appendChild(div5);
+
+            // 맞팔 여부에 따라 버튼 종류 바꾸기
+            if(flag == 1){
+                div4.classList.add("followStateBtn");
+                btn.classList.add("customBtn", "followingBtn");
+                btn.setAttribute("onclick", 'unfollowBtnClick(' + memberNo + ')');
+                div5.innerText = "following";
+                div4.appendChild(btn).appendChild(div5);
+
+            } else{
+                div4.classList.add("followStateBtn");
+                btn.classList.add("customBtn", "unfollowBtn");
+                btn.setAttribute("onclick", 'followBtnClick(' + memberNo + ')');
+                div5.innerText = "follow";
+                div4.appendChild(btn).appendChild(div5);
+            }
 
             // 전체 요소 합치기
             div.appendChild(div2);
@@ -148,4 +170,25 @@ followerListBtn.addEventListener("click", ()=>{
         }
     })
     .catch(err => {console.log(err)})
-})
+}
+
+
+// 팔로우 함수
+function followBtnClick(followMemberNo){
+    const data = {
+        "loginMemberNo" : memberNo,
+        "boardMemberNo" : followMemberNo
+    }
+
+        fetch("/myPage/followingFollower/follow", {
+            method : "POST",
+            headers : {"Content-Type" : "application/json"},
+            body : JSON.stringify(data)
+        })
+        .then(resp => resp.json())
+        .then(result => {
+            alert("팔로우 되었습니다. 🤩")
+            selectFollowerList();
+        })
+        .catch(err => console.log(err))
+}
