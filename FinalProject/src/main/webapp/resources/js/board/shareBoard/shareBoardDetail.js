@@ -152,25 +152,7 @@ document.addEventListener("click", function (e){
                 } else {
                     const inputTodo = {listContent: addListVal , lcreateDt : sysDate, memberNo : loginMemberNo}
                     insertTodo(inputTodo)
-                    // fetch("/todo/insert",{
-                    //     method : "POST", 
-                    //     headers: {"Content-Type": "application/json"},  
-                    //     body : JSON.stringify( insertTodo ) })
-                    // .then( resp => resp.text())
-                    // .then(result =>{
-                    //     if(result > 0){
-                    //         console.log("추가완료!")
-                    //         addListInput.value="";
-
-                    //         todoslist(sysDate)
-                    //         updateCheckedPercentage();
-
-                    //     }else{
-                    //         console.log("투두 추가시 오류발생")
-                    //     }
-
-                    // })
-                    // .catch(err => console.log(err + "투두 오류 발생"))
+                  
             
                 }
             }
