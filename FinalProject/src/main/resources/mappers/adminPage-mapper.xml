@@ -36,4 +36,10 @@
 		ORDER BY MEMBER_NO DESC
 	</select>
 
+	<update id="userDel">
+		UPDATE MEMBER SET
+		MEMBER_DEL_FL = 'Y'
+		WHERE MEMBER_NO = #{memberNo}
+	</update>
+
 </mapper>

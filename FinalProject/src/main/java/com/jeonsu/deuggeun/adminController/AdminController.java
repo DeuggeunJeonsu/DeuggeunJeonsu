@@ -12,6 +12,7 @@ import com.jeonsu.deuggeun.adminController.model.dto.AdminMember;
 import com.jeonsu.deuggeun.adminController.model.service.AdminService;
 
 @Controller
+@RequestMapping("/admin")
 public class AdminController {
 
 	@Autowired
@@ -25,7 +26,7 @@ public class AdminController {
 	}
 
 	// 회원 목록
-	@RequestMapping("/userList")
+	@GetMapping("/userList")
 	public String userList(Model model) {
 
 		
