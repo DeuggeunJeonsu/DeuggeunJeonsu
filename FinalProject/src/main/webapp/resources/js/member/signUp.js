@@ -1,6 +1,9 @@
 const checkObj = {
     "memberEmail" : false,
     "mameberPw" : false,
+    "memberPwConfirm" : false,
+    "memberNickname" : false,
+    "authKey" : false
 }
 
 const memberEmail = document.getElementById("memberEmail");
@@ -100,6 +103,197 @@ memberPw.addEventListener("input", ()=>{
     }
 
 })
+
+
+memberPwConfirm.addEventListener("input", ()=>{
+    if(checkObj.memberPw){
+
+        if(memberPw.value == memberPwConfirm.value){
+            pwMessage.innerText = "비밀번호가 일치합니다.";
+            pwMessage.classList.add("confirm");
+            pwMessage.classList.remove("error");
+            checkObj.memberPwConfirm = true;
+        }else{
+            pwMessage.innerText = "비밀번호가 일치하지 않습니다.";
+            pwMessage.classList.add("error");
+            pwMessage.classList.remove("confirm");
+            checkObj.memberPwConfirm = false;
+        }
+    }else{
+        alert("비밀번호를 다시 입력해주세요.");
+        memberPwConfirm.value = "";
+        memberPw.focus();
+    }
+})
+
+
+const memberNickname = document.getElementById("memberNickname");
+
+const nickMessage = document.getElementById("nickMessage");
+
+memberNickname.addEventListener("input", () =>{
+    if(memberNickname.value.trim().length == 0) {
+
+        nickMessage.innerText = "한글,영어,숫자로만 2~10글자 사이로 입력해주세요";
+
+        nickMessage.classList.remove("confirm", "error");
+
+        checkObj.memberNickname = false;
+        memberNickname.value = "";
+
+        return;
+    } else{
+        const regEx = /^[가-힣A-Za-z0-9]{2,10}$/;
+
+        if(regEx.test(memberNickname.value)) {
+
+        fetch("/signUp" + memberNickname.value)
+
+        .then( nickname => nickname.text() )
+        .then( name => {
+            if(name == 0){
+                nickMessage.innerText = "사용 가능한 닉네임 입니다.";
+                nickMessage.classList.add("confirm");
+                nickMessage.classList.remove("error");
+
+                checkObj.memberNickname = true;
+
+            } else {
+                nickMessage.innerText = "이미 사용중인 닉네임 입니다.";
+                nickMessage.classList.add("error");
+                nickMessage.classList.remove("confirm");
+
+                checkObj.memberNickname = false;
+            }
+        })
+        .catch(err => console.log(err))
+
+
+    } else {
+        nickMessage.innerText = "유효하지 않은 닉네임 형식입니다.";
+        nickMessage.classList.add("error");
+        nickMessage.classList.remove("confirm");
+
+        checkObj.memberNickname = false;
+    }
+
+    }
+
+})
+
+const sendAuthKeyBtn = document.getElementById("sendAuthKeyBtn");
+const authKeyMessage = document.getElementById("authKeyMessage");
+let authTimer;
+let authMin = 4;
+let authSec = 59;
+
+let tempEmail;
+
+sendAuthKeyBtn.addEventListener("click", function(){
+    authMin = 4;
+    authSec = 59;
+
+    checkObj.authKey = false;
+
+    if(checkObj.memberEmail){
+
+
+        fetch("/sendEmail/signUp?email=" + memberEmail.value)
+        .then(resp => resp.text())
+        .then(result => {
+            if(result > 0){
+                console.log("인증 번호가 발송되었습니다.");
+                tempEmail.log("인증번호 발송 실패");
+            }
+        })
+        .catch(err => {
+            console.log("이메일 발송 중 에러 발생");
+            console.log(err);
+        })
+
+        alert("인증번호가 발송 되었습니다.");
+
+        authKeyMessage.innerText = "05:00";
+        authKeyMessage.classList.remove("confirm");
+
+        authTimer = window.setInterval(()=>{
+
+            authKeyMessage.innerText = "0" + authMin + ":" + (authSec<10 ? "0" + authSec : authSec);
+
+            if(authMin == 0 && authSec == 0){
+                checkObj.authKey = false;
+                clearInterval(authTimer);
+                return;
+            }
+
+            if(authSec == 0){
+                authSec = 60;
+                authMin--;
+            }
+
+            authSec--;
+
+
+        }, 1000)
+    }else{
+        alert("중복되지 않은 이메일을 작성해주세요.");
+        memberEmail.focus();
+    }
+});
+
+
+const authKey = document.getElementById("authKey");
+const checkAUthKeyBtn = document.getElementById("checkAUthKeyBtn");
+
+checkAUthKeyBtn.addEventListener("click", function(){
+    if(authMin > 0 || authSec > 0){
+        const obj = {"inputKey":authKey.value, "email":tempEmail}
+        const query = new URLSearchParams(obj).toString()
+
+        fetch("/sendEmail/checkAuthKey?" + query)
+        .then(resp => resp.text())
+        .then(result => {
+            if(result > 0){
+                clearInterval(authTimer);
+                authKeyMessage.innerText = "인증되었습니다.";
+                authKeyMessage.classList.add("confirm");
+                checkObj.authKey = true;
+            } else{
+                alert("인증번호가 일치하지 않습니다.")
+                checkObj.authKey = false;
+            }
+        })
+        .catch(err => console.log(err));
+    } else{
+        alert("인증 시간이 만료되었습니다. 다시 시도해주세요.")
+    }
+})
+
+const signUpFrm = document.getElementById("signUpFrm");
+
+signUpFrm.addEventListener("submit", e=>{
+
+    for(let key in checkObj){
+        if(!checkObj[key]){
+
+            switch(key){
+                case "memberEmail" : alert("이메일이 유효하지 않습니다."); break;
+                case "memberPw" : alert("비밀번호가 유효하지 않습니다."); break;
+                case "memberPwConfirm" : alert("비밀번호가 혹인되지 않습니다."); break;
+                case "memberNickname" : alert("닉네임이 유효하지 않습니다."); break;
+                case "memberTel" : alert("전화번호가 유효하지 않습니다."); break;
+            }
+
+            document.getElementById(key).focus();
+
+            e.preventDefault();
+            return;
+
+        }
+    }
+
+})
+
 
 
 
