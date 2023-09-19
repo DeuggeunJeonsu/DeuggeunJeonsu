@@ -89,8 +89,6 @@
                             <div class="routine-cancle"><button type="button" class="cancle">&times;</button></div>
                         </li>
 
-
-
                     </ul>
                 </div>
                 <div class="routine-add-btn-area">

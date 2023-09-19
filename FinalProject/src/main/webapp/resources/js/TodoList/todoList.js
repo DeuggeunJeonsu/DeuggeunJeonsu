@@ -229,7 +229,6 @@ if(document.querySelector("#middle-Container")){
         // console.log('오늘 날짜 :'+ sysDate)
 
         todoslist(choiceTodoDate);
-        console.log()
 
     }
 
@@ -248,7 +247,7 @@ if(document.querySelector("#middle-Container")){
                     document.querySelector(".check-area").innerHTML="";
                     for(let todo of detailedTodoList){
                         const DateDIV = document.createElement("div");
-                        DateDIV.innerHTML=todo.lCreateDt;
+                        DateDIV.innerHTML=todo.lcreateDt;
 
                         // 새로운 div 요소 생성
                         const div = document.createElement("div");
@@ -293,7 +292,7 @@ if(document.querySelector("#middle-Container")){
                         const input3 = document.createElement("input")
                         input3.setAttribute("type", "hidden");
                         input3.classList.add("lCreateDt");
-                        input3.value = todo.lCreateDt;
+                        input3.value = todo.lcreateDt;
 
                         // 각 요소를 div에 추가
                         // div.append(DateDIV)
@@ -365,11 +364,12 @@ document.addEventListener("click", function (e){
     
         const maxCheckboxes = 10;
         const currentCheckboxes = document.querySelectorAll(".checkbox").length;
+       
         const yaer = document.getElementById("calYear").innerText;  // 년
         const math = document.getElementById("calMonth").innerText; // 월
         const day= document.querySelector(".choice").value;
+            
         const choiceTodoDate = yaer+'-' + math+'-' + day;
-
         
 
         if(loginMemberNo == ""){
@@ -412,7 +412,7 @@ document.addEventListener("click", function (e){
                     }
                     return;
                 } else {
-                    const insertTodo = {listContent: addListVal , lCreateDt : choiceTodoDate, memberNo : loginMemberNo}
+                    const insertTodo = {listContent: addListVal , lcreateDt : choiceTodoDate, memberNo : loginMemberNo}
 
                     fetch("/todo/insert",{
                         method : "POST", 

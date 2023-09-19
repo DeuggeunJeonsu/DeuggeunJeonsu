@@ -50,8 +50,8 @@
 	<resultMap type="Routine" id="routine_rm">
 		<id property="rtNo" column=""/>
 
-		<result property="rtTitle" column="RT_NO"/>
-		<result property="rtContent" column="RT_TITLE"/>
+		<result property="rtTitle" column="RT_TITLE"/>
+		<result property="rtContent" column="RT_CONTENT"/>
 		<result property="boardNo" column="BOARD_NO"/>
 		<result property="rtLevel" column="RT_LEVEL"/>
 	</resultMap>
