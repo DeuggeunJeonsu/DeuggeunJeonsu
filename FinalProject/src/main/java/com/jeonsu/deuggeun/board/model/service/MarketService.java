@@ -1,8 +1,5 @@
 package com.jeonsu.deuggeun.board.model.service;
-import com.jeonsu.deuggeun.board.model.dto.Inquiry;
-import com.jeonsu.deuggeun.board.model.dto.Product;
-import com.jeonsu.deuggeun.board.model.dto.ProductImage;
-import com.jeonsu.deuggeun.board.model.dto.Review;
+import com.jeonsu.deuggeun.board.model.dto.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
@@ -56,4 +53,7 @@ public interface MarketService {
 
     // 상품문의 수정
     int inquiryUpdate(Inquiry inquiry, MultipartFile image, String webPath, String filePath) throws IOException;
+
+    // 장바구니 상품담기
+    int addToCart(Cart cart);
 }

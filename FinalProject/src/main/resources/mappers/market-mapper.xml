@@ -92,6 +92,22 @@
         <result property="memberNo" column="MEMBER_NO"/>
     </resultMap>
 
+<!--    //  private int memberNo;-->
+<!--    private int quantity; // 수량-->
+<!--    private int price;-->
+<!--    private String orderFlag;-->
+<!--    private int total; // 총 금액-->
+<!--    private int orderNo; // 주문번호는 결제후에 생성되야 함-->
+    <resultMap id="cart_rm" type="Cart">
+        <id property="productNo" column="PRODUCT_NO" />
+        <result property="memberNo" column="MEMBER_NO" />
+        <result property="quantity" column="ITEM_COUNT" />
+        <result property="price" column="PRODUCT_PRICE" />
+        <result property="orderFlag" column="ORDER_FL" />
+        <result property="total" column="TOTAL_AMOUNT" />
+        <result property="orderNo" column="ORDER_NO" />
+    </resultMap>
+
 
 
     <!-- 특정 게시판의 삭제되지 않은 게시글 수 조회 -->
@@ -174,17 +190,6 @@
     </select>
 
 
-    <!--  검색 했을때 게시글 목록 조회  -->
-<!--    <select id="selectMarketList_search" resultMap="board_rm">-->
-<!--        SELECT PRODUCT_NO, PRODUCT_TITLE, PRODUCT_PRICE, P_IMG_PATH-->
-<!--        FROM PRODUCT-->
-<!--        JOIN PRODUCT_IMG USING PRODUCT_NO-->
-<!--        WHERE PRODUCT_ST = 'Y'-->
-<!--        <if test="keyword != null and keyword != ''">-->
-<!--            AND (PRODUCT_NAME LIKE '%' || #{keyword} || '%' OR PRODUCT_TITLE LIKE '%' || #{keyword} || '%')-->
-<!--        </if>-->
-<!--        ORDER BY PRODUCT_NO DESC-->
-<!--    </select>-->
     <select id="selectMarketList_search" resultMap="board_rm">
         SELECT PRODUCT_NO, PRODUCT_TITLE, PRODUCT_PRICE, P_IMG_PATH
         FROM PRODUCT
@@ -226,7 +231,7 @@
           AND REVIEW_NO = #{reviewNo}
     </select>
 
-<!-- 조회수 증가 -->
+    <!-- 조회수 증가 -->
     <update id="updateReadCount">
         UPDATE REVIEW SET
             R_READ_COUNT = R_READ_COUNT + 1
@@ -334,5 +339,27 @@
         WHERE INQUIRY_NO=#{inquiryNo}
     </update>
 
+    <!-- 장바구니 조회 -->
+    <select id="getCartItem">
+        SELECT PRODUCT_NO, MEMBER_NO, ITEM_COUNT
+        FROM CART
+        WHERE ORDER_FL = 'N'
+        AND MEMBER_NO = #{memberNo}
+        AND PRODUCT_NO = #{productNo}
+    </select>
+
+    <!-- 장바구니에 상품 담기 -->
+    <insert id="addToCart" parameterType="Cart" >
+        INSERT INTO CART
+        VALUES(#{productNo}, #{memberNo}, #{quantity}, #{productPrice}, DEFAULT, DEFAULT)
+    </insert>
+
+    <!-- 상품이 이미 있는 경우 수량만 업데이트 -->
+    <update id="updateCart" parameterType="Cart">
+        UPDATE CART
+        SET ITEM_COUNT = #{quantity}
+        WHERE PRODUCT_NO = #{productNo}
+        AND MEMBER_NO = #{memberNo}
+    </update>
         </mapper>
 

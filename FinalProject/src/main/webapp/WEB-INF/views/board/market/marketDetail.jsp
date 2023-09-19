@@ -87,11 +87,6 @@
                     <!-- 상품 상세 -->
 
                     <div class="item-content">
-
-<%--                        <c:forEach var="productImg" items="${productImageList}">--%>
-<%--                            <div><img src="/resources/images/market/${productImg.pImagePath}"></div>--%>
-<%--                            <br>--%>
-<%--                        </c:forEach>--%>
                         <c:forEach var="productImg" items="${productImageList}">
                             <div><img src="${productImg.productImg}" class="itemDetail"></div>
                             <br>
@@ -141,6 +136,14 @@
 
             </section>
 
+            <script>
+
+                const productNo = "${product.productNo}";
+                const productPrice = "${product.productPrice}"
+                const loginMemberNo = "${loginMember.memberNo}";
+                const boardCode = "${boardCode}";
+
+            </script>
 
             <!-- jQuery 라이브러리 추가 -->
             <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
