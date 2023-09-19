@@ -67,8 +67,8 @@
 
                         <%-- 로그인 X --%>
                         <c:if test="${empty loginMember}">
-                            <li class="login-icon dropdown">
-                                <a href="/member/login" class="dropdown-toggle" data-toggle="dropdown">로그인</a>
+                            <li class="login-icon">
+                                <a href="/member/login">로그인</a>
                             </li>
                         </c:if>
 

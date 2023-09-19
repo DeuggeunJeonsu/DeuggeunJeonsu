@@ -2,6 +2,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"  %>
 
+<%-- map에서 꺼내기 --%>
+<c:set var="followingList" value="${map.followingList}"/>
+<c:set var="followingTotalCount" value="${map.followingTotalCount}"/>
+<c:set var="followerTotalCount" value="${map.followerTotalCount}"/>
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -10,15 +15,15 @@
     <title>팔로잉/팔로워</title>
 
     <%-- myPageSideBar-style.css 연결 --%>
-    <link rel="stylesheet" href="../resources/css/member/myPage/myPageSideBar-style.css">
-    <%-- myBadge-style.css 연결 --%>
-    <link rel="stylesheet" href="../resources/css/member/myPage/followingFollower-style.css">
+    <link rel="stylesheet" href="/resources/css/member/myPage/myPageSideBar-style.css">
+    <%-- followingFollower-style.css 연결 --%>
+    <link rel="stylesheet" href="/resources/css/member/myPage/followingFollower-style.css">
 
     <%-- 헤더 아이콘 --%>
     <link rel="apple-touch-icon" sizes="180x180" href="/resources/images/favicon_io/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/resources/images/favicon_io/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/resources/images/favicon_io/favicon-16x16.png">
-    <link rel="manifest" href="/resources/images/favicon_io/site.webmanifest">
+    <%-- <link rel="manifest" href="/resources/images/favicon_io/site.webmanifest"> --%>
     
 </head>
 
@@ -39,141 +44,67 @@
 
             <div id="main-content-area">
                 <div id="follow-list-btn-area">
-                    <div class="followListBtn listBtnClick">
+                    <div class="followingListBtn followListBtn listBtnClick">
                         <div>팔로잉</div>
-                        <div>99</div>
+                        <div>${followingTotalCount}</div>
                     </div>
-                    <div class="followListBtn">
+                    <div class="followerListBtn followListBtn">
                         <div>팔로워</div>
-                        <div>100</div>
+                        <div>${followerTotalCount}</div>
                     </div>
                 </div>
 
                 <div id="follow-list-area">
 
-                    <div class="follow-list">
-                        <a href="/myPage/memberFeed">
-                            <div class="followProfileImg">
-                                <img src="../../../../resources/images/user.png">
-                            </div>
-                        </a>
-                        <a href="/myPage/memberFeed">
-                            <div class="followNickname">
-                                닉네임
-                            </div>
-                        </a>
-                        <div class="followStateBtn">
-                            <button class="customBtn followingBtn"><div>following</div></button>
-                        </div>
-                    </div>
+                    <c:if test="${!empty followingList}" >
 
-                    <div class="follow-list">
-                        <a href="#">
-                            <div class="followProfileImg">
-                                <img src="../../../../resources/images/user.png">
-                            </div>
-                        </a>
-                        <a href="#">
-                            <div class="followNickname">
-                                닉네임
-                            </div>
-                        </a>
-                        <div class="followStateBtn">
-                            <button class="customBtn followingBtn"><div>following</div></button>
-                        </div>
-                    </div>
+                        <c:forEach items="${followingList}" var="following">
 
-                    <div class="follow-list">
-                        <a href="#">
-                            <div class="followProfileImg">
-                                <img src="../../../../resources/images/user.png">
-                            </div>
-                        </a>
-                        <a href="#">
-                            <div class="followNickname">
-                                닉네임
-                            </div>
-                        </a>
-                        <div class="followStateBtn">
-                            <button class="customBtn followingBtn"><div>following</div></button>
-                        </div>
-                    </div>
+                            <div class="follow-list">
 
-                    <div class="follow-list">
-                        <a href="#">
-                            <div class="followProfileImg">
-                                <img src="../../../../resources/images/user.png">
-                            </div>
-                        </a>
-                        <a href="#">
-                            <div class="followNickname">
-                                닉네임
-                            </div>
-                        </a>
-                        <div class="followStateBtn">
-                            <button class="customBtn followingBtn"><div>following</div></button>
-                        </div>
-                    </div>
+                                <a href="/myPage/memberFeed/${following.memberNo}">
+                                    <c:if test="${empty following.profileImage}" >
+                                        <div class="followProfileImg">
+                                            <img src="/resources/images/user.png">
+                                        </div>
+                                    </c:if>
+                                    <c:if test="${!empty following.profileImage}" >
+                                        <div class="followProfileImg">
+                                            <img src="${following.profileImage}">
+                                        </div>
+                                    </c:if>
+                                </a>
 
-                    <div class="follow-list">
-                        <a href="#">
-                            <div class="followProfileImg">
-                                <img src="../../../../resources/images/user.png">
-                            </div>
-                        </a>
-                        <a href="#">
-                            <div class="followNickname">
-                                닉네임
-                            </div>
-                        </a>
-                        <div class="followStateBtn">
-                            <button class="customBtn followingBtn"><div>following</div></button>
-                        </div>
-                    </div>
+                                <a href="/myPage/memberFeed/${following.memberNo}">
+                                    <div class="followNickname">
+                                        ${following.memberNickname}
+                                    </div>
+                                </a>
 
-                    <div class="follow-list">
-                        <a href="#">
-                            <div class="followProfileImg">
-                                <img src="../../../../resources/images/user.png">
-                            </div>
-                        </a>
-                        <a href="#">
-                            <div class="followNickname">
-                                닉네임
-                            </div>
-                        </a>
-                        <div class="followStateBtn">
-                            <button class="customBtn followingBtn"><div>following</div></button>
-                        </div>
-                    </div>
+                                <div class="followStateBtn">
+                                    <button class="customBtn followingBtn" onclick="unfollowBtnClick(${following.memberNo})"><div>following</div></button>
+                                </div>
 
-                    <div class="follow-list">
-                        <a href="#">
-                            <div class="followProfileImg">
-                                <img src="../../../../resources/images/user.png">
                             </div>
-                        </a>
-                        <a href="#">
-                            <div class="followNickname">
-                                닉네임
-                            </div>
-                        </a>
-                        <div class="followStateBtn">
-                            <button class="customBtn followingBtn"><div>following</div></button>
-                        </div>
-                    </div>
+
+                        </c:forEach>
+
+                    </c:if>
 
                 </div>
+
             </div>
         </div>
 
 	</section>
 
-    <!-- footer include -->
-	<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
+    <script>
+        const memberNo = "${loginMember.memberNo}";
+    </script>
 
     <!-- followingFollower.js 연결 -->
-	<script src="../resources/js/member/myPage/followingFollower.js"></script>
+	<script src="/resources/js/member/myPage/followingFollower.js"></script>
+
 
 </body>
 </html>
