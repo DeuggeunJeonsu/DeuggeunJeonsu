@@ -1,11 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+    <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"  %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>게시판 이름</title>
+<title>루틴공유게시판</title>
 <%-- GSAP 라이브러리 추가 --%>
 <script src = "https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" ></script> 
 <%-- boardList-style.css 연결 --%>
@@ -18,107 +19,69 @@
 	
 	<section id="main-container">
         <div id="title-area">
-            <div><h1>운동 공유 게시판</h1></div>
+            <div><h1>루틴 공유 게시판</h1></div>
         </div>
         <div id="board-area">
             <div>
                 <div class="boardImg thumbnail">
-                    
-                    <img src="/resources/images/main/log01.png" class = "img">
+                     <img src="${board.imageList[0].imagePath}${board.imageList[0].imageReName}">
+                    <%-- <img src="/resources/images/main/log01.png" class = "img"> --%>
                 </div>
-                <h2 id="title">야 너도 할 수 있어! 하체!</h2>
+
+                 <%-- 썸네일을 제외하고 나머지 이미지의 시작인덱스 번호 지정 --%>
+                <c:if test="${board.imageList[0].imageLevel == 0}" >
+                    <c:set var="start" value="1"/>
+                </c:if>
+
+
+
+
+                <h2 id="title">${board.boardTitle}</h2>
                 <hr>
                 <div id="board-info">
-                    <span>by.닉네임</span> | <span>2023-08-21</span> | <span>조회수 100</span>
+                    <span>by.${board.memberNickname}</span> | <span>${board.boardCreateDate}</span> | <span>조회수 ${board.readCount}</span>
                 </div>
                 <div class="boardContent">
-                    천자만홍이 어디 있으며 인생을 풍부하게 하는 온갖 과실이 어디 있으랴? 이상! 우리의 청춘이 가장 많이 품고 있는 이상! 이것이야말로 무한한 가치를 가진 것이다 사람은 크고 작고 간에 이상이 있음으로써 용감하고 굳세게 살
-                    천자만홍이 어디 있으며 인생을 풍부하게 하는 온갖 과실이 어디 있으랴? 이상! 우리의 청춘이 가장 많이 품고 있는 이상! 이것이야말로 무한한 가치를 가진 것이다 사람은 크고 작고 간에 이상이 있음으로써 용감하고 굳세게 살
+                   ${board.boardContent}
                 </div>
-                <div class="routine-area">
-                    <h1>1.</h1>
-                    <div class= "img-area">
-                        <img src="/resources/images/badge/badge (1).png" class="img">
-                    </div>
-                    <div class="routine-info">
-                        <div class="routineNm">
-                            <span>스쿼트 </span>
-                            <button type="button" class="boardAddListBtn">Do IT!</button>
+
+                <c:forEach var="i" begin="${start}" end="${fn:length(board.imageList)-1}">
+
+                    <div class="routine-area">
+                        <h1>${board.imageList[i].imageLevel + 1}.</h1>
+                        <div class= "img-area">
+                            <c:set var="path" value="${board.imageList[i].imagePath}${board.imageList[i].imageReName}"/>
+                           
+                            <img src="${path}" class="img">
                         </div>
-                        <div class="routine-content">
-                        1. 스쿼트 동작은 이러쿵 저러쿵<br>
-                        2. 스쿼트 동작은 이러쿵 저러쿵<br>
-                        3. 스쿼트 동작은 이러쿵 저러쿵<br>
-                        <br>
-                        꿀팁! 오늘은 피자 먹을 거다!
-                        </div>
-                    </div>
-                </div>
-                <div class="routine-area">
-                    <h1>2.</h1>
-                    <div class= "img-area">
-                        <img src="/resources/images/badge/badge (1).png" class="img">
-                    </div>
-                    <div class="routine-info">
-                        <div class="routineNm">
-                            <span>스쿼트 </span>
-                           <button type="button" class="boardAddListBtn">Do IT!</button>
-                        </div>
-                        <div class="routine-content">
-                        1. 스쿼트 동작은 이러쿵 저러쿵<br>
-                        2. 스쿼트 동작은 이러쿵 저러쿵<br>
-                        3. 스쿼트 동작은 이러쿵 저러쿵<br>
-                        <br>
-                        꿀팁! 오늘은 피자 먹을 거다!
+                        <div class="routine-info">
+                            <div class="routineNm">
+                                <span>${board.routineList[i - 1].rtTitle} </span>
+                                <button type="button" class="boardAddListBtn">Do IT!</button>
+                            </div>
+                            <div class="routine-content">
+                            ${board.routineList[i -1].rtContent}
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="routine-area">
-                    <h1>3.</h1>
-                    <div class= "img-area">
-                        <img src="/resources/images/badge/badge (1).png" class="img">
-                    </div>
-                    <div class="routine-info">
-                        <div class="routineNm">
-                            <span>스쿼트 </span>
-                            <button type="button" class="boardAddListBtn">Do IT!</button>
-                        </div>
-                        <div class="routine-content">
-                        1. 스쿼트 동작은 이러쿵 저러쿵<br>
-                        2. 스쿼트 동작은 이러쿵 저러쿵<br>
-                        3. 스쿼트 동작은 이러쿵 저러쿵<br>
-                        <br>
-                        꿀팁! 오늘은 피자 먹을 거다!
-                        </div>
-                    </div>
-                </div>
-                <div class="routine-area">
-                    <h1>4.</h1>
-                    <div class= "img-area">
-                        <img src="/resources/images/badge/badge (1).png" class="img">
-                    </div>
-                    <div class="routine-info">
-                        <div class="routineNm">
-                            <span>스쿼트 </span>
-                          <button type="button" class="boardAddListBtn">Do IT!</button>
-                        </div>
-                        <div class="routine-content">
-                        1. 스쿼트 동작은 이러쿵 저러쿵<br>
-                        2. 스쿼트 동작은 이러쿵 저러쿵<br>
-                        3. 스쿼트 동작은 이러쿵 저러쿵<br>
-                        <br>
-                        꿀팁! 오늘은 피자 먹을 거다!
-                        </div>
-                    </div>
-                </div>
+                </c:forEach>
+                
             </div>
             <div id="todolist-area">
                 <div id="member-area">
                     <div>
                         <div id="profile-area">
-                            <img src="/resources/images/user.png">
+                            <c:choose>
+                                <c:when test="${empty board.profileImage}">
+                                    <img src="/resources/images/user.png">
+                                </c:when>
+                                <c:otherwise>
+                                    <img src="${board.profile}">
+                                </c:otherwise>
+                            </c:choose>
+
                         </div>
-                        <span>닉네임</span>
+                        <span>${board.memberNickname}</span>
                         <button>follow</button>
                     </div>
                     <div><span>팔로우 390</span><span> 팔로잉 390</span></div>
@@ -132,33 +95,14 @@
 					</div>
                     <div class="check-area">
 					
-                        <div>
+                        <%-- <div>
                             <input type="checkbox" id="ck1" class="none checkbox">
                             <label for="ck1" class="ck"></label>
                             <span>1. 득근전수 50회 4세트</span>
                             <button type="button"><i class="fa-solid fa-minus minus" style="color: #ffffff;"></i></button>
-                        </div>
+                        </div> --%>
                         
-                        <div>
-                            <input type="checkbox" id="ck2" class="none checkbox">
-                            <label for="ck2" class="ck"></label>
-                            <span>2. 득근전수 50회 4세트</span>
-                            <button type="button"><i class="fa-solid fa-minus minus" style="color: #ffffff;"></i></button>
-                        </div>
-                        <div>
-                            <input type="checkbox" id="ck3" class="none checkbox">
-                            <label for="ck3" class="ck"></label>
-                            <span>3. 득근전수 50회 4세트</span>
-                            <button type="button"><i class="fa-solid fa-minus minus" style="color: #ffffff;"></i></button>
-                        </div>
-                        
-                        
-                        <div>
-                            <input type="checkbox" id="ck4" class="none checkbox">
-                            <label for="ck4" class="ck"></label>
-                            <span>4. 득근전수 50회 4세트</span>
-                            <button type="button"><i class="fa-solid fa-minus minus" style="color: #ffffff;"></i></button>
-                        </div>
+                       
 					
 				    </div>  
                     <div>
@@ -174,12 +118,20 @@
         </div>
         <!-- 게시글 버튼 영역 -->
         <div class="board-like">
-            <div class="like-cnt unchecked" id="like-cnt">
-                <i class="like-btn fa-solid fa-heart fa-2x"></i>
-            </div>
+            <c:if test="${empty likeCheck}" >
+                <div class="like-cnt" id="like-cnt">
+                    <i class="like-btn fa-solid fa-heart fa-2x"></i>
+                </div>
+            </c:if>
+
+            <c:if test="${!empty likeCheck}" >
+                <div class="like-cnt" id="like-cnt" style="background-color: #99E1ED">
+                    <i class="like-btn fa-solid fa-heart fa-2x"></i>
+                </div>
+            </c:if>
         </div>
 
-        <div class="likeCount">99</div>
+        <div class="likeCount">${board.likeCount}</div>
 
         <div id="btn-area">
             <div>
@@ -323,8 +275,16 @@
     <!-- footer include -->
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
     
+    <script>
+
+        const boardNo = "${board.boardNo}";
+        const boardMemberNo = "${board.memberNo}";
+        const loginMemberNo = "${loginMember.memberNo}";
+
+    </script>
+
+
 	<script src="/resources/js/board/shareBoard/shareBoardDetail.js"></script>
-	<script src="/resources/js/TodoList/todoList.js"></script>
 	<script src="/resources/js/board/comment.js"></script>
 
 </body>

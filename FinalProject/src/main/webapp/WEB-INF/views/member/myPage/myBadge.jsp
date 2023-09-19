@@ -10,15 +10,15 @@
     <title>내 뱃지</title>
 
     <%-- myPageSideBar-style.css 연결 --%>
-    <link rel="stylesheet" href="../resources/css/member/myPage/myPageSideBar-style.css">
+    <link rel="stylesheet" href="/resources/css/member/myPage/myPageSideBar-style.css">
     <%-- myBadge-style.css 연결 --%>
-    <link rel="stylesheet" href="../resources/css/member/myPage/myBadge-style.css">
+    <link rel="stylesheet" href="/resources/css/member/myPage/myBadge-style.css">
     
     <%-- 헤더 아이콘 --%>
     <link rel="apple-touch-icon" sizes="180x180" href="/resources/images/favicon_io/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/resources/images/favicon_io/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/resources/images/favicon_io/favicon-16x16.png">
-    <link rel="manifest" href="/resources/images/favicon_io/site.webmanifest">
+    <%-- <link rel="manifest" href="/resources/images/favicon_io/site.webmanifest"> --%>
 
 </head>
 
@@ -44,7 +44,7 @@
 
                     <div class="badge">
                         <div class="badgeImg">
-                            <img src="../../../../resources/images/badge/badge (9).png">
+                            <img src="/resources/images/badge/badge (9).png">
                         </div>
                         <div class="badgeTitle">
                             시작이 반이다
@@ -59,7 +59,7 @@
 
                     <div class="badge">
                         <div class="badgeImg">
-                            <img src="../../../../resources/images/badge/badge (2).png">
+                            <img src="/resources/images/badge/badge (2).png">
                         </div>
                         <div class="badgeTitle">
                             초심자의 행운
@@ -74,7 +74,7 @@
 
                     <div class="badge notAchieved">
                         <div class="badgeImg notAchievedImg">
-                            <img src="../../../../resources/images/badge/badge (3).png">
+                            <img src="/resources/images/badge/badge (3).png">
                         </div>
                         <div class="badgeTitle">
                             성실 끝판왕
@@ -92,7 +92,7 @@
 
                     <div class="badge notAchieved">
                         <div class="badgeImg notAchievedImg">
-                            <img src="../../../../resources/images/badge/badge (1).png">
+                            <img src="/resources/images/badge/badge (1).png">
                         </div>
                         <div class="badgeTitle">
                             맨날 운동하고십오
@@ -110,7 +110,7 @@
 
                     <div class="badge notAchieved">
                         <div class="badgeImg notAchievedImg">
-                            <img src="../../../../resources/images/badge/badge (8).png">
+                            <img src="/resources/images/badge/badge (8).png">
                         </div>
                         <div class="badgeTitle">
                             득근 중독
@@ -128,7 +128,7 @@
 
                     <div class="badge notAchieved">
                         <div class="badgeImg notAchievedImg">
-                            <img src="../../../../resources/images/badge/badge (6).png">
+                            <img src="/resources/images/badge/badge (6).png">
                         </div>
                         <div class="badgeTitle">
                             운동은 템빨
@@ -146,7 +146,7 @@
 
                     <div class="badge notAchieved">
                         <div class="badgeImg notAchievedImg">
-                            <img src="../../../../resources/images/badge/badge (7).png">
+                            <img src="/resources/images/badge/badge (7).png">
                         </div>
                         <div class="badgeTitle">
                             득근 인플루언서
@@ -164,7 +164,7 @@
 
                     <div class="badge notAchieved">
                         <div class="badgeImg notAchievedImg">
-                            <img src="../../../../resources/images/badge/badge (4).png">
+                            <img src="/resources/images/badge/badge (4).png">
                         </div>
                         <div class="badgeTitle">
                             진정한 득근왕
@@ -182,7 +182,7 @@
 
                     <div class="badge notAchieved">
                         <div class="badgeImg notAchievedImg">
-                            <img src="../../../../resources/images/badge/badge (5).png">
+                            <img src="/resources/images/badge/badge (5).png">
                         </div>
                         <div class="badgeTitle">
                             레전드 득근왕

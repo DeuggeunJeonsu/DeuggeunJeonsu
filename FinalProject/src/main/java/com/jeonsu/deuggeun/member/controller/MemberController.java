@@ -3,6 +3,7 @@ package com.jeonsu.deuggeun.member.controller;
 import java.util.Map;
 
 import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,40 +49,40 @@ public class MemberController {
 		// 로그인 서비스 호출
 		Member loginMember = service.login(inputMember);
 			
-			// DB 조회 결과 확인
-		   	System.out.println(loginMember);
-		
-			String path = "redirect:";
-		   
-			if(loginMember != null) { // 로그인 성공 시
+		// DB 조회 결과 확인
+	   	System.out.println(loginMember);
+	
+		String path = "redirect:";
+	   
+		if(loginMember != null) { // 로그인 성공 시
+			
+			// 세션에 로그인한 회원 정보 추가
+			model.addAttribute("loginMember", loginMember);
+			
+			// 메인페이지로
+			path += "/";
+			
+			// 로그인 시 아이디 저장용 쿠키 생성
+			Cookie cookie = new Cookie("saveId", loginMember.getMemberEmail());
+			
+			// 아이디 저장 체크 되었을 때 한달간 유지되는 쿠키생성
+			if(saveId != null) cookie.setMaxAge(60 * 60 * 24 * 30);
+			
+			// 아이디 저장 체크 안되었을 때 쿠키삭제
+			else cookie.setMaxAge(0);
 				
-				// 세션에 로그인한 회원 정보 추가
-				model.addAttribute("loginMember", loginMember);
-				
-				// 메인페이지로
-				path += "/";
-				
-				// 로그인 시 아이디 저장용 쿠키 생성
-				Cookie cookie = new Cookie("saveId", loginMember.getMemberEmail());
-				
-				// 아이디 저장 체크 되었을 때 한달간 유지되는 쿠키생성
-				if(saveId != null) cookie.setMaxAge(60 * 60 * 24 * 30);
-				
-				// 아이디 저장 체크 안되었을 때 쿠키삭제
-				else cookie.setMaxAge(0);
-					
-				// 클라이언트가 어떤 요청을 할 때 쿠키가 첨부될지 경로(주소)를 지정
-				cookie.setPath("/member/login");
-				
-				// 응답 객체(HttpServletResponse)를 이용해서
-				// 만들어진 쿠키를 클라이언트에게 전달
-				resp.addCookie(cookie);
+			// 클라이언트가 어떤 요청을 할 때 쿠키가 첨부될지 경로(주소)를 지정
+			cookie.setPath("/member/login");
+			
+			// 응답 객체(HttpServletResponse)를 이용해서
+			// 만들어진 쿠키를 클라이언트에게 전달
+			resp.addCookie(cookie);
 
-			} 
-			else { // 로그인 실패 시
-				ra.addFlashAttribute("message", "아이디 또는 비밀번호가 일치하지 않습니다.");
-				path += referer; // 이전 페이지로
-			}
+		} 
+		else { // 로그인 실패 시
+			ra.addFlashAttribute("message", "아이디 또는 비밀번호가 일치하지 않습니다.");
+			path += referer; // 이전 페이지로
+		}
 			
 		return path;
 	}
@@ -102,12 +103,40 @@ public class MemberController {
 		return "member/findInfo";
 	}
 	
-	// 아이디 찾기 (sms 인증) ajax
+	// 아이디찾기 sms 인증번호 전송 ajax
 	@ResponseBody
-	@PostMapping(value="/findId", produces = "application/json; charset=UTF-8")
-	public String findId(@RequestBody Map<String, Object> paramMap) {
-		//System.out.println(String.valueOf(paramMap.get("memberPhone")));
-		return Util.sendMessage(String.valueOf(paramMap.get("memberPhone")));
+	@PostMapping(value="/sendSms", produces = "application/json; charset=UTF-8")
+	public String findId(@RequestBody String memberTel, HttpServletResponse resp) {
+		
+		// 입력된 번호로 회원 검색
+		Member selectMember = service.selectMemberByTel(memberTel);
+		String AuthenticationKey="";
+		
+		if(selectMember !=null) { // 일치하는 회원이 있으면 인증번호 발송
+			AuthenticationKey = "123456";//Util.sendMessage(String.valueOf(paramMap.get("memberPhone")));
+		}
+		return AuthenticationKey;
+	}
+	
+	// 아이디찾기 sms 인증번호 확인 ajax
+	@ResponseBody
+	@PostMapping(value="/smsAuthentication", produces = "application/json; charset=UTF-8")
+	public Member findId(@RequestBody Map<String, Object> paramMap, HttpServletRequest req, HttpServletResponse resp) {
+		
+		// 입력된 번호로 회원 검색
+		Member selectMember = service.selectMemberByTel(String.valueOf(paramMap.get("memberTel")));
+		
+		if(selectMember !=null) { // 일치하는 회원이 있으면 회원정보 반환
+			return selectMember;
+		}
+		return null;
+	}
+	
+	// 비밀번호찾기 email 인증번호 전송 ajax
+	@ResponseBody
+	@PostMapping(value="/sendEmail", produces = "application/json; charset=UTF-8")
+	public String findPw(@RequestBody String memberEmail, HttpServletResponse resp) {
+		return null;
 	}
 	
 	// 회원 가입 페이지 이동

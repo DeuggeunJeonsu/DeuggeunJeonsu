@@ -52,12 +52,12 @@
 			SELECT SEQ_LIST_NO.NEXTVAL FROM DUAL
 		</selectKey>
 		INSERT INTO "TODOLIST"
-		VALUES(#{listNo},#{listContent}, DEFAULT, 1)
+		VALUES(#{listNo},#{listContent}, DEFAULT, #{memberNo})
 	</insert>
 	
 	<insert id="todoDateInsert">
 		INSERT INTO "TODOLIST_DATE"
-		VALUES (${listNo}, TO_CHAR(SYSDATE, 'YYYY-MM-DD'))
+		VALUES (${listNo}, #{lCreateDt})
 	</insert>
   
 </mapper>

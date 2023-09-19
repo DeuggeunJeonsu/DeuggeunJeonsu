@@ -1,6 +1,6 @@
 // 좋아요 버튼 이벤트
 var check_status = false; // 좋아요 상태를 나타내는 변수
-/* var like_cnt = $("#like-cnt");
+var like_cnt = $("#like-cnt");
 var like_parent = $(".board-like");
 
 var divToUseAsReference = $("#board-content-area");
@@ -65,16 +65,15 @@ document.getElementById("like-cnt").addEventListener("click", e => {
         "check" : check
     };
     
-    fetch("/board/3/like", {
+    fetch("/board/4/like", {
         method : "POST",
         headers : {"Content-Type" : "application/json"},
         body : JSON.stringify(data)
     })
     .then(resp => resp.text())
     .then(count => {
-        
-        console.log("count : " + count);
-    
+   
+
         if(count == -1){
             console.log("좋아요 처리 실패");
             return;
@@ -85,7 +84,7 @@ document.getElementById("like-cnt").addEventListener("click", e => {
     })
     .catch(err => console.log(err))
     
-}) */
+})
 
 
 const ncUpdate = document.getElementById("ncUpdate");
@@ -120,3 +119,39 @@ function boardDelete(){
     return confirm("게시글을 삭제하시겠습니까?");
 
 }
+
+const listbtn = document.getElementById("listbtn2");
+
+/* 목록으로 가기 버튼 클릭 시 */
+listbtn.addEventListener("click", () => {
+
+       // 이동할 주소 저장
+       let url = "/board/" + 4  + "/list"; 
+
+       // URL 내장 객체 : 주소 관련 정보를 나타내는 객체
+       // URL.searchParams : 쿼리스트링만 별도 객체로 반환
+   
+       const params = new URL(location.href).searchParams;
+   
+       let cp;
+       if(params.get("cp") != ""){ // 쿼리스트링에 cp가 있을 경우
+           cp = "?cp=" + params.get("cp");
+       }else{
+           cp= "?cp=1"
+       }
+   
+       // 조립
+       url += cp;
+   
+       // 검색 key, query가 존재하는 경우 url에 추가
+       if(params.get("searchTitle") != null){
+           const searchTitle = "&searchTitle=" + params.get("searchTitle");
+   
+           url +=  searchTitle; // url 뒤에 붙이기
+       }
+   
+       // location.href = "주소"; -> 해당 주소로 이동
+       location.href = url;
+
+})
+

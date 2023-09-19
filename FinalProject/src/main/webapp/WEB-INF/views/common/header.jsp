@@ -67,8 +67,8 @@
 
                         <%-- 로그인 X --%>
                         <c:if test="${empty loginMember}">
-                            <li class="login-icon dropdown">
-                                <a href="/member/login" class="dropdown-toggle" data-toggle="dropdown">로그인</a>
+                            <li class="login-icon">
+                                <a href="/member/login">로그인</a>
                             </li>
                         </c:if>
 
@@ -91,7 +91,10 @@
                                         <input type="checkbox" id="headerMenuToggle">
                                         <div class="header-menu">
                                             <a href="/myPage/myBadge">마이 페이지</a>
-                                            <a href="/member/logout">로그아웃</a>
+                                            <a href="/member/logout" id="logoutBtn">로그아웃</a>
+                                            <c:if test="${loginMember.authority == 2}" >
+                                                <a href="/admin/adminBoardList" id="adminPage">관리자 페이지</a>
+                                            </c:if>
                                         </div>
                                     </label>
                                 </div>

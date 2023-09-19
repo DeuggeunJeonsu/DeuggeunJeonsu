@@ -8,7 +8,7 @@
 <title>멤버 피드</title>
 
 <%-- memberFeed-style.css 연결 --%>
-<link rel="stylesheet" href="../resources/css/member/myPage/memberFeed-style.css">
+<link rel="stylesheet" href="/resources/css/member/myPage/memberFeed-style.css">
 
 <link rel="stylesheet" href="css/animations.css">
 
@@ -16,7 +16,7 @@
 <link rel="apple-touch-icon" sizes="180x180" href="/resources/images/favicon_io/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/resources/images/favicon_io/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/resources/images/favicon_io/favicon-16x16.png">
-<link rel="manifest" href="/resources/images/favicon_io/site.webmanifest">
+<%-- <link rel="manifest" href="/resources/images/favicon_io/site.webmanifest"> --%>
 
 </head>
 <body">
@@ -28,7 +28,7 @@
         <!-- 회원 정보 영역 -->
         <div id="member-info-area">
             <div class="memberProfileArea">
-                <img src="../../../../resources/images/user.png">
+                <img src="/resources/images/user.png">
             </div>
 
             <div class="memberInfoArea">
@@ -96,7 +96,7 @@
             <div class="follow-list">
                 <a href="#">
                     <div class="followProfileImg">
-                        <img src="../../../../resources/images/user.png">
+                        <img src="/resources/images/user.png">
                     </div>
                 </a>
                 <a href="#">
@@ -108,7 +108,7 @@
             <div class="follow-list">
                 <a href="#">
                     <div class="followProfileImg">
-                        <img src="../../../../resources/images/user.png">
+                        <img src="/resources/images/user.png">
                     </div>
                 </a>
                 <a href="#">
@@ -120,7 +120,7 @@
             <div class="follow-list">
                 <a href="#">
                     <div class="followProfileImg">
-                        <img src="../../../../resources/images/user.png">
+                        <img src="/resources/images/user.png">
                     </div>
                 </a>
                 <a href="#">
@@ -132,7 +132,7 @@
             <div class="follow-list">
                 <a href="#">
                     <div class="followProfileImg">
-                        <img src="../../../../resources/images/user.png">
+                        <img src="/resources/images/user.png">
                     </div>
                 </a>
                 <a href="#">
@@ -144,7 +144,7 @@
             <div class="follow-list">
                 <a href="#">
                     <div class="followProfileImg">
-                        <img src="../../../../resources/images/user.png">
+                        <img src="/resources/images/user.png">
                     </div>
                 </a>
                 <a href="#">
@@ -166,46 +166,46 @@
                 <div class="container">
                     <div class="carousel">
                         <div class="badgeImg">
-                            <img src="../../../../resources/images/badge/badge (1).png">
+                            <img src="/resources/images/badge/badge (1).png">
                         </div>
                         <div class="badgeImg">
-                            <img src="../../../../resources/images/badge/badge (2).png">
+                            <img src="/resources/images/badge/badge (2).png">
                         </div>
                         <div class="badgeImg">
-                            <img src="../../../../resources/images/badge/badge (3).png">
+                            <img src="/resources/images/badge/badge (3).png">
                         </div>
                         <div class="badgeImg">
-                            <img src="../../../../resources/images/badge/badge (4).png">
+                            <img src="/resources/images/badge/badge (4).png">
                         </div>
                         <div class="badgeImg">
-                            <img src="../../../../resources/images/badge/badge (5).png">
+                            <img src="/resources/images/badge/badge (5).png">
                         </div>
                         <div class="badgeImg">
-                            <img src="../../../../resources/images/badge/badge (6).png">
+                            <img src="/resources/images/badge/badge (6).png">
                         </div>
                         <div class="badgeImg">
-                            <img src="../../../../resources/images/badge/badge (7).png">
+                            <img src="/resources/images/badge/badge (7).png">
                         </div>
                         <div class="badgeImg">
-                            <img src="../../../../resources/images/badge/badge (1).png">
+                            <img src="/resources/images/badge/badge (1).png">
                         </div>
                         <div class="badgeImg">
-                            <img src="../../../../resources/images/badge/badge (2).png">
+                            <img src="/resources/images/badge/badge (2).png">
                         </div>
                         <div class="badgeImg">
-                            <img src="../../../../resources/images/badge/badge (3).png">
+                            <img src="/resources/images/badge/badge (3).png">
                         </div>
                         <div class="badgeImg">
-                            <img src="../../../../resources/images/badge/badge (4).png">
+                            <img src="/resources/images/badge/badge (4).png">
                         </div>
                         <div class="badgeImg">
-                            <img src="../../../../resources/images/badge/badge (5).png">
+                            <img src="/resources/images/badge/badge (5).png">
                         </div>
                         <div class="badgeImg">
-                            <img src="../../../../resources/images/badge/badge (6).png">
+                            <img src="/resources/images/badge/badge (6).png">
                         </div>
                         <div class="badgeImg">
-                            <img src="../../../../resources/images/badge/badge (7).png">
+                            <img src="/resources/images/badge/badge (7).png">
                         </div>
                     </div>
                 </div>
@@ -223,7 +223,7 @@
             <div id="board-area-middle">
 
                 <div class="thumbnail">
-                    <div><img src="../../../../resources/images/main/log02.png"></div>
+                    <div><img src="/resources/images/main/log02.png"></div>
                     <div>
                         <div class="title ">제목입니다</div>
                         <div class="createDate-area">
@@ -231,7 +231,7 @@
                             <div><i class="fa-regular fa-comment" style="color: #ddd;"></i> 4</div>
                         </div>
                         <div class="profile-area">
-                            <div class="profileArea"><img src="../../../../resources/images/user.png"></div>
+                            <div class="profileArea"><img src="/resources/images/user.png"></div>
                             <div>닉네임</div>
                             <div><i class="fa-solid fa-heart" style="color: #ff4242;"></i> 99</div>
                         </div>
@@ -239,7 +239,7 @@
                 </div>
 
                 <div class="thumbnail">
-                    <div><img src="../../../../resources/images/main/log02.png"></div>
+                    <div><img src="/resources/images/main/log02.png"></div>
                     <div>
                         <div class="title ">제목입니다</div>
                         <div class="createDate-area">
@@ -247,7 +247,7 @@
                             <div><i class="fa-regular fa-comment" style="color: #ddd;"></i> 4</div>
                         </div>
                         <div class="profile-area">
-                            <div class="profileArea"><img src="../../../../resources/images/user.png"></div>
+                            <div class="profileArea"><img src="/resources/images/user.png"></div>
                             <div>닉네임</div>
                             <div><i class="fa-solid fa-heart" style="color: #ff4242;"></i> 99</div>
                         </div>
@@ -255,7 +255,7 @@
                 </div>
 
                 <div class="thumbnail">
-                    <div><img src="../../../../resources/images/main/log02.png"></div>
+                    <div><img src="/resources/images/main/log02.png"></div>
                     <div>
                         <div class="title ">제목입니다</div>
                         <div class="createDate-area">
@@ -263,7 +263,7 @@
                             <div><i class="fa-regular fa-comment" style="color: #ddd;"></i> 4</div>
                         </div>
                         <div class="profile-area">
-                            <div class="profileArea"><img src="../../../../resources/images/user.png"></div>
+                            <div class="profileArea"><img src="/resources/images/user.png"></div>
                             <div>닉네임</div>
                             <div><i class="fa-solid fa-heart" style="color: #ff4242;"></i> 99</div>
                         </div>
@@ -271,7 +271,7 @@
                 </div>
 
                 <div class="thumbnail">
-                    <div><img src="../../../../resources/images/main/log02.png"></div>
+                    <div><img src="/resources/images/main/log02.png"></div>
                     <div>
                         <div class="title ">제목입니다</div>
                         <div class="createDate-area">
@@ -279,7 +279,7 @@
                             <div><i class="fa-regular fa-comment" style="color: #ddd;"></i> 4</div>
                         </div>
                         <div class="profile-area">
-                            <div class="profileArea"><img src="../../../../resources/images/user.png"></div>
+                            <div class="profileArea"><img src="/resources/images/user.png"></div>
                             <div>닉네임</div>
                             <div><i class="fa-solid fa-heart" style="color: #ff4242;"></i> 99</div>
                         </div>
@@ -287,7 +287,7 @@
                 </div>
 
                 <div class="thumbnail">
-                    <div><img src="../../../../resources/images/main/log02.png"></div>
+                    <div><img src="/resources/images/main/log02.png"></div>
                     <div>
                         <div class="title ">제목입니다</div>
                         <div class="createDate-area">
@@ -295,7 +295,7 @@
                             <div><i class="fa-regular fa-comment" style="color: #ddd;"></i> 4</div>
                         </div>
                         <div class="profile-area">
-                            <div class="profileArea"><img src="../../../../resources/images/user.png"></div>
+                            <div class="profileArea"><img src="/resources/images/user.png"></div>
                             <div>닉네임</div>
                             <div><i class="fa-solid fa-heart" style="color: #ff4242;"></i> 99</div>
                         </div>
@@ -303,7 +303,7 @@
                 </div>
 
                 <div class="thumbnail">
-                    <div><img src="../../../../resources/images/main/log02.png"></div>
+                    <div><img src="/resources/images/main/log02.png"></div>
                     <div>
                         <div class="title ">제목입니다</div>
                         <div class="createDate-area">
@@ -311,7 +311,7 @@
                             <div><i class="fa-regular fa-comment" style="color: #ddd;"></i> 4</div>
                         </div>
                         <div class="profile-area">
-                            <div class="profileArea"><img src="../../../../resources/images/user.png"></div>
+                            <div class="profileArea"><img src="/resources/images/user.png"></div>
                             <div>닉네임</div>
                             <div><i class="fa-solid fa-heart" style="color: #ff4242;"></i> 99</div>
                         </div>
@@ -319,7 +319,7 @@
                 </div>
 
                 <div class="thumbnail">
-                    <div><img src="../../../../resources/images/main/log02.png"></div>
+                    <div><img src="/resources/images/main/log02.png"></div>
                     <div>
                         <div class="title ">제목입니다</div>
                         <div class="createDate-area">
@@ -327,7 +327,7 @@
                             <div><i class="fa-regular fa-comment" style="color: #ddd;"></i> 4</div>
                         </div>
                         <div class="profile-area">
-                            <div class="profileArea"><img src="../../../../resources/images/user.png"></div>
+                            <div class="profileArea"><img src="/resources/images/user.png"></div>
                             <div>닉네임</div>
                             <div><i class="fa-solid fa-heart" style="color: #ff4242;"></i> 99</div>
                         </div>
@@ -335,7 +335,7 @@
                 </div>
 
                 <div class="thumbnail">
-                    <div><img src="../../../../resources/images/main/log02.png"></div>
+                    <div><img src="/resources/images/main/log02.png"></div>
                     <div>
                         <div class="title ">제목입니다</div>
                         <div class="createDate-area">
@@ -343,7 +343,7 @@
                             <div><i class="fa-regular fa-comment" style="color: #ddd;"></i> 4</div>
                         </div>
                         <div class="profile-area">
-                            <div class="profileArea"><img src="../../../../resources/images/user.png"></div>
+                            <div class="profileArea"><img src="/resources/images/user.png"></div>
                             <div>닉네임</div>
                             <div><i class="fa-solid fa-heart" style="color: #ff4242;"></i> 99</div>
                         </div>
@@ -351,7 +351,7 @@
                 </div>
 
                 <div class="thumbnail">
-                    <div><img src="../../../../resources/images/main/log02.png"></div>
+                    <div><img src="/resources/images/main/log02.png"></div>
                     <div>
                         <div class="title ">제목입니다</div>
                         <div class="createDate-area">
@@ -359,7 +359,7 @@
                             <div><i class="fa-regular fa-comment" style="color: #ddd;"></i> 4</div>
                         </div>
                         <div class="profile-area">
-                            <div class="profileArea"><img src="../../../../resources/images/user.png"></div>
+                            <div class="profileArea"><img src="/resources/images/user.png"></div>
                             <div>닉네임</div>
                             <div><i class="fa-solid fa-heart" style="color: #ff4242;"></i> 99</div>
                         </div>
@@ -381,7 +381,7 @@
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
 
     <!-- memberFeed.js 연결 -->
-	<script src="../resources/js/member/myPage/memberFeed.js"></script>
+	<script src="/resources/js/member/myPage/memberFeed.js"></script>
 
 
 </body>

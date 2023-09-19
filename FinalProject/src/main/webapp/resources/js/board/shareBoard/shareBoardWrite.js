@@ -232,7 +232,8 @@ document.getElementById("boardWriteFrm").addEventListener("submit", e => {
 
     const routineName = document.getElementsByName("routineName");
     for (let i = 0; i < routineName.length; i++) {
-        if (routineName[i].value.trim().length == 0 || !reqExp2.test(routineName[i].value)) {
+        if (routineName[i].value.trim().length == 0 //|| !reqExp2.test(routineName[i].value
+        ) {
             alert("세부 운동을 입력해 주세요😊");
             routineName[i].focus();
             routineName[i].value = "회 세트"; 
@@ -261,7 +262,8 @@ document.getElementById("boardWriteFrm").addEventListener("submit", e => {
 
     for (let i = 0; i < routineContent.length; i++) {
         const textareaValue = routineContent[i].value; // textarea의 내용을 가져옴
-        if (textareaValue.trim().length == 0 || reqExp3.test(textareaValue)) {
+        if (textareaValue.trim().length == 0 || reqExp3.test(textareaValue)
+        ) {
             alert("세부 운동 내용을 입력해주세요😊");
             routineContent[i].focus();
             routineContent[i].value = "1.\n2.\n3.\n\n꿀팁!";
@@ -293,7 +295,7 @@ document.getElementById("boardWriteFrm").addEventListener("submit", e => {
 document.addEventListener("click", function (event) {
     if(event.target.classList.contains("inputImage")){
 
-        // img 5개 
+        // img 6개 
         const preview = document.getElementsByClassName("preview");
         // file 6개
         const inputImage = document.getElementsByClassName("inputImage");

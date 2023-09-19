@@ -1,15 +1,30 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"  %>
 
 <div id="middle-area">
     <div id="left-sideBar">
         <div class="sideBarTop">
+
             <div class="myPageProfile">
-                <img src="../../../../resources/images/user.png">
+            
+                <%-- 프로필 이미지 X --%>
+                <c:if test="${empty loginMember.profileImage}" >
+                    <img src="/resources/images/user.png">
+                </c:if>
+
+                <%-- 프로필 이미지 O --%>
+                <c:if test="${!empty loginMember.profileImage}" >
+                    <img src="${loginMember.profileImage}">
+                </c:if>
             </div>
+
             <div class="nickname">
-                닉네임 님
+                ${loginMember.memberNickname}
             </div>
+
         </div>
+
         <a href="/myPage/myBadge">
             <div class="sideBarMenu">내 뱃지</div>
         </a>

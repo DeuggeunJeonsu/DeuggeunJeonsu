@@ -205,9 +205,6 @@
         </div>
 	</section>
 
-    <!-- footer include -->
-	<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
-
     <%-- freeBoardList.js 연결 --%>
     <script src="/resources/js/board/freeBoard/freeBoardList.js"></script>
 

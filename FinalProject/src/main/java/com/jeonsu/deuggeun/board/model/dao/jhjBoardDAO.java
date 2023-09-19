@@ -104,5 +104,30 @@ public class jhjBoardDAO {
 	public int ncDelete(Board board) {
 		return sqlSession.update("boardMapper.ncDelete", board);
 	}
+
+	/** 1:1 문의글 작성
+	 * @param board
+	 * @return result
+	 */
+	public int QnaWriteInsert(Board board) {
+		return sqlSession.insert("boardMapper.QnaWriteInsert" , board);
+	}
+
+	/** 문의 테이블 데이터 삽입을 위한 boardNo 조회
+	 * @param board
+	 * @return boardNo
+	 */
+		public int selectInquiryBoardNo(int memberNo) {
+	    return sqlSession.selectOne("boardMapper.selectInquiryBoardNo", memberNo);
+	}
+
+	/** 문의 테이블 데이터 삽입
+	 * @param board
+	 * @return result
+	 */
+	public int insertInquiry(Board board) {
+		
+		return sqlSession.insert("boardMapper.insertInquiry", board);
+	}
 	 
 }

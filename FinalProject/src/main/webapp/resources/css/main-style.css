@@ -339,28 +339,18 @@ label[for='headerMenuToggle']:hover{text-decoration: underline;}
     align-items: center;
 
     height: 50%;
-
+    background-color: white;
+    border-radius: 5px;
     color: #797979;
 }
 
-.header-menu > a:first-child{
+.header-menu > a:not(a:nth-of-type(3)){
     border-bottom: 1px solid #ccc;
 }
 
-.header-menu > a:first-child:hover{
+.header-menu > a:hover{
     background-color: #99E1ED;
     color: white;
-
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-}
-
-.header-menu > a:nth-child(2):hover{
-    background-color: #99E1ED;
-    color: white;
-
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
 }
 
 .log-image{

@@ -39,11 +39,11 @@
 						관리자님
 
 					</div>
-					<a href="/userList">
+					<a href="/admin/userList">
 						<div class="sideList" id="user-sideList">회원 목록</div>
-					</a> <a href="/adminInquiry">
+					</a> <a href="/admin/adminInquiry">
 						<div class="sideList" id="inquiry-sideList">회원 문의</div>
-					</a> <a href="/adminBoardList">
+					</a> <a href="/admin/adminBoardList">
 						<div class="sideList" id="boardList-sideList">관리자 페이지</div>
 					</a>
 				</div>

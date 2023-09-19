@@ -10,15 +10,15 @@
     <title>1:1 문의</title>
 
     <%-- myPageSideBar-style.css 연결 --%>
-    <link rel="stylesheet" href="../resources/css/member/myPage/myPageSideBar-style.css">
+    <link rel="stylesheet" href="/resources/css/member/myPage/myPageSideBar-style.css">
     <%-- myOneOnOneInquiry-style.css 연결 --%>
-    <link rel="stylesheet" href="../resources/css/member/myPage/myOneOnOneInquiry-style.css">
+    <link rel="stylesheet" href="/resources/css/member/myPage/myOneOnOneInquiry-style.css">
     
     <%-- 헤더 아이콘 --%>
     <link rel="apple-touch-icon" sizes="180x180" href="/resources/images/favicon_io/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/resources/images/favicon_io/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/resources/images/favicon_io/favicon-16x16.png">
-    <link rel="manifest" href="/resources/images/favicon_io/site.webmanifest">
+    <%-- <link rel="manifest" href="/resources/images/favicon_io/site.webmanifest"> --%>
 
 </head>
 
@@ -39,7 +39,7 @@
 
             <div id="main-content-area">
                 <div>
-                    <a href="/QnAWrite">
+                    <a href="/board/myPage/QnAWrite">
                         <button class="inquiryBtn inquiryBtnColor1">문의글 작성하기</button>
                     </a>
                 </div>
