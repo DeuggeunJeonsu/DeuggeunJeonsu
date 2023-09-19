@@ -1,6 +1,6 @@
 *{
     box-sizing: border-box;
-     /* border: 1px solid black; */
+    /*  border: 1px solid black; */
 }
 
 
@@ -36,6 +36,9 @@ main{
 
 .userList{
     margin: auto;
+
+    height: 600px;
+    overflow: auto;
 }
 
 .adminImg{
@@ -114,25 +117,33 @@ a:hover{
     display: flex;
     flex-direction: column;
     align-items: center;
+    
 }
 
 table{
     width: 750px;
     border-collapse: collapse;
+    
+    
+    
 }
 
 th{
     background-color: darkgray;
     height: 30px;
+    
 }
 
 td{
     text-align: center;
     border-bottom: 1px solid grey;
     height: 50px;
+    
 }
 
-
+tr{
+    
+}
 .Jhead{
     width: 752px;
     display: flex;

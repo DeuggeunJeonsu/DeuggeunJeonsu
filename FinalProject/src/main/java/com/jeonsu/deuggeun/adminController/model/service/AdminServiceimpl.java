@@ -16,6 +16,7 @@ public class AdminServiceimpl implements AdminService{
 	@Autowired
 	private AdminDAO dao;
 	
+	// 회원 목록 조회
 	@Override
 	public Map<String, Object> selectMember() {
 		
@@ -27,6 +28,12 @@ public class AdminServiceimpl implements AdminService{
 		
 		
 		return map;
+	}
+
+	// 회원 탈퇴
+	@Override
+	public int userDel(AdminMember member) {
+		return dao.userDel(member);
 	}
 
 }

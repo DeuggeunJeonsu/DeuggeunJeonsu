@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-		<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>		
 
-		<c:set var="memberList" value="${map.memberList}" ></c:set>
+		<c:set var="memberList" value="${map.memberList}" />
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -43,11 +43,11 @@
 						관리자님
 
 					</div>
-					<a href="/userList">
+					<a href="/admin/userList">
 						<div class="sideList" id="user-sideList">회원 목록</div>
-					</a> <a href="/adminInquiry">
+					</a> <a href="/admin/adminInquiry">
 						<div class="sideList" id="inquiry-sideList">회원 문의</div>
-					</a> <a href="/adminBoardList">
+					</a> <a href="/admin/adminBoardList">
 						<div class="sideList" id="boardList-sideList">관리자 페이지</div>
 					</a>
 				</div>
@@ -65,7 +65,6 @@
 						</button>
 					</div>
 
-					<div class="userList">
 
 						<table>
 							<thead>
@@ -98,6 +97,10 @@
 										<td>${member.memberNickname}</td>
 										<td><button class="userDel">탈퇴</button></td>
 									</tr>
+
+									<input  type="hidden" id="memberNo" value="${member.memberNo}" >
+									
+									
 								</c:forEach>
 							</c:otherwise>
 						
@@ -110,7 +113,6 @@
 
 
 
-					</div>
 				</div>
 
 			</div>
@@ -123,6 +125,8 @@
 
 
 </body>
+
+
 
 <script src="/resources/js/board/admin/userList.js"></script>
 </html>

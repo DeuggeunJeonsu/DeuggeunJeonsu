@@ -255,9 +255,36 @@ public class NotificationController {
 	public String inquireWrite() {
 		return "board/inquireWrite";
 	}
+	
 	// 회원 일반 문의
-	@RequestMapping("/QnAWrite")
+	@RequestMapping("/myPage/QnAWrite")
 	public String QnAWrite() {
 		return "board/QnAWrite";
+	}
+	
+	// 회원 일반 문의글 작성
+	@PostMapping("/4/QnAWrite")
+	public String QnaWriteInsert(Board board,
+			@SessionAttribute("loginMember") Member loginMember	,
+			RedirectAttributes ra
+			) {
+		
+		board.setMemberNo(loginMember.getMemberNo());
+		
+		int result = service.QnaWriteInsert(board);
+		
+		
+		String path = "redirect:/myPage/oneOnOneInquiry";
+		if(result > 0) {
+			
+			
+			ra.addFlashAttribute("message", "문의글이 작성 되었습니다.");
+			
+		} else {
+			
+			ra.addFlashAttribute("message", "[error] 작성 실패");
+		}
+		
+		return path;
 	}
 }

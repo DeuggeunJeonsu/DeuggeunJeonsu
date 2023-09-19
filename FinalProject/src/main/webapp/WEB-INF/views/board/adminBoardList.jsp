@@ -38,13 +38,13 @@
 
 
 			<div class="userList">
-				<a href="/userList" id="userList-link"><div
+				<a href="/admin/userList" id="userList-link"><div
 						class="fa-solid fa-users" id="userImg"></div> <label id="userImg">회원
 						목록</label></a>
 			</div>
 
 			<div class="inquiry1">
-				<a href="/adminInquiry" id="inquiryList-link">
+				<a href="/admin/adminInquiry" id="inquiryList-link">
 					<div class="fa-solid fa-envelope-circle-check" id="inquiry2"
 						name="1"></div> <label id="inquiry2">회원 문의</label>
 				</a>
@@ -55,7 +55,7 @@
 		<div class="adBody">
 
 			<div class="workOut">
-				<a href="/shareBoard">
+				<a href="/board/1/list">
 					<div id="wo1">
 						<div id="wo2">
 
@@ -71,7 +71,7 @@
 		</div>
 
 		<div class="notification">
-			<a href="/notificationList">
+			<a href="/board/2/list">
 				<div id="nc1">
 					<div id="nc2">
 
@@ -88,14 +88,14 @@
 
 
 		<div class="information">
-			<a href="/informationBoard/list">
+			<a href="/board/3/list">
 				<div id="im1">
 					<div id="im2">
 
-						<div id="im3">공지사항 게시판</div>
+						<div id="im3">자유 게시판</div>
 
 						<div id="im4">
-							<img src="/resources/images/admin/admin2.jpg">
+							<img src="/resources/images/admin/admin4.jpg">
 						</div>
 
 					</div>
@@ -106,14 +106,15 @@
 
 
 		<div class="freeBoard">
-			<a href="/freeBoard/list">
+			<a href="/board/4/list">
 				<div id="fb1">
 					<div id="fb2">
 
-						<div id="fb3">자유 게시판</div>
+						<div id="fb3">공지사항 게시판</div>
+						
 
 						<div id="fb4">
-							<img src="/resources/images/admin/admin4.jpg">
+							<img src="/resources/images/admin/admin2.jpg">
 						</div>
 
 					</div>

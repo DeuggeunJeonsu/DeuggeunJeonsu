@@ -15,8 +15,20 @@ public class AdminDAO {
 	private SqlSessionTemplate sqlSession;
 	
 	
+	/** 회원 목록 조회
+	 * @return memberList
+	 */
 	public List<AdminMember> selectMember() {
 		return sqlSession.selectList("adminMapper.selectMember", null);
+	}
+
+
+	/** 회원 탈퇴
+	 * @param member
+	 * @return
+	 */
+	public int userDel(AdminMember member) {
+		return sqlSession.update("adminMapper.userDel", member);
 	}
 
 }

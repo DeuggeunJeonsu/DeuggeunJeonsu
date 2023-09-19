@@ -3,6 +3,7 @@ package com.jeonsu.deuggeun.board.model.service;
 import java.util.Map;
 
 import com.jeonsu.deuggeun.board.model.dto.Board;
+import com.jeonsu.deuggeun.member.model.dto.Member;
 
 public interface jhjBoardService {
 
@@ -49,6 +50,12 @@ public interface jhjBoardService {
 	 * @return result
 	 */
 	int ncDelete(Board board);
+
+	/** 1:1 문의글 작성
+	 * @param board
+	 * @return result
+	 */
+	int QnaWriteInsert(Board board);
 
 
 
