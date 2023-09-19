@@ -100,10 +100,10 @@
 
         <%-- 팔로잉순 말풍선 --%>
         <c:if test="${!empty loginMember}" >
-        </c:if>
             <div class="ballon floating">
                 내가 팔로잉한 회원의 게시글 확인하기! 👀💬
             </div>
+        </c:if>
 
         <div id="list-area">
 
@@ -204,9 +204,6 @@
             </ul>
         </div>
 	</section>
-
-    <!-- footer include -->
-	<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
 
     <%-- freeBoardList.js 연결 --%>
     <script src="/resources/js/board/freeBoard/freeBoardList.js"></script>
