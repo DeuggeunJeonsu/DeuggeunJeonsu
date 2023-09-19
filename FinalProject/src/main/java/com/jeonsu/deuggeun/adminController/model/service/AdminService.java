@@ -17,4 +17,9 @@ public interface AdminService {
 	 */
 	int userDel(AdminMember member);
 
+	/** 회원 문의 목록 조회
+	 * @return boardList
+	 */
+	Map<String, Object> selectInquiryList();
+
 }

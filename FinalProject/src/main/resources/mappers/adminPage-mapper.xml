@@ -13,6 +13,10 @@
 		<result property="tagNo" column="TAG_NO" />
 		<result property="readCount" column="READ_COUNT" />
 		
+		
+		<result property="adminCheckFl" column="ADMIN_CHECK_FL" />
+		<result property="inquiryType" column="INQUIRY_TYPE" />
+		
 		<result property="memberNo" column="MEMBER_NO" />
 		<result property="memberEmail" column="MEMBER_EMAIL" />
 		<result property="memberNickname" column="MEMBER_NICKNAME" />
@@ -26,6 +30,10 @@
 		<result property="likeCount" column="LIKE_COUNT" />
 
 	</resultMap>
+	
+	
+	
+	
 	
 	<select id="selectMember" resultMap="adminBoard_rm">
 	
@@ -41,5 +49,12 @@
 		MEMBER_DEL_FL = 'Y'
 		WHERE MEMBER_NO = #{memberNo}
 	</update>
+	
+	<select id="selectInquiryList" resultMap="adminBoard_rm">
+		SELECT BOARD_NO, BOARD_TITLE, INQUIRY_TYPE , MEMBER_EMAIL, ADMIN_CHECK_FL
+		FROM BOARD
+		JOIN INQUIRY USING(BOARD_NO)
+		JOIN MEMBER USING(MEMBER_NO)
+	</select>
 
 </mapper>

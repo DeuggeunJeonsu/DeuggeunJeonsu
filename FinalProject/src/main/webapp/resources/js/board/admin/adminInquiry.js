@@ -42,3 +42,26 @@ $(".iq-update").click(function () {
         }
     })
   });
+
+
+  
+  const adminCheckFl = document.getElementsByClassName("adminCheckFl");
+  const inquiryType = document.getElementsByClassName("inquiryType");
+
+  const adminCheckFl2 = document.getElementsByClassName("adminCheckFl2").value;
+  const inquiryType2 = document.getElementsByClassName("inquiryType2").value;
+
+  (() => {
+
+    for(let i = 0 ; i < adminCheckFl.length ; i++ ){
+
+      if(adminCheckFl2[i] == 'N'){
+
+        adminCheckFl[i].innerHTML = "미답변";
+
+      }else{
+        adminCheckFl[i].innerHTML = "답변 완료";
+      }
+    }
+
+  })();
