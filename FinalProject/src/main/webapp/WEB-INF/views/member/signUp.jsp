@@ -36,10 +36,18 @@
         <label class="imp" for="memberEmail">아이디(이메일)</label>
         <div>
           <input type="text" name = "memberEmail" id = "memberEmail" placeholder="예 : email@gmail.com"  required>
-          <button type="button">중복확인</button>
+          <button id="sendAuthKeyBtn" type="button">인증 받기</button>
         </div>
       <p class="signUp-message" id="emailMessage">메일을 받을 이메일을 작성해주세요.</p>
+      <div>
+        <div>
+          <input type="text" name = "authKey" id = "authKey" placeholder="인증번호 입력" maxlength="6" autocomplete="off">
+          <button type="button">인증하기</button>
+          <p class="signUp-message" id="authKeyMessage"></p>
+        </div>
       </div>
+      </div>
+
       
 
       <br>
@@ -59,6 +67,7 @@
         <label class="imp">닉네임</label>
         
         <input type="text" placeholder="닉네임을 입력해주세요" name = "memberNickname" id = "memberNickname" required>
+        <p class="signUp-message" id="nickMessage">한글,영어,숫자로만 2~10글자</p>
       </div>
 
       <div>
@@ -535,7 +544,7 @@
 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     
-    <script src="/resources/js/member/signUp.js"></script>
+    <script src="/resources/js/member/signUP.js"></script>
   
 </body>
 
