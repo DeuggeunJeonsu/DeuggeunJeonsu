@@ -40,7 +40,7 @@ main .title-area p:nth-of-type(2){
 }
 
 /* 서브 타이틀 부분 */
-.find-area > p{
+.find-area p{
     text-align: center;
     margin-bottom: 10px;
     font-size: 20px;
@@ -99,8 +99,12 @@ main section:nth-of-type(2){
     padding-right: 25px;
 }
 
-/* 아이디/비밀번호찾기, 아이디 찾기 결과창 버튼 부분 */
-#findIdBtn, #findPwBtn, #resultRoginBtn, #resultFindPwBtn {
+/* 아이디/비밀번호찾기 버튼, 
+    아이디 찾기 결과창 버튼,
+    비밀번호 변경 버튼*/
+#findIdBtn, #findPwBtn, 
+#resultRoginBtn, #resultFindPwBtn,
+#changePwBtn {
     cursor: pointer;
     display: inline-block;
     width: 100%;

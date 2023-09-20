@@ -1,5 +1,6 @@
 package com.jeonsu.deuggeun.todolist.model.dao;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -21,8 +22,13 @@ public class TodoListDao {
 	}
 
 	// 선택한 날짜에 대한 todolist 상세 가져오기  
-	public List<TodoList> DetailedTodoList(String choiceTodoDate) {
-		return sqlSession.selectList("todolistMapper.DetailedTodoList", choiceTodoDate);
+	public List<TodoList> DetailedTodoList(String choiceTodoDate, int loginMemberNo) {
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("choiceTodoDate", choiceTodoDate);
+		map.put("loginMemberNo", loginMemberNo);
+		
+		return sqlSession.selectList("todolistMapper.DetailedTodoList", map);
 	}
 
 	//  체크박스 상태에 대한 결과 DB반영

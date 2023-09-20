@@ -85,7 +85,6 @@
         
     </body>
 
-    <script src="/resources/js/main.js"></script>
     <script src="/resources/js/member/findInfo.js"></script>
     <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 

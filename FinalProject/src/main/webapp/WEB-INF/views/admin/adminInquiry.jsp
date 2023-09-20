@@ -71,8 +71,8 @@
 					<div class="userSearch">
 						<select id="division">
 							<option>구분 선택</option>
-							<option>1:1문의</option>
-							<option>상품 문의</option>
+							<option id="option1">1:1문의</option>
+							<option id="option2">상품 문의</option>
 						</select>
 						<div class="search-place">
 							<input type="search" id="market-search" placeholder="search...">
@@ -98,17 +98,24 @@
 							<tbody>
 
 								<c:forEach items="${boardList}" var="board">
-									<tr>
-										<td>${board.boardNo}</td>
-										<td><a href="#" class="iq-update">${board.boardTitle}</a></td>
-										<td class="inquiryType" >${board.inquiryType}</td>
-										<td>${board.memberEmail}</td>
-										<td  class="complete adminCheckFl">${board.adminCheckFl}</td>
-									</tr>
+											<tr>
+												<td>${board.boardNo}</td>
+												<td><a href="#" class="iq-update">${board.boardTitle}</a></td>
+												<td class="inquiryType" >${board.inquiryType}</td>
+												<td>${board.memberEmail}</td>
 
-									<input type="hidden" class="adminCheckFl2" value="${board.adminCheckFl}" />
-									<input type="hidden" class="inquiryType2" value="${board.inquiryType}" />
+
+
+												<td  class="complete adminCheckFl">${board.adminCheckFl}</td>
+
+
+
+											</tr>
+
+											<input type="hidden" class="adminCheckFl2" value="${board.adminCheckFl}" />
+											<input type="hidden" class="inquiryType2" value="${board.inquiryType}" />
 								</c:forEach>
+								
 								
 							</tbody>
 						</table>

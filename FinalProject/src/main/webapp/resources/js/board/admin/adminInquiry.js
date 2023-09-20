@@ -44,24 +44,49 @@ $(".iq-update").click(function () {
   });
 
 
-  
+  /* 답변 여부 */
   const adminCheckFl = document.getElementsByClassName("adminCheckFl");
+  const adminCheckFl2 = document.getElementsByClassName("adminCheckFl2");
+  
   const inquiryType = document.getElementsByClassName("inquiryType");
-
-  const adminCheckFl2 = document.getElementsByClassName("adminCheckFl2").value;
-  const inquiryType2 = document.getElementsByClassName("inquiryType2").value;
+  const inquiryType2 = document.getElementsByClassName("inquiryType2");
 
   (() => {
 
     for(let i = 0 ; i < adminCheckFl.length ; i++ ){
 
-      if(adminCheckFl2[i] == 'N'){
+      if(adminCheckFl2[i].value == 'N'){
 
         adminCheckFl[i].innerHTML = "미답변";
+        adminCheckFl[i].style.color = "black";
+
 
       }else{
         adminCheckFl[i].innerHTML = "답변 완료";
       }
+
+
+      if(inquiryType2[i].value == '1'){
+        inquiryType[i].innerHTML = "1:1 문의";
+
+      }else if(inquiryType2[i].value == '3'){
+        inquiryType[i].innerHTML = "상품/교환";
+      }else{
+        inquiryType[i].innerHTML = "상품/취소";
+      }
     }
 
   })();
+
+/* 옵션 맞는 문의목록 조회 */
+const option1 = document.getElementById("option1");
+const option2 = document.getElementById("option2");
+
+option1.addEventListener("click", () => {
+
+  fetch("/admin/selectInquiry")
+  .then()
+  .then()
+  .catch()
+
+})

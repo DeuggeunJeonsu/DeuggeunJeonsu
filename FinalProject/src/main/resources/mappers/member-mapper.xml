@@ -66,19 +66,18 @@
       AND MEMBER_TEL = #{memberTel}
    </select>
    
-   <!-- 아이디로 회원 조회 -->
-   <select id="selectMemberEmail" parameterType="string" resultType="_int">
-      SELECT COUNT(*)
+   <!-- 아이디(이메일)로 회원 조회 -->
+   <select id="selectMemberByEmail" parameterType="string" resultMap="member_rm">
+      SELECT MEMBER_NO, MEMBER_NICKNAME
       FROM "MEMBER"
       WHERE MEMBER_DEL_FL = 'N'
       AND MEMBER_EMAIL = #{memberEmail}
    </select>
    
-   <!-- 비밀번호 변경 -->
+   <!-- 비밀번호찾기 인증 후 비밀번호 변경 -->
    <update id="changePw">
 	  UPDATE MEMBER SET MEMBER_PW = #{newMemberPw}
-	  WHERE MEMBER_EMAIL = #{memberEmail}
-	  AND MEMBER_PW = #{memberPw}
+	  WHERE MEMBER_NO = #{memberNo}
    </update>
    
    <!-- 회원 BMI 히스토리 불러오기 -->

@@ -15,14 +15,17 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttribute;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.jeonsu.deuggeun.todolist.model.service.TodoListService;
+import com.jeonsu.deuggeun.member.model.dto.Member;
 import com.jeonsu.deuggeun.todolist.model.dto.TodoList;
 
 
 @Controller
 @ResponseBody
-//@SessionAttributes({"loginMember"})
+@SessionAttributes({"loginMember"})
 public class TodoListController {
 
 	@Autowired
@@ -69,9 +72,13 @@ public class TodoListController {
 
 	// 상세 투두리스트 가져오기 
 	@PostMapping(value = "/todoDetaile", produces = "application/json; charset=UTF-8")
-	public List<TodoList> todoListDetail  ( @RequestParam("choiceTodoDate") String choiceTodoDate ){
-		List<TodoList> detailedTodoList = service.DetailedTodoList(choiceTodoDate);
-//		System.out.println(detailedTodoList);
+	public List<TodoList> todoListDetail  ( @RequestParam("choiceTodoDate") String choiceTodoDate 
+			 ,@SessionAttribute("loginMember") Member loginMember
+			){
+
+		int loginMemberNo =loginMember.getMemberNo();
+		
+		List<TodoList> detailedTodoList = service.DetailedTodoList(choiceTodoDate,loginMemberNo);
 		return detailedTodoList;
 	}
 
@@ -90,7 +97,6 @@ public class TodoListController {
 	// 체크리스트 추가
 	@PostMapping("/todo/insert")
 	public int todoInsert(@RequestBody TodoList insertTodo) {
-		System.out.println(insertTodo);
 		return service.todoInsert(insertTodo);
 	}
 

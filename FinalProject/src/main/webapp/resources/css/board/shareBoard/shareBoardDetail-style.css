@@ -573,6 +573,10 @@ hr{ border-bottom: 2px solid #ddd;}
     margin: auto;
     padding: 0;
     list-style:none;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+
 }
 .comment-writer {
     display: flex;
@@ -592,12 +596,24 @@ hr{ border-bottom: 2px solid #ddd;}
     font-size: 0.8em;
     color: #aaa;
 }
-
-.comment-row{
-    padding : 15px 0;
-    display: flex;
+.comment-row > img{
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    left: -50px;
+    top: 40px;
 }
-.comment-row > p:nth-child(1){
+.comment-row{
+    position: relative;
+    padding: 15px 15px 15px 30px;
+    display: flex;
+    border-bottom: 3px solid #eee;
+    background-color: #fff;
+    border-radius: 10px;
+    width: 100%;
+    margin: 5px;
+}
+.comment-row > p:first-of-type{
     display: flex;
     flex-direction: column;
 }
@@ -666,6 +682,7 @@ hr{ border-bottom: 2px solid #ddd;}
 }
 .child-comment{
     padding-left: 50px;
+    width: 90%;
 }
 
 /* 모달 */

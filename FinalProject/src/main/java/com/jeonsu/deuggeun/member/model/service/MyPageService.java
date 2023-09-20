@@ -39,8 +39,16 @@ public interface MyPageService {
 
 	/** 마이페이지 멤버 피드 조회
 	 * @param memberNo
+	 * @param cp 
+	 * @param cp 
 	 * @return map
 	 */
-	Member selectFeedMember(int memberNo);
+	Map<String, Object> selectFeedMember(int loginMemberNo, int memberNo, int cp);
+
+	/** 마이페이지 팔로우 수 조회
+	 * @param paramMap
+	 * @return map
+	 */
+	Map<String, Object> selectFollowCount(Map<String, Object> paramMap);
 
 }
