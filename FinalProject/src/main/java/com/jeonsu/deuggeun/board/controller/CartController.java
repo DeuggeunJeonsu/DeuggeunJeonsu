@@ -17,8 +17,10 @@ public class CartController {
         this.service = service;
     }
 
+    // 장바구니에 상품 담기
     @PostMapping("/addToCart")
     public int addToCart(@RequestBody Cart cart) {
+        System.out.println("컨트롤러 실행!!!");
         return service.addToCart(cart);
     }
 

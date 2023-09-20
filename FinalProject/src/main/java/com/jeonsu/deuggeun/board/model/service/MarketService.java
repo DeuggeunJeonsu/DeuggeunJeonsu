@@ -56,4 +56,7 @@ public interface MarketService {
 
     // 장바구니 상품담기
     int addToCart(Cart cart);
+
+    // 장바구니 페이지 조회
+    Cart selectCart(Map<String, Object> map);
 }
