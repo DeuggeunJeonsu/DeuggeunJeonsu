@@ -2,6 +2,7 @@ package com.jeonsu.deuggeun.board.controller;
 
 import com.jeonsu.deuggeun.board.model.dto.*;
 import com.jeonsu.deuggeun.member.model.dto.Member;
+import oracle.jdbc.proxy.annotation.Post;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -68,23 +69,63 @@ public class MarketController {
 	}
 
 	// 장바구니 페이지 이동
-	@GetMapping("/cartList/{memberNo}")
+	@GetMapping("/cartList")
 	public String cartList(Model model,
-						   @PathVariable("memberNo") int memberNo,
 						   RedirectAttributes ra,
-						   @SessionAttribute("loginMember") Member loginMember){
+						   @SessionAttribute(value = "loginMember", required = false) Member loginMember) {
 
+		int memberNo = loginMember.getMemberNo();
 		int boardCode = 5;
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("memberNo", memberNo);
 		map.put("boardCode", boardCode);
 
-		Cart cart = service.selectCart(map);
+		List<Cart> cartList = service.selectCart(map);
 
+		model.addAttribute("cartList", cartList);
 
 		return "/board/market/marketCart";
 	}
 
+	// 주문하기 페이지로 이동
+	@GetMapping("/marketOrder")
+	public String orderPage( @SessionAttribute(value = "loginMember", required = false) Member loginMember,
+							 Model model,
+							 RedirectAttributes ra
+	){
+		int memberNo = loginMember.getMemberNo();
+		int boardCode = 5;
+
+		Map<String, Object> map = new HashMap<String, Object>();
+
+		map.put("memberNo", memberNo);
+		map.put("boardCode", boardCode);
+
+		List<Cart> cartList = service.selectCart(map);
+		Map<String, Object> map2 = new HashMap<String, Object>();
+		map2.put("cartList", cartList);
+		model.addAttribute("map2", map2);
+		System.out.println("map2의 값 : " + map2);
+
+		return "/board/market/marketOrder";
+	}
+
+	// 결제하기
+//	@GetMapping("/payments")
+//	public String payments(@SessionAttribute(value = "loginMember", required = false) Member loginMember,
+//						   @RequestParam String delName,
+//						   @RequestParam String delPhone,
+//						   @RequestParam String delZip,
+//						   @RequestParam String delAddress,
+//						   @RequestParam String delNotes,
+//						   Model model,
+//						   RedirectAttributes ra){
+//
+//		int memberNo = loginMember.getMemberNo();
+//
+//		return "/board/market/marketCart";
+//
+//	}
 
 	// 게시글 상세조회
 	@GetMapping("/{boardCode}/detail/{productNo}")
@@ -115,8 +156,6 @@ public class MarketController {
 			path = "board/market/marketDetail";
 			model.addAttribute("productImageList", productImageList);
 			model.addAttribute("product", product);
-//			System.out.println("pro 이미지 리스트 : " + productImageList);
-//			System.out.println("product의 값" + product);
 
 		}else{
 			path = "redirect:/board/" + boardCode + "/list";
@@ -609,9 +648,5 @@ public class MarketController {
 	@GetMapping("/marketCart")
 	public String marketCart() {
 		return "board/market/marketCart";
-	}
-	@GetMapping("/marketOrder")
-	public String Order() {
-		return "board/market/marketOrder";
 	}
 }

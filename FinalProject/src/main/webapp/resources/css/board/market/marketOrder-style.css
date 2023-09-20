@@ -115,7 +115,7 @@ textarea{
 /* fixed 컨테이너 */
 .fixed-con{
     position: fixed;
-    left : 1150px;
+    left : 1200px;
     top: 250px;
 } 
 

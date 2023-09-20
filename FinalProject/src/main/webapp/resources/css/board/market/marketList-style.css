@@ -36,7 +36,7 @@ a{
     /*padding: 30px;*/
 }
 .place{
-    height: 150px;
+    height: 100px;
 }
 /* 게시판 제목 영역 */
 #title-area > div:nth-of-type(1){
@@ -101,8 +101,6 @@ a{
 span{
     font-size: 18px;
 }
-
-/* 게시글 썸네일 영역*/
 #list-area{
     margin-top: 30px;
     display: grid;
@@ -110,7 +108,6 @@ span{
     grid-template-rows: 330px 330px 330px;
     row-gap: 80px;
     column-gap: 80px;
-
     justify-content: center;
 }
 #list-area2{
