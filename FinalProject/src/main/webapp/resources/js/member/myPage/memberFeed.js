@@ -49,10 +49,6 @@ function unfollowBtnClick(){
         "boardMemberNo" : memberNo
     }
 
-    console.log(loginMemberNo);
-    console.log(memberNo);
-
-
         fetch("/myPage/memberFeed/" + memberNo + "/unfollow", {
             method : "POST",
             headers : {"Content-Type" : "application/json"},
@@ -75,18 +71,46 @@ const followInfoAreas = document.querySelectorAll('.followInfoArea');
 const followListArea = document.getElementById("followListArea");
 
 // 팔로우, 팔로잉 중 누른 버튼만 색 바꾸기
-followInfoAreas.forEach((list) => {
+followInfoAreas[0].addEventListener("click", ()=>{
 
-    list.addEventListener('click', () => {
+    if(followInfoAreas[0].classList.contains("clickList")){
+        followInfoAreas[0].classList.remove("clickList")
+        followInfoAreas[1].classList.remove("clickList")
 
-        followInfoAreas.forEach((otherlist) => {
-            otherlist.classList.remove("clickList");
-        })
+    } else {
 
-        list.classList.add("clickList");
-    });
+        if(followInfoAreas[1].classList.contains("clickList")){
+            followInfoAreas[0].classList.remove("clickList");
+            followInfoAreas[1].classList.remove("clickList");
+            return;
+        }
 
-});
+        followInfoAreas[0].classList.add("clickList")
+        followInfoAreas[1].classList.remove("clickList")
+    }
+
+})
+
+followInfoAreas[1].addEventListener("click", ()=>{
+  
+    if(followInfoAreas[1].classList.contains("clickList")){
+        followInfoAreas[1].classList.remove("clickList");
+        followInfoAreas[0].classList.remove("clickList");
+        
+    } else {
+
+        if(followInfoAreas[0].classList.contains("clickList")){
+            followInfoAreas[1].classList.remove("clickList");
+            followInfoAreas[0].classList.remove("clickList");
+            return;
+        }
+
+        followInfoAreas[1].classList.add("clickList")
+        followInfoAreas[0].classList.remove("clickList")
+    }
+    
+})
+
 
 // 리스트 토글 함수
 function toggleFollowList() {

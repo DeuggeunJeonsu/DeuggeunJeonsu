@@ -11,6 +11,7 @@
 		<result property="boardCreateDate" column="CREATE_DT" />
 		<result property="boardState" column="BOARD_ST" />
 		<result property="boardUpdateDate" column="UPDATE_DT" />
+		<result property="boardCode" column="BOARD_CODE" />
 		<result property="tagNo" column="TAG_NO" />
 
 		<result property="memberNo" column="MEMBER_NO" />
@@ -319,6 +320,40 @@
 			</when>
 		</choose>
 
-		
+	</select>
+	
+	<!-- 마이페이지 - 피드 주인의 게시글 수 조회 -->
+	<select id="getBoardCount" resultType="_int">
+		SELECT COUNT(*)
+		FROM "BOARD"
+		JOIN "MEMBER" USING(MEMBER_NO)
+		WHERE BOARD_ST = 'N'
+		AND MEMBER_NO = #{memberNo}
+
+		ORDER BY BOARD_NO DESC
+	</select>
+	
+	<!-- 마이페이지 - 피드 주인의 게시글 목록 조회 -->
+	<select id="selectFeedBoardList" resultMap="freeBoard_rm">
+		SELECT BOARD_NO,
+		BOARD_TITLE, MEMBER_NICKNAME, TO_CHAR(CREATE_DT, 'YY.MM.DD')
+		CREATE_DT, BOARD_CODE,
+
+		(SELECT COUNT(*) FROM "COMMENT" C
+		WHERE C.BOARD_NO = B.BOARD_NO) COMMENT_COUNT,
+
+		(SELECT COUNT(*) FROM LIKE_POST L
+		WHERE L.BOARD_NO = B.BOARD_NO) LIKE_COUNT,
+
+		(SELECT IMG_PATH || IMG_RENAME FROM BOARD_IMG I
+		WHERE I.BOARD_NO = B.BOARD_NO
+		AND IMG_LEVEL = 0) THUMBNAIL
+
+		FROM "BOARD" B
+		JOIN "MEMBER" USING(MEMBER_NO)
+		WHERE BOARD_ST = 'N'
+		AND MEMBER_NO = #{memberNo}
+
+		ORDER BY BOARD_NO DESC
 	</select>
 </mapper>

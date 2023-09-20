@@ -43,12 +43,9 @@
                 <div>
                     <select id="selectBox">
                         <option>주문 처리 상태</option>
-                        <option>결제 대기 중</option>
                         <option>결제 완료</option>
                         <option>배송 완료</option>
-                        <option>취소 완료</option>
-                        <option>교환 완료</option>
-                        <option>반품 완료</option>
+                        <option>취소/교환/반품 완료</option>
                     </select>
                 </div>
 
@@ -72,7 +69,7 @@
                                 <td>00012354</td>
                                 <td>단백질 쉐이크</td>
                                 <td>35,000</td>
-                                <td>결제 대기 중</td>
+                                <td>결제 완료</td>
                                 <td>
                                     <button class="inquiryBtn inquiryBtnColor2">문의하기</button>
                                 </td>
@@ -137,7 +134,7 @@
                                 <td>00012354</td>
                                 <td>단백질 쉐이크</td>
                                 <td>35,000</td>
-                                <td>결제 대기 중</td>
+                                <td>결제 완료</td>
                                 <td>
                                     <button class="inquiryBtn inquiryBtnColor2">문의하기</button>
                                 </td>
@@ -150,7 +147,7 @@
                                 <td>00012354</td>
                                 <td>단백질 쉐이크</td>
                                 <td>35,000</td>
-                                <td>결제 대기 중</td>
+                                <td>결제 완료</td>
                                 <td>
                                     <button class="inquiryBtn inquiryBtnColor2">문의하기</button>
                                 </td>
@@ -163,7 +160,7 @@
                                 <td>00012354</td>
                                 <td>단백질 쉐이크</td>
                                 <td>35,000</td>
-                                <td>결제 대기 중</td>
+                                <td>결제 완료</td>
                                 <td>
                                     <button class="inquiryBtn inquiryBtnColor2">문의하기</button>
                                 </td>
@@ -176,7 +173,7 @@
                                 <td>00012354</td>
                                 <td>단백질 쉐이크</td>
                                 <td>35,000</td>
-                                <td>결제 대기 중</td>
+                                <td>결제 완료</td>
                                 <td>
                                     <button class="inquiryBtn inquiryBtnColor2">문의하기</button>
                                 </td>
@@ -189,7 +186,7 @@
                                 <td>00012354</td>
                                 <td>단백질 쉐이크</td>
                                 <td>35,000</td>
-                                <td>결제 대기 중</td>
+                                <td>결제 완료</td>
                                 <td>
                                     <button class="inquiryBtn inquiryBtnColor2">문의하기</button>
                                 </td>
@@ -202,7 +199,7 @@
                                 <td>00012354</td>
                                 <td>단백질 쉐이크</td>
                                 <td>35,000</td>
-                                <td>결제 대기 중</td>
+                                <td>결제 완료</td>
                                 <td>
                                     <button class="inquiryBtn inquiryBtnColor2">문의하기</button>
                                 </td>
@@ -215,7 +212,7 @@
                                 <td>00012354</td>
                                 <td>단백질 쉐이크</td>
                                 <td>35,000</td>
-                                <td>결제 대기 중</td>
+                                <td>결제 완료</td>
                                 <td>
                                     <button class="inquiryBtn inquiryBtnColor2">문의하기</button>
                                 </td>

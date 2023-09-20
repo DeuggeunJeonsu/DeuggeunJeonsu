@@ -1,3 +1,5 @@
+let isFollowingListPage = true;
+
 // 팔로잉, 언팔로우 버튼 토글
 const customBtns = document.querySelectorAll('.customBtn');
 
@@ -33,6 +35,32 @@ followListBtns.forEach((btn)=>{
         btn.classList.add("listBtnClick");
     })
 })
+
+// 팔로잉, 팔로워 수 조회
+const followingCountArea = document.getElementById("following-count-area");
+const followerCountArea = document.getElementById("follower-count-area");
+
+function selectFollowCount(){
+
+    fetch("/myPage/followingFollower/selectFollowCount", {
+        method : "POST",
+        headers : {"Content-Type" : "application/json"},
+        body : JSON.stringify({"memberNo" : memberNo})
+    })
+    .then(resp => resp.json())
+    .then(map => {
+
+        const followingCount = map.followingTotalCount;
+        const followerCount = map.followerTotalCount;
+
+        followingCountArea.innerHTML = followingCount;
+        followerCountArea.innerHTML = followerCount;
+
+    })
+    .catch(err => console.log(err))
+
+}
+
 
 // 팔로우 목록 조회 영역
 const followListArea = document.getElementById("follow-list-area");
@@ -113,6 +141,8 @@ function selectFollowingList(){
             div.appendChild(a2);
             div.appendChild(div4);
             followListArea.appendChild(div);
+
+            isFollowingListPage = true;
         }
     })
     .catch(err => {console.log(err)})
@@ -213,6 +243,8 @@ function selectFollowerList(){
             div.appendChild(a2);
             div.appendChild(div4);
             followListArea.appendChild(div);
+
+            isFollowingListPage = false;
         }
     })
     .catch(err => {console.log(err)})
@@ -235,6 +267,7 @@ function followBtnClick(followMemberNo){
         .then(result => {
             alert("팔로우 되었습니다. 🤩")
             selectFollowerList();
+            selectFollowCount();
         })
         .catch(err => console.log(err))
 }
@@ -255,8 +288,15 @@ function unfollowBtnClick(followingMemberNo){
         .then(resp => resp.json())
         .then(result => {
             alert("언팔로우 되었습니다. 🙏")
-            selectFollowingList();
-            selectFollowerList();
+
+            if(isFollowingListPage){
+                selectFollowingList();
+
+            } else{
+                selectFollowerList();
+            }
+
+            selectFollowCount();
         })
         .catch(err => console.log(err))
 }

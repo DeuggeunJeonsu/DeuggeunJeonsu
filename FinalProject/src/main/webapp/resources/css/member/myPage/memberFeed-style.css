@@ -277,7 +277,7 @@
     overflow-y: scroll;
 
     width: 300px;
-    height: 400px;
+    height: 350px;
 
     box-shadow: 0px 0px 5px #ddd;
     border-radius: 5px;
@@ -338,8 +338,7 @@
 
 /* 팔로우 리스트 클릭 시 효과 */
 .clickList{
-    font-weight: bold;
-    color: #99E1ED;
+    background: linear-gradient(to top, #ffd21c54 50%, transparent 50%);
 }
 
 .textCenter{
@@ -417,6 +416,7 @@
 /* 작성한 게시글 목록 조회 영역 */
 #member-board-area{
     height: 1200px;
+    margin-bottom: 90px;
 }
 
 #member-board-area > div:first-of-type{
@@ -429,19 +429,23 @@
 }
 
 #board-area-middle{
-    margin-top: 20px;
+    margin-top: 50px;
 
     display: grid;
     grid-template-columns: 250px 250px 250px;
     grid-template-rows: 330px 330px 330px;
-    row-gap: 50px;
-    column-gap: 90px;
+    row-gap: 70px;
+    column-gap: 120px;
 
     justify-content: center;
+    
 }
 
 /* 게시글 썸네일 */
 .thumbnail{
+
+    margin: 10px;
+
     width: 250px;
     height: 330px;
     border: 1px solid #ddd;
@@ -457,7 +461,12 @@
     transition-duration: 0.5s;
 }
 
-.thumbnail > div:first-of-type{
+.thumbnail > a {
+    text-decoration: none;
+    color: #797979;
+}
+
+.thumbnail  >a> div:first-of-type{
     height: 60%;
 
     display: flex;
@@ -469,11 +478,20 @@
     border-radius: 5px 5px 0 0;
 }
 
-.thumbnail > div:first-of-type> img{
-    width: 200px;
+#default-logo{
+    width: 100%;
+    height: auto;
 }
 
-.thumbnail > div:nth-of-type(2){
+.thumbnail >a> div:first-of-type> img{
+    width: 100%;
+    height: 100%;
+
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+}
+
+.thumbnail >a> div:nth-of-type(2){
     height: 40%;
     padding: 10px;
 
@@ -483,7 +501,6 @@
 /* 게시글 제목 */
 .title{
     font-size: 20px;
-    /* font-weight: bold; */
 }
 
 /* 게시글 작성일, 좋아요 영역 */
@@ -504,7 +521,6 @@
 .profileArea > img{
     width: 40px;
     border-radius: 50%;
-    border: 1px solid #ddd;
 }
 
 /* 닉네임 영역 */
@@ -515,17 +531,8 @@
 
 /* 좋아요 영역 */
 .profile-area > div:nth-of-type(3){
-    margin-left: 90px;
+    margin-left: 109px;
     width: 120px;
-}
-
-/* 페이지네이션 영역 */
-#pagination-area{
-    height: 100px;
-    
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 /* ------------------------------------------------------------------------------------- */
@@ -699,4 +706,47 @@
 	100% {
 		-webkit-transform: translateY(0%);
 	}			
+}
+
+/* --------------------------------------------------------------------------------------------- */
+
+/* 페이지네이션 */
+
+.pagination-area {
+    text-align: center;
+    margin: 70px 0;
+    position :relative;
+    border: none !important;
+}
+
+.pagination {
+    display: inline-block;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.pagination li {
+    display: inline;
+    margin: 0 5px;
+}
+
+.pagination li a {
+    text-decoration: none;
+    padding: 5px 10px;
+    background-color: #e6e6e6;
+    color: #000;
+    transition: background-color 0.3s, color 0.3s;
+    border-radius: 10px;
+    /* 버튼 둥글게 만듦 */
+}
+
+.pagination li a.current {
+    background-color: #99E1ED;
+    color: #fff;
+}
+
+.pagination li a:hover {
+    background-color: #99E1ED;
+    color: #fff;
 }

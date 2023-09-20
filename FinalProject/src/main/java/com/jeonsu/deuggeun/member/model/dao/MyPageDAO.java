@@ -103,4 +103,26 @@ public class MyPageDAO {
 		return sqlSession.selectOne("myPageMapper.feedFollowCheck", memberNoMap);
 	}
 	
+	/** 피드 주인의 게시글 수 조회
+	 * @param memberNo
+	 * @return listCount
+	 */
+	public int getBoardCount(int memberNo) {
+		return sqlSession.selectOne("freeBoardMapper.getBoardCount", memberNo);
+	}
+
+	/** 피드 주인의 게시글 목록 조회
+	 * @param pagination 
+	 * @param memberNo
+	 * @return boardList
+	 */
+	public List<Board> selectFeedBoardList(Pagination pagination, int memberNo) {
+		
+		int offset = (pagination.getCurrentPage() - 1) * pagination.getLimit();
+		
+		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
+		
+		return sqlSession.selectList("freeBoardMapper.selectFeedBoardList", memberNo, rowBounds);
+	}
+	
 }
