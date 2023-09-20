@@ -1,4 +1,5 @@
 // 팔로잉, 언팔로우 버튼 토글
+
 const customBtns = document.querySelectorAll('.customBtn');
 
 customBtns.forEach((button) => {
@@ -20,12 +21,60 @@ customBtns.forEach((button) => {
 
 });
 
+// 팔로우 함수
+function followBtnClick(){
+    const data = {
+        "loginMemberNo" : loginMemberNo,
+        "boardMemberNo" : memberNo
+    }
+
+        fetch("/myPage/memberFeed/" + memberNo + "/follow", {
+            method : "POST",
+            headers : {"Content-Type" : "application/json"},
+            body : JSON.stringify(data)
+        })
+        .then(resp => resp.json())
+        .then(result => {
+            alert("팔로우 되었습니다. 🤩")
+            location.reload();
+        })
+        .catch(err => console.log(err))
+}
+
+// 언팔로우 함수
+function unfollowBtnClick(){
+
+    const data = {
+        "loginMemberNo" : loginMemberNo,
+        "boardMemberNo" : memberNo
+    }
+
+    console.log(loginMemberNo);
+    console.log(memberNo);
+
+
+        fetch("/myPage/memberFeed/" + memberNo + "/unfollow", {
+            method : "POST",
+            headers : {"Content-Type" : "application/json"},
+            body : JSON.stringify(data)
+        })
+        .then(resp => resp.json())
+        .then(result => {
+            alert("언팔로우 되었습니다. 🙏")
+            location.reload();
+        })
+        .catch(err => console.log(err))
+}
+
 /* ------------------------------------------------------------------------------------------------ */
 
 // 피드 주인의 팔로우 리스트 버튼
 const followInfoAreas = document.querySelectorAll('.followInfoArea');
 
-// 팔로우, 팔로잉 둘 중 하나만 활성화
+// 팔로우 목록 조회 영역
+const followListArea = document.getElementById("followListArea");
+
+// 팔로우, 팔로잉 중 누른 버튼만 색 바꾸기
 followInfoAreas.forEach((list) => {
 
     list.addEventListener('click', () => {
@@ -35,13 +84,13 @@ followInfoAreas.forEach((list) => {
         })
 
         list.classList.add("clickList");
-        
     });
 
 });
 
+// 리스트 토글 함수
 function toggleFollowList() {
-    var followListArea = document.getElementById("followListArea");
+    const followListArea = document.getElementById("followListArea");
     if (followListArea.style.display === "none") {
         followListArea.style.display = "block";
     } else {
@@ -49,6 +98,171 @@ function toggleFollowList() {
     }
 }
 
+/* ------------------------------------------------------------------------------------------------ */
+
+// 팔로우 목록 버튼
+const followingListBtn = document.getElementsByClassName("followingListBtn")[0];
+const followerListBtn = document.getElementsByClassName("followerListBtn")[0];
+
+// 피드 주인의 팔로잉 목록 조회
+function selectFollowingList(){
+
+    fetch("/myPage/memberFeed/" + memberNo + "/following", {
+        method : "POST",
+        headers : {"Content-Type" : "application/json"},
+        body : ""
+    })
+    .then(resp => resp.json())
+    .then(map => {
+
+        // 팔로잉 리스트
+        const followingList = map.followingList;
+
+        console.log(followingList.length);
+
+        // 팔로잉 목록 조회 영역 비운 뒤 div 추가
+        followListArea.innerHTML = "";
+
+        if(followingList.length == 0){
+
+            followListArea.innerHTML = "";
+            const span = document.createElement("span");
+            span.classList.add('textCenter');
+            span.innerHTML = "<h4>목록이 비어 있습니다. 😅</h4>";
+            followListArea.appendChild(span);
+
+        } else{
+
+            // 팔로잉 리스트에서 팔로워 하나씩 꺼내오기
+            for (const following of followingList) {
+                
+                // 팔로잉 정보
+                const memberNo = following.memberNo;
+                const profileImage = following.profileImage;
+                const memberNickname = following.memberNickname;
+
+                // 팔로잉 리스트 목록 생성
+                
+                // jsp 내 58 ~ 59번째 줄 생성(follow-list 클래스 있는 div)
+                const div = document.createElement("div");
+                const a = document.createElement("a");
+                
+                div.classList.add("follow-list");
+                a.setAttribute("href", "/myPage/memberFeed/" + memberNo);
+                div.append(a);
+                
+                // 60 ~ 69번째 줄 생성(프로필 이미지 있는 div)
+                const div2 = document.createElement("div");
+                const img2 = document.createElement("img");
+                
+                div2.classList.add("followProfileImg");
+                if (profileImage == null) {
+                    img2.setAttribute("src", "/resources/images/user.png");
+                } else {
+                    img2.setAttribute("src", profileImage);
+                }
+                div2.appendChild(img2);
+                
+                // 71 ~ 75번째 줄 생성(닉네임 있는 div)
+                const a2 = document.createElement("a");
+                const div3 = document.createElement("div");
+
+                a2.setAttribute("href", "/myPage/memberFeed/" + memberNo);
+                div3.classList.add("followNickname");
+                div3.innerHTML = memberNickname;
+                a2.appendChild(div3);
+
+                // 전체 요소 합치기
+                div.appendChild(div2);
+                div.appendChild(a2);
+                followListArea.appendChild(div);
+            }
+
+        }
+
+
+    })
+    .catch(err => {console.log(err)})
+}
+
+
+// 피드 주인의 팔로워 목록 조회
+
+// 팔로워 목록 조회 함수
+function selectFollowerList(){
+    
+    fetch("/myPage/memberFeed/" + memberNo + "/follower", {
+        method : "POST",
+        headers : {"Content-Type" : "application/json"},
+        body : ""
+    })
+    .then(resp => resp.json())
+    .then(map => {
+
+        // 팔로워 리스트
+        const followerList = map.followerList;
+
+        if(followerList.length == 0){
+
+            followListArea.innerHTML = "";
+            const span = document.createElement("span");
+            span.classList.add('textCenter');
+            span.innerHTML = "<h4>목록이 비어 있습니다. 😅</h4>";
+            followListArea.appendChild(span);
+
+        } else{
+
+            // 팔로워 목록 조회 영역 비운 뒤 div 추가
+            followListArea.innerHTML = "";
+
+            // 팔로워 리스트에서 팔로워 하나씩 꺼내오기
+            for (const follower of followerList) {
+                
+                // 팔로워 정보
+                const memberNo = follower.memberNo;
+                const profileImage = follower.profileImage;
+                const memberNickname = follower.memberNickname;
+
+                // 팔로워 리스트 목록 생성
+                
+                // jsp 내 58 ~ 59번째 줄 생성(follow-list 클래스 있는 div)
+                const div = document.createElement("div");
+                const a = document.createElement("a");
+                
+                div.classList.add("follow-list");
+                a.setAttribute("href", "/myPage/memberFeed/" + memberNo);
+                div.append(a);
+                
+                // 60 ~ 69번째 줄 생성(프로필 이미지 있는 div)
+                const div2 = document.createElement("div");
+                const img2 = document.createElement("img");
+                
+                div2.classList.add("followProfileImg");
+                if (profileImage == null) {
+                    img2.setAttribute("src", "/resources/images/user.png");
+                } else {
+                    img2.setAttribute("src", profileImage);
+                }
+                div2.appendChild(img2);
+                
+                // 71 ~ 75번째 줄 생성(닉네임 있는 div)
+                const a2 = document.createElement("a");
+                const div3 = document.createElement("div");
+
+                a2.setAttribute("href", "/myPage/memberFeed/" + memberNo);
+                div3.classList.add("followNickname");
+                div3.innerHTML = memberNickname;
+                a2.appendChild(div3);
+
+                // 전체 요소 합치기
+                div.appendChild(div2);
+                div.appendChild(a2);
+                followListArea.appendChild(div);
+            }
+        }
+    })
+    .catch(err => {console.log(err)})
+}
 /* ------------------------------------------------------------------------------------------------ */
 
 // 뱃지 캐러셀
@@ -202,11 +416,12 @@ function leftPad(value) {
 /* 캘린더 말풍선 */
 $(window).scroll(function() {
     $('#animatedElement').each(function(){
-    var imagePos = $(this).offset().top;
+    const imagePos = $(this).offset().top;
 
-    var topOfWindow = $(window).scrollTop();
+    const topOfWindow = $(window).scrollTop();
         if (imagePos < topOfWindow+400) {
             $(this).addClass("slideUp");
         }
     });
 });
+

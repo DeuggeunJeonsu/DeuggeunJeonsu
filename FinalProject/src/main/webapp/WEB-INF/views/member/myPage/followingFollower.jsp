@@ -44,7 +44,7 @@
 
             <div id="main-content-area">
                 <div id="follow-list-btn-area">
-                    <div class="followingListBtn followListBtn listBtnClick">
+                    <div class="followingListBtn followListBtn listBtnClick" onclick='selectFollowingList()'>
                         <div>팔로잉</div>
                         <div>${followingTotalCount}</div>
                     </div>

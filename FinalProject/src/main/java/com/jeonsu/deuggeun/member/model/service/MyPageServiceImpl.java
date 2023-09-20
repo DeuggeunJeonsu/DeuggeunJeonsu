@@ -86,8 +86,35 @@ public class MyPageServiceImpl implements MyPageService {
 
 	// 마이페이지 멤버 피드 조회
 	@Override
-	public Member selectFeedMember(int memberNo) {
-		return dao.selectFeedMember(memberNo);
+	public Map<String, Object> selectFeedMember(int loginMemberNo, int memberNo) {
+		
+		// 피드 주인인 회원 정보 얻어오기
+		Member member = dao.selectFeedMember(memberNo);
+		
+		// 피드 주인의 팔로잉, 팔로워 수 얻어오기
+		int followerTotalCount = dao.getFollowerTotalCount(memberNo);
+		int followingTotalCount = dao.getFollowingTotalCount(memberNo);
+
+		Map<String, Object> memberNoMap = new HashMap<>();
+		memberNoMap.put("loginMemberNo", loginMemberNo);
+		memberNoMap.put("memberNo", memberNo);
+		
+		// 로그인한 회원이 피드 주인을 팔로우했는지 확인하기
+		int result = dao.feedFollowCheck(memberNoMap);
+		
+		int followCheck = 0;
+		
+		if(result > 0) {
+			followCheck = 1;
+		}
+		
+		Map<String, Object> map = new HashMap<>();
+		map.put("feedMember", member);
+		map.put("followerTotalCount", followerTotalCount);
+		map.put("followingTotalCount", followingTotalCount);
+		map.put("followCheck", followCheck);
+		
+		return map;
 	}
 
 }

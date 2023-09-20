@@ -41,6 +41,6 @@ public interface MyPageService {
 	 * @param memberNo
 	 * @return map
 	 */
-	Member selectFeedMember(int memberNo);
+	Map<String, Object> selectFeedMember(int loginMemberNo, int memberNo);
 
 }
