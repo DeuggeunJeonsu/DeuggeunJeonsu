@@ -95,4 +95,12 @@ public class MyPageDAO {
 		return sqlSession.selectOne("myPageMapper.selectFeedMember", memberNo);
 	}
 
+	/** 로그인한 회원이 피드 주인을 팔로우했는지 확인하기
+	 * @param memberNoMap
+	 * @return result
+	 */
+	public int feedFollowCheck(Map<String, Object> memberNoMap) {
+		return sqlSession.selectOne("myPageMapper.feedFollowCheck", memberNoMap);
+	}
+	
 }

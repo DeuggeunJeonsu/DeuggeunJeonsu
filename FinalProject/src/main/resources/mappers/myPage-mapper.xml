@@ -97,6 +97,17 @@
 	
 	<!-- 마이페이지 멤버 피드 조회 -->
 	<select id="selectFeedMember" resultMap="myPageMember_rm">
-	
+		SELECT MEMBER_NO, MEMBER_NICKNAME, PROFILE_IMG
+		FROM MEMBER
+		WHERE MEMBER_NO = #{memberNo}
 	</select>
+	
+	<!-- 로그인한 회원이 피드 주인을 팔로우했는지 확인 -->
+	<select id="feedFollowCheck" resultType="_int">
+		SELECT COUNT(*) FROM MEMBER
+		WHERE MEMBER_NO IN
+		(SELECT FOLLOWER_NO FROM FOLLOW WHERE MEMBER_NO = #{loginMemberNo})
+		AND MEMBER_NO = #{memberNo}
+	</select>
+	
 </mapper>

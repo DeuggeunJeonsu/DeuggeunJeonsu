@@ -1,6 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+    <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+
+<%-- map에서 꺼내기 --%>
+<c:set var="member" value="${map.feedMember}"/>
+<c:set var="followerTotalCount" value="${map.followerTotalCount}"/>
+<c:set var="followingTotalCount" value="${map.followingTotalCount}"/>
+<c:set var="followCheck" value="${map.followCheck}"/>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,7 +24,6 @@
 <link rel="apple-touch-icon" sizes="180x180" href="/resources/images/favicon_io/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/resources/images/favicon_io/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/resources/images/favicon_io/favicon-16x16.png">
-<%-- <link rel="manifest" href="/resources/images/favicon_io/site.webmanifest"> --%>
 
 </head>
 <body">
@@ -28,28 +35,44 @@
         <!-- 회원 정보 영역 -->
         <div id="member-info-area">
             <div class="memberProfileArea">
-                <img src="/resources/images/user.png">
+                <c:if test="${empty member.profileImage}" >
+                    <img src="/resources/images/user.png">
+                </c:if>
+                <c:if test="${!empty member.profileImage}" >
+                    <img src="${member.profileImage}">
+                </c:if>
             </div>
 
             <div class="memberInfoArea">
 
                 <div>
                     <div>
-                        닉네임
+                        ${member.memberNickname}
                     </div>
+
                     <div class="followStateBtn">
-                        <button class="customBtn followingBtn"><div>following</div></button>
+
+                        <%-- 로그인 회원이 피드 주인을 팔로우 X --%>
+                        <c:if test="${followCheck == 0}" >
+                            <button class="customBtn unfollowBtn" onclick="followBtnClick()"><div>follow</div></button>
+                        </c:if>
+
+                        <%-- 로그인 회원이 피드 주인을 팔로우 O --%>
+                        <c:if test="${followCheck == 1}" >
+                            <button class="customBtn followingBtn" onclick="unfollowBtnClick()"><div>following</div></button>
+                        </c:if>
+
                     </div>
                 </div>
 
                 <div>
-                    <div class="followInfoArea followerListBtn" >
-                        <div onclick="toggleFollowList()">팔로워</div>
-                        <div>340</div>
+                    <div class="followInfoArea followerListBtn"  onclick="toggleFollowList(), selectFollowerList()">
+                        <div>팔로워</div>
+                        <div>${followerTotalCount}</div>
                     </div>
-                    <div class="followInfoArea followingListBtn">
-                        <div onclick="toggleFollowList()">팔로잉</div>
-                        <div>290</div>
+                    <div class="followInfoArea followingListBtn"  onclick="toggleFollowList(), selectFollowingList()">
+                        <div>팔로잉</div>
+                        <div>${followingTotalCount}</div>
                     </div>
                 </div>
 
@@ -88,71 +111,40 @@
 
         <%-- 득근 캘린더 말풍선 --%>
         <div class="ballon floating">
-            닉네임 님의 득근 캘린더를 확인해 보세요! 🎽👟
+            ${member.memberNickname} 님의 득근 캘린더를 확인해 보세요! 🎽👟
         </div>
 
         <%-- 피드 주인의 팔로우 리스트 --%>
         <div class="follow-list-area" id="followListArea" style="display:none;">
-            <div class="follow-list">
-                <a href="#">
-                    <div class="followProfileImg">
-                        <img src="/resources/images/user.png">
+
+            <%-- <c:if test="${!empty followingList}">
+
+                <c:forEach items="${followingList}" var="following">
+
+                    <div class="follow-list">
+                        <a href="/myPage/memberFeed/${following.memberNo}">
+                            <c:if test="${empty following.profileImage}" >
+                                <div class="followProfileImg">
+                                    <img src="/resources/images/user.png">
+                                </div>
+                            </c:if>
+                            <c:if test="${!empty following.profileImage}" >
+                                <div class="followProfileImg">
+                                    <img src="${following.profileImage}">
+                                </div>
+                            </c:if>
+                        </a>
+                        <a href="/myPage/memberFeed/${following.memberNo}">
+                            <div class="followNickname">
+                                ${following.memberNickname}
+                            </div>
+                        </a>
                     </div>
-                </a>
-                <a href="#">
-                    <div class="followNickname">
-                        닉네임
-                    </div>
-                </a>
-            </div>
-            <div class="follow-list">
-                <a href="#">
-                    <div class="followProfileImg">
-                        <img src="/resources/images/user.png">
-                    </div>
-                </a>
-                <a href="#">
-                    <div class="followNickname">
-                        닉네임
-                    </div>
-                </a>
-            </div>
-            <div class="follow-list">
-                <a href="#">
-                    <div class="followProfileImg">
-                        <img src="/resources/images/user.png">
-                    </div>
-                </a>
-                <a href="#">
-                    <div class="followNickname">
-                        닉네임
-                    </div>
-                </a>
-            </div>
-            <div class="follow-list">
-                <a href="#">
-                    <div class="followProfileImg">
-                        <img src="/resources/images/user.png">
-                    </div>
-                </a>
-                <a href="#">
-                    <div class="followNickname">
-                        닉네임
-                    </div>
-                </a>
-            </div>
-            <div class="follow-list">
-                <a href="#">
-                    <div class="followProfileImg">
-                        <img src="/resources/images/user.png">
-                    </div>
-                </a>
-                <a href="#">
-                    <div class="followNickname">
-                        닉네임
-                    </div>
-                </a>
-            </div>
+
+                </c:forEach>
+
+            </c:if> --%>
+
         </div>
 
         <!-- 획득한 뱃지 영역 -->        
@@ -376,6 +368,11 @@
         </div>
 
 	</section>
+
+    <script>
+        const memberNo = "${member.memberNo}";
+        const loginMemberNo = "${loginMember.memberNo}"
+    </script>
 
     <!-- footer include -->
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>

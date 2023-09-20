@@ -51,6 +51,30 @@ public class MyPageController {
 		return "member/myPage/followingFollower";
 	}
 	
+	// 마이페이지 팔로잉/팔로워 - 팔로잉 목록 조회 (비동기)
+	@PostMapping(value = "/followingFollower/following", produces = "application/json")
+	@ResponseBody
+	public Map<String, Object> selectFollowingList(
+			@SessionAttribute(value = "loginMember") Member loginMember
+			) {
+		
+		int memberNo = loginMember.getMemberNo();
+		
+		return service.selectFollowingList(memberNo);
+	}
+	
+	// 마이페이지 팔로잉/팔로워 - 팔로워 목록 조회 (비동기)
+	@PostMapping(value = "/followingFollower/follower", produces = "application/json")
+	@ResponseBody
+	public Map<String, Object> selectFollowerList(
+			@SessionAttribute(value = "loginMember") Member loginMember
+			) {
+		
+		int memberNo = loginMember.getMemberNo();
+		
+		return service.selectFollowerList(memberNo);
+	}
+	
 	// 마이페이지 언팔로우
 	@PostMapping(value = "/followingFollower/unfollow", produces = "application/json")
 	@ResponseBody
@@ -66,18 +90,6 @@ public class MyPageController {
 		
 		return service.follow(paramMap);
 	}
-	
-	// 마이페이지 팔로잉/팔로워 - 팔로워 목록 조회
-	@PostMapping(value = "/followingFollower/follower", produces = "application/json")
-	@ResponseBody
-	public Map<String, Object> selectFollowerList(
-			@SessionAttribute(value = "loginMember") Member loginMember
-			) {
-		
-		int memberNo = loginMember.getMemberNo();
-		
-		return service.selectFollowerList(memberNo);
-	}
 
 	// 마이페이지 해당 멤버 피드 페이지 이동
 	@GetMapping("/memberFeed/{memberNo}")
@@ -90,12 +102,62 @@ public class MyPageController {
 		
 		int loginMemberNo = loginMember.getMemberNo();
 		
-		Member member = service.selectFeedMember(memberNo);
+		Map<String, Object> map = service.selectFeedMember(loginMemberNo, memberNo);
 		
-//		model.addAttribute("map", map);
+		model.addAttribute("map", map);
 		
 		return "member/myPage/memberFeed";
 	}
+	
+	// 마이페이지 멤버 피드 - 팔로워 목록 조회
+	@PostMapping(value = "/memberFeed/{memberNo}/follower", produces = "application/json")
+	@ResponseBody
+	public Map<String, Object> memberFeedFollowerList(
+			@PathVariable("memberNo") int memberNo
+			, Model model
+			, @RequestParam Map<String, Object> paramMap
+			) {
+		
+		return service.selectFollowerList(memberNo);
+	}
+	
+	// 마이페이지 멤버 피드 - 팔로잉 목록 조회
+	@PostMapping(value = "/memberFeed/{memberNo}/following", produces = "application/json")
+	@ResponseBody
+	public Map<String, Object> memberFeedFollowingList(
+			@PathVariable("memberNo") int memberNo
+			, Model model
+			, @RequestParam Map<String, Object> paramMap
+			) {
+		
+		return service.selectFollowingList(memberNo);
+	}
+
+	// 마이페이지 멤버 피드 - 언팔로우
+	@PostMapping(value = "/memberFeed/{memberNo}/unfollow", produces = "application/json")
+	@ResponseBody
+	public int feedUnfollow(
+			@RequestBody Map<String, Object> paramMap
+			, @PathVariable("memberNo") int memberNo
+			){
+		
+		System.out.println(paramMap.get("loginMemberNo"));
+		System.out.println(paramMap.get("memberNo"));
+		
+		return service.unfollow(paramMap);
+	}
+	
+	// 마이페이지 멤버 피드 - 팔로우
+	@PostMapping(value = "/memberFeed/{memberNo}/follow", produces = "application/json")
+	@ResponseBody
+	public int feedFollow(
+			@RequestBody Map<String, Object> paramMap
+			, @PathVariable("memberNo") int memberNo
+			){
+		
+		return service.follow(paramMap);
+	}
+	
 
 	// 마이페이지 내 게시글 목록 조회
 	@GetMapping("/myBoardList")
