@@ -111,10 +111,11 @@ public class MemberController {
 		// 입력된 번호로 회원 검색
 		Member selectMember = service.selectMemberByTel(memberTel);
 		String AuthenticationKey="";
+
+		// 일치하는 회원이 있으면 sms인증번호 전송
+		if(selectMember !=null) AuthenticationKey = "123456"; //Util.sendMessage(memberTel);
 		
-		if(selectMember !=null) { // 일치하는 회원이 있으면 인증번호 발송
-			AuthenticationKey = "123456";//Util.sendMessage(String.valueOf(paramMap.get("memberPhone")));
-		}
+		// 인증번호 반환
 		return AuthenticationKey;
 	}
 	
@@ -122,21 +123,34 @@ public class MemberController {
 	@ResponseBody
 	@PostMapping(value="/smsAuthentication", produces = "application/json; charset=UTF-8")
 	public Member findId(@RequestBody Map<String, Object> paramMap, HttpServletRequest req, HttpServletResponse resp) {
-		
+
 		// 입력된 번호로 회원 검색
-		Member selectMember = service.selectMemberByTel(String.valueOf(paramMap.get("memberTel")));
-		
-		if(selectMember !=null) { // 일치하는 회원이 있으면 회원정보 반환
-			return selectMember;
-		}
-		return null;
+		return service.selectMemberByTel(String.valueOf(paramMap.get("memberTel")));
 	}
 	
 	// 비밀번호찾기 email 인증번호 전송 ajax
 	@ResponseBody
 	@PostMapping(value="/sendEmail", produces = "application/json; charset=UTF-8")
 	public String findPw(@RequestBody String memberEmail, HttpServletResponse resp) {
-		return null;
+		
+		// 입력된 이메일로 회원 검색
+		Member selectMember = service.selectMemberByEmail(memberEmail);
+		String AuthenticationKey="";
+
+		// 일치하는 회원이 있으면 email인증번호 전송
+		if(selectMember !=null) AuthenticationKey = "123456"; // email 전송
+		
+		// 인증번호 반환
+		return AuthenticationKey;
+	}
+	
+	// 아이디찾기 email 인증번호 확인 ajax
+	@ResponseBody
+	@PostMapping(value="/emailAuthentication", produces = "application/json; charset=UTF-8")
+	public Member findPw(@RequestBody Map<String, Object> paramMap, HttpServletRequest req, HttpServletResponse resp) {
+
+		// 입력된 이메일로 회원 검색
+		return service.selectMemberByEmail(String.valueOf(paramMap.get("memberEmail")));
 	}
 	
 	// 회원 가입 페이지 이동
