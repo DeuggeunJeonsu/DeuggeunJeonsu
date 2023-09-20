@@ -11,7 +11,7 @@ public interface TodoListService  {
 	List<Map<String, Object>> selectTodoListAll(int loginMemberNo);
 
 	// 선택된 날짜로 상세 투두리스트 불러오기 
-	List<TodoList> DetailedTodoList(String choiceTodoDate);
+	List<TodoList> DetailedTodoList(String choiceTodoDate, int loginMemberNo);
 
 	// 체크박스 상태에 따라 바꾸기 
 	int todoUpdate(TodoList updateTodo);

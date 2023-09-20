@@ -23,8 +23,8 @@ public class TodoListServiceImp implements TodoListService{
 	
 	// 선택한 날짜에 대한 상세 todolist가져오기
 	@Override
-	public List<TodoList> DetailedTodoList(String choiceTodoDate) {
-		return dao.DetailedTodoList(choiceTodoDate);
+	public List<TodoList> DetailedTodoList(String choiceTodoDate, int loginMemberNo ) {
+		return dao.DetailedTodoList(choiceTodoDate, loginMemberNo);
 	}
 	
 	// 체크박스 상태에 대한 결과 DB반영
