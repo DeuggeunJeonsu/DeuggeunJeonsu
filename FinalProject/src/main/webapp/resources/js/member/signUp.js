@@ -1,4 +1,4 @@
-const checkObj = {
+/* const checkObj = {
     "memberEmail" : false,
     "mameberPw" : false,
     "memberPwConfirm" : false,
@@ -60,71 +60,64 @@ const memberPw = document.getElementById("memberPw");
 const memberPwConfirm = document.getElementById("memberPwConfirm");
 const pwMessage = document.getElementById("pwMessage");
 
-memberPw.addEventListener("input", ()=>{
-
-    if(memberPw.value.trim().length == 0){
+memberPw.addEventListener("input", () => {
+    if (memberPw.value.trim().length == 0) {
         memberPw.value = "";
-
-        pwMessage.innerText = "영어,숫자,특수문자 8~16자 사이로 입력해주세요.";
+        pwMessage.innerText = "영어, 숫자, 특수문자 8~16자 사이로 입력해주세요.";
         pwMessage.classList.remove("confirm", "error");
-
         checkObj.memberPw = false;
         return;
     }
 
-    const regEx = /^[a-zA-z\d\!\@\#\-\_]{8,16}$/;
+    const regEx = /^[a-zA-Z\d\!\@\#\-\_]{8,16}$/; // 오타 수정: a-zA-z -> a-zA-Z
 
-    if(regEx.test(memberPw.value)) {
-        checkObj.mameberPw = true;
+    if (regEx.test(memberPw.value)) {
+        checkObj.memberPw = true;
 
-        if(memberPwConfirm.value.trim().length == 0){
+        if (memberPwConfirm.value.trim().length == 0) {
             pwMessage.innerText = "유효한 비밀번호 방식입니다.";
             pwMessage.classList.add("confirm");
             pwMessage.classList.remove("error");
-        }else{
-
-            if(memberPw.value == memberPwConfirm.value){
-                pwMessage.innerText = "일치한 비밀번호 입니다."
+        } else {
+            if (memberPw.value == memberPwConfirm.value) {
+                pwMessage.innerText = "일치한 비밀번호입니다.";
                 pwMessage.classList.add("confirm");
                 pwMessage.classList.remove("error");
                 checkObj.memberPwConfirm = true;
-            }else{
-                pwMessage.innerText = "일치하지 않는 비밀번호 입니다."
+            } else {
+                pwMessage.innerText = "일치하지 않는 비밀번호입니다.";
                 pwMessage.classList.add("error");
                 pwMessage.classList.remove("confirm");
                 checkObj.memberPwConfirm = false;
             }
         }
-    }else{
+    } else {
         pwMessage.innerText = "유효하지 않은 비밀번호 방식입니다.";
         pwMessage.classList.add("error");
         pwMessage.classList.remove("confirm");
         checkObj.memberPw = false;
     }
+});
 
-})
-
-
-memberPwConfirm.addEventListener("input", ()=>{
-    if(checkObj.memberPw){
-
-        if(memberPw.value == memberPwConfirm.value){
+memberPwConfirm.addEventListener("input", () => {
+    if (checkObj.memberPw) {
+        if (memberPw.value == memberPwConfirm.value) {
             pwMessage.innerText = "비밀번호가 일치합니다.";
             pwMessage.classList.add("confirm");
             pwMessage.classList.remove("error");
             checkObj.memberPwConfirm = true;
-        }else{
+        } else {
             pwMessage.innerText = "비밀번호가 일치하지 않습니다.";
             pwMessage.classList.add("error");
             pwMessage.classList.remove("confirm");
             checkObj.memberPwConfirm = false;
         }
-    }else{
+    } else {
         alert("비밀번호를 다시 입력해주세요.");
         memberPwConfirm.value = "";
         memberPw.focus();
     }
-})
+});
 
 
 const memberNickname = document.getElementById("memberNickname");
@@ -243,109 +236,6 @@ sendAuthKeyBtn.addEventListener("click", function(){
 
 
 const authKey = document.getElementById("authKey");
-const checkAUthKeyBtn = document.getElementById("checkAUthKeyBtn");
-
-checkAUthKeyBtn.addEventListener("click", function(){
-    if(authMin > 0 || authSec > 0){
-        const obj = {"inputKey":authKey.value, "email":tempEmail}
-        const query = new URLSearchParams(obj).toString()
-
-        fetch("/sendEmail/checkAuthKey?" + query)
-        .then(resp => resp.text())
-        .then(result => {
-            if(result > 0){
-                clearInterval(authTimer);
-                authKeyMessage.innerText = "인증되었습니다.";
-                authKeyMessage.classList.add("confirm");
-                checkObj.authKey = true;
-            } else{
-                alert("인증번호가 일치하지 않습니다.")
-                checkObj.authKey = false;
-            }
-        })
-        .catch(err => console.log(err));
-    } else{
-        alert("인증 시간이 만료되었습니다. 다시 시도해주세요.")
-    }
-})
-
-const signUpFrm = document.getElementById("signUpFrm");
-
-signUpFrm.addEventListener("submit", e=>{
-
-    for(let key in checkObj){
-        if(!checkObj[key]){
-
-            switch(key){
-                case "memberEmail" : alert("이메일이 유효하지 않습니다."); break;
-                case "memberPw" : alert("비밀번호가 유효하지 않습니다."); break;
-                case "memberPwConfirm" : alert("비밀번호가 혹인되지 않습니다."); break;
-                case "memberNickname" : alert("닉네임이 유효하지 않습니다."); break;
-                case "memberTel" : alert("전화번호가 유효하지 않습니다."); break;
-            }
-
-            document.getElementById(key).focus();
-
-            e.preventDefault();
-            return;
-
-        }
-    }
-
-})
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function toggleAllAgree(){
-    var chkAll = document.getElementById("chkAll");
-    var checkboxes = document.querySelectorAll('input[name="chk"]')
-
-    for (var i = 0; i < checkboxes.length; i++) {
-        checkboxes[i].checked = chkAll.checked;
-    }
-}
-
-function checkIndividualAgreements() {
-    var chkALl = document.getElementById("chkAll");
-    var checkboxes = document.querySelectorAll('input[name="chk"]')
-    var allChecked = true;
-
-    for (var i = 0; i < checkboxes.length; i++) {
-        if(!checkboxes[i].checked) {
-            allChecked = false;
-            break;
-        }
-    }
-    chkAll.checked = allChecked;
-}
+ */
