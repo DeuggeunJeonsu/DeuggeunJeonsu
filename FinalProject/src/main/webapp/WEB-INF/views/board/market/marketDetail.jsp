@@ -139,7 +139,7 @@
             <script>
 
                 const productNo = "${product.productNo}";
-                const productPrice = "${product.productPrice}"
+                const productPrice = "${product.productPrice}";
                 const loginMemberNo = "${loginMember.memberNo}";
                 const boardCode = "${boardCode}";
 

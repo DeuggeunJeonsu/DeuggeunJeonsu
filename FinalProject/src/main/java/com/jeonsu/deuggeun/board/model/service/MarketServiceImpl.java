@@ -16,10 +16,10 @@ import java.util.List;
 import java.util.Map;
 
 @Service
-public class MarketServiceImpl implements MarketService{
+public class MarketServiceImpl implements MarketService {
 	private final MarketDAO dao;
 
-	@Autowired	//	생성자 주입
+	@Autowired    //	생성자 주입
 	public MarketServiceImpl(MarketDAO dao) {
 		this.dao = dao;
 	}
@@ -163,7 +163,7 @@ public class MarketServiceImpl implements MarketService{
 
 			if ("null".equals(review.getUploadImage())) {
 				rowCount = dao.updateImagePath2(review);
-			}else if (image.getSize() > 0) {
+			} else if (image.getSize() > 0) {
 				// 이미지 원본명과 저장될 이름을 얻어옴
 				String originalFilename = image.getOriginalFilename();
 				String savedFilename = Util.fileRename(originalFilename);
@@ -223,7 +223,7 @@ public class MarketServiceImpl implements MarketService{
 	@Override
 	public int inquiryInsert(int boardCode, int productNo, Inquiry inquiry, MultipartFile image, String webPath, String filePath) throws IOException {
 
-		int  inquiryNo = inquiry.getInquiryNo();
+		int inquiryNo = inquiry.getInquiryNo();
 
 		if (image.isEmpty()) {
 
@@ -276,7 +276,7 @@ public class MarketServiceImpl implements MarketService{
 			if ("null".equals(inquiry.getUploadImage())) {
 				rowCount = dao.updateImagePath4(inquiry);
 
-			}else if (image.getSize() > 0) {
+			} else if (image.getSize() > 0) {
 
 				// 이미지 원본명과 저장될 이름을 얻어옴
 				String originalFilename = image.getOriginalFilename();
@@ -296,7 +296,51 @@ public class MarketServiceImpl implements MarketService{
 		return rowCount;
 
 	}
+
 	// 장바구니에 담기
+//	@Transactional(rollbackFor = Exception.class)
+//	@Override
+//	public int addToCart(Cart cart) {
+//		Cart cartForQuery = new Cart();
+//		cartForQuery.setMemberNo(cart.getMemberNo());
+//		cartForQuery.setProductNo(cart.getProductNo());
+//
+//		// 1. 먼저, 장바구니에 상품이 있는지 확인합니다.
+//		Cart existingCartItem = dao.getCartItem(cartForQuery);
+//		System.out.println("상품이 있는지 확인!");
+//
+//		if (existingCartItem != null) {
+//
+//			System.out.println("상품이 있다!");
+//
+//			// 2. 상품이 이미 장바구니에 있는 경우, 수량만 업데이트
+//			int updatedQuantity = existingCartItem.getQuantity() + cart.getQuantity();
+//			existingCartItem.setQuantity(updatedQuantity);
+//
+//			// 상품 번호를 가져옵니다.
+//			int productNo = existingCartItem.getProductNo();
+//
+//			// 상품 번호와 업데이트된 수량을 이용하여 업데이트
+//			int result = dao.updateCart(existingCartItem);
+//			System.out.println("1 : " + result);
+//
+//			if (result > 0) {
+//				return result;
+//			} else {
+//				return -1; // 업데이트 실패
+//			}
+//		} else {
+//			// 3. 상품이 장바구니에 없는 경우, 새로운 레코드를 추가합니다.
+//			System.out.println("상품이 없다");
+//			int result = dao.addToCart(cart);
+//			System.out.println("2 : " + result);
+//			if (result > 0) {
+//				return result;
+//			} else {
+//				return -1; // 추가 실패
+//			}
+//		}
+//	}
 	@Transactional(rollbackFor = Exception.class)
 	@Override
 	public int addToCart(Cart cart) {
@@ -308,14 +352,28 @@ public class MarketServiceImpl implements MarketService{
 		Cart existingCartItem = dao.getCartItem(cartForQuery);
 
 		if (existingCartItem != null) {
-			// 2. 상품이 이미 장바구니에 있는 경우, 수량만 업데이트합니다.
+			// 이미 장바구니에 있는 경우
+
+			// 2. 상품이 이미 장바구니에 있는 경우, 수량을 업데이트합니다.
 			int updatedQuantity = existingCartItem.getQuantity() + cart.getQuantity();
+
+			// 5개 이상인 경우 추가하지 않고 에러 메시지 반환
+			if (updatedQuantity > 5) {
+				return -2; // 5개 이상 구매 불가
+			}
+
 			existingCartItem.setQuantity(updatedQuantity);
+
+			System.out.println("수량 : " + updatedQuantity);
+
+			// 3. 총 금액을 업데이트
+			int updateTotal = updatedQuantity * cart.getProductPrice();
+			existingCartItem.setTotal(updateTotal);
 
 			// 상품 번호를 가져옵니다.
 			int productNo = existingCartItem.getProductNo();
 
-			// 상품 번호와 업데이트된 수량을 이용하여 업데이트
+			// 상품 번호와 업데이트된 수량, 총 금액을 이용하여 업데이트
 			int result = dao.updateCart(existingCartItem);
 
 			if (result > 0) {
@@ -324,8 +382,11 @@ public class MarketServiceImpl implements MarketService{
 				return -1; // 업데이트 실패
 			}
 		} else {
-			// 3. 상품이 장바구니에 없는 경우, 새로운 레코드를 추가합니다.
+			// 장바구니에 없는 경우
+
+			// 4. 상품이 장바구니에 없는 경우, 새로운 레코드를 추가합니다.
 			int result = dao.addToCart(cart);
+
 			if (result > 0) {
 				return result;
 			} else {
@@ -334,4 +395,9 @@ public class MarketServiceImpl implements MarketService{
 		}
 	}
 
+	// 장바구니 페이지 조회
+	@Override
+	public Cart selectCart(Map<String, Object> map) {
+		return dao.selectCart(map);
+	}
 }

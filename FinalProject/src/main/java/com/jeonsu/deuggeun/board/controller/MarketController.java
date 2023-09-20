@@ -1,9 +1,6 @@
 package com.jeonsu.deuggeun.board.controller;
 
-import com.jeonsu.deuggeun.board.model.dto.Inquiry;
-import com.jeonsu.deuggeun.board.model.dto.Product;
-import com.jeonsu.deuggeun.board.model.dto.ProductImage;
-import com.jeonsu.deuggeun.board.model.dto.Review;
+import com.jeonsu.deuggeun.board.model.dto.*;
 import com.jeonsu.deuggeun.member.model.dto.Member;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -69,6 +66,25 @@ public class MarketController {
 			return "/common/main";
 		}
 	}
+
+	// 장바구니 페이지 이동
+	@GetMapping("/cartList/{memberNo}")
+	public String cartList(Model model,
+						   @PathVariable("memberNo") int memberNo,
+						   RedirectAttributes ra,
+						   @SessionAttribute("loginMember") Member loginMember){
+
+		int boardCode = 5;
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("memberNo", memberNo);
+		map.put("boardCode", boardCode);
+
+		Cart cart = service.selectCart(map);
+
+
+		return "/board/market/marketCart";
+	}
+
 
 	// 게시글 상세조회
 	@GetMapping("/{boardCode}/detail/{productNo}")

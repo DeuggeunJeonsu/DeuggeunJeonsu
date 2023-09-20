@@ -12,8 +12,9 @@ public class Cart {
     private int productNo;
     private int memberNo;
     private int quantity; // 수량
-    private int price;
     private String orderFlag;
     private int total; // 총 금액
     private int orderNo; // 주문번호는 결제후에 생성되야 함
+    private int productPrice; // 상품금액
+    private String productName; // 상품명
 }

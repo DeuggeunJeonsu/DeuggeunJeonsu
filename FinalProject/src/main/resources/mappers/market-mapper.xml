@@ -92,17 +92,12 @@
         <result property="memberNo" column="MEMBER_NO"/>
     </resultMap>
 
-<!--    //  private int memberNo;-->
-<!--    private int quantity; // 수량-->
-<!--    private int price;-->
-<!--    private String orderFlag;-->
-<!--    private int total; // 총 금액-->
-<!--    private int orderNo; // 주문번호는 결제후에 생성되야 함-->
+    <!-- Cart에 대한 resultMap -->
     <resultMap id="cart_rm" type="Cart">
         <id property="productNo" column="PRODUCT_NO" />
         <result property="memberNo" column="MEMBER_NO" />
         <result property="quantity" column="ITEM_COUNT" />
-        <result property="price" column="PRODUCT_PRICE" />
+        <result property="productPrice" column="PRODUCT_PRICE" />
         <result property="orderFlag" column="ORDER_FL" />
         <result property="total" column="TOTAL_AMOUNT" />
         <result property="orderNo" column="ORDER_NO" />
@@ -340,8 +335,8 @@
     </update>
 
     <!-- 장바구니 조회 -->
-    <select id="getCartItem">
-        SELECT PRODUCT_NO, MEMBER_NO, ITEM_COUNT
+    <select id="getCartItem" resultMap="cart_rm">
+        SELECT PRODUCT_NO, MEMBER_NO, ITEM_COUNT, TOTAL_AMOUNT
         FROM CART
         WHERE ORDER_FL = 'N'
         AND MEMBER_NO = #{memberNo}
@@ -349,17 +344,35 @@
     </select>
 
     <!-- 장바구니에 상품 담기 -->
-    <insert id="addToCart" parameterType="Cart" >
-        INSERT INTO CART
-        VALUES(#{productNo}, #{memberNo}, #{quantity}, #{productPrice}, DEFAULT, DEFAULT)
+<!--    <insert id="addToCart" parameterType="Cart" >-->
+<!--        INSERT INTO CART-->
+<!--        VALUES(#{productNo}, #{memberNo}, #{quantity}, #{productPrice}, DEFAULT, DEFAULT)-->
+<!--    </insert>-->
+    <insert id="addToCart" parameterType="Cart">
+        INSERT INTO CART (PRODUCT_NO, MEMBER_NO, ITEM_COUNT, TOTAL_AMOUNT)
+        VALUES (#{productNo}, #{memberNo}, #{quantity}, #{total})
     </insert>
 
+
     <!-- 상품이 이미 있는 경우 수량만 업데이트 -->
-    <update id="updateCart" parameterType="Cart">
+<!--    <update id="updateCart" parameterType="Cart" >-->
+<!--        UPDATE CART-->
+<!--        SET ITEM_COUNT = #{quantity}-->
+<!--        WHERE PRODUCT_NO = #{productNo}-->
+<!--        AND MEMBER_NO = #{memberNo}-->
+<!--    </update>-->
+    <update id="updateCart" parameterType="Cart" >
         UPDATE CART
-        SET ITEM_COUNT = #{quantity}
+        SET ITEM_COUNT = #{quantity},
+            TOTAL_AMOUNT = #{total}
         WHERE PRODUCT_NO = #{productNo}
-        AND MEMBER_NO = #{memberNo}
+          AND MEMBER_NO = #{memberNo}
     </update>
-        </mapper>
+
+    <select id="" resultMap="cart_rm">
+
+    </select>
+
+
+</mapper>
 
