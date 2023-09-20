@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", function() {
             "productNo" : productNo,
             "productPrice": productPrice,
             "quantity" : selectedQuantity,
-            "total": total // total 값을 추가
+            "total": total
         };
 
         // 서버로 요청을 보냄
@@ -35,11 +35,11 @@ document.addEventListener("DOMContentLoaded", function() {
         })
             .then((resp) => resp.json())
             .then(result => {
-                if (result > 0) { // result가 0보다 클 때 성공으로 간주
+                if (result > 0) { // result가 0보다 클 때 성공
                     console.log("성공입니다!");
                     alert("상품이 장바구니에 담겼습니다!");
                 }else if(result = -2){
-                    alert("5개이상 구매하실 수 없습니다")
+                    alert("동일 상품을 5개이상 구매하실 수 없습니다");
                 }
                 else {
                     console.log("장바구니 기능 실패ㅠㅠ");

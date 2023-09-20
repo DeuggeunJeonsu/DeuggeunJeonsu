@@ -397,7 +397,25 @@ public class MarketServiceImpl implements MarketService {
 
 	// 장바구니 페이지 조회
 	@Override
-	public Cart selectCart(Map<String, Object> map) {
+	public List<Cart> selectCart(Map<String, Object> map) {
+
+
 		return dao.selectCart(map);
+	}
+
+	// 장바구니 선택 항목 삭제
+	@Transactional(rollbackFor = Exception.class)
+	@Override
+	public int removeFromCart(Map<String, Object> map) {
+		return dao.removeFromCart(map);
+	}
+
+	// 결제성공 시 주문 테이블 등록
+	@Transactional(rollbackFor = Exception.class)
+	@Override
+	public int insertOrder(Order order) {
+
+		System.out.println("서비스임플 실행!!!");
+		return dao.insertOrder(order);
 	}
 }

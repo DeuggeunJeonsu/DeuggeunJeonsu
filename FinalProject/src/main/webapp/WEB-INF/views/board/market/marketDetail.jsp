@@ -56,9 +56,9 @@
                                         <option value="1">1개</option>
                                         <option value="2">2개</option>
                                         <option value="3">3개</option>
-                                        <option value="3">4개</option>
-                                        <option value="3">5개</option>
-                                        <option value="3">- 최대 구매 수량 5개 -</option>
+                                        <option value="4">4개</option>
+                                        <option value="5">5개</option>
+                                        <option value="0">- 최대 구매 수량 5개 -</option>
                                     </select>
                                 </div>
                                 <div class="min">(최소주문수량 1개 이상)</div>
@@ -139,7 +139,9 @@
             <script>
 
                 const productNo = "${product.productNo}";
+                console.log(productNo)
                 const productPrice = "${product.productPrice}";
+                console.log(productPrice)
                 const loginMemberNo = "${loginMember.memberNo}";
                 const boardCode = "${boardCode}";
 
