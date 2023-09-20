@@ -46,11 +46,11 @@
                 <div id="follow-list-btn-area">
                     <div class="followingListBtn followListBtn listBtnClick" onclick='selectFollowingList()'>
                         <div>팔로잉</div>
-                        <div>${followingTotalCount}</div>
+                        <div id="following-count-area">${followingTotalCount}</div>
                     </div>
                     <div class="followerListBtn followListBtn" onclick='selectFollowerList()'>
                         <div>팔로워</div>
-                        <div>${followerTotalCount}</div>
+                        <div id="follower-count-area">${followerTotalCount}</div>
                     </div>
                 </div>
 
@@ -103,7 +103,6 @@
 
     <!-- followingFollower.js 연결 -->
 	<script src="/resources/js/member/myPage/followingFollower.js"></script>
-
 
 </body>
 </html>

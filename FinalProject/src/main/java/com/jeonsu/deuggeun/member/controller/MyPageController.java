@@ -90,11 +90,20 @@ public class MyPageController {
 		
 		return service.follow(paramMap);
 	}
+	
+	// 마이페이지 팔로우 수 조회
+	@PostMapping(value = "/followingFollower/selectFollowCount", produces = "application/json")
+	@ResponseBody
+	public Map<String, Object> selectFollowCount(@RequestBody Map<String, Object> paramMap){
+		
+		return service.selectFollowCount(paramMap);
+	}
 
 	// 마이페이지 해당 멤버 피드 페이지 이동
 	@GetMapping("/memberFeed/{memberNo}")
 	public String memberFeed(
 			@PathVariable("memberNo") int memberNo
+			, @RequestParam(value = "cp", required = false, defaultValue = "1") int cp
 			, @SessionAttribute(value = "loginMember", required = false) Member loginMember
 			, Model model
 			, @RequestParam Map<String, Object> paramMap
@@ -102,7 +111,7 @@ public class MyPageController {
 		
 		int loginMemberNo = loginMember.getMemberNo();
 		
-		Map<String, Object> map = service.selectFeedMember(loginMemberNo, memberNo);
+		Map<String, Object> map = service.selectFeedMember(loginMemberNo, memberNo, cp);
 		
 		model.addAttribute("map", map);
 		

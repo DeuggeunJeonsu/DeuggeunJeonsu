@@ -8,6 +8,8 @@
 <c:set var="followerTotalCount" value="${map.followerTotalCount}"/>
 <c:set var="followingTotalCount" value="${map.followingTotalCount}"/>
 <c:set var="followCheck" value="${map.followCheck}"/>
+<c:set var="boardList" value="${map.boardList}"/>
+<c:set var="pagination" value="${map.pagination}"/>
 
 <!DOCTYPE html>
 <html>
@@ -26,7 +28,12 @@
 <link rel="icon" type="image/png" sizes="16x16" href="/resources/images/favicon_io/favicon-16x16.png">
 
 </head>
-<body">
+<body>
+    
+    <script>
+        const memberNo = "${member.memberNo}";
+        const loginMemberNo = "${loginMember.memberNo}"
+    </script>
 
 	<jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
 	
@@ -67,11 +74,11 @@
 
                 <div>
                     <div class="followInfoArea followerListBtn"  onclick="toggleFollowList(), selectFollowerList()">
-                        <div>팔로워</div>
+                        <div><span>팔로워</span></div>
                         <div>${followerTotalCount}</div>
                     </div>
                     <div class="followInfoArea followingListBtn"  onclick="toggleFollowList(), selectFollowingList()">
-                        <div>팔로잉</div>
+                        <div><span>팔로잉</span></div>
                         <div>${followingTotalCount}</div>
                     </div>
                 </div>
@@ -214,165 +221,89 @@
 
             <div id="board-area-middle">
 
-                <div class="thumbnail">
-                    <div><img src="/resources/images/main/log02.png"></div>
-                    <div>
-                        <div class="title ">제목입니다</div>
-                        <div class="createDate-area">
-                            <div>작성일 23.01.01</div>
-                            <div><i class="fa-regular fa-comment" style="color: #ddd;"></i> 4</div>
-                        </div>
-                        <div class="profile-area">
-                            <div class="profileArea"><img src="/resources/images/user.png"></div>
-                            <div>닉네임</div>
-                            <div><i class="fa-solid fa-heart" style="color: #ff4242;"></i> 99</div>
-                        </div>
-                    </div>
-                </div>
+                <c:forEach items="${boardList}" var="board">
 
-                <div class="thumbnail">
-                    <div><img src="/resources/images/main/log02.png"></div>
-                    <div>
-                        <div class="title ">제목입니다</div>
-                        <div class="createDate-area">
-                            <div>작성일 23.01.01</div>
-                            <div><i class="fa-regular fa-comment" style="color: #ddd;"></i> 4</div>
-                        </div>
-                        <div class="profile-area">
-                            <div class="profileArea"><img src="/resources/images/user.png"></div>
-                            <div>닉네임</div>
-                            <div><i class="fa-solid fa-heart" style="color: #ff4242;"></i> 99</div>
-                        </div>
-                    </div>
-                </div>
+                    <div class="thumbnail">
 
-                <div class="thumbnail">
-                    <div><img src="/resources/images/main/log02.png"></div>
-                    <div>
-                        <div class="title ">제목입니다</div>
-                        <div class="createDate-area">
-                            <div>작성일 23.01.01</div>
-                            <div><i class="fa-regular fa-comment" style="color: #ddd;"></i> 4</div>
-                        </div>
-                        <div class="profile-area">
-                            <div class="profileArea"><img src="/resources/images/user.png"></div>
-                            <div>닉네임</div>
-                            <div><i class="fa-solid fa-heart" style="color: #ff4242;"></i> 99</div>
-                        </div>
-                    </div>
-                </div>
+                        <a href="/board/${board.boardCode}/${board.boardNo}">
+                            <div>
+                                <c:if test="${empty board.thumbnail}" >
+                                    <img src="/resources/images/main/log02.png" id="default-logo">
+                                </c:if>
 
-                <div class="thumbnail">
-                    <div><img src="/resources/images/main/log02.png"></div>
-                    <div>
-                        <div class="title ">제목입니다</div>
-                        <div class="createDate-area">
-                            <div>작성일 23.01.01</div>
-                            <div><i class="fa-regular fa-comment" style="color: #ddd;"></i> 4</div>
-                        </div>
-                        <div class="profile-area">
-                            <div class="profileArea"><img src="/resources/images/user.png"></div>
-                            <div>닉네임</div>
-                            <div><i class="fa-solid fa-heart" style="color: #ff4242;"></i> 99</div>
-                        </div>
-                    </div>
-                </div>
+                                <c:if test="${!empty board.thumbnail}">
+                                    <img src="${board.thumbnail}">
+                                </c:if>
+                            </div>
 
-                <div class="thumbnail">
-                    <div><img src="/resources/images/main/log02.png"></div>
-                    <div>
-                        <div class="title ">제목입니다</div>
-                        <div class="createDate-area">
-                            <div>작성일 23.01.01</div>
-                            <div><i class="fa-regular fa-comment" style="color: #ddd;"></i> 4</div>
-                        </div>
-                        <div class="profile-area">
-                            <div class="profileArea"><img src="/resources/images/user.png"></div>
-                            <div>닉네임</div>
-                            <div><i class="fa-solid fa-heart" style="color: #ff4242;"></i> 99</div>
-                        </div>
-                    </div>
-                </div>
+                            <div>
+                                <div class="title">${board.boardTitle}</div>
+                                <div class="createDate-area">
+                                    <div>작성일 ${board.boardCreateDate}</div>
+                                    <div><i class="fa-regular fa-comment" style="color: #ddd;"></i>&nbsp;${board.commentCount}</div>
+                                </div>
 
-                <div class="thumbnail">
-                    <div><img src="/resources/images/main/log02.png"></div>
-                    <div>
-                        <div class="title ">제목입니다</div>
-                        <div class="createDate-area">
-                            <div>작성일 23.01.01</div>
-                            <div><i class="fa-regular fa-comment" style="color: #ddd;"></i> 4</div>
-                        </div>
-                        <div class="profile-area">
-                            <div class="profileArea"><img src="/resources/images/user.png"></div>
-                            <div>닉네임</div>
-                            <div><i class="fa-solid fa-heart" style="color: #ff4242;"></i> 99</div>
-                        </div>
-                    </div>
-                </div>
+                                <div class="profile-area">
+                                    <div class="profileArea">
+                                        <c:if test="${empty board.profileImage}" >
+                                            <img src="/resources/images/user.png">
+                                        </c:if>
 
-                <div class="thumbnail">
-                    <div><img src="/resources/images/main/log02.png"></div>
-                    <div>
-                        <div class="title ">제목입니다</div>
-                        <div class="createDate-area">
-                            <div>작성일 23.01.01</div>
-                            <div><i class="fa-regular fa-comment" style="color: #ddd;"></i> 4</div>
-                        </div>
-                        <div class="profile-area">
-                            <div class="profileArea"><img src="/resources/images/user.png"></div>
-                            <div>닉네임</div>
-                            <div><i class="fa-solid fa-heart" style="color: #ff4242;"></i> 99</div>
-                        </div>
-                    </div>
-                </div>
+                                        <c:if test="${!empty board.profileImage}" >
+                                            <img src="${board.profileImage}">
+                                        </c:if>
+                                    </div>
+                                    <div>${board.memberNickname}</div>
+                                    <div><i class="fa-solid fa-heart" style="color: #ff4242;"></i>&nbsp;${board.likeCount}</div>
+                                </div>
+                            </div>
+                        </a>
 
-                <div class="thumbnail">
-                    <div><img src="/resources/images/main/log02.png"></div>
-                    <div>
-                        <div class="title ">제목입니다</div>
-                        <div class="createDate-area">
-                            <div>작성일 23.01.01</div>
-                            <div><i class="fa-regular fa-comment" style="color: #ddd;"></i> 4</div>
-                        </div>
-                        <div class="profile-area">
-                            <div class="profileArea"><img src="/resources/images/user.png"></div>
-                            <div>닉네임</div>
-                            <div><i class="fa-solid fa-heart" style="color: #ff4242;"></i> 99</div>
-                        </div>
                     </div>
-                </div>
 
-                <div class="thumbnail">
-                    <div><img src="/resources/images/main/log02.png"></div>
-                    <div>
-                        <div class="title ">제목입니다</div>
-                        <div class="createDate-area">
-                            <div>작성일 23.01.01</div>
-                            <div><i class="fa-regular fa-comment" style="color: #ddd;"></i> 4</div>
-                        </div>
-                        <div class="profile-area">
-                            <div class="profileArea"><img src="/resources/images/user.png"></div>
-                            <div>닉네임</div>
-                            <div><i class="fa-solid fa-heart" style="color: #ff4242;"></i> 99</div>
-                        </div>
-                    </div>
-                </div>
+                </c:forEach>
 
             </div>
 
         </div>
 
-        <!-- 페이지네이션 영역 -->
-        <div id="pagination-area">
-            페이지네이션
+        <div class="pagination-area">
+            <ul class="pagination">
+
+                <!-- 첫 페이지로 이동 -->
+                <li><a href="/myPage/memberFeed/${memberNo}?cp=1">&lt;&lt;</a></li>
+
+                <!-- 이전 목록 마지막 번호로 이동 -->
+                <li><a href="/myPage/memberFeed/${memberNo}?cp=${pagination.prevPage}">&lt;</a></li>
+
+
+                <!-- 특정 페이지로 이동 -->
+                <c:forEach var="i" begin="${pagination.startPage}" end="${pagination.endPage}" step="1">
+
+                    <c:choose>
+                        <c:when test="${ i == pagination.currentPage}">
+                            <!-- 현재 보고있는 페이지 -->
+                            <li><a class="current">${i}</a></li>
+                        </c:when>
+
+                        <c:otherwise>
+                            <!-- 현재 페이지를 제외한 나머지 -->
+                            <li><a href="/myPage/memberFeed/${memberNo}?cp=${i}">${i}</a></li>
+
+                        </c:otherwise>
+                    </c:choose>
+
+                </c:forEach>
+
+                <!-- 다음 목록 시작 번호로 이동 -->
+                <li><a href="/myPage/memberFeed/${memberNo}?cp=${pagination.nextPage}">&gt;</a></li>
+
+                <!-- 끝 페이지로 이동 -->
+                <li><a href="/myPage/memberFeed/${memberNo}?cp=${pagination.maxPage}">&gt;&gt;</a></li>
+
+            </ul>
         </div>
-
 	</section>
-
-    <script>
-        const memberNo = "${member.memberNo}";
-        const loginMemberNo = "${loginMember.memberNo}"
-    </script>
 
     <!-- footer include -->
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
