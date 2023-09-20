@@ -89,6 +89,7 @@
 
 							
 							<div class="ncBtnList">
+							
 								<c:if test="${loginMember.memberNo == board.memberNo}" >
 									<button id="ncUpdate" onclick="return boardUpdate()">수정</button>
 									<button id="ncDelete" onclick="return boardDelete()">삭제</button>

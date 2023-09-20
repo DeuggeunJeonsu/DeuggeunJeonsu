@@ -5,7 +5,7 @@ const memberNo = document.getElementById("memberNo").value;
 $(".userDel").click(function () {
     Swal.fire({
       title: '회원을 탈퇴 시키겠습니까?',
-      text: "다시 되돌릴 수 없습니다.",
+      text: "회원 목록에서 사라집니다.",
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
