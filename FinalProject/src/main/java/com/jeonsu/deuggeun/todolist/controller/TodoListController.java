@@ -79,7 +79,6 @@ public class TodoListController {
 		int loginMemberNo =loginMember.getMemberNo();
 		
 		List<TodoList> detailedTodoList = service.DetailedTodoList(choiceTodoDate,loginMemberNo);
-	System.out.println(detailedTodoList);
 		return detailedTodoList;
 	}
 
@@ -98,7 +97,6 @@ public class TodoListController {
 	// 체크리스트 추가
 	@PostMapping("/todo/insert")
 	public int todoInsert(@RequestBody TodoList insertTodo) {
-		System.out.println(insertTodo);
 		return service.todoInsert(insertTodo);
 	}
 

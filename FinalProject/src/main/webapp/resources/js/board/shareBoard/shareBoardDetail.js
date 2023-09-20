@@ -160,6 +160,67 @@ document.addEventListener("click", function (e){
 
     }
 })
+
+document.querySelector(".addList").addEventListener("keyup", function(event) {
+    if (event.keyCode === 13) {
+        const addListInput = document.querySelector(".addList");
+        const addListVal = addListInput.value.trim(); // 입력 값의 양 끝 공백을 제거합니다.
+    
+        const reqExp =/^(?=.*[\s가-힣A-Za-z]).{1,15}$/;
+    
+        const maxCheckboxes = 10;
+        const currentCheckboxes = document.querySelectorAll(".checkbox").length;
+        
+        todoslist(sysDate);
+
+        if(loginMemberNo == ""){
+            alert("로그인 후 이용해 주세요💪");
+            return;
+        }
+    
+        if(addListVal.length == 0 ){
+            alert("내용을 입력해주세요👀");
+            return;
+        }else{
+    
+            let spanContent = document.querySelectorAll('.check-area > div >span');
+            
+            for(let i of spanContent){
+                if(addListVal == i.innerText){
+                    alert("이미 입력한 루틴입니다.😊");
+                    addListInput.value = "";
+                    return;
+                }
+                
+            }
+    
+    
+            if(currentCheckboxes >= maxCheckboxes){
+                alert("10개 이상 입력할 수 없습니다. 😢");
+                addListInput.value = "";
+                return; // 입력 막기
+            }else{
+        
+                if (!reqExp.test(addListVal)) {
+                    if (alert("올바른 형식으로 입력해주세요💗")) {
+                        addListInput.focus();
+                        
+                    }
+                    return;
+                } else {
+                    const inputTodo = {listContent: addListVal , lcreateDt : sysDate, memberNo : loginMemberNo}
+                    insertTodo(inputTodo)
+                  
+            
+                }
+            }
+        }
+
+    }
+});
+
+
+
 document.addEventListener("click", (e)=>{
 
     if(e.target.classList.contains("boardAddListBtn")){
