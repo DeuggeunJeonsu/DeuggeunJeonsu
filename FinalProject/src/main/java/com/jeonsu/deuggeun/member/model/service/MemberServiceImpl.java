@@ -48,6 +48,12 @@ public class MemberServiceImpl implements MemberService {
 		return dao.selectMemberByTel(memberTel);
 	}
 	
+	// 아이디(이메일)로 회원 찾기
+	@Override
+	public Member selectMemberByEmail(String memberEmail) {
+		return dao.selectMemberByEmail(memberEmail);
+	}
+	
 	// 회원 가입 서비스
 	@Transactional(rollbackFor = {Exception.class})
 	@Override
@@ -73,7 +79,7 @@ public class MemberServiceImpl implements MemberService {
 	public int addBMI(Map<String, Object> paramMap) {
 		return dao.addBMI(paramMap);
 	}
-	
 
+	
 }
 

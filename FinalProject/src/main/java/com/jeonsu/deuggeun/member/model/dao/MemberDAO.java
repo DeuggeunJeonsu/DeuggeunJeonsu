@@ -31,6 +31,14 @@ public class MemberDAO {
 	public Member selectMemberByTel(String memberTel) {
 		return sqlSession.selectOne("memberMapper.selectMemberByTel",memberTel);
 	}
+	
+	/** 아이디(이메일)로 회원 찾기
+	 * @param memberEmail
+	 * @return selectMember
+	 */
+	public Member selectMemberByEmail(String memberEmail) {
+		return sqlSession.selectOne("memberMapper.selectMemberByEmail",memberEmail);
+	}
 
 	/** 회원 가입 DAO
 	 * @param inputMember
@@ -60,5 +68,6 @@ public class MemberDAO {
 		if(checkResult==0) return sqlSession.insert("memberMapper.insertBMI", paramMap);
 		else return sqlSession.update("memberMapper.updateBMI", paramMap);
 	}
+
 
 }

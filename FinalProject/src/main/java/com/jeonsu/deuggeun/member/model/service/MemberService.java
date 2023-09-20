@@ -26,6 +26,12 @@ public interface MemberService {
 	 */
 	Member selectMemberByTel(String memberTel);
 	
+	/** 아이디(이메일)로 회원 찾기
+	 * @param memberEmail
+	 * @return selectMember
+	 */
+	Member selectMemberByEmail(String memberEmail);
+	
 	/** 회원 BMI 히스토리 불러오기
 	 * @param paramMap
 	 * @return BmiHistorys
