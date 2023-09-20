@@ -142,9 +142,9 @@
             </div>
         </div>
 
-
+        <jsp:include page="/WEB-INF/views/board/comment.jsp"></jsp:include>
        
-        <div id="comment-area">
+        <%-- <div id="comment-area">
             <div class="comment-count-area">
                 <i class="fa-regular fa-comment" ></i> <span>댓글 4</span>
             </div>
@@ -224,7 +224,7 @@
 
 
             </ul>
-        </div>
+        </div> --%>
     </section>
 
     <%-- <div class="TodoList-modal">
@@ -284,8 +284,7 @@
     </script>
 
 
+    <script src="/resources/js/board/comment.js"></script>
 	<script src="/resources/js/board/shareBoard/shareBoardDetail.js"></script>
-	<script src="/resources/js/board/comment.js"></script>
-
 </body>
 </html>

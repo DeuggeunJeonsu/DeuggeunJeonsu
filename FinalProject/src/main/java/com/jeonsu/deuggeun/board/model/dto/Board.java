@@ -44,7 +44,7 @@ public class Board {
 	private List<BoardImage> imageList;
 
 	// 댓글 목록
-//	private List<Comment> commentList;
+	private List<Comment> commentList;
 	
 	// 운동 루틴 목록
 	private List<Routine> routineList;

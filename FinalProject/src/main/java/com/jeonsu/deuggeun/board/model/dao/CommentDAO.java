@@ -20,9 +20,38 @@ public class CommentDAO {
 	 * @return cList
 	 */
 	public List<Comment> select(int boardNo) {
-		return sqlsession.selectList("boardMapper.selectCommentList", boardNo);
+		return sqlsession.selectList("shareBoardMapper.selectCommentList", boardNo);
 	}
 
+
+	/** 댓글 삽입
+	 * @param comment
+	 * @return
+	 */
+	public int insert(Comment comment) {
+		return sqlsession.insert("commentMapper.insert",comment);
+	
+	}
+	
+	
+	/** 댓글 삭제
+	 * @param commentNo
+	 * @return result
+	 */
+	public int delete(int commentNo) {
+		return sqlsession.update("commentMapper.delete",commentNo);
+	}
+
+	/**댓글 수정
+	 * @param comment
+	 * @return result
+	 */
+	public int update(Comment comment) {
+		return sqlsession.update("commentMapper.update",comment);
+	}
+
+	
+	
 
 	
 
