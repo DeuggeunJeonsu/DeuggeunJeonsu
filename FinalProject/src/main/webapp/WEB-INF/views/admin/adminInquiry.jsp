@@ -1,5 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>	
+
+<c:set var="boardList" value="${map.boardList}" />
+
+<%-- <c:choose>
+		   <c:when test="${board.adminCheckFl == 'N'}">
+											미답변
+					   </c:when>
+									
+			 <c:otherwise>
+			   		답변완료
+   </c:otherwise>
+</c:choose> --%>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -68,58 +82,39 @@
 						</div>
 					</div>
 
-					<div class="userList">
 
 						<table>
 							<thead>
 
 								<tr>
-									<th>문의 번호</th>
+									<th>문의글 번호</th>
 									<th>제목</th>
 									<th>구분</th>
-									<th>회원아이디</th>
-									<th>답변</th>
+									<th>회원이메일</th>
+									<th>답변 여부</th>
 								</tr>
 							</thead>
 
 							<tbody>
-								<tr>
-									<td>4</td>
-									<td><a href="#" class="iq-update">상품이 이상해요</a></td>
-									<td>상품 / 환불</td>
-									<td>user04</td>
-									<td class="complete">완료</td>
-								</tr>
 
-								<tr>
-									<td>3</td>
-									<td><a href="#" class="market-update">환불 해주세요.</a></td>
-									<td>상품 / 환불</td>
-									<td>user03</td>
-									<td>미답변</td>
-								</tr>
+								<c:forEach items="${boardList}" var="board">
+									<tr>
+										<td>${board.boardNo}</td>
+										<td><a href="#" class="iq-update">${board.boardTitle}</a></td>
+										<td class="inquiryType" >${board.inquiryType}</td>
+										<td>${board.memberEmail}</td>
+										<td  class="complete adminCheckFl">${board.adminCheckFl}</td>
+									</tr>
 
-								<tr>
-									<td>2</td>
-									<td><a href="#">반품 요청합니다</a></td>
-									<td>상품 / 반품</td>
-									<td>user02</td>
-									<td>미답변</td>
-								</tr>
-
-								<tr>
-									<td>1</td>
-									<td><a href="#">배송이 느리네요</a></td>
-									<td>상품 / 배송 문의</td>
-									<td>user01</td>
-									<td class="complete">완료</td>
-								</tr>
+									<input type="hidden" class="adminCheckFl2" value="${board.adminCheckFl}" />
+									<input type="hidden" class="inquiryType2" value="${board.inquiryType}" />
+								</c:forEach>
+								
 							</tbody>
 						</table>
 
 
 
-					</div>
 				</div>
 
 			</div>

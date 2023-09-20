@@ -19,4 +19,11 @@ public class AdminMember {
 	private String enrollDate; // 회원 가입일
 	private String memberDeleteFlag; // 탈퇴 여부(N: 탈퇴X, Y: 탈퇴O)
 	private int authority; // 회원 권한(1:일반, 2:관리자)
+	
+	
+	private char adminCheckFl;
+	private int inquiryType;
+	private String boardTitle;
+	private int boardNo;
+	
 }

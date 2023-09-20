@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+<!-- <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
@@ -12,7 +12,6 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Latest compiled and minified CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css" type="text/css">
   
@@ -36,10 +35,18 @@
         <label class="imp" for="memberEmail">아이디(이메일)</label>
         <div>
           <input type="text" name = "memberEmail" id = "memberEmail" placeholder="예 : email@gmail.com"  required>
-          <button type="button">중복확인</button>
+          <button id="sendAuthKeyBtn" type="button">인증 받기</button>
         </div>
       <p class="signUp-message" id="emailMessage">메일을 받을 이메일을 작성해주세요.</p>
+      <div>
+        <div>
+          <input type="text" name = "authKey" id = "authKey" placeholder="인증번호 입력" maxlength="6" autocomplete="off">
+          <button type="button">인증하기</button>
+          <p class="signUp-message" id="authKeyMessage"></p>
+        </div>
       </div>
+      </div>
+
       
 
       <br>
@@ -59,6 +66,7 @@
         <label class="imp">닉네임</label>
         
         <input type="text" placeholder="닉네임을 입력해주세요" name = "memberNickname" id = "memberNickname" required>
+        <p class="signUp-message" id="nickMessage">한글,영어,숫자로만 2~10글자</p>
       </div>
 
       <div>
@@ -527,17 +535,16 @@
 
   <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
 
-    <!-- jQuery Library -->
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
 
-    <!-- Latest compiled and minified JavaScript -->
 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     
-    <script src="/resources/js/member/signUp.js"></script>
+    <script src="/resources/js/member/signUP.js"></script>
   
 </body>
 
 
 </html>
+ -->

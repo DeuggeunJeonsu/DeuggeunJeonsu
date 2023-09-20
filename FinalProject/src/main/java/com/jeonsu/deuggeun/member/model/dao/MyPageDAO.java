@@ -78,4 +78,21 @@ public class MyPageDAO {
 		return sqlSession.delete("freeBoardMapper.memberUnfollow", paramMap);
 	}
 
+	/** 마이페이지 팔로우
+	 * @param paramMap
+	 * @return map
+	 */
+	public int follow(Map<String, Object> paramMap) {
+		return sqlSession.insert("freeBoardMapper.memberFollow", paramMap);
+	}
+
+	/** 마이페이지 멤버 피드 조회
+	 * @param memberNo
+	 * @param loginMemberNo
+	 * @return map
+	 */
+	public Member selectFeedMember(int memberNo) {
+		return sqlSession.selectOne("myPageMapper.selectFeedMember", memberNo);
+	}
+
 }

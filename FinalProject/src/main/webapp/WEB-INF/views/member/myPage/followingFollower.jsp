@@ -48,7 +48,7 @@
                         <div>팔로잉</div>
                         <div>${followingTotalCount}</div>
                     </div>
-                    <div class="followerListBtn followListBtn">
+                    <div class="followerListBtn followListBtn" onclick='selectFollowerList()'>
                         <div>팔로워</div>
                         <div>${followerTotalCount}</div>
                     </div>
@@ -57,7 +57,6 @@
                 <div id="follow-list-area">
 
                     <c:if test="${!empty followingList}" >
-
                         <c:forEach items="${followingList}" var="following">
 
                             <div class="follow-list">

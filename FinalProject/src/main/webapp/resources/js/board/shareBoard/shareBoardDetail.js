@@ -108,7 +108,7 @@ document.addEventListener("click", function (e){
         const addListInput = document.querySelector(".addList");
         const addListVal = addListInput.value.trim(); // 입력 값의 양 끝 공백을 제거합니다.
     
-        const reqExp =/^[가-힣a-zA-Z\s]{1,10} \d{1,2}회 \d{1,2}세트$/;
+        const reqExp =/^(?=.*[\s가-힣A-Za-z]).{1,15}$/;
     
         const maxCheckboxes = 10;
         const currentCheckboxes = document.querySelectorAll(".checkbox").length;
@@ -144,33 +144,15 @@ document.addEventListener("click", function (e){
             }else{
         
                 if (!reqExp.test(addListVal)) {
-                    if (confirm("운동 횟수와 세트 횟수를 입력해주세요💗")) {
+                    if (alert("올바른 형식으로 입력해주세요💗")) {
                         addListInput.focus();
-                        //addListInput.value = "  회  세트";
+                        
                     }
                     return;
                 } else {
-                    const insertTodo = {listContent: addListVal , lcreateDt : sysDate, memberNo : loginMemberNo}
-
-                    fetch("/todo/insert",{
-                        method : "POST", 
-                        headers: {"Content-Type": "application/json"},  
-                        body : JSON.stringify( insertTodo ) })
-                    .then( resp => resp.text())
-                    .then(result =>{
-                        if(result > 0){
-                            console.log("추가완료!")
-                            addListInput.value="";
-
-                            todoslist(sysDate)
-                            updateCheckedPercentage();
-
-                        }else{
-                            console.log("투두 추가시 오류발생")
-                        }
-
-                    })
-                    .catch(err => console.log(err + "투두 오류 발생"))
+                    const inputTodo = {listContent: addListVal , lcreateDt : sysDate, memberNo : loginMemberNo}
+                    insertTodo(inputTodo)
+                  
             
                 }
             }
@@ -178,6 +160,56 @@ document.addEventListener("click", function (e){
 
     }
 })
+document.addEventListener("click", (e)=>{
+
+    if(e.target.classList.contains("boardAddListBtn")){
+        const add = e.target.parentElement.querySelector("span").innerText;
+    
+        let spanContent = document.querySelectorAll('.check-area > div >span');
+            
+            for(let i of spanContent){
+                if(add == i.innerText){
+                    alert("이미 입력한 루틴입니다.😊");
+                    
+                    return;
+                }
+                
+            }
+        const addTodo = {listContent:  add , lcreateDt : sysDate, memberNo : loginMemberNo}
+        insertTodo(addTodo)
+    }
+
+
+})
+
+function insertTodo(insertTodo){
+    fetch("/todo/insert",{
+        method : "POST", 
+        headers: {"Content-Type": "application/json"},  
+        body : JSON.stringify( insertTodo ) })
+    .then( resp => resp.text())
+    .then(result =>{
+        if(result > 0){
+            console.log("추가완료!")
+            
+            const addListInput = document.querySelector(".addList");
+            addListInput.value="";
+            
+            location.reload(true);
+            updateCheckedPercentage();
+
+        }else{
+            console.log("투두 추가시 오류발생")
+        }
+
+    })
+    .catch(err => console.log(err + "투두 오류 발생"))
+}
+
+
+
+
+
 
 function todoslist(sysDate){
     // ajax을 할 예정
@@ -483,5 +515,8 @@ document.addEventListener("click", function (e){
 
     }
 });
+
+
+
 
 

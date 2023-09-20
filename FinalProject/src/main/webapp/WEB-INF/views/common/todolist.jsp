@@ -68,7 +68,7 @@
 				</div>
 				
 				<div>
-					<input type="text" name="addList" class="addList" placeholder="예) 스쿼트 20회 5세트"><button type="button" class="addListBtn"><i class="fa-solid fa-plus" style="color: #ffffff;"></i></button>
+					<input type="text" name="addList" class="addList" placeholder="예) 스쿼트 20회 5세트"><button type="button" class="addListBtn">+</button>
 					<input type="hidden" class="choice" value="">
 				</div>
 

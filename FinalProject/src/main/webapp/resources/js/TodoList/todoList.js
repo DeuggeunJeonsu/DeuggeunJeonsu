@@ -360,7 +360,7 @@ document.addEventListener("click", function (e){
         const addListInput = document.querySelector(".addList");
         const addListVal = addListInput.value.trim(); // 입력 값의 양 끝 공백을 제거합니다.
         
-        const reqExp = /^[가-힣a-zA-Z\s]{1,10} \d{1,2}회 \d{1,2}세트$/;
+        const reqExp = /^(?=.*[\s가-힣A-Za-z]).{1,15}$/;
     
         const maxCheckboxes = 10;
         const currentCheckboxes = document.querySelectorAll(".checkbox").length;
@@ -406,9 +406,9 @@ document.addEventListener("click", function (e){
             }else{
         
                 if (!reqExp.test(addListVal)) {
-                    if (confirm("운동 횟수와 세트 횟수를 입력해주세요💗")) {
+                    if (alert("올바른 형식으로 입력해주세요💗")) {
                         addListInput.focus();
-                        //addListInput.value = "  회  세트";
+                        
                     }
                     return;
                 } else {

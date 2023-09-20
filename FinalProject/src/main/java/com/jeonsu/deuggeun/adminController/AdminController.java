@@ -44,8 +44,14 @@ public class AdminController {
 
 	// 회원 문의 목록
 	@RequestMapping("/adminInquiry")
-	public String adminInquiry() {
+	public String adminInquiry(Model model) {
 
+		Map<String, Object> map = service.selectInquiryList();
+		
+		if(map.get("boardList") != null) {
+			
+			model.addAttribute("map", map);
+		}
 		return "admin/adminInquiry";
 	}
 
