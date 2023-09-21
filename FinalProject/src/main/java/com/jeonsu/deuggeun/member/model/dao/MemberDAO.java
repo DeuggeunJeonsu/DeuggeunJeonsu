@@ -39,6 +39,14 @@ public class MemberDAO {
 	public Member selectMemberByEmail(String memberEmail) {
 		return sqlSession.selectOne("memberMapper.selectMemberByEmail",memberEmail);
 	}
+	
+	/** email인증 후 비밀번호 변경
+	 * @param paramMap
+	 * @return result
+	 */
+	public int changePw(Map<String, Object> paramMap) {
+		return sqlSession.update("memberMapper.changePw",paramMap);
+	}
 
 	/** 회원 가입 DAO
 	 * @param inputMember
@@ -68,6 +76,5 @@ public class MemberDAO {
 		if(checkResult==0) return sqlSession.insert("memberMapper.insertBMI", paramMap);
 		else return sqlSession.update("memberMapper.updateBMI", paramMap);
 	}
-
 
 }

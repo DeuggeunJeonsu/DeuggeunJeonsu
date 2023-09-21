@@ -32,6 +32,12 @@ public interface MemberService {
 	 */
 	Member selectMemberByEmail(String memberEmail);
 	
+	/** email인증 후 비밀번호 변경
+	 * @param paramMap
+	 * @return result(0 : 실패, 1 : 성공)
+	 */
+	int changePw(Map<String, Object> paramMap);
+	
 	/** 회원 BMI 히스토리 불러오기
 	 * @param paramMap
 	 * @return BmiHistorys

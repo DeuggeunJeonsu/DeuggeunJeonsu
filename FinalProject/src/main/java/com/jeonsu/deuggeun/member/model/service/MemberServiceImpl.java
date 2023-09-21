@@ -54,6 +54,12 @@ public class MemberServiceImpl implements MemberService {
 		return dao.selectMemberByEmail(memberEmail);
 	}
 	
+	// email인증 후 비밀번호 변경
+	@Override
+	public int changePw(Map<String, Object> paramMap) {
+		return dao.changePw(paramMap);
+	}
+	
 	// 회원 가입 서비스
 	@Transactional(rollbackFor = {Exception.class})
 	@Override
@@ -79,7 +85,6 @@ public class MemberServiceImpl implements MemberService {
 	public int addBMI(Map<String, Object> paramMap) {
 		return dao.addBMI(paramMap);
 	}
-
 	
 }
 

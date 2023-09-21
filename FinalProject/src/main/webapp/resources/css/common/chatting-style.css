@@ -59,11 +59,12 @@ main {
    background-color: inherit;
    cursor: pointer;
 }
-#addTarget, #palette, #chatting{
-   margin-left: 5px;
+.menu-btn:not(.menu-btn:nth-of-type(1)){
    margin-top: 40px;
 }
-
+#addTarget{
+   margin-left: 5px;
+}
 
 /* 채팅방 목록 */
 #chattingRoomListArea{

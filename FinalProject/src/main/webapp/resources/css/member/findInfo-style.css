@@ -99,6 +99,17 @@ main section:nth-of-type(2){
     padding-right: 25px;
 }
 
+/* 비밀번호 변경 유효성검사 표시 영역 */
+.regExSection{
+    height: 0;
+    width: 100%;
+    font-size: 12px;
+    color: gray;
+    text-align: center;
+    line-height: 0px;
+    margin: 0;
+}
+
 /* 아이디/비밀번호찾기 버튼, 
     아이디 찾기 결과창 버튼,
     비밀번호 변경 버튼*/
