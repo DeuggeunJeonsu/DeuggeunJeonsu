@@ -14,5 +14,8 @@ public class EntrieBoardList {
     @GetMapping("/list")
     public String entireBoardList(Model model) {
         return "board/entireBoard/entireBoardList";
+        
+        
+        
     }
 }

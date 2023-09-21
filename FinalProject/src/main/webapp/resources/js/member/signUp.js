@@ -265,5 +265,40 @@ checkAuthKeyBtn.addEventListener("click", function(){
     }
 });
 
+function toggleAllAgree() {
+    var chkAll = document.getElementById('chkAll');
+    var chkBoxes = document.getElementsByName('chk');
 
+    // chkAll이 체크되었는지 확인
+    if (chkAll.checked) {
+      // chkAll이 체크된 경우, 모든 chk 체크박스를 체크함
+      for (var i = 0; i < chkBoxes.length; i++) {
+        chkBoxes[i].checked = true;
+      }
+    } else {
+      // chkAll이 체크되지 않은 경우, 모든 chk 체크박스의 체크를 해제함
+      for (var i = 0; i < chkBoxes.length; i++) {
+        chkBoxes[i].checked = false;
+      }
+    }
+  }
+
+  // 개별 약관 체크박스의 변경 이벤트 핸들러
+  function checkIndividualAgreements() {
+    var chkAll = document.getElementById('chkAll');
+    var chkBoxes = document.getElementsByName('chk');
+    var allChecked = true;
+
+    // 모든 chk 체크박스의 상태 확인
+    for (var i = 0; i < chkBoxes.length; i++) {
+      if (!chkBoxes[i].checked) {
+        allChecked = false;
+        break;
+      }
+    }
+
+    // 모든 chk 체크박스가 체크되었으면 chkAll을 체크함
+    // 그렇지 않으면 chkAll의 체크를 해제함
+    chkAll.checked = allChecked;
+  }
 

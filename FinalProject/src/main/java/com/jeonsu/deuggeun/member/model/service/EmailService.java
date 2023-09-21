@@ -1,8 +1,9 @@
-//  package com.jeonsu.deuggeun.member.model.service;
+//package com.jeonsu.deuggeun.member.model.service;
 //  
-//  import java.util.Map;
+//import java.util.Map;
 //  
-//  public interface EmailService {
+//  
+//public interface EmailService {
 //  
 //  int signUp(String email, String title);
 //  
@@ -10,4 +11,4 @@
 //  
 //  int checkAuthKey(Map<String, Object> paramMap);
 //  
-//  }
+//}
