@@ -16,7 +16,7 @@
 <body>
     <div id="comment-area">
         <div class="comment-count-area">
-            <i class="fa-regular fa-comment"></i> <span id="commentCount">댓글 0</span>
+            <i class="fa-regular fa-comment"></i> <span id="commentCount">댓글 ${board.commentCount}</span>
         </div>
         <div class="comment-input">
             <textarea id="commentContent" placeholder="댓글을 입력해주세요"></textarea>
@@ -78,7 +78,13 @@
 
         </ul>
     </div>
+    <script>
+        const commentCount = document.querySelector("#commentCount");
 
+        
+
+
+    </script>
 
    
 </body>
