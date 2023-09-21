@@ -10,13 +10,19 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttribute;
+import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.jeonsu.deuggeun.adminController.model.dto.AdminMember;
 import com.jeonsu.deuggeun.adminController.model.service.AdminService;
+import com.jeonsu.deuggeun.member.model.dto.Member;
 
 @Controller
 @RequestMapping("/admin")
+@SessionAttributes({"loginMember"})
 public class AdminController2 {
 
 	@Autowired
@@ -49,20 +55,57 @@ public class AdminController2 {
 		return service.selectInquiry2();
 	}
 
-	// 1:1 문의글 답변 화면
-	@GetMapping("/QnAWrite")
-	public String QnAWrite() {
+	// 관리자 1:1 문의 답변
+	@PostMapping(value="/QnAWrite", produces = "application/json; charset=UTF-8")
+	public String QnAWrite(AdminMember board,
+			@SessionAttribute("loginMember") Member loginMember,
+			@RequestParam("boardNo") int boardNo,
+			RedirectAttributes ra
+			) {
 
+		board.setMemberNo(loginMember.getMemberNo());
+		int result = service.insertQnA(board ,boardNo);
 
-		return "admin/adminQnAWrite";
+		String path = "redirect:";
+		if(result > 0) {
+
+			path += "/admin/adminInquiry";
+
+			ra.addFlashAttribute("message", "1:1 문의 답변 성공");
+
+		}else {
+			path += "/admin/adminInquiry";
+
+			ra.addFlashAttribute("message", "작성 실패");
+		}
+		return path;
 	}
-	
-	// 상품 문의글 답변 화면
-	@GetMapping("/marketWrite")
-	public String marketWrite() {
 
+	// 관리자 상품 문의 답변
+	@PostMapping(value="/marketInWrite", produces = "application/json; charset=UTF-8")
+	public String marketInWrite(AdminMember board,
+			@SessionAttribute("loginMember") Member loginMember,
+			@RequestParam("boardNo") int boardNo,
+			RedirectAttributes ra
+			) {
 
-		return "admin/adminMarketWrite";
+		board.setMemberNo(loginMember.getMemberNo());
+		
+		int result = service.marketInWrite(board ,boardNo);
+
+		String path = "redirect:";
+		if(result > 0) {
+
+			path += "/admin/adminInquiry";
+
+			ra.addFlashAttribute("message", "상품 문의 답변 성공");
+
+		}else {
+			path += "/admin/adminInquiry";
+
+			ra.addFlashAttribute("message", "작성 실패");
+		}
+		return path;
 	}
 
 }

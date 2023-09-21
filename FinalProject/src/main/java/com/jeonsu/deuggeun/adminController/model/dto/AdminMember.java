@@ -24,6 +24,7 @@ public class AdminMember {
 	private char adminCheckFl;
 	private int inquiryType;
 	private String boardTitle;
+	private String boardContent;
 	private int boardNo;
 	
 }

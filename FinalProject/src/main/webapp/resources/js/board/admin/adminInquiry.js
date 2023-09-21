@@ -20,6 +20,7 @@
   })
 }); */
 
+const boardNo = document.getElementsByClassName("boardNo");
 
 
 $(".market-update").click(function () {
@@ -107,10 +108,10 @@ option1.addEventListener("click", () => {
 
         row.innerHTML = `
              <td>${item.boardNo}</td>
-             <td>${item.boardTitle}</td>
+             <td><a href="/admin/adminQnAWrite?boardNo=${item.boardNo}">${item.boardTitle}</a></td>
              <td>${item.inquiryType === 1 ? "1:1문의" : "에러"}</td>
              <td>${item.memberEmail}</td>
-             <td style="color: ${item.adminCheckFl === 'N' ? 'black' : '#99E1ED'}">${item.adminCheckFl === 'N' ? '미답변' : '답변'}</td>
+             <td style="color: ${item.adminCheckFl === 'N' ? 'black' : '#99E1ED'}">${item.adminCheckFl === 'N' ? '미답변' : '답변 완료'}</td>
                
              
            `;
@@ -163,10 +164,10 @@ option2.addEventListener("click", () => {
         }
         row.innerHTML = `
              <td>${item.boardNo}</td>
-             <td>${item.boardTitle}</td>
+             <td><a href="/admin/marketWrite?boardNo=${item.boardNo}">${item.boardTitle}</a></td>
              <td>${inquiryTypeText}</td>
              <td>${item.memberEmail}</td>
-             <td style="color: ${item.adminCheckFl === 'N' ? 'black' : '#99E1ED'}">${item.adminCheckFl === 'N' ? '미답변' : '답변'}</td>
+             <td style="color: ${item.adminCheckFl === 'N' ? 'black' : '#99E1ED'}">${item.adminCheckFl === 'N' ? '미답변' : '답변 완료'}</td>
                
              
            `;
@@ -186,6 +187,7 @@ option2.addEventListener("click", () => {
 
 // 답변 화면으로 이동
 const iqUpdate = document.getElementsByClassName("iq-update");
+let relBoardNo = 0;
 
 for (let i = 0; i < adminCheckFl.length; i++) {
   iqUpdate[i].addEventListener("click", e => {
@@ -207,7 +209,11 @@ for (let i = 0; i < adminCheckFl.length; i++) {
       }).then((result) => {
         if (result.isConfirmed) {
     
-          window.location.href = '/admin/QnAWrite';
+
+
+            window.location.href = '/admin/adminQnAWrite?boardNo=' + boardNo[i].value;
+
+
     
         }
       })
@@ -228,7 +234,7 @@ for (let i = 0; i < adminCheckFl.length; i++) {
       }).then((result) => {
         if (result.isConfirmed) {
     
-          window.location.href = '/admin/marketWrite';
+          window.location.href = '/admin/marketWrite?boardNo=' + boardNo[i].value;
     
         }
       })

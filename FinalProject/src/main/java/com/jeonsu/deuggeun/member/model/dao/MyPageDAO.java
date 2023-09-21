@@ -133,7 +133,14 @@ public class MyPageDAO {
 	public String selectEncPw(int memberNo) {
 		return sqlSession.selectOne("myPageMapper.selectEncPw", memberNo);
 	}
-
+	
+	/** 1:1 문의 목록 조회
+	 * @param loginMember
+	 * @return
+	 */
+	public List<Board> selectMyUpdateList(Member loginMember) {
+		return sqlSession.selectList("myPageMapper.selectMyUpdateList", loginMember);
+	}
 
 	// 결제 완료시 구매내역 페이지
 	public List<Cart> selectPurchaseList(int memberNo) {

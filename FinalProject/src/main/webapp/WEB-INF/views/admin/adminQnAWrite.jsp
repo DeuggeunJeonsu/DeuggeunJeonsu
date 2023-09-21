@@ -31,7 +31,7 @@
             <jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
 
             <section id="main-con">
-                <form action="/board/4/QnAWrite" method="POST" id="QnAform">
+                <form action="/admin/QnAWrite" method="POST" id="QnAform">
                     <h1 class="title">1:1 문의글 답변</h1>
                     <div>회원님의 문제가 원활히 해결 될 수 있도록 정성껏 답변 부탁드립니다🍀</div>
 
@@ -55,6 +55,7 @@
                             <button id="cancel-button">취소</button>
                         </div>
                     </div>
+                    <input type="hidden" name="boardNo" value="${boardNo}" />
                 </form> 
             </section>
 

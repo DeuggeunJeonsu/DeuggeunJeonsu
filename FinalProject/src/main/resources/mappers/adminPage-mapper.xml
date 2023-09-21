@@ -80,5 +80,40 @@
 		WHERE INQUIRY_TYPE IN (3,4)
 		ORDER BY BOARD_NO DESC
 	</select>
+	
+	<!-- 관리자 1:1 문의 답변 -->
+	<insert id="insertQnA">
+	
+	<selectKey order="BEFORE" resultType="_int"
+			keyProperty="boardNo">
+			SELECT SEQ_BOARD_NO.NEXTVAL FROM DUAL
+		</selectKey>
+		
+		INSERT INTO BOARD
+		VALUES(#{boardNo}, #{boardTitle}, #{boardContent},
+		DEFAULT, DEFAULT, DEFAULT, DEFAULT,
+		#{memberNo}, 6)
+	</insert>
+	
+	<!-- 문의 관리자 답변 여부 변경 -->
+	<update id="updateQnA">
+		UPDATE INQUIRY SET
+		ADMIN_CHECK_FL = 'Y'
+		WHERE BOARD_NO = #{boardNo}
+	</update>
+	
+	<!-- 관리자 상품 문의 답변 -->
+	<insert id="marketInWrite">
+	
+	<selectKey order="BEFORE" resultType="_int"
+			keyProperty="boardNo">
+			SELECT SEQ_BOARD_NO.NEXTVAL FROM DUAL
+		</selectKey>
+		
+		INSERT INTO BOARD
+		VALUES(#{boardNo}, #{boardTitle}, #{boardContent},
+		DEFAULT, DEFAULT, DEFAULT, DEFAULT,
+		#{memberNo}, 6)
+	</insert>
 
 </mapper>
