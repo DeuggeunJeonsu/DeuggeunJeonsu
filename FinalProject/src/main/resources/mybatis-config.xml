@@ -24,6 +24,7 @@
 		<typeAlias type="com.jeonsu.deuggeun.board.model.dto.Product" alias="Product" />
 		<typeAlias type="com.jeonsu.deuggeun.board.model.dto.Inquiry" alias="Inquiry" />
 		<typeAlias type="com.jeonsu.deuggeun.board.model.dto.Cart" alias="Cart" />
+		<typeAlias type="com.jeonsu.deuggeun.board.model.dto.Order" alias="Order" />
 		<typeAlias type="com.jeonsu.deuggeun.board.model.dto.ProductImage" alias="ProductImage" />
 		<typeAlias type="com.jeonsu.deuggeun.board.model.dto.Hashtag" alias="Hashtag" />
 		<typeAlias type="com.jeonsu.deuggeun.board.model.dto.Routine" alias="Routine" />

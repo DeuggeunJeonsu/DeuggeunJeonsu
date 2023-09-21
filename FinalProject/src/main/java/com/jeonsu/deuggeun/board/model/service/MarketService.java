@@ -58,5 +58,11 @@ public interface MarketService {
     int addToCart(Cart cart);
 
     // 장바구니 페이지 조회
-    Cart selectCart(Map<String, Object> map);
+    List<Cart> selectCart(Map<String, Object> map);
+
+    // 장바구니 선택 항목 삭제
+    int removeFromCart(Map<String, Object> map);
+
+    // 주문 데이터 등록
+    int insertOrder(Order order);
 }

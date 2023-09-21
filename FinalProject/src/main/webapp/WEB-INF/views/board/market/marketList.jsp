@@ -69,86 +69,6 @@
                     </div>
                 </div>
 
-<%--                <c:if test="${!empty param.key}" >--%>
-<%--                    <h3 style="margin:30px">"${param.query}" 검색 결과</h3>--%>
-<%--                </c:if>--%>
-
-<%--                            <div id="list-area" class="font-weight">--%>
-<%--                                <c:forEach items="${marketList}" var="market">--%>
-<%--                                    <div class="thumbnail">--%>
-<%--                                        <div>--%>
-<%--                                            <a href="/board/${boardCode}/detail/${market.productNo}">--%>
-<%--                                                <img src="${market.productImg}">--%>
-<%--                                            </a>--%>
-<%--                                        </div>--%>
-<%--                                        <div class="list-content">--%>
-<%--                                            <div class="title">--%>
-<%--                                                <a href="/board/${boardCode}/detail/${market.productNo}?cp=${pagination.currentPage}${sp}">--%>
-<%--                                                    ${market.productTitle}--%>
-<%--                                                </a>--%>
-<%--                                            </div>--%>
-<%--                                            <div class="price" id="formattedPrice">${market.productPrice}원</div>--%>
-
-<%--                                        </div>--%>
-<%--                                    </div>--%>
-<%--                                </c:forEach>--%>
-<%--                        </c:otherwise>--%>
-<%--                    </c:choose>--%>
-<%--                </div>--%>
-<%--                <c:out value="${marketList}"/>--%>
-<%--                <c:choose>--%>
-<%--                    <c:when test="${empty marketList}">--%>
-<%--                        <div id="list-area" class="font-weight no-posts">--%>
-<%--                            <h1>게시글이 존재하지 않습니다.</h1>--%>
-<%--                        </div>--%>
-<%--                    </c:when>--%>
-<%--                    <c:otherwise>--%>
-<%--                        <div id="list-area" class="font-weight">--%>
-<%--                            <c:forEach items="${marketList}" var="market">--%>
-<%--                                <div class="thumbnail">--%>
-<%--                                    <div>--%>
-<%--                                        <a href="/board/${boardCode}/detail/${market.productNo}">--%>
-<%--                                            <img src="${market.productImg}">--%>
-<%--                                        </a>--%>
-<%--                                    </div>--%>
-<%--                                    <div class="list-content">--%>
-<%--                                        <div class="title">--%>
-<%--                                            <a href="/board/${boardCode}/detail/${market.productNo}?cp=${pagination.currentPage}${sp}">--%>
-<%--                                                    ${market.productTitle}--%>
-<%--                                            </a>--%>
-<%--                                        </div>--%>
-<%--                                        <div class="price" id="formattedPrice">${market.productPrice}원</div>--%>
-<%--                                    </div>--%>
-<%--                                </div>--%>
-<%--                            </c:forEach>--%>
-<%--                        </div>--%>
-<%--                    </c:otherwise>--%>
-<%--                </c:choose>--%>
-
-
-
-<%--                <div class="pagination-area">--%>
-
-
-<%--                    <ul class="pagination">--%>
-<%--                        <li><a href="/${boardCode}/list?cp=1${sp}">&lt;&lt;</a></li>--%>
-<%--                        <li><a href="/${boardCode}/list?cp=${pagination.prevPage}${sp}">&lt;</a></li>--%>
-
-<%--                        <c:forEach var="i" begin="${pagination.startPage}" end="${pagination.endPage}" step="1">--%>
-<%--                            <c:choose>--%>
-<%--                                <c:when test="${ i == pagination.currentPage}">--%>
-<%--                                    <li><a class="current">${i}</a></li>--%>
-<%--                                </c:when>--%>
-<%--                                <c:otherwise>--%>
-<%--                                    <li><a href="/${boardCode}/list?cp=${i}${sp}">${i}</a></li>--%>
-<%--                                </c:otherwise>--%>
-<%--                            </c:choose>--%>
-<%--                        </c:forEach>--%>
-
-<%--                        <li><a href="/${boardCode}/list?cp=${pagination.nextPage}${sp}">&gt;</a></li>--%>
-<%--                        <li><a href="/${boardCode}/list?cp=${pagination.maxPage}${sp}">&gt;&gt;</a></li>--%>
-<%--                    </ul>--%>
-<%--                </div>--%>
                 <c:choose>
                     <c:when test="${empty marketList}">
 <%--                        <div id="list-area" class="font-weight no-posts">--%>
@@ -176,7 +96,8 @@
                                 </div>
                             </c:forEach>
                         </div>
-
+                        <br>
+                        <br>
                         <!-- 페이지네이션 -->
                         <div class="pagination-area">
                             <ul class="pagination">

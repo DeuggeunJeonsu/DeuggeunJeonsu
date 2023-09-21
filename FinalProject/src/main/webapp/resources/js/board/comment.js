@@ -21,32 +21,27 @@ function selectCommentList(){
     .then(response => response.json()) // 응답 객체 -> 파싱
     .then(cList => {  // cList :댓글 목록 (객체 배열)
         console.log(cList);
-
+       
+        const commentCount = document.querySelector("#commentCount");
+        commentCount.innerHTML= "댓글 "+ cList.length;
         // 화면에 출력되어 있는 댓글 목록 삭제
         const commentList = document.getElementById("commentList"); // ul태그
         commentList.innerHTML = "";
 
         // cList에 저장된 요소를 하나씩 접근
         for(let comment of cList){
-            
-            
-            
+
             // 행
             const commentRow = document.createElement("li");
             commentRow.classList.add("comment-row");
-            
-            // 화살표 사진 
-            if(comment.parentNo != 0)  {
 
-                const arrow = document.createElement("img");
-                arrow.setAttribute("src", "/resources/images/boardDetaile/commentArrow.png");
-                
-                commentRow.append(arrow);
-            }
             // 답글일 경우 child-comment 클래스 추가
-            if(comment.parentNo != 0)  commentRow.classList.add("child-comment");
-
-
+            if(comment.parentNo != 0) {
+                commentRow.classList.add("child-comment");
+                const img = document.createElement("img")
+                img.setAttribute("src", "/resources/images/boardDetaile/commentArrow.png");
+                commentRow.append(img)
+            }    
             // 작성자
             const commentWriter = document.createElement("p");
             commentWriter.classList.add("comment-writer");
@@ -88,6 +83,10 @@ function selectCommentList(){
                 // 버튼 영역
                 const commentBtnArea = document.createElement("div");
                 commentBtnArea.classList.add("comment-btn-area");
+                
+                const inline = document.createElement("div");
+                inline.classList.add("inline");
+
 
                 // 답글 버튼
                 const childCommentBtn = document.createElement("button");
@@ -95,7 +94,7 @@ function selectCommentList(){
                 childCommentBtn.innerText = "답글";
 
                 // 버튼 영역에 답글 버튼 추가
-                commentBtnArea.append(childCommentBtn);
+                //commentBtnArea.append(childCommentBtn);
 
                 // 로그인한 회원번호와 댓글 작성자의 회원번호가 같을 때만 버튼 추가
                 if( loginMemberNo == comment.memberNo   ){
@@ -109,14 +108,15 @@ function selectCommentList(){
 
 
                     // 삭제 버튼
-                    const deleteBtn = document.createElement("button");
-                    deleteBtn.innerText = "삭제";
+                    const deleteBtn = document.createElement("span");
+                    deleteBtn.innerText = 'x';
                     // 삭제 버튼에 onclick 이벤트 속성 추가
                     deleteBtn.setAttribute("onclick", "deleteComment("+comment.commentNo+")");                       
 
 
                     // 버튼 영역 마지막 자식으로 수정/삭제 버튼 추가
-                    commentBtnArea.append(updateBtn, deleteBtn);
+                    inline.append(childCommentBtn,updateBtn)
+                    commentBtnArea.append(deleteBtn,inline);
 
                 } // if 끝
                 
@@ -256,7 +256,7 @@ function showUpdateComment(commentNo, btn){
 
     // 3. 댓글에 작성되어 있던 내용만 얻어오기 -> 새롭게 생성된 textarea 추가될 예정
     
-    let beforeContent = commentRow.children[1].innerHTML;
+    let beforeContent = commentRow.previousElementSibling.innerHTML;
 
     // 이것도 가능!
     //let beforeContent = btn.parentElement.previousElementSibling.innerHTML;

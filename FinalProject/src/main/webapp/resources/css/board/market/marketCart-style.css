@@ -1,16 +1,23 @@
-@font-face {
-    font-family: 'Pretendard-Regular';
-    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
-    font-weight: 500;
-    font-style: normal;
-}
+/*@font-face {*/
+/*    font-family: 'Pretendard-Regular';*/
+/*    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');*/
+/*    font-weight: 500;*/
+/*    font-style: normal;*/
+/*}*/
 
 * {
     box-sizing: border-box;
 }
-
+section {
+    background-color: #fff !important;
+    height: 900px;
+}
 .main-con {
     /* border: 1px solid #99E1ED; */
+    margin-top: 30px;
+    background-color: #fff;
+    padding: 40px;
+    /*height: 650px;*/
 }
 
 /* 노트북 크기 이하에서 이미지 크기 조정 */
@@ -23,7 +30,10 @@
 
 }
 
-
+h1, h3{
+    /*!*color: #477A7B;*!*/
+    font-family: 'Montserrat','Nanum Gothic',sans-serif;
+}
 /* a태그 속성 제거 */
 a {
     text-decoration: none;
@@ -31,14 +41,13 @@ a {
 }
 
 #main-container {
+    /*margin-top: 30px;*/
     margin-left: 250px;
     margin-right: 250px;
-    margin-bottom: 150px;
-    min-width: 1200px; 
-    /* margin: 100px 250px;
-    min-width: 1200px; */
-}
+    margin-bottom: 80px;
+    min-width: 1200px;
 
+}
 
 /* 리뷰 게시판 영역 */
 .board-name {
@@ -55,16 +64,24 @@ table {
 
 th,
 td {
-    padding: 10px;
+    padding: 15px;
+    font-size: 1.3em;
     text-align: left;
     border-bottom: 1px solid #ccc;
     text-align: center;
+    font-family: 'Montserrat','Nanum Gothic',sans-serif;
 }
-
+td{
+    font-weight: 500;
+}
 th {
-    background-color: #99E1ED;
-    color: #565656;
-    font-size: 1.2em;
+    font-family: 'Montserrat','Nanum Gothic',sans-serif;
+    /*background-color: #99E1ED;*/
+    /*color: #565656;*/
+    background-color: #477A7B;
+    color: #fff;
+
+    font-size: 1.4em;
     font-weight: bold;
 }
 
@@ -72,7 +89,9 @@ th {
     text-align: center;
     padding: 10px;
 }
-
+.total-info p {
+    font-family: 'Montserrat','Nanum Gothic',sans-serif;
+}
 .text {
     font-size: 18px;
     font-weight: bold;
@@ -92,11 +111,11 @@ th {
 #paymentBtn {
     display: inline-block;
     width: 120px;
-    background-color: #99E1ED;
+    background-color: #477A7B;
     font-size: 1.5em;
     font-weight: bold;
     color: #fff;
-    border: 2px solid #99E1ED;
+    border: 2px solid #477A7B;
     border-radius: 5px;
     line-height: 50px;
     text-align: center;
@@ -106,6 +125,52 @@ th {
 }
 
 #paymentBtn:hover {
-    background-color: #66C2CC;
-    border-color: #66C2CC;
+    background-color: #296364; /* hover 시 배경색 변경 */
+    /*border-color: #296364; !* hover 시 테두리 색상 변경 *!*/
 }
+
+.box {
+    height: 100px;
+    /*border: 1px solid #7b7979;*/
+}
+
+.pull {
+    position: relative;
+    width: 400px;
+    height: 200px;
+    padding: 20px;
+    color: #FFF;
+    border-radius: 10px;
+    background-color: #477A7B;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.pull:after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: -20px; /* 화살표 위치를 조정하세요 */
+    margin-top: -10px; /* 화살표를 세로 중앙에 정렬합니다. */
+    border-left: 20px solid #477A7B;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+}
+.pull-text{
+    font-family: 'Montserrat','Nanum Gothic',sans-serif;
+    font-size: 1.7em;
+}
+
+.delete-btn {
+    background-color: #f85f3f; /* 배경색 */
+    color: white; /* 텍스트 색상 */
+    border: none;
+    padding: 5px 10px; /* 내부 여백 */
+    border-radius: 5px; /* 모서리 둥글게 */
+    cursor: pointer;
+    font-size: 16px; /* 폰트 크기 */
+}
+.delete-btn:hover {
+    background-color: #ff371c; /* 호버 시 배경색 변경 */
+}
+

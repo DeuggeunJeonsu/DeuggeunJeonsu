@@ -22,6 +22,10 @@ function sample6_execDaumPostcode() {
     }).open();
 }
 
+// 취소하기 버튼
+function cancelOrder() {
+    window.location.href = '/board/cartList'; // 장바구니 페이지로 이동
+}
 
 // const delName = document.getElementById("del_name")
 // delName.addEventListener("")

@@ -39,7 +39,10 @@ public class CommentDAO {
 	 * @return result
 	 */
 	public int delete(int commentNo) {
-		return sqlsession.update("commentMapper.delete",commentNo);
+		
+		sqlsession.update("commentMapper.delete",commentNo);
+		
+		return sqlsession.update("commentMapper.delete2",commentNo);
 	}
 
 	/**댓글 수정

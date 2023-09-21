@@ -1,5 +1,11 @@
+<%@ page import="java.util.List" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
+<c:set var="cartList" value="${map2.cartList}" />
+
         <!DOCTYPE html>
         <html>
 
@@ -37,7 +43,7 @@
                     <h1 class="board-name">배송지 정보를 입력해주세요</h1>
                     <br>
                     <br>
-                    <form action="/delivery_info" method="post" onSubmit="return false;">
+                    <form action="/board/payments" method="POST" onSubmit="return false;">
                         <table>
                             <tbody>
                                 <tr>
@@ -47,15 +53,18 @@
                                     </td>
                                 </tr>
                                 <tr>
+                                    <th>이메일(결제 내역을 보내드려요)</th>
+                                    <td>
+                                        <input type="text" class="form_input" name="delEmail" value="" id="delEmail">
+                                    </td>
+                                </tr>
+                                <tr>
                                     <th scope="row">휴대폰 번호</th>
                                     <td>
-                                        <input type="text" class="form_input" name="delPhone" value="" maxlength="4"
-                                            style="width: 55px;"> -
-                                        <input type="text" class="form_input" name="delPhone" value="" maxlength="4"
-                                            style="width: 55px;"> -
-                                        <input type="text" class="form_input" name="delPhone" value="" maxlength="4"
-                                            style="width: 55px;">
+                                        <input type="text" class="form_input" name="delPhone" value="" maxlength="12"
+                                               style="width: 200px" id="delPhone">
                                     </td>
+
                                 </tr>
                                 <tr>
                                     <th scope="row">주소</th>
@@ -77,18 +86,24 @@
                                 <tr>
                                     <th scope="row">배송요청사항</th>
                                     <td>
-                                        <textarea class="form_input form_text" name="delNotes" rows="4" cols="50"
-                                            placeholder="조심히 안전하게 와주세요 :)"></textarea>
+                                        <input class="form_input form_text" id="delNotes" name="delNotes" value="" rows="4" cols="50"
+                                            placeholder="조심히 안전하게 와주세요 :)"></input>
                                     </td>
                                 </tr>
                             </tbody>
                         </table>
-                        <div class="fixed-con">
+                        <c:forEach var="cart" items="${cartList}">
+<%--                            <c:set var="totalAmountSum" value="0" />--%>
+<%--                            <c:forEach items="${cartList}" var="cart">--%>
+                                <c:set var="totalAmountSum" value="${totalAmountSum + cart.total}" />
+<%--                            </c:forEach>--%>
+
+                            <div class="fixed-con">
                         <div class="box">
-                            <p class="title-first">유저일이지롱님 결제정보</p>
+                            <p class="title-first">${cart.memberNickname}님의 결제정보</p>
                             <div class="tbl_order2">
                                     <div>총상품금액</div>
-                                    <div>50,000원</div>
+                                    <div><fmt:formatNumber type="number" value="${totalAmountSum}" pattern="#,###원" /></div>
                                 </div>
                                 <div class="tbl_order2">
                                     <div>배송비</div>
@@ -96,16 +111,22 @@
                                 </div>
                                 <dl class="total_ord">
                                     <div class="total_amount">최종결제금액</div>
-                                    <div class="total">50,000원</div>
+                                    <div class="total">
+                                        <fmt:formatNumber type="number" value="${totalAmountSum}" pattern="#,###원" />
+                                    </div>
                                 </dl>
                             </div>
                             <button type="submit" onclick="requestPay()" id="payment-btn" class="submit-btn">결제하기</button>
-                            <button type="button" id="cancle-btn" class="submit-btn">취소하기</button>
+                            <button type="button" id="cancle-btn" class="submit-btn" onclick="cancelOrder()">취소하기</button>
                         </div>
+                        <input type="hidden" id="productName" value="${cart.productName}">
+                            <%--                            <input type="hidden" id="totalCount" value="${cart.totalCount}">--%>
+                        </c:forEach>
+                        <input type="hidden" id="totalAmountSum" value="${totalAmountSum}">
+                        <c:set var="productCount" value="${fn:length(cartList)}" />
+                        <input type="hidden" id="productCount" value="${productCount}" />
                     </form>
 
-                
-                    <!-- <button onclick="requestPay()" id="paymentBtn" type="submit">결제하기</button> -->
 
                 </div>
 
@@ -119,7 +140,7 @@
                             - 배송 기간 : 2일 ~ 3일(단, 공휴일, 기념일 등 제외) <br>
                             - 배송 안내 : 당일 오후 1시 주문 건에 한하여 당일 발송되며 <br>
                             1시 이후에는 주문취소 불가(사전예약, 타임특가 및 냉동/신선 제품의 경우 <br>
-                            
+
                             상세페이지 주문 마감시간 확인)· 도서, 산간 오지 등 교통이 불편한 지역은 지역에 따라 2~3일 추가 소요<br>
                             · 추석, 설, 연말연시,
                             접수 물량이 많은 경우에 1~2일 지연될 수 있음· 군부대(사서함)주소의 경우 배송이 불가능할 수 있음
@@ -139,8 +160,7 @@
 
             <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
             <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<%--            <script src="/resources/js/main.js"></script>--%>
-            <script src="/resources/js/market/marketOrder.js"></script>
+            <script src="/resources/js/market/payment.js"></script>
         </body>
 
         </html>

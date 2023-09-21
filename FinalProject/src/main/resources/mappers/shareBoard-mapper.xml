@@ -16,6 +16,7 @@
 		<result property="memberNickname" column="MEMBER_NICKNAME" />
 		<result property="profileImage" column="PROFILE_IMG" />
 		<result property="thumbnail" column="THUMBNAIL" />
+		
 
 		<result property="commentCount" column="COMMENT_COUNT" />
 		<result property="likeCount" column="LIKE_COUNT" />
@@ -88,7 +89,8 @@
 
 		(SELECT COUNT(*) FROM "COMMENT" C
 		WHERE C.BOARD_NO =
-		B.BOARD_NO) COMMENT_COUNT,
+		B.BOARD_NO
+		AND C.COMMENT_DEL_FL='N') COMMENT_COUNT,
 
 		(SELECT COUNT(*) FROM LIKE_POST L
 		WHERE
@@ -132,7 +134,11 @@
 		TO_CHAR(CREATE_DT, 'YY.MM.DD') CREATE_DT,
 		(SELECT COUNT(*)
 		FROM LIKE_POST L
-		WHERE L.BOARD_NO = B.BOARD_NO) LIKE_COUNT
+		WHERE L.BOARD_NO = B.BOARD_NO) LIKE_COUNT,
+		(SELECT COUNT(*)
+		FROM "COMMENT" C
+		WHERE C.BOARD_NO = B.BOARD_NO
+		AND C.COMMENT_DEL_FL='N') COMMENT_COUNT
 		FROM BOARD B
 		JOIN MEMBER
 		USING(MEMBER_NO)

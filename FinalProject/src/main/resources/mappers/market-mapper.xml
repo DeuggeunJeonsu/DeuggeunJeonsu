@@ -100,10 +100,30 @@
         <result property="productPrice" column="PRODUCT_PRICE" />
         <result property="orderFlag" column="ORDER_FL" />
         <result property="total" column="TOTAL_AMOUNT" />
+        <result property="productName" column="PRODUCT_NAME" />
         <result property="orderNo" column="ORDER_NO" />
+        <result property="itemStatus" column="ITEM_ST" />
+        <result property="memberNickname" column="MEMBER_NICKNAME" />
     </resultMap>
 
-
+    <!-- Order에 대한 resultMap -->
+    <resultMap id="order_rm" type="Order">
+        <id property="orderNo" column="ORDER_NO"></id>
+        <result property="total" column="TOTAL_AMOUNT" />
+        <result property="orderDate" column="ORDER_DATE" />
+        <result property="pmCard" column="PM_CARD" />
+        <result property="orderStatus" column="ORDER_ST" />
+        <result property="delName" column="DEL_NAME" />
+        <result property="delZip" column="DEL_ZIP" />
+        <result property="delAddr" column="DEL_ADDR" />
+        <result property="delPhone" column="DEL_PHONE" />
+        <result property="delNotes" column="DEL_NOTE" />
+        <result property="orderCount" column="ORDER_COUNT" />
+        <result property="cancelStatus" column="CANCEL_ST" />
+        <result property="changeStatus" column="CHANGE_ST" />
+        <result property="memberNo" column="MEMBER_NO" />
+        <result property="delEmail" column="DEL_EMAIL" />
+    </resultMap>
 
     <!-- 특정 게시판의 삭제되지 않은 게시글 수 조회 -->
     <select id="getListCount" resultType="_int">
@@ -344,23 +364,12 @@
     </select>
 
     <!-- 장바구니에 상품 담기 -->
-<!--    <insert id="addToCart" parameterType="Cart" >-->
-<!--        INSERT INTO CART-->
-<!--        VALUES(#{productNo}, #{memberNo}, #{quantity}, #{productPrice}, DEFAULT, DEFAULT)-->
-<!--    </insert>-->
     <insert id="addToCart" parameterType="Cart">
         INSERT INTO CART (PRODUCT_NO, MEMBER_NO, ITEM_COUNT, TOTAL_AMOUNT)
         VALUES (#{productNo}, #{memberNo}, #{quantity}, #{total})
     </insert>
 
-
     <!-- 상품이 이미 있는 경우 수량만 업데이트 -->
-<!--    <update id="updateCart" parameterType="Cart" >-->
-<!--        UPDATE CART-->
-<!--        SET ITEM_COUNT = #{quantity}-->
-<!--        WHERE PRODUCT_NO = #{productNo}-->
-<!--        AND MEMBER_NO = #{memberNo}-->
-<!--    </update>-->
     <update id="updateCart" parameterType="Cart" >
         UPDATE CART
         SET ITEM_COUNT = #{quantity},
@@ -369,10 +378,44 @@
           AND MEMBER_NO = #{memberNo}
     </update>
 
-    <select id="" resultMap="cart_rm">
-
+    <!-- 장바구니 내역 조회 -->
+    <select id="selectCart" resultMap="cart_rm">
+        SELECT P.PRODUCT_NAME, P.PRODUCT_PRICE, C.TOTAL_AMOUNT, C.ITEM_COUNT, C.MEMBER_NO, C.PRODUCT_NO, MEMBER_NICKNAME
+        FROM CART C
+                 JOIN PRODUCT P ON C.PRODUCT_NO = P.PRODUCT_NO
+                 JOIN MEMBER M ON C.MEMBER_NO = M.MEMBER_NO
+        WHERE C.MEMBER_NO = #{memberNo}
+          AND ORDER_FL = 'N'
+          AND ITEM_ST = 'N'
     </select>
 
 
+    <!-- 장바구니 선택 항목 삭제 -->
+    <delete id="removeFromCart" >
+        DELETE FROM CART
+        WHERE PRODUCT_NO = #{productNo}
+        AND MEMBER_NO = #{memberNo}
+    </delete>
+
+    <!-- 결제성공시 데이터 삽입 -->
+    <insert id="insertOrder" parameterType="Order">
+        INSERT INTO "ORDER"
+        VALUES(SEQ_ORDER_NO.NEXTVAL, #{total}, DEFAULT, #{pmCard}, DEFAULT, #{delName}, #{delZip}, #{delAddr}, #{delPhone}, #{delNotes}, #{productCount}, DEFAULT, DEFAULT, #{memberNo}, #{delEmail})
+    </insert>
+
+    <!-- 결제 후 주문 상태 업데이트 -->
+    <update id="afterOrder" parameterType="Order">
+        UPDATE "ORDER"
+        SET ORDER_ST = 'Y'
+        WHERE MEMBER_NO = #{memberNo}
+    </update>
+
+    <!-- 장바구니 내역 구매완료로 상태 업데이트   -->
+    <update id="afterUpdateCart" parameterType="Cart">
+        UPDATE CART
+        SET ORDER_FL = 'Y'
+        WHERE MEMBER_NO = #{memberNo}
+
+    </update>
 </mapper>
 
