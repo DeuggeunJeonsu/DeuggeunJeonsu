@@ -171,19 +171,40 @@ hr{ border-bottom: 2px solid #ddd;}
     font-size: 1.7rem;
     font-weight: bold;
 }
-#member-area > div:nth-child(1)>button{
-    background-color: #99E1ED;
-    border: none;
-    border-radius: 20px;
-    cursor: pointer;
+/* 팔로우 버튼 */
+#follow-btn{
+    margin-top: 5px;
+    height: 27px;
     width: 100px;
-    height: 30px;
-    font-size: 18px;
+
+    font-size: 16px;
+    border-radius: 5px;
+
+    color: #99E1ED;
+    background-color: white;
+    border: 1px solid #99E1ED;
+
+    cursor: pointer;
 }
-#member-area > div:nth-child(1)>button:hover{
-    /* font-size: 19px; */
-    color: #fff;
-    transition-duration: 0.5s;
+
+#follow-btn:hover{
+    border-radius: 1px solid #99E1ED;
+
+    color: #99E1ED;
+    background-color: white;
+    border: 1px solid #99E1ED;
+
+    transition-duration: 0.2s;
+}
+
+#follow-btn:hover{
+    border-radius: 1px solid #99E1ED;
+
+    background-color: #99E1ED;
+    color: white;
+    border: 1px solid #99E1ED;
+
+    transition-duration: 0.2s;
 }
 #profile-area{
     width: 80px;

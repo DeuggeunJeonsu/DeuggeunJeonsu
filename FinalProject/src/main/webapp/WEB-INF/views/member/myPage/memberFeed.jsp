@@ -111,8 +111,7 @@
                     <tbody>
                     </tbody>
                 </table>
-                <i class="fa-solid fa-caret-up triangle"></i>
-                <i class="fa-solid fa-circle Circle"></i>
+                
             </div>
         </div>
 

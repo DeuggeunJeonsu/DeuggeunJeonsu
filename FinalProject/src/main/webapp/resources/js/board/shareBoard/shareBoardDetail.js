@@ -1,3 +1,85 @@
+// 팔로우, 언팔로우 버튼 토글
+
+// 팔로우 버튼
+const followBtn = document.getElementById("follow-btn");
+
+// 언팔로우 버튼
+const followingBtn = document.getElementById("following-btn");
+
+// /* 팔로우, 언팔로우 버튼 호버 시 아이콘 색 변경 */
+$(document).ready(function() {
+    $('#follow-btn').hover(function() {
+        $('.whiteChk2').show();
+        $('.blueChk2').hide();
+    }, function() {
+        $('.whiteChk2').hide();
+        $('.blueChk2').show();
+    })
+});
+
+$(document).ready(function() {
+    $('#following-btn').hover(function() {
+        $('.whiteChk').hide();
+        $('.blueChk').show();
+    }, function() {
+        $('.whiteChk').show();
+        $('.blueChk').hide();
+    })
+});
+
+const data = {
+    "boardMemberNo" : boardMemberNo,
+    "loginMemberNo" : loginMemberNo
+}
+
+// 팔로우
+if(followBtn != null){
+    followBtn.addEventListener("click", (e) =>{
+
+        fetch("/board/3/follow", {
+            method : "POST",
+            headers : {"Content-Type" : "application/json"},
+            body : JSON.stringify(data)
+        })
+        .then(resp => resp.text())
+        .then(result => {
+
+            if(result == -1){
+                console.log("처리 실패");
+                return;
+            } else {
+                console.log("처리 성공")
+                selectFollowCount();
+            }
+
+        })
+        .catch(err => console.log(err))
+    })
+}
+
+// 언팔로우
+if(followingBtn != null){
+    followingBtn.addEventListener("click", () => {
+    
+        fetch("/board/3/unfollow", {
+            method : "POST",
+            headers : {"Content-Type" : "application/json"},
+            body : JSON.stringify(data)
+        })
+        .then(resp => resp.text())
+        .then(result => {
+            
+            if(result == -1){
+                console.log("처리 실패");
+                return;
+            } else {
+                console.log("처리 성공");
+                selectFollowCount()
+            }
+        })
+        .catch(err => console.log(err))
+    })
+}
 // --------------------------------------------------------------------------------
 // 좋아요 버튼 이벤트
 var check_status = false;
@@ -150,7 +232,7 @@ document.addEventListener("click", function (e){
                     }
                     return;
                 } else {
-                    const inputTodo = {listContent: addListVal , lcreateDt : sysDate, memberNo : loginMemberNo}
+                    const inputTodo = {listContent: addListVal , lCreateDt : sysDate, memberNo : loginMemberNo}
                     insertTodo(inputTodo)
                   
             
@@ -208,7 +290,7 @@ document.querySelector(".addList").addEventListener("keyup", function(event) {
                     }
                     return;
                 } else {
-                    const inputTodo = {listContent: addListVal , lcreateDt : sysDate, memberNo : loginMemberNo}
+                    const inputTodo = {listContent: addListVal , lCreateDt : sysDate, memberNo : loginMemberNo}
                     insertTodo(inputTodo)
                   
             
@@ -236,7 +318,7 @@ document.addEventListener("click", (e)=>{
                 }
                 
             }
-        const addTodo = {listContent:  add , lcreateDt : sysDate, memberNo : loginMemberNo}
+        const addTodo = {listContent:  add , lCreateDt : sysDate, memberNo : loginMemberNo}
         insertTodo(addTodo)
     }
 
@@ -287,7 +369,7 @@ function todoslist(sysDate){
                 document.querySelector(".check-area").innerHTML="";
                 for(let todo of detailedTodoList){
                     const DateDIV = document.createElement("div");
-                    DateDIV.innerHTML=todo.lcreateDt;
+                    DateDIV.innerHTML=todo.lCreateDt;
 
                     // 새로운 div 요소 생성
                     const div = document.createElement("div");
@@ -400,7 +482,37 @@ function updateCheckedPercentage( ) {
     }
 }
 
-window.onload = () => { todoslist(sysDate) }
+window.onload = () => { 
+    todoslist(sysDate)
+    selectFollowCount();
+
+}
+
+
+// 팔로잉, 팔로워 수 조회
+const followingCountArea = document.getElementById("following-count-area");
+const followerCountArea = document.getElementById("follower-count-area");
+
+function selectFollowCount(){
+
+    fetch("/myPage/followingFollower/selectFollowCount", {
+        method : "POST",
+        headers : {"Content-Type" : "application/json"},
+        body : JSON.stringify({"memberNo" : boardMemberNo})
+    })
+    .then(resp => resp.json())
+    .then(map => {
+
+        const followingCount = map.followingTotalCount;
+        const followerCount = map.followerTotalCount;
+
+        followingCountArea.innerHTML = followingCount;
+        followerCountArea.innerHTML = followerCount;
+
+    })
+    .catch(err => console.log(err))
+
+}
 
 function todoslist(sysDate){
     // ajax을 할 예정
@@ -417,7 +529,7 @@ function todoslist(sysDate){
                 document.querySelector(".check-area").innerHTML="";
                 for(let todo of detailedTodoList){
                     const DateDIV = document.createElement("div");
-                    DateDIV.innerHTML=todo.lcreateDt;
+                    DateDIV.innerHTML=todo.lCreateDt;
 
                     // 새로운 div 요소 생성
                     const div = document.createElement("div");

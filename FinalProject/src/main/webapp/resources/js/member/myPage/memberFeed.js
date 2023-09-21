@@ -392,20 +392,88 @@ function buildCalendar() {
             nowRow = tbody_Calendar.insertRow();
         }
 
-        // ajax,, 여기서 만들어야해
-        // i 태그에db에서 가져와서 넣어보기 
-        // 동그라미 또는 세모
-
-
-
-
-
+        ///----------------------------------------------------------
+        
+        // 로그인 되었을 때 todolist 캘린더에 결과 보여주기
+        if (loginMemberNo != "") {
+            $.ajax({
+                
+                url: "/todolist",
+                method: "POST",
+                data: { "memberNo": memberNo },
+                dataType: "JSON",
+                success: function (todolistMap) {
+                    for (let todos of todolistMap) {
+                        const todoFl = todos.LIST_FL; // 진행여부! 'Y'- 동그라미 'N'- 세모
+                        const todoDays = todos.L_CREATE_DT.split("-");
+                        const todoYear2 = todoDays[0]; //년
+                        const todoMonth2 = todoDays[1]; //월
+                        const todoDay2 = todoDays[2]; //일
+                        // newDIV2 엘리먼트 생성
+                        newDIV2 = document.createElement("i");
+                        
+                        console.log("todoFl:" + todoFl)
+                        
+                        if (todoFl == 'Y') {
+                            newDIV2.classList.add("fa-solid", "fa-circle", "Circle");
+                        } else {
+                            
+                            newDIV2.classList.add("fa-solid", "fa-caret-up", "triangle");
+                        }
+                        
+                        findDateCell(todoYear2, todoMonth2, todoDay2, newDIV2);
+                        
+                    }
+                },
+                error: function () {
+                    console.log("실패");
+                }
+            });
+        
+        }
+        
+        ///----------------------------------------------------------
     }
     // 마지막 tr이 비어 있을 경우 삭제
     if (nowRow.cells.length === 0) {
         tbody_Calendar.deleteRow(tbody_Calendar.rows.length - 1);
     }
 }
+
+
+
+//---------------------------------------------------
+
+ // 달력 셀을 찾는 함수
+ function findDateCell(year, month, day,newDIV2) {
+    console.log("day"+day)
+    const calenderYaer = document.getElementById("calYear").innerText;  // 년
+    const calendeMath = document.getElementById("calMonth").innerText; // 월
+    const calendeDays = document.querySelectorAll("tbody p");
+        // 현재 화면에 보이는 '일'을 배열로 가지고 옴!
+
+    if(calenderYaer  == year){
+        if(calendeMath == month){
+            for ( let calendeDay of calendeDays) {
+                
+                if(calendeDay.innerText == day){
+                    // console.log(newDIV2)
+                    calendeDay.innerHTML="";
+                    calendeDay.innerHTML=day;
+                    calendeDay.append(newDIV2);
+                }
+            }
+        }
+    }
+    
+}
+
+
+//---------------------------------------------------
+
+
+
+
   
 // 날짜 선택
 function choiceDate(newDIV) {
