@@ -1,6 +1,10 @@
 * {
     box-sizing: border-box;
-    /* border: 1px solid black; */
+   /* border: 1px solid black;  */
+}
+
+body{
+    position: relative;
 }
 
 #main-container{
@@ -34,9 +38,15 @@
     text-align: center;
     border-collapse: collapse;
 
-    overflow: auto;
     table-layout: fixed;
 }
+
+#list{
+    height: 750px;
+    overflow: auto;
+
+}
+
 
 th, td{
     border-bottom: 1px solid #ddd;
@@ -53,6 +63,8 @@ th, td{
 .tr{
     height: 45px;
 }
+
+
 
 .answer{
     color: #50cbe0;
@@ -92,3 +104,66 @@ th, td{
     color: white;
 }
 
+/* modal창 */
+#QnAModal{
+    z-index: 1000;
+    position: absolute;
+    position: fixed;
+    top: 40px;
+    left: 550px;
+    visibility: hidden;
+    
+}
+
+#QnAModal {
+    background-color: #ffffff;
+    padding: 20px;
+    border: 1px solid #99e1ed;
+    width: 800px;
+    height: 700px;
+    margin: 100px auto;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+
+input[type="text"],textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: 16px;
+    outline: none;
+}
+#QnAContent{
+    resize: none;
+    height: 500px;
+}
+
+.realboardTitle{
+    cursor: pointer;
+}
+
+/* 닫기 버튼 스타일 */
+#close-button {
+    background-color: #ccc;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 3px;
+    font-size: 16px;
+}
+
+#close-button:hover {
+    background-color: #999; 
+}
+
+.bottom{
+    display: flex;
+    justify-content: right;
+}
+
+.realboardTitle:hover{
+    color: #99e1ed;
+}

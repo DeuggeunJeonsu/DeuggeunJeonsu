@@ -116,7 +116,6 @@
 
 			window.onload = function () {
 
-				// 여기에 JavaScript 코드를 넣으세요.
 				document.getElementsByClassName("ncContent")[0].innerHTML = '${boardContent}';
 			};
 

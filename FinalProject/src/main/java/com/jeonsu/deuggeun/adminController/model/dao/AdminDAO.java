@@ -40,4 +40,21 @@ public class AdminDAO {
 		return sqlSession.selectList("adminMapper.selectInquiryList", null);
 	}
 
+
+	/** 1:1 문의 리스트 조회
+	 * @return
+	 */
+	public List<AdminMember> selectInquiry1() {
+		return sqlSession.selectList("adminMapper.selectInquiry1", null);
+	}
+	
+	/** 상품 문의 리스트 조회
+	 * @return boardList
+	 */
+	public List<AdminMember> selectInquiry2() {
+		return sqlSession.selectList("adminMapper.selectInquiry2", null);
+	}
+
+
+
 }

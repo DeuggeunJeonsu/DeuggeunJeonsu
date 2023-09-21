@@ -49,4 +49,31 @@ public class AdminServiceimpl implements AdminService{
 		return map;
 	}
 
+	// 1:1 문의 리스트 조회
+	@Override
+	public Map<String, Object> selectInquiry1() {
+		
+		List<AdminMember> boardList = dao.selectInquiry1();
+
+		Map<String, Object> map = new HashMap<>();
+
+		map.put("boardList", boardList);
+
+		return map;
+	}
+
+	// 특정 문의 리스트 조회
+	@Override
+	public Map<String, Object> selectInquiry2() {
+
+		List<AdminMember> boardList = dao.selectInquiry2();
+
+		Map<String, Object> map = new HashMap<>();
+
+		map.put("boardList", boardList);
+
+		return map;
+	}
+
+
 }

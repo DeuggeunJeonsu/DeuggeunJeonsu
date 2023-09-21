@@ -17,7 +17,7 @@ public class AdminController {
 
 	@Autowired
 	private AdminService service;
-	
+
 	// 관리자 페이지
 	@RequestMapping("/adminBoardList")
 	public String adminBoardList() {
@@ -29,27 +29,28 @@ public class AdminController {
 	@GetMapping("/userList")
 	public String userList(Model model) {
 
-		
+
 		Map<String, Object> map = service.selectMember();
-		
+
 		if(map.get("memberList") != null) {
-			
-			
+
+
 			model.addAttribute("map", map);
 		}
-		
-		
+
+
 		return "admin/userList";
 	}
 
+	
 	// 회원 문의 목록
 	@RequestMapping("/adminInquiry")
-	public String adminInquiry(Model model) {
+	public String adminInquiry2(Model model) {
 
 		Map<String, Object> map = service.selectInquiryList();
-		
+
 		if(map.get("boardList") != null) {
-			
+
 			model.addAttribute("map", map);
 		}
 		return "admin/adminInquiry";
