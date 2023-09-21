@@ -110,23 +110,6 @@ public class MarketController {
 		return "/board/market/marketOrder";
 	}
 
-//	 결제하기
-//	@GetMapping("/payments")
-//	public String payments(@SessionAttribute(value = "loginMember", required = false) Member loginMember,
-//						   @RequestParam String delName,
-//						   @RequestParam String delPhone,
-//						   @RequestParam String delZip,
-//						   @RequestParam String delAddress,
-//						   @RequestParam String delNotes,
-//						   Model model,
-//						   RedirectAttributes ra){
-//
-//		int memberNo = loginMember.getMemberNo();
-//
-//		return "/board/market/marketCart";
-//
-//	}
-
 	// 게시글 상세조회
 	@GetMapping("/{boardCode}/detail/{productNo}")
 	public String marketDetail(@PathVariable("boardCode") int boardCode
