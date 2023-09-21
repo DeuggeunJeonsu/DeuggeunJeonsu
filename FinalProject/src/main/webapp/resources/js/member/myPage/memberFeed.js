@@ -35,8 +35,16 @@ function followBtnClick(){
         })
         .then(resp => resp.json())
         .then(result => {
-            alert("팔로우 되었습니다. 🤩")
-            location.reload();
+
+            Swal.fire({
+                icon: 'success',                     
+                title: '팔로우 되었습니다. 🤩',    
+                text: '회원님만의 득근 레시피를 함께 나눠 보세요!', 
+
+              }).then(()=>{
+                  location.reload();
+
+              })
         })
         .catch(err => console.log(err))
 }
@@ -56,8 +64,17 @@ function unfollowBtnClick(){
         })
         .then(resp => resp.json())
         .then(result => {
-            alert("언팔로우 되었습니다. 🙏")
-            location.reload();
+
+            Swal.fire({
+                icon: 'success',                     
+                title: '언팔로우 되었습니다. 🙏',    
+                text: '회원님의 다른 득근 메이트를 찾아보세요!', 
+
+              }).then(()=>{
+                  location.reload();
+                  
+              })
+
         })
         .catch(err => console.log(err))
 }
