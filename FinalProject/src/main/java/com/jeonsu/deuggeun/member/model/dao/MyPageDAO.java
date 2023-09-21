@@ -124,5 +124,21 @@ public class MyPageDAO {
 		
 		return sqlSession.selectList("freeBoardMapper.selectFeedBoardList", memberNo, rowBounds);
 	}
+
+	/** 비밀번호 조회
+	 * @param memberNo
+	 * @return encPw
+	 */
+	public String selectEncPw(int memberNo) {
+		return sqlSession.selectOne("myPageMapper.selectEncPw", memberNo);
+	}
+
+	/** 회원 탈퇴
+	 * @param memberNo
+	 * @return result
+	 */
+//	public int secession(int memberNo) {
+//		return sqlSession.update("myPageMapper.secession", memberNo);
+//	}
 	
 }

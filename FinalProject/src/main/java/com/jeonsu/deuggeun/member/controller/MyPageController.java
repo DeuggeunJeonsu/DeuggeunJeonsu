@@ -3,6 +3,9 @@ package com.jeonsu.deuggeun.member.controller;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,6 +18,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.jeonsu.deuggeun.member.model.dto.Member;
 import com.jeonsu.deuggeun.member.model.service.MyPageService;
@@ -196,6 +201,47 @@ public class MyPageController {
 	public String myUpdate() {
 		return "member/myPage/myUpdate";
 	}
+	
+	// 회원탈퇴
+//	@PostMapping("/secession")
+//	public String secession(@SessionAttribute("loginMember") Member loginMember
+//							,String memberPw
+//							,RedirectAttributes ra
+//							,SessionStatus status
+//							,HttpServletResponse resp) {
+//		
+//		int memberNo = loginMember.getMemberNo();
+//		
+//		int result = service.secession(memberNo , memberPw);
+//		
+//		String path = "redirect:";
+//		String message = null;
+//		
+//		if(result > 0) {
+//			message = "탈퇴 되었습니다.";
+//			ra.addFlashAttribute("message", message);
+//			
+//			path += "/";
+//		
+//			status.setComplete();
+//			
+//			Cookie cookie = new Cookie("saveId", "");
+//			
+//			cookie.setMaxAge(0);
+//			cookie.setPath("/");
+//			resp.addCookie(cookie);
+//		}else {
+//			message = "현재 비밀번호가 일치하지 않습니다.";
+//			ra.addFlashAttribute("message", message);
+//			
+//			path += "secession";
+//		}
+//		
+//		
+//		return path;
+//	}
+			
+	
 	
 	@GetMapping("/mySecession")
 	public String mySecession() {

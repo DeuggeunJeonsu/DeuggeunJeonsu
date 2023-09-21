@@ -66,15 +66,13 @@
        
         <div>
         <label class="imp">비밀번호</label>
-        <input type="password" placeholder="비밀번호를 입력해주세요." id="memberPw" name="memberPw" required>
+        <input type="password" placeholder="비밀번호를 입력해주세요." id="memberPw" name="memberPw" maxlength="30" required>
       </div>
 
         <hr>
 
       <div>
-        <label class="imp">비밀번호 확인</label>
-        <input type="password" placeholder="비밀번호를 한번 더 입력해주세요." id="memberPwConfirm" name="memberPwConfirm" required>
-        <p class="signUp-message" id="pwMessage">영어,숫자,특수문자 8~16자 사이로 입력해주세요.</p>
+        <p class="signUp-message" id="pwMessage">자신의 비밀번호를 작성해주세요.</p>
       </div>
 
       
