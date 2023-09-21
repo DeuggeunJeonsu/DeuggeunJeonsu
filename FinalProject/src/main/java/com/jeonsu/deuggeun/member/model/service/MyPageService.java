@@ -3,6 +3,7 @@ package com.jeonsu.deuggeun.member.model.service;
 import java.util.List;
 import java.util.Map;
 
+import com.jeonsu.deuggeun.board.model.dto.Cart;
 import com.jeonsu.deuggeun.member.model.dto.Member;
 
 public interface MyPageService {
@@ -51,7 +52,12 @@ public interface MyPageService {
 	 */
 	Map<String, Object> selectFollowCount(Map<String, Object> paramMap);
 
-	
+	// 결제완료시 마이페이지 구매내역 페이지
+	List<Cart> selectPurchaseList(int memberNo);
+
+
+
+
 	/** 회원 탈퇴
 	 * @param memberNo
 	 * @param memberPw

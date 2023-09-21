@@ -429,6 +429,7 @@ public class MarketServiceImpl implements MarketService {
 				cart.setMemberNo(order.getMemberNo());
 				cart.setOrderNo(order.getOrderNo());
 
+				System.out.println("cart의 orderNo : " + cart.getOrderNo());
 				result = dao.afterUpdateCart(cart);
 
 				if (result > 0) {

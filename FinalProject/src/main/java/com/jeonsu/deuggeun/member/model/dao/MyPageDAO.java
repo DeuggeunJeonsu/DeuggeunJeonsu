@@ -3,6 +3,7 @@ package com.jeonsu.deuggeun.member.model.dao;
 import java.util.List;
 import java.util.Map;
 
+import com.jeonsu.deuggeun.board.model.dto.Cart;
 import org.apache.ibatis.session.RowBounds;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -133,7 +134,16 @@ public class MyPageDAO {
 		return sqlSession.selectOne("myPageMapper.selectEncPw", memberNo);
 	}
 
-	/** 회원 탈퇴
+
+	// 결제 완료시 구매내역 페이지
+	public List<Cart> selectPurchaseList(int memberNo) {
+		return sqlSession.selectList("marketMapper.selectPurchaseList", memberNo);
+	}
+
+
+
+
+    /** 회원 탈퇴
 	 * @param memberNo
 	 * @return result
 	 */
