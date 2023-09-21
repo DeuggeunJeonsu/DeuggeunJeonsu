@@ -13,19 +13,33 @@
   
   
 	<select id="selectTodoListAll" resultType="map">
-		SELECT LIST_NO, TO_CHAR(L_CREATE_DT, 'YYYY-MM-DD') L_CREATE_DT, LIST_FL
-		FROM TODOLIST
-		JOIN TODOLIST_DATE USING(LIST_NO)
-		WHERE MEMBER_NO = #{loginMemberNo}
+		SELECT
+		    TO_CHAR(TD."L_CREATE_DT", 'YYYY-MM-DD') AS L_CREATE_DT, 
+		    MAX(C."ALL_FL") AS ALL_FL
+		FROM
+		    "TODOLIST" TL
+		JOIN
+		    "TODOLIST_DATE" TD ON TL."LIST_NO" = TD."LIST_NO"
+		JOIN
+		    "CALENDER" C ON TD."L_CREATE_DT" = C."L_CREATE_DT"
+		WHERE
+		    TL."MEMBER_NO" = #{loginMemberNo}
+		GROUP BY
+		    TO_CHAR(TD."L_CREATE_DT", 'YYYY-MM-DD')
+		ORDER BY
+		    TO_CHAR(TD."L_CREATE_DT", 'YYYY-MM-DD')
 	</select>
 	 
 	 
 	<select id="DetailedTodoList" resultMap="list_rm">
-		SELECT LIST_NO, LIST_CONTENT, LIST_FL, MEMBER_NO, TO_CHAR(L_CREATE_DT, 'YYYY-MM-DD')L_CREATE_DT
-		FROM TODOLIST
-		JOIN TODOLIST_DATE USING(LIST_NO)
-		WHERE MEMBER_NO = #{loginMemberNo}
-		AND L_CREATE_DT = #{choiceTodoDate}
+		SELECT LIST_NO, TO_CHAR(L_CREATE_DT, 'YYYY-MM-DD')L_CREATE_DT,
+		    LIST_CONTENT, LIST_FL
+		FROM CALENDER
+		JOIN TODOLIST_DATE USING(L_CREATE_DT)
+		JOIN TODOLIST USING(LIST_NO)
+		WHERE TODOLIST.MEMBER_NO = #{loginMemberNo}
+		AND TO_CHAR(L_CREATE_DT, 'YYYY-MM-DD') = #{choiceTodoDate}
+		ORDER BY LIST_NO
 	</select>
   
   
@@ -55,9 +69,52 @@
 		VALUES(#{listNo},#{listContent}, DEFAULT, #{memberNo})
 	</insert>
 	
+	<select id="calenderSelect" resultType="java.lang.String">
+			SELECT
+		    TO_CHAR(TD."L_CREATE_DT", 'YYYY-MM-DD')"L_CREATE_DT"
+		    
+		FROM
+		    "TODOLIST" TL
+		JOIN
+		    "TODOLIST_DATE" TD ON TL."LIST_NO" = TD."LIST_NO"
+		JOIN
+		    "CALENDER" C ON TD."L_CREATE_DT" = C."L_CREATE_DT"
+		WHERE
+		    TL."MEMBER_NO" = #{memberNo}
+		AND 
+		    C."L_CREATE_DT" = #{lCreateDt}
+		GROUP BY
+		    TO_CHAR(TD."L_CREATE_DT", 'YYYY-MM-DD')
+		ORDER BY
+		    TO_CHAR(TD."L_CREATE_DT", 'YYYY-MM-DD')
+	
+	</select>
+	
+	
+	
+	
+	
+	<insert id="calenderInsert">
+		INSERT INTO "CALENDER"
+		VALUES(#{lCreateDt}, DEFAULT)
+	</insert>
+	
 	<insert id="todoDateInsert">
 		INSERT INTO "TODOLIST_DATE"
 		VALUES (${listNo}, #{lCreateDt})
 	</insert>
   
+  	<!-- 전체 달성 -->
+  	<update id="allCompleted">
+  		UPDATE "CALENDER" SET ALL_FL = 'Y'
+		WHERE L_CREATE_DT =  #{date}
+  	
+  	</update>
+  	
+  	
+  	<!-- 일부 달성 -->
+  	<update id="unfinished">
+		UPDATE "CALENDER" SET ALL_FL = 'N'
+		WHERE L_CREATE_DT =  #{date}
+  	</update>
 </mapper>

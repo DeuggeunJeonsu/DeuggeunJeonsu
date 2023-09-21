@@ -22,4 +22,10 @@ public interface TodoListService  {
 	// 체크리스트에 추가하기
 	int todoInsert(TodoList insertTodo);
 
+	// 모든 체크 완료했을 시 
+	int allCompleted(String date);
+
+	// 일부 수행시 
+	int unfinished(String date);
+
 }
