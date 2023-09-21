@@ -104,6 +104,7 @@
 
 
 											</tr>
+											<input type="hidden" class="boardNo"  value="${board.boardNo}" />
 
 											<input type="hidden" class="adminCheckFl2" value="${board.adminCheckFl}" />
 											<input type="hidden" class="inquiryType2" value="${board.inquiryType}" />

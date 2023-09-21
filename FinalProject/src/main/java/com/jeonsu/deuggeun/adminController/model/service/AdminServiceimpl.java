@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.jeonsu.deuggeun.adminController.model.dao.AdminDAO;
 import com.jeonsu.deuggeun.adminController.model.dto.AdminMember;
+import com.jeonsu.deuggeun.member.model.dto.Member;
 
 @Service
 public class AdminServiceimpl implements AdminService{
@@ -73,6 +74,44 @@ public class AdminServiceimpl implements AdminService{
 		map.put("boardList", boardList);
 
 		return map;
+	}
+
+	// 관리자 1:1 문의 답변
+	@Override
+	public int insertQnA(AdminMember board, int boardNo ) {
+		
+		int result = dao.insertQnA(board);
+		
+		board.setBoardNo(boardNo);
+		
+		  if(result > 0) {
+			  
+			  
+			  System.out.println(board.getBoardNo() +"여기오냐?");
+			  //  문의 관리자 답변 여부 변경
+			  result = dao.updateQnA(board);
+			  System.out.println("여기오냐?");
+		  }
+		 
+		return result;
+	}
+	
+	// 관리자 상품 문의 답변
+	@Override
+	public int marketInWrite(AdminMember board, int boardNo) {
+		
+		int result = dao.marketInWrite(board);
+		
+		board.setBoardNo(boardNo);
+		
+		  if(result > 0) {
+			  
+			  
+			  // 문의 관리자 답변 여부 변경
+			  result = dao.updateQnA(board);
+		  }
+		 
+		return result;
 	}
 
 

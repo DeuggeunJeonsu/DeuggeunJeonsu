@@ -3,6 +3,7 @@ package com.jeonsu.deuggeun.adminController.model.service;
 import java.util.Map;
 
 import com.jeonsu.deuggeun.adminController.model.dto.AdminMember;
+import com.jeonsu.deuggeun.member.model.dto.Member;
 
 public interface AdminService {
 
@@ -31,6 +32,20 @@ public interface AdminService {
 	 * @return boardList
 	 */
 	Map<String, Object> selectInquiry2();
+
+	/** 관리자 1:1 문의 답변
+	 * @param board
+	 * @param boardNo2 
+	 * @return result
+	 */
+	int insertQnA(AdminMember board , int boardNo);
+
+	/** 관리자 상품 문의 답변
+	 * @param board
+	 * @param boardNo
+	 * @return result
+	 */
+	int marketInWrite(AdminMember board, int boardNo);
 
 
 }

@@ -56,5 +56,28 @@ public class AdminDAO {
 	}
 
 
+	/** 관리자 1:1 문의 답변
+	 * @param board
+	 * @return
+	 */
+	public int insertQnA(AdminMember board) {
+		return sqlSession.insert("adminMapper.insertQnA", board);
+	}
+
+
+	/** 문의 관리자 답변 여부 변경
+	 * @param board
+	 * @return result
+	 */
+	public int updateQnA(AdminMember board) {
+		return sqlSession.update("adminMapper.updateQnA", board);
+	}
+
+
+	public int marketInWrite(AdminMember board) {
+		return sqlSession.update("adminMapper.marketInWrite", board);
+	}
+
+
 
 }

@@ -56,13 +56,17 @@ public interface MyPageService {
 	List<Cart> selectPurchaseList(int memberNo);
 
 
-
+	/** 마이페이지 1:1 문의 목록 조회
+	 * @param loginMember
+	 * @return boardList
+	 */
+	Map<String, Object> selectMyUpdateList(Member loginMember);
 
 	/** 회원 탈퇴
 	 * @param memberNo
 	 * @param memberPw
 	 * @return result
 	 */
-//	int secession(int memberNo, String memberPw);
+	//	int secession(int memberNo, String memberPw);
 
 }

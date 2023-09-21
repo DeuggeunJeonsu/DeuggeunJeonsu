@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.jeonsu.deuggeun.adminController.model.dto.AdminMember;
 import com.jeonsu.deuggeun.adminController.model.service.AdminService;
@@ -57,17 +59,22 @@ public class AdminController {
 	}
 
 	// 회원 문의 답변 작성페이지
-	@RequestMapping("/adminIqWrite")
-	public String adminIqWrite() {
+	@RequestMapping("/adminQnAWrite")
+	public String adminIqWrite(@RequestParam int boardNo,
+			Model model) {
 
-		return "admin/adminIqWrite";
+		model.addAttribute("boardNo" , boardNo);
+		return "admin/adminQnAWrite";
 	}
 
-	// 회원 문의 답변 작성페이지
+	// 상품문의 답변 작성페이지
 	@RequestMapping("/marketWrite")
-	public String marketWrite() {
-
-		return "admin/marketWrite";
+	public String marketWrite(@RequestParam int boardNo,
+			Model model) {
+		
+		
+		model.addAttribute("boardNo" , boardNo);
+		return "admin/adminMarketWrite";
 	}
 
 

@@ -206,7 +206,7 @@ public class MyPageController {
 		return "member/myPage/myPurchaseList";
 	}
 	
-	// 마이페이지 1:1문의 목록 조회
+	// 내 정보수정 페이지
 	@GetMapping("/myUpdate")
 	public String myUpdate() {
 		return "member/myPage/myUpdate";
@@ -258,8 +258,17 @@ public class MyPageController {
 		return "member/myPage/mySecession";
 	}
 	
-	@GetMapping("/oneOnOneInquiry")
-	public String myOneByOneInquiry() {
-		return "member/myPage/myOneOnOneInquiry";
-	}
+	// 마이페이지 1:1문의 목록 조회
+		@GetMapping("/oneOnOneInquiry")
+		public String myOneByOneInquiry(@SessionAttribute("loginMember") Member loginMember,
+				Model model) {
+			
+			Map<String, Object> map = service.selectMyUpdateList(loginMember);
+			
+			if(map.get("boardList") != null) {
+				
+				model.addAttribute("map", map);
+			}
+			return "member/myPage/myOneOnOneInquiry";
+		}
 }
