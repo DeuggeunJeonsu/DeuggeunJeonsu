@@ -61,19 +61,23 @@
         
         <br>
       
+      <form action="secession" method="POST" name="myPageFrm" id="secessionFrm">
       <div style="font-weight : bold;">
        
         <div>
         <label class="imp">비밀번호</label>
-        <input type="password" placeholder="비밀번호를 입력해주세요." required>
+        <input type="password" placeholder="비밀번호를 입력해주세요." id="memberPw" name="memberPw" required>
       </div>
 
         <hr>
 
       <div>
         <label class="imp">비밀번호 확인</label>
-        <input type="password" placeholder="비밀번호를 한번 더 입력해주세요." required>
+        <input type="password" placeholder="비밀번호를 한번 더 입력해주세요." id="memberPwConfirm" name="memberPwConfirm" required>
+        <p class="signUp-message" id="pwMessage">영어,숫자,특수문자 8~16자 사이로 입력해주세요.</p>
       </div>
+
+      
 
       <hr>
 
@@ -89,24 +93,23 @@
            <br>
         </div>
       <div class="all_agree">
-        <input type="checkbox" id="a1" name="select"/>
+        <input type="checkbox" id="agree" name="agree"/>
         <label >위 내용을 모두 확인하였으며, 이에 동의합니다. </label> 
       </div>
        <br>
                 
       <div>
-     <button type="button"style="border:1px solid rgba(52, 196, 219, 0.5);
+     <button type="submit"style="border:1px solid rgba(52, 196, 219, 0.5);
      border-radius:20px;width:90px;height:36px;
      background:rgba(52, 196, 219, 0.5) ; color:white;font-size:16px;  cursor: pointer;">확인</button>
-    
-        <button type="button" style="border : 1px solid rgba(61,69,75,.16);  border-radius:20px ;  width:90px ; height:36px ;
-    background-color: #eee ; color : 000; font-size:16px; cursor: pointer;">취소</button>
-    </div>                                              
-    
           </center>
     </div>
 
+    </form>
+
          <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
+
+         <script src="/resources/js/member/myPage/secession.js"></script>
 
 
         </body>

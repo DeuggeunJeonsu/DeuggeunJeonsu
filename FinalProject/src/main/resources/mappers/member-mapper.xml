@@ -47,7 +47,7 @@
    		, #{memberPw}
 		, #{memberNickname}
 		, #{memberTel}
-		, #{memberAddress}
+		, '${memberAddress}'
    		, NULL, DEFAULT, DEFAULT, DEFAULT)
    </insert>
    

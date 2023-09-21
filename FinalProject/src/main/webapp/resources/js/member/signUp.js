@@ -1,4 +1,4 @@
-/* const checkObj = {
+const checkObj = {
     "memberEmail" : false,
     "mameberPw" : false,
     "memberPwConfirm" : false,
@@ -25,7 +25,7 @@ memberEmail.addEventListener("input",()=>{
 
     if(regEx.test(memberEmail.value)){
 
-        fetch("/signUp" + memberEmail.value)
+        fetch("/checkEmail/email?email=" + memberEmail.value)
 
         .then( response => response.text() )
 
@@ -140,7 +140,7 @@ memberNickname.addEventListener("input", () =>{
 
         if(regEx.test(memberNickname.value)) {
 
-        fetch("/signUp" + memberNickname.value)
+        fetch("/checkNick/nickname?nickname=" + memberNickname.value)
 
         .then( nickname => nickname.text() )
         .then( name => {
@@ -236,6 +236,34 @@ sendAuthKeyBtn.addEventListener("click", function(){
 
 
 const authKey = document.getElementById("authKey");
+const checkAuthKeyBtn = document.getElementById("checkAuthKeyBtn");
+
+checkAuthKeyBtn.addEventListener("click", function(){
+
+    if(authMin > 0 || authSec > 0){
+        const obj = {"inputKey":authKey.value, "email":tempEmail}
+        const query = new URLSearchParams(obj).toString()
+
+        fetch("/sendEmail/checkAuthKey?" + query)
+        .then(resp => resp.text())
+        .then(result => {
+            if(result > 0){
+                clearInterval(authTimer);
+                authKeyMessage.innerText = "인증되었습니다.";
+                authKeyMessage.classList.add("confirm");
+                checkObj.authKey = true;
+
+            }else {
+                alert("인증번호가 일치하지 않습니다.");
+                checkObj.authKey = false;
+            }
+        })
+        .catch(err => console.log(err));
+
+    } else{
+        alert("인증 시간이 만료되었습니다.")
+    }
+});
 
 
- */
+
