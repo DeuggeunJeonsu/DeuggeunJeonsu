@@ -53,6 +53,12 @@
                                     </td>
                                 </tr>
                                 <tr>
+                                    <th>이메일(결제 내역을 보내드려요)</th>
+                                    <td>
+                                        <input type="text" class="form_input" name="delEmail" value="" id="delEmail">
+                                    </td>
+                                </tr>
+                                <tr>
                                     <th scope="row">휴대폰 번호</th>
                                     <td>
                                         <input type="text" class="form_input" name="delPhone" value="" maxlength="12"

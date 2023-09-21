@@ -215,4 +215,15 @@ public class MarketDAO {
 		System.out.println("dao 실행!!!!!");
 		return sqlSession.insert("marketMapper.insertOrder", order);
 	}
+
+	// 결제 후 장바구니 상태 업데이트
+	public int afterOrder(Order order) {
+		System.out.println("이거실행!");
+		return sqlSession.update("marketMapper.afterOrder", order);
+	}
+
+	// 카트 업데이트
+	public int afterUpdateCart(Cart cart) {
+		return  sqlSession.update("marketMapper.afterUpdateCart", cart);
+	}
 }

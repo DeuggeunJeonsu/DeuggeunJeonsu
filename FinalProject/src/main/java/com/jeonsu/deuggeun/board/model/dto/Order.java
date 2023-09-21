@@ -21,6 +21,8 @@ public class Order {
     private String orderStatus;
     //DEL_NAME
     private String delName;
+    // DEL_EMAIL
+    private String delEmail;
     //DEL_ZIP
     private String delZip;
     //DEL_ADDR
@@ -36,5 +38,5 @@ public class Order {
     //MEMBER_NO
     private int memberNo;
     private String delNotes;
-    private int totalCount;
+    private int productCount;
 }

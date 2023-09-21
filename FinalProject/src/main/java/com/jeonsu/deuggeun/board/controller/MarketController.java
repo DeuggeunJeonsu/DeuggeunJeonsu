@@ -110,7 +110,7 @@ public class MarketController {
 		return "/board/market/marketOrder";
 	}
 
-	// 결제하기
+//	 결제하기
 //	@GetMapping("/payments")
 //	public String payments(@SessionAttribute(value = "loginMember", required = false) Member loginMember,
 //						   @RequestParam String delName,

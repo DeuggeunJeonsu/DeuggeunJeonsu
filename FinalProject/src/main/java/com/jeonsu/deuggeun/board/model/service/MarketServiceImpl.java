@@ -415,7 +415,35 @@ public class MarketServiceImpl implements MarketService {
 	@Override
 	public int insertOrder(Order order) {
 
+		int result = 0;
+		result = dao.insertOrder(order);
+
+		if (result > 0) {  // 주문 데이터 삽입 성공
+			order.setMemberNo(order.getMemberNo());
+			result = dao.afterOrder(order);
+
+			if (result > 0) {  // 주문 업데이트 성공
+
+				// 카트 업데이트 로직
+				Cart cart = new Cart();
+				cart.setMemberNo(order.getMemberNo());
+				cart.setOrderNo(order.getOrderNo());
+
+				result = dao.afterUpdateCart(cart);
+
+				if (result > 0) {
+
+					System.out.println("카트 업데이트 result값 : " + result);
+				} else {
+					System.out.println("카트 업데이트 실패");
+				}
+			} else {
+				System.out.println("주문 업데이트 실패");
+			}
+		}
+
 		System.out.println("서비스임플 실행!!!");
-		return dao.insertOrder(order);
+		System.out.println(result);
+		return result;
 	}
 }
