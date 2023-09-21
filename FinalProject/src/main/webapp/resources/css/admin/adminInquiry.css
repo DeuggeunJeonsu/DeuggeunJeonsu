@@ -164,7 +164,7 @@ td{
     height: 45px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: right;
 }
 
 .userSearch > input {
@@ -264,4 +264,11 @@ td{
 
 
 
+
+#option1{
+    cursor: pointer;
+}
+#option2{
+    cursor: pointer;
+}
 

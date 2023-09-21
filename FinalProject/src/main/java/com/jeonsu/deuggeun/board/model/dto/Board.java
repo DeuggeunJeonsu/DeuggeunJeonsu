@@ -40,6 +40,9 @@ public class Board {
 	private String productTitle;
 	private String productContent;
 
+	// 문의 관련
+	private char adminCheckFl;
+	
 	// 이미지 목록
 	private List<BoardImage> imageList;
 

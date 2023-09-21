@@ -64,22 +64,15 @@
 
 				<div class="userList">
 					<div class="Jhead">
-						<h2>회원 문의 목록</h2>
+						<h2 id="inquiryHeader">회원 문의 목록</h2>
 					</div>
 
 
 					<div class="userSearch">
-						<select id="division">
-							<option>구분 선택</option>
-							<option id="option1">1:1문의</option>
-							<option id="option2">상품 문의</option>
-						</select>
-						<div class="search-place">
-							<input type="search" id="market-search" placeholder="search...">
-							<button type="button" id="search-button">
-								<i class="fas fa-search"></i>
-							</button>
-						</div>
+							<span id="option1">1:1문의</span> 
+						&nbsp; | &nbsp;
+							<span id="option2">상품 문의</span>
+						
 					</div>
 
 
@@ -95,12 +88,12 @@
 								</tr>
 							</thead>
 
-							<tbody>
+							<tbody id="inquiryList">
 
 								<c:forEach items="${boardList}" var="board">
 											<tr>
 												<td>${board.boardNo}</td>
-												<td><a href="#" class="iq-update">${board.boardTitle}</a></td>
+												<td><a href="#" class="iq-update" >${board.boardTitle}</a></td>
 												<td class="inquiryType" >${board.inquiryType}</td>
 												<td>${board.memberEmail}</td>
 

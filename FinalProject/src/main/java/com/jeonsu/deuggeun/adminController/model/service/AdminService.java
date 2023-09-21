@@ -22,4 +22,15 @@ public interface AdminService {
 	 */
 	Map<String, Object> selectInquiryList();
 
+	/** 1: 문의 리스트 조회
+	 * @return
+	 */
+	Map<String, Object> selectInquiry1();
+	
+	/** 특정 문의 리스트 조회
+	 * @return boardList
+	 */
+	Map<String, Object> selectInquiry2();
+
+
 }
