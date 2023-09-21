@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.jeonsu.deuggeun.board.model.dto.Cart;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -147,7 +148,15 @@ public class MyPageServiceImpl implements MyPageService {
 		
 		return map;
 	}
-	
+
+	// 결제 완료시 마이페이지 구매내역
+	@Override
+	public List<Cart> selectPurchaseList(int memberNo) {
+		return dao.selectPurchaseList(memberNo);
+	}
+
+
+
 
 //	@Transactional(rollbackFor = {Exception.class} )
 //	@Override

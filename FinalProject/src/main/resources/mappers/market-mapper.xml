@@ -94,7 +94,8 @@
 
     <!-- Cart에 대한 resultMap -->
     <resultMap id="cart_rm" type="Cart">
-        <id property="productNo" column="PRODUCT_NO" />
+        <id property="cartNo" column="CART_NO" />
+        <result property="productNo" column="PRODUCT_NO" />
         <result property="memberNo" column="MEMBER_NO" />
         <result property="quantity" column="ITEM_COUNT" />
         <result property="productPrice" column="PRODUCT_PRICE" />
@@ -104,6 +105,8 @@
         <result property="orderNo" column="ORDER_NO" />
         <result property="itemStatus" column="ITEM_ST" />
         <result property="memberNickname" column="MEMBER_NICKNAME" />
+        <result property="orderDate" column="ORDER_DATE" />
+        <result property="orderStatus" column="ORDER_ST" />
     </resultMap>
 
     <!-- Order에 대한 resultMap -->
@@ -123,6 +126,7 @@
         <result property="changeStatus" column="CHANGE_ST" />
         <result property="memberNo" column="MEMBER_NO" />
         <result property="delEmail" column="DEL_EMAIL" />
+        <result property="orderDate" column="ORDER_DATE" />
     </resultMap>
 
     <!-- 특정 게시판의 삭제되지 않은 게시글 수 조회 -->
@@ -364,9 +368,12 @@
     </select>
 
     <!-- 장바구니에 상품 담기 -->
-    <insert id="addToCart" parameterType="Cart">
-        INSERT INTO CART (PRODUCT_NO, MEMBER_NO, ITEM_COUNT, TOTAL_AMOUNT)
-        VALUES (#{productNo}, #{memberNo}, #{quantity}, #{total})
+    <insert id="addToCart" parameterType="Cart" useGeneratedKeys="true">
+        <selectKey order="BEFORE" resultType="int" keyProperty="cartNo">
+            SELECT SEQ_CART_NO.NEXTVAL FROM DUAL
+        </selectKey>
+        INSERT INTO CART (CART_NO, PRODUCT_NO, MEMBER_NO, ITEM_COUNT, TOTAL_AMOUNT)
+        VALUES (#{cartNo}, #{productNo}, #{memberNo}, #{quantity}, #{total})
     </insert>
 
     <!-- 상품이 이미 있는 경우 수량만 업데이트 -->
@@ -389,7 +396,6 @@
           AND ITEM_ST = 'N'
     </select>
 
-
     <!-- 장바구니 선택 항목 삭제 -->
     <delete id="removeFromCart" >
         DELETE FROM CART
@@ -398,9 +404,12 @@
     </delete>
 
     <!-- 결제성공시 데이터 삽입 -->
-    <insert id="insertOrder" parameterType="Order">
-        INSERT INTO "ORDER"
-        VALUES(SEQ_ORDER_NO.NEXTVAL, #{total}, DEFAULT, #{pmCard}, DEFAULT, #{delName}, #{delZip}, #{delAddr}, #{delPhone}, #{delNotes}, #{productCount}, DEFAULT, DEFAULT, #{memberNo}, #{delEmail})
+    <insert id="insertOrder" parameterType= "ORDER" useGeneratedKeys="true">
+        <selectKey order="BEFORE" resultType="_int" keyProperty="orderNo">
+        SELECT SEQ_ORDER_NO.NEXTVAL FROM DUAL
+        </selectKey>
+    INSERT INTO "ORDER"
+    VALUES(#{orderNo}, #{total}, DEFAULT, #{pmCard}, DEFAULT, #{delName}, #{delZip}, #{delAddr}, #{delPhone}, #{delNotes}, #{productCount}, DEFAULT, DEFAULT, #{memberNo}, #{delEmail})
     </insert>
 
     <!-- 결제 후 주문 상태 업데이트 -->
@@ -413,9 +422,27 @@
     <!-- 장바구니 내역 구매완료로 상태 업데이트   -->
     <update id="afterUpdateCart" parameterType="Cart">
         UPDATE CART
-        SET ORDER_FL = 'Y'
+        SET ORDER_FL = 'Y',
+            ORDER_NO = #{orderNo}
         WHERE MEMBER_NO = #{memberNo}
-
+          AND ORDER_FL = 'N'
     </update>
+
+    <!-- 마이페이지 구매내역  -->
+    <select id="selectPurchaseList" resultMap="cart_rm" parameterType="_int">
+        SELECT TO_CHAR(o.ORDER_DATE, 'YYYY-MM-DD') AS ORDER_DATE,
+               o.ORDER_ST,
+               o.ORDER_NO,
+               p.PRODUCT_NAME,
+               p.PRODUCT_NO,
+               c.TOTAL_AMOUNT,
+               c.ORDER_FL
+        FROM CART c
+                 JOIN PRODUCT p ON c.PRODUCT_NO = p.PRODUCT_NO
+                 JOIN "ORDER" o ON c.ORDER_NO = o.ORDER_NO
+        WHERE c.MEMBER_NO = #{memberNo}
+          AND c.ORDER_FL = 'Y'
+        ORDER BY o.ORDER_DATE DESC
+    </select>
 </mapper>
 

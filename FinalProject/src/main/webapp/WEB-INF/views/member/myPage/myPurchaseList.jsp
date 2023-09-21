@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"  %>
-
+<%-- 구매내역 리스트 --%>
+<c:set var="purchaseList" value="${purchaseList}" />
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -62,166 +63,189 @@
                                 <th>리뷰</th>
                             </tr>
                         </thead>
-
                         <tbody>
+                        <c:forEach var="item" items="${purchaseList}">
                             <tr>
-                                <td>2023.01.01</td>
-                                <td>00012354</td>
-                                <td>단백질 쉐이크</td>
-                                <td>35,000</td>
-                                <td>결제 완료</td>
+                                <td>${item.orderDate}</td>
+                                <td>${item.orderNo}</td>
+                                <td>${item.productName}</td>
+                                <td>${item.total}</td>
                                 <td>
-                                    <button class="inquiryBtn inquiryBtnColor2">문의하기</button>
+                                    <c:choose>
+                                        <c:when test="${item.orderStatus == 'Y'}">결제 완료</c:when>
+                                        <c:when test="${item.orderStatus == 'D'}">배송 완료</c:when>
+                                    </c:choose>
+                                </td>
+                                <td>
+                                    <button class="inquiryBtn inquiryBtnColor2">문의 하기</button>
                                 </td>
                                 <td>
                                     <button class="inquiryBtn inquiryBtnColor1">리뷰 작성</button>
                                 </td>
                             </tr>
-                            <tr>
-                                <td>2023.01.01</td>
-                                <td>00012354</td>
-                                <td>단백질 쉐이크</td>
-                                <td>35,000</td>
-                                <td class="delivery">배송 완료</td>
-                                <td>
-                                    <button class="inquiryBtn inquiryBtnColor2">문의글 보기</button>
-                                </td>
-                                <td>
-                                    <button class="inquiryBtn inquiryBtnColor1">리뷰 보기</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>2023.01.01</td>
-                                <td>00012354</td>
-                                <td>단백질 쉐이크</td>
-                                <td>35,000</td>
-                                <td class="delivery">배송 완료</td>
-                                <td>
-                                    <button class="inquiryBtn inquiryBtnColor2">문의하기</button>
-                                </td>
-                                <td>
-                                    <button class="inquiryBtn inquiryBtnColor1">리뷰 작성</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>2023.01.01</td>
-                                <td>00012354</td>
-                                <td>단백질 쉐이크</td>
-                                <td>35,000</td>
-                                <td class="delivery">배송 완료</td>
-                                <td>
-                                    <button class="inquiryBtn inquiryBtnColor2">문의하기</button>
-                                </td>
-                                <td>
-                                    <button class="inquiryBtn inquiryBtnColor1">리뷰 작성</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>2023.01.01</td>
-                                <td>00012354</td>
-                                <td>단백질 쉐이크</td>
-                                <td>35,000</td>
-                                <td class="delivery">배송 완료</td>
-                                <td>
-                                    <button class="inquiryBtn inquiryBtnColor2">문의하기</button>
-                                </td>
-                                <td>
-                                    <button class="inquiryBtn inquiryBtnColor1">리뷰 작성</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>2023.01.01</td>
-                                <td>00012354</td>
-                                <td>단백질 쉐이크</td>
-                                <td>35,000</td>
-                                <td>결제 완료</td>
-                                <td>
-                                    <button class="inquiryBtn inquiryBtnColor2">문의하기</button>
-                                </td>
-                                <td>
-                                    <button class="inquiryBtn inquiryBtnColor1">리뷰 작성</button>
-                                </td>
-                            </tr>     
-                            <tr>
-                                <td>2023.01.01</td>
-                                <td>00012354</td>
-                                <td>단백질 쉐이크</td>
-                                <td>35,000</td>
-                                <td>결제 완료</td>
-                                <td>
-                                    <button class="inquiryBtn inquiryBtnColor2">문의하기</button>
-                                </td>
-                                <td>
-                                    <button class="inquiryBtn inquiryBtnColor1">리뷰 작성</button>
-                                </td>
-                            </tr>  
-                            <tr>
-                                <td>2023.01.01</td>
-                                <td>00012354</td>
-                                <td>단백질 쉐이크</td>
-                                <td>35,000</td>
-                                <td>결제 완료</td>
-                                <td>
-                                    <button class="inquiryBtn inquiryBtnColor2">문의하기</button>
-                                </td>
-                                <td>
-                                    <button class="inquiryBtn inquiryBtnColor1">리뷰 작성</button>
-                                </td>
-                            </tr>  
-                            <tr>
-                                <td>2023.01.01</td>
-                                <td>00012354</td>
-                                <td>단백질 쉐이크</td>
-                                <td>35,000</td>
-                                <td>결제 완료</td>
-                                <td>
-                                    <button class="inquiryBtn inquiryBtnColor2">문의하기</button>
-                                </td>
-                                <td>
-                                    <button class="inquiryBtn inquiryBtnColor1">리뷰 작성</button>
-                                </td>
-                            </tr>  
-                            <tr>
-                                <td>2023.01.01</td>
-                                <td>00012354</td>
-                                <td>단백질 쉐이크</td>
-                                <td>35,000</td>
-                                <td>결제 완료</td>
-                                <td>
-                                    <button class="inquiryBtn inquiryBtnColor2">문의하기</button>
-                                </td>
-                                <td>
-                                    <button class="inquiryBtn inquiryBtnColor1">리뷰 작성</button>
-                                </td>
-                            </tr>                
-                            <tr>
-                                <td>2023.01.01</td>
-                                <td>00012354</td>
-                                <td>단백질 쉐이크</td>
-                                <td>35,000</td>
-                                <td>결제 완료</td>
-                                <td>
-                                    <button class="inquiryBtn inquiryBtnColor2">문의하기</button>
-                                </td>
-                                <td>
-                                    <button class="inquiryBtn inquiryBtnColor1">리뷰 작성</button>
-                                </td>
-                            </tr>  
-                            <tr>
-                                <td>2023.01.01</td>
-                                <td>00012354</td>
-                                <td>단백질 쉐이크</td>
-                                <td>35,000</td>
-                                <td>결제 완료</td>
-                                <td>
-                                    <button class="inquiryBtn inquiryBtnColor2">문의하기</button>
-                                </td>
-                                <td>
-                                    <button class="inquiryBtn inquiryBtnColor1">리뷰 작성</button>
-                                </td>
-                            </tr>           
-
+                            <input type="hidden" value="${item.productNo}" id="productNo" />
+                        </c:forEach>
                         </tbody>
+
+                    <%--                        <tbody>--%>
+<%--                            <tr>--%>
+<%--                                <td>2023.01.01</td>--%>
+<%--                                <td>00012354</td>--%>
+<%--                                <td>단백질 쉐이크</td>--%>
+<%--                                <td>35,000</td>--%>
+<%--                                <td>결제 완료</td>--%>
+<%--                                <td>--%>
+<%--                                    <button class="inquiryBtn inquiryBtnColor2">문의하기</button>--%>
+<%--                                </td>--%>
+<%--                                <td>--%>
+<%--                                    <button class="inquiryBtn inquiryBtnColor1">리뷰 작성</button>--%>
+<%--                                </td>--%>
+<%--                            </tr>--%>
+<%--                            <tr>--%>
+<%--                                <td>2023.01.01</td>--%>
+<%--                                <td>00012354</td>--%>
+<%--                                <td>단백질 쉐이크</td>--%>
+<%--                                <td>35,000</td>--%>
+<%--                                <td class="delivery">배송 완료</td>--%>
+<%--                                <td>--%>
+<%--                                    <button class="inquiryBtn inquiryBtnColor2">문의글 보기</button>--%>
+<%--                                </td>--%>
+<%--                                <td>--%>
+<%--                                    <button class="inquiryBtn inquiryBtnColor1">리뷰 보기</button>--%>
+<%--                                </td>--%>
+<%--                            </tr>--%>
+<%--                            <tr>--%>
+<%--                                <td>2023.01.01</td>--%>
+<%--                                <td>00012354</td>--%>
+<%--                                <td>단백질 쉐이크</td>--%>
+<%--                                <td>35,000</td>--%>
+<%--                                <td class="delivery">배송 완료</td>--%>
+<%--                                <td>--%>
+<%--                                    <button class="inquiryBtn inquiryBtnColor2">문의하기</button>--%>
+<%--                                </td>--%>
+<%--                                <td>--%>
+<%--                                    <button class="inquiryBtn inquiryBtnColor1">리뷰 작성</button>--%>
+<%--                                </td>--%>
+<%--                            </tr>--%>
+<%--                            <tr>--%>
+<%--                                <td>2023.01.01</td>--%>
+<%--                                <td>00012354</td>--%>
+<%--                                <td>단백질 쉐이크</td>--%>
+<%--                                <td>35,000</td>--%>
+<%--                                <td class="delivery">배송 완료</td>--%>
+<%--                                <td>--%>
+<%--                                    <button class="inquiryBtn inquiryBtnColor2">문의하기</button>--%>
+<%--                                </td>--%>
+<%--                                <td>--%>
+<%--                                    <button class="inquiryBtn inquiryBtnColor1">리뷰 작성</button>--%>
+<%--                                </td>--%>
+<%--                            </tr>--%>
+<%--                            <tr>--%>
+<%--                                <td>2023.01.01</td>--%>
+<%--                                <td>00012354</td>--%>
+<%--                                <td>단백질 쉐이크</td>--%>
+<%--                                <td>35,000</td>--%>
+<%--                                <td class="delivery">배송 완료</td>--%>
+<%--                                <td>--%>
+<%--                                    <button class="inquiryBtn inquiryBtnColor2">문의하기</button>--%>
+<%--                                </td>--%>
+<%--                                <td>--%>
+<%--                                    <button class="inquiryBtn inquiryBtnColor1">리뷰 작성</button>--%>
+<%--                                </td>--%>
+<%--                            </tr>--%>
+<%--                            <tr>--%>
+<%--                                <td>2023.01.01</td>--%>
+<%--                                <td>00012354</td>--%>
+<%--                                <td>단백질 쉐이크</td>--%>
+<%--                                <td>35,000</td>--%>
+<%--                                <td>결제 완료</td>--%>
+<%--                                <td>--%>
+<%--                                    <button class="inquiryBtn inquiryBtnColor2">문의하기</button>--%>
+<%--                                </td>--%>
+<%--                                <td>--%>
+<%--                                    <button class="inquiryBtn inquiryBtnColor1">리뷰 작성</button>--%>
+<%--                                </td>--%>
+<%--                            </tr>     --%>
+<%--                            <tr>--%>
+<%--                                <td>2023.01.01</td>--%>
+<%--                                <td>00012354</td>--%>
+<%--                                <td>단백질 쉐이크</td>--%>
+<%--                                <td>35,000</td>--%>
+<%--                                <td>결제 완료</td>--%>
+<%--                                <td>--%>
+<%--                                    <button class="inquiryBtn inquiryBtnColor2">문의하기</button>--%>
+<%--                                </td>--%>
+<%--                                <td>--%>
+<%--                                    <button class="inquiryBtn inquiryBtnColor1">리뷰 작성</button>--%>
+<%--                                </td>--%>
+<%--                            </tr>  --%>
+<%--                            <tr>--%>
+<%--                                <td>2023.01.01</td>--%>
+<%--                                <td>00012354</td>--%>
+<%--                                <td>단백질 쉐이크</td>--%>
+<%--                                <td>35,000</td>--%>
+<%--                                <td>결제 완료</td>--%>
+<%--                                <td>--%>
+<%--                                    <button class="inquiryBtn inquiryBtnColor2">문의하기</button>--%>
+<%--                                </td>--%>
+<%--                                <td>--%>
+<%--                                    <button class="inquiryBtn inquiryBtnColor1">리뷰 작성</button>--%>
+<%--                                </td>--%>
+<%--                            </tr>  --%>
+<%--                            <tr>--%>
+<%--                                <td>2023.01.01</td>--%>
+<%--                                <td>00012354</td>--%>
+<%--                                <td>단백질 쉐이크</td>--%>
+<%--                                <td>35,000</td>--%>
+<%--                                <td>결제 완료</td>--%>
+<%--                                <td>--%>
+<%--                                    <button class="inquiryBtn inquiryBtnColor2">문의하기</button>--%>
+<%--                                </td>--%>
+<%--                                <td>--%>
+<%--                                    <button class="inquiryBtn inquiryBtnColor1">리뷰 작성</button>--%>
+<%--                                </td>--%>
+<%--                            </tr>  --%>
+<%--                            <tr>--%>
+<%--                                <td>2023.01.01</td>--%>
+<%--                                <td>00012354</td>--%>
+<%--                                <td>단백질 쉐이크</td>--%>
+<%--                                <td>35,000</td>--%>
+<%--                                <td>결제 완료</td>--%>
+<%--                                <td>--%>
+<%--                                    <button class="inquiryBtn inquiryBtnColor2">문의하기</button>--%>
+<%--                                </td>--%>
+<%--                                <td>--%>
+<%--                                    <button class="inquiryBtn inquiryBtnColor1">리뷰 작성</button>--%>
+<%--                                </td>--%>
+<%--                            </tr>                --%>
+<%--                            <tr>--%>
+<%--                                <td>2023.01.01</td>--%>
+<%--                                <td>00012354</td>--%>
+<%--                                <td>단백질 쉐이크</td>--%>
+<%--                                <td>35,000</td>--%>
+<%--                                <td>결제 완료</td>--%>
+<%--                                <td>--%>
+<%--                                    <button class="inquiryBtn inquiryBtnColor2">문의하기</button>--%>
+<%--                                </td>--%>
+<%--                                <td>--%>
+<%--                                    <button class="inquiryBtn inquiryBtnColor1">리뷰 작성</button>--%>
+<%--                                </td>--%>
+<%--                            </tr>  --%>
+<%--                            <tr>--%>
+<%--                                <td>2023.01.01</td>--%>
+<%--                                <td>00012354</td>--%>
+<%--                                <td>단백질 쉐이크</td>--%>
+<%--                                <td>35,000</td>--%>
+<%--                                <td>결제 완료</td>--%>
+<%--                                <td>--%>
+<%--                                    <button class="inquiryBtn inquiryBtnColor2">문의하기</button>--%>
+<%--                                </td>--%>
+<%--                                <td>--%>
+<%--                                    <button class="inquiryBtn inquiryBtnColor1">리뷰 작성</button>--%>
+<%--                                </td>--%>
+<%--                            </tr>           --%>
+
+<%--                        </tbody>--%>
                     </table>
                 </div>
 
@@ -232,6 +256,6 @@
 
     <!-- footer include -->
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
-
+    <script src="/resources/js/member/myPage/myPurchaseList.js"></script>
 </body>
 </html>

@@ -1,11 +1,13 @@
 package com.jeonsu.deuggeun.member.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 
+import com.jeonsu.deuggeun.board.model.dto.Cart;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -192,7 +194,15 @@ public class MyPageController {
 
 	// 마이페이지 구매 내역 목록 조회
 	@GetMapping("/myPurchaseList")
-	public String myPurchaseList() {
+	public String myPurchaseList(@SessionAttribute(value = "loginMember", required = false) Member loginMember,
+								 Model model) {
+
+		int memberNo = loginMember.getMemberNo();
+		List<Cart> purchaseList = service.selectPurchaseList(memberNo);
+
+		model.addAttribute("purchaseList", purchaseList);
+
+		System.out.println(purchaseList);
 		return "member/myPage/myPurchaseList";
 	}
 	
