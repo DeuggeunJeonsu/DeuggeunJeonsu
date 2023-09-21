@@ -21,7 +21,13 @@ const searchQuery = document.getElementById("searchQuery");
 searchQuery.addEventListener("change", e=>{
 
     if(e.target.value.trim().length > 10){
-        alert("검색어는 열 글자까지 입력 가능합니다.");
+
+        Swal.fire({
+            icon: 'error',                     
+            title: '검색어는 열 글자까지<br>입력 가능합니다.',    
+            text: '', 
+          });
+        
         e.target.value = '';
     }
 

@@ -414,6 +414,12 @@
 /* --------------------------------------------------------------------------------------------- */
 
 /* 작성한 게시글 목록 조회 영역 */
+.textCenter{
+    margin: auto;
+    width: 1000px;
+    font-size: 20px;
+}
+
 #member-board-area{
     height: 1200px;
     margin-bottom: 90px;
