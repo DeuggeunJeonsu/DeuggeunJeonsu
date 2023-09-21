@@ -196,16 +196,18 @@
 }
 .comment-btn-area span{
     text-align: end;
+    font-size: 18px;
     height: 30px;
 }
 .comment-btn-area span:hover{
     transition-duration: 0.5s;
-    font-size: 28px;
+    font-size: 20px;
     font-weight: bold;
     color: #99E1ED;
 
 }
 .comment-btn-area{
+    display: flex;
     margin-top: 10px;
 }
 .comment-btn-area .inline{
@@ -226,7 +228,7 @@
     font-size: 18px;
     border-radius: 10px;
     margin: 10px;
-    top: -5px;
+    top: -6px;
     border: 2px solid #aaa;
 }
 
