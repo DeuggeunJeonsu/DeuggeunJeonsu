@@ -25,7 +25,7 @@ public class CommentController {
 	@GetMapping(value="/comment", produces = "application/json; charset=UTF-8")
 	@ResponseBody
 	public List<Comment> select( @RequestParam("boardNo") int boardNo ) {
-		System.out.println("댓글!!!!!!");
+//		System.out.println("댓글!!!!!!");
 		return service.select(boardNo); // httpMessageconverter List -> JSON 변환
 	}
 
