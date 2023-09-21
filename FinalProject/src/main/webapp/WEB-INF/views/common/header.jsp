@@ -35,21 +35,26 @@
 
     <div class="main-content">
         <nav class="header-nav no-background ">
+
             <!-- search 영역 -->
-            <div class="top-search">
-                <div class="search-container">
-                    <div class="input-group">
-                        <span class="search-icon-area">
-                            <i class="fa fa-solid fa-magnifying-glass"></i>
-                        </span>
-                        <input type="text" class="form-search" placeholder="검색어를 입력해주세요">
-                        <span class="search-icon-area close-search">
-                            <!-- <i class="fa fa-regular fa-circle-xmark"></i> -->
-                            <i>&times;</i>
-                        </span>
+            <form action="/board/6/list" method="GET">
+
+                    <div class="top-search">
+                        <div class="search-container">
+                            <div class="input-group">
+                                <span class="search-icon-area">
+                                    <i class="fa fa-solid fa-magnifying-glass"></i>
+                                </span>
+                                <input type="text" class="form-search" placeholder="검색어를 입력해주세요" value="${param.query}">
+                                <span class="search-icon-area close-search">
+                                    <!-- <i class="fa fa-regular fa-circle-xmark"></i> -->
+                                    <i>&times;</i>
+                                </span>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
+            </form>
+
             <div class="nav-container">
                 <div class="nav-icon">
                     <ul>

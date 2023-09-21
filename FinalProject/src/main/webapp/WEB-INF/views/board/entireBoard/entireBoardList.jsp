@@ -23,14 +23,13 @@
       <div class="contents">
         <div class="text_wrap big line type top">
           <strong class="tit">
-            <em>""</em>
-            검색결과
+            <em>"${param.query}"</em>검색결과
           </strong>
         </div>
         <div>
           <div class="cont_unit search_result">
             <div class="text_wrap big result mt40">
-              <strong class="tit">"검색" <em>(5) 정보 공유 결과</em></strong>
+              <strong class="tit">"${param.query}" <em>(5) 정보 공유 결과</em></strong>
               <span class="right_cont">
               <a href="/board/1/list" class="txt arrow_r">정보 공유 더보기</a>
               </span>
@@ -57,7 +56,7 @@
     </ul>
 
      <div class="text_wrap big result mt40">
-              <strong class="tit">"검색" <em>(5) 루틴 공유 결과</em></strong>
+              <strong class="tit">"${param.query}" <em>(5) 루틴 공유 결과</em></strong>
               <span class="right_cont">
               <a href="/board/2/list" class="txt arrow_r">루틴 공유 더보기</a>
               </span>
@@ -84,7 +83,7 @@
     </ul>
 
      <div class="text_wrap big result mt40">
-              <strong class="tit">"검색" <em>(5) 자유 게시판 결과</em></strong>
+              <strong class="tit">"${param.query}" <em>(5) 자유 게시판 결과</em></strong>
               <span class="right_cont">
               <a href="/board/3/list" class="txt arrow_r">자유 게시판 더보기</a>
               </span>
@@ -114,7 +113,7 @@
               </ul>
 
          <div class="text_wrap big result mt40">
-              <strong class="tit">"검색" <em>(5) 공지사항 결과</em></strong>
+              <strong class="tit">"${param.query}" <em>(5) 공지사항 결과</em></strong>
               <span class="right_cont">
               <a href="/board/4/list" class="txt arrow_r">공지사항 더보기</a>
               </span>
@@ -146,7 +145,7 @@
               </ul>
 
               <div class="text_wrap big result mt40">
-                <strong class="tit">"검색" <em>(5) 득근마켓 결과</em></strong>
+                <strong class="tit">"${param.query}" <em>(5) 득근마켓 결과</em></strong>
                 <span class="right_cont">
                 <a href="/board/5/list" class="txt arrow_r">득근마켓 더보기</a>
                 </span>

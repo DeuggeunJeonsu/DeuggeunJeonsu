@@ -7,6 +7,7 @@
 //import javax.mail.internet.MimeMessage;
 //import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.context.annotation.Bean;
+//import org.springframework.context.annotation.Configuration;
 //import org.springframework.mail.javamail.JavaMailSender;
 //import org.springframework.mail.javamail.JavaMailSenderImpl;
 //import org.springframework.stereotype.Service; 
@@ -14,7 +15,8 @@
 //
 //import com.jeonsu.deuggeun.member.model.dao.EmailDAO;
 //
-//@Service public class EmailServiceImpl implements EmailService{
+//@Service
+//public class EmailServiceImpl implements EmailService{
 //
 //	@Autowired
 //	private EmailDAO dao;
@@ -24,11 +26,12 @@
 //	
 //	private String fromEmail = "c01086895841@gmail.com";
 //	private String fromUsername = "프로젝트";
+//	
 //
 //	@Override
 //	public String createAuthKey() {
 //		String key = ""; 
-//		for(int i=0; i<6;i++) { 
+//		for(int i=0; i < 6; i++) { 
 //		int sel1 = (int)(Math.random() * 3);
 //
 //				if(sel1 == 0) {
