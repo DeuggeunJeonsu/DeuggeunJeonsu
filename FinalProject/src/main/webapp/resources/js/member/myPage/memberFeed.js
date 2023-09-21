@@ -412,7 +412,7 @@ function buildCalendar() {
                         // newDIV2 엘리먼트 생성
                         newDIV2 = document.createElement("i");
                         
-                        console.log("todoFl:" + todoFl)
+                        // console.log("todoFl:" + todoFl)
                         
                         if (todoFl == 'Y') {
                             newDIV2.classList.add("fa-solid", "fa-circle", "Circle");
@@ -446,7 +446,7 @@ function buildCalendar() {
 
  // 달력 셀을 찾는 함수
  function findDateCell(year, month, day,newDIV2) {
-    console.log("day"+day)
+    // console.log("day"+day)
     const calenderYaer = document.getElementById("calYear").innerText;  // 년
     const calendeMath = document.getElementById("calMonth").innerText; // 월
     const calendeDays = document.querySelectorAll("tbody p");
