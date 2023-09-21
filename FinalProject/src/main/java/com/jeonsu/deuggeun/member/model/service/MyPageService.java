@@ -51,4 +51,12 @@ public interface MyPageService {
 	 */
 	Map<String, Object> selectFollowCount(Map<String, Object> paramMap);
 
+	
+	/** 회원 탈퇴
+	 * @param memberNo
+	 * @param memberPw
+	 * @return result
+	 */
+//	int secession(int memberNo, String memberPw);
+
 }
