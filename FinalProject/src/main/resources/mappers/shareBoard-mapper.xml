@@ -247,7 +247,11 @@
 		ORDER SIBLINGS BY C_CREATE_DT DESC, COMMENT_NO DESC
 	</select>
 	
-
+	<!-- 이미지 목록 조회 -->
+	<select id="selectImageListAll" resultType="string">
+		SELECT IMG_RENAME FROM BOARD_IMG
+		
+	</select>
 
 
 

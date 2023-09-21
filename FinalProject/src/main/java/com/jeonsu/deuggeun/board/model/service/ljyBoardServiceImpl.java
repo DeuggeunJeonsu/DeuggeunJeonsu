@@ -192,4 +192,11 @@ public class ljyBoardServiceImpl implements ljyBoardService{
 		return boardNo;
 
 	}
+	
+
+	//DB이미지 파일 목록 조회
+	@Override
+	public List<String> selectImageList() {
+		return dao.selectImageList();
+	}
 }

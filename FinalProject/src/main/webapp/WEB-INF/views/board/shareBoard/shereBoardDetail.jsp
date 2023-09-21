@@ -82,9 +82,27 @@
 
                         </div>
                         <span>${board.memberNickname}</span>
-                        <button>follow</button>
+                        <c:if test="${board.memberNo != loginMember.memberNo && loginMember != null}">
+
+                        <c:if test="${empty followCheck}">
+                            <button id="follow-btn">
+                                <i class="fa-solid fa-circle-plus whiteChk2" style="color: #ffffff; display: none"></i>
+                                <i class="fa-solid fa-circle-plus blueChk2" style="color: #99e1ed;"></i>
+                                follow
+                            </button>
+                        </c:if>
+
+                        <c:if test="${!empty followCheck}">
+                            <button id="following-btn">
+                                <i class="fa-solid fa-circle-check whiteChk" style="color: #ffffff;"></i>    
+                                <i class="fa-solid fa-circle-check blueChk" style="color: #99e1ed; display: none"></i>
+                                following
+                            </button>
+                        </c:if>
+
+                    </c:if>
                     </div>
-                    <div><span>팔로우 390</span><span> 팔로잉 390</span></div>
+                    <div><span>팔로우 <span id="follower-count-area"></span></span><span > 팔로잉 <span id="following-count-area"></span></span></div>
                 </div>
 
                 <div class="detaile-todolist-area">
@@ -108,10 +126,10 @@
                     <div>
                        <input type="text" name="addList" class="addList" placeholder="예) 스쿼트 20회 5세트"><button type="button" class="addListBtn"><i class="fa-solid fa-plus" style="color: #ffffff;"></i></button>
                     </div>
-                    <div class="tdl-btnArea">
+                    <!-- <div class="tdl-btnArea">
                         <a class="button btnPush btnLightBlue">저장하기</a>
                         <a class="button btnPush btnLightBlue">되돌리기</a>
-                    </div>
+                    </div> -->
                 
                 </div>
             </div>

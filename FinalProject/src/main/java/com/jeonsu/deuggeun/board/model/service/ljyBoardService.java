@@ -42,6 +42,9 @@ public interface ljyBoardService {
 	int boardInsert(Board board, List<MultipartFile> images, String webPath, String filePath, List<Routine> routines)
 			throws IllegalStateException, IOException;
 
+	// 사진 db목록 조회
+	List<String> selectImageList();
+
 	
 
 
