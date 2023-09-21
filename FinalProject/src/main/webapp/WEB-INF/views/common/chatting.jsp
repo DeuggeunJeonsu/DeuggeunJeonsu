@@ -40,7 +40,6 @@
                     <button id="menuBtn" class="menu-btn"><i class="fa-solid fa-bars fa-2xl" style="color: #ffffff;"></i></button>
                     <button id="addTarget" class="menu-btn"><i class="fa-solid fa-user-plus fa-2xl" style="color: #ffffff;"></i></button>
                     <button id="palette" class="menu-btn"><i class="fa-solid fa-palette fa-2xl" style="color: #ffffff;"></i></button>
-                    <button id="chatting" class="menu-btn"><i class="fa-solid fa-message fa-2xl" style="color: #222;"></i></button>
                 </div>
                 <div id="chattingRoomListArea">
                     <!-- 채팅방 맴버찾기 -->

@@ -1,5 +1,6 @@
 package com.jeonsu.deuggeun.member.controller;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.Cookie;
@@ -25,6 +26,7 @@ import com.jeonsu.deuggeun.member.model.dto.Member;
 import com.jeonsu.deuggeun.member.model.service.MemberService;
 
 @Controller 
+
 @RequestMapping("/member")
 @SessionAttributes({"loginMember"})
 public class MemberController {
@@ -138,19 +140,36 @@ public class MemberController {
 		String AuthenticationKey="";
 
 		// 일치하는 회원이 있으면 email인증번호 전송
-		if(selectMember !=null) AuthenticationKey = "123456"; // email 전송
+		if(selectMember !=null) AuthenticationKey = "123456"; //Util.sendEmail(memberEmail);
 		
 		// 인증번호 반환
 		return AuthenticationKey;
 	}
 	
-	// 아이디찾기 email 인증번호 확인 ajax
+	// 비밀번호찾기 email 인증번호 확인 ajax
 	@ResponseBody
 	@PostMapping(value="/emailAuthentication", produces = "application/json; charset=UTF-8")
 	public Member findPw(@RequestBody Map<String, Object> paramMap, HttpServletRequest req, HttpServletResponse resp) {
 
 		// 입력된 이메일로 회원 검색
 		return service.selectMemberByEmail(String.valueOf(paramMap.get("memberEmail")));
+	}
+	
+	// 비밀번호찾기 후 비밀번호 변경
+	@PostMapping("/changePw")
+	public String changePw(int findPwMemberNo, String changePw, RedirectAttributes ra, 
+							@RequestHeader(value="referer") String referer, Model model) {
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("memberNo", findPwMemberNo);
+		map.put("newMemberPw", changePw);
+		
+		// 비밀번호 변경 서비스 호출
+		int result = service.changePw(map);
+		
+		// 변경완료 -> 로그인페이지, 변경실패 -> 내정보찾기 페이지
+		ra.addFlashAttribute("message", "비밀번호 재설정"+ (result>0 ? "이 완료되었습니다, 로그인 후 이용해보세요." : " 오류, 다시 시도해주세요"));
+		return "redirect:"+ (result>0 ? "login" : referer);
 	}
 	
 	// 회원 가입 페이지 이동

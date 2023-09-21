@@ -25,7 +25,6 @@ const pwAtKey = document.getElementById("pwAuthenticationKey"); // email 인증�
 const findPwBtn = document.getElementById("findPwBtn");         // 비밀번호 찾기 버튼
 let emailTimer;                                                 // email 타이머 인터벌함수
 let emailIsRunning = false;                                     // email 타이머 실행여부
-let findPwMemberNo ="";                                         // email 인증 후 반환받은 회원번호
 
 // 아이디 찾기 sms 인증번호 전송
 sendSmsBtn.addEventListener("click", e=>{
@@ -160,7 +159,7 @@ sendEmailBtn.addEventListener("click", e=>{
             set_cookie(memberEmail.value.replace("@","_")+"_pwAtKey", resultPwAtKey, 5);
 
             // 안내문구 출력
-            alert("인증번호가 전송되었습니다. 이메일을 확인해주세요."+resultPwAtKey);
+            alert("인증번호가 전송되었습니다. 이메일을 확인해주세요.");
         }
         else alert("해당 이메일로 등록된 회원이 없습니다. 다시한번 확인해주세요.");
     })
@@ -198,12 +197,16 @@ findPwBtn.addEventListener("click",()=>{
         .then(selectMember => {
             if(selectMember !=null){
                 // 찾은 회원번호 저장
-                findPwMemberNo = selectMember.memberNo;
+                const findPwMemberNo = document.createElement("input");
+                findPwMemberNo.setAttribute("type","hidden");
+                findPwMemberNo.setAttribute("name","findPwMemberNo");
+                findPwMemberNo.setAttribute("id","findPwMemberNo");
+                findPwMemberNo.setAttribute("value",""+selectMember.memberNo);
 
                 // 비밀번호 찾기 영역 초기화
                 pwArea.innerText="";
 
-                // 비밀번호 변경 폼태그
+                // 비밀번호 재설정 폼태그
                 const pwChangeFrm = document.createElement("form");
                 pwChangeFrm.setAttribute("action","/member/changePw");
                 pwChangeFrm.setAttribute("method","post");
@@ -212,43 +215,51 @@ findPwBtn.addEventListener("click",()=>{
 
                 // 타이틀
                 const changePwTitle = document.createElement("p");
-                changePwTitle.innerText="비밀번호 변경하기";
+                changePwTitle.innerText="비밀번호 재설정";
+
+                // 비밀번호 유효성검사 안내
+                const section1 = document.createElement("section");
+                section1.classList.add("regExSection");
+                const regExDisplay = document.createElement("div");
+                regExDisplay.setAttribute("id","regExDisplay");
+                regExDisplay.innerText="영어,숫자,특수문자(!,@,#,-,_) 6~20글자 사이로 입력해주세요.";
+                section1.append(regExDisplay);
 
                 // 비밀번호 입력
-                const section1 = document.createElement("section");
-                section1.classList.add("input-box");
+                const section2 = document.createElement("section");
+                section2.classList.add("input-box");
                 const inputPw = document.createElement("input");
                 inputPw.classList.add("width100");
                 inputPw.setAttribute("type","password");
                 inputPw.setAttribute("name","changePw");
                 inputPw.setAttribute("id","changePw");
                 inputPw.setAttribute("placeholder","비밀번호");
-                section1.append(inputPw);
+                section2.append(inputPw);
 
                 // 비밀번호확인 입력
-                const section2 = document.createElement("section");
-                section2.classList.add("input-box");
+                const section3 = document.createElement("section");
+                section3.classList.add("input-box");
                 const inputPwCheck = document.createElement("input");
                 inputPwCheck.classList.add("width100");
                 inputPwCheck.setAttribute("type","password");
                 inputPwCheck.setAttribute("name","changePwCheck");
                 inputPwCheck.setAttribute("id","changePwCheck");
                 inputPwCheck.setAttribute("placeholder","비밀번호 확인");
-                section2.append(inputPwCheck);
+                section3.append(inputPwCheck);
 
-                // 비밀번호 변경 버튼
+                // 비밀번호 설정 버튼
                 const changePwBtn = document.createElement("button");
                 changePwBtn.classList.add("findInfo-btn");
                 changePwBtn.setAttribute("id","changePwBtn");
-                changePwBtn.innerText = "비밀번호 변경하기";
+                changePwBtn.innerText = "비밀번호 설정하기";
 
-                // 비밀번호 변경 영역으로 리뉴얼
-                pwChangeFrm.append(changePwTitle,section1,section2,changePwBtn);
+                // 비밀번호 재설정 영역으로 리뉴얼
+                pwChangeFrm.append(findPwMemberNo,changePwTitle,section1,section2,section3,changePwBtn);
                 pwArea.append(pwChangeFrm);
                 inputPw.focus();
 
                 // 안내문구 출력
-                alert(selectMember.memberNickname+"님 인증완료 되었습니다, 비밀번호를 변경해주세요");
+                alert(selectMember.memberNickname+"님 인증완료 되었습니다, 비밀번호를 재설정해주세요");
             }
             else alert("일치하는 회원 정보가 없습니다.");
         })
@@ -260,21 +271,50 @@ findPwBtn.addEventListener("click",()=>{
     else alert("인증번호가 일치하지 않습니다. 다시한번 확인해주세요.");
 })
 
-// 비밀번호 변경 버튼 눌렀을 때
+// 비밀번호 설정 버튼 눌렀을 때 예외처리 함수
 function pwValidation(){
 
-    if(document.getElementById("inputPw").value == document.getElementById("inputPwCheck").value){
-        alert("일치");
-        return true;
-    }
-    else{
-        alert("불일치");
+    const changePw = document.getElementById("changePw");
+    const changePwCheck = document.getElementById("changePwCheck");
+
+    // 정규 표현식을 이용한 비밀번호 유효성 검사
+    const regEx = /^[a-zA-Z\d\!\@\#\-\_]{6,20}$/;
+
+    if(changePw.value.trim().length==0){
+        changePw.value="";
+        changePw.focus();
+        alert("비밀번호를 입력 해주세요.");
         return false;
     }
+    if(changePwCheck.value.trim().length==0){
+        changePwCheck.value="";
+        changePwCheck.focus();
+        alert("비밀번호 확인을 입력 해주세요.");
+        return false;
+    }
+    if(!regEx.test(changePw.value)){
+        alert("비밀번호가 유효하지 않은 형식입니다.");
+        changePw.focus();
+        return false;
+    }
+    if(!regEx.test(changePwCheck.value)){
+        alert("비밀번호 확인이 유효하지 않은 형식입니다.");
+        changePwCheck.focus();
+        return false;
+    }
+    if(changePw.value != changePwCheck.value){
+        changePw.value="";
+        changePwCheck.value="";
+        changePw.focus();
+        alert("비밀번호가 일치하지 않습니다.");
+        return false;
+    }
+
+    return true;
 }
 
 // 타이머 함수
-function startTimer(count, mode) {
+function startTimer(count, mode) { // 타이머시간, 모드(1:sms, 2:email)
     if(mode==1){ // sms 인증일 때
         let minutes, seconds;
         smsTimer = setInterval(function () {
