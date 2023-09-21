@@ -1,0 +1,292 @@
+
+/* 댓글 영역 */
+#comment-area{
+   
+    border-top: 0.5px solid #777;
+    /* height: 300px; */
+}
+.comment-count-area {
+    padding :20px 10px 20px 52px;
+}
+.comment-count-area > i {
+    font-size: 35px;
+    text-align: center;
+    color: #777;
+}
+.comment-count-area > span{
+    font-size: 18px;
+    padding-left: 10px;
+    padding-top: 10px;
+}
+
+/* 댓글 입력창 */
+.comment-input {
+    position: relative;
+    width: 1100px;
+    margin: auto;
+}
+
+.comment-input textarea {
+    padding: 20px;
+    width: 100%;
+    height: 100px;
+    resize: none;
+    outline: none;
+    border: 3px solid #eee;
+    background-color: #fff;
+    border-radius: 20px;
+    padding-right: 40px;
+    font-size: 18px;
+
+    overflow: auto;
+}
+.comment-input textarea:focus{
+    border: 3px solid #99E1ED;
+}
+.comment-input button {
+    position: absolute;
+    top: 0;
+    right: 20px;
+    width: 50px;
+    height: 100%;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+.comment-input  img{
+    width: 100%;
+}
+
+
+#commentList{
+    width: 90%;
+    margin: auto;
+    padding: 0;
+    list-style:none;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+
+}
+.comment-writer {
+    display: flex;
+    align-items: center;
+}
+.comment-writer > img{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 2px solid #aaa;
+}
+.comment-writer > span{
+    font-weight: bold;
+    
+}
+.comment-date{
+    font-size: 0.8em;
+    color: #aaa;
+}
+.comment-row > img{
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    left: -50px;
+    top: 40px;
+}
+.comment-row{
+    position: relative;
+    padding: 15px 15px 15px 30px;
+    display: flex;
+    border-bottom: 3px solid #eee;
+    background-color: #fff;
+    border-radius: 10px;
+    width: 100%;
+    margin: 5px;
+    /* height: 200px; */
+}
+.comment-row > p:first-of-type{
+    display: flex;
+    flex-direction: column;
+}
+
+.commentInsertContent{
+    width: 700%;
+    position: relative;
+    right: 600%;
+    outline: none;
+    height: 90px;
+    resize: none;
+    margin-top: 20px;
+    margin: 5px;
+    padding: 10px;
+    border-radius: 10px;
+}
+.commentInsertContent:focus{
+    border: 2px solid #99E1ED;
+    
+}
+.comment-row > div{
+    font-size: 18px;
+    width: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.comment-row > div > div:first-child{
+    width: 100%;
+    height: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.comment-row > div > div:first-child > span:last-child{
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.comment-row > div > div:first-child > span:last-child:hover {
+    font-size: 30px;
+    font-weight: bold;
+    transition-duration: 0.5s;
+}
+.comment-row > div > span:last-child {
+    display: flex;
+    justify-content: flex-end;
+    padding-top:10px;
+}
+.comment-row > p:nth-child(3)>span:nth-child(2):hover{
+    font-size: 20px;
+    transition-duration: 0.5s;
+}
+
+/* 댓글 수정버튼 */
+.comment-row button{
+    width: 55px;
+    height: 30px;
+    border: none;
+    cursor: pointer;
+    background-color: #aaa;
+    color: #fff;
+    border-radius: 5px;
+    margin-left: 5px;
+}
+.comment-row button:hover{
+    background-color: #99E1ED;
+    transition-duration: 0.5s;
+}
+
+.comment-content{
+    width: 80%;
+    font-size: 18px;
+    padding-left: 20px;
+}
+.child-comment{
+    padding-left: 50px;
+    width: 90%;
+}
+.comment-content textarea{
+    width: 90%;
+    outline: none;
+    border-radius: 5px;
+    border: 2px solid #99E1ED;
+    resize: none;
+    height: 50px;
+}
+.comment-btn-area span{
+    text-align: end;
+    height: 30px;
+}
+.comment-btn-area span:hover{
+    transition-duration: 0.5s;
+    font-size: 28px;
+    font-weight: bold;
+    color: #99E1ED;
+
+}
+.comment-btn-area .inline{
+    display: flex;
+
+}
+
+
+.update-textarea{
+    width: 770%;
+    position: relative;
+    right: 680%;
+    height: 100px;
+    padding: 10px;
+    resize: none;
+    font-size: 18px;
+    border-radius: 10px;
+    margin: 10px;
+}
+
+/* 모달 */
+/* .TodoList-modal{
+    position: fixed;
+    z-index: 1;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+   
+    box-shadow: 0 0 20px 4px rgba(0, 220, 244, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(10px);
+    display: none;
+}
+.model-todolist-area{
+    width: 550px;
+    min-height: 600px;
+    border: 30px solid #99E1ED;
+    border-radius: 20px;
+    margin: 0 auto;
+    padding: 30px;
+    background-color: #FFFFFF;
+    position: relative;
+    top: 20%;
+}
+.model-todolist-area > h2{
+    text-align: center;
+}
+
+/* 모달 checkbox */
+
+/* input[id="modelck1"]:checked + .ck::after,
+input[id="modelck2"]:checked + .ck::after,
+input[id="modelck3"]:checked + .ck::after,
+input[id="modelck4"]:checked + .ck::after {
+  height: 10px;
+  animation: bottomcheck 0.2s ease 0s forwards;
+}
+
+input[id="modelck1"]:checked + .ck::before,
+input[id="modelck2"]:checked + .ck::before,
+input[id="modelck3"]:checked + .ck::before,
+input[id="modelck4"]:checked + .ck::before {
+  height: 24px;
+  animation: topcheck 0.4s ease 0s forwards;
+}  */
+
+
+/* .detalie-todolist-area > span{
+    position: absolute;
+    font-size: 20px;
+    top: 10px; 
+    right: 10px; 
+    cursor: pointer;
+} */
+
+/* .model-todolist-area > span:hover{
+    font-size: 22px;
+    font-weight: bold;
+}
+.save{ width: 30% !important;} */
+                    
+                    
+                    
+                    

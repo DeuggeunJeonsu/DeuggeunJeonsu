@@ -28,21 +28,11 @@ function selectCommentList(){
 
         // cList에 저장된 요소를 하나씩 접근
         for(let comment of cList){
-            
-            
-            
+
             // 행
             const commentRow = document.createElement("li");
             commentRow.classList.add("comment-row");
-            
-            // 화살표 사진 
-            if(comment.parentNo != 0)  {
 
-                const arrow = document.createElement("img");
-                arrow.setAttribute("src", "/resources/images/boardDetaile/commentArrow.png");
-                
-                commentRow.append(arrow);
-            }
             // 답글일 경우 child-comment 클래스 추가
             if(comment.parentNo != 0)  commentRow.classList.add("child-comment");
 
@@ -221,6 +211,7 @@ function deleteComment(commentNo){
 
 // ------------------------------------------------------------------------------------------
 // 댓글 수정 화면 전환 
+// 댓글 수정 화면 전환 
 
 let beforeCommentRow; // 수정 전 원래 행의 상태를 저장할 변수
 
@@ -256,7 +247,7 @@ function showUpdateComment(commentNo, btn){
 
     // 3. 댓글에 작성되어 있던 내용만 얻어오기 -> 새롭게 생성된 textarea 추가될 예정
     
-    let beforeContent = commentRow.children[1].innerHTML;
+    let beforeContent = commentRow.previousElementSibling.innerHTML;
 
     // 이것도 가능!
     //let beforeContent = btn.parentElement.previousElementSibling.innerHTML;
