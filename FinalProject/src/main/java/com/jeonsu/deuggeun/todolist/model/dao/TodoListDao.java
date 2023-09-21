@@ -38,17 +38,33 @@ public class TodoListDao {
 
 	//  체크박스 내용 삭제 시
 	public int todoDelete(int todoNo) {
+		
 		return sqlSession.delete("todolistMapper.todoDelete", todoNo);
 	}
 
 	// 체크박스 내용 추가
 	public int todoInsert(TodoList insertTodo) {
-		int result = sqlSession.delete("todolistMapper.todoInsert", insertTodo);
-		int result2 = 0;
-		if(result > 0 ) {
-			result2 = sqlSession.delete("todolistMapper.todoDateInsert", insertTodo);
-		}
-		return result2; 
+		int result = sqlSession.insert("todolistMapper.todoInsert", insertTodo);
 		
+		String createDT = sqlSession.selectOne("todolistMapper.calenderSelect", insertTodo);
+		
+		if(createDT=="") {
+			sqlSession.insert("todolistMapper.calenderInsert", insertTodo);
+		}
+		if(result > 0 ) {
+			result = sqlSession.insert("todolistMapper.todoDateInsert", insertTodo);
+		}
+		return result; 
+		
+	}
+
+	// 투두 모두 완료시 
+	public int allCompleted(String date) {
+		return sqlSession.update("todolistMapper.allCompleted", date);
+	}
+
+	// 완성 안했을 시 
+	public int unfinished(String date) {
+		return sqlSession.update("todolistMapper.unfinished", date);
 	}
 }

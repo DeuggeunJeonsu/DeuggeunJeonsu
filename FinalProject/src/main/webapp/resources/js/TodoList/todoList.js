@@ -118,8 +118,9 @@ if(document.querySelector("#middle-Container")){
                 data: { "memberNo": loginMemberNo },
                 dataType: "JSON",
                 success: function (todolistMap) {
+                    console.log(todolistMap)
                     for (let todos of todolistMap) {
-                        const todoFl = todos.LIST_FL; // 진행여부! 'Y'- 동그라미 'N'- 세모
+                        const todoFl = todos.ALL_FL; // 진행여부! 'Y'- 동그라미 'N'- 세모
                         const todoDays = todos.L_CREATE_DT.split("-");
                         const todoYear2 = todoDays[0]; //년
                         const todoMonth2 = todoDays[1]; //월
@@ -127,7 +128,7 @@ if(document.querySelector("#middle-Container")){
                         // newDIV2 엘리먼트 생성
                         newDIV2 = document.createElement("i");
                         
-                        console.log("todoFl:" + todoFl)
+                        //console.log("todoFl:" + todoFl)
                         
                         if (todoFl == 'Y') {
                             newDIV2.classList.add("fa-solid", "fa-circle", "Circle");
@@ -168,7 +169,7 @@ if(document.querySelector("#middle-Container")){
 
     // 달력 셀을 찾는 함수
     function findDateCell(year, month, day,newDIV2) {
-        console.log("day"+day)
+        //console.log("day"+day)
         const calenderYaer = document.getElementById("calYear").innerText;  // 년
         const calendeMath = document.getElementById("calMonth").innerText; // 월
         const calendeDays = document.querySelectorAll("tbody p");
@@ -219,7 +220,7 @@ if(document.querySelector("#middle-Container")){
         //console.log('선택한 날짜 :'+ choiceTodoDate)
         
         // 오늘 날짜 가져오기
-        
+
             const todayYear = today.getFullYear();
             const todayMonth = today.getMonth()+1;
             const todayDate = today.getDate();
@@ -243,11 +244,11 @@ if(document.querySelector("#middle-Container")){
                 dataType: "JSON",
                 success: function (detailedTodoList) {
                     // console.log('날짜 선택 성공');
-
+                    console.log(detailedTodoList)
                     document.querySelector(".check-area").innerHTML="";
                     for(let todo of detailedTodoList){
                         const DateDIV = document.createElement("div");
-                        DateDIV.innerHTML=todo.lcreateDt;
+                        DateDIV.innerHTML=todo.lCreateDt;
 
                         // 새로운 div 요소 생성
                         const div = document.createElement("div");
@@ -292,7 +293,7 @@ if(document.querySelector("#middle-Container")){
                         const input3 = document.createElement("input")
                         input3.setAttribute("type", "hidden");
                         input3.classList.add("lCreateDt");
-                        input3.value = todo.lcreateDt;
+                        input3.value = todo.lCreateDt;
 
                         // 각 요소를 div에 추가
                         // div.append(DateDIV)
@@ -321,6 +322,29 @@ if(document.querySelector("#middle-Container")){
 
                         document.querySelector(".check-area").append(none);
                     }
+
+                    
+                    const checkboxes = document.querySelectorAll(".checkbox");
+                    let checkedCount = 0;
+        
+                    checkboxes.forEach(checkbox => {
+                        if (checkbox.checked) {
+                            checkedCount++;
+                        }
+                    });
+        
+                    if(checkedCount != checkboxes.length) {
+                       
+                        fetch("/todo/unfinished?date=" + choiceTodoDate )
+                        .then(resp => resp.text())
+                        .then(result=>{
+                            if(result = 0){
+                                console.log("실패ㅜㅜㅜ")
+                            }
+                        })
+                        .catch( e=> console.log(e) )
+                    }
+
                 },
                 error: function(){
                     // console.log('날짜 선택 실패')
@@ -394,7 +418,7 @@ document.addEventListener("click", function (e){
             }
 
 
-            if(day < new Date().getDate() ){
+            if(day < new Date().getDate() && new Date().getMonth()+1 >= document.querySelector("#calMonth").innerHTML ){
                 alert("지난 날짜는 입력할 수 없습니다.🖐️");
                 return;
             }
@@ -412,7 +436,7 @@ document.addEventListener("click", function (e){
                     }
                     return;
                 } else {
-                    const insertTodo = {listContent: addListVal , lcreateDt : choiceTodoDate, memberNo : loginMemberNo}
+                    const insertTodo = {listContent: addListVal , lCreateDt : choiceTodoDate, memberNo : loginMemberNo}
 
                     fetch("/todo/insert",{
                         method : "POST", 
@@ -421,20 +445,19 @@ document.addEventListener("click", function (e){
                     .then( resp => resp.text())
                     .then(result =>{
                         if(result > 0){
-                            console.log("추가완료!")
+                            //console.log("추가완료!")
                             addListInput.value="";
-
+                
                             todoslist(choiceTodoDate)
                             buildCalendar();
                             updateCheckedPercentage();
-
+                
                         }else{
                             console.log("투두 추가시 오류발생")
                         }
-
+                
                     })
                     .catch(err => console.log(err + "투두 오류 발생"))
-            
                 }
             }
         }
@@ -442,6 +465,13 @@ document.addEventListener("click", function (e){
         
     }
 })
+
+// function insertTodo(insertTodo){
+   
+// }
+
+
+
 
 
 document.querySelector(".addList").addEventListener("keyup", function(event) {
@@ -454,13 +484,27 @@ document.querySelector(".addList").addEventListener("keyup", function(event) {
         const maxCheckboxes = 10;
         const currentCheckboxes = document.querySelectorAll(".checkbox").length;
         
-        todoslist(sysDate);
+        const yaer = document.getElementById("calYear").innerText;  // 년
+        const math = document.getElementById("calMonth").innerText; // 월
+        const day= document.querySelector(".choice").value;
+            
+        const choiceTodoDate = yaer+'-' + math+'-' + day;
+
+
+        todoslist(choiceTodoDate);
 
         if(loginMemberNo == ""){
             alert("로그인 후 이용해 주세요💪");
             return;
         }
-    
+
+        if(day < new Date().getDate() && new Date().getMonth()+1 >= document.querySelector("#calMonth").innerHTML ){
+            alert("지난 날짜는 입력할 수 없습니다.🖐️");
+            return;
+        }
+
+
+
         if(addListVal.length == 0 ){
             alert("내용을 입력해주세요👀");
             return;
@@ -476,6 +520,7 @@ document.querySelector(".addList").addEventListener("keyup", function(event) {
                 }
                 
             }
+
     
     
             if(currentCheckboxes >= maxCheckboxes){
@@ -491,8 +536,27 @@ document.querySelector(".addList").addEventListener("keyup", function(event) {
                     }
                     return;
                 } else {
-                    const inputTodo = {listContent: addListVal , lcreateDt : sysDate, memberNo : loginMemberNo}
-                    insertTodo(inputTodo)
+                    const inputTodo = {listContent: addListVal , lCreateDt : choiceTodoDate, memberNo : loginMemberNo}
+                    fetch("/todo/insert",{
+                        method : "POST", 
+                        headers: {"Content-Type": "application/json"},  
+                        body : JSON.stringify( inputTodo ) })
+                    .then( resp => resp.text())
+                    .then(result =>{
+                        if(result > 0){
+                            //console.log("추가완료!")
+                            addListInput.value="";
+
+                            todoslist(inputTodo.lCreateDt)
+                            buildCalendar();
+                            updateCheckedPercentage();
+                
+                        }else{
+                            console.log("투두 추가시 오류발생")
+                        }
+                
+                    })
+                    .catch(err => console.log(err + "투두 오류 발생"))
                   
             
                 }
@@ -516,7 +580,7 @@ function generateRandomId() {
 document.addEventListener("click", function (e){
     
     if(e.target.classList.contains("minusBtn")){
-        console.log(e.target)
+        //console.log(e.target)
 
         const todoNo = e.target.nextElementSibling.value;
         $.ajax({
@@ -528,6 +592,45 @@ document.addEventListener("click", function (e){
                 if(result > 0){
                     
                     e.target.parentElement.remove();
+
+                    const checkboxes = document.querySelectorAll(".checkbox");
+                    let checkedCount = 0;
+        
+                    checkboxes.forEach(checkbox => {
+                        if (checkbox.checked) {
+                            checkedCount++;
+                        }
+                    });
+                    const yaer = document.getElementById("calYear").innerText;  // 년
+                    const math = document.getElementById("calMonth").innerText; // 월
+                    const day= document.querySelector(".choice").value;
+                        
+                    const choiceTodoDate = yaer+'-' + math+'-' + day;
+        
+                    if(checkedCount == checkboxes.length && checkboxes.length != 0) {
+                        console.log(choiceTodoDate)
+                        fetch("/todo/allCompleted?date=" + choiceTodoDate )
+                        .then(resp => resp.text())
+                        .then(result=>{
+                            if(result > 0){
+                                alert("축하합니다🥳 목표를 득근하셨어요!")
+                            }else{
+                                console.log("실패ㅜㅜㅜ")
+                            }
+                        })
+                        .catch( e=> console.log(e) )
+                    }else{
+                        fetch("/todo/unfinished?date=" + choiceTodoDate )
+                        .then(resp => resp.text())
+                        .then(result=>{
+                            if(result == 0){
+                            
+                                console.log("실패ㅜㅜㅜ")
+                            }
+                        })
+                        .catch( e=> console.log(e) )
+                    }
+            
                     buildCalendar();
                     updateCheckedPercentage();
 
@@ -566,34 +669,82 @@ function updateTodo(checkbox,listFl,choiceTodoDate ) {
 
     // 체크 상태 저장 변수
     const completed = listFl;
-    console.log(listFl)
+    //console.log(listFl)
     const ListNo = checkbox.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.value
-
-    console.log(ListNo)        
+    const day2= document.querySelector(".choice").value;
+    //console.log(ListNo)        
     const todosToUpdate = { listNo: ListNo, listFl: completed };
+    
+    if (day2 > new Date().getDate() && document.querySelector("#calMonth").innerHTML > new Date().getMonth() + 1) {
+        alert("운동 수행 후 체크해주세요😊");
+        checkbox.checked=false;
+        return;
+    }else{
 
-    // 서버로 업데이트할 정보를 전송
-    fetch("/todo/update", {
-        method: "POST",
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(todosToUpdate)
-    })
-    .then(resp => resp.text())
-    .then(result => {
-        if (result > 0) {
-           
-            checkbox.nextElementSibling.nextElementSibling.classList.toggle("complete")
-            console.log("성공")
-           // todoslist(choiceTodoDate)
-            buildCalendar();
-            
-            
-
-        } else {
-            console.log('업데이트 실패ㅜㅜ');
-        }
-    })
-    .catch(e => console.log(e));
+        // 서버로 업데이트할 정보를 전송
+        fetch("/todo/update", {
+            method: "POST",
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(todosToUpdate)
+        })
+        .then(resp => resp.text())
+        .then(result => {
+            //console.log(result)
+            if (result >= 1) {
+               
+                checkbox.nextElementSibling.nextElementSibling.classList.toggle("complete");
+    
+                const checkboxes = document.querySelectorAll(".checkbox");
+                let checkedCount = 0;
+    
+                checkboxes.forEach(checkbox => {
+                    if (checkbox.checked) {
+                        checkedCount++;
+                    }
+                });
+                const yaer = document.getElementById("calYear").innerText;  // 년
+                const math = document.getElementById("calMonth").innerText; // 월
+                const day= document.querySelector(".choice").value;   
+                const choiceTodoDate = yaer+'-' + math+'-' + day;
+                console.log(choiceTodoDate);
+                
+                if(checkedCount == checkboxes.length) {
+                    fetch("/todo/allCompleted?date=" + choiceTodoDate )
+                    .then(resp => resp.text())
+                    .then(result=>{
+                        //console.log(result)
+                        if(result > 0){
+                            alert("축하합니다🥳 목표를 득근하셨어요!")
+                            
+                        }else{
+                            console.log("실패ㅜㅜㅜ")
+                        }
+                    })
+                    .catch( e=> console.log(e) )
+                }else{
+    
+                    fetch("/todo/unfinished?date=" + choiceTodoDate )
+                    .then(resp => resp.text())
+                    .then(result=>{
+                        if(result == 0){
+                        
+                            console.log("실패ㅜㅜㅜ")
+                        }
+                    })
+                    .catch( e=> console.log(e) )
+                }
+                
+                todoslist(choiceTodoDate)
+                buildCalendar();
+                
+               
+    
+            } else {
+                console.log('업데이트 실패ㅜㅜ');
+            }
+        })
+        .catch(e => console.log(e));
+    }
 }
 
 

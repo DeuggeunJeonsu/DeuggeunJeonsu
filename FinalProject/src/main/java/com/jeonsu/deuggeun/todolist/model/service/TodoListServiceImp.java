@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.jeonsu.deuggeun.todolist.model.dao.TodoListDao;
 import com.jeonsu.deuggeun.todolist.model.dto.TodoList;
@@ -28,21 +29,39 @@ public class TodoListServiceImp implements TodoListService{
 	}
 	
 	// 체크박스 상태에 대한 결과 DB반영
+	@Transactional(rollbackFor = Exception.class)
 	@Override
 	public int todoUpdate(TodoList updateTodo) {
 		return dao.todoUpdate(updateTodo);
 	}
 	
 	// 투두 리스트 삭제
+	@Transactional(rollbackFor = Exception.class)
 	@Override
 	public int todoDelete(int todoNo) {
 		return dao.todoDelete(todoNo);
 	}
 	
 	// 투두 리스트 추가
+	@Transactional(rollbackFor = Exception.class)
 	@Override
 	public int todoInsert(TodoList insertTodo) {
 		return dao.todoInsert(insertTodo);
 	}
+	
+	//다 완성 시 
+	@Transactional(rollbackFor = Exception.class)
+	@Override
+	public int allCompleted(String date) {
+		return dao.allCompleted(date);
+	}
+	
+	// 완성했다가 취소
+	@Transactional(rollbackFor = Exception.class)
+	@Override
+	public int unfinished(String date) {
+		return dao.unfinished(date);
+	}
+	
 	
 }

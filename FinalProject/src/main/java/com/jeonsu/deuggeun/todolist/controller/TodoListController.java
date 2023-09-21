@@ -39,34 +39,8 @@ public class TodoListController {
 
 		List<Map<String, Object>> todoList = service.selectTodoListAll(loginMemberNo);
 
-		//List<Map<String, Object>> completedTodoList = new ArrayList<>();
-		// 중복된 "L_CREATE_DT" 값을 제거하기 위한 Set
-		Set<String> uniqueDates = new HashSet<>();
 
-		// 중복되지 않은 데이터를 저장할 새로운 List
-		List<Map<String, Object>> uniqueTodoList = new ArrayList<>();
-
-		// 각 Map을 하나씩 처리하기 위한 반복문
-		for (Map<String, Object> todoItem : todoList) {
-			// "L_CREATE_DT" 값을 추출
-			String createDate = (String) todoItem.get("L_CREATE_DT");
-
-			String listFl ="N";
-
-			// 중복된 "L_CREATE_DT" 값을 가진 경우 해당 map을 제외하고 중복되지 않은 데이터만 추가
-			if (!uniqueDates.contains(createDate) && uniqueDates.contains(listFl)) {
-				// todoList가 실행 여부가 'N'인 경우 먼저 추가 
-				uniqueDates.add(createDate);
-				uniqueTodoList.add(todoItem);
-			}else if(!uniqueDates.contains(createDate) && !uniqueDates.contains(listFl)){
-				// todoList가 실행 여부가 'Y'인 경우 먼저 추가 	
-				uniqueDates.add(createDate);
-				uniqueTodoList.add(todoItem);
-			}
-
-		}
-
-		return uniqueTodoList;
+		return todoList;
 	}
 
 
@@ -98,6 +72,18 @@ public class TodoListController {
 	@PostMapping("/todo/insert")
 	public int todoInsert(@RequestBody TodoList insertTodo) {
 		return service.todoInsert(insertTodo);
+	}
+	
+	// 투두리스트 다 완성시 
+	@GetMapping("/todo/allCompleted")
+	public int allCompleted(@RequestParam("date") String date) {
+		return service.allCompleted(date);
+	}
+	
+	// 투두리스트 비완성
+	@GetMapping("/todo/unfinished")
+	public int unfinished(@RequestParam("date") String date) {
+		return service.unfinished(date);
 	}
 
 
