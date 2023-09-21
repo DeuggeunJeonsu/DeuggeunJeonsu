@@ -45,10 +45,8 @@ if(followBtn != null){
         .then(result => {
 
             if(result == -1){
-                console.log("처리 실패");
                 return;
             } else {
-                console.log("처리 성공")
                 location.reload();
             }
 
@@ -70,10 +68,8 @@ if(followingBtn != null){
         .then(result => {
             
             if(result == -1){
-                console.log("처리 실패");
                 return;
             } else {
-                console.log("처리 성공");
                 location.reload();
             }
         })
@@ -117,7 +113,13 @@ var burst = new mojs.Burst({
 document.getElementById("like-cnt").addEventListener("click", e => {
 
     if(loginMemberNo == ""){
-        alert("로그인 후 이용해 주세요.");
+
+        Swal.fire({
+            icon: 'error',                     
+            title: '로그인 후 이용해 주세요.',    
+            text: '', 
+          });
+
         return;
     }
     
@@ -160,7 +162,6 @@ document.getElementById("like-cnt").addEventListener("click", e => {
     .then(count => {
     
         if(count == -1){
-            console.log("좋아요 처리 실패");
             return;
         }
 
@@ -195,13 +196,36 @@ const deleteBtn = document.getElementById("deleteBtn");
 if(deleteBtn != null){
     
     deleteBtn.addEventListener("click", () => {
-    
-        if(confirm("정말 삭제하시겠습니까?")){
-            location.href
-            = location.pathname.replace("board","board2")
-                + "/delete";
-                + location.search;
-        }
+
+        Swal.fire({
+            title: '정말 삭제하시겠습니까?',
+            text: '삭제된 글은 다시 되돌릴 수 없습니다.',
+            icon: 'warning',
+            
+            showCancelButton: true, // cancel버튼 보이기. 기본은 원래 없음
+            confirmButtonColor: '#3085d6', // confrim 버튼 색깔 지정
+            cancelButtonColor: '#d33', // cancel 버튼 색깔 지정
+            confirmButtonText: '확인', // confirm 버튼 텍스트 지정
+            cancelButtonText: '취소', // cancel 버튼 텍스트 지정
+            
+            reverseButtons: false, // 버튼 순서 거꾸로
+            
+        }).then(result => {
+
+            if (result.isConfirmed) {
+
+                Swal.fire({
+                    icon: 'success',
+                    title: '게시글이 삭제되었습니다.',
+                }).then(()=>{
+
+                    location.href
+                    = location.pathname.replace("board","board2")
+                        + "/delete";
+                        + location.search;
+                })
+            }
+        });
     })
 }
 

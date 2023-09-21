@@ -11,7 +11,13 @@ hashtagTextArea.addEventListener("input", e=>{
 
     /* 해시태그 내용이 11글자 이상일 경우 */
     if(hashtagTextArea.value.trim().length > 10){
-        alert("해시태그는 10글자 이하로 입력해 주세요.");
+
+        Swal.fire({
+            icon: 'error',                     
+            title: '해시태그는 10글자 이하로<br> 입력해 주세요.',    
+            text: '', 
+          });
+
         hashtagTextArea.value = hashtagTextArea.value.trim().substr(0,10);
     }
 
@@ -38,21 +44,39 @@ function handleEnterKeyPress() {
     const reqExp = /^[a-zA-Z0-9가-힣\#]*$/;
     
     if(!reqExp.test(hashtagTextArea.value.trim())){
-        alert("특수문자와 자·모음은 입력할 수 없습니다.");
+
+        Swal.fire({
+            icon: 'error',                     
+            title: '특수문자와 자·모음은 입력할 수 없습니다.',    
+            text: '', 
+          });
+
         hashtagTextArea.value = "";
         return;
     }
     
     // 해시태그 개수가 5개를 넘었을 경우
     if(divCount.length == 5) {
-        alert("해시태그는 5개까지 등록 가능합니다.");
+
+        Swal.fire({
+            icon: 'error',                     
+            title: '해시태그는 5개까지 등록 가능합니다.',    
+            text: '', 
+          });
+
         hashtagTextArea.value = "";
         return;
     }
     
     // 공백 입력 후 엔터를 눌렀을 경우
     if(hashtagTextArea.value.trim().length == 0) {
-        alert("해시태그를 입력해 주세요.");
+
+        Swal.fire({
+            icon: 'error',                     
+            title: '해시태그 내용을 입력해 주세요.',    
+            text: '', 
+          });
+
         hashtagTextArea.value = "";
         return;
     }
@@ -60,7 +84,13 @@ function handleEnterKeyPress() {
     // 입력한 해시태그 내용이 이미 만들어진 해시태그 내용과 중복될 경우
     for(let i of divCount) {
         if(hashtagTextArea.value == i.innerText) {
-            alert("이미 해당 해시태그를 입력하셨습니다.");
+
+            Swal.fire({
+                icon: 'error',                     
+                title: '이미 해당 해시태그를<br>입력하셨습니다.',    
+                text: '', 
+              });
+
             hashtagTextArea.value = "";
             return;
         }
@@ -70,7 +100,13 @@ function handleEnterKeyPress() {
     if(hashtagTextArea.value.trim().substr(0,1) == '#'){
 
         if(hashtagTextArea.value.trim().split('#')[1] == ""){
-            alert("해시태그를 입력해 주세요.");
+
+            Swal.fire({
+                icon: 'error',                     
+                title: '#을 빼고 입력해 주세요.',    
+                text: '', 
+            });
+
             hashtagTextArea.value = "";
             return;
         }
@@ -205,7 +241,13 @@ writeFrm.addEventListener("submit", e=>{
     const title = document.getElementById("title-textArea");
 
     if(title.value.trim().length == 0){
-        alert("제목을 입력해 주세요.");
+
+        Swal.fire({
+            icon: 'error',                     
+            title: '제목을 입력해 주세요.',    
+            text: '', 
+        });
+
         title.value = "";
         title.focus();
         e.preventDefault();
@@ -217,7 +259,13 @@ writeFrm.addEventListener("submit", e=>{
     const content = document.getElementById("summernote");
 
     if(content.value.trim().length == 0){
-        alert("내용을 입력해 주세요.");
+
+        Swal.fire({
+            icon: 'error',                     
+            title: '내용을 입력해 주세요.',    
+            text: '', 
+        });
+
         content.value = "";
         content.focus();
         e.preventDefault();
