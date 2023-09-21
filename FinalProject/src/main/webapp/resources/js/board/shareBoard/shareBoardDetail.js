@@ -355,7 +355,7 @@ function todoslist(sysDate){
                 
                 if(detailedTodoList == ""){
                     const none =document.createElement("div");
-                    none.innerText="운동계획이 비어있어요! 계획를 세워 득근해보세요💪";
+                    none.innerHTML="운동계획이 비어있어요!<br> 계획를 세워 득근해보세요💪";
                     none.style.fontWeight="bold"                    
 
                     document.querySelector(".check-area").append(none);
@@ -485,7 +485,7 @@ function todoslist(sysDate){
                 
                 if(detailedTodoList == ""){
                     const none =document.createElement("div");
-                    none.innerText="운동계획이 비어있어요! 계획를 세워 득근해보세요💪";
+                    none.innerHTML="운동계획이 비어있어요!<br> 계획를 세워 득근해보세요💪";
                     none.classList.add("guest");
                     none.style.fontSize="19px"
 
