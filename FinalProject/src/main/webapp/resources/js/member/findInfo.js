@@ -160,7 +160,7 @@ sendEmailBtn.addEventListener("click", e=>{
             set_cookie(memberEmail.value.replace("@","_")+"_pwAtKey", resultPwAtKey, 5);
 
             // 안내문구 출력
-            alert("인증번호가 전송되었습니다. 이메일을 확인해주세요.");
+            alert("인증번호가 전송되었습니다. 이메일을 확인해주세요."+resultPwAtKey);
         }
         else alert("해당 이메일로 등록된 회원이 없습니다. 다시한번 확인해주세요.");
     })
@@ -207,6 +207,8 @@ findPwBtn.addEventListener("click",()=>{
                 const pwChangeFrm = document.createElement("form");
                 pwChangeFrm.setAttribute("action","/member/changePw");
                 pwChangeFrm.setAttribute("method","post");
+                pwChangeFrm.setAttribute("id","pwChangeFrm");
+                pwChangeFrm.setAttribute("onSubmit","return pwValidation();");
 
                 // 타이틀
                 const changePwTitle = document.createElement("p");
@@ -219,6 +221,7 @@ findPwBtn.addEventListener("click",()=>{
                 inputPw.classList.add("width100");
                 inputPw.setAttribute("type","password");
                 inputPw.setAttribute("name","changePw");
+                inputPw.setAttribute("id","changePw");
                 inputPw.setAttribute("placeholder","비밀번호");
                 section1.append(inputPw);
 
@@ -229,6 +232,7 @@ findPwBtn.addEventListener("click",()=>{
                 inputPwCheck.classList.add("width100");
                 inputPwCheck.setAttribute("type","password");
                 inputPwCheck.setAttribute("name","changePwCheck");
+                inputPwCheck.setAttribute("id","changePwCheck");
                 inputPwCheck.setAttribute("placeholder","비밀번호 확인");
                 section2.append(inputPwCheck);
 
@@ -236,7 +240,6 @@ findPwBtn.addEventListener("click",()=>{
                 const changePwBtn = document.createElement("button");
                 changePwBtn.classList.add("findInfo-btn");
                 changePwBtn.setAttribute("id","changePwBtn");
-                changePwBtn.setAttribute("onclick","pwValidation()");
                 changePwBtn.innerText = "비밀번호 변경하기";
 
                 // 비밀번호 변경 영역으로 리뉴얼
@@ -259,9 +262,15 @@ findPwBtn.addEventListener("click",()=>{
 
 // 비밀번호 변경 버튼 눌렀을 때
 function pwValidation(){
-    alert("막아막아");
-    
-    .preventDefault();
+
+    if(document.getElementById("inputPw").value == document.getElementById("inputPwCheck").value){
+        alert("일치");
+        return true;
+    }
+    else{
+        alert("불일치");
+        return false;
+    }
 }
 
 // 타이머 함수
