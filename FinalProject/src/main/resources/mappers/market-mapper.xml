@@ -122,6 +122,7 @@
         <result property="cancelStatus" column="CANCEL_ST" />
         <result property="changeStatus" column="CHANGE_ST" />
         <result property="memberNo" column="MEMBER_NO" />
+        <result property="delEmail" column="DEL_EMAIL" />
     </resultMap>
 
     <!-- 특정 게시판의 삭제되지 않은 게시글 수 조회 -->
@@ -399,9 +400,22 @@
     <!-- 결제성공시 데이터 삽입 -->
     <insert id="insertOrder" parameterType="Order">
         INSERT INTO "ORDER"
-        VALUES(SEQ_ORDER_NO.NEXTVAL, #{total}, DEFAULT, #{pmCard}, DEFAULT, #{delName}, #{delZip}, #{delAddr}, #{delPhone}, #{delNotes}, #{totalCount}, DEFAULT, DEFAULT, #{memberNo})
+        VALUES(SEQ_ORDER_NO.NEXTVAL, #{total}, DEFAULT, #{pmCard}, DEFAULT, #{delName}, #{delZip}, #{delAddr}, #{delPhone}, #{delNotes}, #{productCount}, DEFAULT, DEFAULT, #{memberNo}, #{delEmail})
     </insert>
 
+    <!-- 결제 후 주문 상태 업데이트 -->
+    <update id="afterOrder" parameterType="Order">
+        UPDATE "ORDER"
+        SET ORDER_ST = 'Y'
+        WHERE MEMBER_NO = #{memberNo}
+    </update>
 
+    <!-- 장바구니 내역 구매완료로 상태 업데이트   -->
+    <update id="afterUpdateCart" parameterType="Cart">
+        UPDATE CART
+        SET ORDER_FL = 'Y'
+        WHERE MEMBER_NO = #{memberNo}
+
+    </update>
 </mapper>
 

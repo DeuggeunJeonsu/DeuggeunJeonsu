@@ -35,6 +35,7 @@ var makeMerchantUid = hours +  minutes + seconds + milliseconds;
 function requestPay() {
 
     var delName = document.getElementById("delName").value.trim();
+    var delEmail = document.getElementById("delEmail").value.trim();
     var delPhone = document.getElementById("delPhone").value.trim();
     var delZip = document.getElementById("delZip").value.trim();
     var delAddr1 = document.getElementById("delAddr1").value.trim();
@@ -44,7 +45,9 @@ function requestPay() {
     var totalAmountSum = document.getElementById("totalAmountSum").value;
     var productName = document.getElementById("productName").value;
     let productCount = document.getElementById('productCount').value;
+
     console.log("productNo의 총 개수: " + productCount);
+    console.log("totalAmountSum의 값 : " + totalAmountSum);
 
     if (delName === "") {
         alert("이름은 필수 입력 사항입니다.");
@@ -60,11 +63,25 @@ function requestPay() {
         alert("휴대폰 번호는 필수 입력 사항입니다.");
         return false;
     }
+    // 이메일 유효성
+    var emailRegEx = /^[A-Za-z\d\-\_]{4,}@[가-힣\w\-\_]+(\.\w+){1,3}$/;
+    if(!emailRegEx.test(delEmail)){
+        alert("유효하지 않은 이메일 형식 입니다.");
+        return false;
+    }
+    if(delEmail === ""){
+        alert("이메일을 입력해주세요.")
+        return false;
+    }
+
+    //  전화번호 유효성
     const regExp = /^0(1[01679]|2|[3-6][1-5]|70)\d{3,4}\d{4}$/;
     if (!regExp.test(delPhone)) {
         alert("유효하지 않은 전화번호 형식 입니다.");
         return false;
     }
+
+    // 우편번호 유효성
     const regExp2 = /^[0-9]{5,7}$/;
     if(!regExp2.test(delZip)){
         alert("유효하지 않은 우편번호 형식 입니다.");
@@ -75,6 +92,7 @@ function requestPay() {
         return false;
     }
 
+    // 주소 필수 입력사항
     if (delAddr1 === "") {
         alert("주소는 필수 입력 사항입니다.");
         return false;
@@ -93,12 +111,12 @@ function requestPay() {
         name : '주문명 : ' + productName + '..',
         amount : totalAmountSum,
         productCount : productCount,
-        buyer_email: "gildong@gmail.com",
+        buyer_email: delEmail, // 이메일
         buyer_name: delName,  // 이름
-        buyer_tel: delPhone,  // 휴대폰 번호
         buyer_addr: delAddr1 + ' ' + delAddr2,  // 주소와 상세주소
         buyer_postcode: delZip,  // 우편번호
         buyer_notes: delNotes  // 배송 요청 사항
+
     }, function (rsp) { // callback
         //rsp.imp_uid 값으로 결제 단건조회 API를 호출하여 결제결과를 판단합니다.
         if(rsp.success){
@@ -110,7 +128,7 @@ function requestPay() {
                 name: '주문명 : ' + productName + '..',
                 amount: totalAmountSum,
                 productCount : productCount,
-                buyer_email: "gildong@gmail.com",
+                buyer_email: delEmail,
                 buyer_name: delName,
                 buyer_tel: delPhone,
                 buyer_addr: delAddr1 + ' ' + delAddr2,
@@ -129,7 +147,9 @@ function requestPay() {
                 .then(resp => resp.json())
                 .then(result  => {
                     if(result > 0){ // 성공
-                        console.log('Success:', data);
+                        console.log('Success:', result);
+                        alert('고객님의 주문이 완료되었습니다 ㅎㅎ');
+                        window.location.href = "/myPage/myPurchaseList";
                     }else{
                         console.log('주문데이터 등록 실패ㅠㅠ');
                     }

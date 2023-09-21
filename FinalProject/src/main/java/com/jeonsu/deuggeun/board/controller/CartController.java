@@ -47,7 +47,7 @@ public class CartController {
         return service.removeFromCart(map);
     }
 
-    // 결제 성공 시 주문 테이블 등록
+     // 결제 성공 시 주문 테이블 등록
     @PostMapping("/insertOrder")
     public int insertOrder(@SessionAttribute(value = "loginMember", required = false) Member loginMember,
                            @RequestBody Map<String, Object> paymentInfo){
@@ -56,19 +56,21 @@ public class CartController {
             return -1; // 세션이 없거나 로그인되지 않았을 때
         } else{
             int memberNo = loginMember.getMemberNo();
+
         // 새로운 Order 객체 생성
         Order order = new Order();
 
         order.setMemberNo(memberNo);
         order.setDelName((String) paymentInfo.get("buyer_name")); // 구매자 이름
+        order.setDelEmail((String) paymentInfo.get("buyer_email")); // 구매자 이메일
         order.setPmCard((String) paymentInfo.get("card_name")); // 카드사
         order.setDelZip((String) paymentInfo.get("buyer_postcode")); // 우편번호
         order.setDelAddr((String) paymentInfo.get("buyer_addr")); // 주소
         order.setDelPhone((String) paymentInfo.get("buyer_tel")); // 전화번호
         order.setDelNotes((String) paymentInfo.get("buyer_notes")); // 요청사항
-        order.setTotal((Integer) paymentInfo.get("amount")); // 총금액
+        order.setTotal(Integer.parseInt((String) paymentInfo.get("amount"))); // 총금액
         order.setOrderName((String) paymentInfo.get("name")); // 결제창에 뜨는 상품명
-        order.setTotalCount((Integer) paymentInfo.get("totalCount"));
+        order.setProductCount(Integer.parseInt((String) paymentInfo.get("productCount"))); // 상품 수량
 
         System.out.println(order);
 
