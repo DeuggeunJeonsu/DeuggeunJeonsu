@@ -18,8 +18,13 @@
 
 	</insert>
 	
-	<!-- 댓글 삭제 -->
+	<!--자식 댓글 삭제 -->
 	<update id="delete">
+		UPDATE "COMMENT" SET
+		COMMENT_DEL_FL ='Y'
+		WHERE PARENT_NO = #{commentNo}
+	</update>
+	<update id="delete2">
 		UPDATE "COMMENT" SET
 		COMMENT_DEL_FL ='Y'
 		WHERE COMMENT_NO = #{commentNo}
@@ -31,6 +36,7 @@
 		COMMENT_CONTENT=#{commentContent}
 		WHERE COMMENT_NO=#{commentNo}
 	</update>
+	
   
   
   

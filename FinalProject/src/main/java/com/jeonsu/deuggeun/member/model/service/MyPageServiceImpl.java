@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -20,6 +22,9 @@ public class MyPageServiceImpl implements MyPageService {
 
 	@Autowired
 	private MyPageDAO dao;
+	
+//	@Autowired
+//	private BCryptPasswordEncoder bcrypt;
 
 	// 마이페이지 내 게시글 목록 조회
 	@Override
@@ -142,5 +147,20 @@ public class MyPageServiceImpl implements MyPageService {
 		
 		return map;
 	}
+	
+
+//	@Transactional(rollbackFor = {Exception.class} )
+//	@Override
+//	public int secession(int memberNo, String memberPw) {
+//		
+//		String encPw = dao.selectEncPw(memberNo);
+//		
+//		if(bcrypt.matches(memberPw, encPw)) {
+//			return dao.secession(memberNo);
+//			
+//		}
+//		
+//		return 0;
+//	}
 
 }
