@@ -94,9 +94,7 @@
     </div>
 
 </section>
-<br>
-<br>
-<br>
+<div class="place"></div>
 
 <!-- footer include -->
 <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
