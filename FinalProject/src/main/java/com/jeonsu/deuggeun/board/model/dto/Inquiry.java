@@ -24,4 +24,5 @@ public class Inquiry {
     private String profileImage;
     private int boardCode;
     private int memberNo;
+    private int inquiryType;
 }

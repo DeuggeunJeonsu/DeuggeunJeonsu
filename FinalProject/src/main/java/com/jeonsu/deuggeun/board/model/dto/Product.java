@@ -29,11 +29,7 @@ public class Product {
     private int memberNo;
     private String subTitle;
     private String productImg;
-
-    // 상품 이미지 한개
-//    private String pImagePath;
-
-
+    private String sort;
     // 상품 이미지 목록
     private List<ProductImage> pImageList;
 

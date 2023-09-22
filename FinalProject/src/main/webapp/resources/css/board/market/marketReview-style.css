@@ -1,10 +1,3 @@
-/*@font-face {*/
-/*    font-family: 'Pretendard-Regular';*/
-/*    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');*/
-/*    font-weight: 500;*/
-/*    font-style: normal;*/
-/*}*/
-
 * {
     box-sizing: border-box;
 }
@@ -51,12 +44,22 @@ a {
     background-color: #fff;
 }
 
-#select {
-    padding: 4px 3px 3px;
-    width: 20em;
-    height: 2.5em;
-    line-height: 2.2em;
-    /* height: 100%; */
+select{
+    background-image: none;
+    border-radius: 30px;
+    padding: 0 10px;
+    color: #477A7B;
+    border: 0;
+    background-color: #dfe9e8;
+    font-size: 15px;
+    width: 230px;
+    max-width: 100%;
+    min-height: 40px;
+}
+.count{
+    padding: 10px 10px 10px 0;
+    font-size: 18px;
+    line-height: 1.4em;
 }
 #amount{
     font-size: 20px;
@@ -89,12 +92,11 @@ a {
 .right h3{
     font-family: 'Montserrat','Nanum Gothic',sans-serif;
 }
-.min {
-    padding-left: 40px;
+.min{
+    padding-left: 60px;
     margin-top: 5px;
     margin-bottom: 30px;
 }
-
 .number {
     display: flex;
     align-items: center;
@@ -190,10 +192,13 @@ td {
     font-size: 1.2em;
     padding: 10px;
     text-align: left;
+
     border-bottom: 1px solid #ccc;
     text-align: center;
 }
-
+td{
+    height: 50px;
+}
 th {
     background-color: #f2f2f2;
     font-size: 1.2em;
@@ -203,13 +208,11 @@ th {
 /* 글쓰기 버튼 */
 
 .btn-area {
-    /*height: 50px;*/
     display: flex;
     justify-content:flex-end;
     align-items: center;
 }
-
-/* 글쓰기 버튼 */
+    /* 글쓰기 버튼 */
 #insertBtn {
     display: inline-block;
     padding: 10px 25px;

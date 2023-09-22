@@ -58,12 +58,22 @@ a {
     /*height: 1000px;*/
     /*padding: 100px;*/
 }
-#select{
-    padding: 4px 3px 3px;
-    width: 20em;
-    height: 2.5em;
-    line-height: 2.2em;
-    /* height: 100%; */
+select{
+    background-image: none;
+    border-radius: 30px;
+    padding: 0 10px;
+    color: #477A7B;
+    border: 0;
+    background-color: #dfe9e8;
+    font-size: 15px;
+    width: 230px;
+    max-width: 100%;
+    min-height: 40px;
+}
+.count{
+    padding: 10px 10px 10px 0;
+    font-size: 18px;
+    line-height: 1.4em;
 }
 #amount{
     font-size: 20px;
@@ -94,7 +104,7 @@ a {
     font-family: 'Montserrat','Nanum Gothic',sans-serif;
 }
 .min{
-    padding-left: 40px;
+    padding-left: 60px;
     margin-top: 5px;
     margin-bottom: 30px;
 }

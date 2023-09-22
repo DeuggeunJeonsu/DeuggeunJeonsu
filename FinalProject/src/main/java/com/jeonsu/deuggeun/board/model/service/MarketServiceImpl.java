@@ -26,14 +26,26 @@ public class MarketServiceImpl implements MarketService {
 
 	//    득근마켓 게시글 목록조회
 	@Override
-	public Map<String, Object> selectMarketList(int boardCode, int cp) {
+	public Map<String, Object> selectMarketList(int boardCode, int cp, String sort) {
 
 		int listCount = dao.getListCount(boardCode);
-
 		Pagination pagination = new Pagination(cp, listCount);
 
-		List<Product> marketList = dao.selectMarketList(pagination, boardCode);
+//		List<Product> marketList = dao.selectMarketList(pagination, boardCode);
+		List<Product> marketList = null;
 
+		if ("n".equals(sort)) {
+			marketList = dao.selectMarketList(pagination, boardCode); // 신상품 우선으로 조회
+		} else if ("l".equals(sort)) {
+			marketList = dao.selectMarketListByLowPrice(pagination, boardCode); // 낮은 가격 우선으로 조회
+		} else if ("h".equals(sort)) {
+			marketList = dao.selectMarketListByHighPrice(pagination, boardCode); // 높은 가격 우선으로 조회
+		} else if ("b".equals(sort)) {
+			marketList = dao.selectMarketListByReview(pagination, boardCode); // 후기 많은순
+		}
+		else {
+			marketList = dao.selectMarketList(pagination, boardCode);
+		}
 		// 4. pagination, marketList를  Map에 담아서 반환
 		Map<String, Object> map = new HashMap<>();
 		map.put("pagination", pagination);
@@ -219,6 +231,7 @@ public class MarketServiceImpl implements MarketService {
 		return dao.selectInquiryDetail(map);
 	}
 
+	// 상품문의 작성
 	@Transactional(rollbackFor = Exception.class)
 	@Override
 	public int inquiryInsert(int boardCode, int productNo, Inquiry inquiry, MultipartFile image, String webPath, String filePath) throws IOException {

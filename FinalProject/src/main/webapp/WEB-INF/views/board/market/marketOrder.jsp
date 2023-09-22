@@ -53,7 +53,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <th>이메일(결제 내역을 보내드려요)</th>
+                                    <th>이메일</th>
                                     <td>
                                         <input type="text" class="form_input" name="delEmail" value="" id="delEmail">
                                     </td>
@@ -62,7 +62,7 @@
                                     <th scope="row">휴대폰 번호</th>
                                     <td>
                                         <input type="text" class="form_input" name="delPhone" value="" maxlength="12"
-                                               style="width: 200px" id="delPhone">
+                                               id="delPhone">
                                     </td>
 
                                 </tr>
@@ -87,7 +87,8 @@
                                     <th scope="row">배송요청사항</th>
                                     <td>
                                         <input class="form_input form_text" id="delNotes" name="delNotes" value="" rows="4" cols="50"
-                                            placeholder="조심히 안전하게 와주세요 :)"></input>
+                                            placeholder="조심히 안전하게 와주세요 :)">
+
                                     </td>
                                 </tr>
                             </tbody>
@@ -126,8 +127,6 @@
                         <c:set var="productCount" value="${fn:length(cartList)}" />
                         <input type="hidden" id="productCount" value="${productCount}" />
                     </form>
-
-
                 </div>
 
 
@@ -156,11 +155,11 @@
                 </div>
 
             </section>
-
-
+            <br>
             <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
             <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
             <script src="/resources/js/market/payment.js"></script>
+
         </body>
 
         </html>

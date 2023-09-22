@@ -35,6 +35,7 @@
 
             <section id="main-container">
                 <div class="main-con">
+                    <div class="place"></div>
                     <div class="top-container">
                         <div class="left-content">
                             <img src="${product.productImg}" id="main-photo">
@@ -51,7 +52,7 @@
                             <div class="right">${product.subTitle}</div>
                             <div class="number-con">
                                 <div class="number">
-                                    <div>수량</div>
+                                    <div class="count">수량</div>
                                     <select name="selectNumber" id="select">
                                         <option> - [필수] 수량을 선택해 주세요 -</option>
                                         <option value="1">1개</option>
@@ -66,7 +67,7 @@
                             </div>
                             <div class="price">
                                 <button type="submit" id="cart-btn" class="submit-btn">ADD TO CART</button>
-                                <button type="submit" id="now-btn" class="submit-btn">BUY IT NOW</button>
+                                <button type="button" id="now-btn" class="submit-btn">BUY IT NOW</button>
                             </div>
                         </div>
                     </div>
@@ -134,16 +135,11 @@
                                     </c:choose>
                               </tbody>
                         </table>
-
-
                         <div class="btn-area">
-<%--                    <a href="/board/${boardCode}/review/${productNo}/insert" id="insertBtn">글쓰기</a>--%>
-                        <a href="/board/${boardCode}/inquiry/${productNo}/insert" id="insertBtn">문의하기</a>
-<%--                        <button id="insertBtn">문의하기</button>--%>
-                            <!-- 로그인 상태일 경우 글쓰기 버튼 노출 -->
 
-                            <!-- <c:if test="${!empty loginMember}"> -->
-                            <!-- </c:if> -->
+                           <c:if test="${!empty loginMember}">
+                                <a href="/board/${boardCode}/inquiry/${productNo}/insert" id="insertBtn">문의하기</a>
+                           </c:if>
 
                         </div>
 
@@ -173,6 +169,7 @@
                             </ul>
                         </div>
                     </section>
+                    <div class="place"></div>
                 </div>
 
                  </section>

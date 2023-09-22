@@ -129,6 +129,14 @@
 
     <div id="middle-area">
         <form action="/board/${boardCode}/inquiry/${productNo}/insert" method="POST" id="inquireForm" enctype="multipart/form-data">
+            <div>
+                <select name="inquiryType" id="inquiryType">
+                    <option value="">--- 상품 문의 유형을 선택해주세요 ---</option>
+                    <option value="1">교환</option>
+                    <option value="2">취소</option>
+                    <option value="3">기타</option>
+                </select>
+            </div>
             <div id="title-middle-area">
                 <input type="text" name="inquiryTitle" id="inquireTitle" placeholder="제목" value="" placeholder="제목을 입력해주세요" maxlength="10">
             </div>

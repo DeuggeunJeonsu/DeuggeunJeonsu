@@ -277,12 +277,10 @@
     font-size: 20px;
     padding: 15px;
     resize: none;
-
     outline: none;
     border: 2px solid #99E1ED;
     border-radius: 5px;
-
-    overflow: hidden;
+    overflow: auto;
 }
 .fa-circle-xmark{
     font-size: 11px;
@@ -435,3 +433,18 @@
 .place{
     height: 100px;
 }
+select[name="inquiryType"] {
+    width: 25%;  /* 전체 너비로 설정 */
+    padding: 8px 10px;
+    margin-top: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    /*appearance: none;*/
+}
+
+/* default option 스타일 */
+select[name="inquiryType"] option[value=""] {
+    color: #aaa;
+}
+

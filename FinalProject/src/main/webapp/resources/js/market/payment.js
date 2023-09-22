@@ -64,13 +64,13 @@ function requestPay() {
         return false;
     }
     // 이메일 유효성
+    if(delEmail === ""){
+        alert("이메일을 입력해주세요.")
+        return false;
+    }
     var emailRegEx = /^[A-Za-z\d\-\_]{4,}@[가-힣\w\-\_]+(\.\w+){1,3}$/;
     if(!emailRegEx.test(delEmail)){
         alert("유효하지 않은 이메일 형식 입니다.");
-        return false;
-    }
-    if(delEmail === ""){
-        alert("이메일을 입력해주세요.")
         return false;
     }
 
@@ -82,13 +82,13 @@ function requestPay() {
     }
 
     // 우편번호 유효성
+    if (delZip === "") {
+        alert("우편번호는 필수 입력 사항입니다.");
+        return false;
+    }
     const regExp2 = /^[0-9]{5,7}$/;
     if(!regExp2.test(delZip)){
         alert("유효하지 않은 우편번호 형식 입니다.");
-        return false;
-    }
-    if (delZip === "") {
-        alert("우편번호는 필수 입력 사항입니다.");
         return false;
     }
 
@@ -101,6 +101,11 @@ function requestPay() {
         alert("상세주소를 입력해주세요!")
         return false;
     }
+
+    if (delNotes === "") {
+        delNotes = "조심히 안전하게 와주세요";
+    }
+
     var paymentSuccess = false;
 
     console.log('requestPay() 실행.');

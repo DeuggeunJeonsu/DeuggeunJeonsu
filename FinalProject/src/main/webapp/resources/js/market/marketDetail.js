@@ -54,7 +54,7 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 });
 
-
+// 바로 구매하기 버튼
 // BUY IT NOW 버튼
 document.addEventListener("DOMContentLoaded", function() {
     // "ADD TO CART" 버튼에 클릭 이벤트 리스너 추가

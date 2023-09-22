@@ -90,6 +90,7 @@
         <result property="profileImage" column="PROFILE_IMG"/>
         <result property="boardCode" column="BOARD_CODE"/>
         <result property="memberNo" column="MEMBER_NO"/>
+        <result property="inquiryType" column="INQUIRY_TYPE" />
     </resultMap>
 
     <!-- Cart에 대한 resultMap -->
@@ -317,8 +318,8 @@
         <selectKey order="BEFORE" resultType="_int" keyProperty="inquiryNo">
             SELECT SEQ_REVIEW_NO.NEXTVAL FROM DUAL
         </selectKey>
-        INSERT INTO PRODUCT_INQUIRY(PRODUCT_NO, UPLOAD_IMG, INQUIRY_TITLE, INQUIRY_CONTENT, MEMBER_NO, INQUIRY_NO, BOARD_CODE)
-        VALUES(1, #{uploadImage}, #{inquiryTitle}, #{inquiryContent}, #{memberNo}, #{inquiryNo}, 5)
+        INSERT INTO PRODUCT_INQUIRY(PRODUCT_NO, UPLOAD_IMG, INQUIRY_TITLE, INQUIRY_CONTENT, MEMBER_NO, INQUIRY_NO, BOARD_CODE, INQUIRY_TYPE)
+        VALUES(1, #{uploadImage}, #{inquiryTitle}, #{inquiryContent}, #{memberNo}, #{inquiryNo}, 5, #{inquiryType})
     </insert>
 
     <!-- 상품문의 등록 -->
@@ -327,7 +328,7 @@
             SELECT SEQ_INQUIRY_NO.NEXTVAL FROM DUAL
         </selectKey>
         INSERT INTO PRODUCT_INQUIRY
-        VALUES(#{productNo}, DEFAULT, #{inquiryTitle}, #{inquiryContent}, DEFAULT, DEFAULT, DEFAULT, #{inquiryNo}, 5, #{memberNo})
+        VALUES(#{productNo}, DEFAULT, #{inquiryTitle}, #{inquiryContent}, DEFAULT, DEFAULT, DEFAULT, #{inquiryNo}, 5, #{memberNo}, #{inquiryType})
     </insert>
 
     <!-- 상품문의 게시글 삭제 -->
@@ -463,5 +464,36 @@
         INSERT INTO CART (CART_NO, PRODUCT_NO, MEMBER_NO, ITEM_COUNT, TOTAL_AMOUNT)
         VALUES (#{cartNo}, #{productNo}, #{memberNo}, #{quantity}, #{total})
     </insert>
+
+    <!-- 낮은 가격 정렬  -->
+    <select id="selectMarketListByLowPrice" parameterType="map" resultMap="board_rm">
+        SELECT PRODUCT_TITLE, PRODUCT_PRICE, P_IMG_PATH, PRODUCT_NO
+        FROM PRODUCT
+                 JOIN PRODUCT_IMG USING (PRODUCT_NO)
+        WHERE BOARD_CODE = #{boardCode}
+          AND P_IMG_PATH LIKE '%main%'
+        ORDER BY PRODUCT_PRICE ASC
+    </select>
+
+    <!-- 높은 가격 정렬  -->
+    <select id="selectMarketListByHighPrice" parameterType="map" resultMap="board_rm">
+        SELECT PRODUCT_TITLE, PRODUCT_PRICE, P_IMG_PATH, PRODUCT_NO
+        FROM PRODUCT
+                 JOIN PRODUCT_IMG USING (PRODUCT_NO)
+        WHERE BOARD_CODE = #{boardCode}
+          AND P_IMG_PATH LIKE '%main%'
+        ORDER BY PRODUCT_PRICE DESC
+    </select>
+    <select id="selectMarketListByReview" parameterType="map" resultMap="board_rm">
+    SELECT P.PRODUCT_TITLE, P.PRODUCT_PRICE, P_IMG.P_IMG_PATH, P.PRODUCT_NO, COALESCE(REVIEW_COUNT, 0) AS REVIEW_COUNT
+    FROM PRODUCT P
+    JOIN PRODUCT_IMG P_IMG ON P.PRODUCT_NO = P_IMG.PRODUCT_NO
+    LEFT JOIN (SELECT PRODUCT_NO, COUNT(*) REVIEW_COUNT FROM REVIEW GROUP BY PRODUCT_NO) REVIEW_COUNTS
+    ON P.PRODUCT_NO = REVIEW_COUNTS.PRODUCT_NO
+    WHERE P.BOARD_CODE = #{boardCode}
+    AND P_IMG.P_IMG_PATH LIKE '%main%'
+    ORDER BY REVIEW_COUNT DESC, P.PRODUCT_PRICE DESC
+    </select>
+
 </mapper>
 
