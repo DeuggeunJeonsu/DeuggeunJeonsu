@@ -23,7 +23,7 @@
       <div class="contents">
         <div class="text_wrap big line type top">
           <strong class="tit">
-            <em>"${param.query}"</em>검색결과
+            <em>"<span id="searchQuery">${param.query}</span>"</em> 검색결과
           </strong>
         </div>
         <div>
@@ -193,6 +193,8 @@
     </div>
 </div>
 
+
+      <script src="/resources/js/board/entireBoard/entireBoard.js"></script>
         
         <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
 </body>

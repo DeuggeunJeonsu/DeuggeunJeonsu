@@ -174,6 +174,63 @@ memberNickname.addEventListener("input", () =>{
 
 })
 
+const memberTels = document.getElementsByName("memberTel");
+let memberTel = "";
+const sendSmsBtn = document.getElementById("sendSmsBtn");
+const smsTimerSpan = document.getElementById("smsTimer");
+const idAtKey = document.getElementById("idAuthenticationKey");
+let smsTiner;
+let smsIsRunning = false;
+
+sendSmsBtn.addEventListener("click", e=>{
+    memberTel = "";
+    for( let i of  memberTels){
+        if(i.value.trim().length == 0){
+            alert("휴대폰번호를 입력해주세요");
+            return;
+        }
+        memberTel += i.value;
+    }
+
+    fetch("/member/sendSms", {
+        method : "POST",
+        headers : {"Content-Type" : "application/json"},
+        body : memberTel
+    })
+    .then(response => response.text() )
+    .then( resultIdAtKey => {
+        if(resultIdAtKey != ""){
+            if(smsIsRunning) clearInterval(smsTimer);
+            startTimer(60*5-1, 1);
+            e.target.innerText = "인증번호 재전송";
+            set_cookie(memberTel+"_idAtKey", resultIdAtKey, 5);
+            alert("인증번호가 전송되었습니다. 휴대폰을 확인해주세요.");
+
+        }else alert("인증번호가 발송되지 않았습니다.");
+    })
+    .catch(err =>{
+        console.log("예외 발생");
+        console.log(err);
+    })
+
+
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 const sendAuthKeyBtn = document.getElementById("sendAuthKeyBtn");
 const authKeyMessage = document.getElementById("authKeyMessage");
 let authTimer;
@@ -196,7 +253,7 @@ sendAuthKeyBtn.addEventListener("click", function(){
         .then(result => {
             if(result > 0){
                 console.log("인증 번호가 발송되었습니다.");
-                tempEmail.log("인증번호 발송 실패");
+                tempEmail = memberEmail.value;
             }
         })
         .catch(err => {
@@ -241,7 +298,7 @@ const checkAuthKeyBtn = document.getElementById("checkAuthKeyBtn");
 checkAuthKeyBtn.addEventListener("click", function(){
 
     if(authMin > 0 || authSec > 0){
-        const obj = {"inputKey":authKey.value, "email":tempEmail}
+        const obj = {"inputKey": authKey.value, "email": tempEmail}; 
         const query = new URLSearchParams(obj).toString()
 
         fetch("/sendEmail/checkAuthKey?" + query)
@@ -264,6 +321,7 @@ checkAuthKeyBtn.addEventListener("click", function(){
         alert("인증 시간이 만료되었습니다.")
     }
 });
+
 
 function toggleAllAgree() {
     var chkAll = document.getElementById('chkAll');
@@ -302,3 +360,35 @@ function toggleAllAgree() {
     chkAll.checked = allChecked;
   }
 
+
+  const signUpFrm = document.getElementById("signUpFrm");
+
+  signUpFrm.addEventListener("submit", e => {
+      let validationFailed = false;
+  
+      for (let key in checkObj) {
+          if (!checkObj[key]) {
+              validationFailed = true;
+              switch (key) {
+                  case "memberEmail":
+                      alert("유효한 이메일 형식이 아닙니다. 다시 시도해주세요");
+                      break;
+                  case "memberPw":
+                      alert("유효한 비밀번호 형식이 아닙니다. 다시 시도해주세요");
+                      break;
+                  case "memberPwConfirm":
+                      alert("유효한 비밀번호 확인 형식이 아닙니다. 다시 시도해주세요");
+                      break;
+                  case "memberNickname":
+                      alert("유효한 닉네임 형식이 아닙니다. 다시 시도해주세요");
+                      break;
+              }
+              document.getElementById(key).focus();
+          }
+      }
+  
+      if (validationFailed) {
+          e.preventDefault();
+      }
+  });
+  

@@ -41,9 +41,9 @@
       <div>
         <div>
           <input type="text" name = "authKey" id = "authKey" placeholder="인증번호 입력" maxlength="6" autocomplete="off">
-          <button type="button">인증하기</button>
-          <p class="signUp-message" id="authKeyMessage"></p>
+          <button type="button" id="checkAuthKeyBtn">인증하기</button>
         </div>
+          <p class="signUp-message" id="authKeyMessage"></p>
       </div>
       </div>
 
@@ -72,17 +72,18 @@
       <div>
         <label class="imp">휴대폰</label>
         <div>
-          <input type="tel" placeholder="숫자만 입력해주세요" name = "memberTel" id = "memberTel" required>
-          <button type="button">인증번호받기</button>
+          <input type="tel" placeholder="숫자만 입력해주세요" name = "memberTel" id = "idAuthenticationKey" required>
+          <button type="button" class="findInfo-btn" id="sendSmsBtn">인증번호받기</button>
         </div>
       </div>
 
       <div>
         <div>
           <input type="tel" placeholder="인증번호 입력" required id="tel3">
-          <button type="button">인증번호확인</button>
+          <button type="button" id="idAuthenticationKey">인증번호확인</button>
         </div>
       </div>
+
 
       <div>
         <label class="imp">주소</label>
@@ -570,28 +571,7 @@
     }
 </script>
 
-<script>
-const signUpFrm = document.getElementById("signUpFrm");
 
-signUpFrm.addEventListener("submit", e=> {
-    for(let key in checkObj){
-        if(!checkObj[key]){
-
-            switch(key){
-                case "memberEmail" : alert("유효한 이메일 형식이 아닙니다. 다시 시도해주세요"); break;
-                case "memberPw" : alert("유효한 비밀번호 형식이 아닙니다. 다시 시도해주세요"); break;
-                case "memberPwConfirm" : alert("유효한 비밀번호 확인 형식이 아닙니다. 다시 시도해주세요"); break;
-                case "memberNickname" : alert("유효한 닉네임 형식이 아닙니다. 다시 시도해주세요"); break;
-            }
-
-            document.getElementById(key).focus();
-
-            e.preventDefault();
-            return;
-        }
-    }
-})
-</script>
     
     <script src="/resources/js/member/signUp.js"></script>
   

@@ -107,7 +107,7 @@ button[type="submit"] {
 
 
 
-form {
+#signUpFrm {
   max-width: 768px;
   margin: 0 auto;
   padding: 100px 5%;
@@ -385,6 +385,11 @@ a:hover {
         .agreebtn:active {
             background-color: #d0d0d0; 
         }
+
+.width30{
+  width: 100px;
+}
+
 
 .confirm{ color: green; }
 .error{ color: red; }
