@@ -17,7 +17,7 @@ h1{
 
 /* 게시글 상세 조회 영역 */
 #detail-container{
-    width: 800px;
+    width: 1200px;
     margin: auto;
 }
 
@@ -26,17 +26,12 @@ h1{
     display: flex;
 }
 
-/* #title-middle-area *{
-    border: 1px solid black;
-} */
-
 #title{
     margin-top: 20px;
     margin-bottom: 20px;
     height: 40px;
     width: 70%;
-
-    font-size: 30px;
+    font-size: 25px;
     font-weight: bold;
 
 }
@@ -59,7 +54,6 @@ h1{
 #writer-info-area{
     display: flex;
     align-items: center;
-
     margin-bottom: 20px;
 }
 .rightCon{
@@ -119,14 +113,16 @@ h1{
 
 #board-content-area{
     /*height: 500px;*/
-    height: auto;
+    height: 450px;
     padding: 30px;
     font-size: 18px;
     /*text-align: center;*/
     background-color: white;
     border-radius: 5px;
 }
-
+.place{
+    height: 120px;
+}
 /* 게시글 버튼 영역 */
 /* 좋아요 영역 */
 #btn-area{
