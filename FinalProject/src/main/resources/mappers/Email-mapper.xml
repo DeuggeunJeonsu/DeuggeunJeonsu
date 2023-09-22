@@ -14,9 +14,10 @@
 	</insert>
 	
 	<select id="checkAuthKey" resultType="int">
-		SELECT COUNT(*) FROM "AUTH_KEY"
-		WHERE EMAIL = #{email}
-		AND CODE = #{inputKey}
+    	SELECT COUNT(*) FROM "AUTH_KEY"
+    	WHERE EMAIL = #{email}
+    	AND CODE = #{inputKey}
 	</select>
+
 
 </mapper>

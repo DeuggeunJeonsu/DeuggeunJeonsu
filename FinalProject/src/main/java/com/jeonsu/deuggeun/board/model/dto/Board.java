@@ -42,6 +42,7 @@ public class Board {
 
 	// 문의 관련
 	private char adminCheckFl;
+	private int adminBoardNo;
 	
 	// 이미지 목록
 	private List<BoardImage> imageList;

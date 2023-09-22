@@ -168,6 +168,27 @@ public class MyPageServiceImpl implements MyPageService {
 		return map;
 	}
 
+	// 마이페이지 1:1 문의 답변조회
+	@Override
+	public Board inquiryAnswer(int boardNo) {
+		
+		// 문의글 답변 내용 조회를 위한 게시글 번호 조회
+		int adminBoardNo = dao.selectAdminBoardNo(boardNo);
+		
+		Board board = new Board();
+		
+		board.setAdminBoardNo(adminBoardNo);
+		
+		 board = dao.inquiryAnswer(board);
+		 
+		 System.out.println(board.getBoardTitle());
+		 System.out.println(board.getBoardContent());
+		
+		
+		
+		return board;
+	}
+
 
 	//	@Transactional(rollbackFor = {Exception.class} )
 	//	@Override

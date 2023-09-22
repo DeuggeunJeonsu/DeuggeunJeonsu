@@ -222,7 +222,7 @@ findPwBtn.addEventListener("click",()=>{
                 section1.classList.add("regExSection");
                 const regExDisplay = document.createElement("div");
                 regExDisplay.setAttribute("id","regExDisplay");
-                regExDisplay.innerText="영어,숫자,특수문자(!,@,#,-,_) 8~16글자 사이로 입력해주세요.";
+                regExDisplay.innerText="영어,숫자,특수문자(!,@,#,-,_) 6~20글자 사이로 입력해주세요.";
                 section1.append(regExDisplay);
 
                 // 비밀번호 입력
@@ -278,7 +278,7 @@ function pwValidation(){
     const changePwCheck = document.getElementById("changePwCheck");
 
     // 정규 표현식을 이용한 비밀번호 유효성 검사
-    const regEx = /^[a-zA-Z\d\!\@\#\-\_]{8,16}$/;
+    const regEx = /^[a-zA-Z\d\!\@\#\-\_]{6,20}$/;
 
     if(changePw.value.trim().length==0){
         changePw.value="";

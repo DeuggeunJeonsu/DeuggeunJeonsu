@@ -690,6 +690,95 @@ document.addEventListener("click", function (e){
 });
 
 
+// -------------------------------------------------------------------------------
+
+// 게시글 수정 버튼 클릭 시
+
+const updateBtn = document.getElementById("updateBtn");
+if(updateBtn != null){
+
+    updateBtn.addEventListener("click", ()=>{
+    
+        location.href
+                = location.pathname.replace("board", "board2")
+                + "/update"
+                + location.search;
+    })
+}
+
+// -------------------------------------------------------------------------------
+
+// 게시글 삭제 버튼 클릭 시
+
+const deleteBtn = document.getElementById("deleteBtn");
+if(deleteBtn != null){
+    
+    deleteBtn.addEventListener("click", () => {
+
+        Swal.fire({
+            title: '정말 삭제하시겠습니까?',
+            text: '삭제된 글은 다시 되돌릴 수 없습니다.',
+            icon: 'warning',
+            
+            showCancelButton: true, // cancel버튼 보이기. 기본은 원래 없음
+            confirmButtonColor: '#3085d6', // confrim 버튼 색깔 지정
+            cancelButtonColor: '#d33', // cancel 버튼 색깔 지정
+            confirmButtonText: '확인', // confirm 버튼 텍스트 지정
+            cancelButtonText: '취소', // cancel 버튼 텍스트 지정
+            
+            reverseButtons: false, // 버튼 순서 거꾸로
+            
+        }).then(result => {
+
+            if (result.isConfirmed) {
+
+                Swal.fire({
+                    icon: 'success',
+                    title: '게시글이 삭제되었습니다.',
+                }).then(()=>{
+
+                    location.href
+                    = location.pathname.replace("board","board2")
+                        + "/delete";
+                        + location.search;
+                })
+            }
+        });
+    })
+}
+
+// -------------------------------------------------------------------------------
+
+// 목록으로
+
+const goToListBtn = document.getElementById("goToListBtn");
+
+goToListBtn.addEventListener("click", ()=>{
+
+    let url = "/board/2/list";
+
+    const params = new URL(location.href).searchParams;
+
+    let cp;
+    if(params.get("cp") != null){ // 쿼리스트링에 cp가 있을 경우
+        cp = "?cp=" + params.get("cp");
+    } else {
+        cp = "?cp=1";
+    }
+
+    url += cp;
+
+    if(params.get("key") != null){
+        const key = "&key=" + params.get("key");
+        const query = "&query=" + params.get("query");
+
+        url += key + query;
+    }
+
+    location.href = url;
+
+})
+
 
 
 

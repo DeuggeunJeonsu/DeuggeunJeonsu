@@ -38,7 +38,7 @@ public interface AdminService {
 	 * @param boardNo2 
 	 * @return result
 	 */
-	int insertQnA(AdminMember board , int boardNo);
+	int insertQnA(AdminMember board , int userBoardNo);
 
 	/** 관리자 상품 문의 답변
 	 * @param board

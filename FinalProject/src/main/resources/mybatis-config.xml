@@ -50,5 +50,7 @@
 		<mapper resource="/mappers/myPage-mapper.xml" />
 		<mapper resource="/mappers/shareBoard-mapper.xml" />
 		<mapper resource="/mappers/adminPage-mapper.xml" />
+		<mapper resource="/mappers/Email-mapper.xml" />
+		<mapper resource="/mappers/ajax-mapper.xml" />
 	</mappers>
 </configuration>
