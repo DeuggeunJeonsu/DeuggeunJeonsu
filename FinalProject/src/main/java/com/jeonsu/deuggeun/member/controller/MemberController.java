@@ -115,7 +115,7 @@ public class MemberController {
 		String AuthenticationKey="";
 
 		// 일치하는 회원이 있으면 sms인증번호 전송
-		if(selectMember !=null) AuthenticationKey = "123456"; //Util.sendMessage(memberTel);
+		if(selectMember !=null) AuthenticationKey = Util.sendMessage(memberTel);
 		
 		// 인증번호 반환
 		return AuthenticationKey;
@@ -140,7 +140,7 @@ public class MemberController {
 		String AuthenticationKey="";
 
 		// 일치하는 회원이 있으면 email인증번호 전송
-		if(selectMember !=null) AuthenticationKey = "123456"; //Util.sendEmail(memberEmail);
+		if(selectMember !=null) AuthenticationKey = Util.sendEmail(memberEmail);
 		
 		// 인증번호 반환
 		return AuthenticationKey;
