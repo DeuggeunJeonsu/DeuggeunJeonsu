@@ -12,7 +12,16 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>게시판 이름</title>
+<title>루틴공유게시판</title>
+
+<%-- 헤더 아이콘 --%>
+<link rel="apple-touch-icon" sizes="180x180" href="/resources/images/favicon_io/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/resources/images/favicon_io/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/resources/images/favicon_io/favicon-16x16.png">
+
+<%-- alert창 바꿔 주는 스크립트 연결 --%>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.28/dist/sweetalert2.all.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.28/dist/sweetalert2.min.css">
 
 <%-- boardList-style.css 연결 --%>
 <link rel="stylesheet" href="/resources/css/board/freeBoard/freeBoardList-style.css">
@@ -28,40 +37,68 @@
         </div>
         <div id="search-area">
             <div class="search-place">
-                <form action="" method="get" id="boardSearch">
-                    <input type="search" name="query" id="searchQuery" placeholder="search...">
+                <form method="get" id="boardSearch">
+                    <input type="hidden" name="key" value="tc">
+                    <input type="search" name="query" id="searchQuery" placeholder="search..." autocomplete="off" value=${param.query}>
                     <button id="search-button"><i class="fas fa-search"></i></button>
                 </form>
             </div>
-            <div class="hashTag-area">
-                <%-- <div>
-                    #오운완
-                    <i class="fa-solid fa-circle-xmark" style="color: #ffffff;"></i>
-                </div>                
-                <div>
-                    #OOTD
-                    <i class="fa-solid fa-circle-xmark" style="color: #ffffff;"></i>
-                </div>                
-                <div>
-                    #단백질쉐이커
-                    <i class="fa-solid fa-circle-xmark" style="color: #ffffff;"></i>
-                </div>                 --%>
-            </div>
+
+            <c:if test="${!empty param.query}" >
+                <div class="hashTag-area">
+                    <div class="hashtag">
+                        #${param.query}
+                        <i class="fa-solid fa-circle-xmark" style="color: #ffffff;"></i>
+                    </div>
+                </div>
+            </c:if>
+
             <div id="sort-btn-area">
-                <a href="#"><span name="key" value="l">최신순</span></a> |
-                <a href="#"><span name="key" value="p">인기순</span></a> |
-                <a href="#"><span name="key" value="f">팔로워</span></a>
+                <%-- 최신순 --%>
+                <a href="/board/2/list?key=r">
+                    <c:if test="${param.key == 'r'}" >
+                        <span name="key" value="r" style="font-weight:bold; color:#99E1ED" id="recent-sort-btn">최신순</span>
+                    </c:if>
+                    <c:if test="${param.key != 'r'}" >
+                        <span name="key" value="r" id="recent-sort-btn">최신순</span>
+                    </c:if>
+                </a> |
+
+                <%-- 인기순 --%>
+                <a href="/board/2/list?key=p">
+                    <c:if test="${param.key == 'p'}" >
+                        <span name="key" value="p" style="font-weight:bold; color:#99E1ED" id="popular-sort-btn">인기순</span>
+                    </c:if>
+                    <c:if test="${param.key != 'p'}" >
+                        <span name="key" value="p" id="popular-sort-btn">인기순</span>
+                    </c:if>
+                </a>
+
+                <%-- 팔로잉순 --%>
+                <c:if test="${!empty loginMember}">
+                |
+                </c:if>
+                <c:if test="${!empty loginMember}">
+                    <a href="/board/2/list?key=f">
+                        <c:if test="${param.key == 'f'}" >
+                            <span name="key" value="f" style="font-weight:bold; color:#99E1ED" id="following-sort-btn">팔로잉순</span>
+                        </c:if>
+                        <c:if test="${param.key != 'f'}" >
+                            <span name="key" value="f" id="following-sort-btn">팔로잉순</span>
+                        </c:if>
+                    </a>
+                </c:if>
             </div>
         </div>
 
         <div id="list-area">
             
 
-                <c:choose>
+            <c:choose>
                 <c:when test="${empty boardList}">
-                        <div class="no-board-list">
-                            <h1>게시글이 존재하지 않습니다. 첫 게시글의 주인공이 되어 보세요! 😅</h1>
-                        </div>
+                    <div class="no-board-list">
+                        <h1>게시글이 존재하지 않습니다. 첫 게시글의 주인공이 되어 보세요! 😅</h1>
+                    </div>
                 </c:when>
                 
                 <c:otherwise>
@@ -105,7 +142,7 @@
                     </c:forEach>
 
                 </c:otherwise>
-                </c:choose>
+            </c:choose>
         
         </div>
         <%-- 광고 영역
@@ -155,9 +192,15 @@
             </ul>
         </div>
 	</section>
+    
 
     <!-- footer include -->
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
+
+
+    <script>
+        const loginMemberNo = "${loginMember.memberNo}";
+    </script>
 
     <script src="/resources/js/board/shareBoard/shareBoardList.js"></script>
 </body>

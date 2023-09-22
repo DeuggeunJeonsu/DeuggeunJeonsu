@@ -26,14 +26,7 @@ public interface ljyBoardService {
 	// 좋아요 처리
 	int shareBoardLike(Map<String, Integer> paramMap);
 
-	// 멤버 팔로우
-	int memberUnfollow(Map<String, Integer> paramMap);
-
-	//멤버 언팔로우 
-	int memberFollow(Map<String, Integer> paramMap);
-
-	// 팔로우 여부 확인 
-	int memberFollowCheck(Map<String, Object> map);
+	
 
 	//---------------------------------------------
 	/*board2*/

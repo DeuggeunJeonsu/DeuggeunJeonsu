@@ -85,6 +85,14 @@ $(document).ready(function(){
 const adminPageBtn = document.getElementById("adminPage");
 const logoutBtn = document.getElementById("logoutBtn");
 
+
+$(document).ready(function() {
+    setTimeout(function() {
+        $("#loading").fadeOut();
+    }, 1500);
+});
+
+
 (() => {
 
     if(adminPageBtn != null){
@@ -109,7 +117,6 @@ const logoutBtn = document.getElementById("logoutBtn");
 //     }
 // }
 //
-
 
 
 

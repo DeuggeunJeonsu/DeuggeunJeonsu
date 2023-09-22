@@ -118,7 +118,7 @@ if(document.querySelector("#middle-Container")){
                 data: { "memberNo": loginMemberNo },
                 dataType: "JSON",
                 success: function (todolistMap) {
-                    console.log(todolistMap)
+                    //console.log(todolistMap)
                     for (let todos of todolistMap) {
                         const todoFl = todos.ALL_FL; // 진행여부! 'Y'- 동그라미 'N'- 세모
                         const todoDays = todos.L_CREATE_DT.split("-");
@@ -234,6 +234,7 @@ if(document.querySelector("#middle-Container")){
     }
 
     function todoslist(choiceTodoDate){
+        //.log(choiceTodoDate)
         // ajax을 할 예정
         if( loginMemberNo != ""){
 
@@ -244,11 +245,11 @@ if(document.querySelector("#middle-Container")){
                 dataType: "JSON",
                 success: function (detailedTodoList) {
                     // console.log('날짜 선택 성공');
-                    console.log(detailedTodoList)
+                    //console.log(detailedTodoList)
                     document.querySelector(".check-area").innerHTML="";
                     for(let todo of detailedTodoList){
                         const DateDIV = document.createElement("div");
-                        DateDIV.innerHTML=todo.lCreateDt;
+                        DateDIV.innerHTML=todo.lcreateDt;
 
                         // 새로운 div 요소 생성
                         const div = document.createElement("div");
@@ -292,8 +293,8 @@ if(document.querySelector("#middle-Container")){
 
                         const input3 = document.createElement("input")
                         input3.setAttribute("type", "hidden");
-                        input3.classList.add("lCreateDt");
-                        input3.value = todo.lCreateDt;
+                        input3.classList.add("lcreateDt");
+                        input3.value = todo.lcreateDt;
 
                         // 각 요소를 div에 추가
                         // div.append(DateDIV)
@@ -436,8 +437,9 @@ document.addEventListener("click", function (e){
                     }
                     return;
                 } else {
-                    const insertTodo = {listContent: addListVal , lCreateDt : choiceTodoDate, memberNo : loginMemberNo}
-
+                    //console.log(choiceTodoDate+"!!!!!!!!!!!!!!!")
+                    const insertTodo = {listContent: addListVal , lcreateDt : choiceTodoDate, memberNo : loginMemberNo}
+                    //console.log(insertTodo)
                     fetch("/todo/insert",{
                         method : "POST", 
                         headers: {"Content-Type": "application/json"},  
@@ -466,9 +468,7 @@ document.addEventListener("click", function (e){
     }
 })
 
-// function insertTodo(insertTodo){
-   
-// }
+
 
 
 
@@ -536,7 +536,7 @@ document.querySelector(".addList").addEventListener("keyup", function(event) {
                     }
                     return;
                 } else {
-                    const inputTodo = {listContent: addListVal , lCreateDt : choiceTodoDate, memberNo : loginMemberNo}
+                    const inputTodo = {listContent: addListVal , lcreateDt : choiceTodoDate, memberNo : loginMemberNo}
                     fetch("/todo/insert",{
                         method : "POST", 
                         headers: {"Content-Type": "application/json"},  
@@ -547,7 +547,7 @@ document.querySelector(".addList").addEventListener("keyup", function(event) {
                             //console.log("추가완료!")
                             addListInput.value="";
 
-                            todoslist(inputTodo.lCreateDt)
+                            todoslist(inputTodo.lcreateDt)
                             buildCalendar();
                             updateCheckedPercentage();
                 
@@ -608,7 +608,7 @@ document.addEventListener("click", function (e){
                     const choiceTodoDate = yaer+'-' + math+'-' + day;
         
                     if(checkedCount == checkboxes.length && checkboxes.length != 0) {
-                        console.log(choiceTodoDate)
+                        //console.log(choiceTodoDate)
                         fetch("/todo/allCompleted?date=" + choiceTodoDate )
                         .then(resp => resp.text())
                         .then(result=>{
@@ -672,10 +672,10 @@ function updateTodo(checkbox,listFl,choiceTodoDate ) {
     //console.log(listFl)
     const ListNo = checkbox.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.value
     const day2= document.querySelector(".choice").value;
-    //console.log(ListNo)        
+    const calMonthValue = parseInt(document.querySelector("#calMonth").innerHTML, 10);
     const todosToUpdate = { listNo: ListNo, listFl: completed };
-    
-    if (day2 > new Date().getDate() && document.querySelector("#calMonth").innerHTML > new Date().getMonth() + 1) {
+    if (day2 > new Date().getDate() && calMonthValue >= new Date().getMonth() + 1) {
+        
         alert("운동 수행 후 체크해주세요😊");
         checkbox.checked=false;
         return;
@@ -706,7 +706,7 @@ function updateTodo(checkbox,listFl,choiceTodoDate ) {
                 const math = document.getElementById("calMonth").innerText; // 월
                 const day= document.querySelector(".choice").value;   
                 const choiceTodoDate = yaer+'-' + math+'-' + day;
-                console.log(choiceTodoDate);
+                //console.log(choiceTodoDate);
                 
                 if(checkedCount == checkboxes.length) {
                     fetch("/todo/allCompleted?date=" + choiceTodoDate )

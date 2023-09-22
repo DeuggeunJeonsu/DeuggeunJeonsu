@@ -635,3 +635,30 @@ footer span{
 a{
     text-decoration: none;
 }
+/* --------------------------------------------------------------------------- */
+
+/*Preloader css*/
+
+#loading {
+    height: 100%;
+	width: 100%;
+	position: fixed;
+	z-index: 1;
+	margin-top: 0px;
+	top: 0px;
+	left: 0;
+	z-index: 9999;
+    
+}
+#loading-log{
+    background-color: rgba(153, 225, 237, 0.5); 
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#loading-log img{
+    border-radius: 50%;
+
+}

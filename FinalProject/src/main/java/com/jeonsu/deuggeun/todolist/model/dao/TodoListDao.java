@@ -45,11 +45,13 @@ public class TodoListDao {
 	// 체크박스 내용 추가
 	public int todoInsert(TodoList insertTodo) {
 		int result = sqlSession.insert("todolistMapper.todoInsert", insertTodo);
-		
+		System.out.println(insertTodo.getLCreateDt());
 		String createDT = sqlSession.selectOne("todolistMapper.calenderSelect", insertTodo);
 		
-		if(createDT=="") {
-			sqlSession.insert("todolistMapper.calenderInsert", insertTodo);
+		int result2 =0;
+		if(createDT==null) {
+			result2 = sqlSession.insert("todolistMapper.calenderInsert", insertTodo);
+			System.out.println(result2);
 		}
 		if(result > 0 ) {
 			result = sqlSession.insert("todolistMapper.todoDateInsert", insertTodo);
