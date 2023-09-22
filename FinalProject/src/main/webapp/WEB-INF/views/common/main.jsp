@@ -14,6 +14,20 @@
 <body>
 
 	<jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
+
+	<!-- Preloader -->
+	<div id="loading">
+		<div id="loading-log">
+			<img src="/resources/images/main/loading.gif">
+		</div>
+		
+	</div>
+	
+
+
+
+
+
 	<section id="main-container">
 	<a href="/survey"><button class="Jbtn"><span>운동 루틴 추천받기!</span></button></a>
 		<div class="video-container">
@@ -43,7 +57,7 @@
 
 	<jsp:include page="/WEB-INF/views/common/todolist.jsp"></jsp:include>
 
-	<jsp:include page="/WEB-INF/views/common/ranking.jsp"></jsp:include>
+	<!-- <jsp:include page="/WEB-INF/views/common/ranking.jsp"></jsp:include> -->
 
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
 	<input type="hidden" name="mainPage" value="mainPage"/>	
