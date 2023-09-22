@@ -26,5 +26,6 @@ public class AdminMember {
 	private String boardTitle;
 	private String boardContent;
 	private int boardNo;
+	private int adminBoardNo;
 	
 }

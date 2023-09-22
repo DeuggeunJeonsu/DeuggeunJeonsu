@@ -7,6 +7,7 @@ import java.util.Map;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 
+import com.jeonsu.deuggeun.board.model.dto.Board;
 import com.jeonsu.deuggeun.board.model.dto.Cart;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -30,7 +31,7 @@ import com.jeonsu.deuggeun.member.model.service.MyPageService;
 @Controller
 @SessionAttributes({"loginMember"})
 public class MyPageController {
-	
+
 	@Autowired
 	private MyPageService service;
 
@@ -39,7 +40,7 @@ public class MyPageController {
 	public String myBadge() {
 		return "member/myPage/myBadge";
 	}
-	
+
 	// 마이페이지 팔로잉/팔로워 페이지 이동 + 팔로잉 목록 조회
 	@GetMapping("/followingFollower")
 	public String followingFollower(
@@ -47,62 +48,62 @@ public class MyPageController {
 			, Model model
 			, @RequestParam Map<String, Object> paramMap
 			) {
-		
+
 		int memberNo = loginMember.getMemberNo();
-		
+
 		// 팔로잉 목록 조회
 		Map<String, Object> map = service.selectFollowingList(memberNo);
-		
+
 		model.addAttribute("map", map);
-		
+
 		return "member/myPage/followingFollower";
 	}
-	
+
 	// 마이페이지 팔로잉/팔로워 - 팔로잉 목록 조회 (비동기)
 	@PostMapping(value = "/followingFollower/following", produces = "application/json")
 	@ResponseBody
 	public Map<String, Object> selectFollowingList(
 			@SessionAttribute(value = "loginMember") Member loginMember
 			) {
-		
+
 		int memberNo = loginMember.getMemberNo();
-		
+
 		return service.selectFollowingList(memberNo);
 	}
-	
+
 	// 마이페이지 팔로잉/팔로워 - 팔로워 목록 조회 (비동기)
 	@PostMapping(value = "/followingFollower/follower", produces = "application/json")
 	@ResponseBody
 	public Map<String, Object> selectFollowerList(
 			@SessionAttribute(value = "loginMember") Member loginMember
 			) {
-		
+
 		int memberNo = loginMember.getMemberNo();
-		
+
 		return service.selectFollowerList(memberNo);
 	}
-	
+
 	// 마이페이지 언팔로우
 	@PostMapping(value = "/followingFollower/unfollow", produces = "application/json")
 	@ResponseBody
 	public int unfollow(@RequestBody Map<String, Object> paramMap){
-		
+
 		return service.unfollow(paramMap);
 	}
-	
+
 	// 마이페이지 팔로우
 	@PostMapping(value = "/followingFollower/follow", produces = "application/json")
 	@ResponseBody
 	public int follow(@RequestBody Map<String, Object> paramMap){
-		
+
 		return service.follow(paramMap);
 	}
-	
+
 	// 마이페이지 팔로우 수 조회
 	@PostMapping(value = "/followingFollower/selectFollowCount", produces = "application/json")
 	@ResponseBody
 	public Map<String, Object> selectFollowCount(@RequestBody Map<String, Object> paramMap){
-		
+
 		return service.selectFollowCount(paramMap);
 	}
 
@@ -115,16 +116,16 @@ public class MyPageController {
 			, Model model
 			, @RequestParam Map<String, Object> paramMap
 			) {
-		
+
 		int loginMemberNo = loginMember.getMemberNo();
-		
+
 		Map<String, Object> map = service.selectFeedMember(loginMemberNo, memberNo, cp);
-		
+
 		model.addAttribute("map", map);
-		
+
 		return "member/myPage/memberFeed";
 	}
-	
+
 	// 마이페이지 멤버 피드 - 팔로워 목록 조회
 	@PostMapping(value = "/memberFeed/{memberNo}/follower", produces = "application/json")
 	@ResponseBody
@@ -133,10 +134,10 @@ public class MyPageController {
 			, Model model
 			, @RequestParam Map<String, Object> paramMap
 			) {
-		
+
 		return service.selectFollowerList(memberNo);
 	}
-	
+
 	// 마이페이지 멤버 피드 - 팔로잉 목록 조회
 	@PostMapping(value = "/memberFeed/{memberNo}/following", produces = "application/json")
 	@ResponseBody
@@ -145,7 +146,7 @@ public class MyPageController {
 			, Model model
 			, @RequestParam Map<String, Object> paramMap
 			) {
-		
+
 		return service.selectFollowingList(memberNo);
 	}
 
@@ -156,13 +157,13 @@ public class MyPageController {
 			@RequestBody Map<String, Object> paramMap
 			, @PathVariable("memberNo") int memberNo
 			){
-		
+
 		System.out.println(paramMap.get("loginMemberNo"));
 		System.out.println(paramMap.get("memberNo"));
-		
+
 		return service.unfollow(paramMap);
 	}
-	
+
 	// 마이페이지 멤버 피드 - 팔로우
 	@PostMapping(value = "/memberFeed/{memberNo}/follow", produces = "application/json")
 	@ResponseBody
@@ -170,10 +171,10 @@ public class MyPageController {
 			@RequestBody Map<String, Object> paramMap
 			, @PathVariable("memberNo") int memberNo
 			){
-		
+
 		return service.follow(paramMap);
 	}
-	
+
 
 	// 마이페이지 내 게시글 목록 조회
 	@GetMapping("/myBoardList")
@@ -182,20 +183,20 @@ public class MyPageController {
 			, @SessionAttribute(value = "loginMember", required = false) Member loginMember
 			, Model model
 			, @RequestParam Map<String, Object> paramMap) {
-		
+
 		int memberNo = loginMember.getMemberNo();
-		
+
 		Map<String, Object> map = service.selectMyBoardList(memberNo, cp);
-		
+
 		model.addAttribute("map", map);
-		
+
 		return "member/myPage/myBoardList";
 	}
 
 	// 마이페이지 구매 내역 목록 조회
 	@GetMapping("/myPurchaseList")
 	public String myPurchaseList(@SessionAttribute(value = "loginMember", required = false) Member loginMember,
-								 Model model) {
+			Model model) {
 
 		int memberNo = loginMember.getMemberNo();
 		List<Cart> purchaseList = service.selectPurchaseList(memberNo);
@@ -205,70 +206,82 @@ public class MyPageController {
 		System.out.println(purchaseList);
 		return "member/myPage/myPurchaseList";
 	}
-	
+
 	// 내 정보수정 페이지
 	@GetMapping("/myUpdate")
 	public String myUpdate() {
 		return "member/myPage/myUpdate";
 	}
-	
+
 	// 회원탈퇴
-//	@PostMapping("/secession")
-//	public String secession(@SessionAttribute("loginMember") Member loginMember
-//							,String memberPw
-//							,RedirectAttributes ra
-//							,SessionStatus status
-//							,HttpServletResponse resp) {
-//		
-//		int memberNo = loginMember.getMemberNo();
-//		
-//		int result = service.secession(memberNo , memberPw);
-//		
-//		String path = "redirect:";
-//		String message = null;
-//		
-//		if(result > 0) {
-//			message = "탈퇴 되었습니다.";
-//			ra.addFlashAttribute("message", message);
-//			
-//			path += "/";
-//		
-//			status.setComplete();
-//			
-//			Cookie cookie = new Cookie("saveId", "");
-//			
-//			cookie.setMaxAge(0);
-//			cookie.setPath("/");
-//			resp.addCookie(cookie);
-//		}else {
-//			message = "현재 비밀번호가 일치하지 않습니다.";
-//			ra.addFlashAttribute("message", message);
-//			
-//			path += "secession";
-//		}
-//		
-//		
-//		return path;
-//	}
-			
-	
-	
+	//	@PostMapping("/secession")
+	//	public String secession(@SessionAttribute("loginMember") Member loginMember
+	//							,String memberPw
+	//							,RedirectAttributes ra
+	//							,SessionStatus status
+	//							,HttpServletResponse resp) {
+	//		
+	//		int memberNo = loginMember.getMemberNo();
+	//		
+	//		int result = service.secession(memberNo , memberPw);
+	//		
+	//		String path = "redirect:";
+	//		String message = null;
+	//		
+	//		if(result > 0) {
+	//			message = "탈퇴 되었습니다.";
+	//			ra.addFlashAttribute("message", message);
+	//			
+	//			path += "/";
+	//		
+	//			status.setComplete();
+	//			
+	//			Cookie cookie = new Cookie("saveId", "");
+	//			
+	//			cookie.setMaxAge(0);
+	//			cookie.setPath("/");
+	//			resp.addCookie(cookie);
+	//		}else {
+	//			message = "현재 비밀번호가 일치하지 않습니다.";
+	//			ra.addFlashAttribute("message", message);
+	//			
+	//			path += "secession";
+	//		}
+	//		
+	//		
+	//		return path;
+	//	}
+
+
+
 	@GetMapping("/mySecession")
 	public String mySecession() {
 		return "member/myPage/mySecession";
 	}
-	
+
 	// 마이페이지 1:1문의 목록 조회
-		@GetMapping("/oneOnOneInquiry")
-		public String myOneByOneInquiry(@SessionAttribute("loginMember") Member loginMember,
-				Model model) {
-			
-			Map<String, Object> map = service.selectMyUpdateList(loginMember);
-			
-			if(map.get("boardList") != null) {
-				
-				model.addAttribute("map", map);
-			}
-			return "member/myPage/myOneOnOneInquiry";
+	@GetMapping("/oneOnOneInquiry")
+	public String myOneByOneInquiry(@SessionAttribute("loginMember") Member loginMember,
+			Model model) {
+
+		Map<String, Object> map = service.selectMyUpdateList(loginMember);
+
+		if(map.get("boardList") != null) {
+
+			model.addAttribute("map", map);
 		}
+		return "member/myPage/myOneOnOneInquiry";
+	}
+	
+	// 마이페이지 문의 목록 조회
+	@RequestMapping("/inquiryAnswer")
+	@ResponseBody
+	public Board inquiryAnswer(@RequestParam int boardNo) {
+		
+		
+		
+		return service.inquiryAnswer(boardNo);
+	}
+
+
 }

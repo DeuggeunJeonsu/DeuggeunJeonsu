@@ -3,6 +3,7 @@ package com.jeonsu.deuggeun.member.model.service;
 import java.util.List;
 import java.util.Map;
 
+import com.jeonsu.deuggeun.board.model.dto.Board;
 import com.jeonsu.deuggeun.board.model.dto.Cart;
 import com.jeonsu.deuggeun.member.model.dto.Member;
 
@@ -61,6 +62,12 @@ public interface MyPageService {
 	 * @return boardList
 	 */
 	Map<String, Object> selectMyUpdateList(Member loginMember);
+
+	/** 마이페이지 1:1 문의 답변조회
+	 * @param boardNo
+	 * @return
+	 */
+	Board inquiryAnswer(int boardNo);
 
 	/** 회원 탈퇴
 	 * @param memberNo

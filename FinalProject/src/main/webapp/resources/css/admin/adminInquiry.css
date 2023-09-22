@@ -272,3 +272,69 @@ td{
     cursor: pointer;
 }
 
+
+/* 모달창 */
+
+#inquiryModal{
+    z-index: 1000;
+    position: absolute;
+    position: fixed;
+    top: 40px;
+    left: 700px;
+    visibility: hidden;
+    
+}
+
+#inquiryModal {
+    background-color: #ffffff;
+    padding: 20px;
+    border: 1px solid #99e1ed;
+    width: 800px;
+    height: 700px;
+    margin: 100px auto;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+
+input[type="text"],textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: 16px;
+    outline: none;
+}
+#inquiryContent{
+    resize: none;
+    height: 500px;
+}
+
+.realboardTitle{
+    cursor: pointer;
+}
+
+/* 닫기 버튼 스타일 */
+#close-button {
+    background-color: #ccc;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 3px;
+    font-size: 16px;
+}
+
+#close-button:hover {
+    background-color: #999; 
+    cursor: pointer;
+}
+
+.bottom{
+    display: flex;
+    justify-content: right;
+}
+
+.realboardTitle:hover{
+    color: #99e1ed;
+}

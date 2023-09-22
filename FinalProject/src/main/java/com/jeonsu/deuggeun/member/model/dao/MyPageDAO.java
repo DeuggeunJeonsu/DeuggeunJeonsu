@@ -147,6 +147,24 @@ public class MyPageDAO {
 		return sqlSession.selectList("marketMapper.selectPurchaseList", memberNo);
 	}
 
+	/** 문의글 답변 내용 조회를 위한 게시글 번호 조회 
+	 * @param boardNo
+	 * @return boardNo
+	 */
+	public int selectAdminBoardNo(int boardNo) {
+		System.out.println(boardNo + " ???다오");
+		return sqlSession.selectOne("myPageMapper.selectAdminBoardNo", boardNo);
+	}
+	
+	/** 마이페이지 1:1 답변조회
+	 * @param boardNo
+	 * @return 
+	 */
+	public Board inquiryAnswer(Board board) {
+		return sqlSession.selectOne("myPageMapper.inquiryAnswer", board);
+	}
+
+
 
 
 

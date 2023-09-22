@@ -20,6 +20,8 @@
   })
 }); */
 
+
+
 const boardNo = document.getElementsByClassName("boardNo");
 
 
@@ -243,3 +245,24 @@ for (let i = 0; i < adminCheckFl.length; i++) {
   })
 }
 
+const inquiryModal = document.getElementById("inquiryModal");
+const closeBtn = document.getElementById("close-button");
+
+/* modal 창 */
+for(let i = 0 ; i < iqUpdate.length ; i++){
+
+  iqUpdate[i].addEventListener("click", () => {
+
+    inquiryModal.style.visibility = "visible";
+
+    fetch("/adminInquiryDetail?boardNo=")
+    .then()
+    .then()
+    .catch()
+  })
+}
+
+ closeBtn.addEventListener("click", ()=> {
+
+  inquiryModal.style.visibility = "hidden";
+}) 
