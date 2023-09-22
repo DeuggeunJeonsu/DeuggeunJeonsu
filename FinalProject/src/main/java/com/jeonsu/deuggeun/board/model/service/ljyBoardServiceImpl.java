@@ -86,29 +86,9 @@ public class ljyBoardServiceImpl implements ljyBoardService{
 		return count;
 	}
 
-
-	@Override
-	public int memberFollow(Map<String, Integer> paramMap) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int memberUnfollow(Map<String, Integer> paramMap) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int memberFollowCheck(Map<String, Object> map) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
 	@Override
 	public int updateShareBoardReadCount(int boardNo) {
-		// TODO Auto-generated method stub
-		return 0;
+		return dao.updateBoardReadCount(boardNo);
 	}
 
 	//----------------------------------------------------
