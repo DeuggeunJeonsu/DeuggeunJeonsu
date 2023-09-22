@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -25,6 +26,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.jeonsu.deuggeun.board.model.dto.Board;
+import com.jeonsu.deuggeun.board.model.service.ashBoardService;
 import com.jeonsu.deuggeun.board.model.service.ljyBoardService;
 import com.jeonsu.deuggeun.member.model.dto.Member;
 
@@ -36,10 +38,14 @@ public class ShareBoardController {
 	@Autowired
 	private ljyBoardService service;
 	
+	@Autowired
+	private ashBoardService service2;
+	
 	// 공유게시판 게시글 목록 조회
-	@RequestMapping("/list")
+	@GetMapping("/list")
 	public String shareBoardList(
 			@RequestParam(value = "cp", required = false, defaultValue="1") int cp
+			, @SessionAttribute(value="loginMember", required = false) Member loginMember
 			, Model model
 			, @RequestParam Map<String,Object> paramMap
 			) {
@@ -52,6 +58,23 @@ public class ShareBoardController {
 			Map<String, Object> map = service.selectShareBoardList(boardCode, cp);
 		
 			model.addAttribute("map", map);
+		}
+		
+		//검색한 경우 
+		else {
+			
+			// 팔로잉 필터로 검색하기 위해 
+			if(loginMember != null) {
+				paramMap.put("loginMemberNo", loginMember.getMemberNo());
+			}
+			
+			
+			paramMap.put("boardCode", 2);
+			
+			Map<String, Object> map = service2.selectFreeBoardList(paramMap, cp);
+			
+			model.addAttribute("map", map);
+			
 		}
 		
 		return "board/shareBoard/shareBoardList";
@@ -88,7 +111,7 @@ public class ShareBoardController {
 				if(result > 0) model.addAttribute("likeCheck", "on");
 				
 				// 팔로우 여부 확인
-				int result2 = service.memberFollowCheck(map);
+				int result2 = service2.memberFollowCheck(map);
 				
 				if(result2 > 0) model.addAttribute("followCheck", "on");
 			}
@@ -172,23 +195,9 @@ public class ShareBoardController {
 		return service.shareBoardLike(paramMap);
 	}
 	
-	// 멤버 팔로우
-	@PostMapping("/follow")
-	@ResponseBody
-	public int memberFollow(@RequestBody Map<String, Integer> paramMap) {
-		return service.memberFollow(paramMap);
-	}
 	
-	// 멤버 언팔로우
-	@PostMapping("/unfollow")
-	@ResponseBody
-	public int memberUnfollow(@RequestBody Map<String, Integer> paramMap) {
-		return service.memberUnfollow(paramMap);
-	}	
 		
-		
-		
-	//
+	// 게시글 작성
 	@RequestMapping("/write")
 	public String shareBoardWrite() {
 		return "board/shareBoard/shareBoardWrite";

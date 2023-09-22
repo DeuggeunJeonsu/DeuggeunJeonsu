@@ -93,4 +93,13 @@ public class ljyBoardDAO {
 	}
 
 
+
+	/** 조회수 증가 
+	 * @param boardNo
+	 * @return
+	 */
+	public int updateBoardReadCount(int boardNo) {
+		return sqlSession.update("shareBoardMapper.updateBoardReadCount", boardNo);
+	}
+
 }

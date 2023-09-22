@@ -1,6 +1,58 @@
-// 글쓰기 버튼 을 클릭했을 때 
-const writeBtn = document.getElementById("writeBtn");
+if(loginMemberNo != ""){
+    // 글쓰기 버튼 을 클릭했을 때 
+    const writeBtn = document.getElementById("writeBtn");
 
-writeBtn.addEventListener("click", ()=>{
-    location.href=`/board/${location.pathname.split("/")[2]}/write`
+    writeBtn.addEventListener("click", ()=>{
+        location.href=`/board/${location.pathname.split("/")[2]}/write`
+    })
+}
+//-------------------------------------------------------------------------
+
+//게시판 상세 검색
+const  boardSerch = document.getElementById("boardSerch");
+const searchQuery = document.getElementById("searchQuery");
+
+(()=>{
+    const params= new URL(location.href).searchParams;
+
+    const key = params.get("key");
+    const query= params.get("query");
+
+    if(key != null){
+        searchQuery.value = query;
+    }
+
+})();
+
+//검색어 길이 제한 
+searchQuery.addEventListener("change", e =>{
+    if(e.target.value.trim().length >10){
+
+        Swal.fire({
+            icon : 'error',
+            title: '검색어는 열 글자까지 <br>입력 가능합니다. ',
+            text:'',
+        })
+
+        e.target.value = '';
+
+    }
 })
+
+// 폼 태그가 제출 될 때 
+boardSearch.addEventListener("submit", e=>{
+    if(searchQuery.value.trim().length == 0){
+        e.preventDefault();
+
+        location.href = location.pathname;
+    }
+})
+
+// 해스 태그 클릭 시 삭제 이벤트 추가
+const hashtag = document.getElementsByClassName("hashtag")[0];
+if(hashtag != null){
+    hashtag.addEventListener("click", () => {
+        hashtag.remove();
+        location.href = "/board/2/list";
+    });
+}

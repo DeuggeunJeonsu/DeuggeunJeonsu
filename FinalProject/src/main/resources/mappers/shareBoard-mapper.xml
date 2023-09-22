@@ -253,6 +253,12 @@
 		
 	</select>
 
+	<!--게시판 조회수 증가 -->
+	<update id="updateBoardReadCount">
+		UPDATE BOARD SET
+		READ_COUNT = READ_COUNT +1
+		WHERE BOARD_NO = #{boardNo}
+	</update>
 
 
 
