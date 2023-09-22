@@ -65,7 +65,7 @@
                             </div>
                             <div class="price">
                                 <button type="submit" id="cart-btn" class="submit-btn">ADD TO CART</button>
-                                <button type="submit" id="now-btn" class="submit-btn">BUY IT NOW</button>
+                                <button type="button" id="now-btn" class="submit-btn">BUY IT NOW</button>
                             </div>
                         </div>
                     </div>

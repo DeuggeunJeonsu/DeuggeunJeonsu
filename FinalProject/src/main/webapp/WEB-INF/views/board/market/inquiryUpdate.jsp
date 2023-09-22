@@ -52,7 +52,7 @@
             <br>
 
             <div>
-                <textarea name="inquiryContent" id="inquireContent" value="${inquiry.inquiryContent}" cols="110" rows="15" placeholder="문의 내용을 입력해주세요" maxlength="500">${inquiry.inquiryContent}</textarea>
+                <textarea name="inquiryContent" id="inquireContent" value="${inquiry.inquiryContent}" cols="110" rows="15" placeholder="문의 내용을 입력해주세요" maxlength="700">${inquiry.inquiryContent}</textarea>
             </div>
 
             <div class="fileBox previewImage">

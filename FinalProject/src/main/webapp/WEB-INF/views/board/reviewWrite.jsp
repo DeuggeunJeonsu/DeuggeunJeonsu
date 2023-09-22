@@ -62,12 +62,12 @@
                             <div class="bottom">
                                 <div>
                                     <button type="submit" id="submit-button" onclick="showAlert()">작성</button>
-                                    <button id="cancel-button">취소</button>
+                                    <button type=button id="cancel-button">취소</button>
                                 </div>
                             </div>
                     </section>
                 </form>
-
+        <div class="place"></div>
 
             <script src="/resources/js/market/reviewWrite.js"></script>
 

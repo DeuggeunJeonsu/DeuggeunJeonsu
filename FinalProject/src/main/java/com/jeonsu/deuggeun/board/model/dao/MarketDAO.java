@@ -226,4 +226,14 @@ public class MarketDAO {
 	public int afterUpdateCart(Cart cart) {
 		return  sqlSession.update("marketMapper.afterUpdateCart", cart);
 	}
+
+	// 구매했는지 안했는지 확인
+	public List<Cart> checkPurchase(Map<String, Object> map) {
+		return sqlSession.selectList("marketMapper.checkPurchase", map);
+	}
+
+	// 바로구매
+	public int buyItNow(Cart cart) {
+		return sqlSession.insert("marketMapper.buyItNow", cart);
+	}
 }

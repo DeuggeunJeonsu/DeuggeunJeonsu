@@ -27,18 +27,20 @@
 <jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
 
 <section id="main-container">
-    <div id="title-area">
-        <div>
-            <h1>상품 문의</h1>
-        </div>
-        <div>득근마켓에서 궁금한점이 있으시다면 언제든 문의해주세요😆</div>
-    </div>
+<%--    <div id="title-area">--%>
+<%--        <div>--%>
+<%--            <h1>상품 문의</h1>--%>
+<%--        </div>--%>
+<%--        <div>득근마켓에서 궁금한점이 있으시다면 언제든 문의해주세요😆</div>--%>
+<%--    </div>--%>
 
     <div id="detail-container">
 
         <!-- 게시글 제목 -->
         <div id="title-middle-area">
             <div id="title">${inquiry.inquiryTitle}</div>
+            <br>
+            <br>
             <div class="rightCon">
                 <div id="writing-date">작성일&nbsp;&nbsp;${inquiry.inquiryCreateDate}</div>
             </div>
@@ -63,29 +65,23 @@
             <div id="nick-area">
                 <div id="nickname"><a href="#">${inquiry.memberNickname}</a></div>
             </div>
-
         </div>
-
+    <hr>
+        <br>
         <!-- 게시글 상세 조회 내용 영역 -->
         <div id="board-detail-area">
             <div id="board-content-area">
-                <div class="uploadImg-area">
-                    <c:choose>
-                        <%-- inquiry.uploadImage 값이 있는 경우 --%>
-                        <c:when test="${!empty inquiry.uploadImage}">
-                            <img src="${inquiry.uploadImage}" alt="Uploaded image">
-                        </c:when>
-                        <%-- inquiry.uploadImage 값이 없는 경우--%>
-                        <c:otherwise>
-                            <img src="/resources/images/market/bono.png" alt="Uploaded image">
-                        </c:otherwise>
-                    </c:choose>
-                </div>
+                <c:if test="${!empty inquiry.uploadImage}">
+                    <div class="uploadImg-area">
+                        <img src="${inquiry.uploadImage}" alt="Uploaded image">
+                    </div>
+                </c:if>
+
                 <div class="content-area">
                     <div class="content">${inquiry.inquiryContent}</div>
                 </div>
             </div>
-
+            <br>
             <div id="btn-area">
                 <div>
                     <button id="goToListBtn">목록으로</button>
@@ -104,7 +100,8 @@
     </div>
 </section>
 
-
+<br>
+<br>
 <!-- footer include -->
 <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
 

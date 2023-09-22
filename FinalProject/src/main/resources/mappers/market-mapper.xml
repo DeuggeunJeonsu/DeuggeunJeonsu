@@ -144,7 +144,7 @@
                  JOIN PRODUCT_IMG USING (PRODUCT_NO)
         WHERE BOARD_CODE = #{boardCode}
           AND P_IMG_PATH LIKE '%main%'
-        ORDER BY PRODUCT_NO DESC
+        ORDER BY PRODUCT_NO ASC
     </select>
 
     <!--  득근마켓 상품 사진 조회  -->
@@ -311,6 +311,7 @@
         WHERE INQUIRY_FLAG = 'N'
         AND INQUIRY_NO = #{inquiryNo}
     </select>
+
     <!-- 상품문의 등록 -->
     <insert id="inquiryInsert" parameterType="Inquiry" useGeneratedKeys="true">
         <selectKey order="BEFORE" resultType="_int" keyProperty="inquiryNo">
@@ -444,5 +445,23 @@
           AND c.ORDER_FL = 'Y'
         ORDER BY o.ORDER_DATE DESC
     </select>
+
+    <!-- 구매내역 -->
+    <select id="checkPurchase" resultMap="cart_rm">
+        SELECT PRODUCT_NO, MEMBER_NO, ORDER_FL
+        FROM CART
+        WHERE MEMBER_NO = #{memberNo}
+          AND ORDER_FL = 'Y'
+          AND PRODUCT_NO = #{productNo}
+    </select>
+
+    <!-- 바로구매 버튼 -->
+    <insert id="buyItNow" parameterType="Cart" useGeneratedKeys="true">
+        <selectKey order="BEFORE" resultType="int" keyProperty="cartNo">
+            SELECT SEQ_CART_NO.NEXTVAL FROM DUAL
+        </selectKey>
+        INSERT INTO CART (CART_NO, PRODUCT_NO, MEMBER_NO, ITEM_COUNT, TOTAL_AMOUNT)
+        VALUES (#{cartNo}, #{productNo}, #{memberNo}, #{quantity}, #{total})
+    </insert>
 </mapper>
 

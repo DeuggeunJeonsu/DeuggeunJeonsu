@@ -447,4 +447,64 @@ public class MarketServiceImpl implements MarketService {
 		System.out.println(result);
 		return result;
 	}
+
+	// 리뷰 작성시 회원의 구매내역 확인
+	@Override
+	public List<Cart> checkPurchase(Map<String, Object> map) {
+
+		return dao.checkPurchase(map);
+	}
+
+	// 바로 구매하기 버튼
+	@Override
+	public int buyItNow(Cart cart) {
+		Cart cartForQuery = new Cart();
+		cartForQuery.setMemberNo(cart.getMemberNo());
+		cartForQuery.setProductNo(cart.getProductNo());
+
+		// 1. 먼저, 장바구니에 상품이 있는지 확인합니다.
+		Cart existingCartItem = dao.getCartItem(cartForQuery);
+
+		if (existingCartItem != null) {
+			// 이미 장바구니에 있는 경우
+
+			// 2. 상품이 이미 장바구니에 있는 경우, 수량을 업데이트합니다.
+			int updatedQuantity = existingCartItem.getQuantity() + cart.getQuantity();
+
+			// 5개 이상인 경우 추가하지 않고 에러 메시지 반환
+			if (updatedQuantity > 5) {
+				return -2; // 5개 이상 구매 불가
+			}
+
+			existingCartItem.setQuantity(updatedQuantity);
+
+			System.out.println("수량 : " + updatedQuantity);
+
+			// 3. 총 금액을 업데이트
+			int updateTotal = updatedQuantity * cart.getProductPrice();
+			existingCartItem.setTotal(updateTotal);
+
+			// 상품 번호를 가져옵니다.
+			int productNo = existingCartItem.getProductNo();
+
+			// 상품 번호와 업데이트된 수량, 총 금액을 이용하여 업데이트
+			int result = dao.updateCart(existingCartItem);
+
+			if (result > 0) {
+				return result;
+			} else {
+				return -1; // 업데이트 실패
+			}
+		} else {
+			// 장바구니에 없는 경우
+			// 4. 상품이 장바구니에 없는 경우, 새로운 레코드를 추가합니다.
+			int result = dao.buyItNow(cart);
+			if (result > 0) {
+				return result;
+			} else {
+				return -1; // 추가 실패
+			}
+		}
+
+	}
 }

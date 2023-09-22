@@ -65,4 +65,12 @@ public interface MarketService {
 
     // 주문 데이터 등록
     int insertOrder(Order order);
+
+    // 리뷰 작성시 구매내역 확인
+    List<Cart> checkPurchase(Map<String, Object> map);
+
+    // 바로 구매 하기
+    int buyItNow(Cart cart);
+
+
 }
