@@ -208,3 +208,7 @@ inquireForm.addEventListener("submit", function (e) {
     // 유효성 검사 통과 시 폼 제출
     inquireForm.submit();
 });
+
+document.getElementById('cancel-btn').addEventListener('click', function() {
+    window.history.back();
+});

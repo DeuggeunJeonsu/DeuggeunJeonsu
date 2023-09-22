@@ -46,15 +46,15 @@ public class CartController {
         return service.removeFromCart(map);
     }
 
-     // 결제 성공 시 주문 테이블 등록
+    // 결제 성공 시 주문 테이블 등록
     @PostMapping("/insertOrder")
     public int insertOrder(@SessionAttribute(value = "loginMember", required = false) Member loginMember,
-                           @RequestBody Map<String, Object> paymentInfo){
+                           @RequestBody Map<String, Object> paymentInfo) {
 
-            if (loginMember == null) {
-                return -1; // 세션이 없거나 로그인되지 않았을 때
-            } else{
-                int memberNo = loginMember.getMemberNo();
+        if (loginMember == null) {
+            return -1; // 세션이 없거나 로그인되지 않았을 때
+        } else {
+            int memberNo = loginMember.getMemberNo();
 
             // 새로운 Order 객체 생성
             Order order = new Order();
@@ -76,5 +76,10 @@ public class CartController {
             return service.insertOrder(order);
         }
     }
-}
 
+    @PostMapping("/buyItNow")
+    public int buyItNow(@RequestBody Cart cart) {
+        System.out.println("buyItNow 컨트롤러 실행!!!");
+        return service.buyItNow(cart);
+    }
+}

@@ -137,11 +137,12 @@
 
 
                             <!-- 로그인 상태일 경우 글쓰기 버튼 노출 -->
-<%--                            <!-- <c:if test="${!empty loginMember}"> -->--%>
+                           <c:if test="${!empty loginMember}">
                                     <a href="/board/${boardCode}/review/${productNo}/insert" id="insertBtn">글쓰기</a>
-<%--                            <button id="insertBtn">글쓰기</button>--%>
-<%--                            <!-- </c:if> -->--%>
-
+                            </c:if>
+<%--                            <c:if test="${!empty loginMember}">--%>
+<%--                                <a href="#" id="insertBtn" data-product="${productNo}">글쓰기</a>--%>
+<%--                            </c:if>--%>
                         </div>
 
 
@@ -191,5 +192,6 @@
 
         </body>
         <script src="/resources/js/market/marketDetail.js"></script>
+        <script src="/resources/js/market/review.js"></script>
 
         </html>

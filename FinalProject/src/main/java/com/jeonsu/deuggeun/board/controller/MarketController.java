@@ -116,8 +116,8 @@ public class MarketController {
 				  , @PathVariable("productNo") int productNo
 				  , Model model // 데이터 전달용 객체
 				  , RedirectAttributes ra // 리다이렉트 시 데이터 전달용 객체
-				  ,@SessionAttribute("loginMember") Member loginMember
-				   //, @SessionAttribute(value="loginMember", required=false) Member loginMember
+//				  ,@SessionAttribute("loginMember") Member loginMember
+			, @SessionAttribute(value="loginMember", required=false) Member loginMember
 	) throws ParseException{
 
 		System.out.println("게시글 상세 조회 시작!");
@@ -189,9 +189,30 @@ public class MarketController {
 	@GetMapping("/{boardCode}/review/{productNo}/insert")
 	public String boardInsert(@PathVariable("boardCode") int boardCode
 							  ,@PathVariable("productNo") int productNo
+							  ,@SessionAttribute("loginMember") Member loginMember
+							  ,RedirectAttributes ra
 	) {
-		// @PathVariable : 주소 값 가져오기 + request scope에 값 올리기
-		return "board/reviewWrite";
+		int memberNo = loginMember.getMemberNo();
+
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("productNo", productNo);
+		map.put("boardCode", 5);
+		map.put("memberNo", memberNo);
+
+		// 회원의 구매 여부 확인
+		List<Cart> memberCart = service.checkPurchase(map);
+
+		String path = null;
+		String message = null;
+
+		if(memberCart.isEmpty()){
+			message = "구매하지 않은 상품입니다";
+			path =  "redirect:/board/" + boardCode + "/review/" + productNo;
+		}else{
+			path = "board/reviewWrite";
+		}
+		ra.addFlashAttribute("message", message);
+		return path;
 	}
 
 	// 리뷰 게시글 작성

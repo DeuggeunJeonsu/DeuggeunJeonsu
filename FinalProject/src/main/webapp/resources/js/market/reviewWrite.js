@@ -46,10 +46,10 @@ $(document).ready(function () {
         }
     });
 });
+
 // 제목, 내용 유효성 검사
 // 제목 : 10글자
 // 내용 : 500자
-
 const reviewForm = document.getElementById("reviewForm");
 const reviewTitle = document.getElementById("reviewTitle");
 const reviewContent = document.getElementById("reviewContent");
@@ -116,4 +116,7 @@ document.addEventListener("keydown", function (e) {
             reviewContent.focus();
         }
     }
+});
+document.getElementById('cancel-button').addEventListener('click', function() {
+    window.history.back();
 });

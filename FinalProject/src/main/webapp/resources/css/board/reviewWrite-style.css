@@ -161,3 +161,6 @@ input[type="text"],textarea {
     justify-content: center;
     text-align: center;
 }
+.place{
+    height: 80px;
+}
