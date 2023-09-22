@@ -50,7 +50,7 @@
                             <div class="right">${product.subTitle}</div>
                             <div class="number-con">
                                 <div class="number">
-                                    <div>수량</div>
+                                    <div class="count">수량</div>
                                     <select name="selectNumber" id="select">
                                         <option> - [필수] 수량을 선택해 주세요 -</option>
                                         <option value="1">1개</option>
@@ -73,7 +73,7 @@
 
                     <ul class="item-nav">
                         <li>
-                            <a href="/market/marketDetail">상품정보</a>
+                            <a href="/board/${boardCode}/detail/${productNo}">상품정보</a>
                         </li>
                         <li>
                             <a href="/board/${boardCode}/review/${product.productNo}" id="reviewList">Review</a>

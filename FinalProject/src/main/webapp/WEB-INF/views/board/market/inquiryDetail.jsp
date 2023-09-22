@@ -86,14 +86,14 @@
                 <div>
                     <button id="goToListBtn">목록으로</button>
 
-<%--                    <c:if test="${loginMember.memberNo == review.memberNo}">--%>
+                    <c:if test="${loginMember.memberNo == inquiry.memberNo}">
                         <div>
                             <a href="/board/update/${inquiryNo}">
                                 <button id="updateBtn">수정하기</button>
                             </a>
                             <button id="deleteBtn">삭제하기</button>
                         </div>
-<%--                    </c:if>--%>
+                    </c:if>
                 </div>
             </div>
         </div>

@@ -2,7 +2,6 @@ package com.jeonsu.deuggeun.board.controller;
 
 import com.jeonsu.deuggeun.board.model.dto.*;
 import com.jeonsu.deuggeun.member.model.dto.Member;
-import oracle.jdbc.proxy.annotation.Post;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -35,25 +34,24 @@ public class MarketController {
 		this.service = service;
 	}
 
+	// 마켓 리스트 가져오기
 	@RequestMapping(value = "/{boardCode}/list")
 	public String selectmarketList(
 			@PathVariable(value = "boardCode") int boardCode,
 			@RequestParam(value="cp", required=false, defaultValue="1") int cp,
-			//@RequestParam(value="keyword", required=false) String keyword,
+			@RequestParam(value="sort", required=false, defaultValue="n") String sort,
 			Model model,
-			@RequestParam Map<String, Object> paramMap
-		) {
+			@RequestParam Map<String, Object> paramMap) {
 
 		if(boardCode == 5){
 		System.out.println("키워드 출력... : " + paramMap.get("keyword"));
 
 		if(paramMap.get("keyword") == null) {
 
-			System.out.println("키워드 값 없음 : " + paramMap.get("keyword"));
-			Map<String, Object> map = service.selectMarketList(boardCode, cp);
+			Map<String, Object> map = service.selectMarketList(boardCode, cp, sort);
 			model.addAttribute("map", map);
+
 		}else{
-			System.out.println("키워드 : " + paramMap.get("keyword"));
 			paramMap.put("boardCode", boardCode);
 			paramMap.put("keyword", paramMap.get("keyword"));
 			Map<String, Object> map = service.selectMarketList(paramMap, cp);
@@ -446,7 +444,7 @@ public class MarketController {
 		return path;
 	}
 
-//	 <a href="/board/${boardCode}/inquire/${product.productNo}">상품문의</a>
+
 	// 상품문의 게시판 목록
 	@GetMapping("/{boardCode}/inquire/{productNo}")
 	public String marketInquire(@PathVariable("boardCode") int boardCode

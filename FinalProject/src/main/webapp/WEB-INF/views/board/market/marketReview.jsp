@@ -56,7 +56,7 @@
                             <div class="right">${product.subTitle}</div>
                             <div class="number-con">
                                 <div class="number">
-                                    <div>수량</div>
+                                    <div class="count">수량</div>
                                     <select name="selectNumber" id="select">
                                         <option> - [필수] 수량을 선택해 주세요 -</option>
                                         <option value="1">1개</option>
@@ -71,7 +71,7 @@
                             </div>
                             <div class="price">
                                 <button type="submit" id="cart-btn" class="submit-btn">ADD TO CART</button>
-                                <button type="submit" id="now-btn" class="submit-btn">BUY IT NOW</button>
+                                <button type="button" id="now-btn" class="submit-btn">BUY IT NOW</button>
                             </div>
                         </div>
                     </div>
@@ -130,8 +130,6 @@
                             </c:choose>
                             </tbody>
                         </table>
-
-                        <br>
                         <br>
                         <div class="btn-area">
 
@@ -140,9 +138,6 @@
                            <c:if test="${!empty loginMember}">
                                     <a href="/board/${boardCode}/review/${productNo}/insert" id="insertBtn">글쓰기</a>
                             </c:if>
-<%--                            <c:if test="${!empty loginMember}">--%>
-<%--                                <a href="#" id="insertBtn" data-product="${productNo}">글쓰기</a>--%>
-<%--                            </c:if>--%>
                         </div>
 
 

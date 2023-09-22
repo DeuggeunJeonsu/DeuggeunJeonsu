@@ -135,9 +135,8 @@ $('form').on('submit', function(e) {
     }
 });
 
-
 const inquireForm = document.getElementById("inquireForm");
-const inquireType = document.getElementById("inquireType");
+const inquiryType = document.getElementById("inquiryType");
 const inquireTitle = document.getElementById("inquireTitle");
 const inquireContent = document.getElementById("inquireContent");
 
@@ -145,18 +144,19 @@ inquireForm.addEventListener("submit", function (e) {
     e.preventDefault(); // 폼 제출 막기
 
     // 문의 유형 선택 여부 검사
-    // if (inquireType.value === "none") {
-    //     Swal.fire({
-    //         icon: 'error',
-    //         title: '문의 유형 오류',
-    //         text: '문의 유형을 선택하세요.'
-    //     });
-    //     return;
-    // }
-
+    if (inquiryType.value === "--- 상품 문의 유형을 선택해주세요 ---") {
+        e.preventDefault(); // 폼 제출 막기
+        Swal.fire({
+            icon: 'error',
+            title: '문의 유형 오류',
+            text: '문의 유형을 선택하세요.'
+        });
+        return;
+    }
     // 제목 유효성 검사
     let titleValue = inquireTitle.value.trim();
     if (titleValue === "") {
+        e.preventDefault(); // 폼 제출 막기
         Swal.fire({
             icon: 'error',
             title: '제목 오류',
@@ -169,6 +169,7 @@ inquireForm.addEventListener("submit", function (e) {
     }
 
     if (titleValue.length < 1 || titleValue.length > 10) {
+        e.preventDefault(); // 폼 제출 막기
         Swal.fire({
             icon: 'error',
             title: '제목 오류',
@@ -183,6 +184,7 @@ inquireForm.addEventListener("submit", function (e) {
     // 내용 유효성 검사
     let contentValue = inquireContent.value.trim();
     if (contentValue === "") {
+        e.preventDefault(); // 폼 제출 막기
         Swal.fire({
             icon: 'error',
             title: '내용 오류',
@@ -195,6 +197,7 @@ inquireForm.addEventListener("submit", function (e) {
 
     // 글씨 500자 제한
     if (contentValue.length > 500) {
+        e.preventDefault(); // 폼 제출 막기
         Swal.fire({
             icon: 'error',
             title: '내용 오류',

@@ -26,11 +26,3 @@ function sample6_execDaumPostcode() {
 function cancelOrder() {
     window.location.href = '/board/cartList'; // 장바구니 페이지로 이동
 }
-
-// const delName = document.getElementById("del_name")
-// delName.addEventListener("")
-// if(delName.value.trim().length == 0){
-//     alert("수령인 이름을 입력해주세요.");
-//     delName.value = "";
-//     delName.focus();
-// }

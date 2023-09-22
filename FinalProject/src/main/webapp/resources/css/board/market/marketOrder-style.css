@@ -15,15 +15,14 @@ a {
 }
 
 #main-container {
-    /* margin: 100px 250px; */
+
     margin: 0 auto;
     margin-bottom: 30px;
     min-width: 1200px;
     max-width: 1200px;
-    /* text-align: center; */
 }
-form{
-    margin-bottom: 80px;
+section form{
+    margin-bottom: 40px;
 }
 
 /* 리뷰 게시판 영역 */
@@ -51,13 +50,16 @@ td{
     vertical-align: middle;
 }
 .form_input{
-    /* width: 271px; */
+     /*width: 271px;*/
     height: 35px;
     padding: 0 10px;
     border: 1px solid #dcdcdc;
     font-size: 15px;
     line-height: 35px;
     vertical-align: middle;
+}
+#delEmail, #delPhone, #delNotes{
+    width: 271px;
 }
 #delZip{
     width: 120px;
@@ -115,8 +117,8 @@ textarea{
 /* fixed 컨테이너 */
 .fixed-con{
     position: fixed;
-    left : 1200px;
-    top: 250px;
+    left : 1400px;
+    top: 220px;
 } 
 
 .box {
@@ -151,7 +153,6 @@ textarea{
     border-bottom: 1px solid #dfdfdf;
 }
 
-/* Style the total order section */
 .total_ord {
     margin-top: 20px;
     padding-top: 20px; 

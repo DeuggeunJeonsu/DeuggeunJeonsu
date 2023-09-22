@@ -10,7 +10,7 @@ public interface MarketService {
 
 
     // 득근마켓 게시글 목록조회
-    Map<String, Object> selectMarketList(int boardCode, int cp);
+    Map<String, Object> selectMarketList(int boardCode, int cp, String sort);
 
     // 검색했을때 게시글 목록
     Map<String, Object> selectMarketList(Map<String, Object> paramMap, int cp);

@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-
 <%-- map에 저장된 값들을 각각 변수에 저장 --%>
 <c:set var="pagination" value="${map.pagination}" />
 <c:set var="marketList" value="${map.marketList}" />
@@ -14,7 +13,6 @@
 
         <!DOCTYPE html>
         <html>
-
         <head>
             <meta charset="UTF-8">
             <title>게시판 이름</title>
@@ -58,23 +56,24 @@
 
                     <form action="/board/${boardCode}/list" method="GET">
                         <div class="search-place">
-                            <input type="text" id="market-search" name="keyword" placeholder="search..." value="${param.keyword}">
+                            <input type="text" id="market-search" name="keyword" placeholder="찾으시는 제품을 검색해보세요" value="${param.keyword}">
                             <button id="search-button"><i class="fas fa-search"></i></button>
                         </div>
                     </form>
 
                     <div id="sort-btn-area">
-                        <a href="#"><span>최신순</span></a> |
-                        <a href="#"><span>인기순</span></a>
+                        <select id="type" name="sort">
+                            <option value="n">신상품</option>
+                            <option value="l">낮은가격</option>
+                            <option value="h">높은가격</option>
+                            <option value="b">사용후기</option>
+                        </select>
                     </div>
                 </div>
 
                 <c:choose>
                     <c:when test="${empty marketList}">
-<%--                        <div id="list-area" class="font-weight no-posts">--%>
                             <h1 id="list-area2">게시글이 존재하지 않습니다.</h1>
-<%--                        </div>--%>
-                        <!-- 페이지네이션은 렌더링되지 않음 -->
                     </c:when>
                     <c:otherwise>
                         <div id="list-area" class="font-weight">
@@ -119,19 +118,10 @@
                         </div>
                     </c:otherwise>
                 </c:choose>
-
-
-
-
-
-
             </section>
 
 
             <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
-            <script>
-                <%--var market = ${marketList};--%>
-            </script>
             <script src="/resources/js/market/marketList.js"></script>
         </body>
 

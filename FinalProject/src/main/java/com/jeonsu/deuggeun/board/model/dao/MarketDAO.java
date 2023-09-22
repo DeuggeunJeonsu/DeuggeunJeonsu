@@ -236,4 +236,26 @@ public class MarketDAO {
 	public int buyItNow(Cart cart) {
 		return sqlSession.insert("marketMapper.buyItNow", cart);
 	}
+
+	// 낮은 가격순으로 조회
+	public List<Product> selectMarketListByLowPrice(Pagination pagination, int boardCode) {
+
+		int offset = (pagination.getCurrentPage() -1) * pagination.getLimit();
+		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
+		return sqlSession.selectList("marketMapper.selectMarketListByLowPrice", boardCode, rowBounds);
+	}
+
+	// 높은 가격순으로 조회
+	public List<Product> selectMarketListByHighPrice(Pagination pagination, int boardCode) {
+		int offset = (pagination.getCurrentPage() -1) * pagination.getLimit();
+		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
+		return sqlSession.selectList("marketMapper.selectMarketListByHighPrice", boardCode, rowBounds);
+	}
+
+	// 후기 많은순
+	public List<Product> selectMarketListByReview(Pagination pagination, int boardCode) {
+		int offset = (pagination.getCurrentPage() -1) * pagination.getLimit();
+		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
+		return sqlSession.selectList("marketMapper.selectMarketListByReview", boardCode, rowBounds);
+	}
 }
