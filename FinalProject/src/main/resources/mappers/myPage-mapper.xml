@@ -13,6 +13,8 @@
 		<result property="boardState" column="BOARD_ST" />
 		<result property="boardUpdateDate" column="UPDATE_DT" />
 		<result property="tagNo" column="TAG_NO" />
+		
+		<result property="adminBoardNo" column="ADMIN_ANSWER" />
 
 		<result property="memberNo" column="MEMBER_NO" />
 		<result property="memberNickname" column="MEMBER_NICKNAME" />
@@ -132,5 +134,21 @@
 		SET MEMBER_DEL_FL = 'Y'
 		WHERE MEMBER_NO = #{memberNo}
 	</update>
+	
+	<!-- 문의 답변 내용 조회를 위한 게시글 번호 조회 -->
+	<select id="selectAdminBoardNo"  resultType="_int">
+		SELECT ADMIN_ANSWER
+		FROM INQUIRY
+		WHERE BOARD_NO = #{boardNo}
+	</select>
+	
+	<!-- 마이페이지 1:1 문의 답변조회 -->
+	<select id="inquiryAnswer" resultMap="myPageBoard_rm">
+		SELECT BOARD_TITLE, BOARD_CONTENT
+		FROM BOARD
+		JOIN INQUIRY USING(BOARD_NO)
+		WHERE ADMIN_ANSWER = #{adminBoardNo}
+	</select>
+	
 	
 </mapper>

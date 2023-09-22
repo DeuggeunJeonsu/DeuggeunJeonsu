@@ -189,7 +189,7 @@
 	<!-- 문의 테이블 데이터 삽입 -->
 	<insert id="insertInquiry">
 		INSERT INTO INQUIRY
-		VALUES(#{boardNo}, DEFAULT , 1)
+		VALUES(#{boardNo}, DEFAULT , 1 ,DEFAULT)
 	</insert>
 
 

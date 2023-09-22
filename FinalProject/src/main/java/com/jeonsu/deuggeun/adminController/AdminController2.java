@@ -59,12 +59,12 @@ public class AdminController2 {
 	@PostMapping(value="/QnAWrite", produces = "application/json; charset=UTF-8")
 	public String QnAWrite(AdminMember board,
 			@SessionAttribute("loginMember") Member loginMember,
-			@RequestParam("boardNo") int boardNo,
+			@RequestParam("boardNo") int userBoardNo,
 			RedirectAttributes ra
 			) {
 
 		board.setMemberNo(loginMember.getMemberNo());
-		int result = service.insertQnA(board ,boardNo);
+		int result = service.insertQnA(board ,userBoardNo);
 
 		String path = "redirect:";
 		if(result > 0) {

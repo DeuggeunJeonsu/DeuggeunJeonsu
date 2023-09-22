@@ -78,16 +78,19 @@ public class AdminServiceimpl implements AdminService{
 
 	// 관리자 1:1 문의 답변
 	@Override
-	public int insertQnA(AdminMember board, int boardNo ) {
+	public int insertQnA(AdminMember board, int userBoardNo ) {
 		
 		int result = dao.insertQnA(board);
 		
-		board.setBoardNo(boardNo);
+		board.setAdminBoardNo(board.getBoardNo());
+		
+		board.setBoardNo(userBoardNo);
 		
 		  if(result > 0) {
 			  
 			  
 			  System.out.println(board.getBoardNo() +"여기오냐?");
+			  System.out.println(board.getAdminBoardNo() +"여기오냐?");
 			  //  문의 관리자 답변 여부 변경
 			  result = dao.updateQnA(board);
 			  System.out.println("여기오냐?");

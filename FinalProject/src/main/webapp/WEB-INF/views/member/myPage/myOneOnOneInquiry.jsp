@@ -2,7 +2,7 @@
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
         <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
-            <c:set var="boardList" value="${map.boardList}" />
+            <c:set var="boardList" value="${map.boardList}" ></c:set>
 
             <!DOCTYPE html>
             <html lang="ko">
@@ -37,8 +37,8 @@
                         <!-- 마이페이지 사이드바 include -->
                         <jsp:include page="/WEB-INF/views/member/myPage/myPageSideBar.jsp"></jsp:include>
                         <section id="QnAModal">
-                            <h1 class="title">내가 작성한 1:1 문의글</h1>
-                            <div>회원님이 작성하신 1:1 문의 글입니다.🍀</div>
+                            <h1 class="modal-header">내가 작성한 1:1 문의글</h1>
+                            <div id="modal-header2">회원님이 작성하신 1:1 문의 글입니다.🍀</div>
 
                             <hr>
                             <br>
@@ -96,8 +96,8 @@
                                                     <td class="checkFl">${board.adminCheckFl}</td>
                                                 </tr>
                                                 <input type="hidden" class="boardTitle" value="${board.boardTitle}" />
-                                                <input type="hidden" class="boardContent"
-                                                    value="${board.boardContent}" />
+                                                <input type="hidden" class="boardContent" value="${board.boardContent}" />
+                                                <input type="hidden" class="boardNo" value="${board.boardNo}" />
                                             </c:forEach>
 
 
@@ -116,6 +116,7 @@
 
                     <script src="/resources/js/member/myPage/myOneOnOneInquiry.js"></script>
 
-            </body>
+            </body> 
+
 
             </html>
