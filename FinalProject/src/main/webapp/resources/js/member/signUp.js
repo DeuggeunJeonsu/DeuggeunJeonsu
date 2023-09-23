@@ -7,6 +7,56 @@ const checkObj = {
 }
 
 
+const memberTels = document.getElementsByName("memberTel");    
+let memberTel ="";                                            
+const sendSmsBtn = document.getElementById("sendSmsBtn");    
+const smsTimerSpan = document.getElementById("smsTimer"); 
+const idAtKey = document.getElementById("idAuthenticationKey");
+let smsTimer;                                                
+let smsIsRunning = false;   
+
+
+sendSmsBtn.addEventListener("click", e=>{
+    memberTel ="";
+    for( let i of memberTels){
+        if(i.value.trim().length==0){
+            alert("휴대폰번호를 입력해주세요");
+            return;
+        }
+        memberTel += i.value;
+    }
+
+    const phoneNumberRegex = /^(?:\+?\d{1,3}(?:[-.\s]?\d{1,})?|\d{1,4})?[-.\s]?\d{1,4}[-.\s]?\d{1,9}$/;
+
+
+    // ajax 코드 작성
+    fetch("/member/sendSms", {
+        method : "POST",
+        headers : {"Content-Type" : "application/json"},
+        body : memberTel
+    })
+    .then(response => response.text() )
+    .then( resultIdAtKey => {
+        if(resultIdAtKey!=""){
+            // 타이머 세팅
+            if (smsIsRunning) clearInterval(smsTimer); // 이미 타이머가 실행중이면 초기화
+            startTimer(60*5-1, 1); // sms 타이머 함수 실행
+            // 1회이상 전송시 버튼 문구 변경
+            e.target.innerText = "인증번호 재전송";
+            // 5분간 유효한 쿠키 생성
+            set_cookie(memberTel+"_idAtKey", resultIdAtKey, 5);
+            // 안내문구 출력
+            alert("인증번호가 전송되었습니다. 휴대폰을 확인해주세요.");
+        }
+        else alert("해당 번호로 등록된 회원이 없습니다. 다시한번 확인해주세요.");
+    })
+    .catch(err =>{
+        console.log("예외 발생");
+        console.log(err);
+    })
+})
+
+
 
 
 const memberEmail = document.getElementById("memberEmail");
