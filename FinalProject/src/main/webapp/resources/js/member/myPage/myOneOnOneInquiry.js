@@ -67,6 +67,3 @@ for(let i = 0 ; i < boardTitle.length ; i++){
 closeBtn.addEventListener("click", () => {
     QnAModal.style.visibility = "hidden";
 })
-
-    
-

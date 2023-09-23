@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import com.jeonsu.deuggeun.board.model.dto.Board;
 import com.jeonsu.deuggeun.board.model.dto.Pagination;
+import com.jeonsu.deuggeun.member.model.dto.Badge;
 import com.jeonsu.deuggeun.member.model.dto.Member;
 
 @Repository
@@ -164,9 +165,28 @@ public class MyPageDAO {
 		return sqlSession.selectOne("myPageMapper.inquiryAnswer", board);
 	}
 
+	/** 마이페이지 뱃지 전체 목록 조회
+	 * @return badgeListAll
+	 */
+	public List<Badge> selectBadgeListAll() {
+		return sqlSession.selectList("myPageMapper.selectBadgeListAll");
+	}
 
+	/** 마이페이지 로그인한 회원의 뱃지 목록 조회
+	 * @param memberNo
+	 * @return myBadgeList
+	 */
+	public List<Badge> selectBadgeList(int memberNo) {
+		return sqlSession.selectList("myPageMapper.selectBadgeList", memberNo);
+	}
 
-
+	/** 마이페이지 로그인한 회원의 뱃지 수 조회
+	 * @param memberNo
+	 * @return badgeCount
+	 */
+	public int getBadgeCount(int memberNo) {
+		return sqlSession.selectOne("myPageMapper.getBadgeCount", memberNo);
+	}
 
     /** 회원 탈퇴
 	 * @param memberNo

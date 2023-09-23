@@ -35,9 +35,21 @@ public class MyPageController {
 	@Autowired
 	private MyPageService service;
 
-	// 마이페이지 내 뱃지 페이지 이동
+	// 마이페이지 내 뱃지 페이지 이동 + 뱃지 목록 조회
 	@GetMapping("/myBadge")
-	public String myBadge() {
+	public String myBadge(
+			@SessionAttribute(value = "loginMember", required = false) Member loginMember
+			, Model model
+			, @RequestParam Map<String, Object> paramMap
+			) {
+
+		int memberNo = loginMember.getMemberNo();
+		
+		// 뱃지 목록 조회
+		Map<String, Object> map = service.selectBadgeList(memberNo);
+
+		model.addAttribute("map", map);
+		
 		return "member/myPage/myBadge";
 	}
 

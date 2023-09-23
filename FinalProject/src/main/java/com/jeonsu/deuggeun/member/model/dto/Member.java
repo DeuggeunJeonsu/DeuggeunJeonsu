@@ -25,7 +25,4 @@ public class Member {
 //	private String attendenceDate; // 출석일
 	
 //	private List<Bmi> bmiList; // 회원 bmi 번호
-	
-//	private List<Badge> badgeList; // 뱃지 리스트
-	
 }
