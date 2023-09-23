@@ -181,8 +181,8 @@
                                 <c:if test="${badge.badgeFlag == 'Y'}">
                                     <div class="badgeImg achieved">
                                 </c:if>
-
                                         <img src="${badge.badgeImage}">
+
                                     </div>
 
                             </c:forEach>
