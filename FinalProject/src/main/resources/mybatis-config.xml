@@ -17,6 +17,7 @@
 		<typeAlias type="com.jeonsu.deuggeun.member.model.dto.MemberBMI" alias="MemberBMI" />
 		<typeAlias type="com.jeonsu.deuggeun.member.model.dto.ChattingRoom" alias="ChattingRoom"/>
       	<typeAlias type="com.jeonsu.deuggeun.member.model.dto.Message" alias="Message"/>
+      	<typeAlias type="com.jeonsu.deuggeun.member.model.dto.Badge" alias="Badge"/>
 		
 		<typeAlias type="com.jeonsu.deuggeun.board.model.dto.Board" alias="Board" />
 		<typeAlias type="com.jeonsu.deuggeun.board.model.dto.Comment" alias="Comment" />

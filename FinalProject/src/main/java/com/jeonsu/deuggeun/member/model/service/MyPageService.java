@@ -69,6 +69,12 @@ public interface MyPageService {
 	 */
 	Board inquiryAnswer(int boardNo);
 
+	/** 마이페이지 내 뱃지 페이지 이동 + 뱃지 목록 조회
+	 * @param memberNo
+	 * @return map
+	 */
+	Map<String, Object> selectBadgeList(int memberNo);
+
 	/** 회원 탈퇴
 	 * @param memberNo
 	 * @param memberPw

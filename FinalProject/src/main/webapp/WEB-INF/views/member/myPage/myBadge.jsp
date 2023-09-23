@@ -2,6 +2,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"  %>
 
+<%-- map에서 꺼내기 --%>
+<c:set var="badgeList" value="${map.badgeList}"/>
+<c:set var="badgeCount" value="${map.badgeCount}"/>
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -18,7 +22,6 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/resources/images/favicon_io/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/resources/images/favicon_io/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/resources/images/favicon_io/favicon-16x16.png">
-    <%-- <link rel="manifest" href="/resources/images/favicon_io/site.webmanifest"> --%>
 
 </head>
 
@@ -42,7 +45,27 @@
 
                 <div id="badge-area">
 
-                    <div class="badge notAchieved">
+                    <c:forEach items="${badgeList}" var="badge">
+                        <div class="badge notAchieved">
+                            <div class="badgeImg notAchievedImg">
+                                <img src="${badge.badgeImage}">
+                            </div>
+                            <div class="badgeTitle">
+                                ${badge.badgeName}
+                            </div>
+                            <div class="badgeContent">
+                                ${badge.badgeContent}
+                            </div>
+                            <div class="badgeDate">
+                                미획득
+                            </div>
+                            <div class="lock">
+                                <i class="fa-solid fa-lock fa-5x" style="color: #fff;"></i>
+                            </div>
+                        </div>
+                    </c:forEach>
+
+                    <%-- <div class="badge notAchieved">
                         <div class="badgeImg notAchievedImg">
                             <img src="/resources/images/badge/badge (9).png">
                         </div>
@@ -194,7 +217,7 @@
                             레전드 득근왕
                         </div>
                         <div class="badgeContent">
-                            득근전수에서<br>누적 100일을 달성했어요
+                            투두리스트를<br>누적 100일을 달성했어요
                         </div>
                         <div class="badgeDate">
                             미획득
@@ -202,14 +225,14 @@
                         <div class="lock">
                             <i class="fa-solid fa-lock fa-5x" style="color: #fff;"></i>
                         </div>
-                    </div>
+                    </div> --%>
 
                 </div>
 
                 <div id="badge-count-area">
                     <div>
                         <div id="count-circle">
-                            <div class="badgeCount">2</div>
+                            <div class="badgeCount">${badgeCount}</div>
                             <div>보유 뱃지 수</div>
                         </div>
                         <div class="badgeMessage">
