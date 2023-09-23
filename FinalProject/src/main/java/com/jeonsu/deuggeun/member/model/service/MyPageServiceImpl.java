@@ -16,6 +16,7 @@ import com.jeonsu.deuggeun.board.model.dao.ashBoardDAO;
 import com.jeonsu.deuggeun.board.model.dto.Board;
 import com.jeonsu.deuggeun.board.model.dto.Pagination;
 import com.jeonsu.deuggeun.member.model.dao.MyPageDAO;
+import com.jeonsu.deuggeun.member.model.dto.Badge;
 import com.jeonsu.deuggeun.member.model.dto.Member;
 
 @Service
@@ -187,6 +188,24 @@ public class MyPageServiceImpl implements MyPageService {
 		
 		
 		return board;
+	}
+
+	// 마이페이지 내 뱃지 페이지 이동 + 뱃지 목록 조회
+	@Override
+	public Map<String, Object> selectBadgeList(int memberNo) {
+		
+		// 로그인한 회원의 뱃지 목록 조회
+		List<Badge> badgeList = dao.selectBadgeList(memberNo);
+		
+		// 로그인한 회원의 뱃지 수 조회
+		int badgeCount = dao.getBadgeCount(memberNo);
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+
+		map.put("badgeList", badgeList);
+		map.put("badgeCount", badgeCount);
+		
+		return map;
 	}
 
 
