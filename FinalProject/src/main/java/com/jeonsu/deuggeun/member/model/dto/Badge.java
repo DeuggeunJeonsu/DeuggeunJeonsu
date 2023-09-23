@@ -14,5 +14,5 @@ public class Badge {
 	private String badgeContent; // 뱃지 내용
 	private String badgeImage; // 뱃지 이미지 경로
 	private String badgeDate; // 획득 날짜
-	private char badgeFlag; // 획득 여부
+	private String badgeFlag; // 획득 여부
 }
