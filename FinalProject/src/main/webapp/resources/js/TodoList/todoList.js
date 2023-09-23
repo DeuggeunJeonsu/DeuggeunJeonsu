@@ -739,7 +739,7 @@ function updateTodo(checkbox,listFl,choiceTodoDate ) {
     const day2= document.querySelector(".choice").value;
     const calMonthValue = parseInt(document.querySelector("#calMonth").innerHTML, 10);
     const todosToUpdate = { listNo: ListNo, listFl: completed };
-    if (day2 >= new Date().getDate() && calMonthValue >= new Date().getMonth() + 1) {
+    if (day2 > new Date().getDate() && calMonthValue >= new Date().getMonth() + 1) {
         Swal.fire({
 
             title : "운동 수행 후 체크해주세요😊", 
@@ -748,7 +748,8 @@ function updateTodo(checkbox,listFl,choiceTodoDate ) {
         checkbox.checked=false;
         return;
     }else{
-        if(calMonthValue >= new Date().getMonth() + 1){
+
+        if(calMonthValue > new Date().getMonth() + 1){
             Swal.fire({
 
                 title : "운동 수행 후 체크해주세요😊", 
