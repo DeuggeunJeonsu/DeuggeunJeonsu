@@ -638,73 +638,75 @@ document.addEventListener("click", function (e){
     
     if(e.target.classList.contains("minusBtn")){
         //console.log(e.target)
+        const yaer = document.getElementById("calYear").innerText;  // 년
+        const math = document.getElementById("calMonth").innerText; // 월
+        const day= document.querySelector(".choice").value;
+            
+        const choiceTodoDate = yaer+'-' + math+'-' + day;
 
         const todoNo = e.target.nextElementSibling.value;
-        $.ajax({
-            url: "/todo/delete",
+        fetch("/todo/delete",{
             method: "POST",
-            data: { "todoNo": todoNo },
-            dataType: "JSON",
-            success: function (result) {
-                if(result > 0){
-                    
-                    e.target.parentElement.remove();
+            headers: { 'Content-Type': 'application/json' },
+            body:JSON.stringify({ "listNo": todoNo , "lcreateDt": choiceTodoDate})
+        })
+        .then(resp => resp.text())
+        .then(result =>{
+            if(result > 0){
+                
+                e.target.parentElement.remove();
 
-                    const checkboxes = document.querySelectorAll(".checkbox");
-                    let checkedCount = 0;
-        
-                    checkboxes.forEach(checkbox => {
-                        if (checkbox.checked) {
-                            checkedCount++;
-                        }
-                    });
-                    const yaer = document.getElementById("calYear").innerText;  // 년
-                    const math = document.getElementById("calMonth").innerText; // 월
-                    const day= document.querySelector(".choice").value;
-                        
-                    const choiceTodoDate = yaer+'-' + math+'-' + day;
-        
-                    if(checkedCount == checkboxes.length && checkboxes.length != 0) {
-                        //console.log(choiceTodoDate)
-                        fetch("/todo/allCompleted?date=" + choiceTodoDate )
-                        .then(resp => resp.text())
-                        .then(result=>{
-                            if(result > 0){
+                const checkboxes = document.querySelectorAll(".checkbox");
+                let checkedCount = 0;
 
-
-                                Swal.fire({
-
-                                    title : "축하합니다🥳 목표를 득근하셨어요!", 
-                                    icon : 'success'
-                                })
-                            }else{
-                                console.log("실패ㅜㅜㅜ")
-                            }
-                        })
-                        .catch( e=> console.log(e) )
-                    }else{
-                        fetch("/todo/unfinished?date=" + choiceTodoDate )
-                        .then(resp => resp.text())
-                        .then(result=>{
-                            if(result == 0){
-                            
-                                console.log("실패ㅜㅜㅜ")
-                            }
-                        })
-                        .catch( e=> console.log(e) )
+                checkboxes.forEach(checkbox => {
+                    if (checkbox.checked) {
+                        checkedCount++;
                     }
-            
-                    buildCalendar();
-                    updateCheckedPercentage();
+                });
+                
 
+                if(checkedCount == checkboxes.length && checkboxes.length != 0) {
+                    //console.log(choiceTodoDate)
+                    fetch("/todo/allCompleted?date=" + choiceTodoDate )
+                    .then(resp => resp.text())
+                    .then(result=>{
+                        if(result > 0){
+
+
+                            Swal.fire({
+
+                                title : "축하합니다🥳 목표를 득근하셨어요!", 
+                                icon : 'success'
+                            })
+
+
+                        }else{
+                            console.log("실패ㅜㅜㅜ")
+                        }
+                    })
+                    .catch( e=> console.log(e) )
                 }else{
-                    console.log("투두 삭제 실패");
+                    fetch("/todo/unfinished?date=" + choiceTodoDate )
+                    .then(resp => resp.text())
+                    .then(result=>{
+                        if(result == 0){
+                        
+                            console.log("실패ㅜㅜㅜ")
+                        }
+                    })
+                    .catch( e=> console.log(e) )
                 }
-            },
-            error: function(){
-                console.log("에러")
+        
+                buildCalendar();
+                updateCheckedPercentage();
+
+            }else{
+                console.log("투두 삭제 실패");
             }
         })
+        .catch( e=> console.log(e) )    
+            
 
     }
 });
@@ -746,6 +748,16 @@ function updateTodo(checkbox,listFl,choiceTodoDate ) {
         checkbox.checked=false;
         return;
     }else{
+
+        if(calMonthValue > new Date().getMonth() + 1){
+            Swal.fire({
+
+                title : "운동 수행 후 체크해주세요😊", 
+                icon : 'success'
+            })
+            checkbox.checked=false;
+            return;
+        }
 
         // 서버로 업데이트할 정보를 전송
         fetch("/todo/update", {

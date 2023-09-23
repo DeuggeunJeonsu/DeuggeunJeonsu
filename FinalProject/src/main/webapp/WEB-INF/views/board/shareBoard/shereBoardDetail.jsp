@@ -166,9 +166,12 @@
         <div id="btn-area">
             <div>
                 <button id="goToListBtn">목록으로</button>
-                
-                <button id="updateBtn">수정하기</button>
-                <button id="deleteBtn">삭제하기</button>
+                <c:if test="${loginMember.memberNo == board.memberNo}">
+                    <div>
+                        <button id="updateBtn">수정하기</button>
+                        <button id="deleteBtn">삭제하기</button>
+                    </div>
+                </c:if>
             </div>
         </div>
 
