@@ -17,15 +17,15 @@ public interface TodoListService  {
 	int todoUpdate(TodoList updateTodo);
 
 	// 체크리스트 삭제하기
-	int todoDelete(int todoNo);
+	int todoDelete(TodoList todo);
 
 	// 체크리스트에 추가하기
 	int todoInsert(TodoList insertTodo);
 
 	// 모든 체크 완료했을 시 
-	int allCompleted(String date);
+	int allCompleted(String date, int loginMemberNo );
 
 	// 일부 수행시 
-	int unfinished(String date);
+	int unfinished(String date, int loginMemberNo );
 
 }
