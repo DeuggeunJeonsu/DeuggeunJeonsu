@@ -377,11 +377,17 @@
 
 }
 
+/* 획득 안 했을 경우 흑백 처리 */
+.notAchieved{
+    color: #ddd;
+    filter: grayscale(1);
+}
+
 .badgeImg{
     height: 100px;
     width: 100px;
 
-    margin: 0 10px;
+    margin: 20px 10px;
 }
 
 .badgeImg > img{

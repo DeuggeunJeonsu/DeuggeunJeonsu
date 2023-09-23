@@ -10,6 +10,7 @@
 <c:set var="followCheck" value="${map.followCheck}"/>
 <c:set var="boardList" value="${map.boardList}"/>
 <c:set var="pagination" value="${map.pagination}"/>
+<c:set var="badgeList" value="${member.badgeList}"/>
 
 <!DOCTYPE html>
 <html>
@@ -20,9 +21,6 @@
 <%-- memberFeed-style.css 연결 --%>
 <link rel="stylesheet" href="/resources/css/member/myPage/memberFeed-style.css">
 
-<%-- 팔로우 버튼 애니메이션 css 연결 --%>
-<%-- <link rel="stylesheet" href="css/animations.css"> --%>
-
 <%-- alert창 바꿔 주는 스크립트 연결 --%>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.28/dist/sweetalert2.all.min.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.28/dist/sweetalert2.min.css">
@@ -31,6 +29,9 @@
 <link rel="apple-touch-icon" sizes="180x180" href="/resources/images/favicon_io/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/resources/images/favicon_io/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/resources/images/favicon_io/favicon-16x16.png">
+
+<%-- 뱃지 애니메이션 CSS 연결 --%>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 
 </head>
 <body>
@@ -164,56 +165,34 @@
             <div>획득한 뱃지</div>
 
             <div id="badge-area-middle">
+
                 <div class="prev-btn"><i class="fa-solid fa-circle-chevron-left fa-2x" style="color: #99e1ed;"></i></div>
 
-                <div class="container">
-                    <div class="carousel">
-                        <div class="badgeImg">
-                            <img src="/resources/images/badge/badge (1).png">
-                        </div>
-                        <div class="badgeImg">
-                            <img src="/resources/images/badge/badge (2).png">
-                        </div>
-                        <div class="badgeImg">
-                            <img src="/resources/images/badge/badge (3).png">
-                        </div>
-                        <div class="badgeImg">
-                            <img src="/resources/images/badge/badge (4).png">
-                        </div>
-                        <div class="badgeImg">
-                            <img src="/resources/images/badge/badge (5).png">
-                        </div>
-                        <div class="badgeImg">
-                            <img src="/resources/images/badge/badge (6).png">
-                        </div>
-                        <div class="badgeImg">
-                            <img src="/resources/images/badge/badge (7).png">
-                        </div>
-                        <div class="badgeImg">
-                            <img src="/resources/images/badge/badge (1).png">
-                        </div>
-                        <div class="badgeImg">
-                            <img src="/resources/images/badge/badge (2).png">
-                        </div>
-                        <div class="badgeImg">
-                            <img src="/resources/images/badge/badge (3).png">
-                        </div>
-                        <div class="badgeImg">
-                            <img src="/resources/images/badge/badge (4).png">
-                        </div>
-                        <div class="badgeImg">
-                            <img src="/resources/images/badge/badge (5).png">
-                        </div>
-                        <div class="badgeImg">
-                            <img src="/resources/images/badge/badge (6).png">
-                        </div>
-                        <div class="badgeImg">
-                            <img src="/resources/images/badge/badge (7).png">
+                    <div class="container">
+
+                        <div class="carousel">
+
+                            <c:forEach items="${badgeList}" var="badge">
+
+                                <c:if test="${badge.badgeFlag == 'N'}">
+                                    <div class="badgeImg notAchieved">
+                                </c:if>
+
+                                <c:if test="${badge.badgeFlag == 'Y'}">
+                                    <div class="badgeImg achieved">
+                                </c:if>
+                                        <img src="${badge.badgeImage}">
+
+                                    </div>
+
+                            </c:forEach>
+
                         </div>
                     </div>
-                </div>
 
                 <div class="next-btn"><i class="fa-solid fa-circle-chevron-right fa-2x" style="color: #99e1ed;"></i></div>
+
+                
             </div>
 
         </div>
