@@ -306,6 +306,21 @@ function selectFollowerList(){
 }
 /* ------------------------------------------------------------------------------------------------ */
 
+// 획득한 뱃지 호버 효과 주기
+const animateBounce = document.querySelectorAll(".achieved");
+
+animateBounce.forEach(element => {
+
+    element.addEventListener("mouseover", ()=>{
+        element.classList.add("animate__animated", "animate__tada", "animate__infinite");
+    })
+
+    element.addEventListener("mouseout", ()=>{
+        element.classList.remove("animate__animated", "animate__tada", "animate__infinite");
+    })
+    
+});
+
 // 뱃지 캐러셀
 const CAROUSEL_LENGTH = document.querySelectorAll(".badgeImg").length - 1;
 let current = 0;

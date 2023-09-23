@@ -23,6 +23,9 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/resources/images/favicon_io/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/resources/images/favicon_io/favicon-16x16.png">
 
+    <%-- 뱃지 애니메이션 CSS 연결 --%>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
 </head>
 
 <body>
@@ -46,22 +49,46 @@
                 <div id="badge-area">
 
                     <c:forEach items="${badgeList}" var="badge">
-                        <div class="badge notAchieved">
-                            <div class="badgeImg notAchievedImg">
+
+                        <c:if test="${badge.badgeFlag == 'N'}">
+                            <div class="badge notAchieved">
+                        </c:if>
+
+                        <c:if test="${badge.badgeFlag == 'Y'}">
+                            <div class="badge animate__animated animate__bounce">
+                        </c:if>
+
+                            <c:if test="${badge.badgeFlag == 'N'}">
+                                <div class="badgeImg notAchievedImg">
+                            </c:if>
+                            <c:if test="${badge.badgeFlag == 'Y'}">
+                                <div class="badgeImg">
+                            </c:if>
                                 <img src="${badge.badgeImage}">
                             </div>
+
                             <div class="badgeTitle">
                                 ${badge.badgeName}
                             </div>
+
                             <div class="badgeContent">
                                 ${badge.badgeContent}
                             </div>
+
                             <div class="badgeDate">
-                                미획득
+                                <c:if test="${badge.badgeFlag == 'N'}">
+                                    미획득
+                                </c:if>
+                                <c:if test="${badge.badgeFlag == 'Y'}">
+                                    ${badge.badgeDate}
+                                </c:if>
                             </div>
-                            <div class="lock">
-                                <i class="fa-solid fa-lock fa-5x" style="color: #fff;"></i>
-                            </div>
+
+                            <c:if test="${badge.badgeFlag == 'N'}">
+                                <div class="lock">
+                                    <i class="fa-solid fa-lock fa-5x" style="color: #fff;"></i>
+                                </div>
+                            </c:if>
                         </div>
                     </c:forEach>
 
@@ -231,14 +258,18 @@
 
                 <div id="badge-count-area">
                     <div>
-                        <div id="count-circle">
-                            <div class="badgeCount">${badgeCount}</div>
-                            <div>보유 뱃지 수</div>
+                        <%-- 말풍선 --%>
+                        <div class="ballon floating" style="display: none;">
+                            💙<br>
+                            뱃지 획득하러 가기!
                         </div>
-                        <div class="badgeMessage">
-                            🏋🏃‍♀️💪<br>
-                            <a href="#">뱃지를 획득하러 가 볼까요?</a>
-                        </div>
+
+                        <a href="/#schedule-area">
+                            <div id="count-circle">
+                                <div class="badgeCount">${badgeCount}</div>
+                                <div class="badgeCountText">보유 뱃지 수</div>
+                            </div>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -249,6 +280,9 @@
 
     <!-- footer include -->
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
+
+    <%-- myBadge.js 연결 --%>
+	<script src="/resources/js/member/myPage/myBadge.js"></script>
 
 </body>
 </html>
