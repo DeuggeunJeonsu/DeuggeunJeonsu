@@ -213,25 +213,25 @@ $('form').on('submit', function(e) {
 //     inquireForm.submit();
 // });
 const inquireForm = document.getElementById("inquireForm");
-// const inquiryType = document.getElementById("inquiryType");
+const inquiryType = document.getElementById("inquiryType");
 const inquireTitle = document.getElementById("inquireTitle");
 const inquireContent = document.getElementById("inquireContent");
 
 inquireForm.addEventListener("submit", function (e) {
 
     // 문의 유형 선택 여부 검사
-    // let type = inquiryType.value.trim()
-    // if (type == "") {
-    //     e.preventDefault(); // 폼 제출 막기
-    //     Swal.fire({
-    //         icon: 'error',
-    //         title: '문의 유형 오류',
-    //         text: '문의 유형을 선택하세요.'
-    //     }).then(function () {
-    //         inquiryType.focus();
-    //     });
-    //     return;
-    // }
+    let type = inquiryType.value.trim()
+    if (type == "") {
+        e.preventDefault(); // 폼 제출 막기
+        Swal.fire({
+            icon: 'error',
+            title: '문의 유형 오류',
+            text: '문의 유형을 선택하세요.'
+        }).then(function () {
+            inquiryType.focus();
+        });
+        return;
+    }
 
     // 제목 유효성 검사
     let titleValue = inquireTitle.value.trim();
