@@ -29,7 +29,10 @@
 
 
 	<section id="main-container">
-	<a href="/survey"><button class="Jbtn"><span>운동 루틴 추천받기!</span></button></a>
+
+		<a href="/bmi"><button class="Jbtn position1"><span>BMI 측정하러 가기!</span></button></a>
+		<a href="/survey"><button class="Jbtn position2"><span>운동 루틴 추천받기!</span></button></a>
+
 		<div class="video-container">
 			<!--메인 동영상 재생  -->
 			<section id="hello" class="home bg-mega">
@@ -44,7 +47,6 @@
 							</h1>
 							<div class="hello-BtnArea">
 								<button class="schedule-scroll">My Health Schedule</button>
-								<button>BMI 측정</button>
 							</div>
 						</div>
 					</div>
