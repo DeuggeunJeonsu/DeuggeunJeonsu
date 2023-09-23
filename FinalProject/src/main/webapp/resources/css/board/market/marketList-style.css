@@ -177,10 +177,10 @@ img{
 /* 페이지네이션 영역 */
 .pagination-area {
     text-align: center;
-    margin-top: 30px;
+    margin-top: 70px;
     position :relative;
     border: none !important;
-    margin-bottom: 50px;
+    margin-bottom: 70px;
 }
 
 .pagination {

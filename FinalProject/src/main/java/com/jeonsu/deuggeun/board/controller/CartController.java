@@ -72,8 +72,8 @@ public class CartController {
             order.setProductCount(Integer.parseInt((String) paymentInfo.get("productCount"))); // 상품 수량
 
             System.out.println(order);
-
             return service.insertOrder(order);
+
         }
     }
 

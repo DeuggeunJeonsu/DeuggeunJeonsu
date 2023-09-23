@@ -179,7 +179,7 @@ select{
 }
 .item-content img{
     width: 1000px;
-    height: 1350px;
+    height: auto;
 }
 
 /* 제품 상세 영역 */

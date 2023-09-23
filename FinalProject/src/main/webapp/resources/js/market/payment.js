@@ -154,9 +154,11 @@ function requestPay() {
                     if(result > 0){ // 성공
                         console.log('Success:', result);
                         alert('고객님의 주문이 완료되었습니다 ㅎㅎ');
-                        window.location.href = "/myPage/myPurchaseList";
+                        window.location.href = `/board/success/${result}`
                     }else{
+                        alert('결제에 실패했습니다ㅠㅠ');
                         console.log('주문데이터 등록 실패ㅠㅠ');
+                        window.location.href = "/board/cartList";
                     }
                 })
                 .catch((error) => {

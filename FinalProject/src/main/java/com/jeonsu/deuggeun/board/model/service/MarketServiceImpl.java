@@ -446,7 +446,7 @@ public class MarketServiceImpl implements MarketService {
 				result = dao.afterUpdateCart(cart);
 
 				if (result > 0) {
-
+					result = cart.getOrderNo();
 					System.out.println("카트 업데이트 result값 : " + result);
 				} else {
 					System.out.println("카트 업데이트 실패");
@@ -519,5 +519,11 @@ public class MarketServiceImpl implements MarketService {
 			}
 		}
 
+	}
+
+	// 결제 완료 페이지
+	@Override
+	public List<Order> selectOrderList(int orderNo) {
+		return dao.selectOrderList(orderNo);
 	}
 }

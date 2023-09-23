@@ -39,4 +39,5 @@ public class Order {
     private int memberNo;
     private String delNotes;
     private int productCount;
+    private String memberNickname;
 }
