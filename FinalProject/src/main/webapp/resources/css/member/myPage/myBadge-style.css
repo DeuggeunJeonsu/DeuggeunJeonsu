@@ -98,9 +98,10 @@
 
     display: flex;
     justify-content: center;
+    
 }
 
-#badge-count-area > div:first-of-type > div:first-of-type {
+#count-circle {
     display: flex;
     flex-direction: column;
 
@@ -116,7 +117,7 @@
     height: 150px;
 
     position: relative;
-    left: 80px;
+    left: 55px;
 }
 
 .badgeCount{
@@ -126,7 +127,7 @@
     margin-bottom: 10px;
 }
 
-#badge-count-area > div:first-of-type > div:nth-of-type(2){
+.badgeMessage{
     display: flex;
     flex-direction: column;
 
@@ -142,14 +143,14 @@
     line-height: 30px;
 }
 
-#badge-count-area > div:first-of-type > div:nth-of-type(2) a{
+.badgeMessage a{
     text-decoration: none;
     color: #797979;
 
-    background: linear-gradient(to top, rgba(52, 197, 219, 0.349) 50%, transparent 50%);
+    background: linear-gradient(to top, #ffd21c54 50%, transparent 50%);
 }
 
-#badge-count-area > div:first-of-type > div:nth-of-type(2) a:hover{
+.badgeMessage a:hover{
     transform: scale(1.05);
     transition-duration: 0.5s;
 }

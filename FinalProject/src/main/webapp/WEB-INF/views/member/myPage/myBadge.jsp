@@ -42,8 +42,8 @@
 
                 <div id="badge-area">
 
-                    <div class="badge">
-                        <div class="badgeImg">
+                    <div class="badge notAchieved">
+                        <div class="badgeImg notAchievedImg">
                             <img src="/resources/images/badge/badge (9).png">
                         </div>
                         <div class="badgeTitle">
@@ -53,12 +53,15 @@
                             득근전수에서<br>첫 투두리스트를 달성했어요
                         </div>
                         <div class="badgeDate">
-                            23.01.01 획득
+                            미획득
+                        </div>
+                        <div class="lock">
+                            <i class="fa-solid fa-lock fa-5x" style="color: #fff;"></i>
                         </div>
                     </div>
 
-                    <div class="badge">
-                        <div class="badgeImg">
+                    <div class="badge notAchieved">
+                        <div class="badgeImg notAchievedImg">
                             <img src="/resources/images/badge/badge (2).png">
                         </div>
                         <div class="badgeTitle">
@@ -68,7 +71,10 @@
                             투두리스트를<br>누적 7일 달성했어요
                         </div>
                         <div class="badgeDate">
-                            23.01.01 획득
+                            미획득
+                        </div>
+                        <div class="lock">
+                            <i class="fa-solid fa-lock fa-5x" style="color: #fff;"></i>
                         </div>
                     </div>
 
@@ -80,7 +86,7 @@
                             성실 끝판왕
                         </div>
                         <div class="badgeContent">
-                            10일 연속<br>투두리스트를 달성했어요
+                            투두리스트를<br>누적 10일 달성했어요
                         </div>
                         <div class="badgeDate">
                             미획득
@@ -202,13 +208,13 @@
 
                 <div id="badge-count-area">
                     <div>
-                        <div>
+                        <div id="count-circle">
                             <div class="badgeCount">2</div>
                             <div>보유 뱃지 수</div>
                         </div>
-                        <div>
+                        <div class="badgeMessage">
                             🏋🏃‍♀️💪<br>
-                            <a href="#">다른 뱃지도 획득하러 가 볼까요?</a>
+                            <a href="#">뱃지를 획득하러 가 볼까요?</a>
                         </div>
                     </div>
                 </div>
