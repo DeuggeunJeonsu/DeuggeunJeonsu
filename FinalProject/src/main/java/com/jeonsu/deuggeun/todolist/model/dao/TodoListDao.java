@@ -37,21 +37,28 @@ public class TodoListDao {
 	}
 
 	//  체크박스 내용 삭제 시
-	public int todoDelete(int todoNo) {
+	public int todoDelete(TodoList todo) {
 		
-		return sqlSession.delete("todolistMapper.todoDelete", todoNo);
+		int result = sqlSession.delete("todolistMapper.todoDelete", todo);
+		
+		int count = sqlSession.selectOne("todolistMapper.todoDateCount", todo);
+//		System.out.println(count);
+		int result2 = 0;
+		if(count == 0) {
+			result2 = sqlSession.delete("todolistMapper.calenderDelete", todo);
+		}
+				
+		return result;
 	}
 
 	// 체크박스 내용 추가
 	public int todoInsert(TodoList insertTodo) {
 		int result = sqlSession.insert("todolistMapper.todoInsert", insertTodo);
-		System.out.println(insertTodo.getLCreateDt());
 		String createDT = sqlSession.selectOne("todolistMapper.calenderSelect", insertTodo);
 		
-		int result2 =0;
+		int result2 = 0;
 		if(createDT==null) {
 			result2 = sqlSession.insert("todolistMapper.calenderInsert", insertTodo);
-//			System.out.println(result2);
 		}
 		if(result > 0 ) {
 			result = sqlSession.insert("todolistMapper.todoDateInsert", insertTodo);
@@ -61,12 +68,22 @@ public class TodoListDao {
 	}
 
 	// 투두 모두 완료시 
-	public int allCompleted(String date) {
-		return sqlSession.update("todolistMapper.allCompleted", date);
+	public int allCompleted(String date, int loginMemberNo ) {
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("date", date);
+		map.put("loginMemberNo", loginMemberNo);
+		
+		return sqlSession.update("todolistMapper.allCompleted", map);
 	}
 
 	// 완성 안했을 시 
-	public int unfinished(String date) {
-		return sqlSession.update("todolistMapper.unfinished", date);
+	public int unfinished(String date, int loginMemberNo) {
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("date", date);
+		map.put("loginMemberNo", loginMemberNo);
+		
+		return sqlSession.update("todolistMapper.unfinished", map);
 	}
 }

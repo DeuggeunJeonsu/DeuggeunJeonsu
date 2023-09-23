@@ -64,8 +64,13 @@ public class TodoListController {
 	
 	// 체크리스트 삭제
 	@PostMapping("todo/delete")
-	public int todoDelete (@RequestParam("todoNo") int todoNo) {
-		return service.todoDelete(todoNo);
+	public int todoDelete (@RequestBody TodoList todo
+					,@SessionAttribute("loginMember") Member loginMember) {
+		
+//		System.out.println(todo);
+		int loginMemberNo =loginMember.getMemberNo();
+		todo.setMemberNo(loginMemberNo);
+		return service.todoDelete(todo);
 	}
 	
 	// 체크리스트 추가
@@ -76,14 +81,22 @@ public class TodoListController {
 	
 	// 투두리스트 다 완성시 
 	@GetMapping("/todo/allCompleted")
-	public int allCompleted(@RequestParam("date") String date) {
-		return service.allCompleted(date);
+	public int allCompleted(@RequestParam("date") String date
+			,@SessionAttribute("loginMember") Member loginMember) {
+		
+		int loginMemberNo =loginMember.getMemberNo();
+		
+		return service.allCompleted(date, loginMemberNo);
 	}
 	
 	// 투두리스트 비완성
 	@GetMapping("/todo/unfinished")
-	public int unfinished(@RequestParam("date") String date) {
-		return service.unfinished(date);
+	public int unfinished(@RequestParam("date") String date
+			,@SessionAttribute("loginMember") Member loginMember) {
+		
+		int loginMemberNo =loginMember.getMemberNo();
+		
+		return service.unfinished(date, loginMemberNo);
 	}
 
 

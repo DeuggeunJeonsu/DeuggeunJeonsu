@@ -38,8 +38,8 @@ public class TodoListServiceImp implements TodoListService{
 	// 투두 리스트 삭제
 	@Transactional(rollbackFor = Exception.class)
 	@Override
-	public int todoDelete(int todoNo) {
-		return dao.todoDelete(todoNo);
+	public int todoDelete(TodoList todo) {
+		return dao.todoDelete(todo);
 	}
 	
 	// 투두 리스트 추가
@@ -52,15 +52,15 @@ public class TodoListServiceImp implements TodoListService{
 	//다 완성 시 
 	@Transactional(rollbackFor = Exception.class)
 	@Override
-	public int allCompleted(String date) {
-		return dao.allCompleted(date);
+	public int allCompleted(String date, int loginMemberNo ) {
+		return dao.allCompleted(date, loginMemberNo);
 	}
 	
 	// 완성했다가 취소
 	@Transactional(rollbackFor = Exception.class)
 	@Override
-	public int unfinished(String date) {
-		return dao.unfinished(date);
+	public int unfinished(String date, int loginMemberNo ) {
+		return dao.unfinished(date, loginMemberNo);
 	}
 	
 	
