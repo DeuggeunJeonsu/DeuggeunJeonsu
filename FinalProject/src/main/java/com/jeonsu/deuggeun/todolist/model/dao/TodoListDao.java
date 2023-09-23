@@ -51,7 +51,7 @@ public class TodoListDao {
 		int result2 =0;
 		if(createDT==null) {
 			result2 = sqlSession.insert("todolistMapper.calenderInsert", insertTodo);
-			System.out.println(result2);
+//			System.out.println(result2);
 		}
 		if(result > 0 ) {
 			result = sqlSession.insert("todolistMapper.todoDateInsert", insertTodo);
