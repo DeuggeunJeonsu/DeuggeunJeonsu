@@ -128,13 +128,14 @@
         <result property="memberNo" column="MEMBER_NO" />
         <result property="delEmail" column="DEL_EMAIL" />
         <result property="orderDate" column="ORDER_DATE" />
+        <result property="memberNickname" column="MEMBER_NICKNAME" />
     </resultMap>
 
     <!-- 특정 게시판의 삭제되지 않은 게시글 수 조회 -->
     <select id="getListCount" resultType="_int">
         SELECT COUNT(*)
-        FROM BOARD
-        WHERE BOARD_ST = 'N'
+        FROM PRODUCT
+        WHERE PRODUCT_ST = 'Y'
         AND BOARD_CODE = #{boardCode}
     </select>
 
@@ -484,15 +485,25 @@
           AND P_IMG_PATH LIKE '%main%'
         ORDER BY PRODUCT_PRICE DESC
     </select>
+
+    <!-- 후기 많은순 정렬 -->
     <select id="selectMarketListByReview" parameterType="map" resultMap="board_rm">
-    SELECT P.PRODUCT_TITLE, P.PRODUCT_PRICE, P_IMG.P_IMG_PATH, P.PRODUCT_NO, COALESCE(REVIEW_COUNT, 0) AS REVIEW_COUNT
-    FROM PRODUCT P
-    JOIN PRODUCT_IMG P_IMG ON P.PRODUCT_NO = P_IMG.PRODUCT_NO
-    LEFT JOIN (SELECT PRODUCT_NO, COUNT(*) REVIEW_COUNT FROM REVIEW GROUP BY PRODUCT_NO) REVIEW_COUNTS
-    ON P.PRODUCT_NO = REVIEW_COUNTS.PRODUCT_NO
-    WHERE P.BOARD_CODE = #{boardCode}
-    AND P_IMG.P_IMG_PATH LIKE '%main%'
-    ORDER BY REVIEW_COUNT DESC, P.PRODUCT_PRICE DESC
+        SELECT P.PRODUCT_TITLE, P.PRODUCT_PRICE, P_IMG.P_IMG_PATH, P.PRODUCT_NO, COALESCE(REVIEW_COUNT, 0) AS REVIEW_COUNT
+        FROM PRODUCT P
+        JOIN PRODUCT_IMG P_IMG ON P.PRODUCT_NO = P_IMG.PRODUCT_NO
+        LEFT JOIN (SELECT PRODUCT_NO, COUNT(*) REVIEW_COUNT FROM REVIEW GROUP BY PRODUCT_NO) REVIEW_COUNTS
+        ON P.PRODUCT_NO = REVIEW_COUNTS.PRODUCT_NO
+        WHERE P.BOARD_CODE = #{boardCode}
+        AND P_IMG.P_IMG_PATH LIKE '%main%'
+        ORDER BY REVIEW_COUNT DESC, P.PRODUCT_PRICE DESC
+    </select>
+
+    <!-- 결제완료 페이지 -->
+    <select id="selectOrderList" resultMap="order_rm">
+        SELECT ORDER_NO, TOTAL_AMOUNT, ORDER_DATE, DEL_NAME, DEL_ADDR, DEL_PHONE, DEL_EMAIL, DEL_NOTE, MEMBER_NICKNAME
+        FROM "ORDER"
+            JOIN MEMBER USING (MEMBER_NO)
+        WHERE ORDER_NO = #{orderNo}
     </select>
 
 </mapper>

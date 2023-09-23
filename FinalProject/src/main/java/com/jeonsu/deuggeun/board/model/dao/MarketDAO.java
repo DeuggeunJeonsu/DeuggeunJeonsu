@@ -258,4 +258,9 @@ public class MarketDAO {
 		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
 		return sqlSession.selectList("marketMapper.selectMarketListByReview", boardCode, rowBounds);
 	}
+
+	// 결제완료 페이지
+	public List<Order> selectOrderList(int orderNo) {
+		return sqlSession.selectList("marketMapper.selectOrderList", orderNo);
+	}
 }

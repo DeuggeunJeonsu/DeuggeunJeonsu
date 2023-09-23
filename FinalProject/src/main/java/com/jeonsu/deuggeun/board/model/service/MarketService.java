@@ -72,5 +72,6 @@ public interface MarketService {
     // 바로 구매 하기
     int buyItNow(Cart cart);
 
-
+    // 구매완료 페이지
+    List<Order> selectOrderList(int orderNo);
 }

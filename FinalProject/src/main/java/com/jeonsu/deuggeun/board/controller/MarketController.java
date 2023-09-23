@@ -108,6 +108,19 @@ public class MarketController {
 		return "/board/market/marketOrder";
 	}
 
+	// 결제 성공 페이지
+	@GetMapping("/success/{result}")
+	public String successPage(@SessionAttribute(value = "loginMember", required = false) Member loginMember,
+							  @PathVariable("result") int orderNo,
+							  Model model){
+		int memberNo = loginMember.getMemberNo();
+
+		List<Order> orderList = service.selectOrderList(orderNo);
+
+		model.addAttribute("orderList", orderList);
+		return "/board/market/Success";
+	}
+
 	// 게시글 상세조회
 	@GetMapping("/{boardCode}/detail/{productNo}")
 	public String marketDetail(@PathVariable("boardCode") int boardCode

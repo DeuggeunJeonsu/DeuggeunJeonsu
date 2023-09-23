@@ -245,12 +245,13 @@ th, td {
     padding: 10px 20px;
     border-bottom: 1px solid #C4C4C4;
     vertical-align: middle;
+    font-family: 'Montserrat','Nanum Gothic',sans-serif;
 }
 
 th {
     border-right: 1px solid #C4C4C4;
     font-size: 16px;
-    font-weight: normal;
+    font-weight: 500;
     text-align: left;
 }
 
