@@ -58,15 +58,24 @@
             <div class="nav-container">
                 <div class="nav-icon">
                     <ul>
-                        <li class="basket">
-                            <a href="/board/cartList">
-                                <i class="fa fa-solid fa-cart-shopping"></i>
-                                <span class="shopping-count">3</span>
-                            </a>
-                        </li>
+
                         <li class="search">
                             <a href="#">
-                                <i class="fa fa-solid fa-magnifying-glass"></i>
+                                <i class="fa fa-solid fa-magnifying-glass fa-lg"></i>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="/board/cartList">
+                                <i class="fa fa-solid fa-cart-shopping fa-lg"></i>
+                                <span class="count-area" id="shopping-count">9</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="/chatting">
+                                <i class="fa fa-solid fa-message fa-lg"></i>
+                                <span class="count-area" id="chatting-count">27</span>
                             </a>
                         </li>
 
