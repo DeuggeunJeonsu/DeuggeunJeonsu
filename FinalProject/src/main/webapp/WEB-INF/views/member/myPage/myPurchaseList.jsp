@@ -68,7 +68,11 @@
                             <tr>
                                 <td>${item.orderDate}</td>
                                 <td>${item.orderNo}</td>
-                                <td>${item.productName}</td>
+                                <td>
+                                    <a href="/board/5/detail/${item.productNo}">
+                                            ${item.productName}
+                                    </a>
+                                </td>
                                 <td>${item.total}</td>
                                 <td>
                                     <c:choose>
@@ -77,10 +81,15 @@
                                     </c:choose>
                                 </td>
                                 <td>
-                                    <button class="inquiryBtn inquiryBtnColor2">문의 하기</button>
+<%--                                    <button class="inquiryBtn inquiryBtnColor2">문의 하기</button>--%>
+                                    <button class="inquiryBtn inquiryBtnColor2"
+                                            onclick="location.href='/board/5/inquiry/${item.productNo}/insert'">문의 하기</button>
+
                                 </td>
                                 <td>
-                                    <button class="inquiryBtn inquiryBtnColor1">리뷰 작성</button>
+<%--                                    @GetMapping("/{boardCode}/review/{productNo}/insert")--%>
+                                    <button class="inquiryBtn inquiryBtnColor1"
+                                    onclick="location.href='/board/5/review/${item.productNo}/insert'">리뷰 작성</button>
                                 </td>
                             </tr>
                             <input type="hidden" value="${item.productNo}" id="productNo" />

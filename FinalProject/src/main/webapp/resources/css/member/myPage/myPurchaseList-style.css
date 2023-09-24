@@ -42,6 +42,11 @@
 }
 
 /* 구매 내역 목록 조회 테이블 */
+a {
+    text-decoration: none;  /* 밑줄 제거 */
+    color: inherit;         /* 현재 텍스트 색상을 사용 */
+    cursor: pointer;        /* 마우스 커서를 포인터로 변경 */
+}
 #purchaseList{
     width: 750px;
     height: auto;
