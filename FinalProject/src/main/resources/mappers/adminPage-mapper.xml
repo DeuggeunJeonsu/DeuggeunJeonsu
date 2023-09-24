@@ -116,5 +116,11 @@
 		DEFAULT, DEFAULT, DEFAULT, DEFAULT,
 		#{memberNo}, 6)
 	</insert>
-
+	
+	<!-- 회원 목록 상세조회 -->
+	<select id="adminInquiryDetail">
+		SELECT BOARD_TITLE, BOARD_CONTENT
+		FROM BOARD
+		WHERE BOARD_NO = #{boardNo}
+	</select>
 </mapper>
