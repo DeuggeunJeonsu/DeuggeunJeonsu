@@ -66,19 +66,21 @@
                         </li>
 
                         <li>
-                        <c:if test="${!empty loginMember}">
-                            <a href="/board/cartList">
-                                <i class="fa fa-solid fa-cart-shopping fa-lg"></i>
-                                <span class="count-area" id="shopping-count">9</span>
-                            </a>
-                        </c:if>
+                            <c:if test="${!empty loginMember}">
+                                <a href="/board/cartList">
+                                    <i class="fa fa-solid fa-cart-shopping fa-lg"></i>
+                                    <span class="count-area" id="shopping-count">9</span>
+                                </a>
+                            </c:if>
                         </li>
 
                         <li>
-                            <a href="/chatting">
-                                <i class="fa fa-solid fa-message fa-lg"></i>
-                                <span class="count-area" id="chatting-count">27</span>
-                            </a>
+                            <c:if test="${!empty loginMember}">
+                                <a href="/chatting">
+                                    <i class="fa fa-solid fa-message fa-lg"></i>
+                                    <span class="count-area" id="chatting-count">27</span>
+                                </a>
+                            </c:if>
                         </li>
 
                         <%-- 로그인 X --%>
