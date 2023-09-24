@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.jeonsu.deuggeun.adminController.model.dao.AdminDAO;
 import com.jeonsu.deuggeun.adminController.model.dto.AdminMember;
+import com.jeonsu.deuggeun.board.model.dto.Board;
 import com.jeonsu.deuggeun.member.model.dto.Member;
 
 @Service
@@ -115,6 +116,14 @@ public class AdminServiceimpl implements AdminService{
 		  }
 		 
 		return result;
+	}
+
+	// 문의 상세정보 조회
+	@Override
+	public AdminMember adminInquiryDetail(int boardNo) {
+		
+		AdminMember boardDetail = dao.adminInquiryDetail(boardNo);
+		return null;
 	}
 
 

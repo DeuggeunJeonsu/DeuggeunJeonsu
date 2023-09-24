@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.jeonsu.deuggeun.adminController.model.dto.AdminMember;
+import com.jeonsu.deuggeun.board.model.dto.Board;
 
 @Repository
 public class AdminDAO {
@@ -76,6 +77,15 @@ public class AdminDAO {
 
 	public int marketInWrite(AdminMember board) {
 		return sqlSession.update("adminMapper.marketInWrite", board);
+	}
+
+
+	/** 회원 문의 상세조회
+	 * @param board
+	 * @return
+	 */
+	public AdminMember adminInquiryDetail(int boardNo) {
+		return sqlSession.selectOne("adminMapper.adminInquiryDetail", boardNo);
 	}
 
 
