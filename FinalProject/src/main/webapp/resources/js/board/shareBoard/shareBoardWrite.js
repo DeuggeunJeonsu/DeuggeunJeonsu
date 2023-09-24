@@ -2,6 +2,7 @@
 
 const btn = document.querySelector('.btn-select');
 const list = document.querySelector('.list-member');
+const routineType = document.querySelector('.routineType');
 
 // 버튼에 포커스 이벤트 리스너를 추가합니다.
 btn.addEventListener('focus', () => {
@@ -11,6 +12,7 @@ btn.addEventListener('focus', () => {
 list.addEventListener('click', (event) => {
     if (event.target.nodeName === "BUTTON") {
         btn.innerText = event.target.innerText;
+        routineType.value = event.target.innerText;
         btn.classList.remove('on');
     }
 });
