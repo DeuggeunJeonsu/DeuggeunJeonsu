@@ -106,7 +106,7 @@
                                     <c:choose>
                                         <c:when test="${empty iList}">
                                             <tr>
-                                                <td colspan="5">작성된 리뷰 게시글이 없습니다.</td>
+                                                <td colspan="5">작성된 문의 게시글이 없습니다.</td>
                                             </tr>
                                         </c:when>
                                         <c:otherwise>

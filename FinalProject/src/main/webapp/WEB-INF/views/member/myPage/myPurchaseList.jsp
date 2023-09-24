@@ -81,13 +81,11 @@
                                     </c:choose>
                                 </td>
                                 <td>
-<%--                                    <button class="inquiryBtn inquiryBtnColor2">문의 하기</button>--%>
                                     <button class="inquiryBtn inquiryBtnColor2"
                                             onclick="location.href='/board/5/inquiry/${item.productNo}/insert'">문의 하기</button>
 
                                 </td>
                                 <td>
-<%--                                    @GetMapping("/{boardCode}/review/{productNo}/insert")--%>
                                     <button class="inquiryBtn inquiryBtnColor1"
                                     onclick="location.href='/board/5/review/${item.productNo}/insert'">리뷰 작성</button>
                                 </td>
