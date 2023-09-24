@@ -54,7 +54,7 @@
 //
 //        // Jackson에서 제공하는 객체
 //        // JSON String -> VO Object
-//        objectMapper objectMapper = new ObjectMapper();
+//        ObjectMapper objectMapper = new ObjectMapper();
 //
 //        Message msg = objectMapper.readValue( message.getPayload(), Message.class);
 //        // Message 객체 확인
