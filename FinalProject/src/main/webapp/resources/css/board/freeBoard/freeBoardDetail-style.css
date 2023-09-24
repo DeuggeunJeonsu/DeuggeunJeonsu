@@ -302,7 +302,7 @@
 
 /* 나머지 버튼 */
 #btn-area{
-    margin: 20px 0;
+    margin: 60px 0 0 0;
 }
 
 #btn-area > div{
@@ -492,4 +492,30 @@
 
 .child-comment{
     padding-left: 50px;
+}
+
+/* 카카오톡 공유하기 */
+#social-btn-area{
+    width: 300px;
+    display: flex;
+    justify-content: center;
+}
+
+#kakao-share-btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 170px !important;
+    padding: 0 20px;
+
+    position: relative;
+    left: 47px;
+}
+
+#social-btn-area > button:hover{
+    background-color: #F7E600;
+}
+
+#kakao-logo{
+    width: 30px;
 }
