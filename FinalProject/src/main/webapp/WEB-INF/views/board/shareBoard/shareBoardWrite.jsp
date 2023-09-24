@@ -26,7 +26,7 @@
                     <div id="profile-area">
                         <img src="/resources/images/user.png">
                     </div>
-                    <span>닉네임</span>
+                    <span>${loginMember.member}</span>
                 </div>
                 <button type="submit" id="writebtn">작성완료</button>
             </div>
@@ -59,6 +59,7 @@
                                     <li><button type="button">어깨</button></li>
                                     <li><button type="button">팔</button></li>
                                 </ul>
+                                <input type="hidden" class="routineType" name="tagContent" value=""/>
                             </article>
                         </div>
                         <textarea placeholder="루틴 설명을 입력해주세요" name="boardContent"></textarea>

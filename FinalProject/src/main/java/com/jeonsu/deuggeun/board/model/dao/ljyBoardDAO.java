@@ -101,5 +101,53 @@ public class ljyBoardDAO {
 	public int updateBoardReadCount(int boardNo) {
 		return sqlSession.update("shareBoardMapper.updateBoardReadCount", boardNo);
 	}
+	
+	
+	/** 게시글 삭제
+	 * @param map
+	 * @return result
+	 */
+	public int shareBoardDelete(Map<String, Object> map) {
+		return sqlSession.update("shareBoardMapper.shareBoardDelete", map);
+	}
+
+	/** 게시글 삭제 시 이미지 삭제
+	 * @param map
+	 * @return result
+	 */
+	public int shareBoardImageDelete(Map<String, Object> map) {
+		return sqlSession.delete("shareBoardMapper.shareBoardImageDelete", map);
+	}
+
+	/** 게시글 삭제 시 루틴 삭제
+	 * @param map
+	 * @return result
+	 */
+	public int routineDelete(Map<String, Object> map) {
+		return sqlSession.delete("shareBoardMapper.routineDelete", map);
+	}
+
+	/** 운동타입 insert
+	 * @param map
+	 * @return result
+	 */
+	public int hashtagInsert(Board board) {
+		int result =0;
+		
+		result = sqlSession.insert("shareBoardMapper.hashtagInsert", board);
+	
+		if(result >0) {
+			result= sqlSession.insert("shareBoardMapper.hashtagInsert2", board);
+		}
+		 return result;
+	}
+
+	/** 게시글 삭제 시 운동타입 삭제
+	 * @param map
+	 * @return result
+	 */
+	public int shareBoardHashtagDelete(Map<String, Object> map) {
+		return sqlSession.delete("shareBoardMapper.shareBoardHashtagDelete", map);
+	}
 
 }

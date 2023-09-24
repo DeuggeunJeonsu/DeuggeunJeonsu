@@ -106,6 +106,9 @@ public class ljyBoardServiceImpl implements ljyBoardService{
 		// -> boardNo (시퀀스로 생성한 번호) 반환 
 		int boardNo = dao.boardInsert(board);
 
+		// 해시태그 insert 
+		int result2 = dao.hashtagInsert(board);
+		
 		// 2. 게시글 삽입 성공시 
 		// 업로드 되는 이미지가 있다면 BOARD_IMG 테이블에 삽입하는 DAO 호출
 		if(boardNo > 0 ) { //게시글 성공 시
@@ -178,5 +181,26 @@ public class ljyBoardServiceImpl implements ljyBoardService{
 	@Override
 	public List<String> selectImageList() {
 		return dao.selectImageList();
+	}
+	
+	
+	// 게시글 삭제
+	@Transactional(rollbackFor = Exception.class)
+	@Override
+	public int shareboardDelete(Map<String, Object> map) {
+		
+		// 게시글 내용 삭제
+		int result = dao.shareBoardDelete(map);
+		
+		// 게시글 내용 삭제에 성공했을 때
+		if(result > 0) {
+		
+			// 게시글에 포함되어 있던 루틴/이미지 삭제
+			result += dao.shareBoardHashtagDelete(map);
+			result += dao.routineDelete(map);
+			result += dao.shareBoardImageDelete(map);
+		}
+		
+		return result;
 	}
 }
