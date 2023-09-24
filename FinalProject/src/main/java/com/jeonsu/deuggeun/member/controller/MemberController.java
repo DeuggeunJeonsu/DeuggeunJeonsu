@@ -7,6 +7,8 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,14 +23,18 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jeonsu.deuggeun.common.utility.Util;
 import com.jeonsu.deuggeun.member.model.dto.Member;
 import com.jeonsu.deuggeun.member.model.service.MemberService;
 
-@Controller 
+import lombok.extern.slf4j.Slf4j;
 
+@Controller 
 @RequestMapping("/member")
 @SessionAttributes({"loginMember"})
+@Slf4j
 public class MemberController {
 	
 	@Autowired
@@ -41,19 +47,19 @@ public class MemberController {
 	}
 	
 	// 로그인 요청 처리
-	@PostMapping("/login")
+	@PostMapping("/login") 
 	public String login(Member inputMember, Model model,
 						@RequestHeader(value="referer") String referer,
 						@RequestParam(value="saveId", required=false) String saveId,
 						HttpServletResponse resp,
 						RedirectAttributes ra){
 		
+		log.debug("/login , inputMember = {}", inputMember);
 		// 로그인 서비스 호출
 		Member loginMember = service.login(inputMember);
 			
 		// DB 조회 결과 확인
-	   	System.out.println(loginMember);
-	
+	   	log.debug("loginMember = {}", loginMember);
 		String path = "redirect:";
 	   
 		if(loginMember != null) { // 로그인 성공 시
@@ -83,6 +89,7 @@ public class MemberController {
 		} 
 		else { // 로그인 실패 시
 			ra.addFlashAttribute("message", "아이디 또는 비밀번호가 일치하지 않습니다.");
+			log.error("{} 로그인 실패",inputMember);
 			path += referer; // 이전 페이지로
 		}
 			
@@ -106,7 +113,7 @@ public class MemberController {
 	}
 	
 	// 아이디찾기 sms 인증번호 전송 ajax
-	@ResponseBody
+	@ResponseBody //(viewResolver -> jsp찾는다 X, 리턴 값을 JSON으로 STring타입으로 리턴, jackson이 스프링 기본 라이브러리로 사용됨)
 	@PostMapping(value="/sendSms", produces = "application/json; charset=UTF-8")
 	public String findId(@RequestBody String memberTel, HttpServletResponse resp) {
 		

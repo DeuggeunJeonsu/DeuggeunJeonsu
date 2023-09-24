@@ -57,24 +57,15 @@
 	<aop:aspectj-autoproxy />
 	
 	<!-- 웹소켓 처리 클래스를 bean으로 등록 -->
-<!--	<beans:bean id="chatHandler" class="com.jeonsu.deuggeun.member.model.websocket.ChattingWebsocketHandler" />-->
-	
+	<beans:bean id="chatHandler" class="com.jeonsu.deuggeun.member.model.websocket.ChattingWebsocketHandler" />
+
 	<!-- 어떤 주소로 웹소켓 요청이 오면 세션을 가로챌지 지정 -->
-<!--	<websocket:handlers>-->
-<!--		&lt;!&ndash; websocket 매핑 주소 &ndash;&gt;-->
-<!--		<websocket:mapping handler="chatHandler" path="/chattingSock" />-->
-<!--		&lt;!&ndash; 요청 클라이언트의 세션을 가로채서 WebSocketSession에 넣어주는 역할 &ndash;&gt;-->
-<!--		<websocket:handshake-interceptors>-->
-<!--			&lt;!&ndash; interceptor : http통신에서 request, response를 가로채는 역할 handshake-interceptors -->
-<!--				:Httpsession에 있는 값을 가로채서 WebSocketSession 넣어주는 역할 &ndash;&gt;-->
-<!--			<beans:bean-->
-<!--				class="org.springframework.web.socket.server.support.HttpSessionHandshakeInterceptor" />-->
-<!--		</websocket:handshake-interceptors>-->
-<!--		&lt;!&ndash; SockJS를 이용한 웹소켓 연결 요청임을 명시 &ndash;&gt;-->
-<!--		<websocket:sockjs />-->
-<!--	</websocket:handlers>-->
-
-
-
+	<websocket:handlers>
+		<websocket:mapping handler="chatHandler" path="/chattingSock" />
+		<websocket:handshake-interceptors>
+			<beans:bean class="org.springframework.web.socket.server.support.HttpSessionHandshakeInterceptor" />
+		</websocket:handshake-interceptors>
+		<websocket:sockjs />
+	</websocket:handlers>
 
 </beans:beans>

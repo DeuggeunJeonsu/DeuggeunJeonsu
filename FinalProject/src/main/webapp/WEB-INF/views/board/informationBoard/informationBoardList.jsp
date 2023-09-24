@@ -45,8 +45,11 @@
             </div>
 
             <div class="search-place">
-                <input type="search" id="market-search" placeholder="search...">
-                <button id="search-button"><i class="fas fa-search"></i></button>
+                <form method="get" id="boardSearch">
+                    <input type="hidden" name="key" value="tc">
+                    <input type="search" name="query" id="searchQuery" placeholder="search..." autocomplete="off" value=${param.query}>
+                    <button id="search-button"><i class="fas fa-search"></i></button>
+                </form>
             </div>
 
         </div>

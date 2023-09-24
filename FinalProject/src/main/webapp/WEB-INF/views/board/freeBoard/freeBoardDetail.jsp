@@ -24,9 +24,20 @@
 <%-- freeBoardDetail-style.css 연결 --%>
 <link rel="stylesheet" href="/resources/css/board/freeBoard/freeBoardDetail-style.css">
 
+<%-- 카카오 라이브러리 추가 --%>
+<script src="https://t1.kakaocdn.net/kakao_js_sdk/2.4.0/kakao.min.js" integrity="sha384-mXVrIX2T/Kszp6Z0aEWaA8Nm7J6/ZeWXbL8UpGRjKwWe56Srd/iyNmWMBhcItAjH" crossorigin="anonymous"></script>
+<script>
+// SDK를 초기화 합니다. 사용할 앱의 JavaScript 키를 설정해야 합니다.
+Kakao.init('5600ed391bce28878bbfdfcae636db6e');
+
+// SDK 초기화 여부를 판단합니다.
+console.log(Kakao.isInitialized());
+</script>
+
 <script>
     const followCheck = "${followCheck}";
 </script>
+
 </head>
 <body>
 
@@ -66,7 +77,7 @@
 
                 <div id="nick-area">
                     
-                    <div id="nickname"><a href="#">${board.memberNickname}</a></div>
+                    <div id="nickname"><a href="/myPage/memberFeed/${board.memberNo}">${board.memberNickname}</a></div>
                     <div>
                         <c:if test="${board.memberNo != loginMember.memberNo && loginMember != null}">
 
@@ -133,7 +144,17 @@
                     <div>
                         <button id="goToListBtn">목록으로</button>
                         
+                        <c:if test="${!empty loginMember}">
+                            <div id="social-btn-area">
+                                <button id="kakao-share-btn" onclick="shareMessage()">
+                                    <img id="kakao-logo" src="/resources/images/freeBoard/kakaotalk_logo.png">
+                                    &nbsp;카카오톡 공유하기
+                                </button>
+                            </div>
+                        </c:if>
+
                         <c:if test="${loginMember.memberNo == board.memberNo}">
+
                             <div>
                                 <button id="updateBtn">수정하기</button>
                                 <button id="deleteBtn">삭제하기</button>
@@ -238,11 +259,14 @@
 	</section>
 
     <script>
-
         const boardNo = "${board.boardNo}";
         const boardMemberNo = "${board.memberNo}";
         const loginMemberNo = "${loginMember.memberNo}";
 
+        const profile = "${board.profileImage}";
+        const nickname = "${board.memberNickname}";
+        const title = "${board.boardTitle}";
+        const content = '${board.boardContent}';
     </script>
 
     <!-- footer include -->

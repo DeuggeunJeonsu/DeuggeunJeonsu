@@ -23,6 +23,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Component;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 @Component
 public class Util {
 	
@@ -91,6 +93,7 @@ public class Util {
         String apiUrl = hostNameUrl + requestUrl;
 
         // JSON 을 활용한 body data 생성
+        // ObjectMapper mapper = new ObjectMapper();
         JSONObject bodyJson = new JSONObject();
         JSONObject toJson = new JSONObject();
         JSONArray  toArr = new JSONArray();

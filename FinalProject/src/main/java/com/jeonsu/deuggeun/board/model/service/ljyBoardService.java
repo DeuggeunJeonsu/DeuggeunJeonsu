@@ -38,6 +38,9 @@ public interface ljyBoardService {
 	// 사진 db목록 조회
 	List<String> selectImageList();
 
+	// 게시글 삭제 
+	int shareboardDelete(Map<String, Object> map);
+
 	
 
 
