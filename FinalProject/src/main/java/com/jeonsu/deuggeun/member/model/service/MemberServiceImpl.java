@@ -12,27 +12,29 @@ import com.jeonsu.deuggeun.member.model.dao.MemberDAO;
 import com.jeonsu.deuggeun.member.model.dto.Member;
 import com.jeonsu.deuggeun.member.model.dto.MemberBMI;
 
+import lombok.extern.slf4j.Slf4j;
+
 @Service
+@Slf4j
 public class MemberServiceImpl implements MemberService {
 	
 	@Autowired
 	private MemberDAO dao;
 	
-//	@Autowired 
-//	private BCryptPasswordEncoder bcrypt;
+	@Autowired 
+	private BCryptPasswordEncoder bcrypt;
 	
 	// 로그인 서비스
 	@Override
 	public Member login(Member inputMember) {
 		
-//		System.out.println("암호화 확인 : " + bcrypt.encode(inputMember.getMemberPw()));
+		log.debug("암호화 확인 : " + bcrypt.encode(inputMember.getMemberPw()));
 		
 		Member loginMember = dao.login(inputMember);
 		
 		if(loginMember != null) { // 아이디가 일치하고
 			// 입력한 pw와 DB의 암호화된 pw가 같으면
-//			if(bcrypt.matches(inputMember.getMemberPw(), loginMember.getMemberPw())) {
-			if(inputMember.getMemberPw().equals(loginMember.getMemberPw())) {
+			if(bcrypt.matches(inputMember.getMemberPw(), loginMember.getMemberPw())) {
 				// 로그인 정보에서 비밀번호 제외시켜준 후 로그인
 				loginMember.setMemberPw(null);
 			}
@@ -66,7 +68,7 @@ public class MemberServiceImpl implements MemberService {
 	public int signUp(Member inputMember) {
 		
 		// 입력된 비밀번호 암호화 후 다시 세팅
-//		inputMember.setMemberPw(bcrypt.encode(inputMember.getMemberPw()));
+		inputMember.setMemberPw(bcrypt.encode(inputMember.getMemberPw()));
 		
 		// 회원가입 
 		return dao.signUp(inputMember);

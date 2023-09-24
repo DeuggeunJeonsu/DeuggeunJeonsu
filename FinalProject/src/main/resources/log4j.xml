@@ -12,11 +12,12 @@
 	
 	<!-- Application Loggers -->
 	<logger name="com.jeonsu.deuggeun">
-		<level value="info" />
+		<level value="debug" />
+		<appdender-ref ref="console" />
 	</logger>
 	
 	<!-- 3rdparty Loggers -->
-	<logger name="org.springframework.core">
+	<!--  <logger name="org.springframework.core">
 		<level value="info" />
 	</logger>
 	
@@ -30,7 +31,7 @@
 
 	<logger name="org.springframework.web">
 		<level value="info" />
-	</logger>
+	</logger>  -->
 
 	<!-- Root Logger -->
 	<root>
