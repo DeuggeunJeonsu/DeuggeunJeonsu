@@ -1,10 +1,2 @@
-// const productNo = "${purchaseList.productNo}";
-//
-// function goToInquiry() {
-//
-//     var boardCode = 5;
-//
-//     window.location.href = "/" + boardCode + "/inquiry/" + productNo + "/insert";
-// }
-
-/* ------------------------------------------------------------------------------------------- */
+// <button className="inquiryBtn inquiryBtnColor2"
+//         onClick="location.href='${pageContext.request.contextPath}/${boardCode}/inquiry/${item.productNo}/insert'">문의 하기</button>
