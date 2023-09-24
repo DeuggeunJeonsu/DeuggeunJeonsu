@@ -3,8 +3,13 @@ package com.jeonsu.deuggeun.adminController.model.service;
 import java.util.Map;
 
 import com.jeonsu.deuggeun.adminController.model.dto.AdminMember;
+import com.jeonsu.deuggeun.board.model.dto.Board;
 import com.jeonsu.deuggeun.member.model.dto.Member;
 
+/**
+ * @author jk031
+ *
+ */
 public interface AdminService {
 
 	/** 멤버 목록 조회
@@ -46,6 +51,12 @@ public interface AdminService {
 	 * @return result
 	 */
 	int marketInWrite(AdminMember board, int boardNo);
+
+	/** 회원 문의 상세정보 조회
+	 * @param boardNo
+	 * @return Board
+	 */
+	AdminMember adminInquiryDetail(int boardNo);
 
 
 }

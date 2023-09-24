@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.jeonsu.deuggeun.adminController.model.dto.AdminMember;
 import com.jeonsu.deuggeun.adminController.model.service.AdminService;
+import com.jeonsu.deuggeun.board.model.dto.Board;
 
 @Controller
 @RequestMapping("/admin")
@@ -75,6 +76,13 @@ public class AdminController {
 		
 		model.addAttribute("boardNo" , boardNo);
 		return "admin/adminMarketWrite";
+	}
+	
+	@GetMapping("/adminInquiryDetail")
+	public AdminMember adminInquiryDetail(@RequestParam("boardNo") int boardNo) {
+		
+		
+		return service.adminInquiryDetail(boardNo);
 	}
 
 
