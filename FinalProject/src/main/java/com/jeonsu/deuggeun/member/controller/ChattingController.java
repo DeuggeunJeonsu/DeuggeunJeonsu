@@ -18,10 +18,14 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import com.jeonsu.deuggeun.member.model.dto.ChattingRoom;
 import com.jeonsu.deuggeun.member.model.dto.Message;
 import com.jeonsu.deuggeun.member.model.service.ChattingService;
+
+import lombok.extern.slf4j.Slf4j;
+
 import com.jeonsu.deuggeun.member.model.dto.Member;
 
 @SessionAttributes({"loginMember"})
 @Controller
+@Slf4j
 public class ChattingController {
     
     @Autowired
@@ -30,6 +34,7 @@ public class ChattingController {
     // 채팅 페이지로 이동
     @GetMapping("/chatting")
     public String chatting(@SessionAttribute("loginMember") Member loginMember, Model model) {
+    	log.debug("{}",loginMember);
         // 채팅방 목록 조회해서 전달
         List<ChattingRoom> roomList = service.selectRoomList(loginMember.getMemberNo());
         model.addAttribute("roomList", roomList);
@@ -87,15 +92,5 @@ public class ChattingController {
         return service.selectMessageList(paramMap);
     }
     
-    
 
-    
-    
-    
-    
-    
-    
-    
-    
-    
 }

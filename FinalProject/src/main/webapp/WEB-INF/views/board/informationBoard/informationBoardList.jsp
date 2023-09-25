@@ -3,16 +3,15 @@
 <!DOCTYPE html>
 <html lang="ko">
 
+<%-- map에 저장된 값 변수에 저장 --%>
+<c:set var="pagination" value="${map.pagination}"/>
+<c:set var="boardList" value="${map.boardList}"/>
+<c:set var="boardCode" value="1"/>
+
 <head>
     <meta charset="UTF-8">
     <title>건강/운동정보</title>
     <link rel="stylesheet" href="/resources/css/board/informationBoard/informationBoardList-style.css">
-    <!-- JQuery lib -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <!-- slick lib -->
-    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
-    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
-    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 
     <link rel="apple-touch-icon" sizes="180x180" href="/resources/images/favicon_io/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/resources/images/favicon_io/favicon-32x32.png">
@@ -24,26 +23,60 @@
 
 	<jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
 	
+    <%-- 검색어가 있을 경우 --%>
+    <c:if test="${!empty param.key}" >
+        <c:set var="sp" value="&key=${param.key}&query=${param.query}"/>
+    </c:if>
+
 	<section id="main-container">
         <div id="title-area">
             <div><h1>건강/운동정보</h1></div>
             <div>득근전수 회원님들이 유용한 지식을 얻어갈 수 있는 공간입니다.</div>
         </div>
+
         <div id="search-area">
-            
+
+            <%-- 게시글 빠른 검색 --%>
             <div id="sort-btn-area">
-                <button id="healthCategory"># 건강정보</button>
-                <button id="exerciseCategory"># 운동정보</button>
-                <button id="trendCategory"># 최근동향</button>
+                <a href="/board/1/list?key=h">
+                    <c:if test="${param.key == 'h'}" >
+                        <span name="key" value="h" style="font-weight:bold; color:#99E1ED" id="healthCategory"># 건강정보</span>
+                    </c:if>
+                </a>
+                <c:if test="${param.key != 'h'}" >
+                    <span name="key" value="h" id="healthCategory"># 건강정보</span>
+                </c:if>
+
+                <a href="/board/1/list?key=e">
+                    <c:if test="${param.key == 'e'}" >
+                        <span name="key" value="e" style="font-weight:bold; color:#99E1ED" id="exerciseCategory"># 운동정보</span>
+                    </c:if>
+                </a>
+                <c:if test="${param.key != 'e'}" >
+                    <span name="key" value="e" id="exerciseCategory"># 운동정보</span>
+                </c:if>
+
+                <a href="/board/1/list?key=f">
+                    <c:if test="${param.key == 'f'}" >
+                        <span name="key" value="f" style="font-weight:bold; color:#99E1ED" id="trendCategory"># 최근동향</span>
+                    </c:if>
+                </a>
+                <c:if test="${param.key != 'c'}" >
+                    <span name="key" value="f" id="exerciseCategory"># 최근동향</span>
+                </c:if>
             </div>
 
-            <div class="hashTag-area">
-                <div>
-                    <span>"어깨통증" 에 대한 검색결과</span>
-                    <i class="fa-solid fa-circle-xmark" style="color: #ffffff;"></i>
-                </div>                
-            </div>
+            <%-- 검색 결과 화면에서 검색어 해시태그로 표현 --%>
+            <c:if test="${!empty param.query}" >
+                <div class="hashTag-area">
+                    <div>
+                        <span>"${param.query}" 에 대한 검색결과</span>
+                        <i class="fa-solid fa-circle-xmark" style="color: #ffffff;"></i>
+                    </div>                
+                </div>
+            </c:if>
 
+            <%-- 게시글 상세 검색 --%>
             <div class="search-place">
                 <form method="get" id="boardSearch">
                     <input type="hidden" name="key" value="tc">
@@ -51,127 +84,91 @@
                     <button id="search-button"><i class="fas fa-search"></i></button>
                 </form>
             </div>
-
         </div>
 
         <div id="list-area">
-            <div class="thumbnail">
-                <div><img src="/resources/images/main/log02.png"></div>
-                <div>
-                    <div class="title ">제목입니다</div>
-                    <div class="createDate-area">
-                        <div>건강 / 운동정보에 대한 컨탠츠 내용을 짧게 미리보기 할 수 있습니다. 자세한 내용은...</div>
+            <c:choose>
+                <c:when test="${empty boardList}">
+                    <div class="no-board-list">
+                        <h1>게시글이 존재하지 않습니다. 첫 게시글의 주인공이 되어 보세요! 😅</h1>
                     </div>
-                    <div class="profile-area">
-                        <div><i class="fa-regular fa-comment" style="color: #ddd;"></i> 7</div>
-                        <div><i class="fa-solid fa-heart" style="color: #ff4242;"></i> 99</div>
-                    </div>
-                </div>
-            </div>
+                </c:when>
+            
+                <c:otherwise>
 
-            <div class="thumbnail">
-                <div><img src="/resources/images/main/log02.png"></div>
-                <div>
-                    <div class="title ">제목입니다</div>
-                    <div class="createDate-area">
-                        <div>건강 / 운동정보에 대한 컨탠츠 내용을 짧게 미리보기 할 수 있습니다. 자세한 내용은...</div>
-                    </div>
-                    <div class="profile-area">
-                        <div><i class="fa-regular fa-comment" style="color: #ddd;"></i> 7</div>
-                        <div><i class="fa-solid fa-heart" style="color: #ff4242;"></i> 99</div>
-                    </div>
-                </div>
-            </div>
+                    <c:forEach items="${boardList}" var="board">
 
-            <div class="thumbnail">
-                <div><img src="/resources/images/main/log02.png"></div>
-                <div>
-                    <div class="title ">제목입니다</div>
-                    <div class="createDate-area">
-                        <div>건강 / 운동정보에 대한 컨탠츠 내용을 짧게 미리보기 할 수 있습니다. 자세한 내용은...</div>
-                    </div>
-                    <div class="profile-area">
-                        <div><i class="fa-regular fa-comment" style="color: #ddd;"></i> 7</div>
-                        <div><i class="fa-solid fa-heart" style="color: #ff4242;"></i> 99</div>
-                    </div>
-                </div>
-            </div>
+                        <div class="thumbnail">
+                            <a href="/board/1/${board.boardNo}?cp=${pagination.currentPage}">
+                                <div>
+                                    <c:if test="${empty board.thumbnail}" >
+                                        <img src="/resources/images/main/log02.png" id="default-logo">
+                                    </c:if>
 
-            <div class="thumbnail">
-                <div><img src="/resources/images/main/log02.png"></div>
-                <div>
-                    <div class="title ">제목입니다</div>
-                    <div class="createDate-area">
-                        <div>건강 / 운동정보에 대한 컨탠츠 내용을 짧게 미리보기 할 수 있습니다. 자세한 내용은...</div>
-                    </div>
-                    <div class="profile-area">
-                        <div><i class="fa-regular fa-comment" style="color: #ddd;"></i> 7</div>
-                        <div><i class="fa-solid fa-heart" style="color: #ff4242;"></i> 99</div>
-                    </div>
-                </div>
-            </div>
+                                    <c:if test="${!empty board.thumbnail}">
+                                        <img src="${board.thumbnail}">
+                                    </c:if>
+                                </div>
+                                <div>
+                                    <div class="title">${board.boardTitle}</div>
+                                    <div class="createDate-area">
+                                        <div>${board.boardContent}</div>
+                                    </div>
+                                    <div class="profile-area">
+                                        <div><i class="fa-regular fa-comment" style="color: #ddd;"></i>&nbsp;${board.commentCount}</div>
+                                        <div><i class="fa-solid fa-heart" style="color: #ff4242;"></i>&nbsp;${board.likeCount}</div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
 
-            <div class="thumbnail">
-                <div><img src="/resources/images/main/log02.png"></div>
-                <div>
-                    <div class="title ">제목입니다</div>
-                    <div class="createDate-area">
-                        <div>건강 / 운동정보에 대한 컨탠츠 내용을 짧게 미리보기 할 수 있습니다. 자세한 내용은...</div>
-                    </div>
-                    <div class="profile-area">
-                        <div><i class="fa-regular fa-comment" style="color: #ddd;"></i> 7</div>
-                        <div><i class="fa-solid fa-heart" style="color: #ff4242;"></i> 99</div>
-                    </div>
-                </div>
-            </div>
+                    </c:forEach>
 
-            <div class="thumbnail">
-                <div><img src="/resources/images/main/log02.png"></div>
-                <div>
-                    <div class="title ">제목입니다</div>
-                    <div class="createDate-area">
-                        <div>건강 / 운동정보에 대한 컨탠츠 내용을 짧게 미리보기 할 수 있습니다. 자세한 내용은...</div>
-                    </div>
-                    <div class="profile-area">
-                        <div><i class="fa-regular fa-comment" style="color: #ddd;"></i> 7</div>
-                        <div><i class="fa-solid fa-heart" style="color: #ff4242;"></i> 99</div>
-                    </div>
-                </div>
-            </div>
+                </c:otherwise>
+            </c:choose>
         </div>
         
         <div class="write-btn-area">
-            <button type="button" id="writeBtn">글쓰기</button>
-        </div>
-
-        <div class="slide_div_wrap">
-            
-            <div class="slide_div">
-                <div class="slick-prev"><</div>
-                <div>
-                    <a>
-                        <img src="/resources/images/slideShow/show1.jpg">
-                    </a>
-                </div>
-                <!-- <div>
-                    <a>
-                        <img src="/resources/images/slideShow/show2.jpg">
-                    </a>
-                </div>
-                <div>
-                    <a>
-                        <img src="/resources/images/slideShow/show3.jpg">
-                    </a>
-                </div>				 -->
-                <div class="slick-next">></div>	
-            </div>
-
+            <c:if test="${!empty loginMember}" >
+                <button type="button" id="writeBtn">글쓰기</button>
+            </c:if>
         </div>
 
         <div class="paginationArea">
-            <div>
-                페이지네이션 영역
-            </div>
+            <ul class="pagination">
+
+                <!-- 첫 페이지로 이동 -->
+                <li><a href="/board/${boardCode}/list?cp=1${sp}">&lt;&lt;</a></li>
+
+                <!-- 이전 목록 마지막 번호로 이동 -->
+                <li><a href="/board/${boardCode}/list?cp=${pagination.prevPage}${sp}">&lt;</a></li>
+
+
+                <!-- 특정 페이지로 이동 -->
+                <c:forEach var="i" begin="${pagination.startPage}" end="${pagination.endPage}" step="1">
+
+                    <c:choose>
+                        <c:when test="${ i == pagination.currentPage}">
+                            <!-- 현재 보고있는 페이지 -->
+                            <li><a class="current">${i}</a></li>
+                        </c:when>
+
+                        <c:otherwise>
+                            <!-- 현재 페이지를 제외한 나머지 -->
+                            <li><a href="/board/${boardCode}/list?cp=${i}${sp}">${i}</a></li>
+
+                        </c:otherwise>
+                    </c:choose>
+
+                </c:forEach>
+
+                <!-- 다음 목록 시작 번호로 이동 -->
+                <li><a href="/board/${boardCode}/list?cp=${pagination.nextPage}${sp}">&gt;</a></li>
+
+                <!-- 끝 페이지로 이동 -->
+                <li><a href="/board/${boardCode}/list?cp=${pagination.maxPage}${sp}">&gt;&gt;</a></li>
+
+            </ul>
         </div>
 	</section>
 

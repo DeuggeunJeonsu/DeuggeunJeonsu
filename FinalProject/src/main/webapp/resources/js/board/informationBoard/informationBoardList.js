@@ -6,17 +6,7 @@ writeBtn.addEventListener("click", ()=>{
 })
 
 
-$(document).ready(function(){
-    $(".slide_div").slick({
-        dots: true,
-        autoplay: true,
-        autoplaySpeed: 5000
-    });
-});
-
-
 const searchInput = document.getElementById("market-search");
-
 
 (() => {
 
