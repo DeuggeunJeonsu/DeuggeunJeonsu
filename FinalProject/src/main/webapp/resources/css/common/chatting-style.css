@@ -45,19 +45,23 @@ main {
 /* 메뉴 영역 */
 #menus{
    flex-basis: 5%;
-   display: flex;
-   flex-direction: column;
-   align-items: center;
    height: 100%;
    border-radius: 10px 0 0 10px;
    background-color: #99E1ED;
+}
+#buttons{
+   height: 30px;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
 }
 /* 메뉴, 채팅방추가, 팔레트 버튼 */
 .menu-btn{
    margin-top: 12px;
    border: none;
-   background-color: inherit;
+   background-color: initial;
    cursor: pointer;
+   color: white;
 }
 .menu-btn:not(.menu-btn:nth-of-type(1)){
    margin-top: 40px;
@@ -146,7 +150,7 @@ main {
    height: auto;
    overflow: hidden;
    display: flex;
-   background-color: whitesmoke;
+   background-color: rgba( 255, 255, 255, 0.7 );
    border-radius: 10px;
 }
 
@@ -157,7 +161,7 @@ main {
    font-size: 1.3em;
    resize: none;
    border: none;
-   background-color: whitesmoke;
+   background-color: initial
 }
 #inputChatting:focus{
    outline: none;
@@ -169,13 +173,15 @@ main {
    display: flex;
    align-items: end;
    border-radius: 10px;
+   background-color: rgba( 255, 255, 255, 0.7 );
 }
 .sendBtns{
    padding: 10px 5px;
-   border: 1px solid whitesmoke;
    border-radius: 10px;
-   background-color: #ddd;
+   border-color: rgba( 255, 255, 255, 0.7 );
+   background-color: initial;
    cursor: pointer;
+   color: #ddd;
 }
 .sendBtns:hover{
    background-color: #99E1ED;
@@ -193,12 +199,10 @@ main {
    border: 5px inset #99E1ED;
    border-radius: 10px;
    width: 295px;
-   height: auto;
-
+   height:auto;
 }
-
+/* 팝업레이어 닫기 */
 .popup-layer-close{ display: none;  }
-
 .closeBtn{
    position: absolute;
    top: -2px;
@@ -207,12 +211,12 @@ main {
    cursor: pointer;
 }
 
+/* 회원 검색 부분 */
 .target-input-area{
    width: 100%;
    height: 40px;
    border-bottom: 2px solid #498792;
 }
-
 #targetInput{
    width: 90%;
    height: 100%;
@@ -222,12 +226,13 @@ main {
    font-size: 14px;
    background-color: inherit;
 }
-
 #resultArea{
    list-style: none;
    padding: 5px 10px;
+   min-height: 250px;
+   max-height: dddd0px;
+   overflow-y: auto;
 }
-
 .result-row{
    width: 100%;
    height: 50px;
@@ -236,14 +241,11 @@ main {
    display: flex;
    align-items: center;
 }
-
 .result-row:hover{   background-color: #99E1ED;}
-
 .result-row > *{ 
    margin-right: 10px;
    user-select: none;
 }
-
 .result-row-img{ width: 40px;}
 
 /* 팔레트 팝업 레이어 */
@@ -260,53 +262,45 @@ main {
    height: auto;
    min-height: 100px;
 }
-
 .palette-title-area{
    border-bottom: 2px solid #498792;
 }
-
 .palette-title-area > p{
    margin: 10px;
-   padding-left: 3px;
 }
-
+.thema-title-area{
+   margin: 5px 0;
+   display: flex;
+   justify-content: start;
+   align-items: center;
+   padding-left: 20px;
+   margin: 0;
+}
 .thema-input-area{
    margin: 5px 0;
    display: flex;
    justify-content: center;
    align-items: center;
-   padding-top: 10px;
+   padding: 10px 30px 10px 30px;
 }
 .paletteName{
-   margin-left: 5%;
-   width: 40%;
+   width: 30%;
+   text-align: start;
 }
 .thema-color-area{
    display: flex;
 }
-.hex-color-input{
-   width: 30%;
-   margin-left: 10px;
+.color-input{
+   width: 130px;
+   height: 27px;
+   padding-left: 20px;
+   border: 2px solid white;
+   background-color: white;
+   font-family: inherit;
+   font-size: inherit;
+   font-weight: inherit;
+   box-sizing: border-box;
 }
-.rgb-color-input{
-   width: 45%;
-}
-
-.palette-preview{
-   width: 25px;
-   height: 25px;
-   border: 1px solid black;
-}
-#Preview1{
-   background-color: #99E1ED;
-}
-#Preview2{
-   background-color: #F5F5F5;
-}
-#Preview3{
-   background-color: #FFFFFF;
-}
-
 #saveThemaBtnArea{
    width: 100%;
    display: flex;
@@ -317,9 +311,13 @@ main {
 }
 #saveThemaBtn{
    padding: 5px;
-   border-radius: 5px99;
+   border-radius: 5px;
    border-color: #ddd;
+   background-color: rgba( 255, 255, 255, 0.7 );
    cursor: pointer;
+}
+.clr-field{
+   border-radius: 3px !important;
 }
 
 
@@ -332,11 +330,12 @@ main {
    margin-bottom: 5px;
    cursor: pointer;
    border-radius: 10px;
+   background-color: rgba( 255, 255, 255, 0.5 );
    box-shadow: 1px 2px 2px #ddd;
 }
 
 .chatting-item:hover{
-   background-color: white;
+   background-color: rgba( 255, 255, 255, 0.8 );
 }
 
 .chatting-item * {
@@ -354,7 +353,7 @@ main {
 }
 
 .chatting-item.select{
-   background-color: white;
+   background-color: rgba( 255, 255, 255, 0.8 );
 }
 
 

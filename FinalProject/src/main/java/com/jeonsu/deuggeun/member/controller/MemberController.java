@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -98,8 +99,8 @@ public class MemberController {
 	
 	// 로그아웃 요청 처리
 	@GetMapping("/logout")
-	public String logout(SessionStatus status) {
-		
+	public String logout(SessionStatus status, @SessionAttribute("loginMember") Member loginMember) {
+		log.debug("회원{} 로그아웃", loginMember.getMemberNo());
 		// 세션 관리객체를 이용해 세션을 제거해주고
 		status.setComplete();
 		// 메인페이지로 이동
@@ -173,6 +174,7 @@ public class MemberController {
 		
 		// 비밀번호 변경 서비스 호출
 		int result = service.changePw(map);
+		log.debug("회원{} 비밀번호 변경", findPwMemberNo);
 		
 		// 변경완료 -> 로그인페이지, 변경실패 -> 내정보찾기 페이지
 		ra.addFlashAttribute("message", "비밀번호 재설정"+ (result>0 ? "이 완료되었습니다, 로그인 후 이용해보세요." : " 오류, 다시 시도해주세요"));

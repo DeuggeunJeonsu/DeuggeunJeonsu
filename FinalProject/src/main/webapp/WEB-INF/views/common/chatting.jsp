@@ -9,6 +9,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>득근채팅</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/mdbassit/Coloris@latest/dist/coloris.min.css"/>
+    <script src="https://cdn.jsdelivr.net/gh/mdbassit/Coloris@latest/dist/coloris.min.js"></script>
     <link rel="stylesheet" href="/resources/css/common/chatting-style.css">
 
     <script src="https://kit.fontawesome.com/a2e8ca0ae3.js" crossorigin="anonymous"></script>
@@ -37,9 +40,11 @@
 
             <div id="chattingContainer">
                 <div id="menus">
-                    <button id="menuBtn" class="menu-btn"><i class="fa-solid fa-bars fa-2xl" style="color: #ffffff;"></i></button>
-                    <button id="addTarget" class="menu-btn"><i class="fa-solid fa-user-plus fa-2xl" style="color: #ffffff;"></i></button>
-                    <button id="palette" class="menu-btn"><i class="fa-solid fa-palette fa-2xl" style="color: #ffffff;"></i></button>
+                    <div id="buttons">
+                        <button id="menuBtn" class="menu-btn"><i class="fa-solid fa-bars fa-2xl"></i></button>
+                        <button id="palette" class="menu-btn"><i class="fa-solid fa-palette fa-2xl"></i></button>
+                        <button id="addTarget" class="menu-btn"><i class="fa-solid fa-user-plus fa-2xl"></i></button>
+                    </div>
                 </div>
                 <div id="chattingRoomListArea">
                     <!-- 채팅방 맴버찾기 -->
@@ -50,24 +55,7 @@
                         </div>
             
                         <ul id="resultArea">
-                            <li class="result-row" data-id="1">
-                                <img class="result-row-img" src="/resources/images/user.png">
-                                <span> <mark>유저</mark>일</span>
-                            </li>
-                            <li class="result-row"  data-id="2">
-                                <img class="result-row-img" src="/resources/images/user.png"> 
-                                <span><mark>유저</mark>이</span>
-                            </li>
-                            <li class="result-row" data-id="3">
-                                <img class="result-row-img" src="/resources/images/user.png">
-                                <span> <mark>유저</mark>삼</span>
-                            </li>
-                            <li class="result-row"  data-id="4">
-                                <img class="result-row-img" src="/resources/images/user.png"> 
-                                <span><mark>유저</mark>사</span>
-                            </li>
-            
-                            <!-- <li class="result-row">일치하는 회원이 없습니다</li> -->
+                            <!-- <li class="result-row">검색된 회원목록</li> -->
                         </ul>
                     </div>
 
@@ -78,27 +66,21 @@
                             <span id="paletteCloseBtn" class="closeBtn">&times</span>
                         </div>
                         <div class="thema-input-area">
-                            <div class="paletteName">palette 1</div>
+                            <div class="paletteName">사이드 메뉴</div>
                             <div class="thema-color-area">
-                                <input type="text" class="hex-color-input" value="#99E1ED" id="palette1HexColor">
-                                <input type="text" class="rgb-color-input" value="(153,225,237)" id="palette1RGBColor">
-                                <div class="palette-preview" id="Preview1"></div>
+                                <input type="text" class="color-input" id="palette1Color" data-coloris>
                             </div>
                         </div>
                         <div class="thema-input-area">
-                            <div class="paletteName">palette 2</div>
+                            <div class="paletteName">채팅방 목록</div>
                             <div class="thema-color-area">
-                                <input type="text" class="hex-color-input" value="#F5F5F5" id="palette2HexColor">
-                                <input type="text" class="rgb-color-input" value="(245,245,245)" id="palette2RGBColor">
-                                <div class="palette-preview" id="Preview2"></div>
+                                <input type="text" class="color-input" id="palette2Color" data-coloris>
                             </div>
                         </div>
                         <div class="thema-input-area">
-                            <div class="paletteName">palette 3</div>
+                            <div class="paletteName">채팅방 내부</div>
                             <div class="thema-color-area">
-                                <input type="text" class="hex-color-input" value="#FFFFFF" id="palette3HexColor">
-                                <input type="text" class="rgb-color-input" value="(255,255,255)" id="palette3RGBColor">
-                                <div class="palette-preview" id="Preview3"></div>
+                                <input type="text" class="color-input" id="palette3Color" data-coloris>
                             </div>
                         </div>
                         <div id="saveThemaBtnArea">
@@ -114,26 +96,32 @@
 
                     <!-- 채팅방 목록 -->
                     <ul id="chattingRoomList">
-
-                        <li class="chatting-item select" chat-no="${room.chattingNo}" target-no="${room.targetNo}">
-                            <div class="item-header">
-                                <img class="list-profile" src="/resources/images/user.png">
-                            </div>
-                            <div class="item-body">
-                                <p>
-                                    <span class="target-name">상대유저</span>
-                                    <span class="recent-send-time">05:01</span>
-                                </p>
-                                <div>
-                                    <p class="recent-message">내가보낸 채팅 내가보낸 채팅 내가보낸 채팅 내가보낸 채팅 내가보낸 채팅 내가보낸 채팅</p>
-                                    <c:if test="${room.notReadCount > 0}">
-                                        <p class="not-read-count">${room.notReadCount}</p>
+                        <c:forEach var="room" items="${roomList}">
+                            <li class="chatting-item select" chat-no="${room.chattingNo}" target-no="${room.targetNo}">
+                                <div class="item-header">
+                                    <c:if test="${not empty room.targetProfile}">
+                                        <img class="list-profile" src="${room.targetProfile}">
+                                    </c:if>
+                                    <c:if test="${empty room.targetProfile}">
+                                        <img class="list-profile" src="/resources/images/user.png">
                                     </c:if>
                                 </div>
-                            </div>
-                        </li>
+                                <div class="item-body">
+                                    <p>
+                                        <span class="target-name">${room.targetNickName}</span>
+                                        <span class="recent-send-time">${room.sendTime}</span>
+                                    </p>
+                                    <div>
+                                        <p class="recent-message">${room.lastMessage}</p>
+                                        <c:if test="${room.notReadCount > 0}">
+                                            <p class="not-read-count">${room.notReadCount}</p>
+                                        </c:if>
+                                    </div>
+                                </div>
+                            </li>
+                        </c:forEach>
 
-                        <li class="chatting-item" chat-no="${room.chattingNo}" target-no="${room.targetNo}">
+                        <!-- <li class="chatting-item" chat-no="${room.chattingNo}" target-no="${room.targetNo}">
                             <div class="item-header">
                                 <img class="list-profile" src="/resources/images/user.png">
                             </div>
@@ -147,7 +135,7 @@
                                     <p class="not-read-count">2</p>
                                 </div>
                             </div>
-                        </li>
+                        </li> -->
 
                     </ul>
 
@@ -161,8 +149,7 @@
                     <!-- 채팅내역 -->
                     <div id="chattingArea">
                         <ul class="display-chatting">
-
-                            <li class="my-chat">
+                            <!-- <li class="my-chat">
                                 <span class="chatDate">04:28</span>
                                 <p class="chat">내가보낸 채팅</p>
                             </li>
@@ -174,71 +161,21 @@
                                     <p class="chat">상대유저가 보낸 채팅</p>
                                     <span class="chatDate">04:30</span>
                                 </div>
-                            </li>
-                            <li class="my-chat">
-                                <span class="chatDate">04:31</span>
-                                <p class="chat">내가보낸 채팅</p>
-                            </li>
-
-                            <li class="target-chat">
-                                <img src="/resources/images/user.png">
-                                <div>
-                                    <b>상대유저</b><br>
-                                    <p class="chat">상대유저가 보낸 채팅</p>
-                                    <span class="chatDate">04:32</span>
-                                </div>
-                            </li>
-
-                            <li class="my-chat">
-                                <span class="chatDate"></span>
-                                <p class="chat">내가보낸 채팅</p>
-                            </li>
-                            </li>
-                            <li class="my-chat">
-                                <span class="chatDate"></span>
-                                <p class="chat">내가보낸 채팅</p>
-                            </li>
-                            <li class="my-chat">
-                                <span class="chatDate">04:48</span>
-                                <p class="chat">내가보낸 채팅</p>
-                            </li>
-
-                            <li class="target-chat">
-                                <img src="/resources/images/user.png">
-                                <div>
-                                    <b>상대유저</b><br>
-                                    <p class="chat">상대유저가 보낸 채팅</p>
-                                    <span class="chatDate"></span>
-                                </div>
-                            </li>
-                            <li class="target-chat">
-                                <img src="/resources/images/user.png">
-                                <div>
-                                    <b>상대유저</b><br>
-                                    <p class="chat">상대유저가 보낸 채팅</p>
-                                    <span class="chatDate">04:57</span>
-                                </div>
-                            </li>
-
-                            <li class="my-chat">
-                                <span class="chatDate">05:43</span>
-                                <p class="chat">내가보낸 채팅 내가보낸 채팅 내가보낸 채팅 내가보낸 채팅 내가보낸 채팅 내가보낸 채팅</p>
-                            </li>
+                            </li>-->
                         </ul>
                     </div>
                     <!-- 채팅 입력, 전송 -->
                     <div id="sendArea">
                         <div class="send-btn-area">
-                            <button id="addImgBtn" class="sendBtns"><i class="fa-regular fa-image fa-2xl" style="color: #ffffff;"></i></button>
+                            <button id="addImgBtn" class="sendBtns"><i class="fa-regular fa-image fa-2xl"></i></button>
                         </div>
                         <textarea id="inputChatting" rows="1"></textarea>
                         <div class="send-btn-area">
-                            <button id="sendBtn" class="sendBtns"><i class="fa-solid fa-paper-plane fa-2xl" style="color: #ffffff;"></i></button>
+                            <button id="sendBtn" class="sendBtns"><i class="fa-solid fa-paper-plane fa-2xl"></i></button>
                         </div>
                     </div>
                 </div>
             </div>
-
         </section>
 
     </main>
@@ -246,5 +183,4 @@
 
 <jsp:include page="../common/footer.jsp"></jsp:include>
 <script src="/resources/js/chatting.js"></script>
-    
 </html>

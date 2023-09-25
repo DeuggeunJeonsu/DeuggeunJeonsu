@@ -1,27 +1,27 @@
-const addTarget = document.querySelector("#addTarget"); // 추가 버튼
+// 채팅방
+const addTarget = document.querySelector("#addTarget"); // 채팅방 추가 버튼
+const addTargetPopupLayer = document.querySelector("#addTargetPopupLayer"); // 팝업 레이어
+const closeBtn1 = document.querySelector("#addTargetCloseBtn"); // 팝업 닫기 버튼
+const targetInput = document.querySelector("#targetInput"); // 회원 검색창
+const resultArea = document.querySelector("#resultArea"); // 회원 검색 결과
 
-const addTargetPopupLayer = document.querySelector("#addTargetPopupLayer"); // 채팅방 추가 팝업 레이어
-
-const palette = document.querySelector("#palette"); // 팔레트 버튼
-
-const palettePopupLayer = document.querySelector("#palettePopupLayer"); // 팔레트 팝업 레이어
-
-const closeBtn1 = document.querySelector("#addTargetCloseBtn"); // 닫기 버튼
-
-const closeBtn2 = document.querySelector("#paletteCloseBtn"); // 닫기 버튼
-
-const targetInput = document.querySelector("#targetInput"); // 사용자 검색
-
-const resultArea = document.querySelector("#resultArea"); // 검색 결과
-
-
+// 팔레트
+const palette = document.querySelector("#palette"); // 팔레트 설정 버튼
+const palettePopupLayer = document.querySelector("#palettePopupLayer"); // 팝업 레이어
+const closeBtn2 = document.querySelector("#paletteCloseBtn"); // 팝업 닫기 버튼
+const menuArea = document.querySelector("#menus"); // 사이드 메뉴 영역
+const palette1Color = document.querySelector("#palette1Color"); // 사이드 메뉴 색상 input
+const roomListArea = document.querySelector("#chattingRoomListArea"); // 채팅방 목록 영역
+const palette2Color = document.querySelector("#palette2Color"); // 채팅방 목록 색상 input
+const roomDetail = document.querySelector("#chattingRoomDetail"); // 채팅방 내부 영역
+const palette3Color = document.querySelector("#palette3Color"); // 채팅방 내부 색상 input
 
 let selectChattingNo; // 선택한 채팅방 번호
 let selectTargetNo; // 현재 채팅 대상
 let selectTargetName; // 대상의 이름
 let selectTargetProfile; // 대상의 프로필
 
-// textarea 자동으로 늘어나게
+// 전송 textarea 자동으로 늘어나도록 설정
 const inputChatting = document.getElementById("inputChatting");
 
 inputChatting.addEventListener("input",()=>{
@@ -32,17 +32,14 @@ inputChatting.addEventListener("input",()=>{
    else if(rowCount <= 15){
       inputChatting.style.height= ((rowCount*21)+20) + "px";
    }
+   
 })
-
-
-
 
 // 검색 팝업 레이어 열기
 addTarget.addEventListener("click", e => {
    addTargetPopupLayer.classList.toggle("popup-layer-close");
    targetInput.focus();
 });
-
 // 검색 팝업 레이어  닫기
 closeBtn1.addEventListener("click", e => {
    addTargetPopupLayer.classList.toggle("popup-layer-close");
@@ -54,14 +51,13 @@ palette.addEventListener("click", e => {
    palettePopupLayer.classList.toggle("popup-layer-close");
    targetInput.focus();
 });
-
 // 팔레트 팝업 레이어  닫기
 closeBtn2.addEventListener("click", e => {
    palettePopupLayer.classList.toggle("popup-layer-close");
 });
 
 
-// 사용자 검색(ajax)
+// 채팅 상대 검색 ajax
 targetInput.addEventListener("input", e => {
 
    const query = e.target.value.trim();
@@ -72,14 +68,11 @@ targetInput.addEventListener("input", e => {
       return;
    }
 
-
    // 입력된게 있을 때
    if(query.length > 0){
       fetch("/chatting/selectTarget?query="+query)
       .then(resp => resp.json())
       .then(list => {
-         //console.log(list);
-
          resultArea.innerHTML = ""; // 이전 검색 결과 비우기
 
          if(list.length == 0){
@@ -150,22 +143,18 @@ function chattingEnter(e){
                return;
             }
          }
-
       }, 200);
-
    })
    .catch(err => console.log(err));
 }
 
 
-
-// 비동기로 채팅방 목록 조회
+// 채팅방 목록 조회
 function selectRoomList(){
 
    fetch("/chatting/roomList")
    .then(resp => resp.json())
    .then(roomList => {
-      console.log(roomList);
 
       // 채팅방 목록 출력 영역 선택
       const chattingList = document.querySelector("#chattingRoomList");
@@ -211,7 +200,6 @@ function selectRoomList(){
          const recentSendTime = document.createElement("span");
          recentSendTime.classList.add("recent-send-time");
          recentSendTime.innerText = room.sendTime;
-         
          
          p.append(targetName, recentSendTime);
          
@@ -260,15 +248,6 @@ function selectRoomList(){
    })
    .catch(err => console.log(err));
 
-
-   /*$.ajax({
-      url: "/chatting/roomList",
-      data : {"memberNo" : loginMemberNo},
-      dataType : "JSON",
-      success : roomList => {
-         
-      }
-   })*/
 }
 
 
@@ -419,6 +398,7 @@ const sendMessage = () => {
       chattingSock.send(JSON.stringify(obj));
 
       inputChatting.value = "";
+      inputChatting.style.height="41px";
    }
 }
 
@@ -431,7 +411,6 @@ inputChatting.addEventListener("keyup", e => {
       }
    }
 })
-
 
 
 // WebSocket 객체 chattingSock이 서버로 부터 메세지를 통지 받으면 자동으로 실행될 콜백 함수
@@ -511,8 +490,50 @@ document.addEventListener("DOMContentLoaded", ()=>{
 });
 
 
+// 테마 컬러픽커 세팅
+Coloris({
+   parent: '#palettePopupLayer',
+   el: '.color-input',
+   rtl: false, // 색상 프리뷰 왼쪽 true, 오른쪽 false
+   theme: 'default',     // default, large, polaroid, pill
+   themeMode: 'light',   // light , dark 모드
+   margin: 5,            // 입력 필드와 색선택창 사이 여백
+   alpha: true,          // 불투명도 조절가능 여부
+   format: 'hex',        // 포맷 hex rgb hsl auto mixed
+   formatToggle: false,   // 포맷 토글 사용여부
+   forceAlpha: false,    // 불투명토 미사용 시 값에 포함할지
+   focusInput: true,     // 선택창 열릴 때 입력된 색상값에 초점
+   clearButton: true,    
+   clearLabel: 'Clear',
+   closeButton: true,
+   closeLabel: 'Close',
+   swatches: [
+      '#498792',
+      '#99E1ED',
+      '#FF6464',
+      '#797979',
+      '#DDD',
+      'whitesmoke'
+   ],
+   inline: false
+   // defaultColor: '#000000',
+});
 
-
-
-
-
+// 사이드메뉴 색상 변경
+palette1Color.addEventListener("input",()=>{
+   menuArea.style.backgroundColor = `${palette1Color.value}`;
+   addTargetPopupLayer.style.borderColor = `${palette1Color.value}`;
+   palettePopupLayer.style.borderColor = `${palette1Color.value}`;
+   document.querySelector(".palette-title-area").style.borderColor = `${palette1Color.value}`;
+   document.querySelector(".target-input-area").style.borderColor = `${palette1Color.value}`;
+})
+// 채팅방목록 색상 변경
+palette2Color.addEventListener("input",()=>{
+   roomListArea.style.backgroundColor = `${palette2Color.value}`;
+   addTargetPopupLayer.style.backgroundColor = `${palette2Color.value}`;
+   palettePopupLayer.style.backgroundColor = `${palette2Color.value}`;
+})
+// 채팅방내부 색상 변경
+palette3Color.addEventListener("input",()=>{
+   roomDetail.style.backgroundColor = `${palette3Color.value}`;
+})
