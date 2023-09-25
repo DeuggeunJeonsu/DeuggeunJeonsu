@@ -192,8 +192,8 @@ public class MyPageDAO {
 	 * @param memberNo
 	 * @return result
 	 */
-//	public int secession(int memberNo) {
-//		return sqlSession.update("myPageMapper.secession", memberNo);
-//	}
+	public int secession(int memberNo) {
+		return sqlSession.update("myPageMapper.secession", memberNo);
+	}
 	
 }
