@@ -2,10 +2,20 @@
     border: 1px solid pink;;
 } */
 
+.place{
+    height: 100px;
+}
+
 #main-container{
-    margin: 100px 400px;
     height: auto;
-    width: 1200px;
+    margin: auto;
+    max-width: 1000px;
+}
+
+.board-title{
+    font-size: 30px;
+    font-weight: 600;
+    margin-bottom: 15px;
 }
 
 #title-area > div:nth-of-type(1){

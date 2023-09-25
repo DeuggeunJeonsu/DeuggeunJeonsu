@@ -14,9 +14,10 @@
 
 	<jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
 	
+    <div class="place"></div>
 	<section id="main-container">
         <div id="title-area">
-            <div><h1>루틴 공유 게시판 글쓰기</h1></div>
+            <div class="board-title">루틴 공유 게시판  |  글쓰기</div>
               <div>득근전수 회원님들과 공유하고 싶은 운동 루틴을 만들어보세요.</div>
         </div>
         <form action="/board2/2/insert" method="POST"
