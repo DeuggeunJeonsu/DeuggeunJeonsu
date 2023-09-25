@@ -61,6 +61,7 @@ public class MainController {
 			memberNo = loginMember.getMemberNo();
 		}
 		int count = service.shoppingCount(memberNo);
+		System.out.println(count);
 		return String.valueOf(count);
 	}
 }

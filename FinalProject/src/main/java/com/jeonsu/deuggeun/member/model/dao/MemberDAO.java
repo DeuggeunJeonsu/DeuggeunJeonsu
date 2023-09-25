@@ -77,6 +77,7 @@ public class MemberDAO {
 		else return sqlSession.update("memberMapper.updateBMI", paramMap);
 	}
 
+	// 장바구니 상품 카운트
 	public int shoppingCount(int memberNo) {
 
 		return sqlSession.selectOne("memberMapper.shoppingCount", memberNo);

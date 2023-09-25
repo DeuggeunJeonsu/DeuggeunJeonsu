@@ -54,6 +54,7 @@ document.addEventListener("DOMContentLoaded", function() {
                         title: '성공!',
                         text: '상품이 장바구니에 담겼습니다!'
                     });
+                    // location.reload(true);
                     document.getElementById("select").selectedIndex = 0;
 
                 } else if(result === -2) {

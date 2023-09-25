@@ -69,7 +69,7 @@
                             <c:if test="${!empty loginMember}">
                                 <a href="/board/cartList">
                                     <i class="fa fa-solid fa-cart-shopping fa-lg"></i>
-                                    <span class="count-area" id="shopping-count">9</span>
+                                    <span class="count-area" id="shopping-count"></span>
                                 </a>
                             </c:if>
                         </li>

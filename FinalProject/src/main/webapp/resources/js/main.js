@@ -121,10 +121,11 @@ $(document).ready(function() {
             $('#shopping-count').text(response);
         },
         error: function(error) {
-            console.error("Error fetching data: ", error);
+            console.error("데이터 가져오기 오류: ", error);
         }
     });
 });
+
 
 
 
