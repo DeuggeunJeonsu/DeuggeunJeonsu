@@ -117,10 +117,11 @@
 		#{memberNo}, 6)
 	</insert>
 	
-	<!-- 회원 목록 상세조회 -->
-	<select id="adminInquiryDetail">
-		SELECT BOARD_TITLE, BOARD_CONTENT
+	<!-- 회원 문의 상세조회 -->
+	<select id="adminInquiryDetail" resultMap="adminBoard_rm">
+		SELECT BOARD_NO, BOARD_TITLE, BOARD_CONTENT , INQUIRY_TYPE
 		FROM BOARD
+		JOIN INQUIRY USING(BOARD_NO)
 		WHERE BOARD_NO = #{boardNo}
 	</select>
 </mapper>
