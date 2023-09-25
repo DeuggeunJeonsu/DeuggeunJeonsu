@@ -4,7 +4,6 @@
     <title>MD Pick! 추천상품</title>
     <link rel="stylesheet" href="/resources/css/common/main.css">
 </head>
-<%--@GetMapping("/{boardCode}/detail/{productNo}")--%>
 <body>
 <h2 class="main-article-tit">MD Pick! 추천 상품</h2>
 <div class="carousel-container">

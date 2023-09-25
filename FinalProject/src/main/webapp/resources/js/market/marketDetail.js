@@ -219,3 +219,42 @@ document.addEventListener("DOMContentLoaded", function() {
             });
     });
 });
+
+// 카카오톡 공유하기 버튼
+
+    Kakao.Share.createDefaultButton({
+    container: '#kakaotalk-sharing-btn',
+    objectType: 'feed',
+    content: {
+        title: productTitle,  // title에 productTitle 값을 사용
+        description: productName,
+        imageUrl:
+    'http://k.kakaocdn.net/dn/Q2iNx/btqgeRgV54P/VLdBs9cvyn8BJXB3o7N8UK/kakaolink40_original.png',
+    link: {
+    // [내 애플리케이션] > [플랫폼] 에서 등록한 사이트 도메인과 일치해야 함
+    mobileWebUrl: 'http://43.200.124.195:8080',
+    webUrl: 'http://43.200.124.195:8080',
+},
+},
+    social: {
+    likeCount: 286,
+    commentCount: 45,
+    sharedCount: 845,
+},
+    buttons: [
+{
+    title: '웹으로 보기',
+    link: {
+    mobileWebUrl: 'http://43.200.124.195:8080',
+    webUrl: 'http://43.200.124.195:8080',
+},
+},
+{
+    title: '앱으로 보기',
+    link: {
+    mobileWebUrl: 'http://43.200.124.195:8080',
+    webUrl: 'http://43.200.124.195:8080',
+},
+},
+    ],
+});

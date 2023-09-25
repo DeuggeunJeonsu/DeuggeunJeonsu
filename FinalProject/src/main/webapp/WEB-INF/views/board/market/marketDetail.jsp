@@ -13,6 +13,11 @@
 
             <%-- marketDetail-style.css 연결 --%>
                 <link rel="stylesheet" href="/resources/css/board/market/marketDetail-style.css">
+            <script src="https://t1.kakaocdn.net/kakao_js_sdk/2.4.0/kakao.min.js"
+                    integrity="sha384-mXVrIX2T/Kszp6Z0aEWaA8Nm7J6/ZeWXbL8UpGRjKwWe56Srd/iyNmWMBhcItAjH" crossorigin="anonymous"></script>
+            <script>
+                Kakao.init('5600ed391bce28878bbfdfcae636db6e'); // 사용하려는 앱의 JavaScript 키 입력
+            </script>
 
             <!-- Font Awesome CDN 추가 -->
             <link rel="stylesheet"
@@ -51,7 +56,15 @@
                         </div>
                     <%--                        <p>Image Path: ${product.pImagePath}</p>--%>
                         <div class="right-content">
+                            <div class="kakao">
                             <div id="title">${product.productTitle}</div>
+                            <a id="kakaotalk-sharing-btn" href="javascript:;">
+                                <img src="https://developers.kakao.com/assets/img/about/logos/kakaotalksharing/kakaotalk_sharing_btn_medium.png"
+                                     alt="카카오톡 공유 보내기 버튼" />
+                            </a>
+
+                            </div>
+
                             <hr>
                             <div id="amount">
                                 <h3>판매가 : <fmt:formatNumber type="number" value="${product.productPrice}" pattern="#,###원" /></h3>
@@ -150,10 +163,11 @@
 
             <script>
 
+                const productName = "${product.productName}";
+                const productTitle = "${product.productTitle}";
+                const productContent = "${product.productContent}";
                 const productNo = "${product.productNo}";
-                console.log(productNo)
                 const productPrice = "${product.productPrice}";
-                console.log(productPrice)
                 const loginMemberNo = "${loginMember.memberNo}";
                 const boardCode = "${boardCode}";
 
