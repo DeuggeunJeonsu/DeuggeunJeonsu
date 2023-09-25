@@ -19,6 +19,7 @@ public class Member {
 	private String memberAddress; // 회원 주소
 	private String profileImage; // 프로필 이미지 경로
 	private String enrollDate; // 회원 가입일
+	private String memberThema; // 회원 커스터마이징 테마
 	private String memberDeleteFlag; // 탈퇴 여부(N: 탈퇴X, Y: 탈퇴O)
 	private int authority; // 회원 권한(1:일반, 2:관리자)
 	
@@ -26,5 +27,4 @@ public class Member {
 	
 //	private String attendenceDate; // 출석일
 	
-//	private List<Bmi> bmiList; // 회원 bmi 번호
 }

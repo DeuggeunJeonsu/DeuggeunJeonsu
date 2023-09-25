@@ -38,22 +38,24 @@ inputChatting.addEventListener("input",()=>{
 // 검색 팝업 레이어 열기
 addTarget.addEventListener("click", e => {
    addTargetPopupLayer.classList.toggle("popup-layer-close");
+   palettePopupLayer.setAttribute("class","popup-layer-close");
    targetInput.focus();
 });
 // 검색 팝업 레이어  닫기
 closeBtn1.addEventListener("click", e => {
-   addTargetPopupLayer.classList.toggle("popup-layer-close");
+   addTargetPopupLayer.setAttribute("class","popup-layer-close");
    resultArea.innerHTML = "";
 });
 
 // 팔레트 팝업 레이어 열기
 palette.addEventListener("click", e => {
    palettePopupLayer.classList.toggle("popup-layer-close");
+   addTargetPopupLayer.setAttribute("class","popup-layer-close");
    targetInput.focus();
 });
 // 팔레트 팝업 레이어  닫기
 closeBtn2.addEventListener("click", e => {
-   palettePopupLayer.classList.toggle("popup-layer-close");
+   palettePopupLayer.setAttribute("class","popup-layer-close");
 });
 
 

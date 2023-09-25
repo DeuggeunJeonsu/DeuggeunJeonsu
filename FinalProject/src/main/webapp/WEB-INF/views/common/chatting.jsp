@@ -19,6 +19,7 @@
     <!-- https://github.com/sockjs/sockjs-client -->
     <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
     <script>
+        const loginMember = "${loginMember}"; // 로그인한 회원 번호
         const loginMemberNo = "${loginMember.memberNo}"; // 로그인한 회원 번호
     </script>
     <link rel="apple-touch-icon" sizes="180x180" href="/resources/images/favicon_io/apple-touch-icon.png">
@@ -42,8 +43,8 @@
                 <div id="menus">
                     <div id="buttons">
                         <button id="menuBtn" class="menu-btn"><i class="fa-solid fa-bars fa-2xl"></i></button>
-                        <button id="palette" class="menu-btn"><i class="fa-solid fa-palette fa-2xl"></i></button>
-                        <button id="addTarget" class="menu-btn"><i class="fa-solid fa-user-plus fa-2xl"></i></button>
+                        <button id="palette" class="menu-btn"><i class="fa-solid fa-palette fa-xl"></i></button>
+                        <button id="addTarget" class="menu-btn"><i class="fa-solid fa-user-plus fa-xl"></i></button>
                     </div>
                 </div>
                 <div id="chattingRoomListArea">
@@ -120,22 +121,6 @@
                                 </div>
                             </li>
                         </c:forEach>
-
-                        <!-- <li class="chatting-item" chat-no="${room.chattingNo}" target-no="${room.targetNo}">
-                            <div class="item-header">
-                                <img class="list-profile" src="/resources/images/user.png">
-                            </div>
-                            <div class="item-body">
-                                <p>
-                                    <span class="target-name">상대유저2</span>
-                                    <span class="recent-send-time">06:25</span>
-                                </p>
-                                <div>
-                                    <p class="recent-message">상대유저가 보낸 채팅</p>
-                                    <p class="not-read-count">2</p>
-                                </div>
-                            </div>
-                        </li> -->
 
                     </ul>
 
