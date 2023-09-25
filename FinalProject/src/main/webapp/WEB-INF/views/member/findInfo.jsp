@@ -5,6 +5,7 @@
 
     <head>
         <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
         <title>아이디/비밀번호 찾기</title>
         <link rel="stylesheet" href="/resources/css/member/findInfo-style.css">
 
