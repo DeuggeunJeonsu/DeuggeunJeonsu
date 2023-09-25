@@ -226,43 +226,43 @@ public class MyPageController {
 	}
 
 	// 회원탈퇴
-	//	@PostMapping("/secession")
-	//	public String secession(@SessionAttribute("loginMember") Member loginMember
-	//							,String memberPw
-	//							,RedirectAttributes ra
-	//							,SessionStatus status
-	//							,HttpServletResponse resp) {
-	//		
-	//		int memberNo = loginMember.getMemberNo();
-	//		
-	//		int result = service.secession(memberNo , memberPw);
-	//		
-	//		String path = "redirect:";
-	//		String message = null;
-	//		
-	//		if(result > 0) {
-	//			message = "탈퇴 되었습니다.";
-	//			ra.addFlashAttribute("message", message);
-	//			
-	//			path += "/";
-	//		
-	//			status.setComplete();
-	//			
-	//			Cookie cookie = new Cookie("saveId", "");
-	//			
-	//			cookie.setMaxAge(0);
-	//			cookie.setPath("/");
-	//			resp.addCookie(cookie);
-	//		}else {
-	//			message = "현재 비밀번호가 일치하지 않습니다.";
-	//			ra.addFlashAttribute("message", message);
-	//			
-	//			path += "secession";
-	//		}
-	//		
-	//		
-	//		return path;
-	//	}
+		@PostMapping("/secession")
+		public String secession(@SessionAttribute("loginMember") Member loginMember
+								,String memberPw
+								,RedirectAttributes ra
+								,SessionStatus status
+								,HttpServletResponse resp) {
+			
+			int memberNo = loginMember.getMemberNo();
+			
+			int result = service.secession(memberNo , memberPw);
+			
+			String path = "redirect:";
+			String message = null;
+			
+			if(result > 0) {
+				message = "탈퇴 되었습니다.";
+				ra.addFlashAttribute("message", message);
+				
+				path += "/";
+			
+				status.setComplete();
+				
+				Cookie cookie = new Cookie("saveId", "");
+				
+				cookie.setMaxAge(0);
+				cookie.setPath("/");
+				resp.addCookie(cookie);
+			}else {
+				message = "현재 비밀번호가 일치하지 않습니다.";
+				ra.addFlashAttribute("message", message);
+				
+				path += "secession";
+			}
+			
+			
+			return path;
+		}
 
 
 
