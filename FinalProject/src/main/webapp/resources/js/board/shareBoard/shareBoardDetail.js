@@ -198,12 +198,20 @@ document.addEventListener("click", function (e){
         todoslist(sysDate);
 
         if(loginMemberNo == ""){
-            alert("로그인 후 이용해 주세요💪");
+            Swal.fire({
+
+                title : '로그인 후 이용해 주세요💪', 
+                icon : 'error'
+            })
             return;
         }
     
         if(addListVal.length == 0 ){
-            alert("내용을 입력해주세요👀");
+            Swal.fire({
+
+                title : "내용을 입력해주세요👀", 
+                icon : 'error'
+            })
             return;
         }else{
     
@@ -211,7 +219,11 @@ document.addEventListener("click", function (e){
             
             for(let i of spanContent){
                 if(addListVal == i.innerText){
-                    alert("이미 입력한 루틴입니다.😊");
+                    Swal.fire({
+
+                        title : "이미 입력한 루틴입니다.😊", 
+                        icon : 'error'
+                    })
                     addListInput.value = "";
                     return;
                 }
@@ -220,17 +232,25 @@ document.addEventListener("click", function (e){
     
     
             if(currentCheckboxes >= maxCheckboxes){
-                alert("10개 이상 입력할 수 없습니다. 😢");
+                Swal.fire({
+
+                    title :"10개 이상 입력할 수 없습니다. 😢", 
+                    icon : 'error'
+                })
                 addListInput.value = "";
                 return; // 입력 막기
             }else{
         
                 if (!reqExp.test(addListVal)) {
-                    if (alert("올바른 형식으로 입력해주세요💗")) {
-                        addListInput.focus();
+                    Swal.fire({
+
+                        title :"올바른 형식으로 입력해주세요💗", 
+                        text: '15글자 이하로 입력해주세요',
+                        icon : 'error'
+                    })
+                    addListInput.focus();
                         
-                    }
-                    return;
+                    return;;
                 } else {
                     const inputTodo = {listContent: addListVal , lcreateDt : sysDate, memberNo : loginMemberNo}
                     insertTodo(inputTodo)
@@ -269,7 +289,11 @@ document.querySelector(".addList").addEventListener("keyup", function(event) {
             
             for(let i of spanContent){
                 if(addListVal == i.innerText){
-                    alert("이미 입력한 루틴입니다.😊");
+                    Swal.fire({
+
+                        title : "이미 입력한 루틴입니다.😊", 
+                        icon : 'error'
+                    })
                     addListInput.value = "";
                     return;
                 }
@@ -278,16 +302,25 @@ document.querySelector(".addList").addEventListener("keyup", function(event) {
     
     
             if(currentCheckboxes >= maxCheckboxes){
-                alert("10개 이상 입력할 수 없습니다. 😢");
+                Swal.fire({
+
+                    title :"10개 이상 입력할 수 없습니다. 😢", 
+                    icon : 'error'
+                })
                 addListInput.value = "";
                 return; // 입력 막기
             }else{
         
                 if (!reqExp.test(addListVal)) {
-                    if (alert("올바른 형식으로 입력해주세요💗")) {
-                        addListInput.focus();
-                        
-                    }
+                    Swal.fire({
+
+                        title :"올바른 형식으로 입력해주세요💗", 
+                        text: '15글자 이하로 입력해주세요',
+                        icon : 'error'
+                    })
+                    
+                    addListInput.focus();
+                    
                     return;
                 } else {
                     const inputTodo = {listContent: addListVal , lcreateDt : sysDate, memberNo : loginMemberNo}
@@ -311,11 +344,12 @@ document.addEventListener("click", (e)=>{
         let spanContent = document.querySelectorAll('.check-area > div >span');
             
             for(let i of spanContent){
-                if(add == i.innerText){
-                    alert("이미 입력한 루틴입니다.😊");
-                    
-                    return;
-                }
+                Swal.fire({
+
+                    title : "이미 입력한 루틴입니다.😊", 
+                    icon : 'error'
+                })
+                return;
                 
             }
         const addTodo = {listContent:  add , lcreateDt : sysDate, memberNo : loginMemberNo}
@@ -649,7 +683,51 @@ function updateTodo(checkbox,listFl,sysDate ) {
            
             checkbox.nextElementSibling.nextElementSibling.classList.toggle("complete")
             console.log("성공")
+            const checkboxes = document.querySelectorAll(".checkbox");
+            let checkedCount = 0;
+    
+            const todayYear = today.getFullYear();
+            const todayMonth = today.getMonth()+1;
+            const todayDate = today.getDate();
             
+            //오늘 날짜
+            const sysDate = todayYear + "-" + (todayMonth < 10 ? "0" : "") + todayMonth + "-" + (todayDate < 10 ? "0" : "") + todayDate;
+
+            checkboxes.forEach(checkbox => {
+                if (checkbox.checked) {
+                    checkedCount++;
+                }
+            });
+
+            if(checkedCount == checkboxes.length) {
+                fetch("/todo/allCompleted?date=" + sysDate )
+                .then(resp => resp.text())
+                .then(result=>{
+                    //console.log(result)
+                    if(result > 0){
+                        Swal.fire({
+
+                            title : "축하합니다🥳 목표를 득근하셨어요!", 
+                            icon : 'success'
+                        })
+                        
+                    }else{
+                        console.log("실패ㅜㅜㅜ")
+                    }
+                })
+                .catch( e=> console.log(e) )
+            }else{
+
+                fetch("/todo/unfinished?date=" + sysDate )
+                .then(resp => resp.text())
+                .then(result=>{
+                    if(result == 0){
+                    
+                        console.log("실패ㅜㅜㅜ")
+                    }
+                })
+                .catch( e=> console.log(e) )
+            }
             
 
         } else {
@@ -675,6 +753,53 @@ document.addEventListener("click", function (e){
                 if(result > 0){
                     
                     e.target.parentElement.remove();
+
+                    const checkboxes = document.querySelectorAll(".checkbox");
+                    let checkedCount = 0;
+
+                    checkboxes.forEach(checkbox => {
+                        if (checkbox.checked) {
+                            checkedCount++;
+                        }
+                    });
+                    const todayYear = today.getFullYear();
+                    const todayMonth = today.getMonth()+1;
+                    const todayDate = today.getDate();
+                    //오늘 날짜
+                    const sysDate = todayYear + "-" + (todayMonth < 10 ? "0" : "") + todayMonth + "-" + (todayDate < 10 ? "0" : "") + todayDate;
+
+                    if(checkedCount == checkboxes.length && checkboxes.length != 0) {
+                        //console.log(choiceTodoDate)
+                        fetch("/todo/allCompleted?date=" + sysDate )
+                        .then(resp => resp.text())
+                        .then(result=>{
+                            if(result > 0){
+
+
+                                Swal.fire({
+
+                                    title : "축하합니다🥳 목표를 득근하셨어요!", 
+                                    icon : 'success'
+                                })
+
+
+                            }else{
+                                console.log("실패ㅜㅜㅜ")
+                            }
+                        })
+                        .catch( e=> console.log(e) )
+                    }else{
+                        fetch("/todo/unfinished?date=" + sysDate )
+                        .then(resp => resp.text())
+                        .then(result=>{
+                            if(result == 0){
+                            
+                                console.log("실패ㅜㅜㅜ")
+                            }
+                        })
+                        .catch( e=> console.log(e) )
+                    }
+
                     updateCheckedPercentage();
 
                 }else{
