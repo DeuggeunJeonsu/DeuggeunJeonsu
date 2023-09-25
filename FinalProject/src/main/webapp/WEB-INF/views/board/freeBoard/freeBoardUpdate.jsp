@@ -33,9 +33,10 @@
     <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.css" rel="stylesheet">
     <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.js"></script>
 
+    <div class="place"></div>
 	<section id="main-container">
         <div id="title-area">
-            <div><h1>자유 게시판 ㅣ 수정하기</h1></div>
+            <div class="board-title">자유 게시판 ㅣ 수정하기</div>
             <div>자유 게시판 게시글을 수정할 수 있습니다.</div>
         </div>
 

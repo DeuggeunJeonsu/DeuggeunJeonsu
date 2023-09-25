@@ -35,10 +35,11 @@
         <c:set var="sp" value="&key=${param.key}&query=${param.query}"/>
     </c:if>
 	
+    <div class="place"></div>
 	<section id="main-container">
         <div id="title-area">
-            <div><h1>자유 게시판</h1></div>
-            <div>득근전수 회원님들이 자유롭게 이야기를 나누는 공간입니다.</div>
+            <div class="board-title">자유 게시판</div>
+            <div><h3>득근전수 회원님들이 자유롭게 이야기를 나누는 공간입니다.<h3></div>
         </div>
 
         <%-- 게시글 상세 검색 --%>
@@ -207,6 +208,8 @@
             </ul>
         </div>
 	</section>
+
+    <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
 
     <%-- freeBoardList.js 연결 --%>
     <script src="/resources/js/board/freeBoard/freeBoardList.js"></script>

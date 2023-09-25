@@ -1,21 +1,35 @@
+.place{
+    height: 100px;
+}
 
+.place{
+    height: 100px;
+}
 
 #main-container{
-    margin: 100px 400px;
     height: auto;
-    width: 1000px;
+    margin: auto;
+    max-width: 1000px;
 }
+
+.board-title{
+    font-size: 30px;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+#title-area > div:nth-of-type(2){
+    padding-bottom: 20px;
+    border-bottom: 2px solid #ddd;
+
+    font-size: 17px;
+    font-weight: 900;
+    color: #797979;
+}
+
 form{
     display: flex;
     flex-direction: column;
-}
-
-h3{
-    font-size: 1.7rem;
-}
-#title-area > div:nth-of-type(2){
-    padding-bottom: 10px;
-    border-bottom: 2px solid #ddd;
 }
 
 .top-write{

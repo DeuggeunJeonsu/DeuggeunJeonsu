@@ -209,6 +209,7 @@ public class MyPageServiceImpl implements MyPageService {
 	}
 
 
+		// 회원 탈퇴
 		@Transactional(rollbackFor = {Exception.class} )
 		@Override
 		public int secession(int memberNo, String memberPw) {
@@ -217,7 +218,6 @@ public class MyPageServiceImpl implements MyPageService {
 			
 			if(bcrypt.matches(memberPw, encPw)) {
 				return dao.secession(memberNo);
-				
 			}
 			
 			return 0;

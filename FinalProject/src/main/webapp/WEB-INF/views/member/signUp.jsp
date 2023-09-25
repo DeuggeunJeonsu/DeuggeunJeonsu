@@ -35,15 +35,17 @@
         <label class="imp" for="memberEmail">아이디(이메일)</label>
         <div>
           <input type="text" name = "memberEmail" id = "memberEmail" placeholder="예 : email@gmail.com"  required>
-          <button id="sendAuthKeyBtn" type="button">인증 받기</button>
+          <button id="sendEmailBtn" type="button">인증 받기</button>
         </div>
       <p class="signUp-message" id="emailMessage">메일을 받을 이메일을 작성해주세요.</p>
       <div>
         <div>
-          <input type="text" name = "authKey" id = "authKey" placeholder="인증번호 입력" maxlength="6" autocomplete="off">
-          <button type="button" id="checkAuthKeyBtn">인증하기</button>
+          <input type="text" name = "pwAuthenticationKey" id = "pwAuthenticationKey" placeholder="인증번호 입력" maxlength="6" autocomplete="off">
+          <button type="button" id="findPwBtn">인증하기</button>
         </div>
-          <p class="signUp-message" id="authKeyMessage"></p>
+          <section class="timerSection">
+            <div id="emailTimer"></div> 
+          </section>
       </div>
       </div>
 

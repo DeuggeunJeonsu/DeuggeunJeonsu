@@ -77,8 +77,19 @@ public class MemberDAO {
 		else return sqlSession.update("memberMapper.updateBMI", paramMap);
 	}
 
+<<<<<<< HEAD
 	public int shoppingCount(int memberNo) {
 
 		return sqlSession.selectOne("memberMapper.shoppingCount", memberNo);
 	}
+=======
+	/** 회원가입 이메일 인증
+	 * @param memberEmail
+	 * @return
+	 */
+	public Member selectEmail(String memberEmail) {
+		return sqlSession.selectOne("memberMapper.selectEmail",memberEmail);
+	}
+
+>>>>>>> 6cfc7017399467906209bbdbf3c13b5006d77ce4
 }
