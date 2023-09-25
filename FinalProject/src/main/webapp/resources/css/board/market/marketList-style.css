@@ -215,8 +215,34 @@ img{
     color: #fff;
 
 }
-.no-posts {
-    /*background-color: #99e1ed;*/
-    /*font-size: 1.7em;*/
+.box {
+    height: 47vh;
+    background-color: #faf9f3;
 }
 
+.pull {
+    position: relative;
+    width: 450px;
+    height: 200px;
+    padding: 20px;
+    color: #FFF;
+    border-radius: 10px;
+    background-color: #477A7B;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.pull:after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: -20px; /* 화살표 위치를 조정하세요 */
+    margin-top: -10px; /* 화살표를 세로 중앙에 정렬합니다. */
+    border-left: 20px solid #477A7B;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+}
+.pull-text{
+    font-family: 'Montserrat','Nanum Gothic',sans-serif;
+    font-size: 1.7em;
+}
