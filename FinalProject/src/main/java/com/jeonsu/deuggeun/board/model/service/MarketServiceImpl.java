@@ -147,8 +147,16 @@ public class MarketServiceImpl implements MarketService {
 
 	@Override
 	public Review selectReviewDetail(Map<String, Object> map) {
-		return dao.selectReviewDetail(map);
+
+		int result = dao.updateCount(map);
+		if (result > 0) {
+			System.out.println("result의 값 : " + result);
+			return dao.selectReviewDetail(map);
+		} else {
+			return null;
+		}
 	}
+
 
 	// 조회 수 증가 서비스
 	@Transactional

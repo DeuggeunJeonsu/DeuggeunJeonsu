@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.io.IOException;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 import com.jeonsu.deuggeun.board.model.service.MarketService;
@@ -296,77 +297,6 @@ public class MarketController {
 		}else{
 			path = "redirect:/board/" + boardCode + "/list";
 		}
-//		if (loginMember == null || loginMember.getMemberNo() != review.getMemberNo()) {
-//
-//			Cookie c = null;
-//
-//			Cookie[] cookies = req.getCookies();
-//
-//			if (cookies != null) { // 쿠키가 존재할 경우
-//
-//				// 쿠키 중 "readBoardNo"라는 쿠키를 찾아서 c에 대입
-//				for (Cookie cookie : cookies) {
-//					if (cookie.getName().equals("readReviewNo")) {
-//						c = cookie;
-//						break;
-//					}
-//				}
-//			}
-//			int result = 0;
-//
-//			if (c == null) {
-//
-//				c = new Cookie("readReviewNo", "|" + reviewNo + "|");
-//
-//				result = service.updateReadCount(reviewNo);
-//
-//			} else {
-//
-//				if (c.getValue().indexOf("|" + reviewNo + "|") == -1) {
-//					// 쿠키에 현재 게시글 번호가 없다면
-//
-//					// 기존 값에 게시글 번호 추가해서 다시 세팅
-//					c.setValue(c.getValue() + "|" + reviewNo + "|");
-//
-//					// 조회 수 증가 서비스 호출
-//					result = service.updateReadCount(reviewNo);
-//				}
-//			}
-//
-//			if (result > 0) {
-//
-//				review.setCount(review.getCount() + 1);
-//
-//				c.setPath("/");
-//
-//				Calendar cal = Calendar.getInstance(); // 싱글톤 패턴
-//				cal.add(cal.DATE, 1);
-//
-//				// 날짜 표기법 변경 객체 (DB의 TO_CHAR()와 비슷)
-//				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-//
-//				Date a = new Date(); // 현재 시간
-//
-//				Date temp = new Date(cal.getTimeInMillis()); // 내일 (24시간 후)
-//				// 2023-08-24 12:17:40
-//
-//				Date b = sdf.parse(sdf.format(temp));
-//
-//				long diff = (b.getTime() - a.getTime()) / 1000;
-//
-//				c.setMaxAge((int) diff);
-//
-//				resp.addCookie(c);
-//
-//			}
-
-
-//		} else {
-//
-//			path = "board/market/reviewDetail";
-//			ra.addFlashAttribute("message", "해당 게시글이 존재하지 않습니다.");
-//		}
-
 		return path;
 	}
 
@@ -463,8 +393,15 @@ public class MarketController {
 	public String marketInquire(@PathVariable("boardCode") int boardCode
 			, @PathVariable("productNo") int productNo
 			, @RequestParam(value="cp", required=false, defaultValue="1") int cp
+			,@SessionAttribute(value = "loginMember", required = false) Member loginMember
 			, Model model
 			, RedirectAttributes ra ) {
+
+		int loginMemberNo = 0;
+
+		if(loginMember != null){
+			loginMemberNo = loginMember.getMemberNo();
+		}
 
 		Map<String, Object> map = new HashMap<String, Object>();
 
@@ -476,17 +413,18 @@ public class MarketController {
 		Map<String, Object> map2 = service.selectInquiry(boardCode, cp, productNo);
 		List<ProductImage> productImageList = service.selectImageList(productNo);
 
-		System.out.println("map2의 값 : " + map2);
+		map2.put("loginMemberNo", loginMemberNo);
 
 		String path = null;
 
 		if(product != null){
 
-			path = "board/market/marketInquire";
-
 			model.addAttribute("map2", map2);
 			model.addAttribute("productImageList", productImageList);
 			model.addAttribute("product", product);
+
+			path = "board/market/marketInquire";
+
 
 		}else{
 			path = "redirect:/board/" + boardCode + "/list";
@@ -518,6 +456,7 @@ public class MarketController {
 
 			path = "board/market/inquiryDetail";
 			model.addAttribute("inquiry", inquiry);
+			System.out.println("상품문의 작성자 회원번호 : " + inquiry.getMemberNo());
 			model.addAttribute("cp", cp);
 
 		}else{

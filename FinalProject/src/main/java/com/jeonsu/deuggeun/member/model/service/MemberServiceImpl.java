@@ -87,6 +87,13 @@ public class MemberServiceImpl implements MemberService {
 	public int addBMI(Map<String, Object> paramMap) {
 		return dao.addBMI(paramMap);
 	}
-	
+
+	// 장바구니 상품 카운트
+	@Override
+	public int shoppingCount(int memberNo) {
+
+		return dao.shoppingCount(memberNo);
+	}
+
 }
 

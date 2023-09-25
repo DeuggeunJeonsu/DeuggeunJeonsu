@@ -14,16 +14,22 @@
             <%-- marketDetail-style.css 연결 --%>
                 <link rel="stylesheet" href="/resources/css/board/market/marketDetail-style.css">
 
-                <!-- Font Awesome CDN 추가 -->
-                <link rel="stylesheet"
-                    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-                    integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+Wy4y5AuWn1C4EyyIbJs6YXvPECJwFPa28H"
-                    crossorigin="anonymous">
-                    <link rel="apple-touch-icon" sizes="180x180" href="/resources/images/favicon_io/apple-touch-icon.png">
-                    <link rel="icon" type="image/png" sizes="32x32" href="/resources/images/favicon_io/favicon-32x32.png">
-                    <link rel="icon" type="image/png" sizes="16x16" href="/resources/images/favicon_io/favicon-16x16.png">
-                    <link rel="manifest" href="/resources/images/favicon_io/site.webmanifest">
-                    <link rel="icon" href="/resources/images/favicon_io/favicon.ico" type="image/x-icon">
+            <!-- Font Awesome CDN 추가 -->
+            <link rel="stylesheet"
+                href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+                integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+Wy4y5AuWn1C4EyyIbJs6YXvPECJwFPa28H"
+                crossorigin="anonymous">
+                <link rel="apple-touch-icon" sizes="180x180" href="/resources/images/favicon_io/apple-touch-icon.png">
+                <link rel="icon" type="image/png" sizes="32x32" href="/resources/images/favicon_io/favicon-32x32.png">
+                <link rel="icon" type="image/png" sizes="16x16" href="/resources/images/favicon_io/favicon-16x16.png">
+                <link rel="manifest" href="/resources/images/favicon_io/site.webmanifest">
+                <link rel="icon" href="/resources/images/favicon_io/favicon.ico" type="image/x-icon">
+
+            <!-- SweetAlert2 CSS 파일 추가 -->
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+
+            <!-- SweetAlert2 JavaScript 파일 추가 -->
+            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
 
         </head>
 

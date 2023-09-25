@@ -30,6 +30,12 @@
                 <link rel="icon" href="/resources/images/favicon_io/favicon.ico" type="image/x-icon">
                 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
+            <!-- SweetAlert2 CSS 파일 추가 -->
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+
+            <!-- SweetAlert2 JavaScript 파일 추가 -->
+            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
+
         </head>
 
         <body>
@@ -185,8 +191,8 @@
             <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
             <%-- <script src="/resources/js/main.js"></script> --%>
 
-        </body>
         <script src="/resources/js/market/marketDetail.js"></script>
-        <script src="/resources/js/market/review.js"></script>
+        </body>
+<%--        <script src="/resources/js/market/review.js"></script>--%>
 
         </html>

@@ -110,13 +110,22 @@ $(document).ready(function() {
 
 })();
 
-// function checkLogin(){
-//     if(logoutBtn == null){
-//         alert("로그인 후 이용해주세요.");
-//         return false;
-//     }
-// }
-//
+// 장바구니 상품 카운트
+$(document).ready(function() {
+    const url = "/shoppingCount";
+    $.ajax({
+        type: "GET",
+        url: url,
+        dataType: "text",
+        success: function(response) {
+            $('#shopping-count').text(response);
+        },
+        error: function(error) {
+            console.error("Error fetching data: ", error);
+        }
+    });
+});
+
 
 
 

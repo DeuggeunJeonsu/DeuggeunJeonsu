@@ -3,17 +3,11 @@ package com.jeonsu.deuggeun.main.controller;
 import java.util.List;
 import java.util.Map;
 
+import com.jeonsu.deuggeun.member.model.dto.Member;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.SessionAttribute;
-import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.annotation.*;
 
-import com.jeonsu.deuggeun.common.utility.Util;
-import com.jeonsu.deuggeun.member.model.dto.Member;
 import com.jeonsu.deuggeun.member.model.dto.MemberBMI;
 import com.jeonsu.deuggeun.member.model.service.MemberService;
 
@@ -56,4 +50,17 @@ public class MainController {
 		return service.addBMI(paramMap);
 	}
 
+	// 장바구니 상품 카운트
+	@ResponseBody
+	@RequestMapping(value="/shoppingCount", produces = "text/plain; charset=UTF-8")
+	public String shoppingCount(@SessionAttribute(value="loginMember", required=false) Member loginMember) {
+
+		int memberNo = 0;
+
+		if(loginMember != null){
+			memberNo = loginMember.getMemberNo();
+		}
+		int count = service.shoppingCount(memberNo);
+		return String.valueOf(count);
+	}
 }

@@ -50,4 +50,6 @@ public interface MemberService {
 	 */
 	int addBMI(Map<String, Object> paramMap);
 
+	// 장바구니 상품 카운트
+    int shoppingCount(int memberNo);
 }
