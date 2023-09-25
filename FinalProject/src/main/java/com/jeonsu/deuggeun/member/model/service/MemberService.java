@@ -50,4 +50,11 @@ public interface MemberService {
 	 */
 	int addBMI(Map<String, Object> paramMap);
 
+	
+	/** 회원가입 이메일 인증
+	 * @param memberEmail
+	 * @return
+	 */
+	Member selectEmail(String memberEmail);
+
 }
