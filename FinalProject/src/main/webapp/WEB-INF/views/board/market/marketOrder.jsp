@@ -96,34 +96,66 @@
                 </tr>
                 </tbody>
             </table>
+<%--            <c:forEach var="cart" items="${cartList}">--%>
+
+<%--                <c:set var="totalAmountSum" value="${totalAmountSum + cart.total}" />--%>
+
+<%--                <div class="fixed-con">--%>
+<%--                    <div class="box">--%>
+<%--                        <p class="title-first">${cart.memberNickname}님의 결제정보</p>--%>
+<%--                        <div class="tbl_order2">--%>
+<%--                            <div>총상품금액</div>--%>
+<%--                            <div><fmt:formatNumber type="number" value="${totalAmountSum}" pattern="#,###원" /></div>--%>
+<%--                        </div>--%>
+<%--                        <div class="tbl_order2">--%>
+<%--                            <div>배송비</div>--%>
+<%--                            <div>+0원</div>--%>
+<%--                        </div>--%>
+<%--                        <dl class="total_ord">--%>
+<%--                            <div class="total_amount">최종결제금액</div>--%>
+<%--                            <div class="total">--%>
+<%--                                <fmt:formatNumber type="number" value="${totalAmountSum}" pattern="#,###원" />--%>
+<%--                            </div>--%>
+<%--                        </dl>--%>
+<%--                    </div>--%>
+<%--                    <button type="submit" onclick="requestPay()" id="payment-btn" class="submit-btn">결제하기</button>--%>
+<%--                    <button type="button" id="cancle-btn" class="submit-btn" onclick="cancelOrder()">취소하기</button>--%>
+<%--                </div>--%>
+<%--                <input type="hidden" id="productName" value="${cart.productName}">--%>
+
+<%--            </c:forEach>--%>
+            <c:set var="totalAmountSum" value="0" />
+
             <c:forEach var="cart" items="${cartList}">
-
                 <c:set var="totalAmountSum" value="${totalAmountSum + cart.total}" />
-
-                <div class="fixed-con">
-                    <div class="box">
-                        <p class="title-first">${cart.memberNickname}님의 결제정보</p>
-                        <div class="tbl_order2">
-                            <div>총상품금액</div>
-                            <div><fmt:formatNumber type="number" value="${totalAmountSum}" pattern="#,###원" /></div>
-                        </div>
-                        <div class="tbl_order2">
-                            <div>배송비</div>
-                            <div>+0원</div>
-                        </div>
-                        <dl class="total_ord">
-                            <div class="total_amount">최종결제금액</div>
-                            <div class="total">
-                                <fmt:formatNumber type="number" value="${totalAmountSum}" pattern="#,###원" />
-                            </div>
-                        </dl>
-                    </div>
-                    <button type="submit" onclick="requestPay()" id="payment-btn" class="submit-btn">결제하기</button>
-                    <button type="button" id="cancle-btn" class="submit-btn" onclick="cancelOrder()">취소하기</button>
-                </div>
+                <c:set var="memberNickname" value="${cart.memberNickname}" />
+                <!-- hidden input values -->
                 <input type="hidden" id="productName" value="${cart.productName}">
-                <%--                            <input type="hidden" id="totalCount" value="${cart.totalCount}">--%>
             </c:forEach>
+
+            <div class="fixed-con">
+                <div class="box">
+                    <p class="title-first">${memberNickname}님의 결제정보</p>
+                    <div class="tbl_order2">
+                        <div>총상품금액</div>
+                        <div><fmt:formatNumber type="number" value="${totalAmountSum}" pattern="#,###원" /></div>
+                    </div>
+                    <div class="tbl_order2">
+                        <div>배송비</div>
+                        <div>+0원</div>
+                    </div>
+                    <dl class="total_ord">
+                        <div class="total_amount">최종결제금액</div>
+                        <div class="total">
+                            <fmt:formatNumber type="number" value="${totalAmountSum}" pattern="#,###원" />
+                        </div>
+                    </dl>
+                </div>
+                <button type="submit" onclick="requestPay()" id="payment-btn" class="submit-btn">결제하기</button>
+                <button type="button" id="cancle-btn" class="submit-btn" onclick="cancelOrder()">취소하기</button>
+            </div>
+
+
             <input type="hidden" id="totalAmountSum" value="${totalAmountSum}">
             <c:set var="productCount" value="${fn:length(cartList)}" />
             <input type="hidden" id="productCount" value="${productCount}" />

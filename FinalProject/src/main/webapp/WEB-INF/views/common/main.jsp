@@ -10,6 +10,8 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/resources/images/favicon_io/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/resources/images/favicon_io/favicon-16x16.png">
     <link rel="manifest" href="/resources/images/favicon_io/site.webmanifest">
+	<link rel="stylesheet" href="/resources/css/common/main.css">
+
 </head>
 <body>
 
@@ -22,11 +24,6 @@
 		</div>
 		
 	</div>
-
-
-
-
-
 
 	<section id="main-container">
 
@@ -60,11 +57,15 @@
 	<jsp:include page="/WEB-INF/views/common/todolist.jsp"></jsp:include>
 
 	<jsp:include page="/WEB-INF/views/common/ranking.jsp"></jsp:include>
+	<jsp:include page="/WEB-INF/views/common/MDPick.jsp"></jsp:include>
 	<jsp:include page="/WEB-INF/views/common/map.jsp"></jsp:include>
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
 	<input type="hidden" name="mainPage" value="mainPage"/>	
 
 	<%-- <script src="../resources/js/main.js"></script> --%>
 	<!-- <script src="/resources/js/TodoList/todoList.js"></script>  -->
+
+
+
 </body>
 </html>
