@@ -446,6 +446,8 @@ hr{ border-bottom: 2px solid #ddd;}
 /* 좋아요 영역 */
 #btn-area{
     height: 100px;
+    display: flex;
+    justify-content: space-between;
 }
 
 .board-like{
@@ -492,14 +494,11 @@ hr{ border-bottom: 2px solid #ddd;}
 
 /* 나머지 버튼 */
 #btn-area{
-    display: flex;
-    flex-direction: column;
     align-items: center;
     margin-bottom: 100px;
 }
 #btn-area > div:nth-child(2){
     width: 350px;
-    height: 100px;
     display: flex;
     justify-content: space-between;
     
@@ -528,4 +527,28 @@ hr{ border-bottom: 2px solid #ddd;}
  transition-duration: 0.5s;   
 }
 
+/* 카카오톡 공유하기 */
+#social-btn-area{
+    width: 300px;
+    display: flex;
+    justify-content: center;
+}
 
+#kakao-share-btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 170px !important;
+    padding: 0 20px;
+
+    position: relative;
+    left: 47px;
+}
+
+#social-btn-area > button:hover{
+    background-color: #F7E600;
+}
+
+#kakao-logo{
+    width: 30px;
+}
