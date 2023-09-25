@@ -133,5 +133,13 @@
         WHERE member_no = #{memberNo}
       AND ORDER_FL = 'N'
    </select>
+   
+   <!-- 회원가입 이메일 인증 확인 -->
+   <select id="checkKey" resultType="_int">
+   		SELECT COUNT(*) 
+   		FROM "MEMBER"
+   		WHERE MEMBER_EMAIL = #{memberEmail}
+   		AND MEMBER_DEL_FL = 'N'
+   </select>
 
 </mapper>
