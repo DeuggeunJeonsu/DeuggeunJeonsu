@@ -11,7 +11,7 @@
                 <link rel="stylesheet" href="/resources/css/board/QnAWrite-style.css">
 
                 <!-- Font Awesome CDN 추가 -->
-                <link rel="stylesheet"
+                <%-- <link rel="stylesheet"
                     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
                     integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+Wy4y5AuWn1C4EyyIbJs6YXvPECJwFPa28H"
                     crossorigin="anonymous">
@@ -19,7 +19,7 @@
                 <link rel="icon" type="image/png" sizes="32x32" href="/resources/images/favicon_io/favicon-32x32.png">
                 <link rel="icon" type="image/png" sizes="16x16" href="/resources/images/favicon_io/favicon-16x16.png">
                 <link rel="manifest" href="/resources/images/favicon_io/site.webmanifest">
-                <link rel="icon" href="/resources/images/favicon_io/favicon.ico" type="image/x-icon">
+                <link rel="icon" href="/resources/images/favicon_io/favicon.ico" type="image/x-icon"> --%>
 
                 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
                 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
@@ -61,9 +61,6 @@
 
             <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
 
-            <script src="/resources/js/board/boardWrite.js"></script>
-            <script src="/resources/js/main.js"></script>
-            <script src="/resources/js/member/myPage/QnAWrite.js"></script>
         </body>
 
         </html>

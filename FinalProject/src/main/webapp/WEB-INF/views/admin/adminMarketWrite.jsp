@@ -61,9 +61,6 @@
 
             <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
 
-            <script src="/resources/js/board/boardWrite.js"></script>
-            <script src="/resources/js/main.js"></script>
-            <script src="/resources/js/member/myPage/QnAWrite.js"></script>
         </body>
 
         </html>

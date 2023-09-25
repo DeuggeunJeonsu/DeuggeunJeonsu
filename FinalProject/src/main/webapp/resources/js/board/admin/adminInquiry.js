@@ -1,3 +1,8 @@
+/* href="/admin/marketWrite?boardNo=${item.boardNo}"
+
+
+----------------------------------------------------------------------------------- */
+
 /* 모달창 메인으로 버튼 alert 효과 */
 /* $(".iq-update").click(function () {
   Swal.fire({
@@ -20,31 +25,23 @@
   })
 }); */
 
-
-
 const boardNo = document.getElementsByClassName("boardNo");
 
 
-$(".market-update").click(function () {
-  Swal.fire({
-    title: '답변 하시겠습니까?',
-    text: "승인 시 작성 페이지로 이동합니다",
-    icon: 'success',
-    showCancelButton: true,
-    confirmButtonColor: '#3085d6',
-    cancelButtonColor: '#d33',
-    confirmButtonText: '승인',
-    cancelButtonText: '취소',
-    reverseButtons: true, // 버튼 순서 거꾸로
+const inquiryModal = document.getElementById("inquiryModal");
+const closeBtn = document.getElementById("close-button");
+const insertBtn = document.getElementById("insert-button");
 
-  }).then((result) => {
-    if (result.isConfirmed) {
 
-      location.href = "/marketWrite";
 
-    }
-  })
-});
+const modalTitle = document.getElementById("modalTitle");
+const modalContent = document.getElementById("modalContent");
+
+
+const iqUpdate = document.getElementsByClassName("iq-update");
+
+
+
 
 
 /* 답변 여부 */
@@ -110,10 +107,12 @@ option1.addEventListener("click", () => {
 
         row.innerHTML = `
              <td>${item.boardNo}</td>
-             <td><a href="/admin/adminQnAWrite?boardNo=${item.boardNo}">${item.boardTitle}</a></td>
+             <td><a class="iq-update">${item.boardTitle}</a></td>
              <td>${item.inquiryType === 1 ? "1:1문의" : "에러"}</td>
              <td>${item.memberEmail}</td>
              <td style="color: ${item.adminCheckFl === 'N' ? 'black' : '#99E1ED'}">${item.adminCheckFl === 'N' ? '미답변' : '답변 완료'}</td>
+             <input type="hidden" class="boardNo2" value="${item.boardNo}" />
+             <input type="hidden" class="boardCode" value="${item.inquiryType}" />
                
              
            `;
@@ -121,6 +120,93 @@ option1.addEventListener("click", () => {
       });
 
       inquiryHeader.innerHTML = "회원 1:1문의 목록";
+      const boardNo2 = document.getElementsByClassName("boardNo2");
+      const boardCode = document.getElementsByClassName("boardCode");
+      /* -------------------- */
+      /* modal 창 */
+      for (let i = 0; i < iqUpdate.length; i++) {
+
+        iqUpdate[i].addEventListener("click", () => {
+
+          inquiryModal.style.visibility = "visible";
+
+          fetch("/admin/adminInquiryDetail?boardNo=" + boardNo2[i].value)
+            .then(resp => resp.json())
+            .then(data => {
+              console.log(data.inquiryType);
+
+              modalTitle.value = data.boardTitle;
+              modalContent.value = data.boardContent;
+
+
+              /* ------------------------------------------------ */
+
+              for (let i = 0; i < data.boardTitle.length; i++) {
+                insertBtn.addEventListener("click", e => {
+                  e.preventDefault();
+
+                  if (data.inquiryType == '1') {
+
+                    Swal.fire({
+                      title: '답변 하시겠습니까?',
+                      text: "승인 시 작성 페이지로 이동합니다",
+                      icon: 'success',
+                      showCancelButton: true,
+                      confirmButtonColor: '#3085d6',
+                      cancelButtonColor: '#d33',
+                      confirmButtonText: '승인',
+                      cancelButtonText: '취소',
+                      reverseButtons: true, // 버튼 순서 거꾸로
+
+                    }).then((result) => {
+                      if (result.isConfirmed) {
+                        window.location.href = '/admin/adminQnAWrite?boardNo=' + data.boardNo;
+                      }
+                    })
+
+                  } else if (data.inquiryType == '3' || boardCode[i].inquiryType == '4') {
+
+                    Swal.fire({
+                      title: '답변 하시겠습니까?',
+                      text: "승인 시 작성 페이지로 이동합니다",
+                      icon: 'success',
+                      showCancelButton: true,
+                      confirmButtonColor: '#3085d6',
+                      cancelButtonColor: '#d33',
+                      confirmButtonText: '승인',
+                      cancelButtonText: '취소',
+                      reverseButtons: true, // 버튼 순서 거꾸로
+
+                    }).then((result) => {
+                      if (result.isConfirmed) {
+
+                        window.location.href = '/admin/marketWrite?boardNo=' + data.boardNo;
+
+                      }
+                    })
+                  }
+
+                })
+              }
+
+              /* ------------------------------------------------ */
+
+
+
+            })
+            .catch(error => console.log(error))
+        })
+      }
+
+      closeBtn.addEventListener("click", () => {
+
+        inquiryModal.style.visibility = "hidden";
+      })
+      /* -------------------- */
+      // 답변 화면으로 이동
+
+
+
 
 
 
@@ -138,8 +224,6 @@ option2.addEventListener("click", () => {
   fetch("/admin/selectInquiry2")
     .then(resp => resp.json())
     .then(data => {
-
-
 
 
       // 배열 내의 각 객체에서 boardNo 속성을 추출하여 문자열로 변환
@@ -166,19 +250,100 @@ option2.addEventListener("click", () => {
         }
         row.innerHTML = `
              <td>${item.boardNo}</td>
-             <td><a href="/admin/marketWrite?boardNo=${item.boardNo}">${item.boardTitle}</a></td>
+             <td><a class="iq-update" >${item.boardTitle}</a></td>
              <td>${inquiryTypeText}</td>
              <td>${item.memberEmail}</td>
              <td style="color: ${item.adminCheckFl === 'N' ? 'black' : '#99E1ED'}">${item.adminCheckFl === 'N' ? '미답변' : '답변 완료'}</td>
-               
-             
-           `;
+             <input type="hidden" class="boardNo2" value="${item.boardNo}" />
+             <input type="hidden" class="boardCode" value="${item.inquiryType}" />
+             `;
         inquiryList.appendChild(row);
+
       });
 
       inquiryHeader.innerHTML = "회원 상품문의 목록";
+      const boardNo2 = document.getElementsByClassName("boardNo2");
+      const boardCode = document.getElementsByClassName("boardCode");
 
+      /* -------------------- */
+      /* modal 창 */
+      for (let i = 0; i < iqUpdate.length; i++) {
 
+        iqUpdate[i].addEventListener("click", () => {
+
+          inquiryModal.style.visibility = "visible";
+
+          fetch("/admin/adminInquiryDetail?boardNo=" + boardNo2[i].value)
+            .then(resp => resp.json())
+            .then(data => {
+              console.log(data.boardTitle);
+
+              modalTitle.value = data.boardTitle;
+              modalContent.value = data.boardContent;
+
+              /* -------------------- */
+
+              // 답변 화면으로 이동
+
+              for (let i = 0; i < data.boardTitle.length; i++) {
+                insertBtn.addEventListener("click", e => {
+                  e.preventDefault();
+
+                  if (data.inquiryType == '1') {
+
+                    Swal.fire({
+                      title: '답변 하시겠습니까?',
+                      text: "승인 시 작성 페이지로 이동합니다",
+                      icon: 'success',
+                      showCancelButton: true,
+                      confirmButtonColor: '#3085d6',
+                      cancelButtonColor: '#d33',
+                      confirmButtonText: '승인',
+                      cancelButtonText: '취소',
+                      reverseButtons: true, // 버튼 순서 거꾸로
+
+                    }).then((result) => {
+                      if (result.isConfirmed) {
+                        window.location.href = '/admin/adminQnAWrite?boardNo=' + data.boardNo;
+                      }
+                    })
+
+                  } else if (data.inquiryType == '3' || data.inquiryType == '4') {
+
+                    Swal.fire({
+                      title: '답변 하시겠습니까?',
+                      text: "승인 시 작성 페이지로 이동합니다",
+                      icon: 'success',
+                      showCancelButton: true,
+                      confirmButtonColor: '#3085d6',
+                      cancelButtonColor: '#d33',
+                      confirmButtonText: '승인',
+                      cancelButtonText: '취소',
+                      reverseButtons: true, // 버튼 순서 거꾸로
+
+                    }).then((result) => {
+                      if (result.isConfirmed) {
+
+                        window.location.href = '/admin/marketWrite?boardNo=' + data.boardNo;
+
+                      }
+                    })
+                  }
+
+                })
+              }
+
+              /* ---------------------------------------- */
+
+            })
+            .catch(error => console.log(error))
+        })
+      }
+
+      closeBtn.addEventListener("click", () => {
+
+        inquiryModal.style.visibility = "hidden";
+      })
 
 
     })
@@ -187,82 +352,91 @@ option2.addEventListener("click", () => {
 })
 
 
-// 답변 화면으로 이동
-const iqUpdate = document.getElementsByClassName("iq-update");
-let relBoardNo = 0;
-
-for (let i = 0; i < adminCheckFl.length; i++) {
-  iqUpdate[i].addEventListener("click", e => {
-    e.preventDefault();
-
-    if(inquiryType2[i].value == '1'){
-
-      Swal.fire({
-        title: '답변 하시겠습니까?',
-        text: "승인 시 작성 페이지로 이동합니다",
-        icon: 'success',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: '승인',
-        cancelButtonText: '취소',
-        reverseButtons: true, // 버튼 순서 거꾸로
-    
-      }).then((result) => {
-        if (result.isConfirmed) {
-    
 
 
-            window.location.href = '/admin/adminQnAWrite?boardNo=' + boardNo[i].value;
 
 
-    
-        }
-      })
-
-    }else if(inquiryType2[i].value == '3' || inquiryType2[i].value == '4'){
-
-      Swal.fire({
-        title: '답변 하시겠습니까?',
-        text: "승인 시 작성 페이지로 이동합니다",
-        icon: 'success',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: '승인',
-        cancelButtonText: '취소',
-        reverseButtons: true, // 버튼 순서 거꾸로
-    
-      }).then((result) => {
-        if (result.isConfirmed) {
-    
-          window.location.href = '/admin/marketWrite?boardNo=' + boardNo[i].value;
-    
-        }
-      })
-    }
-    
-  })
-}
-
-const inquiryModal = document.getElementById("inquiryModal");
-const closeBtn = document.getElementById("close-button");
 
 /* modal 창 */
-for(let i = 0 ; i < iqUpdate.length ; i++){
+for (let i = 0; i < iqUpdate.length; i++) {
 
   iqUpdate[i].addEventListener("click", () => {
 
     inquiryModal.style.visibility = "visible";
 
-    fetch("/adminInquiryDetail?boardNo=")
-    .then()
-    .then()
-    .catch()
+    fetch("/admin/adminInquiryDetail?boardNo=" + boardNo[i].value)
+      .then(resp => resp.json())
+      .then(data => {
+        console.log(data.boardTitle);
+
+        modalTitle.value = data.boardTitle;
+        modalContent.value = data.boardContent;
+
+
+        /* ---------------------------------- */
+
+        for (let i = 0; i < adminCheckFl.length; i++) {
+          insertBtn.addEventListener("click", e => {
+            console.log(boardNo[i] + 'asdasd')
+            e.preventDefault();
+
+            if (inquiryType2[i].value == '1') {
+
+              Swal.fire({
+                title: '답변 하시겠습니까?',
+                text: "승인 시 작성 페이지로 이동합니다",
+                icon: 'success',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: '승인',
+                cancelButtonText: '취소',
+                reverseButtons: true, // 버튼 순서 거꾸로
+
+              }).then((result) => {
+                if (result.isConfirmed) {
+                  window.location.href = '/admin/adminQnAWrite?boardNo=' + data.boardNo;
+                }
+              })
+
+            } else if (inquiryType2[i].value == '3' || inquiryType2[i].value == '4') {
+
+              Swal.fire({
+                title: '답변 하시겠습니까?',
+                text: "승인 시 작성 페이지로 이동합니다",
+                icon: 'success',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: '승인',
+                cancelButtonText: '취소',
+                reverseButtons: true, // 버튼 순서 거꾸로
+
+              }).then((result) => {
+                if (result.isConfirmed) {
+
+                  window.location.href = '/admin/marketWrite?boardNo=' + data.boardNo;
+
+                }
+              })
+            }
+
+          })
+        }
+
+
+
+
+        /* ---------------------------------- */
+
+
+
+      })
+      .catch(error => console.log(error))
   })
 }
 
- closeBtn.addEventListener("click", ()=> {
+closeBtn.addEventListener("click", () => {
 
   inquiryModal.style.visibility = "hidden";
 }) 
