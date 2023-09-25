@@ -249,7 +249,7 @@ if(document.querySelector("#middle-Container")){
                     document.querySelector(".check-area").innerHTML="";
                     for(let todo of detailedTodoList){
                         const DateDIV = document.createElement("div");
-                        DateDIV.innerHTML=todo.lcreateDt;
+                        DateDIV.innerHTML=todo.lCreateDt;
 
                         // 새로운 div 요소 생성
                         const div = document.createElement("div");
@@ -293,8 +293,8 @@ if(document.querySelector("#middle-Container")){
 
                         const input3 = document.createElement("input")
                         input3.setAttribute("type", "hidden");
-                        input3.classList.add("lcreateDt");
-                        input3.value = todo.lcreateDt;
+                        input3.classList.add("lCreateDt");
+                        input3.value = todo.lCreateDt;
 
                         // 각 요소를 div에 추가
                         // div.append(DateDIV)
@@ -468,7 +468,7 @@ document.addEventListener("click", function (e){
                     return;
                 } else {
                     //console.log(choiceTodoDate+"!!!!!!!!!!!!!!!")
-                    const insertTodo = {listContent: addListVal , lcreateDt : choiceTodoDate, memberNo : loginMemberNo}
+                    const insertTodo = {listContent: addListVal , lCreateDt : choiceTodoDate, memberNo : loginMemberNo}
                     //console.log(insertTodo)
                     fetch("/todo/insert",{
                         method : "POST", 
@@ -493,7 +493,6 @@ document.addEventListener("click", function (e){
                 }
             }
         }
-            
         
     }
 })
@@ -593,7 +592,7 @@ document.querySelector(".addList").addEventListener("keyup", function(event) {
                         
                     return;
                 } else {
-                    const inputTodo = {listContent: addListVal , lcreateDt : choiceTodoDate, memberNo : loginMemberNo}
+                    const inputTodo = {listContent: addListVal , lCreateDt : choiceTodoDate, memberNo : loginMemberNo}
                     fetch("/todo/insert",{
                         method : "POST", 
                         headers: {"Content-Type": "application/json"},  
@@ -604,7 +603,7 @@ document.querySelector(".addList").addEventListener("keyup", function(event) {
                             //console.log("추가완료!")
                             addListInput.value="";
 
-                            todoslist(inputTodo.lcreateDt)
+                            todoslist(inputTodo.lCreateDt)
                             buildCalendar();
                             updateCheckedPercentage();
                 
@@ -648,7 +647,7 @@ document.addEventListener("click", function (e){
         fetch("/todo/delete",{
             method: "POST",
             headers: { 'Content-Type': 'application/json' },
-            body:JSON.stringify({ "listNo": todoNo , "lcreateDt": choiceTodoDate})
+            body:JSON.stringify({ "listNo": todoNo , "lCreateDt": choiceTodoDate})
         })
         .then(resp => resp.text())
         .then(result =>{
