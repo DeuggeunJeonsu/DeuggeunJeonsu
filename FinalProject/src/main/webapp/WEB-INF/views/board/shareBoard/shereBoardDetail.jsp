@@ -182,22 +182,24 @@ console.log(Kakao.isInitialized());
         <div class="likeCount">${board.likeCount}</div>
 
         <div id="btn-area">
-
-            <c:if test="${!empty loginMember}">
-                <div id="social-btn-area">
-                    <button id="kakao-share-btn" onclick="shareMessage()">
-                        <img id="kakao-logo" src="/resources/images/freeBoard/kakaotalk_logo.png">
-                                &nbsp;카카오톡 공유하기
-                    </button>
-                </div>
-            </c:if>
-
-
             <div>
                 <button id="goToListBtn">목록으로</button>
+                
+                <c:if test="${!empty loginMember}">
+                    <div id="social-btn-area">
+                        <button id="kakao-share-btn" onclick="shareMessage()">
+                            <img id="kakao-logo" src="/resources/images/freeBoard/kakaotalk_logo.png">
+                            &nbsp;카카오톡 공유하기
+                        </button>
+                    </div>
+                </c:if>
+
                 <c:if test="${loginMember.memberNo == board.memberNo}">
-                    <button id="updateBtn">수정하기</button>
-                    <button id="deleteBtn">삭제하기</button>
+
+                    <div>
+                        <button id="updateBtn">수정하기</button>
+                        <button id="deleteBtn">삭제하기</button>
+                    </div>
                 </c:if>
             </div>
         </div>
