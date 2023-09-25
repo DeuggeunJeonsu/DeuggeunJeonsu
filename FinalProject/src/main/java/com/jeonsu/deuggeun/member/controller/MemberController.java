@@ -205,5 +205,22 @@ public class MemberController {
 		
 		return path;
 	}
+	
+	// 회원 가입 이메일 인증
+		@ResponseBody
+		@PostMapping(value="/ajaxEmail", produces = "application/json; charset=UTF-8")
+		public String sendEmail(@RequestBody String memberEmail, HttpServletResponse resp) {
+			
+			// 입력된 이메일로 회원 검색
+			Member selectMember = service.selectEmail(memberEmail);
+			String AuthenticationKey="";
+
+			// 일치하는 회원이 있으면 email인증번호 전송
+			if(selectMember ==null) AuthenticationKey = Util.sendEmail(memberEmail);
+			
+			// 인증번호 반환
+			return AuthenticationKey;
+		}
+	
 
 }

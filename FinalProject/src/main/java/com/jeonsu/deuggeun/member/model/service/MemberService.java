@@ -50,6 +50,16 @@ public interface MemberService {
 	 */
 	int addBMI(Map<String, Object> paramMap);
 
+
 	// 장바구니 상품 카운트
     int shoppingCount(int memberNo);
+
+	
+	/** 회원가입 이메일 인증
+	 * @param memberEmail
+	 * @return
+	 */
+	Member selectEmail(String memberEmail);
+
+
 }

@@ -46,10 +46,11 @@ console.log(Kakao.isInitialized());
 
 	<jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
 	
+    <div class="place"></div>
 	<section id="main-container">
         <div id="title-area">
-            <div><h1>자유 게시판</h1></div>
-            <div>득근전수 회원님들이 자유롭게 이야기를 나누는 공간입니다.</div>
+            <div class="board-title">자유 게시판</div>
+            <div><h3>득근전수 회원님들이 자유롭게 이야기를 나누는 공간입니다.</h3></div>
         </div>
 
         <div id="detail-container">
@@ -165,97 +166,9 @@ console.log(Kakao.isInitialized());
 
             </div>
     
-            <!-- 댓글 영역 -->
-            <div id="comment-area">
-
-                <div class="comment-count-area">
-                    <i class="fa-regular fa-comment" ></i> <span>댓글 4</span>
-                </div>
-
-                <div class="comment-input">
-                    <textarea placeholder="댓글을 입력해주세요"></textarea>
-                    <button><img src="/resources/images/icon/send-icon.png"></button>
-                </div>
-
-                <ul id="commentList">
-                    <li class="comment-row">
-                        <p class="comment-writer">
-                            <img src="/resources/images/user.png">
-                            <span>닉네임</span>
-                        </p>
-                        <p class="comment-content">부모 댓글 내용입니다</p>
-                        <div>
-                            <div>
-                                <span class="comment-date">2023-09-02</span>
-                                <span>&times</span>
-                            </div>
-                            <span>
-                                <button>수정</button>
-                                <button>답글</button>
-                            </span>
-                        </div>
-                    </li>
-
-                    <li class="comment-row child-comment">
-                        <p class="comment-writer">
-                            <img src="/resources/images/user.png">
-                            <span>닉네임</span>
-                        </p>
-                        <p class="comment-content">자식 댓글 내용입니다</p>
-                        <div>
-                            <div>
-                                <span class="comment-date">2023-09-02</span>
-                                <span>&times</span>
-                            </div>
-                            <span>
-                                <button>수정</button>
-                            </span>
-                        </div>
-                    </li>
-
-                    <li class="comment-row child-comment">
-                        <p class="comment-writer">
-                            <img src="/resources/images/user.png">
-                            <span>닉네임</span>
-                        </p>
-                        <p class="comment-content">자식 댓글 내용입니다</p>
-                        <div>
-                            <div>
-                                <span class="comment-date">2023-09-02</span>
-                                <span>&times</span>
-                            </div>
-                            <span>
-                                <button>수정</button>
-                            </span>
-                        </div>
-                    </li>
-
-                    <li class="comment-row">
-                        <p class="comment-writer">
-                            <img src="/resources/images/user.png">
-                            <span>닉네임</span>
-                        </p>
-    
-                        <p class="comment-content">부모 댓글 내용입니다</p>
-                        
-                        <div>
-                            <div>
-                                <span class="comment-date">2023-09-02</span>
-                                <span>&times</span>
-                            </div>
-                            <span>
-                                <button>수정</button>
-                                <button>답글</button>
-                            </span>
-                        </div>
-                    </li>
-
-                </ul>
-
-            </div>
-
         </div>
-
+        <!-- 댓글 영역 -->
+        <jsp:include page="/WEB-INF/views/board/comment.jsp"></jsp:include>
 	</section>
 
     <script>
@@ -274,6 +187,8 @@ console.log(Kakao.isInitialized());
 
     <!-- freeBoardDetail.js 연결 -->
 	<script src="/resources/js/board/freeBoard/freeBoardDetail.js"></script>
+    <!-- comment.js 연결 -->
+    <script src="/resources/js/board/comment.js"></script>
 
 </body>
 </html>

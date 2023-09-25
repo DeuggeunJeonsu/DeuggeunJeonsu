@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>루틴공유게시판수정</title>
+<title>루틴 공유 게시판</title>
 
 
 <c:forEach items="${board.imageList}" var="img">
@@ -48,9 +48,10 @@
 
 	<jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
 	
+    <div class="place"></div>
 	<section id="main-container">
         <div id="title-area">
-            <div><h1>루틴 공유 게시판 수정</h1></div>
+            <div class="board-title">루틴 공유 게시판  |  수정하기</div>
               <div>득근전수 회원님들과 공유하고 싶은 운동 루틴을 수정해보세요.</div>
         </div>
         <form action="/board2/2/insert" method="POST"

@@ -342,14 +342,17 @@ document.addEventListener("click", (e)=>{
         const add = e.target.parentElement.querySelector("span").innerText;
     
         let spanContent = document.querySelectorAll('.check-area > div >span');
-            
+           
             for(let i of spanContent){
-                Swal.fire({
+                if(add == i.innerText){
 
-                    title : "이미 입력한 루틴입니다.😊", 
-                    icon : 'error'
-                })
-                return;
+                    Swal.fire({
+    
+                        title : "이미 입력한 루틴입니다.😊", 
+                        icon : 'error'
+                    })
+                    return;
+                }
                 
             }
         const addTodo = {listContent:  add , lcreateDt : sysDate, memberNo : loginMemberNo}
