@@ -17,7 +17,7 @@ input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
-   -webkit-text-fill-color: #000;
+    -webkit-text-fill-color: #000;
     -webkit-box-shadow: 0 0 0px 1000px #fff inset;
     box-shadow: 0 0 0px 1000px #fff inset;
     transition: background-color 5000s ease-in-out 0s;
@@ -27,7 +27,7 @@ input:autofill,
 input:autofill:hover,
 input:autofill:focus,
 input:autofill:active {
-   -webkit-text-fill-color: #000;
+    -webkit-text-fill-color: #000;
     -webkit-box-shadow: 0 0 0px 1000px #fff inset;
     box-shadow: 0 0 0px 1000px #fff inset;
     transition: background-color 5000s ease-in-out 0s;
@@ -176,14 +176,14 @@ html, body{
     display: flex;
     align-items: center;
     justify-content: space-between;
-   
+    
     /* max-width: 1140px; */
     width: 1500px;
     padding: 5px 15px 5px 15px;
     margin-left: auto;
     margin-right: auto;
-  
-   
+    
+    
     /* width: 100%; */
 
     box-sizing: 0;
@@ -217,7 +217,7 @@ html, body{
     right: 5%;
     top: auto;
     margin-top: 0px;
-   
+    
     display: inline-block;
     /* margin-left: 13px; */
     /* margin-right: -15px; */
@@ -227,7 +227,7 @@ html, body{
     /* margin: 0 0 -7px 0; */
     list-style: none;
     display: inline-block;
-   
+    
 }
 
 .nav-icon > ul > li {
@@ -608,7 +608,7 @@ footer span{
     min-width: 200px;
 }
 .position1{
-    top: 75.5%;
+    top: 73.5%;
 }
 .position2{
     top: 80%;

@@ -80,6 +80,6 @@ public interface MyPageService {
 	 * @param memberPw
 	 * @return result
 	 */
-	//	int secession(int memberNo, String memberPw);
+		int secession(int memberNo, String memberPw);
 
 }
