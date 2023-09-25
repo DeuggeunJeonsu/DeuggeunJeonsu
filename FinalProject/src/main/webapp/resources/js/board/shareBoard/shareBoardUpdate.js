@@ -363,11 +363,11 @@ document.getElementById("boardUpdateFrm").addEventListener("submit", e => {
 
 
     // 이미지 파일이 비어 있을 경우 
-    const inputImage = document.getElementsByClassName("inputImage");
-    for(let i = 0; i < inputImage.length; i++ ){
-        if(inputImage[i].value==""){
+    const preview = document.getElementsByClassName("preview");
+    for(let i = 0; i < preview.length; i++ ){
+        if(preview[i].getAttribute("src") ==""){
             alert("이미지 첨부는 필수입니다.😊")
-            inputImage[i].focus();
+            preview[i].focus();
             e.preventDefault();
             return;
         }

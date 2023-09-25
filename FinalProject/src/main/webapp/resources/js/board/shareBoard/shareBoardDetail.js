@@ -179,7 +179,6 @@ const todayYear = today.getFullYear();
 const todayMonth = today.getMonth()+1;
 const todayDate = today.getDate();
 //오늘 날짜
-var sysDate = todayYear + "-" + (todayMonth < 10 ? "0" : "") + todayMonth + "-" + (todayDate < 10 ? "0" : "") + todayDate;
 if(loginMemberNo == ""){
     const div = document.createElement("div");
     div.innerText="로그인 후 나만의 ToDoList를 득근해보세요💪"
@@ -277,6 +276,11 @@ document.querySelector(".addList").addEventListener("keyup", function(event) {
         const maxCheckboxes = 10;
         const currentCheckboxes = document.querySelectorAll(".checkbox").length;
         
+        const todayYear = today.getFullYear();
+        const todayMonth = today.getMonth()+1;
+        const todayDate = today.getDate();
+        //오늘 날짜
+        const sysDate = todayYear + "-" + (todayMonth < 10 ? "0" : "") + todayMonth + "-" + (todayDate < 10 ? "0" : "") + todayDate;
         todoslist(sysDate);
 
         if(loginMemberNo == ""){
@@ -367,6 +371,12 @@ document.addEventListener("click", (e)=>{
                 }
                 
             }
+
+            const todayYear = today.getFullYear();
+        const todayMonth = today.getMonth()+1;
+        const todayDate = today.getDate();
+        //오늘 날짜
+        const sysDate = todayYear + "-" + (todayMonth < 10 ? "0" : "") + todayMonth + "-" + (todayDate < 10 ? "0" : "") + todayDate;
         const addTodo = {listContent:  add , lcreateDt : sysDate, memberNo : loginMemberNo}
         insertTodo(addTodo)
     }
@@ -532,6 +542,11 @@ function updateCheckedPercentage( ) {
 }
 
 window.onload = () => { 
+    const todayYear = today.getFullYear();
+    const todayMonth = today.getMonth()+1;
+    const todayDate = today.getDate();
+    //오늘 날짜
+    const sysDate = todayYear + "-" + (todayMonth < 10 ? "0" : "") + todayMonth + "-" + (todayDate < 10 ? "0" : "") + todayDate;
     todoslist(sysDate)
     selectFollowCount();
 
@@ -757,74 +772,73 @@ document.addEventListener("click", function (e){
     
     if(e.target.classList.contains("minusBtn")){
         console.log(e.target)
-
+        const todayYear = today.getFullYear();
+        const todayMonth = today.getMonth()+1;
+        const todayDate = today.getDate();
+        //오늘 날짜
+        const sysDate = todayYear + "-" + (todayMonth < 10 ? "0" : "") + todayMonth + "-" + (todayDate < 10 ? "0" : "") + todayDate;
         const todoNo = e.target.nextElementSibling.value;
-        $.ajax({
-            url: "/todo/delete",
+        fetch("/todo/delete",{
             method: "POST",
-            data: { "todoNo": todoNo },
-            dataType: "JSON",
-            success: function (result) {
-                if(result > 0){
-                    
-                    e.target.parentElement.remove();
-
-                    const checkboxes = document.querySelectorAll(".checkbox");
-                    let checkedCount = 0;
-
-                    checkboxes.forEach(checkbox => {
-                        if (checkbox.checked) {
-                            checkedCount++;
-                        }
-                    });
-                    const todayYear = today.getFullYear();
-                    const todayMonth = today.getMonth()+1;
-                    const todayDate = today.getDate();
-                    //오늘 날짜
-                    const sysDate = todayYear + "-" + (todayMonth < 10 ? "0" : "") + todayMonth + "-" + (todayDate < 10 ? "0" : "") + todayDate;
-
-                    if(checkedCount == checkboxes.length && checkboxes.length != 0) {
-                        //console.log(choiceTodoDate)
-                        fetch("/todo/allCompleted?date=" + sysDate )
-                        .then(resp => resp.text())
-                        .then(result=>{
-                            if(result > 0){
-
-
-                                Swal.fire({
-
-                                    title : "축하합니다🥳 목표를 득근하셨어요!", 
-                                    icon : 'success'
-                                })
-
-
-                            }else{
-                                console.log("실패ㅜㅜㅜ")
-                            }
-                        })
-                        .catch( e=> console.log(e) )
-                    }else{
-                        fetch("/todo/unfinished?date=" + sysDate )
-                        .then(resp => resp.text())
-                        .then(result=>{
-                            if(result == 0){
-                            
-                                console.log("실패ㅜㅜㅜ")
-                            }
-                        })
-                        .catch( e=> console.log(e) )
-                    }
-
-                    updateCheckedPercentage();
-
-                }else{
-                    console.log("투두 삭제 실패");
-                }
-            },
-            error: function(){
-                console.log("에러")
-            }
+            headers: { 'Content-Type': 'application/json' },
+            body:JSON.stringify({ "listNo": todoNo , "lcreateDt": sysDate})
         })
+        .then(resp => resp.text())
+        .then(result =>{
+            if(result > 0){
+                
+                e.target.parentElement.remove();
+
+                const checkboxes = document.querySelectorAll(".checkbox");
+                let checkedCount = 0;
+
+                checkboxes.forEach(checkbox => {
+                    if (checkbox.checked) {
+                        checkedCount++;
+                    }
+                });
+
+                if(checkedCount == checkboxes.length && checkboxes.length != 0) {
+                    //console.log(choiceTodoDate)
+                    fetch("/todo/allCompleted?date=" + sysDate )
+                    .then(resp => resp.text())
+                    .then(result=>{
+                        if(result > 0){
+
+
+                            Swal.fire({
+
+                                title : "축하합니다🥳 목표를 득근하셨어요!", 
+                                icon : 'success'
+                            })
+
+
+                        }else{
+                            console.log("실패ㅜㅜㅜ")
+                        }
+                    })
+                    .catch( e=> console.log(e) )
+                }else{
+                    fetch("/todo/unfinished?date=" + sysDate )
+                    .then(resp => resp.text())
+                    .then(result=>{
+                        if(result == 0){
+                        
+                            console.log("실패ㅜㅜㅜ")
+                        }
+                    })
+                    .catch( e=> console.log(e) )
+                }
+
+                updateCheckedPercentage();
+
+            }else{
+                console.log("투두 삭제 실패");
+            }
+            
+            
+        })
+        .catch(e => console.log(e))
 
     }
 });
