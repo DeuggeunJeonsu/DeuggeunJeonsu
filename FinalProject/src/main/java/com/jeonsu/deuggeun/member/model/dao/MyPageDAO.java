@@ -196,6 +196,10 @@ public class MyPageDAO {
 		return sqlSession.update("myPageMapper.secession", memberNo);
 	}
 
+	/** 프로필 이미지 수정
+	 * @param loginMember
+	 * @return
+	 */
 	public int updateProfile(Member loginMember) {
 		return sqlSession.update("myPageMapper.updateProfile", loginMember);
 	}

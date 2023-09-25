@@ -1,5 +1,7 @@
 package com.jeonsu.deuggeun.member.model.service;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -225,8 +227,9 @@ public class MyPageServiceImpl implements MyPageService {
 			return 0;
 		}
 
+		// 회원 프로필 수정
 		@Override
-		public int updateImage(MultipartFile profileImage, String webPath, String filePath, Member loginMember) {
+		public int updateImage(MultipartFile profileImage, String webPath, String filePath, Member loginMember) throws IllegalStateException, IOException {
 			
 			String temp = loginMember.getProfileImage();
 			
@@ -235,6 +238,7 @@ public class MyPageServiceImpl implements MyPageService {
 			if(profileImage.getSize() > 0) {
 				
 				rename = Util.fileRename(profileImage.getOriginalFilename());
+				
 				loginMember.setProfileImage(webPath + rename);
 				
 			} else {
@@ -243,7 +247,16 @@ public class MyPageServiceImpl implements MyPageService {
 			
 			int result = dao.updateProfile(loginMember);
 			
-			return 0;
+			if(result > 0) {
+				
+				if(rename != null) {
+					profileImage.transferTo(new File(filePath + rename));
+				}
+			} else {
+				loginMember.setProfileImage(temp);
+			}
+			
+			return result;
 		}
 
 }

@@ -4,6 +4,9 @@
   height: auto;
   display: flex;
   }
+  button{
+    color: gray;
+  }
   #UserTable {
     border-collapse: collapse;
     width: 700px;
@@ -12,7 +15,7 @@
     border-bottom: 1px solid rgba(52, 196, 219, 0.5);
     color: white;
     padding: 30px;
-    width: 100px;
+    width: 110px;
   }
   #UserTable .makeOutLine2{
    border-bottom: 1px solid rgba(52, 196, 219, 0.5);
@@ -57,13 +60,13 @@
   padding-left:30px;
   font-size:15px;
   }
-  #NewPW{
+  #newPw{
   margin-left:77px;
   margin-top:15px;
   margin-bottom:10px;
   }
-  #reNewPW{
-  margin-left:30px;
+  #newPwConfirm{
+  margin-left:35px;
   margin-bottom:15px;
   }
   #PWFail{
@@ -86,11 +89,8 @@
     width: 75%;
 }
 
-form[name='myPageFrm']{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+#memberTel{
+  width: 200px;
 }
 
 /* 삭제버튼 */
@@ -126,7 +126,7 @@ p{
 
   border: 1px solid rgba(52, 196, 219, 0.5);
   background-color: white;
-  font-size: 14px;
+  font-size: 12px;
   cursor: pointer;
   text-align: center;
 }

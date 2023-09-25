@@ -1,5 +1,6 @@
 package com.jeonsu.deuggeun.member.model.service;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
@@ -92,6 +93,6 @@ public interface MyPageService {
 	 * @param loginMember
 	 * @return result
 	 */
-	int updateImage(MultipartFile profileImage, String webPath, String filePath, Member loginMember);
+	int updateImage(MultipartFile profileImage, String webPath, String filePath, Member loginMember)throws IllegalStateException, IOException;
 
 }
