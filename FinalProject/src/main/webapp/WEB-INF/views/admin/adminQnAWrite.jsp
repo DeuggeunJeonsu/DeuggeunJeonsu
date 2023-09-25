@@ -31,7 +31,7 @@
             <jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
 
             <section id="main-con">
-                <form action="/admin/QnAWrite" method="POST" id="QnAform">
+                <form action="/admin/QnAWrite" method="POST" id="QnAform" class="formTag">
                     <h1 class="title">1:1 문의글 답변</h1>
                     <div>회원님의 문제가 원활히 해결 될 수 있도록 정성껏 답변 부탁드립니다🍀</div>
 
@@ -39,11 +39,11 @@
                     <br>
 
                     <div>
-                        <input type="text" name="boardTitle" id="QnATitle" placeholder="제목" value="" placeholder="제목을 입력해주세요">
+                        <input type="text" name="boardTitle" id="QnATitle" class="boardTitle" placeholder="제목" value="" placeholder="제목을 입력해주세요">
                     </div>
 
                     <div>
-                        <textarea name="boardContent" id="QnAContent" cols="30" rows="10"
+                        <textarea name="boardContent" id="QnAContent" class="boardContent" cols="30" rows="10"
                             placeholder="내용을 입력해주세요"></textarea>
                     </div>
 
@@ -51,16 +51,19 @@
 
                     <div class="bottom">
                         <div>
-                            <button id="submit-button">작성</button>
-                            <button id="cancel-button">취소</button>
+                            <button id="submit-button" onclick="return submitBtn()">작성</button>
+                            <input type="hidden" name="boardNo" value="${boardNo}" />
+                </form> 
+                            <button type='button' id="cancel-button" >취소</button>
                         </div>
                     </div>
-                    <input type="hidden" name="boardNo" value="${boardNo}" />
-                </form> 
             </section>
 
             <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
 
+
         </body>
+
+        <script src="/resources/js/board/admin/adminInquiryWrite.js"></script>
 
         </html>

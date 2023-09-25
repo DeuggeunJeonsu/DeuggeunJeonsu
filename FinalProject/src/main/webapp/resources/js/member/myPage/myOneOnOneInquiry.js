@@ -5,6 +5,7 @@ const realboardTitle = document.getElementsByClassName("realboardTitle");
 const modalHeader = document.getElementsByClassName("modal-header")[0];
 const modalHeader2 = document.getElementById("modal-header2");
 
+const hiddenCheckFl = document.getElementsByClassName("hiddenCheckFl");
 const checkFl = document.getElementsByClassName("checkFl");
 
 const userBoardNo = document.getElementsByClassName("boardNo");
@@ -27,13 +28,16 @@ for(let i = 0 ; i < boardTitle.length ; i++){
         modalTitle.value = boardTitle[i].value;
         QnAContent.value = boardContent[i].value;
 
+        console.log(checkFl[i].value);
+
     })
     
-    if(checkFl[i].innerHTML == 'N'){
+    if(hiddenCheckFl[i].value == 'N'){
 
         checkFl[i].innerHTML = '미답변';
 
     }else{
+
         checkFl[i].innerHTML = '답변 보기';
         checkFl[i].style.color = "#99e1ed";
         checkFl[i].style.cursor = "pointer";
