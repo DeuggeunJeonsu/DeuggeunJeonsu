@@ -17,12 +17,22 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.28/dist/sweetalert2.all.min.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.28/dist/sweetalert2.min.css">
 
-
-
 <%-- GSAP 라이브러리 추가 --%>
 <script src = "https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" ></script> 
 <%-- boardList-style.css 연결 --%>
 <link rel="stylesheet" href="/resources/css/board/shareBoard/shareBoardDetail-style.css">
+
+<%-- 카카오 라이브러리 추가 --%>
+<script src="https://t1.kakaocdn.net/kakao_js_sdk/2.4.0/kakao.min.js" integrity="sha384-mXVrIX2T/Kszp6Z0aEWaA8Nm7J6/ZeWXbL8UpGRjKwWe56Srd/iyNmWMBhcItAjH" crossorigin="anonymous"></script>
+<script>
+// SDK를 초기화 합니다. 사용할 앱의 JavaScript 키를 설정해야 합니다.
+Kakao.init('5600ed391bce28878bbfdfcae636db6e');
+
+// SDK 초기화 여부를 판단합니다.
+console.log(Kakao.isInitialized());
+</script>
+
+
 </head>
 <body>
      <%-- mojs 라이브러리 추가 --%>
@@ -165,13 +175,22 @@
         <div class="likeCount">${board.likeCount}</div>
 
         <div id="btn-area">
+
+            <c:if test="${!empty loginMember}">
+                <div id="social-btn-area">
+                    <button id="kakao-share-btn" onclick="shareMessage()">
+                        <img id="kakao-logo" src="/resources/images/freeBoard/kakaotalk_logo.png">
+                                &nbsp;카카오톡 공유하기
+                    </button>
+                </div>
+            </c:if>
+
+
             <div>
                 <button id="goToListBtn">목록으로</button>
                 <c:if test="${loginMember.memberNo == board.memberNo}">
-                    <div>
-                        <button id="updateBtn">수정하기</button>
-                        <button id="deleteBtn">삭제하기</button>
-                    </div>
+                    <button id="updateBtn">수정하기</button>
+                    <button id="deleteBtn">삭제하기</button>
                 </c:if>
             </div>
         </div>
@@ -234,6 +253,11 @@
         const boardNo = "${board.boardNo}";
         const boardMemberNo = "${board.memberNo}";
         const loginMemberNo = "${loginMember.memberNo}";
+
+        const profile = "${board.profileImage}";
+        const nickname = "${board.memberNickname}";
+        const title = "${board.boardTitle}";
+        const content = '${board.boardContent}';
 
     </script>
 
