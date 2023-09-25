@@ -18,7 +18,8 @@
 		<result property="memberNickname" column="MEMBER_NICKNAME" />
 		<result property="profileImage" column="PROFILE_IMG" />
 		<result property="thumbnail" column="THUMBNAIL" />
-
+		<result property="readCount" column="READ_COUNT" />
+		
 		<result property="commentCount" column="COMMENT_COUNT" />
 		<result property="likeCount" column="LIKE_COUNT" />
 
