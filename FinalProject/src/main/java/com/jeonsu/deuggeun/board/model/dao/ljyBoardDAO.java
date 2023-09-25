@@ -150,4 +150,38 @@ public class ljyBoardDAO {
 		return sqlSession.delete("shareBoardMapper.shareBoardHashtagDelete", map);
 	}
 
+	
+	// 게시글 수정 
+	public int boardUpdate(Board board) {
+		return sqlSession.update("shareBoardMapper.boardUpdate", board);
+	}
+
+	// 이미지 수정 
+	public int imageUpdate(BoardImage img) {
+		return sqlSession.update("shareBoardMapper.imageUpdate", img);
+	}
+
+
+	// 이미지 삭제 
+	public int insertImage(BoardImage img) {
+		return sqlSession.insert("shareBoardMapper.insertImage", img);
+	}
+
+	// 루틴 수정
+	public int routineUpdate(Routine routine) {
+		return sqlSession.update("shareBoardMapper.routineUpdate", routine);
+	}
+
+	// 루틴 삽입 
+	public int insertRoutine(Routine routine) {
+		return sqlSession.insert("shareBoardMapper.insertRoutine", routine);
+	}
+	
+
+
+
+
+
+	
+
 }

@@ -27,7 +27,7 @@
                     <div id="profile-area">
                         <img src="/resources/images/user.png">
                     </div>
-                    <span>${loginMember.memberNo}</span>
+                    <span>${loginMember.memberNickname}</span>
                 </div>
                 <button type="submit" id="writebtn">작성완료</button>
             </div>
@@ -72,7 +72,7 @@
                         <hr>
                     </div>
                     <%-- 득근 캘린더 말풍선 --%>
-                    <div class="ballon floating">
+                    <div class="balloon floating">
                         드래그를 통해 Routine 순서를 바꿀 수 있어요!👟
                     </div>
                     <ul class="routine-add">
