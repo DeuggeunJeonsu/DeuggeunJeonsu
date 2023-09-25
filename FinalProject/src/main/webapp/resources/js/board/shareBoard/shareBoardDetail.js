@@ -114,7 +114,11 @@ var burst = new mojs.Burst({
 document.getElementById("like-cnt").addEventListener("click", e => {
 
     if(loginMemberNo == ""){
-        alert("로그인 후 이용해 주세요.");
+        Swal.fire({
+
+            title : '로그인 후 이용해 주세요💪', 
+            icon : 'error'
+        })
         return;
     }
 
@@ -276,12 +280,20 @@ document.querySelector(".addList").addEventListener("keyup", function(event) {
         todoslist(sysDate);
 
         if(loginMemberNo == ""){
-            alert("로그인 후 이용해 주세요💪");
+            Swal.fire({
+
+                title : '로그인 후 이용해 주세요💪', 
+                icon : 'error'
+            })
             return;
         }
     
         if(addListVal.length == 0 ){
-            alert("내용을 입력해주세요👀");
+            Swal.fire({
+
+                title : '내용을 입력해주세요👀', 
+                icon : 'error'
+            })
             return;
         }else{
     

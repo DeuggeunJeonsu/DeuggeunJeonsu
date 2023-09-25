@@ -3,7 +3,7 @@ const checkObj = {
     "memberPw" : false,
     "memberPwConfirm" : false,
     "memberNickname" : false,
-    "authKey" : false
+    "authKey" : false,
 }
 
 const emailMessage = document.getElementById("emailMessage");
@@ -88,6 +88,31 @@ sendEmailBtn.addEventListener("click", e=>{
 })
 
 
+const pwAuthenticationKey = document.getElementById("pwAuthenticationKey"); // 인증번호 입력란
+
+findPwBtn.addEventListener("click", () => {
+    const authenticationKey = pwAuthenticationKey.value; // 사용자가 입력한 인증번호
+
+    fetch("/member/", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({ authenticationKey: authenticationKey }) // 입력한 인증번호를 JSON 데이터로 전송
+    })
+    .then(response => response.text())
+    .then(result => {
+        if (result === "success") {
+            alert("인증이 완료되었습니다. 새로운 비밀번호를 설정해주세요.");
+        } else {
+            alert("인증이 실패하였습니다. 올바른 인증번호를 입력해주세요.");
+        }
+    })
+    .catch(err => {
+        console.error("예외 발생", err);
+    });
+});
+
+
+
 
 const memberTels = document.getElementsByName("memberTel");    
 let memberTel ="";                                            
@@ -137,7 +162,6 @@ sendSmsBtn.addEventListener("click", e=>{
         console.log(err);
     })
 })
-
 
 
 

@@ -10,7 +10,9 @@ a{
 body{
     overflow: hidden;
 }
-
+#notificationList-margin{
+    height: 100px;
+}
 .Jheader{
 	height: 100px;
 	width: 100%;

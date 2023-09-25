@@ -44,7 +44,7 @@
 		
 		<form action="/notification" method="GET"></form>
 
-
+			<div id="notificationList-margin"></div>
 
 			<div class="Jbody">
 				<div class="Jcenter">

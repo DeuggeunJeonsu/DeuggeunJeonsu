@@ -2,8 +2,9 @@
 /* 댓글 영역 */
 #comment-area{
    
-    border-top: 0.5px solid #777;
+    border-top: 2px solid #ddd;
     /* height: 300px; */
+    margin-bottom: 100px;
 }
 .comment-count-area {
     padding :20px 10px 20px 52px;
@@ -22,7 +23,7 @@
 /* 댓글 입력창 */
 .comment-input {
     position: relative;
-    width: 1100px;
+    width: 1000px;
     margin: auto;
 }
 
@@ -59,7 +60,7 @@
 
 
 #commentList{
-    width: 90%;
+    width: 100%;
     margin: auto;
     padding: 0;
     list-style:none;
@@ -110,7 +111,7 @@
 }
 
 .commentInsertContent{
-    top: 10px;
+    top: 20px;
     width: 700%;
     position: relative;
     right: 600%;
@@ -208,7 +209,7 @@
 }
 .comment-btn-area{
     display: flex;
-    margin-top: 10px;
+    margin-top: 20px;
 }
 .comment-btn-area .inline{
     display: flex;
@@ -219,17 +220,18 @@
 
 .update-textarea{
     outline: none;
-    width: 770%;
+    width: 713%;
     position: relative;
-    right: 683%;
+    right: 628%;
     height: 100px;
     padding: 10px;
     resize: none;
     font-size: 18px;
     border-radius: 10px;
     margin: 10px;
-    top: -6px;
+    top: -20px;
     border: 2px solid #aaa;
+
 }
 
 /* 모달 */

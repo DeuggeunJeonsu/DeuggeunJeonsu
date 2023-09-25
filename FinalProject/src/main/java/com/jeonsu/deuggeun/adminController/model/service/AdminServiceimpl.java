@@ -123,7 +123,8 @@ public class AdminServiceimpl implements AdminService{
 	public AdminMember adminInquiryDetail(int boardNo) {
 		
 		AdminMember boardDetail = dao.adminInquiryDetail(boardNo);
-		return null;
+		
+		return boardDetail;
 	}
 
 

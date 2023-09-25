@@ -30,17 +30,17 @@
 					<div class="adminBody">
 
 						<section id="inquiryModal">
-							<h1 class="modal-header">내가 작성한 1:1 문의글</h1>
-							<div id="modal-header2">회원님이 작성하신 1:1 문의 글입니다.🍀</div>
+							<h1 class="modal-header">내가 작성한 문의글</h1>
+							<div id="modal-header2">회원님이 작성하신 문의 글입니다.🍀</div>
 
 							<hr>
 							<br>
 								<div>
-									<input type="text" id="modalTitle" name="boardTitle" id="QnATitle" readOnly value="${board.boardTitle}">
+									<input type="text" id="modalTitle" name="boardTitle"  readOnly value="${board.boardTitle}">
 								</div>
 
 								<div>
-									<textarea name="boardContent" id="inquiryContent" cols="30" rows="10"
+									<textarea name="boardContent" id="modalContent" cols="30" rows="10"
 										 readOnly>${board.boardContent}</textarea>
 								</div>
 
@@ -48,6 +48,7 @@
 							<div class="bottom">
 								<div>
 									<button id="close-button">닫기</button>
+									<button id="insert-button">답변하기</button>
 								</div>
 							</div>
 
@@ -102,27 +103,41 @@
 
 									<tbody id="inquiryList">
 
-										<c:forEach items="${boardList}" var="board">
+										<c:if test="${empty boardList }">
 											<tr>
-												<td>${board.boardNo}</td>
-												<td><a href="#" class="iq-update">${board.boardTitle}</a></td>
-												<td class="inquiryType">${board.inquiryType}</td>
-												<td>${board.memberEmail}</td>
-
-
-
-												<td class="complete adminCheckFl">${board.adminCheckFl}</td>
-
-
-
+												<td  colspan="6">
+													<strong>문의글이 존재하지 않습니다.</strong>
+												</td>
 											</tr>
-											<input type="hidden" class="boardNo" value="${board.boardNo}" />
+										</c:if>
 
-											<input type="hidden" class="adminCheckFl2" value="${board.adminCheckFl}" />
-											<input type="hidden" class="inquiryType2" value="${board.inquiryType}" />
+										<c:if test="${!empty boardList }">
+											<c:forEach items="${boardList}" var="board">
+												<tr>
+													<td>${board.boardNo}</td>
+													<td><a href="#" class="iq-update">${board.boardTitle}</a></td>
+													<td class="inquiryType">${board.inquiryType}</td>
+													<td>${board.memberEmail}</td>
 
 
-										</c:forEach>
+
+													<td class="complete adminCheckFl">${board.adminCheckFl}</td>
+
+
+
+												</tr>
+
+
+												<input type="hidden" class="boardNo" value="${board.boardNo}" />
+
+												<input type="hidden" class="adminCheckFl2" value="${board.adminCheckFl}" />
+												<input type="hidden" class="inquiryType2" value="${board.inquiryType}" />
+
+
+											</c:forEach>
+										</c:if>
+
+									
 
 
 									</tbody>

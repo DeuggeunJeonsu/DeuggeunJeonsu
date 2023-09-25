@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.jeonsu.deuggeun.adminController.model.dto.AdminMember;
 import com.jeonsu.deuggeun.adminController.model.service.AdminService;
@@ -78,7 +79,9 @@ public class AdminController {
 		return "admin/adminMarketWrite";
 	}
 	
-	@GetMapping("/adminInquiryDetail")
+	// 상품 문의 상세조회
+	@RequestMapping("/adminInquiryDetail")
+	@ResponseBody
 	public AdminMember adminInquiryDetail(@RequestParam("boardNo") int boardNo) {
 		
 		

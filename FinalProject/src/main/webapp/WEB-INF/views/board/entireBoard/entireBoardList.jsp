@@ -20,13 +20,19 @@
 
 <div class="container">
     <div class="inr">
+
       <div class="contents">
+
         <div class="text_wrap big line type top">
+
           <strong class="tit">
+
             <em>"<span id="searchQuery">${param.query}</span>"</em> 검색결과
+
           </strong>
+
         </div>
-        <div>
+
           <div class="cont_unit search_result">
             <div class="text_wrap big result mt40">
               <strong class="tit">"${param.query}" <em>(5) 정보 공유 결과</em></strong>
@@ -150,8 +156,10 @@
                 <a href="/board/5/list" class="txt arrow_r">득근마켓 더보기</a>
                 </span>
               </div>
-              <div class="prod_list_wrap mtm30">
-               <ul>
+
+
+              <div class="prod_wrap_40">
+               <ul class=imgul>
         <li class="line">
           <a href="#">
             <div class="text"><a href="#" class="txtd"><img src="https://th.bing.com/th/id/OIP.Ii-Y80FYlmTcDz3IYWq3MwHaHa?pid=ImgDet&rs=1">
@@ -164,7 +172,7 @@
           <a href="#">
             <div class="text"><a href="#" class="txtd"><img src="https://th.bing.com/th/id/OIP.Ii-Y80FYlmTcDz3IYWq3MwHaHa?pid=ImgDet&rs=1">
                 <br>
-                안드로이드 애플리케이션 버전 1.2를 출시했습니다.</a></div>
+                안드로이드 애플리케이션</a></div>
           </a>
         </li>
   
@@ -187,9 +195,9 @@
                   </div>
                 </li>
               </ul>
+              </div>
             </div>
           </div>
-        </div>
     </div>
 </div>
 

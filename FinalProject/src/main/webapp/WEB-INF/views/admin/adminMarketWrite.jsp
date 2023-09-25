@@ -24,6 +24,7 @@
                 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
                 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
+
         </head>
 
         <body>
@@ -31,7 +32,7 @@
             <jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
 
             <section id="main-con">
-                <form action="/admin/marketInWrite" method="POST" id="QnAform">
+                <form action="/admin/marketInWrite" method="POST" id="QnAform" class="formTag">
                     <h1 class="title">상품 문의글 답변</h1>
                     <div>회원님의 문제가 원활히 해결 될 수 있도록 정성껏 답변 부탁드립니다🍀</div>
 
@@ -39,11 +40,11 @@
                     <br>
 
                     <div>
-                        <input type="text" name="boardTitle" id="QnATitle" placeholder="제목" value="" placeholder="제목을 입력해주세요">
+                        <input type="text" name="boardTitle" class="boardTitle" id="QnATitle" placeholder="제목" value="" placeholder="제목을 입력해주세요">
                     </div>
 
                     <div>
-                        <textarea name="boardContent" id="QnAContent" cols="30" rows="10"
+                        <textarea name="boardContent" class="boardContent" id="QnAContent"  cols="30" rows="10"
                             placeholder="내용을 입력해주세요"></textarea>
                     </div>
 
@@ -51,7 +52,7 @@
 
                     <div class="bottom">
                         <div>
-                            <button id="submit-button">작성</button>
+                            <button id="submit-button" >작성</button>
                             <button id="cancel-button">취소</button>
                         </div>
                     </div>
@@ -61,9 +62,6 @@
 
             <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
 
-            <script src="/resources/js/board/boardWrite.js"></script>
-            <script src="/resources/js/main.js"></script>
-            <script src="/resources/js/member/myPage/QnAWrite.js"></script>
         </body>
 
         </html>
