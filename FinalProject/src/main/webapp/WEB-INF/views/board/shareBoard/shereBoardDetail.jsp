@@ -51,9 +51,14 @@ console.log(Kakao.isInitialized());
                     <%-- <img src="/resources/images/main/log01.png" class = "img"> --%>
                 </div>
 
-                 <%-- 썸네일을 제외하고 나머지 이미지의 시작인덱스 번호 지정 --%>
+                ${board.imageList}
+                <%-- 썸네일을 제외하고 나머지 이미지의 시작인덱스 번호 지정 --%>
                 <c:if test="${board.imageList[0].imageLevel == 0}" >
                     <c:set var="start" value="1"/>
+                </c:if>
+                <%-- 사진이 없는 경우 경우 --%>
+                <c:if test="${board.imageList[0].imageOrder != 0}" >
+                    <c:set var="start" value="0"/>
                 </c:if>
 
 
@@ -68,26 +73,28 @@ console.log(Kakao.isInitialized());
                    ${board.boardContent}
                 </div>
 
-                <c:forEach var="i" begin="${start}" end="${fn:length(board.imageList)-1}">
+                <c:if test="${fn:length(board.imageList) > start}" >
+                    <c:forEach var="i"  begin="${start}" end="${fn:length(board.imageList)-1}" >
 
-                    <div class="routine-area">
-                        <h1>${board.imageList[i].imageLevel + 1}.</h1>
-                        <div class= "img-area">
-                            <c:set var="path" value="${board.imageList[i].imagePath}${board.imageList[i].imageReName}"/>
-                           
-                            <img src="${path}" class="img">
-                        </div>
-                        <div class="routine-info">
-                            <div class="routineNm">
-                                <span>${board.routineList[i - 1].rtTitle} </span>
-                                <button type="button" class="boardAddListBtn">Do IT!</button>
+                        <div class="routine-area">
+                            <h1>${board.imageList[i].imageLevel + 1}.</h1>
+                            <div class= "img-area">
+                                <c:set var="path" value="${board.imageList[i].imagePath}${board.imageList[i].imageReName}"/>
+                            
+                                <img src="${path}" class="img">
                             </div>
-                            <div class="routine-content">
-                            ${board.routineList[i -1].rtContent}
+                            <div class="routine-info">
+                                <div class="routineNm">
+                                    <span>${board.routineList[i - 1].rtTitle} </span>
+                                    <button type="button" class="boardAddListBtn">Do IT!</button>
+                                </div>
+                                <div class="routine-content">
+                                ${board.routineList[i -1].rtContent}
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </c:forEach>
+                    </c:forEach>
+                </c:if>
                 
             </div>
             <div id="todolist-area">
@@ -194,8 +201,9 @@ console.log(Kakao.isInitialized());
                 </c:if>
             </div>
         </div>
-
-        <jsp:include page="/WEB-INF/views/board/comment.jsp"></jsp:include>
+        <div id="commentArea2">
+            <jsp:include page="/WEB-INF/views/board/comment.jsp"></jsp:include>
+        </div>
        
         
     </section>

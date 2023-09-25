@@ -148,14 +148,22 @@ addComment.addEventListener("click", e => { // 댓글 등록 버튼이 클릭이
 
     // 1) 로그인이 되어있나? -> 전역변수 memberNo 이용
     if(loginMemberNo == ""){ // 로그인 X
-        alert("로그인 후 이용해주세요.");
+        Swal.fire({
+
+            title : '로그인 후 이용해 주세요💪', 
+            icon : 'error'
+        })
         return;
     }
 
     // 2) 댓글 내용이 작성되어있나?
     if(commentContent.value.trim().length == 0){ // 미작성인 경우
-        alert("댓글을 작성한 후 버튼을 클릭해주세요.");
+       
+        Swal.fire({
 
+            title : "댓글을 작성한 후 버튼을 클릭해주세요.", 
+            icon : 'success'
+        })
         commentContent.value = ""; // 띄어쓰기, 개행문자 제거
         commentContent.focus();
         return;
@@ -175,7 +183,12 @@ addComment.addEventListener("click", e => { // 댓글 등록 버튼이 클릭이
     .then(resp => resp.text())
     .then(result => {
         if(result > 0){ // 등록 성공
-            alert("댓글이 등록되었습니다.");
+
+            Swal.fire({
+
+                title : "댓글이 등록되었습니다.😊", 
+                icon : 'success'
+            })
 
             commentContent.value = ""; // 작성했던 댓글 삭제
 
@@ -183,7 +196,12 @@ addComment.addEventListener("click", e => { // 댓글 등록 버튼이 클릭이
             // -> 새로운 댓글이 추가되어짐
 
         } else { // 실패
-            alert("댓글 등록에 실패했습니다...");
+
+            Swal.fire({
+
+                title :"댓글 등록에 실패했습니다😢", 
+                icon : 'error'
+            })
         }
     })
     .catch(err => console.log(err));
@@ -205,10 +223,19 @@ function deleteComment(commentNo){
         .then(resp => resp.text())
         .then(result => {
             if(result > 0){
-                alert("삭제되었습니다");
+                Swal.fire({
+
+                    title : "삭제되었습니다", 
+                    icon : 'success'
+                })
+    
                 selectCommentList(); // 목록을 다시 조회해서 삭제된 글을 제거
             }else{
-                alert("삭제 실패");
+                Swal.fire({
+
+                    title :"댓글 삭제에 실패했습니다😢", 
+                    icon : 'error'
+                })
             }
         })
         .catch(err => console.log(err));
@@ -337,10 +364,18 @@ function updateComment(commentNo, btn){
     .then(resp => resp.text())
     .then(result => {
         if(result > 0){
-            alert("댓글이 수정되었습니다.");
+            Swal.fire({
+
+                title : "댓글이 수정되었습니다.", 
+                icon : 'success'
+            })
             selectCommentList();
         }else{
-            alert("댓글 수정 실패");
+            Swal.fire({
+
+                title :"댓글 수정 실패했습니다😢", 
+                icon : 'error'
+            })
         }
     })
     .catch(err => console.log(err));
@@ -425,7 +460,11 @@ function insertChildComment(parentNo, btn){
 
     // 답글 내용이 작성되지 않은 경우
     if(commentContent.trim().length == 0){
-        alert("답글 작성 후 등록 버튼을 클릭해주세요.");
+        Swal.fire({
+
+            title :"답글 작성 후 등록 버튼을 클릭해주세요. 😢", 
+            icon : 'error'
+        })
         btn.parentElement.previousElementSibling.value = "";
         btn.parentElement.previousElementSibling.focus();
         return;
@@ -445,11 +484,20 @@ function insertChildComment(parentNo, btn){
     .then(resp => resp.text())
     .then(result => {
         if(result > 0){ // 등록 성공
-            alert("답글이 등록되었습니다.");
+
+            Swal.fire({
+
+                title : "답글이 등록되었습니다.😊", 
+                icon : 'success'
+            })
             selectCommentList(); // 비동기 댓글 목록 조회 함수 호출
 
         } else { // 실패
-            alert("답글 등록에 실패했습니다...");
+            Swal.fire({
+
+                title : "답글 등록에 실패했습니다😅", 
+                icon : 'error'
+            })
         }
     })
     .catch(err => console.log(err));
