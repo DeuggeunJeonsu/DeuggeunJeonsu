@@ -263,4 +263,9 @@ public class MarketDAO {
 	public List<Order> selectOrderList(int orderNo) {
 		return sqlSession.selectList("marketMapper.selectOrderList", orderNo);
 	}
+
+	// 리뷰 조회수 증가
+	public int updateCount(Map<String, Object> map) {
+		return sqlSession.update("marketMapper.updateCount", map);
+	}
 }

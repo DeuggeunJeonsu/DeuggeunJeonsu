@@ -27,6 +27,11 @@
                 <link rel="manifest" href="/resources/images/favicon_io/site.webmanifest">
                 <link rel="icon" href="/resources/images/favicon_io/favicon.ico" type="image/x-icon">
 
+            <!-- SweetAlert2 CSS 파일 추가 -->
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+
+            <!-- SweetAlert2 JavaScript 파일 추가 -->
+            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
         </head>
 
         <body>
@@ -114,8 +119,22 @@
                                                 <c:if test="${inquiry.productNo == product.productNo}">
                                                     <tr>
                                                         <td>${inquiry.inquiryNo}</td>
-                                                        <%--td><a href="/board/${boardCode}/review/${review.reviewNo}/detail?cp=${param.cp}">${review.reviewTitle}</a></td>--%>
-                                                        <td><a href="/board/${boardCode}/inquiry/${inquiry.inquiryNo}/detail?cp=${param.cp}">${inquiry.inquiryTitle}</a></td>
+
+                                                        <c:choose>
+                                                            <c:when test="${map2.loginMemberNo == inquiry.memberNo}">
+
+                                                                <td>
+                                                                    <a href="/board/${boardCode}/inquiry/${inquiry.inquiryNo}/detail?cp=${param.cp}">${inquiry.inquiryTitle}</a>
+                                                                </td>
+                                                            </c:when>
+
+                                                            <c:otherwise>
+                                                                <td>
+                                                                    <a href="/board/${boardCode}/inquiry/${inquiry.inquiryNo}/detail?cp=${param.cp}" onclick="return checkAuthorship();">${inquiry.inquiryTitle}</a>
+                                                                </td>
+                                                            </c:otherwise>
+                                                        </c:choose>
+
                                                         <td>${inquiry.memberNickname}</td>
                                                         <td>${inquiry.inquiryCreateDate}</td>
                                                         <td>
@@ -181,11 +200,29 @@
                 const boardCode = "${boardCode}";
 
             </script>
+            <script>
+                function checkAuthorship() {
+                    // EL 값을 JavaScript 변수로 전달
+                    var loginMemberNo = "${map2.loginMemberNo}";
+                    var writerNo = "${inquiry.memberNo}";
+
+                    // loginMemberNo와 writerNo가 동일한지 확인
+                    if (loginMemberNo !== writerNo) {
+                        Swal.fire({
+                            icon: 'error',
+                            title: '알림',
+                            text: '문의글은 작성자와 관리자만 열람할 수 있습니다.'
+                        });
+                        return false;  // 링크 이동 취소
+                    }
+                    return true;  // 링크 이동 허용
+                }
+            </script>
+
 
 
             <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
             <script src="/resources/js/market/marketDetail.js"></script>
-            <%-- <script src="/resources/js/main.js"></script> --%>
         </body>
 
         </html>

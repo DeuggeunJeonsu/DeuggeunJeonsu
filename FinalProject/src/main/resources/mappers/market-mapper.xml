@@ -54,7 +54,6 @@
     <!-- Review에 대한 resultMap-->
     <resultMap type="Review" id="review_rm">
         <id property="productNo" column="PRODUCT_NO"/>
-
         <result property="memberNo" column="MEMBER_NO"/>
         <result property="reviewTitle" column="REVIEW_TITLE"/>
         <result property="reviewContent" column="REVIEW_CONTENT"/>
@@ -63,7 +62,6 @@
         <result property="boardCode" column="BOARD_CODE"/>
         <result property="reviewNo" column="REVIEW_NO"/>
         <result property="reviewFlag" column="REVIEW_FLAG" />
-<!--        <result property="rReadCount" column="R_READ_COUNT" />-->
         <result property="profileImage" column="PROFILE_IMG" />
         <result property="count" column="R_READ_COUNT" />
         <result property="uploadImage" column="UPLOAD_IMAGE"></result>
@@ -506,5 +504,10 @@
         WHERE ORDER_NO = #{orderNo}
     </select>
 
+    <update id="updateCount" parameterType="Review">
+        UPDATE REVIEW
+        SET R_READ_COUNT = R_READ_COUNT + 1
+        WHERE REVIEW_NO = #{reviewNo}
+    </update>
 </mapper>
 

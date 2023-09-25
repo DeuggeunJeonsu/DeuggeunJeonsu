@@ -1,7 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
-
 <!DOCTYPE html>
 <html>
 
@@ -27,13 +25,6 @@
 <jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
 
 <section id="main-container">
-<%--    <div id="title-area">--%>
-<%--        <div>--%>
-<%--            <h1>상품 리뷰</h1>--%>
-<%--        </div>--%>
-<%--        <div>득근전수 회원님들이 자유롭게 상품 후기를 나누는 공간입니다 🥰</div>--%>
-<%--    </div>--%>
-<%--    <hr>--%>
     <div id="detail-container">
 
         <!-- 게시글 제목 -->
@@ -62,19 +53,6 @@
         </div>
         <!-- 게시글 상세 조회 내용 영역 -->
         <div id="board-detail-area">
-
-<%--            <div id="board-content-area">--%>
-<%--                <div class="uploadImg">--%>
-<%--                    <c:if test="${!empty review.uploadImage}">--%>
-<%--                        <img src="${review.uploadImage}" alt="">--%>
-<%--                    </c:if>--%>
-<%--                </div>--%>
-<%--&lt;%&ndash;                <c:if test="${!empty review.uploadImage}">&ndash;%&gt;--%>
-<%--&lt;%&ndash;                    <br>&ndash;%&gt;--%>
-<%--&lt;%&ndash;                    <br>&ndash;%&gt;--%>
-<%--&lt;%&ndash;                </c:if>&ndash;%&gt;--%>
-<%--                <div class="content">${review.reviewContent}</div>--%>
-<%--            </div>--%>
             <div id="board-content-area">
 
                 <c:if test="${!empty review.uploadImage}">

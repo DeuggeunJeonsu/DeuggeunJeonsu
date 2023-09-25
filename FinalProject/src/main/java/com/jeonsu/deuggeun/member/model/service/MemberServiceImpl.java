@@ -88,10 +88,20 @@ public class MemberServiceImpl implements MemberService {
 		return dao.addBMI(paramMap);
 	}
 
+
+	// 장바구니 상품 카운트
+	@Override
+	public int shoppingCount(int memberNo) {
+
+		return dao.shoppingCount(memberNo);
+	}
+
+
 	@Override
 	public Member selectEmail(String memberEmail) {
 		return dao.selectEmail(memberEmail);
 	}
 	
+
 }
 
