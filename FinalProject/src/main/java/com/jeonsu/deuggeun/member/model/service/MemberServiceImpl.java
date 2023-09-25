@@ -89,6 +89,10 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+
+>>>>>>> d78e07ff12542d3ed96d496f5499c5e9b7dab7f7
 	// 장바구니 상품 카운트
 	@Override
 	public int shoppingCount(int memberNo) {
@@ -96,12 +100,20 @@ public class MemberServiceImpl implements MemberService {
 		return dao.shoppingCount(memberNo);
 	}
 
+<<<<<<< HEAD
 =======
+=======
+
+>>>>>>> d78e07ff12542d3ed96d496f5499c5e9b7dab7f7
 	@Override
 	public Member selectEmail(String memberEmail) {
 		return dao.selectEmail(memberEmail);
 	}
 	
+<<<<<<< HEAD
 >>>>>>> 6cfc7017399467906209bbdbf3c13b5006d77ce4
+=======
+
+>>>>>>> d78e07ff12542d3ed96d496f5499c5e9b7dab7f7
 }
 
