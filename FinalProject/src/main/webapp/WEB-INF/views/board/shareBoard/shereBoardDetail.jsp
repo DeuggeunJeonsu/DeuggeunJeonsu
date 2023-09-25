@@ -46,18 +46,18 @@ console.log(Kakao.isInitialized());
         </div>
         <div id="board-area">
             <div>
+                
                 <div class="boardImg thumbnail">
                      <img src="${board.imageList[0].imagePath}${board.imageList[0].imageReName}">
                     <%-- <img src="/resources/images/main/log01.png" class = "img"> --%>
                 </div>
 
-                ${board.imageList}
                 <%-- 썸네일을 제외하고 나머지 이미지의 시작인덱스 번호 지정 --%>
                 <c:if test="${board.imageList[0].imageLevel == 0}" >
                     <c:set var="start" value="1"/>
                 </c:if>
                 <%-- 사진이 없는 경우 경우 --%>
-                <c:if test="${board.imageList[0].imageOrder != 0}" >
+                <c:if test="${board.imageList[0].imageLevel != 0}" >
                     <c:set var="start" value="0"/>
                 </c:if>
 
@@ -100,17 +100,19 @@ console.log(Kakao.isInitialized());
             <div id="todolist-area">
                 <div id="member-area">
                     <div>
-                        <div id="profile-area">
-                            <c:choose>
-                                <c:when test="${empty board.profileImage}">
-                                    <img src="/resources/images/user.png">
-                                </c:when>
-                                <c:otherwise>
-                                    <img src="${board.profileImage}">
-                                </c:otherwise>
-                            </c:choose>
+                        <a href="/myPage/memberFeed/${board.memberNo}">
+                            <div id="profile-area">
+                                <c:choose>
+                                    <c:when test="${empty board.profileImage}">
+                                        <img src="/resources/images/user.png">
+                                    </c:when>
+                                    <c:otherwise>
+                                        <img src="${board.profileImage}">
+                                    </c:otherwise>
+                                </c:choose>
 
-                        </div>
+                            </div>
+                        </a>
                         <span>${board.memberNickname}</span>
                         <c:if test="${board.memberNo != loginMember.memberNo && loginMember != null}">
 

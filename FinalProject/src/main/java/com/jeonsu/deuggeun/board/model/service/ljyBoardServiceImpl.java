@@ -18,6 +18,9 @@ import com.jeonsu.deuggeun.board.model.dto.BoardImage;
 import com.jeonsu.deuggeun.board.model.dto.Pagination;
 import com.jeonsu.deuggeun.board.model.dto.Routine;
 import com.jeonsu.deuggeun.common.utility.Util;
+
+
+
 import com.jeonsu.deuggeun.board.model.exception.FileUploadException;
 
 @Service
@@ -47,7 +50,7 @@ public class ljyBoardServiceImpl implements ljyBoardService{
 		Map<String, Object> map = new HashMap<>();
 		map.put("pagination", pagination);
 		map.put("boardList", boardList);
-		
+
 		return map;
 	}
 
@@ -96,7 +99,7 @@ public class ljyBoardServiceImpl implements ljyBoardService{
 	@Override
 	@Transactional(rollbackFor = Exception.class)
 	public int boardInsert(Board board, List<MultipartFile> images, String webPath, String filePath, List<Routine> routines) 
-			 throws IllegalStateException, IOException{
+			throws IllegalStateException, IOException{
 
 		// 0. XSS방지 처리 
 		board.setBoardContent(Util.XSSHandling(board.getBoardContent()));
@@ -108,7 +111,7 @@ public class ljyBoardServiceImpl implements ljyBoardService{
 
 		// 해시태그 insert 
 		int result2 = dao.hashtagInsert(board);
-		
+
 		// 2. 게시글 삽입 성공시 
 		// 업로드 되는 이미지가 있다면 BOARD_IMG 테이블에 삽입하는 DAO 호출
 		if(boardNo > 0 ) { //게시글 성공 시
@@ -162,11 +165,11 @@ public class ljyBoardServiceImpl implements ljyBoardService{
 					throw new FileUploadException(); //예외 강제 발생
 				}
 			}
-			
+
 			for(int i = 0 ; i < routines.size() ; i++) {
 				routines.get(i).setBoardNo(boardNo);
 			}
-			
+
 			// 루틴 insert
 			if(!routines.isEmpty()) {
 				int result = dao.insertRoutineList(routines);
@@ -175,32 +178,104 @@ public class ljyBoardServiceImpl implements ljyBoardService{
 		return boardNo;
 
 	}
-	
+
 
 	//DB이미지 파일 목록 조회
 	@Override
 	public List<String> selectImageList() {
 		return dao.selectImageList();
 	}
-	
-	
+
+
 	// 게시글 삭제
 	@Transactional(rollbackFor = Exception.class)
 	@Override
 	public int shareboardDelete(Map<String, Object> map) {
-		
+
 		// 게시글 내용 삭제
 		int result = dao.shareBoardDelete(map);
-		
+
 		// 게시글 내용 삭제에 성공했을 때
 		if(result > 0) {
-		
+
 			// 게시글에 포함되어 있던 루틴/이미지 삭제
 			result += dao.shareBoardHashtagDelete(map);
 			result += dao.routineDelete(map);
 			result += dao.shareBoardImageDelete(map);
 		}
-		
+
 		return result;
 	}
+
+	// 게시글 수정
+	@Transactional(rollbackFor = Exception.class)
+	@Override
+	public int boardUpdate(Board board, List<MultipartFile> images, String webPath, String filePath,List<Routine> routines) throws IllegalStateException, IOException {
+
+		board.setBoardContent(Util.XSSHandling(board.getBoardContent()));
+		board.setBoardTitle(Util.XSSHandling(board.getBoardTitle()));
+
+		int rowCount =  dao.boardUpdate(board);
+		int routineUpdate = 0; 
+		// 게시글의 제목과 내용을 업로드 성공했을 때
+		if(rowCount > 0) {
+			List<BoardImage> uploadList = new ArrayList<BoardImage>();
+
+			for(int i = 0; i <images.size(); i++) {
+
+				if(images.get(i).getSize() > 0) {
+
+					BoardImage img = new BoardImage();
+
+					img.setImagePath(webPath);
+					img.setBoardNo(board.getBoardNo());
+					img.setImageLevel(i); //이미지 순서 
+
+					String fileName = images.get(i).getOriginalFilename();
+					
+					img.setImageOriginal(fileName); //원본명
+					img.setImageReName(Util.fileRename(fileName)); // 변경명
+					
+					uploadList.add(img);
+
+					rowCount = dao.imageUpdate(img);
+					
+					
+
+					if(rowCount == 0) {
+						rowCount = dao.insertImage(img);
+					}
+				}
+			}
+			
+			// 루틴 수정 삭제 
+			for(int i = 0 ; i < routines.size() ; i++) {
+				
+				routines.get(i).setBoardNo(board.getBoardNo());
+				
+				routineUpdate = dao.routineUpdate(routines.get(i));
+				
+				if(routineUpdate == 0) {
+					routineUpdate = dao.insertRoutine(routines.get(i));
+				}
+			}
+			
+
+			if(!uploadList.isEmpty()) {
+				for(int i=0 ; i < uploadList.size() ; i++) {
+
+					int index = uploadList.get(i).getImageLevel();
+
+					// 파일로 변환
+					String rename = uploadList.get(i).getImageReName();
+
+					images.get(index).transferTo(new File(filePath + rename));
+				}
+			}
+		}
+
+		return rowCount;
+
+	}
 }
+
