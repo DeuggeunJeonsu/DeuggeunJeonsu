@@ -87,6 +87,11 @@ public class MemberServiceImpl implements MemberService {
 	public int addBMI(Map<String, Object> paramMap) {
 		return dao.addBMI(paramMap);
 	}
+
+	@Override
+	public Member selectEmail(String memberEmail) {
+		return dao.selectEmail(memberEmail);
+	}
 	
 }
 

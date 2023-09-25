@@ -51,13 +51,6 @@
    		, NULL, DEFAULT, DEFAULT, DEFAULT)
    </insert>
    
-   <!-- 회원탈퇴 -->
-   <update id="seccession">
-	  UPDATE MEMBER SET MEMBER_DEL_FL = 'Y'
-	  WHERE MEMBER_NO = #{memberNo}
-	  AND MEMBER_PW = #{memberPw}
-   </update>
-   
    <!-- 전화번호로 회원 조회 -->
    <select id="selectMemberByTel" parameterType="string" resultMap="member_rm">
       SELECT MEMBER_EMAIL, MEMBER_NO
@@ -108,6 +101,14 @@
 	  WHERE MEMBER_NO = #{loginMemberNo}
 	  AND TO_CHAR(BMI_DATE, 'YYYY"년" MM"월" DD"일"') = TO_CHAR(SYSDATE, 'YYYY"년" MM"월" DD"일"')
    </update>
+   
+   <!-- 아이디(이메일)로 회원 조회 -->
+   <select id="selectEmail" parameterType="string" resultMap="member_rm">
+      SELECT MEMBER_NO, MEMBER_NICKNAME
+      FROM "MEMBER"
+      WHERE MEMBER_DEL_FL = 'N'
+      AND MEMBER_EMAIL = #{memberEmail}
+   </select>
    
    
    
