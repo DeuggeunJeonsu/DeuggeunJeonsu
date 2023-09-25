@@ -4,6 +4,9 @@ const checkObj = {
     "memberPwConfirm" : false,
     "memberNickname" : false,
     "authKey" : false,
+    "memberTel" : false,
+
+    
 }
 
 const emailMessage = document.getElementById("emailMessage");
@@ -59,6 +62,8 @@ memberEmail.addEventListener("input",()=>{
 
 })
 
+
+// 이메일 인증번호 전송
 sendEmailBtn.addEventListener("click", e=>{
     
     fetch("/member/ajaxEmail", {
@@ -87,81 +92,123 @@ sendEmailBtn.addEventListener("click", e=>{
     })
 })
 
+const authMessage = document.getElementById("authMessage");
 
-const pwAuthenticationKey = document.getElementById("pwAuthenticationKey"); // 인증번호 입력란
+// 이메일 인증 확인
+findPwBtn.addEventListener("click", ()=>{
 
-findPwBtn.addEventListener("click", () => {
-    const authenticationKey = pwAuthenticationKey.value; // 사용자가 입력한 인증번호
+    const emailCookieValue = get_cookie(memberEmail.value.replace("@","_")+"_pwAtKey");
 
-    fetch("/member/", {
-        method: "POST",
-        headers: {"Content-Type": "application/json"},
-        body: JSON.stringify({ authenticationKey: authenticationKey }) // 입력한 인증번호를 JSON 데이터로 전송
-    })
-    .then(response => response.text())
-    .then(result => {
-        if (result === "success") {
-            alert("인증이 완료되었습니다. 새로운 비밀번호를 설정해주세요.");
-        } else {
-            alert("인증이 실패하였습니다. 올바른 인증번호를 입력해주세요.");
-        }
-    })
-    .catch(err => {
-        console.error("예외 발생", err);
-    });
-});
+    if(emailCookieValue == null){
+        alert("인증번호를 전송해주세요");
+        return;
+    }
+
+    if(pwAtKey.value.trim().length == 0){
+        alert("인증번호를 입력해주세요");
+        return;
+    }
+
+    if(emailCookieValue == pwAtKey.value){
+        authMessage.innerText = "인증되었습니다.";
+        authMessage.classList.add("confirm");
+        authMessage.classList.remove("error");
+        clearInterval(emailTimer);
+        emailTimerSpan.innerText = "";
+
+    } else{
+        authMessage.innerText = "인증번호가 일치하지 않습니다.";
+        authMessage.classList.add("error");
+        authMessage.classList.remove("confirm");
+        e.preventDefault();
+    }
+
+})
 
 
-
-
-const memberTels = document.getElementsByName("memberTel");    
-let memberTel ="";                                            
-const sendSmsBtn = document.getElementById("sendSmsBtn");    
-const smsTimerSpan = document.getElementById("smsTimer"); 
+// 휴대폰 인증
+const memberTels = document.getElementsByName("memberTel");
+let memberTel = "";
+const sendSmsBtn = document.getElementById("sendSmsBtn");
+const smsTimerSpan = document.getElementById("smsTimer");
 const idAtKey = document.getElementById("idAuthenticationKey");
-let smsTimer;                                                
-let smsIsRunning = false;   
+const findIdBtn = document.getElementById("findIdBtn");
+let smsTimer;
+let smsIsRunning = false;
 
-
-sendSmsBtn.addEventListener("click", e=>{
-    memberTel ="";
-    for( let i of memberTels){
-        if(i.value.trim().length==0){
+sendSmsBtn.addEventListener("click", (e) => {
+    memberTel = "";
+    for (let i of memberTels) {
+        if (i.value.trim().length == 0) {
             alert("휴대폰번호를 입력해주세요");
             return;
         }
         memberTel += i.value;
     }
 
-    const phoneNumberRegex = /^(?:\+?\d{1,3}(?:[-.\s]?\d{1,})?|\d{1,4})?[-.\s]?\d{1,4}[-.\s]?\d{1,9}$/;
-
+    // 기존 쿠키 삭제
+    delete_cookie(memberTel + "_idAtKey");
 
     // ajax 코드 작성
     fetch("/member/sendSms", {
-        method : "POST",
-        headers : {"Content-Type" : "application/json"},
-        body : memberTel
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: memberTel,
     })
-    .then(response => response.text() )
-    .then( resultIdAtKey => {
-        if(resultIdAtKey!=""){
-            // 타이머 세팅
-            if (smsIsRunning) clearInterval(smsTimer); // 이미 타이머가 실행중이면 초기화
-            startTimer(60*5-1, 1); // sms 타이머 함수 실행
-            // 1회이상 전송시 버튼 문구 변경
-            e.target.innerText = "인증번호 재전송";
-            // 5분간 유효한 쿠키 생성
-            set_cookie(memberTel+"_idAtKey", resultIdAtKey, 5);
-            // 안내문구 출력
-            alert("인증번호가 전송되었습니다. 휴대폰을 확인해주세요.");
-        }
-        else alert("해당 번호로 등록된 회원이 없습니다. 다시한번 확인해주세요.");
-    })
-    .catch(err =>{
-        console.log("예외 발생");
-        console.log(err);
-    })
-})
+        .then((response) => response.text())
+        .then((resultIdAtKey) => {
+            if (resultIdAtKey != "") {
+                // 타이머 세팅
+                if (smsIsRunning) clearInterval(smsTimer); // 이미 타이머가 실행중이면 초기화
+                startTimer(60 * 5 - 1, 1); // sms 타이머 함수 실행
+                // 1회 이상 전송시 버튼 문구 변경
+                e.target.innerText = "인증번호 재전송";
+                // 5분간 유효한 쿠키 생성
+                set_cookie(memberTel + "_idAtKey", resultIdAtKey, 5);
+                // 안내문구 출력
+                alert("인증번호가 전송되었습니다. 휴대폰을 확인해주세요.");
+            } else alert("해당 번호로 등록된 회원이 없습니다. 다시한번 확인해주세요.");
+        })
+        .catch((err) => {
+            console.log("예외 발생");
+            console.log(err);
+        });
+});
+
+const telMessage = document.getElementById("telMessage");
+
+findIdBtn.addEventListener("click", () => {
+    const smsCookieValue = get_cookie(memberTel + "_idAtKey");
+
+    if (smsCookieValue == null) {
+        alert("인증번호를 전송해주세요.");
+        return;
+    } else {
+        console.log(smsCookieValue);
+    }
+
+    if (idAtKey.value.trim().length == 0) {
+        alert("인증번호를 입력해주세요.");
+        return;
+    }
+
+    if (smsCookieValue == idAtKey.value) {
+        telMessage.innerText = "인증되었습니다.";
+        telMessage.classList.add("confirm");
+        telMessage.classList.remove("error");
+        clearInterval(emailTimer);
+        emailTimerSpan.innerText = "";
+    } else {
+        telMessage.innerText = "인증번호가 일치하지 않습니다.";
+        telMessage.classList.add("error");
+        telMessage.classList.remove("confirm");
+    }
+});
+
+
+
+
+
 
 
 

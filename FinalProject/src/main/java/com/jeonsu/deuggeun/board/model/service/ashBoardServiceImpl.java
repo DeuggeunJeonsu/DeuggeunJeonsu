@@ -26,7 +26,7 @@ public class ashBoardServiceImpl implements ashBoardService{
 	// 자유게시판 게시글 삽입
 	@Transactional(rollbackFor = Exception.class)
 	@Override
-	public int boardInsert(Board board, List<String> tagContent, List<String> imgSrc) {
+	public int boardInsert(Board board, List<String> tagContent, String[] imgSrc) {
 		
 		board.setBoardTitle(Util.XSSHandling(board.getBoardTitle()));
 		

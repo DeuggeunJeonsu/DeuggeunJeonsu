@@ -436,7 +436,7 @@ function buildCalendar() {
                 dataType: "JSON",
                 success: function (todolistMap) {
                     for (let todos of todolistMap) {
-                        const todoFl = todos.LIST_FL; // 진행여부! 'Y'- 동그라미 'N'- 세모
+                        const todoFl = todos.ALL_FL; // 진행여부! 'Y'- 동그라미 'N'- 세모
                         const todoDays = todos.L_CREATE_DT.split("-");
                         const todoYear2 = todoDays[0]; //년
                         const todoMonth2 = todoDays[1]; //월

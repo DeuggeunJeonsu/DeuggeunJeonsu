@@ -54,8 +54,8 @@
             <div class="board-title">루틴 공유 게시판  |  수정하기</div>
               <div>득근전수 회원님들과 공유하고 싶은 운동 루틴을 수정해보세요.</div>
         </div>
-        <form action="/board2/2/insert" method="POST"
-             class="board-write" id="boardWriteFrm" enctype="multipart/form-data">
+        <form action="/board2/2/${board.boardNo}/update" method="POST"
+             class="board-write" id="boardUpdateFrm" enctype="multipart/form-data">
             <div class="top-write">
                 <div id="writer">
                     <div id="profile-area">
@@ -87,7 +87,7 @@
                         <div>
                             <h3>Routine Type</h3>
                             <article class="cont-select">
-                                <button class="btn-select" type="button">${board.tagContent}</button>
+                                <button class="btn-select" type="button">${board.tagList[0].tagContent}</button>
                                 <ul class="list-member">
                                     <li><button type="button">하체</button></li>
                                     <li><button type="button">상체</button></li>
@@ -144,14 +144,14 @@
                         드래그를 통해 Routine 순서를 바꿀 수 있어요!👟
                     </div>
 
-                        <c:if test="${!empty img1}">
-                            <ul class="routine-add">
+                        <ul class="routine-add">
+                            <c:if test="${!empty img1}">
                                 <li class="routine" draggale="true">
                                     <div class="boardImg">
                                         <label for="img1">
                                             <img class="preview" src="${img1}">
                                         </label>
-                                        <input type="file" name="images" class="inputImage" id="img1" accept="image/*">
+                                        <input type="file" name="images" class="inputImage" id="img1" accept="image/*" value="${img1}">
                                         <span class="delete-image">&times;</span>
                                     </div>
                                     <div class="routine-write-area">
@@ -160,11 +160,8 @@
                                     </div>
                                     <div class="routine-cancle"><button type="button" class="cancle">&times;</button></div>
                                 </li>
-        
-                            </ul>
-                        </c:if>
-                        <c:if test="${!empty img2}">
-                            <ul class="routine-add">
+                            </c:if>
+                            <c:if test="${!empty img2}">
                                 <li class="routine" draggale="true">
                                     <div class="boardImg">
                                         <label for="img2">
@@ -179,11 +176,8 @@
                                     </div>
                                     <div class="routine-cancle"><button type="button" class="cancle">&times;</button></div>
                                 </li>
-        
-                            </ul>
-                        </c:if>
-                        <c:if test="${!empty img3}">
-                            <ul class="routine-add">
+                            </c:if>
+                            <c:if test="${!empty img3}">
                                 <li class="routine" draggale="true">
                                     <div class="boardImg">
                                         <label for="img3">
@@ -198,11 +192,8 @@
                                     </div>
                                     <div class="routine-cancle"><button type="button" class="cancle">&times;</button></div>
                                 </li>
-        
-                            </ul>
-                        </c:if>
-                        <c:if test="${!empty img4}">
-                            <ul class="routine-add">
+                            </c:if>
+                            <c:if test="${!empty img4}">
                                 <li class="routine" draggale="true">
                                     <div class="boardImg">
                                         <label for="img4">
@@ -217,11 +208,8 @@
                                     </div>
                                     <div class="routine-cancle"><button type="button" class="cancle">&times;</button></div>
                                 </li>
-        
-                            </ul>
-                        </c:if>
-                        <c:if test="${!empty img5}">
-                            <ul class="routine-add">
+                            </c:if>
+                            <c:if test="${!empty img5}">
                                 <li class="routine" draggale="true">
                                     <div class="boardImg">
                                         <label for="img5">
@@ -236,11 +224,8 @@
                                     </div>
                                     <div class="routine-cancle"><button type="button" class="cancle">&times;</button></div>
                                 </li>
-        
-                            </ul>
-                        </c:if>
-                        <c:if test="${!empty img6}">
-                            <ul class="routine-add">
+                            </c:if>
+                            <c:if test="${!empty img6}">
                                 <li class="routine" draggale="true">
                                     <div class="boardImg">
                                         <label for="img6">
@@ -255,9 +240,9 @@
                                     </div>
                                     <div class="routine-cancle"><button type="button" class="cancle">&times;</button></div>
                                 </li>
-        
-                            </ul>
-                        </c:if>
+                            </c:if>
+
+                        </ul>
                     </div>
                    
                 </div>
@@ -269,7 +254,8 @@
                 
                 </div>
             </div>
-
+            <input type="hidden" name="deleteList"  value="">
+            <input type="hidden" name="cp" value="${param.cp}">
         </form>    
 
     </section>
@@ -278,7 +264,7 @@
     <!-- footer include -->
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
 
-    <script src="/resources/js/board/shareBoard/shareBoardWrite.js"></script>
+    <script src="/resources/js/board/shareBoard/shareBoardUpdate.js"></script>
 
 </body>
 </html>

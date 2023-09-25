@@ -61,5 +61,14 @@ public interface MemberService {
 	 */
 	Member selectEmail(String memberEmail);
 
+	
+	/** 회원가입 이메일 인증확인
+	 * @param paramMap
+	 * @return
+	 */
+	int checkKey(String memberEmail);
+	
+
+
 
 }

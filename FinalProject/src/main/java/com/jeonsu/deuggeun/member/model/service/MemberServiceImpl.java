@@ -94,10 +94,19 @@ public class MemberServiceImpl implements MemberService {
 
 		return dao.shoppingCount(memberNo);
 	}
+	
+	// 회원가입 이메일 인증
 	@Override
 	public Member selectEmail(String memberEmail) {
 		return dao.selectEmail(memberEmail);
 	}
+
+	// 회원가입 이메일 인증 확인
+	@Override
+	public int checkKey(String memberEmail) {
+		return dao.checkKey(memberEmail);
+	}
+
 
 }
 

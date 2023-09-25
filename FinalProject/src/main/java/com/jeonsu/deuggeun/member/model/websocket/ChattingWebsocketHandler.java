@@ -41,7 +41,6 @@ public class ChattingWebsocketHandler extends TextWebSocketHandler{
     }
 
 
-    
     @Override	//handlerTextMessage - 클라이언트로부터 텍스트 메세지를 받았을때 실행
     protected void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
 

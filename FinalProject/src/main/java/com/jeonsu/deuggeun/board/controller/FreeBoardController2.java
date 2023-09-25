@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -61,7 +62,7 @@ public class FreeBoardController2 {
 	public String boardInsert(
 			Board board
 			, @RequestParam(value = "tagContent", required = false) List<String> tagContent
-			, @RequestParam(value = "imgSrc", required = false) List<String> imgSrc
+			, @RequestParam(value = "imgSrc", required = false) String[] imgSrc
 			, @SessionAttribute("loginMember") Member loginMember
 			, RedirectAttributes ra
 			, HttpSession session) {
@@ -88,38 +89,6 @@ public class FreeBoardController2 {
 		ra.addFlashAttribute("message", message);
 		
 		return path;
-	}
-	
-	// 게시글 작성 시 summernote 이미지 주소 변환
-	@PostMapping(value="/uploadSummernoteImageFile", produces = "application/json")
-	@ResponseBody
-	public JSONObject uploadSummernoteImageFile(@RequestParam("file") MultipartFile multipartFile, HttpSession session) {
-		
-		JSONObject jsonObject = new JSONObject();
-
-		String fileRoot = "/resources/images/freeBoard/";
-		String webPath = session.getServletContext().getRealPath(fileRoot);
-		
-		String originalFileName = multipartFile.getOriginalFilename(); // 오리지널 파일명
-		String extension = originalFileName.substring(originalFileName.lastIndexOf(".")); // 파일 확장자
-		
-		String savedFileName = UUID.randomUUID() + extension; // 저장될 파일명
-		
-		File targetFile = new File(webPath + savedFileName);
-		
-		try {
-			InputStream fileStream = multipartFile.getInputStream();
-			FileUtils.copyInputStreamToFile(fileStream, targetFile); // 파일 저장
-			jsonObject.put("url", "/summernoteImage/" + savedFileName);
-			jsonObject.put("responseCode", "success");
-			
-		} catch(IOException e) {
-			FileUtils.deleteQuietly(targetFile); // 저장된 파일 삭제
-			jsonObject.put("responseCode", "error");
-			e.printStackTrace();
-		}
-		
-		return jsonObject;
 	}
 	
 	// 게시글 수정 화면 전환
@@ -176,40 +145,6 @@ public class FreeBoardController2 {
 		ra.addFlashAttribute("message", message);
 		
 		return path;
-	}
-	
-	// 게시글 수정 시 summernote 이미지 주소 변환
-	@PostMapping(value="/{boardNo}/uploadSummernoteImageFile2", produces = "application/json")
-	@ResponseBody
-	public JSONObject uploadSummernoteImageFile2(
-			@PathVariable("boardNo") int boardNo
-			,@RequestParam("file") MultipartFile multipartFile, HttpSession session) {
-		
-		JSONObject jsonObject = new JSONObject();
-
-		String fileRoot = "/resources/images/freeBoard/";
-		String webPath = session.getServletContext().getRealPath(fileRoot);
-		
-		String originalFileName = multipartFile.getOriginalFilename(); // 오리지널 파일명
-		String extension = originalFileName.substring(originalFileName.lastIndexOf(".")); // 파일 확장자
-		
-		String savedFileName = UUID.randomUUID() + extension; // 저장될 파일명
-		
-		File targetFile = new File(webPath + savedFileName);
-		
-		try {
-			InputStream fileStream = multipartFile.getInputStream();
-			FileUtils.copyInputStreamToFile(fileStream, targetFile); // 파일 저장
-			jsonObject.put("url", "/summernoteImage/" + savedFileName);
-			jsonObject.put("responseCode", "success");
-			
-		} catch(IOException e) {
-			FileUtils.deleteQuietly(targetFile); // 저장된 파일 삭제
-			jsonObject.put("responseCode", "error");
-			e.printStackTrace();
-		}
-		
-		return jsonObject;
 	}
 	
 	// 게시글 삭제

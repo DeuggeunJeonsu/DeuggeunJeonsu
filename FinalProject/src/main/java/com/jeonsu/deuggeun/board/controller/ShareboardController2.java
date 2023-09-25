@@ -109,19 +109,19 @@ public class ShareboardController2 {
 			@PathVariable("boardNo") int boardNo
 			, Model model
 			) {
-		
+
 		Map<String, Object> map = new HashMap<>();
-		
+
 		map.put("boardCode", 2);
 		map.put("boardNo", boardNo);
-		
+
 		Board board = service.selectShareBoard(map);
 		model.addAttribute("board", board);
 
 		return "board/shareBoard/shareBoardUpdate";
 	}
-	
-	
+
+
 	// 게시글 삭제
 	@GetMapping("/{boardNo}/delete")
 	public String boardDelete(
@@ -129,28 +129,79 @@ public class ShareboardController2 {
 			, RedirectAttributes ra
 			, @RequestHeader("referer") String referer
 			) {
-		
-			Map<String, Object> map = new HashMap<String, Object>();
-			map.put("boardCode", 3);
-			map.put("boardNo", boardNo);
-			
-			int result = service.shareboardDelete(map);
-			
-			String path = "redirect:";
-			String message = null;
-			
-			if(result > 0) {
-				message ="게시글이 삭제되었습니다.";
-				path +="/board/2/list";
-				
-			}else {
-				message="게시글 삭제에 실패했습니다.";
-				path += "/board/3/"+ boardNo;
-			}
-			ra.addFlashAttribute("message", message);
-			
-			return path;
+
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("boardCode", 3);
+		map.put("boardNo", boardNo);
+
+		int result = service.shareboardDelete(map);
+
+		String path = "redirect:";
+		String message = null;
+
+		if(result > 0) {
+			message ="게시글이 삭제되었습니다.";
+			path +="/board/2/list";
+
+		}else {
+			message="게시글 삭제에 실패했습니다.";
+			path += "/board/3/"+ boardNo;
+		}
+		ra.addFlashAttribute("message", message);
+
+		return path;
 	}
+	@PostMapping("/{boardNo}/update")
+	public String boardUpdate(
+			Board board // 커맨드 객체( VO 또는 DTO 필드명이 name 속성 값이 같은 경우 파라미터 세팅)
+			, @RequestParam(value = "cp", required = false, defaultValue = "1") int cp //쿼리스트링 유지
+			, @RequestParam(value = "deleteList" , required = false) String delteList //삭제할 이미지 순서 
+			, @RequestParam("routineName") List<String> routineNames
+			, @RequestParam("routineContent") List<String> routineContents 
+			, @RequestParam(value = "images", required = false) List<MultipartFile> images //업로드된 파일 리스트
+			, @PathVariable("boardNo") int boardNo
+			, HttpSession session //서버 파일 저장 경로를 얻어올 용도
+			, RedirectAttributes ra //리다이렉트시 값 전달용
+			)throws IllegalStateException, IOException {
+
+		// 1) boardCode, boardNo를 커맨드 객체에 세팅
+		board.setBoardCode(2);
+		board.setBoardNo(boardNo);
+		
+		List<Routine> routines = new ArrayList<Routine>();
+		
+		for(int i = 0 ; i< routineNames.size() ; i++) {
+			Routine routine = new Routine();
+
+			routine.setRtTitle(Util.XSSHandling(routineNames.get(i)));
+			routine.setRtContent(Util.XSSHandling(routineContents.get(i)));
+			routine.setRtLevel(i);
+
+			routines.add(routine);
+		}
+		
+		
+		String webPath ="/resources/images/board/";
+		String filePath = session.getServletContext().getRealPath(webPath);
+		
+		int rowCount = service.boardUpdate(board, images, webPath, filePath, routines);		
+		
+		String message = null;
+		String path = "redirect:";
+		
+		if(rowCount > 0) {
+			message ="게시글이 수정되었습니다";	
+			path +="/board/"+ 2 + "/" +boardNo+"?cp="+ cp; //상세조회 페이지
+		}else {
+			message="게시글 수정 실패";
+			path += "update";
+		}
+		ra.addFlashAttribute("message", message);		
+		
+		return path;
+
+	}
+
 
 
 }
