@@ -110,8 +110,12 @@ $(document).ready(function() {
 
 })();
 
-// 장바구니 상품 카운트
+// 페이지가 준비되면 장바구니 수량 업데이트 함수를 호출
 $(document).ready(function() {
+    updateShoppingCount();
+});
+
+function updateShoppingCount() {
     const url = "/shoppingCount";
     $.ajax({
         type: "GET",
@@ -124,9 +128,7 @@ $(document).ready(function() {
             console.error("데이터 가져오기 오류: ", error);
         }
     });
-});
-
-
+}
 
 
 

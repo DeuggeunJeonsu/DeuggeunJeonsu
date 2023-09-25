@@ -1,3 +1,20 @@
+// 장바구니 수량 업데이트 함수를 호출
+function updateShoppingCount() {
+    const url = "/shoppingCount";
+    $.ajax({
+        type: "GET",
+        url: url,
+        dataType: "text",
+        success: function(response) {
+            $('#shopping-count').text(response);
+        },
+        error: function(error) {
+            console.error("데이터 가져오기 오류: ", error);
+        }
+    });
+}
+
+
 // 상품 수량 선택 후 ADD TO CART 누를 때 데이터 전송
 // DOM 로드 완료 후 실행
 document.addEventListener("DOMContentLoaded", function() {
@@ -54,6 +71,7 @@ document.addEventListener("DOMContentLoaded", function() {
                         title: '성공!',
                         text: '상품이 장바구니에 담겼습니다!'
                     });
+                    updateShoppingCount();
                     // location.reload(true);
                     document.getElementById("select").selectedIndex = 0;
 
