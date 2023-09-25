@@ -442,7 +442,6 @@
                  JOIN PRODUCT p ON c.PRODUCT_NO = p.PRODUCT_NO
                  JOIN "ORDER" o ON c.ORDER_NO = o.ORDER_NO
         WHERE c.MEMBER_NO = #{memberNo}
-          AND c.ORDER_FL = 'Y'
         ORDER BY o.ORDER_DATE DESC
     </select>
 
@@ -509,5 +508,76 @@
         SET R_READ_COUNT = R_READ_COUNT + 1
         WHERE REVIEW_NO = #{reviewNo}
     </update>
+
+	<!-- 마이페이지 구매 내역 - selectbox 선택 시 -->
+	<select id="selectPurchaseList_search" resultMap="cart_rm">
+		<choose>
+			<when test='key == "1"'>
+		        SELECT TO_CHAR(o.ORDER_DATE, 'YYYY-MM-DD') AS ORDER_DATE,
+		               o.ORDER_ST,
+		               o.ORDER_NO,
+		               p.PRODUCT_NAME,
+		               p.PRODUCT_NO,
+		               c.TOTAL_AMOUNT,
+		               c.ORDER_FL
+		        FROM CART c
+		                 JOIN PRODUCT p ON c.PRODUCT_NO = p.PRODUCT_NO
+		                 JOIN "ORDER" o ON c.ORDER_NO = o.ORDER_NO
+		        WHERE c.MEMBER_NO = #{memberNo}
+		        ORDER BY o.ORDER_DATE DESC
+			</when>		
+			
+			<when test='key == "2"'>
+				SELECT TO_CHAR(o.ORDER_DATE, 'YYYY-MM-DD') AS ORDER_DATE,
+		               o.ORDER_ST,
+		               o.ORDER_NO,
+		               p.PRODUCT_NAME,
+		               p.PRODUCT_NO,
+		               c.TOTAL_AMOUNT,
+		               c.ORDER_FL
+		        FROM CART c
+		                 JOIN PRODUCT p ON c.PRODUCT_NO = p.PRODUCT_NO
+		                 JOIN "ORDER" o ON c.ORDER_NO = o.ORDER_NO
+		        WHERE c.MEMBER_NO = #{memberNo}
+		          AND c.ORDER_FL = 'Y'
+		        ORDER BY o.ORDER_DATE DESC
+			</when>		
+			
+			<when test='key == "3"'>
+				SELECT TO_CHAR(o.ORDER_DATE, 'YYYY-MM-DD') AS ORDER_DATE,
+		               o.ORDER_ST,
+		               o.ORDER_NO,
+		               p.PRODUCT_NAME,
+		               p.PRODUCT_NO,
+		               c.TOTAL_AMOUNT,
+		               c.ORDER_FL
+		        FROM CART c
+		                 JOIN PRODUCT p ON c.PRODUCT_NO = p.PRODUCT_NO
+		                 JOIN "ORDER" o ON c.ORDER_NO = o.ORDER_NO
+		        WHERE c.MEMBER_NO = #{memberNo}
+		          AND c.ORDER_FL = 'D'
+		        ORDER BY o.ORDER_DATE DESC
+			</when>		
+			
+			<when test='key == "4"'>
+				SELECT TO_CHAR(o.ORDER_DATE, 'YYYY-MM-DD') AS ORDER_DATE,
+		               o.ORDER_ST,
+		               o.ORDER_NO,
+		               p.PRODUCT_NAME,
+		               p.PRODUCT_NO,
+		               c.TOTAL_AMOUNT,
+		               c.ORDER_FL
+		        FROM CART c
+		                 JOIN PRODUCT p ON c.PRODUCT_NO = p.PRODUCT_NO
+		                 JOIN "ORDER" o ON c.ORDER_NO = o.ORDER_NO
+		                 JOIN "PRODUCT_INQUIRY" I ON (I.MEMBER_NO = P.MEMBER_NO)
+		        WHERE c.MEMBER_NO = #{memberNo}
+		        AND INQUIRY_TYPE IN ('1', '2')
+		        ORDER BY o.ORDER_DATE DESC
+			</when>		
+			
+		</choose>
+		
+	</select>
 </mapper>
 

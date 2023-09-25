@@ -58,7 +58,6 @@ public interface MyPageService {
 	// 결제완료시 마이페이지 구매내역 페이지
 	List<Cart> selectPurchaseList(int memberNo);
 
-
 	/** 마이페이지 1:1 문의 목록 조회
 	 * @param loginMember
 	 * @return boardList
@@ -93,5 +92,13 @@ public interface MyPageService {
 	 * @return result
 	 */
 	int updateImage(MultipartFile profileImage, String webPath, String filePath, Member loginMember);
+
+	/** 마이페이지 구매 내역 - selectbox 선택 시
+	 * @param memberNo
+	 * @param key
+	 * @return purchaseList
+	 * @throws Exception 
+	 */
+	List<Cart> selectPurchaseList(int memberNo, Map<String, Object> paramMap);
 
 }

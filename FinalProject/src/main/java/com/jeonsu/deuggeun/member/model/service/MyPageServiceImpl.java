@@ -246,4 +246,18 @@ public class MyPageServiceImpl implements MyPageService {
 			return 0;
 		}
 
+		// 마이페이지 - 구매 내역 selectbox 선택 시
+		@Override
+		public List<Cart> selectPurchaseList(int memberNo, Map<String, Object> paramMap){
+			
+			Map<String, Object> map = new HashMap<String, Object>();
+			
+			map.put("memberNo", memberNo);
+			map.put("key", paramMap.get("key"));
+			
+			List<Cart> purchaseList = dao.selectPurchaseList(map);
+			
+			return purchaseList;
+		}
+
 }
