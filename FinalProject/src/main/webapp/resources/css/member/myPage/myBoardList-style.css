@@ -104,6 +104,11 @@
 /* 게시글 제목 */
 .title{
     font-size: 16px;
+
+    /* 길어지면 말줄임 처리 */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 /* 게시글 작성일, 좋아요 영역 */
@@ -160,15 +165,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-/* 페이지네이션 영역 */
-
-.pagination-area {
-    text-align: center;
-    margin-top: 50px;
-    position :relative;
-    border: none !important;
 }
 
 .pagination {

@@ -15,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -213,15 +214,29 @@ public class MyPageController {
 
 	// 마이페이지 구매 내역 목록 조회
 	@GetMapping("/myPurchaseList")
-	public String myPurchaseList(@SessionAttribute(value = "loginMember", required = false) Member loginMember,
-			Model model) {
+	public String myPurchaseList(
+			@SessionAttribute(value = "loginMember", required = false) Member loginMember
+			, Model model
+			, @RequestParam Map<String, Object> paramMap
+			) {
 
 		int memberNo = loginMember.getMemberNo();
-		List<Cart> purchaseList = service.selectPurchaseList(memberNo);
+
+		List<Cart> purchaseList = new ArrayList<Cart>();
+			
+		if(paramMap.get("key") == null) {
+			purchaseList = service.selectPurchaseList(memberNo);
+			
+		} else {
+			
+			System.out.println("이것이 키다:"+paramMap.get("key"));
+			
+			purchaseList = service.selectPurchaseList(memberNo, paramMap);
+
+		}
 
 		model.addAttribute("purchaseList", purchaseList);
 
-		System.out.println(purchaseList);
 		return "member/myPage/myPurchaseList";
 	}
 	

@@ -27,6 +27,10 @@
 <body>
     <%-- header include --%>
 	<jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
+
+    <c:if test="${!empty param.key}" >
+        <c:set var="sp" value="&key=${param.key}"/>
+    </c:if>
 	
 	<section id="main-container">
 
@@ -42,11 +46,11 @@
             <div id="main-content-area">
 
                 <div>
-                    <select id="selectBox">
-                        <option>주문 처리 상태</option>
-                        <option>결제 완료</option>
-                        <option>배송 완료</option>
-                        <option>취소/교환/반품 완료</option>
+                    <select id="selectBox" name="key">
+                        <option value="1">주문 처리 상태</option>
+                        <option value="2">결제 완료</option>
+                        <option value="3">배송 완료</option>
+                        <option value="4">취소/교환/반품 완료</option>
                     </select>
                 </div>
 
@@ -63,35 +67,35 @@
                                 <th>리뷰</th>
                             </tr>
                         </thead>
-                        <tbody>
-                        <c:forEach var="item" items="${purchaseList}">
-                            <tr>
-                                <td>${item.orderDate}</td>
-                                <td>${item.orderNo}</td>
-                                <td>
-                                    <a href="/board/5/detail/${item.productNo}">
-                                            ${item.productName}
-                                    </a>
-                                </td>
-                                <td>${item.total}</td>
-                                <td>
-                                    <c:choose>
-                                        <c:when test="${item.orderStatus == 'Y'}">결제 완료</c:when>
-                                        <c:when test="${item.orderStatus == 'D'}">배송 완료</c:when>
-                                    </c:choose>
-                                </td>
-                                <td>
-                                    <button class="inquiryBtn inquiryBtnColor2"
-                                            onclick="location.href='/board/5/inquiry/${item.productNo}/insert'">문의 하기</button>
+                        <tbody id="purchase-list-tbody">
+                            <c:forEach var="item" items="${purchaseList}">
+                                <tr>
+                                    <td>${item.orderDate}</td>
+                                    <td>${item.orderNo}</td>
+                                    <td>
+                                        <a href="/board/5/detail/${item.productNo}">
+                                                ${item.productName}
+                                        </a>
+                                    </td>
+                                    <td>${item.total}</td>
+                                    <td>
+                                        <c:choose>
+                                            <c:when test="${item.orderStatus == 'Y'}">결제 완료</c:when>
+                                            <c:when test="${item.orderStatus == 'D'}">배송 완료</c:when>
+                                        </c:choose>
+                                    </td>
+                                    <td>
+                                        <button class="inquiryBtn inquiryBtnColor2"
+                                                onclick="location.href='/board/5/inquiry/${item.productNo}/insert'">문의 하기</button>
 
-                                </td>
-                                <td>
-                                    <button class="inquiryBtn inquiryBtnColor1"
-                                    onclick="location.href='/board/5/review/${item.productNo}/insert'">리뷰 작성</button>
-                                </td>
-                            </tr>
-                            <input type="hidden" value="${item.productNo}" id="productNo" />
-                        </c:forEach>
+                                    </td>
+                                    <td>
+                                        <button class="inquiryBtn inquiryBtnColor1"
+                                        onclick="location.href='/board/5/review/${item.productNo}/insert'">리뷰 작성</button>
+                                    </td>
+                                </tr>
+                                <input type="hidden" value="${item.productNo}" id="productNo" />
+                            </c:forEach>
                         </tbody>
 
                     </table>

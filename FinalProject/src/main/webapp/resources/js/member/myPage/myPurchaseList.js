@@ -1,2 +1,18 @@
-// <button className="inquiryBtn inquiryBtnColor2"
-//         onClick="location.href='${pageContext.request.contextPath}/${boardCode}/inquiry/${item.productNo}/insert'">문의 하기</button>
+
+function getQueryParam(name) {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(name);
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    const keyValue = getQueryParam("key");
+    if (keyValue) {
+        document.getElementById("selectBox").value = keyValue;
+    }
+});
+
+document.getElementById("selectBox").addEventListener('change', function() {
+    const keyValue = this.value;
+    let url = `/myPage/myPurchaseList?key=${keyValue}`;
+    window.location.href = url;
+});

@@ -199,5 +199,13 @@ public class MyPageDAO {
 	public int updateProfile(Member loginMember) {
 		return sqlSession.update("myPageMapper.updateProfile", loginMember);
 	}
-	
+
+	/** 마이페이지 - 구매 내역 selectbox 선택 시
+	 * @param map
+	 * @return
+	 */
+	public List<Cart> selectPurchaseList(Map<String, Object> map){
+		return sqlSession.selectList("marketMapper.selectPurchaseList_search", map);
+	}
+
 }

@@ -265,8 +265,8 @@
 /* 게시글 제목 */
 .title{
     font-size: 20px;
-    /* font-weight: bold; */
 
+    /* 길어지면 말줄임 처리 */
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
