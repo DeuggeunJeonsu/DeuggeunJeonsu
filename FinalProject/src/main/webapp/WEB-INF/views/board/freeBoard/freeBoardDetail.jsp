@@ -165,97 +165,9 @@ console.log(Kakao.isInitialized());
 
             </div>
     
-            <!-- 댓글 영역 -->
-            <div id="comment-area">
-
-                <div class="comment-count-area">
-                    <i class="fa-regular fa-comment" ></i> <span>댓글 4</span>
-                </div>
-
-                <div class="comment-input">
-                    <textarea placeholder="댓글을 입력해주세요"></textarea>
-                    <button><img src="/resources/images/icon/send-icon.png"></button>
-                </div>
-
-                <ul id="commentList">
-                    <li class="comment-row">
-                        <p class="comment-writer">
-                            <img src="/resources/images/user.png">
-                            <span>닉네임</span>
-                        </p>
-                        <p class="comment-content">부모 댓글 내용입니다</p>
-                        <div>
-                            <div>
-                                <span class="comment-date">2023-09-02</span>
-                                <span>&times</span>
-                            </div>
-                            <span>
-                                <button>수정</button>
-                                <button>답글</button>
-                            </span>
-                        </div>
-                    </li>
-
-                    <li class="comment-row child-comment">
-                        <p class="comment-writer">
-                            <img src="/resources/images/user.png">
-                            <span>닉네임</span>
-                        </p>
-                        <p class="comment-content">자식 댓글 내용입니다</p>
-                        <div>
-                            <div>
-                                <span class="comment-date">2023-09-02</span>
-                                <span>&times</span>
-                            </div>
-                            <span>
-                                <button>수정</button>
-                            </span>
-                        </div>
-                    </li>
-
-                    <li class="comment-row child-comment">
-                        <p class="comment-writer">
-                            <img src="/resources/images/user.png">
-                            <span>닉네임</span>
-                        </p>
-                        <p class="comment-content">자식 댓글 내용입니다</p>
-                        <div>
-                            <div>
-                                <span class="comment-date">2023-09-02</span>
-                                <span>&times</span>
-                            </div>
-                            <span>
-                                <button>수정</button>
-                            </span>
-                        </div>
-                    </li>
-
-                    <li class="comment-row">
-                        <p class="comment-writer">
-                            <img src="/resources/images/user.png">
-                            <span>닉네임</span>
-                        </p>
-    
-                        <p class="comment-content">부모 댓글 내용입니다</p>
-                        
-                        <div>
-                            <div>
-                                <span class="comment-date">2023-09-02</span>
-                                <span>&times</span>
-                            </div>
-                            <span>
-                                <button>수정</button>
-                                <button>답글</button>
-                            </span>
-                        </div>
-                    </li>
-
-                </ul>
-
-            </div>
-
         </div>
-
+        <!-- 댓글 영역 -->
+        <jsp:include page="/WEB-INF/views/board/comment.jsp"></jsp:include>
 	</section>
 
     <script>
@@ -274,6 +186,8 @@ console.log(Kakao.isInitialized());
 
     <!-- freeBoardDetail.js 연결 -->
 	<script src="/resources/js/board/freeBoard/freeBoardDetail.js"></script>
+    <!-- comment.js 연결 -->
+    <script src="/resources/js/board/comment.js"></script>
 
 </body>
 </html>
