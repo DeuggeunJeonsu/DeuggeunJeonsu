@@ -195,5 +195,9 @@ public class MyPageDAO {
 	public int secession(int memberNo) {
 		return sqlSession.update("myPageMapper.secession", memberNo);
 	}
+
+	public int updateProfile(Member loginMember) {
+		return sqlSession.update("myPageMapper.updateProfile", loginMember);
+	}
 	
 }

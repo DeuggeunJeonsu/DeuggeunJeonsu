@@ -113,10 +113,14 @@ form[name='myPageFrm']{position: relative;}
   margin-left: 43%;
 }
 
+p{
+  color: gray;
+}
+
 .profile-btn-area > *{
   width: 110px;
   height: 33px;
-  border-radius: 30%;
+  border-radius: 30px;
   padding: 5px 5px;
 
 
