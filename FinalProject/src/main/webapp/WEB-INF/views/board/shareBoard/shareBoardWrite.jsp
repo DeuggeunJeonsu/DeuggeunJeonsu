@@ -26,7 +26,7 @@
                     <div id="profile-area">
                         <img src="/resources/images/user.png">
                     </div>
-                    <span>${loginMember.member}</span>
+                    <span>${loginMember.memberNo}</span>
                 </div>
                 <button type="submit" id="writebtn">작성완료</button>
             </div>

@@ -88,7 +88,7 @@
                                     <img src="/resources/images/user.png">
                                 </c:when>
                                 <c:otherwise>
-                                    <img src="${board.profile}">
+                                    <img src="${board.profileImage}">
                                 </c:otherwise>
                             </c:choose>
 
