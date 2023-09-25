@@ -17,7 +17,7 @@ public interface ashBoardService {
 	 * @param imgSrc
 	 * @return boardNo
 	 */
-	int boardInsert(Board board, List<String> tagContent, List<String> imgSrc);
+	int boardInsert(Board board, List<String> tagContent, String[] imgSrc);
 
 	/** 게시글 목록 조회
 	 * @param boardCode
