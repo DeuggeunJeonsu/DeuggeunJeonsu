@@ -37,6 +37,11 @@
 
             <jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
 
+            <!-- Fixed 스크롤 탑 -->
+            <a href="#" class="scroll-top-btn">
+                <i class="fas fa-arrow-up"></i>
+            </a>
+
             <section id="main-container">
                 <div class="main-con">
                     <div class="place"></div>
@@ -137,7 +142,7 @@
 
 
                 </div>
-
+                <button id="myButton" style="display: none;">나의 버튼</button>
                 <div class="place"></div>
 
 

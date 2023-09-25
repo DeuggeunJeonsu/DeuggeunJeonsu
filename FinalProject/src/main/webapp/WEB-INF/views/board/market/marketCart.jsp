@@ -8,7 +8,7 @@
 
         <head>
             <meta charset="UTF-8">
-            <title>게시판 이름</title>
+            <title>장바구니</title>
 
             <%-- marketReview-style.css 연결 --%>
                 <link rel="stylesheet" href="/resources/css/board/market/marketCart-style.css">

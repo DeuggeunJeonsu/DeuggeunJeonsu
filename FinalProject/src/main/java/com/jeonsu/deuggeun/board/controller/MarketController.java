@@ -128,7 +128,6 @@ public class MarketController {
 				  , @PathVariable("productNo") int productNo
 				  , Model model // 데이터 전달용 객체
 				  , RedirectAttributes ra // 리다이렉트 시 데이터 전달용 객체
-//				  ,@SessionAttribute("loginMember") Member loginMember
 			, @SessionAttribute(value="loginMember", required=false) Member loginMember
 	) throws ParseException{
 

@@ -14,6 +14,51 @@ function updateShoppingCount() {
     });
 }
 
+// -------------------------- 스크롤 함수 --------------------------
+
+document.addEventListener('DOMContentLoaded', function () {
+    var scrollTopBtn = document.querySelector('.scroll-top-btn');
+
+    window.addEventListener('scroll', function () {
+        if (window.pageYOffset > 500) {
+            scrollTopBtn.classList.add('show');
+        } else {
+            scrollTopBtn.classList.remove('show');
+        }
+    });
+
+    scrollTopBtn.addEventListener('click', function (e) {
+        e.preventDefault();
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+});
+
+
+// -------------------------- 스크롤 함수 끝 --------------------------
+
+function changeBtn(btnId) {
+    const buttons = document.querySelectorAll(".select_btn");
+
+    buttons.forEach(function (button) {
+        if (button.id === btnId) {
+            button.classList.add("selected");
+
+        } else {
+            button.classList.remove("selected");
+        }
+    });
+}
+
+// 버튼 클릭 이벤트 리스너 추가
+myButton.addEventListener('click', function() {
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"  // 부드럽게 스크롤
+    });
+});
 
 // 상품 수량 선택 후 ADD TO CART 누를 때 데이터 전송
 // DOM 로드 완료 후 실행

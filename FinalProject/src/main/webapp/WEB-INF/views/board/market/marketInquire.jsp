@@ -122,7 +122,6 @@
 
                                                         <c:choose>
                                                             <c:when test="${map2.loginMemberNo == inquiry.memberNo}">
-
                                                                 <td>
                                                                     <a href="/board/${boardCode}/inquiry/${inquiry.inquiryNo}/detail?cp=${param.cp}">${inquiry.inquiryTitle}</a>
                                                                 </td>
@@ -202,11 +201,10 @@
             </script>
             <script>
                 function checkAuthorship() {
-                    // EL 값을 JavaScript 변수로 전달
+
                     var loginMemberNo = "${map2.loginMemberNo}";
                     var writerNo = "${inquiry.memberNo}";
 
-                    // loginMemberNo와 writerNo가 동일한지 확인
                     if (loginMemberNo !== writerNo) {
                         Swal.fire({
                             icon: 'error',
