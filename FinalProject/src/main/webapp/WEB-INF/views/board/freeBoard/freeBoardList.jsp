@@ -4,6 +4,7 @@
     <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 <%-- map에 저장된 값 변수에 저장 --%>
+
 <c:set var="pagination" value="${map.pagination}"/>
 <c:set var="boardList" value="${map.boardList}"/>
 <c:set var="boardCode" value="3"/>
@@ -130,7 +131,9 @@
                                     </c:if>
 
                                     <c:if test="${!empty board.thumbnail}">
-                                        <img src="${board.thumbnail}">
+                                        <c:set var="originalThumbnail" value="${board.thumbnail}"/>
+                                        <c:set var="thumbnail" value="${fn:replace(originalThumbnail, '^^^', ',')}"/>
+                                        <img src="${thumbnail}">
                                     </c:if>
                                 </div>
                                 <div>

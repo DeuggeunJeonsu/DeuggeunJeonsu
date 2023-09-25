@@ -88,23 +88,23 @@ public class ashBoardDAO {
 	 * @param imgSrc
 	 * @return boardNo(result)
 	 */
-	public int freeBoardImageInsert(int boardNo, List<String> imgSrc) {
+	public int freeBoardImageInsert(int boardNo, String[] imgSrc) {
 		
 		int result = 0;
 		
-		List<BoardImage> imageList = new ArrayList<>();
-		
-		for(int i=0; i<imgSrc.size(); i++) {
+		BoardImage image = new BoardImage();
+
+		if(imgSrc.length != 0) {
 			
-			BoardImage image = new BoardImage();
+			String imgSrc2 = String.join("^^^", imgSrc);
 			
 			image.setImagePath("/resources/images/freeBoard/");
-			image.setImageReName(imgSrc.get(i));
+			image.setImageReName(imgSrc2);
 			image.setImageOriginal("dg_image");
 			image.setBoardNo(boardNo);
-			image.setImageLevel(i);
-			
-			sqlSession.insert("freeBoardMapper.freeBoardImageInsert", image);
+			image.setImageLevel(0);			
+
+			result = sqlSession.insert("freeBoardMapper.freeBoardImageInsert", image);
 		}
 		
 		if(result > 0) result = boardNo;
@@ -131,7 +131,16 @@ public class ashBoardDAO {
 		
 		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
 		
-		return sqlSession.selectList("freeBoardMapper.selectFreeBoardList", boardCode, rowBounds);
+		List<Board> boardList = sqlSession.selectList("freeBoardMapper.selectFreeBoardList", boardCode, rowBounds);
+		
+		for(Board board : boardList) {
+			
+			if(board.getThumbnail() != null) {
+				board.setThumbnail(board.getThumbnail().replace("^^^", ","));
+			}
+		}
+		
+		return boardList;
 	}
 
 	/** 자유게시판 게시글 상세 조회
