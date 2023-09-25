@@ -3,6 +3,8 @@ package com.jeonsu.deuggeun.member.model.service;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import com.jeonsu.deuggeun.board.model.dto.Board;
 import com.jeonsu.deuggeun.board.model.dto.Cart;
 import com.jeonsu.deuggeun.member.model.dto.Member;
@@ -81,5 +83,15 @@ public interface MyPageService {
 	 * @return result
 	 */
 	int secession(int memberNo, String memberPw);
+
+	
+	/** 프로필 이미지 수정
+	 * @param profileImage
+	 * @param webPath
+	 * @param filePath
+	 * @param loginMember
+	 * @return result
+	 */
+	int updateImage(MultipartFile profileImage, String webPath, String filePath, Member loginMember);
 
 }

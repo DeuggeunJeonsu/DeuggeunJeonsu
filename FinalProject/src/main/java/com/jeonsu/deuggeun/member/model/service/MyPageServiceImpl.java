@@ -11,10 +11,12 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.jeonsu.deuggeun.board.model.dao.ashBoardDAO;
 import com.jeonsu.deuggeun.board.model.dto.Board;
 import com.jeonsu.deuggeun.board.model.dto.Pagination;
+import com.jeonsu.deuggeun.common.utility.Util;
 import com.jeonsu.deuggeun.member.model.dao.MyPageDAO;
 import com.jeonsu.deuggeun.member.model.dto.Badge;
 import com.jeonsu.deuggeun.member.model.dto.Member;
@@ -219,6 +221,27 @@ public class MyPageServiceImpl implements MyPageService {
 			if(bcrypt.matches(memberPw, encPw)) {
 				return dao.secession(memberNo);
 			}
+			
+			return 0;
+		}
+
+		@Override
+		public int updateImage(MultipartFile profileImage, String webPath, String filePath, Member loginMember) {
+			
+			String temp = loginMember.getProfileImage();
+			
+			String rename = null;
+			
+			if(profileImage.getSize() > 0) {
+				
+				rename = Util.fileRename(profileImage.getOriginalFilename());
+				loginMember.setProfileImage(webPath + rename);
+				
+			} else {
+				loginMember.setProfileImage(null);
+			}
+			
+			int result = dao.updateProfile(loginMember);
 			
 			return 0;
 		}

@@ -1,11 +1,13 @@
 package com.jeonsu.deuggeun.member.controller;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.jeonsu.deuggeun.board.model.dto.Board;
 import com.jeonsu.deuggeun.board.model.dto.Cart;
@@ -23,10 +25,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.jeonsu.deuggeun.member.model.dto.Member;
 import com.jeonsu.deuggeun.member.model.service.MyPageService;
+
+import oracle.jdbc.proxy.annotation.Post;
 
 @RequestMapping("/myPage")
 @Controller
@@ -219,6 +224,31 @@ public class MyPageController {
 		System.out.println(purchaseList);
 		return "member/myPage/myPurchaseList";
 	}
+	
+	@PostMapping("/profile")
+	public String updateProfile(
+			@RequestParam("profileImage") MultipartFile profileImage
+			,@SessionAttribute("loginMember") Member loginMember
+			,RedirectAttributes ra
+			, HttpSession session
+			)throws IllegalStateException, IOException {
+		
+		String webPath = "/resources/imgaes/member/";
+		
+		String filePath = session.getServletContext().getRealPath(webPath);
+		
+		int result = service.updateImage(profileImage, webPath, filePath, loginMember);
+		
+		String message = null;
+		
+		if(result > 0) message = "프로필 이미지가 변경되었습니다.";
+		else			message = "프로필 변경 실패";
+		
+		ra.addFlashAttribute("message", message);
+		return "redirect:profile";
+	}
+	
+	
 
 	// 내 정보수정 페이지
 	@GetMapping("/myUpdate")

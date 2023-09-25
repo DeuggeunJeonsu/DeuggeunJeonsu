@@ -221,6 +221,17 @@ public class MemberController {
 			// 인증번호 반환
 			return AuthenticationKey;
 		}
+
+//		// 회원 가입 인증하기
+//		@GetMapping("/checkKey")
+//		@ResponseBody
+//		public int checkAuthKey(@RequestParam Map<String, Object> paramMap) {
+//
+//			System.out.println(paramMap);
+//
+//			return service.checkKey(paramMap); 
+//			
+//		}
 	
 
 }

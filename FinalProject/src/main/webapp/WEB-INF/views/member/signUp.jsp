@@ -79,6 +79,10 @@
         </div>
       </div>
 
+      <section class="timerSection">
+                        <div id="smsTimer"></div> <!-- 아이디 찾기 인증 타이머 -->
+      </section>
+
       <div>
         <div>
           <input type="tel" placeholder="인증번호 입력" required id="tel3">

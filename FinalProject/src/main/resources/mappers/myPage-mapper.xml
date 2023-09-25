@@ -182,5 +182,12 @@
 		WHERE MEMBER_NO = #{memberNo}
 		AND BADGE_FL = 'Y'
 	</select>
+	
+	<update id="updateProfile">
+		UPDATE MEMBER
+		SET PROFILE_IMG = #{profileImage}
+		WHERE MEMBER_NO = #{memberNo}
+		AND MEMBER_DEL_FL = 'N'
+	</update>
 
 </mapper>

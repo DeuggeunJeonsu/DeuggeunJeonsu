@@ -28,6 +28,7 @@ if(changePwFrm != null){
     });
 }
 
+
 const memberNickname = document.getElementById("memberNickname");
 
 const nickMessage = document.getElementById("nickMessage");
@@ -91,6 +92,7 @@ memberNickname.addEventListener("input", () => {
 
     
 })
+
 
 
 
