@@ -2,11 +2,20 @@
     box-sizing: border-box;
 }
 
+.place{
+    height: 100px;
+}
 
 #main-container{
-    margin: 100px 400px;
     height: auto;
-    min-width: 1200px;
+    margin: auto;
+    max-width: 1000px;
+}
+
+.board-title{
+    font-size: 30px;
+    font-weight: 600;
+    margin-bottom: 15px;
 }
 
 #title-area > div:nth-of-type(2){
@@ -85,8 +94,8 @@
     height: 40px;
 
     position: absolute;
-    left: 1428px;
-    bottom: 635px;
+    left: 1280px;
+    bottom: 610px;
     
     background: #484848;
     color: white;
@@ -293,7 +302,6 @@
 
 /* 글쓰기 버튼 영역 */
 .write-btn-area{
-    width: 83%;
     margin: auto;
     
     display: flex;
@@ -348,6 +356,7 @@
 .pagination-area {
     text-align: center;
     margin-top: 50px;
+    margin-bottom: 80px;
     position :relative;
     /* left : 330px; */
     border: none !important;

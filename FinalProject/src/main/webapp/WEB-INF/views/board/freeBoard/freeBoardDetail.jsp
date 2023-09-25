@@ -46,10 +46,11 @@ console.log(Kakao.isInitialized());
 
 	<jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
 	
+    <div class="place"></div>
 	<section id="main-container">
         <div id="title-area">
-            <div><h1>자유 게시판</h1></div>
-            <div>득근전수 회원님들이 자유롭게 이야기를 나누는 공간입니다.</div>
+            <div class="board-title">자유 게시판</div>
+            <div><h3>득근전수 회원님들이 자유롭게 이야기를 나누는 공간입니다.</h3></div>
         </div>
 
         <div id="detail-container">

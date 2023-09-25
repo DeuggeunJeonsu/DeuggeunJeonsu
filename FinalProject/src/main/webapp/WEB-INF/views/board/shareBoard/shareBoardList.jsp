@@ -30,10 +30,11 @@
 
 	<jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
 	
+    <div class="place"></div>
 	<section id="main-container">
         <div id="title-area">
-            <div><h1>운동 공유 게시판</h1></div>
-            <div>득근전수 회원들과 나만의 운동 루틴을 공유해 보세요.</div>
+            <div class="board-title">루틴 공유 게시판</div>
+            <div><h3>득근전수 회원들과 나만의 운동 루틴을 공유해 보세요.</h3></div>
         </div>
         <div id="search-area">
             <div class="search-place">
