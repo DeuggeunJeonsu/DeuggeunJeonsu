@@ -266,6 +266,10 @@
 .title{
     font-size: 20px;
     /* font-weight: bold; */
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 /* 게시글 작성일, 좋아요 영역 */

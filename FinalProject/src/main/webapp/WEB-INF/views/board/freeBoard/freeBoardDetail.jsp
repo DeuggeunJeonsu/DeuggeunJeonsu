@@ -59,7 +59,8 @@ console.log(Kakao.isInitialized());
             <div id="title-middle-area">
                 <div id="title">${board.boardTitle}</div>
                 <div>
-                    <div id="writing-date">작성일&nbsp;&nbsp;${board.boardCreateDate}&nbsp;&nbsp;&nbsp;&nbsp;</div> | <div id="readCount">조회수&nbsp;&nbsp;${board.readCount}</div>
+                    <div id="writing-date">작성일&nbsp;&nbsp;${board.boardCreateDate}&nbsp;&nbsp; |</div>
+                    <div id="readCount">조회수&nbsp;&nbsp;${board.readCount}</div>
                 </div>
             </div>
 
