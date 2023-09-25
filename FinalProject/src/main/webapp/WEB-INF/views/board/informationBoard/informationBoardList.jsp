@@ -8,8 +8,13 @@
 <c:set var="boardList" value="${map.boardList}"/>
 <c:set var="boardCode" value="1"/>
 
+<script>
+    const loginMember = "${loginMember}";
+</script>
+
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
     <title>건강/운동정보</title>
     <link rel="stylesheet" href="/resources/css/board/informationBoard/informationBoardList-style.css">
 
@@ -17,6 +22,9 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/resources/images/favicon_io/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/resources/images/favicon_io/favicon-16x16.png">
     <link rel="manifest" href="/resources/images/favicon_io/site.webmanifest">
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.28/dist/sweetalert2.all.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.28/dist/sweetalert2.min.css">
 </head>
 
 <body>
@@ -28,54 +36,14 @@
         <c:set var="sp" value="&key=${param.key}&query=${param.query}"/>
     </c:if>
 
+    <div class="place"></div>
 	<section id="main-container">
         <div id="title-area">
-            <div><h1>건강/운동정보</h1></div>
-            <div>득근전수 회원님들이 유용한 지식을 얻어갈 수 있는 공간입니다.</div>
+            <div class="board-title">건강/운동정보</div>
+            <div><h3>득근전수 회원님들이 유용한 지식을 얻어갈 수 있는 공간입니다.</h3></div>
         </div>
 
         <div id="search-area">
-
-            <%-- 게시글 빠른 검색 --%>
-            <div id="sort-btn-area">
-                <a href="/board/1/list?key=h">
-                    <c:if test="${param.key == 'h'}" >
-                        <span name="key" value="h" style="font-weight:bold; color:#99E1ED" id="healthCategory"># 건강정보</span>
-                    </c:if>
-                </a>
-                <c:if test="${param.key != 'h'}" >
-                    <span name="key" value="h" id="healthCategory"># 건강정보</span>
-                </c:if>
-
-                <a href="/board/1/list?key=e">
-                    <c:if test="${param.key == 'e'}" >
-                        <span name="key" value="e" style="font-weight:bold; color:#99E1ED" id="exerciseCategory"># 운동정보</span>
-                    </c:if>
-                </a>
-                <c:if test="${param.key != 'e'}" >
-                    <span name="key" value="e" id="exerciseCategory"># 운동정보</span>
-                </c:if>
-
-                <a href="/board/1/list?key=f">
-                    <c:if test="${param.key == 'f'}" >
-                        <span name="key" value="f" style="font-weight:bold; color:#99E1ED" id="trendCategory"># 최근동향</span>
-                    </c:if>
-                </a>
-                <c:if test="${param.key != 'c'}" >
-                    <span name="key" value="f" id="exerciseCategory"># 최근동향</span>
-                </c:if>
-            </div>
-
-            <%-- 검색 결과 화면에서 검색어 해시태그로 표현 --%>
-            <c:if test="${!empty param.query}" >
-                <div class="hashTag-area">
-                    <div>
-                        <span>"${param.query}" 에 대한 검색결과</span>
-                        <i class="fa-solid fa-circle-xmark" style="color: #ffffff;"></i>
-                    </div>                
-                </div>
-            </c:if>
-
             <%-- 게시글 상세 검색 --%>
             <div class="search-place">
                 <form method="get" id="boardSearch">
@@ -84,13 +52,53 @@
                     <button id="search-button"><i class="fas fa-search"></i></button>
                 </form>
             </div>
+
+            <%-- 검색 결과 화면에서 검색어 해시태그로 표현 --%>
+            <c:if test="${!empty param.query}" >
+                <div class="hashTag-area">
+                    <div class="hashtag">
+                        <span>"${param.query}" 에 대한 검색결과</span>
+                        <i class="fa-solid fa-circle-xmark" style="color: #ffffff;"></i>
+                    </div>                
+                </div>
+            </c:if>
+
+            <%-- 게시글 빠른 검색 --%>
+            <div id="sort-btn-area">
+                <a href="/board/1/list?key=h">
+                    <c:if test="${param.key == 'h'}" >
+                        <span name="key" value="h" style="font-weight:bold; color:#99E1ED" id="healthCategory">건강정보</span>
+                    </c:if>
+                    <c:if test="${param.key != 'h'}" >
+                        <span name="key" value="h" id="healthCategory">건강정보</span>
+                    </c:if>
+                </a> |
+
+                <a href="/board/1/list?key=f">
+                    <c:if test="${param.key == 'f'}" >
+                        <span name="key" value="f" style="font-weight:bold; color:#99E1ED" id="exerciseCategory">운동정보</span>
+                    </c:if>
+                    <c:if test="${param.key != 'f'}" >
+                        <span name="key" value="f" id="exerciseCategory">운동정보</span>
+                    </c:if>
+                </a> |
+
+                <a href="/board/1/list?key=t">
+                    <c:if test="${param.key == 't'}" >
+                        <span name="key" value="t" style="font-weight:bold; color:#99E1ED" id="trendCategory">최근동향</span>
+                    </c:if>
+                    <c:if test="${param.key != 't'}" >
+                        <span name="key" value="t" id="exerciseCategory">최근동향</span>
+                    </c:if>
+                </a>
+            </div>
         </div>
 
         <div id="list-area">
             <c:choose>
                 <c:when test="${empty boardList}">
                     <div class="no-board-list">
-                        <h1>게시글이 존재하지 않습니다. 첫 게시글의 주인공이 되어 보세요! 😅</h1>
+                        <h1>게시글이 존재하지 않습니다. 준비중인 콘탠츠 입니다. 😅</h1>
                     </div>
                 </c:when>
             
@@ -129,8 +137,10 @@
         </div>
         
         <div class="write-btn-area">
-            <c:if test="${!empty loginMember}" >
-                <button type="button" id="writeBtn">글쓰기</button>
+            <c:if test="${!empty loginMember && loginMember.authority==2}" >
+                <a href="/board2/1/insert">
+                    <button type="button" id="writeBtn">글쓰기</button>
+                </a>
             </c:if>
         </div>
 
