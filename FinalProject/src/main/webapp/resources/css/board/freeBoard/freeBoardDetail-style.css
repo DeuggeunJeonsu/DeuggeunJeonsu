@@ -32,7 +32,6 @@
 /* 게시글 제목 */
 #title-middle-area{
     margin: 20px 0;
-    display: flex;
 }
 
 #title{
@@ -47,17 +46,17 @@
 }
 
 #title-middle-area > div:nth-of-type(2){
-    width: 30%;
     display: flex;
-    
-    justify-content: center;
+    width: 250px;
     align-items: center;
 }
 
 #title-middle-area > div:nth-of-type(2) > div{
+    display: flex;
     width: 50%;
-    text-align: center;
-    padding: 0;
+    
+    position: relative;
+    left: 620px;
 }
 
 /* 게시글 작성자 정보 영역 */
