@@ -104,6 +104,14 @@
 									<tbody id="inquiryList">
 
 										<c:if test="${empty boardList }">
+											<tr>
+												<td  colspan="6">
+													<strong>문의글이 존재하지 않습니다.</strong>
+												</td>
+											</tr>
+										</c:if>
+
+										<c:if test="${!empty boardList }">
 											<c:forEach items="${boardList}" var="board">
 												<tr>
 													<td>${board.boardNo}</td>
@@ -129,13 +137,7 @@
 											</c:forEach>
 										</c:if>
 
-										<c:if test="${empty boardList }">
-											<tr>
-												<td  colspan="6">
-													문의글이 존재하지 않습니다.
-												</td>
-											</tr>
-										</c:if>
+									
 
 
 									</tbody>

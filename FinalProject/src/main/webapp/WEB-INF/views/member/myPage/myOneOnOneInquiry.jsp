@@ -98,6 +98,7 @@
                                                 <input type="hidden" class="boardTitle" value="${board.boardTitle}" />
                                                 <input type="hidden" class="boardContent" value="${board.boardContent}" />
                                                 <input type="hidden" class="boardNo" value="${board.boardNo}" />
+                                                <input type="hidden" class="hiddenCheckFl" value="${board.adminCheckFl}" />
                                             </c:forEach>
 
 
