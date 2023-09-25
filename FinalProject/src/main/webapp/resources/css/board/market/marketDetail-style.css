@@ -213,7 +213,10 @@ strong{
     padding: 30px 0 50px;
     line-height: 1.5;
 }
-
+.kakao{
+    display: flex;
+    justify-content: space-between;
+}
 .notice ul {
     display: flex; 
     list-style: none; 

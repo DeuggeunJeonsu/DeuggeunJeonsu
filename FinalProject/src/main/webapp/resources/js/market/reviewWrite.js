@@ -99,8 +99,8 @@ reviewForm.addEventListener("submit", function (e) {
     }
 
     // 유효성 검사 통과 시 폼 제출
-    reviewTitle.value = titleValue; // 제목 필드 업데이트
-    reviewContent.value = contentValue; // 내용 필드 업데이트
+    reviewTitle.value = titleValue;
+    reviewContent.value = contentValue;
     reviewForm.submit();
 });
 
