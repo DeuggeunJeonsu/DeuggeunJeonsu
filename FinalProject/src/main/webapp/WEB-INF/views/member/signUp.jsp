@@ -43,6 +43,10 @@
           <input type="text" name = "pwAuthenticationKey" id = "pwAuthenticationKey" placeholder="인증번호 입력" maxlength="6" autocomplete="off">
           <button type="button" id="findPwBtn">인증하기</button>
         </div>
+          <p class="auth-message" id="authMessage">인증해주세요.</p>
+
+        
+
           <section class="timerSection">
             <div id="emailTimer"></div> 
           </section>
@@ -74,19 +78,20 @@
       <div>
         <label class="imp">휴대폰</label>
         <div>
-          <input type="tel" placeholder="숫자만 입력해주세요" name = "memberTel" id = "idAuthenticationKey" required>
+          <input type="text" placeholder="숫자만 입력해주세요" name = "memberTel" id = "memberTel" required>
           <button type="button" class="findInfo-btn" id="sendSmsBtn">인증번호받기</button>
         </div>
+      <p class="tel-message" id="telMessage">연락처(휴대전화)를 입력해주세요.</p>
       </div>
 
       <section class="timerSection">
-                        <div id="smsTimer"></div> <!-- 아이디 찾기 인증 타이머 -->
+        <div id="smsTimer"></div>
       </section>
 
       <div>
         <div>
-          <input type="tel" placeholder="인증번호 입력" required id="tel3">
-          <button type="button" id="idAuthenticationKey">인증번호확인</button>
+          <input type="text" placeholder="인증번호 입력" id="idAuthenticationKey" required>
+          <button type="button" class="findInfo-btn" id="findIdBtn">인증번호확인</button>
         </div>
       </div>
 

@@ -31,6 +31,7 @@ import com.jeonsu.deuggeun.member.model.dto.Member;
 import com.jeonsu.deuggeun.member.model.service.MemberService;
 
 import lombok.extern.slf4j.Slf4j;
+import oracle.jdbc.proxy.annotation.Post;
 
 @Controller 
 @RequestMapping("/member")
@@ -222,16 +223,17 @@ public class MemberController {
 			return AuthenticationKey;
 		}
 
-//		// 회원 가입 인증하기
-//		@GetMapping("/checkKey")
-//		@ResponseBody
-//		public int checkAuthKey(@RequestParam Map<String, Object> paramMap) {
-//
-//			System.out.println(paramMap);
-//
-//			return service.checkKey(paramMap); 
-//			
-//		}
+		// 회원 가입 인증 확인
+		@PostMapping("/checkKey")
+		@ResponseBody
+		public int checkAuthKey(@RequestParam Map<String, Object> paramMap) {
+
+			System.out.println(paramMap);
+
+			return service.checkKey(String.valueOf(paramMap.get("memberEmail")));
+			
+			
+		}
 	
 
 }

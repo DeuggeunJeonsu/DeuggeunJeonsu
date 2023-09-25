@@ -90,4 +90,13 @@ public class MemberDAO {
 	public Member selectEmail(String memberEmail) {
 		return sqlSession.selectOne("memberMapper.selectEmail",memberEmail);
 	}
+
+
+	/** 회원가입 이메일 인증 확인
+	 * @param memberEmail
+	 * @return
+	 */
+	public int checkKey(String memberEmail) {
+		return sqlSession.selectOne("memberMapper.checkKey", memberEmail);
+	}
 }
