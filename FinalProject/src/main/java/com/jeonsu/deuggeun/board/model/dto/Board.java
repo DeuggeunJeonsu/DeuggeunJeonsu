@@ -44,6 +44,12 @@ public class Board {
 	private char adminCheckFl;
 	private int adminBoardNo;
 	
+	private char adminMarketCheckFl;
+	private String inquiryTitle;
+	private String inquiryContent;
+	private int inquiryType;
+	private String inquiryCd;
+	
 	// 이미지 목록
 	private List<BoardImage> imageList;
 
