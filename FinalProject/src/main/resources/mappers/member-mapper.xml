@@ -13,6 +13,8 @@
       <result property="memberTel" column="MEMBER_TEL" />
       <result property="memberAddress" column="MEMBER_ADDR" />
       <result property="profileImage" column="PROFILE_IMG" />
+      <result property="attendenceDate" column="ATTENDENCE_DT" />
+      <result property="memberThema" column="MEMBER_THEMA" />
       <result property="enrollDate" column="ENROLL_DATE" />
       <result property="memberDeleteFlag" column="MEMBER_DEL_FL" />
       <result property="authority" column="AUTHORITY" />
@@ -49,7 +51,7 @@
    <!-- 로그인 -->
    <select id="login" parameterType="Member" resultMap="member_rm">
       SELECT MEMBER_NO, MEMBER_EMAIL, MEMBER_NICKNAME, MEMBER_PW,
-         MEMBER_TEL, MEMBER_ADDR, PROFILE_IMG, AUTHORITY,
+         MEMBER_TEL, MEMBER_ADDR, PROFILE_IMG, AUTHORITY, MEMBER_THEMA, ATTENDENCE_DT,
          TO_CHAR(ENROLL_DATE, 'YYYY"년" MM"월" DD"일" HH24"시" MI"분" SS"초"') AS ENROLL_DATE 
       FROM "MEMBER"
       WHERE MEMBER_DEL_FL = 'N'
