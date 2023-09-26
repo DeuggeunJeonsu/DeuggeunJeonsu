@@ -13,11 +13,11 @@
       <result property="memberTel" column="MEMBER_TEL" />
       <result property="memberAddress" column="MEMBER_ADDR" />
       <result property="profileImage" column="PROFILE_IMG" />
-      <result property="attendenceDate" column="ATTENDENCE_DT" />
       <result property="memberThema" column="MEMBER_THEMA" />
       <result property="enrollDate" column="ENROLL_DATE" />
       <result property="memberDeleteFlag" column="MEMBER_DEL_FL" />
       <result property="authority" column="AUTHORITY" />
+      <result property="attendenceDate" column="ATTENDENCE_DT" />
    </resultMap>
 
    <!-- Cart에 대한 resultMap -->
@@ -67,7 +67,7 @@
 		, #{memberNickname}
 		, #{memberTel}
 		, '${memberAddress}'
-   		, NULL, DEFAULT, DEFAULT, DEFAULT)
+   		, NULL, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT)
    </insert>
    
    <!-- 전화번호로 회원 조회 -->
