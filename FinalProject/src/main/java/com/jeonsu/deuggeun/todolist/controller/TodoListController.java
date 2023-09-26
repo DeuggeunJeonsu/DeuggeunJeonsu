@@ -1,6 +1,7 @@
 package com.jeonsu.deuggeun.todolist.controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
@@ -20,6 +21,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.jeonsu.deuggeun.todolist.model.service.TodoListService;
 import com.jeonsu.deuggeun.member.model.dto.Member;
+import com.jeonsu.deuggeun.todolist.model.dto.Health;
 import com.jeonsu.deuggeun.todolist.model.dto.TodoList;
 
 
@@ -98,6 +100,16 @@ public class TodoListController {
 		
 		return service.unfinished(date, loginMemberNo);
 	}
-
+	
+	@GetMapping(value="/todo/auto/selecthealth", produces = "application/json; charset=UTF-8")
+	public List<Health> autoSearch(String query){
+		
+		Map<String, Object>map = new HashMap<>();
+		
+		map.put("query", query);
+		return service.autoSearch(map);
+		
+		
+	}
 
 }

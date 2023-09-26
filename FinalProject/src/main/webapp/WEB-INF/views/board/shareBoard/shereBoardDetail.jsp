@@ -152,13 +152,27 @@ console.log(Kakao.isInitialized());
                             <span>1. 득근전수 50회 4세트</span>
                             <button type="button"><i class="fa-solid fa-minus minus" style="color: #ffffff;"></i></button>
                         </div> --%>
-                        
-                       
 					
 				    </div>  
                     <div>
                        <input type="text" name="addList" class="addList" placeholder="예) 스쿼트 20회 5세트"><button type="button" class="addListBtn"><i class="fa-solid fa-plus" style="color: #ffffff;"></i></button>
                     </div>
+
+                    <div id="autoSearch">
+                        <ul id="todo-resultArea">
+                            <%-- <li class="todo-result-row" data-id="1">
+                                <span><mark>스쿼</mark>트<span>
+                            </li>
+                            <li class="todo-result-row" data-id="2">
+                                <span><mark>스쿼</mark>트<span>
+                            </li>
+                            <li class="todo-result-row" data-id="3">
+                                <span><mark>스쿼</mark>트<span> | <span class="category">하체</span>
+                            </li> --%>
+                        </ul>
+                    </div>
+
+
                     <!-- <div class="tdl-btnArea">
                         <a class="button btnPush btnLightBlue">저장하기</a>
                         <a class="button btnPush btnLightBlue">되돌리기</a>

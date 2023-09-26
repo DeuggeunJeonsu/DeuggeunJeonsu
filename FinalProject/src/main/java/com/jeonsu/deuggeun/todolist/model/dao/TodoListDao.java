@@ -8,6 +8,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.jeonsu.deuggeun.todolist.model.dto.Health;
 import com.jeonsu.deuggeun.todolist.model.dto.TodoList;
 
 @Repository
@@ -85,5 +86,10 @@ public class TodoListDao {
 		map.put("loginMemberNo", loginMemberNo);
 		
 		return sqlSession.update("todolistMapper.unfinished", map);
+	}
+
+	// 자동완성 
+	public List<Health> autoSearch(Map<String, Object> map) {
+		return sqlSession.selectList("todolistMapper.autoSearch", map);
 	}
 }

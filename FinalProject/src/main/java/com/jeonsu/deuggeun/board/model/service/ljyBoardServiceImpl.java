@@ -104,6 +104,7 @@ public class ljyBoardServiceImpl implements ljyBoardService{
 		// 0. XSS방지 처리 
 		board.setBoardContent(Util.XSSHandling(board.getBoardContent()));
 		board.setBoardTitle(Util.XSSHandling(board.getBoardTitle()));
+		board.setBoardContent(Util.newLineHandling(board.getBoardContent()));
 
 		// 1. BOARD 테이블에 INSER하기 (제목, 내용, 작성자, 게시판 코드)
 		// -> boardNo (시퀀스로 생성한 번호) 반환 
@@ -214,7 +215,8 @@ public class ljyBoardServiceImpl implements ljyBoardService{
 
 		board.setBoardContent(Util.XSSHandling(board.getBoardContent()));
 		board.setBoardTitle(Util.XSSHandling(board.getBoardTitle()));
-
+		board.setBoardContent(Util.newLineHandling(board.getBoardContent()));
+		
 		int rowCount =  dao.boardUpdate(board);
 		int routineUpdate = 0; 
 		// 게시글의 제목과 내용을 업로드 성공했을 때
