@@ -176,6 +176,8 @@ public class ShareboardController2 {
 
 			routine.setRtTitle(Util.XSSHandling(routineNames.get(i)));
 			routine.setRtContent(Util.XSSHandling(routineContents.get(i)));
+			routine.setRtContent(Util.newLineHandling(routineContents.get(i)));
+			
 			routine.setRtLevel(i);
 
 			routines.add(routine);
