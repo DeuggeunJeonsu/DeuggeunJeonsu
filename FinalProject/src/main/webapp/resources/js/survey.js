@@ -114,6 +114,7 @@ for (let i of fristCheck) {
                         input.style.width = "60%";
 
 
+
                         btn.style.visibility = "hidden";
 
                         finalCheck.style.visibility = "visible";
@@ -250,6 +251,14 @@ for (let i of fristCheck) {
                             popUp.style.visibility = "visible";
                             popUp.style.opacity = "10";
 
+                            if(legChk[0].checked == true){
+                                const li = document.createElement('li');
+
+                                li.innerHTML = "레그 익스텐션";
+
+                                popList.appendChild(li);
+                            } 
+
                         })
 
                         beforeBtn.addEventListener("click", () => {
@@ -329,3 +338,18 @@ $("#confirmStart").click(function () {
         }
     })
 });
+
+const legChk2 = document.querySelectorAll('input[name="legs"]');
+const legChkArray = Array.from(legChk); // NodeList를 배열로 변환
+
+// for 루프를 forEach 루프로 변경
+legChkArray.forEach((checkbox, index) => {
+    if (checkbox.checked === true) {
+      const li = document.createElement('li');
+      li.innerHTML = "레그 익스텐션";
+      popList.appendChild(li);
+    }
+  });
+
+
+  
