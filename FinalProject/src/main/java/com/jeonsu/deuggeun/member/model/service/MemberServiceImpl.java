@@ -110,8 +110,26 @@ public class MemberServiceImpl implements MemberService {
 
 	// 메인페이지 전체 게시글 인기글 조회
 	@Override
+	public Board trendingAll() {
+		return dao.trendingAll();
+	}
+
+	// 메인페이지 정보 공유 게시판 인기글 조회
+	@Override
 	public Board trendingInfo() {
 		return dao.trendingInfo();
+	}
+
+	// trendingRoutine
+	@Override
+	public Board trendingRoutine() {
+		return dao.trendingRoutine();
+	}
+
+	// 메인페이지 자유 게시판 인기글 조회
+	@Override
+	public Board trendingFree() {
+		return dao.trendingFree();
 	}
 
 

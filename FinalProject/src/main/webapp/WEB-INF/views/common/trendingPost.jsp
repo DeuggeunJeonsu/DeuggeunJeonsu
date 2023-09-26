@@ -2,17 +2,31 @@
 <html>
 <head>
     <title>트렌딩 득근 포스트</title>
-    <link rel="stylesheet" href="/resources/css/common/main.css">
+
+    <%-- css 연결 --%>
     <link rel="stylesheet" href="/resources/css/common/trending-post-style.css">
+
+    <%-- 애니메이션 연결 --%>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+    <%-- 제이쿼리 연결 --%>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
 
     <section id="trending-post-container">
         
-        <h2 class="main-article-tit">Trending Deuggeun Post</h2>
+        <h2 class="trending-main-article-tit">Trending Deuggeun Post</h2>
 
-        <div id="trending-list-area">
+        <div id="trending-list-area"
+                data-aos="fade-right"
+                data-aos-offset="50"
+                data-aos-duration="300"
+                data-aos-easing="ease-in-out"
+                
+                data-aos-once="false"
+                data-aos-anchor-placement="top-center"+20
+                >
 
             <div id="wrapper">
                 <div id="left-side">
@@ -83,36 +97,44 @@
                     </div>
 
                     <div id="second">
-                        <a href="#">
+                        <%-- <a href="#">
                             <div class="trending-board-select">
+                                <div class="trending-like-count animate__animated animate__pulse animate__infinite">현재 99명의 득근 회원님들이 이 글을 좋아합니다. 💙</div>
                                 <img src="/resources/images/freeBoard/44712837-b1ec-4d8b-8b43-a4ee9337ecf8.jpg" class="trending-img">
-                                <div class="trending-nickname">by. 득근이</div>
+                                <div class="trending-writer-info">
+                                    <div>
+                                        <span>
+                                            <i class="fa-regular fa-comment fa-xs" style="color: #99e1ed;"></i> 99
+                                        </span>
+                                    </div>
+                                    <div>by. 득근이</div>
+                                </div>
                                 <h1>게시글 제목2</h1>
                                 <p>게시글 내용2</p>
                             </div>    
-                        </a>
+                        </a> --%>
                     </div>
 
                     <div id="third">
-                        <a href="#">
+                        <%-- <a href="#">
                             <div class="trending-board-select">
                                 <img src="/resources/images/freeBoard/44712837-b1ec-4d8b-8b43-a4ee9337ecf8.jpg" class="trending-img">
                                 <div class="trending-nickname">by. 득근이</div>
                                 <h1>게시글 제목2</h1>
                                 <p>게시글 내용2</p>
                             </div>    
-                        </a>
+                        </a> --%>
                     </div>
 
                     <div id="fourth">
-                        <a href="#">
+                        <%-- <a href="#">
                             <div class="trending-board-select">
                                 <img src="/resources/images/freeBoard/44712837-b1ec-4d8b-8b43-a4ee9337ecf8.jpg" class="trending-img">
                                 <div class="trending-nickname">by. 득근이</div>
                                 <h1>게시글 제목2</h1>
                                 <p>게시글 내용2</p>
                             </div>    
-                        </a>
+                        </a> --%>
                     </div>
                 </div>
             </div>

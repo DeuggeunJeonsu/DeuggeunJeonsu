@@ -213,7 +213,7 @@
                             <a href="/board/${board.boardCode}/${board.boardNo}">
                                 <div>
                                     <c:if test="${empty board.thumbnail}" >
-                                        <img src="/resources/images/main/log02.png" id="default-logo">
+                                        <img src="/resources/images/myPage/kakaoShare_thumbnail(2).PNG" id="default-logo">
                                     </c:if>
 
                                     <c:if test="${!empty board.thumbnail}">
