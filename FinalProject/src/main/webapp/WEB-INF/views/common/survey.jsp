@@ -37,8 +37,6 @@
 				<div class="popContent list">
 
 					<div class="popList">
-						<li class="pop_chk" id="check">벤치</li>
-						<li class="pop_chk" id="check">벤치</li>
 					</div>
 
 
@@ -95,17 +93,17 @@
 
 					<div class="bodycheck2 ">
 						<input type="checkbox" class="leg_chk" id="ex_chk7"> <label
-							for="ex_chk7" class="bodyList">허벅지 앞쪽</label>
+							for="ex_chk7" class="bodyList" name="legs">허벅지 앞쪽</label>
 					</div>
 
 					<div class="bodycheck2 ">
 						<input type="checkbox" class="leg_chk" id="ex_chk8"> <label
-							for="ex_chk8" class="bodyList">허벅지 뒤쪽</label>
+							for="ex_chk8" class="bodyList" name="legs">허벅지 뒤쪽</label>
 					</div>
 
 					<div class="bodycheck2 ">
 						<input type="checkbox" class="leg_chk" id="ex_chk9"> <label
-							for="ex_chk9" class="bodyList">종아리</label>
+							for="ex_chk9" class="bodyList" name="legs">종아리</label>
 					</div>
 
 
