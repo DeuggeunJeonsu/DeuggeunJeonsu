@@ -77,7 +77,7 @@ console.log(Kakao.isInitialized());
                     <c:forEach var="i"  begin="${start}" end="${fn:length(board.imageList)-1}" >
 
                         <div class="routine-area">
-                            <h1>${board.imageList[i].imageLevel + 1}.</h1>
+                            <h1>${board.imageList[i].imageLevel}.</h1>
                             <div class= "img-area">
                                 <c:set var="path" value="${board.imageList[i].imagePath}${board.imageList[i].imageReName}"/>
                             
@@ -114,25 +114,26 @@ console.log(Kakao.isInitialized());
                             </div>
                         </a>
                         <span>${board.memberNickname}</span>
+                        
                         <c:if test="${board.memberNo != loginMember.memberNo && loginMember != null}">
 
-                        <c:if test="${empty followCheck}">
-                            <button id="follow-btn">
-                                <i class="fa-solid fa-circle-plus whiteChk2" style="color: #ffffff; display: none"></i>
-                                <i class="fa-solid fa-circle-plus blueChk2" style="color: #99e1ed;"></i>
-                                follow
-                            </button>
-                        </c:if>
+                            <c:if test="${empty followCheck}">
+                                <button id="follow-btn">
+                                    <i class="fa-solid fa-circle-plus whiteChk2" style="color: #ffffff; display: none"></i>
+                                    <i class="fa-solid fa-circle-plus blueChk2" style="color: #99e1ed;"></i>
+                                    follow
+                                </button>
+                            </c:if>
 
-                        <c:if test="${!empty followCheck}">
-                            <button id="following-btn">
-                                <i class="fa-solid fa-circle-check whiteChk" style="color: #ffffff;"></i>    
-                                <i class="fa-solid fa-circle-check blueChk" style="color: #99e1ed; display: none"></i>
-                                following
-                            </button>
-                        </c:if>
+                            <c:if test="${!empty followCheck}">
+                                <button id="following-btn">
+                                    <i class="fa-solid fa-circle-check whiteChk" style="color: #ffffff;"></i>    
+                                    <i class="fa-solid fa-circle-check blueChk" style="color: #99e1ed; display: none"></i>
+                                    following
+                                </button>
+                            </c:if>
 
-                    </c:if>
+                        </c:if>
                     </div>
                     <div><span>팔로우 <span id="follower-count-area"></span></span><span > 팔로잉 <span id="following-count-area"></span></span></div>
                 </div>

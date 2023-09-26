@@ -154,7 +154,7 @@ hr{ border-bottom: 2px solid #ddd;}
 .routine-area > h1{
     margin-left: 15px;
     margin-right: 10px;
-    color: #fff;
+    color: #797979;
     
 }
 
@@ -183,7 +183,7 @@ hr{ border-bottom: 2px solid #ddd;}
     font-weight: bold;
 }
 /* 팔로우 버튼 */
-#follow-btn{
+#follow-btn, #following-btn{
     margin-top: 5px;
     height: 27px;
     width: 100px;
@@ -198,7 +198,7 @@ hr{ border-bottom: 2px solid #ddd;}
     cursor: pointer;
 }
 
-#follow-btn:hover{
+#follow-btn:hover, #following-btn:hover{
     border-radius: 1px solid #99E1ED;
 
     color: #99E1ED;
@@ -208,7 +208,7 @@ hr{ border-bottom: 2px solid #ddd;}
     transition-duration: 0.2s;
 }
 
-#follow-btn:hover{
+#follow-btn:hover, #folowing-btn{
     border-radius: 1px solid #99E1ED;
 
     background-color: #99E1ED;
