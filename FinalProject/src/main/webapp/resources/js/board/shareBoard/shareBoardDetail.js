@@ -202,6 +202,13 @@ document.addEventListener("click", function (e){
         const maxCheckboxes = 10;
         const currentCheckboxes = document.querySelectorAll(".checkbox").length;
         
+        const todayYear = today.getFullYear();
+        const todayMonth = today.getMonth()+1;
+        const todayDate = today.getDate();
+        //오늘 날짜
+        const sysDate = todayYear + "-" + (todayMonth < 10 ? "0" : "") + todayMonth + "-" + (todayDate < 10 ? "0" : "") + todayDate;
+
+
         todoslist(sysDate);
 
         if(loginMemberNo == ""){
@@ -699,10 +706,10 @@ function updateTodo(checkbox,listFl,sysDate ) {
 
     // 체크 상태 저장 변수
     const completed = listFl;
-    console.log(listFl)
+    // console.log(listFl)
     const ListNo = checkbox.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.value
 
-    console.log(ListNo)        
+    // console.log(ListNo)        
     const todosToUpdate = { listNo: ListNo, listFl: completed };
 
     // 서버로 업데이트할 정보를 전송
@@ -716,7 +723,7 @@ function updateTodo(checkbox,listFl,sysDate ) {
         if (result > 0) {
            
             checkbox.nextElementSibling.nextElementSibling.classList.toggle("complete")
-            console.log("성공")
+            // console.log("성공")
             const checkboxes = document.querySelectorAll(".checkbox");
             let checkedCount = 0;
     
@@ -960,3 +967,66 @@ function shareMessage() {
 // document.querySelector("#follow-btn").addEventListener("click", ()=>{
 //     location.reload(true);
 // })
+
+
+//-----------------------------------------------------------------------
+
+// 자동완성
+const addListInput = document.querySelector(".addList");
+const addListVal = addListInput.value.trim();
+
+const autoSearch = document.querySelector("#autoSearch"); 
+const resultArea = document.querySelector("#todo-resultArea"); 
+
+addListInput.addEventListener("input", e=>{
+
+    const query = e.target.value.trim();
+
+    if(query.length == 0){
+        resultArea.innerHTML = "";
+        return;
+    }
+
+    if(query.length > 0){
+        fetch("/todo/auto/selecthealth?query="+ query)
+        .then(resp => resp.json())
+        .then(list => {
+            
+            resultArea.innerHTML = ""; // 이전 검색 결과 비우기
+
+            // 검색 결과 없을 때는 창이 사라짐
+            if(list.length == 0 ){
+                autoSearch.style.display="none";
+            }else{
+                autoSearch.style.display="block";
+                for( let health of list){
+                    const li = document.createElement("li");
+                    li.classList.add("todo-result-row");
+                    li.setAttribute("date-id", health.healthLevel);
+    
+                    let name = health.healthName;
+                    let parent = health.healthParent;
+                    // let bar = " |"+ '&nbsp;'
+                    const span3 = document.createElement("span");
+                    span3.innerHTML= "&nbsp;|&nbsp;"
+                    const span1 = document.createElement("span");
+                    span1.innerHTML = `${name}`.replace(query, `<mark>${query}</mark>`);
+    
+                    const span2 = document.createElement("span");
+                    span2.innerHTML = parent
+    
+                    li.append(span1, span3 , span2);
+                    resultArea.append(li);
+
+                    li.addEventListener('click', ()=>{
+                        addListInput.value = health.healthName;
+                        autoSearch.style.display="none";
+                    })
+                }
+
+            }
+
+        })
+        .catch(err => console.log(err));
+    }
+})

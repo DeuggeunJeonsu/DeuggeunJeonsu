@@ -9,8 +9,12 @@
 	    <result property="memberNo" column="MEMBER_NO"/>
 	    <result property="lCreateDt" column="L_CREATE_DT"/>
 	</resultMap>
-  
-  
+	
+	<resultMap type="Health" id="health_rm">
+		<id property="healthLevel" column="C_HEALTH_LEVEL"/>
+		<result property="healthName" column="HEALTH_NAME"/>
+	    <result property= "healthParent" column="P_HEALTH_LEVEL"/>
+	</resultMap>
   
 	<select id="selectTodoListAll" resultType="map">
 		SELECT TO_CHAR(L_CREATE_DT, 'YYYY-MM-DD')L_CREATE_DT, ALL_FL
@@ -115,4 +119,17 @@
 		WHERE L_CREATE_DT =  #{date}
 		AND MEMBER_NO = #{loginMemberNo}
   	</update>
+  	
+  	<!-- 자동완성 -->
+  	<select id="autoSearch" resultMap="health_rm">
+  		SELECT
+		  CHILD.HEALTH_NAME,
+		  PARENT.HEALTH_NAME AS P_HEALTH_LEVEL
+		FROM
+		  "HEALTH_TYPE" CHILD
+		LEFT JOIN
+		  "HEALTH_TYPE" PARENT ON CHILD.P_HEALTH_LEVEL = PARENT.C_HEALTH_LEVEL
+		WHERE
+		  CHILD.HEALTH_NAME LIKE '%${query}%'
+  	</select>
 </mapper>

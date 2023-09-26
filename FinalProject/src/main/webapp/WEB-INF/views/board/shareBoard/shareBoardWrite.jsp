@@ -72,7 +72,7 @@
                         <hr>
                     </div>
                     <%-- 득근 캘린더 말풍선 --%>
-                    <div class="balloon floating">
+                    <div class="ballon floating">
                         드래그를 통해 Routine 순서를 바꿀 수 있어요!👟
                     </div>
                     <ul class="routine-add">
