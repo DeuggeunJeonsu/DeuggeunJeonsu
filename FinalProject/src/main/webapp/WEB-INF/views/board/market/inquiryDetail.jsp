@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-
 <!DOCTYPE html>
 <html>
 
@@ -78,7 +77,7 @@
                 </c:if>
 
                 <div class="content-area">
-                    <div class="content">${inquiry.inquiryContent}</div>
+                    <div class="content" style="white-space: pre-wrap">${inquiry.inquiryContent}</div>
                 </div>
             </div>
             <br>

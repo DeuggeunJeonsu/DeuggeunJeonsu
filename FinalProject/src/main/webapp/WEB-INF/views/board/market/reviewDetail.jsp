@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html>
 
@@ -60,8 +61,7 @@
                         <img src="${review.uploadImage}" alt="">
                     </div>
                 </c:if>
-
-                <div class="content">${review.reviewContent}</div>
+                <div class="content" style="white-space: pre-wrap">${review.reviewContent}</div>
             </div>
 
             <div id="btn-area">

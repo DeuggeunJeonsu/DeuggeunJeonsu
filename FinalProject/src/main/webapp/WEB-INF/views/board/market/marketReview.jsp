@@ -18,7 +18,13 @@
 
             <%-- marketReview-style.css 연결 --%>
             <link rel="stylesheet" href="/resources/css/board/market/marketReview-style.css">
-                <!-- Font Awesome CDN 추가 -->
+
+            <script src="https://t1.kakaocdn.net/kakao_js_sdk/2.4.0/kakao.min.js" integrity="sha384-mXVrIX2T/Kszp6Z0aEWaA8Nm7J6/ZeWXbL8UpGRjKwWe56Srd/iyNmWMBhcItAjH" crossorigin="anonymous"></script>
+            <script>
+                Kakao.init('5600ed391bce28878bbfdfcae636db6e'); // 사용하려는 앱의 JavaScript 키 입력
+            </script>
+
+            <!-- Font Awesome CDN 추가 -->
                 <link rel="stylesheet"
                     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
                     integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+Wy4y5AuWn1C4EyyIbJs6YXvPECJwFPa28H"
@@ -189,10 +195,8 @@
             </script>
 
             <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
-            <%-- <script src="/resources/js/main.js"></script> --%>
 
         <script src="/resources/js/market/marketDetail.js"></script>
         </body>
-<%--        <script src="/resources/js/market/review.js"></script>--%>
 
         </html>

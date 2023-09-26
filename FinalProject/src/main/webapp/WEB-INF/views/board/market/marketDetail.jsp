@@ -12,7 +12,7 @@
             <title>게시판 이름</title>
 
             <%-- marketDetail-style.css 연결 --%>
-                <link rel="stylesheet" href="/resources/css/board/market/marketDetail-style.css">
+            <link rel="stylesheet" href="/resources/css/board/market/marketDetail-style.css">
             <script src="https://t1.kakaocdn.net/kakao_js_sdk/2.4.0/kakao.min.js" integrity="sha384-mXVrIX2T/Kszp6Z0aEWaA8Nm7J6/ZeWXbL8UpGRjKwWe56Srd/iyNmWMBhcItAjH" crossorigin="anonymous"></script>
             <script>
                 Kakao.init('5600ed391bce28878bbfdfcae636db6e'); // 사용하려는 앱의 JavaScript 키 입력
