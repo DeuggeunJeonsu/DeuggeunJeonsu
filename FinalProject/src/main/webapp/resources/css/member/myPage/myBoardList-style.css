@@ -87,7 +87,7 @@
 }
 
 .thumbnail > div:first-of-type> img{
-    width: 100%;
+    width: 100% !important;
     height: 100%;
 
     border-top-left-radius: 4px;

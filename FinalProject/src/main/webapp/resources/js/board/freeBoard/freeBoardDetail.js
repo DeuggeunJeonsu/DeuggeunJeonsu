@@ -272,7 +272,7 @@ function shareMessage() {
             NICKNAME : nickname,    // 작성자 닉네임 ${NICKNAME}
             TITLE: title, // 제목 텍스트 ${TITLE}
             CONTENT: content, // 설명 텍스트 ${CONTENT}
-            PATH: 'board/3/' + boardNo // 자유게시판 상세 게시글 주소
+            PATH: '/board/3/' + boardNo // 자유게시판 상세 게시글 주소
         },
     });
 }
