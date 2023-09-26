@@ -191,7 +191,7 @@ let currentRoutine = null;
 
 // form 태그 유효성 검사
 document.getElementById("boardWriteFrm").addEventListener("submit", e => {
-
+    e.preventDefault();
     // 각 input과 textArea 대한 유효성 검사 
     
     // 정규식 : 특수문자를 포함하지 않는 정규식
@@ -217,7 +217,7 @@ document.getElementById("boardWriteFrm").addEventListener("submit", e => {
     }
 
     // 루틴 설명이 공백인 경우 
-    const content = document.querySelector('[name="content"]');
+    const content = document.querySelector('[name="boardContent"]');
     if(content.value.trim().length == 0){
         alert("루틴 설명을 입력해주세요😊");
         content.value="";
@@ -238,26 +238,11 @@ document.getElementById("boardWriteFrm").addEventListener("submit", e => {
         ) {
             alert("세부 운동을 입력해 주세요😊");
             routineName[i].focus();
-            routineName[i].value = "회 세트"; 
             e.preventDefault();
             return;
         } 
     }
-    // 해당 루틴의 설명
-    // const  routineContent= document.getElementsByName("routineContent");
-    // const reqExp3 = /^1\.\s2\.\s3\.\s\n\n꿀팁!$/;
 
-    // for(let i = 0 ; i< routineContent.length; i++){
-        
-    //     if(routineContent[i].value.trim().length ==0 || reqExp3.test(routineContent[i].value)){
-    //         alert("세부 운동 내용을 입력해주세요😊");
-    //         routineContent[i].focus();
-    //         routineContent[i].value = "1.\n2.\n3.\n\n꿀팁!"
-    //         e.preventDefault();
-    //         return;
-    //     }
-
-    // }
 
     const routineContent = document.querySelectorAll('textarea[name="routineContent"]');
     const reqExp3 = /^1\.\s2\.\s3\.\s\n\n꿀팁!$/;
@@ -286,6 +271,8 @@ document.getElementById("boardWriteFrm").addEventListener("submit", e => {
             return;
         }
     }
+
+    document.getElementById("boardWriteFrm").submit();
 
 });
 
