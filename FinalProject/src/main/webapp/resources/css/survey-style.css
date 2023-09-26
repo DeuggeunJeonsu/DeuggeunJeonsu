@@ -1,6 +1,6 @@
 * {
   box-sizing: border-box;
-   /* border: 1px solid black;  */ 
+  border: 1px solid black; 
 }
 
 
@@ -38,8 +38,7 @@ main {
   border-radius: 10px;
   visibility: hidden;
 
-  transition: visibility 0s;
-  transition: opacity 0.5s ease;
+  transition: all 3s ease;
 }
 
 .popTitle{
@@ -68,7 +67,8 @@ main {
 
 .popList{
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  
   height: 60px;
   width: 90%;
 }

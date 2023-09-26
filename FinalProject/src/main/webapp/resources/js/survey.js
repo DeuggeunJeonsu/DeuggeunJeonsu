@@ -28,6 +28,7 @@ const bodyList = document.getElementsByClassName("bodyList");
 const bodyListLeg = document.getElementsByClassName("bodyList-leg")[0];
 
 const popUp = document.getElementsByClassName("popUp")[0];
+const popList = document.getElementsByClassName("popList")[0];
 
 let len = next.length;
 
