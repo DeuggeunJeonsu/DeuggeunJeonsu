@@ -4,6 +4,11 @@
 <!DOCTYPE html>
 <html>
 <head>
+	
+	<!-- AOS 라이브러리 불러오기-->
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"> 
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script> 
+
 <meta charset="UTF-8">
 <title>득근전수</title>
 	<link rel="apple-touch-icon" sizes="180x180" href="/resources/images/favicon_io/apple-touch-icon.png">
@@ -66,7 +71,10 @@
 	<%-- <script src="../resources/js/main.js"></script> --%>
 	<!-- <script src="/resources/js/TodoList/todoList.js"></script>  -->
 
-
+	<!-- AOS 스크립트 시작 -->
+	<script> 
+		AOS.init(); // 자바스크립트로 init()을 해야 동작한다.
+	</script>
 
 </body>
 </html>

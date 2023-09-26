@@ -38,7 +38,15 @@
                 </div>
             </div>
 
-            <div class="ranking-content-area">
+            <div class="ranking-content-area"
+                data-aos="fade-right"
+                data-aos-offset="50"
+                data-aos-duration="300"
+                data-aos-easing="ease-in-out"
+                
+                data-aos-once="false"
+                data-aos-anchor-placement="top-center"+20
+            >
                 <div class="ranking-table-area"> <!--홈페이지 출석-->
                     <div class="ranking-table" id="attendanceRanking">
                         <div class="my-rank-area">

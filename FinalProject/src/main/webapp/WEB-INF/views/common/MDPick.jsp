@@ -6,7 +6,14 @@
 </head>
 <body>
 <h2 class="main-article-tit">MD Pick! 추천 상품</h2>
-<div class="carousel-container">
+<div class="carousel-container"
+    data-aos="fade-left"
+    data-aos-offset="50"
+    data-aos-duration="300"
+    data-aos-easing="ease-in-out"
+    data-aos-once="false"
+    data-aos-anchor-placement="top-center"+20
+>
     <ul class="carousel">
         <li>
             <div class="image-item">

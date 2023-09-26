@@ -155,6 +155,8 @@
             </c:if>
         </div>
 
+        <div id="ad"></div>
+
         <%-- 페이지네이션 --%>
         <div class="pagination-area">
             <ul class="pagination">
@@ -192,6 +194,8 @@
 
             </ul>
         </div>
+
+        
 	</section>
     
 

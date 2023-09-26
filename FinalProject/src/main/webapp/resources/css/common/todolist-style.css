@@ -1,11 +1,16 @@
 
 /* _______________middle-Container__________________ */
+#middle-Container{
+    margin: 30px 250px 90px 250px;
+}
+
+
 #schedule-area{
     height: 100%;
     display: flex;
     align-items: space-between;
     padding: 40px;
-    border-bottom: 1px solid #eee;
+   
     justify-content: center;
 }
 
