@@ -2,11 +2,20 @@
     box-sizing: border-box;
 }
 
+.place{
+    height: 100px;
+}
 
 #main-container{
 	width: 1000px;
 	height: auto;
     margin: auto;
+}
+
+.board-title{
+    font-size: 30px;
+    font-weight: 600;
+    margin-bottom: 15px;
 }
 
 #title-area > div:nth-of-type(2){
@@ -48,8 +57,30 @@
 	font-weight: bold;
 }
 
+/* 게시글 상세 조회 영역 */
+#detail-container{
+    width: 800px;
+    margin: auto;
+}
+/* 게시글 상세 조회 내용 영역 */
+#board-detail-area{
+    height: auto;
+}
+
+#board-content-area{
+    height: auto;
+
+    padding: 30px;
+    font-size: 18px;
+
+    text-align: center;
+
+    background-color: white;
+    border-radius: 5px;
+}
+
 /* 글 내용 영역 */
-#main-container > #content-area{
+/* #main-container > #content-area{
 	width: 100%;
 	height: auto;
 	min-height: 600px;
@@ -67,9 +98,13 @@
 	width: 600px;
 	height: 400px;
 	margin: 0 auto;
-}
+} */
 
+/* 게시글 버튼 영역 */
 /* 좋아요 영역 */
+#btn-area{
+    height: 100px;
+}
 
 .board-like{
     height: 100px;
@@ -82,6 +117,15 @@
     align-items: center;
     
     margin: 10px auto 0 auto;
+
+    cursor: pointer;
+}
+
+.likeCount{
+    /* margin-top: 10px; */
+    margin: auto; /* 수직 가운데 정렬 */
+    font-size: 20px;
+    text-align: center; /* 가운데 정렬 */
 }
 
 .like-cnt{
@@ -95,19 +139,11 @@
     justify-content: center;
     align-items: center;
 
-    z-index: 10;
-    cursor: pointer;
+    z-index: 2;
 }
 
 .like-btn{
     color: #fff;
-}
-
-.likeCount{
-    /* margin-top: 10px; */
-    margin: auto; /* 수직 가운데 정렬 */
-    font-size: 20px;
-    text-align: center; /* 가운데 정렬 */
 }
 
 
@@ -310,4 +346,30 @@
 
 .child-comment{
     padding-left: 50px;
+}
+
+/* 카카오톡 공유하기 */
+#social-btn-area{
+    width: 300px;
+    display: flex;
+    justify-content: center;
+}
+
+#kakao-share-btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 170px !important;
+    padding: 0 20px;
+
+    position: relative;
+    left: 47px;
+}
+
+#social-btn-area > button:hover{
+    background-color: #F7E600;
+}
+
+#kakao-logo{
+    width: 30px;
 }

@@ -40,7 +40,7 @@
         </div>
 
         <div id="middle-area">
-            <form action="/board2/1/insert" method="POST" id="write-form">
+            <form action="update" method="POST" id="write-form">
                 
                 <div id="title-middle-area">
                     <select name="tagSelect" id="tagSelect">
@@ -67,6 +67,10 @@
 
 	</section>
 
+    <script>
+        const boardNo = "${board.boardNo}";
+    </script>
+    
     <!-- footer include -->
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
     
