@@ -30,6 +30,17 @@ public class Util {
 	
 	public static JavaMailSender mailSender;
 	
+	
+	// 개행문자를 "<br>"로 변경하는 메서드
+	public static String newLineHandling(String content) {
+		
+		content = content.replaceAll("\r\n|\n|\r|\n\r", "<br>");
+		content = content.replaceAll("&#10;", "<br>");
+
+		return content;
+	}
+	
+	
 	@Autowired
 	public void Util(JavaMailSender mailSender) {
 		this.mailSender = mailSender;

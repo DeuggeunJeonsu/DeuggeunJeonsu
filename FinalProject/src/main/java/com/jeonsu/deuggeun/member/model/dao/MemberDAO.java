@@ -99,4 +99,5 @@ public class MemberDAO {
 	public int checkKey(String memberEmail) {
 		return sqlSession.selectOne("memberMapper.checkKey", memberEmail);
 	}
+
 }

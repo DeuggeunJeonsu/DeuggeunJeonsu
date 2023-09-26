@@ -51,7 +51,7 @@ public class ljyBoardDAO {
 		return sqlSession.insert("freeBoardMapper.insertFreeBoardLike", paramMap);
 	}
 
-	// 공유게시판 좋아요 추소(삭제)
+	// 공유게시판 좋아요 취소(삭제)
 	public int deleteFreeBoardLike(Map<String, Integer> paramMap) {
 		return sqlSession.delete("freeBoardMapper.deleteFreeBoardLike", paramMap);
 	}

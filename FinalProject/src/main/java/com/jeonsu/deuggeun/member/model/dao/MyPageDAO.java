@@ -37,7 +37,16 @@ public class MyPageDAO {
 		
 		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
 		
-		return sqlSession.selectList("myPageMapper.selectMyPageBoardList", memberNo, rowBounds);
+		List<Board> boardList = sqlSession.selectList("myPageMapper.selectMyPageBoardList", memberNo, rowBounds);
+		
+		for(Board board : boardList) {
+			
+			if(board.getThumbnail() != null) {
+				board.setThumbnail(board.getThumbnail().replace("^^^", ","));
+			}
+		}
+		
+		return boardList;
 	}
 
 	/** 마이페이지 팔로잉 수 조회

@@ -102,7 +102,7 @@ public class ShareBoardController {
 		if(board != null) {
 			if(loginMember != null) {
 				map.put("memberNo", loginMember.getMemberNo());
-				map.put("boardMember", board.getMemberNo());
+				map.put("boardMemberNo", board.getMemberNo());
 				
 				// 좋아요 여부 확인
 				int result = service.shareBoardLikeCheck(map);

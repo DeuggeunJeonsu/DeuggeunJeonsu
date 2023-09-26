@@ -15,6 +15,7 @@
 		<result property="tagNo" column="TAG_NO" />
 		
 		<result property="adminBoardNo" column="ADMIN_ANSWER" />
+		<result property="adminCheckFl" column="ADMIN_CHECK_FL" />
 
 		<result property="memberNo" column="MEMBER_NO" />
 		<result property="memberNickname" column="MEMBER_NICKNAME" />
@@ -70,7 +71,7 @@
 		(SELECT COUNT(*) FROM LIKE_POST L
 		WHERE L.BOARD_NO = B.BOARD_NO) LIKE_COUNT,
 
-		(SELECT IMG_PATH || IMG_RENAME FROM BOARD_IMG I
+		(SELECT IMG_RENAME FROM BOARD_IMG I
 		WHERE I.BOARD_NO = B.BOARD_NO
 		AND IMG_LEVEL = 0) THUMBNAIL
 
@@ -163,8 +164,7 @@
 	<select id="inquiryAnswer" resultMap="myPageBoard_rm">
 		SELECT BOARD_TITLE, BOARD_CONTENT
 		FROM BOARD
-		JOIN INQUIRY USING(BOARD_NO)
-		WHERE ADMIN_ANSWER = #{adminBoardNo}
+		WHERE BOARD_NO = #{adminBoardNo}
 	</select>
 	
 	<!-- 마이페이지 내 뱃지 목록 조회 -->
