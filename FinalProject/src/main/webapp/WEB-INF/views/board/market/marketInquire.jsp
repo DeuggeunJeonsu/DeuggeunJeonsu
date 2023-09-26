@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <c:set var="product" value="${product}" />
 <c:set var="productImageList" value="${productImageList}" />
@@ -49,7 +50,7 @@
                             <div id="title">${product.productTitle}</div>
                             <hr>
                             <div id="amount">
-                                <h3>판매가 : ${product.productPrice}원</h3>
+                                <h3>판매가 : <fmt:formatNumber type="number" value="${product.productPrice}" pattern="#,###원" /></h3>
                             </div>
                             <div class="right" id="text">
                                 <h3>${product.productContent}</h3>

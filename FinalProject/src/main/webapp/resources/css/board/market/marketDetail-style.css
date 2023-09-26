@@ -269,3 +269,27 @@ strong{
 }
 
 /* -------------------------------- 스크롤 버튼 끝 -------------------------------- */
+#kakao-share-btn {
+    background-color: #FFEB00;
+    color: #3C1E1E;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.kakao-icon-wrapper {
+    display: inline-block;
+    margin-right: 8px;
+}
+
+#kakao-logo {
+    width: 27px;
+    height: 27px;
+}
+
+.kakao-text {
+    font-weight: bold;
+}

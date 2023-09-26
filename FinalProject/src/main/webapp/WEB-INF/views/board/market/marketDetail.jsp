@@ -13,8 +13,7 @@
 
             <%-- marketDetail-style.css 연결 --%>
                 <link rel="stylesheet" href="/resources/css/board/market/marketDetail-style.css">
-            <script src="https://t1.kakaocdn.net/kakao_js_sdk/2.4.0/kakao.min.js"
-                    integrity="sha384-mXVrIX2T/Kszp6Z0aEWaA8Nm7J6/ZeWXbL8UpGRjKwWe56Srd/iyNmWMBhcItAjH" crossorigin="anonymous"></script>
+            <script src="https://t1.kakaocdn.net/kakao_js_sdk/2.4.0/kakao.min.js" integrity="sha384-mXVrIX2T/Kszp6Z0aEWaA8Nm7J6/ZeWXbL8UpGRjKwWe56Srd/iyNmWMBhcItAjH" crossorigin="anonymous"></script>
             <script>
                 Kakao.init('5600ed391bce28878bbfdfcae636db6e'); // 사용하려는 앱의 JavaScript 키 입력
             </script>
@@ -54,15 +53,19 @@
                         <div class="left-content">
                             <img src="${product.productImg}" id="main-photo">
                         </div>
-                    <%--                        <p>Image Path: ${product.pImagePath}</p>--%>
                         <div class="right-content">
                             <div class="kakao">
                             <div id="title">${product.productTitle}</div>
-                            <a id="kakaotalk-sharing-btn" href="javascript:;">
-                                <img src="https://developers.kakao.com/assets/img/about/logos/kakaotalksharing/kakaotalk_sharing_btn_medium.png"
-                                     alt="카카오톡 공유 보내기 버튼" />
-                            </a>
-
+<%--                            <a id="kakaotalk-sharing-btn" href="javascript:;">--%>
+<%--                                <img src="https://developers.kakao.com/assets/img/about/logos/kakaotalksharing/kakaotalk_sharing_btn_medium.png"--%>
+<%--                                     alt="카카오톡 공유 보내기 버튼" />--%>
+<%--                            </a>--%>
+                                <c:if test="${!empty loginMember}">
+                                <button id="kakao-share-btn" onclick="shareMessage()">
+                                    <img id="kakao-logo" src="/resources/images/main/kakao.png">
+                                    &nbsp;카카오톡 공유하기
+                                </button>
+                                </c:if>
                             </div>
 
                             <hr>
@@ -170,6 +173,8 @@
                 const productPrice = "${product.productPrice}";
                 const loginMemberNo = "${loginMember.memberNo}";
                 const boardCode = "${boardCode}";
+                const productImg = "${product.productImg}";
+                console.log(productImg);
 
             </script>
 
