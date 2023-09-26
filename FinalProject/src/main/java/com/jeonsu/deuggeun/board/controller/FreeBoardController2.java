@@ -165,7 +165,6 @@ public class FreeBoardController2 {
 		String message = null;
 		
 		if(result > 0) {
-			message = "게시글이 삭제되었습니다.";
 			path += "/board/3/list";
 		
 		} else {

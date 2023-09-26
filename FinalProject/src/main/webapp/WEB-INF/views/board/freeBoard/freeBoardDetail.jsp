@@ -68,6 +68,7 @@ console.log(Kakao.isInitialized());
             <div id="writer-info-area">
 
                 <div id="profile-area">
+                    <a href="/myPage/memberFeed/${board.memberNo}">
                     <c:if test="${empty board.profileImage}" >
                         <img src="/resources/images/user.png">
                     </c:if>
@@ -75,6 +76,7 @@ console.log(Kakao.isInitialized());
                     <c:if test="${!empty board.profileImage}" >
                         <img src="${board.profileImage}">
                     </c:if>
+                    </a>
                 </div>
 
                 <div id="nick-area">

@@ -217,7 +217,9 @@
                                     </c:if>
 
                                     <c:if test="${!empty board.thumbnail}">
-                                        <img src="${board.thumbnail}">
+                                        <c:set var="originalThumbnail" value="${board.thumbnail}"/>
+                                        <c:set var="thumbnail" value="${fn:replace(originalThumbnail, '^^^', ',')}"/>
+                                        <img src="${thumbnail}">
                                     </c:if>
                                 </div>
 
