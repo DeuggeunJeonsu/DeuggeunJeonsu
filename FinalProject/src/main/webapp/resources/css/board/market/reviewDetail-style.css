@@ -99,6 +99,7 @@ h1{
 #board-content-area {
     padding: 30px;
     display: flex;
+    overflow: auto;
     flex-direction: row;
     background-color: white;
     /*height: auto;*/

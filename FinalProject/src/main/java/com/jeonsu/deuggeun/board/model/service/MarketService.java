@@ -74,4 +74,7 @@ public interface MarketService {
 
     // 구매완료 페이지
     List<Order> selectOrderList(int orderNo);
+
+    // 자동완성 기능
+    List<Map<String, Object>> autocomplete(Map<String, Object> paramMap) throws Exception;
 }

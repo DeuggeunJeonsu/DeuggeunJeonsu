@@ -106,6 +106,7 @@
         <result property="memberNickname" column="MEMBER_NICKNAME" />
         <result property="orderDate" column="ORDER_DATE" />
         <result property="orderStatus" column="ORDER_ST" />
+        <result property="inquiryType" column="INQUIRY_TYPE" />
     </resultMap>
 
     <!-- Order에 대한 resultMap -->
@@ -430,7 +431,7 @@
     </update>
 
     <!-- 마이페이지 구매내역  -->
-    <select id="selectPurchaseList" resultMap="cart_rm" parameterType="_int">
+    <select id="selectPurchaseList" resultMap="cart_rm">
         SELECT TO_CHAR(o.ORDER_DATE, 'YYYY-MM-DD') AS ORDER_DATE,
                o.ORDER_ST,
                o.ORDER_NO,
@@ -579,5 +580,13 @@
 		</choose>
 		
 	</select>
+
+    <select id="autocomplete" parameterType="map" resultType="map">
+        SELECT PRODUCT_NAME, PRODUCT_TITLE
+        FROM PRODUCT
+        WHERE PRODUCT_NAME LIKE  '%'|| #{value} || '%'
+           OR PRODUCT_TITLE LIKE '%'|| #{value} || '%'
+    </select>
+
 </mapper>
 

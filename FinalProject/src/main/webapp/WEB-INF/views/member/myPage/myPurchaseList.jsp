@@ -81,6 +81,8 @@
                                         <c:choose>
                                             <c:when test="${item.orderStatus == 'Y'}">결제 완료</c:when>
                                             <c:when test="${item.orderStatus == 'D'}">배송 완료</c:when>
+<%--                                            <c:when test="${item.orderStatus == 'Y' && item.inquiryType == 1}">교환접수중</c:when>--%>
+<%--                                            <c:when test="${item.orderStatus == 'Y' && item.inquiryType == 2}">취소접수중</c:when>--%>
                                         </c:choose>
                                     </td>
                                     <td>

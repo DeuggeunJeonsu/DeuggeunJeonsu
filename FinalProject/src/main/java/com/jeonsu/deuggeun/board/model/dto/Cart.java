@@ -22,4 +22,5 @@ public class Cart {
     private String itemStatus;
     private String memberNickname; // 사용자명
     private String orderDate; // 주문날짜
+    private int inquiryType; // 취소, 교환문의 번호
 }

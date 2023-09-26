@@ -154,6 +154,7 @@ public class MyPageDAO {
 
 	// 결제 완료시 구매내역 페이지
 	public List<Cart> selectPurchaseList(int memberNo) {
+		System.out.println("지금 회원번호 : " + memberNo);
 		return sqlSession.selectList("marketMapper.selectPurchaseList", memberNo);
 	}
 

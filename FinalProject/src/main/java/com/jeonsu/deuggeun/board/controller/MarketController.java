@@ -45,7 +45,7 @@ public class MarketController {
 			@RequestParam Map<String, Object> paramMap) {
 
 		if(boardCode == 5){
-		System.out.println("키워드 출력... : " + paramMap.get("keyword"));
+
 
 		if(paramMap.get("keyword") == null) {
 
@@ -56,7 +56,7 @@ public class MarketController {
 			paramMap.put("boardCode", boardCode);
 			paramMap.put("keyword", paramMap.get("keyword"));
 			Map<String, Object> map = service.selectMarketList(paramMap, cp);
-			System.out.println("검색했을때 map의 값 : " + map);
+
 			model.addAttribute("map", map);
 		}
 
@@ -104,7 +104,6 @@ public class MarketController {
 		Map<String, Object> map2 = new HashMap<String, Object>();
 		map2.put("cartList", cartList);
 		model.addAttribute("map2", map2);
-		System.out.println("map2의 값 : " + map2);
 
 		return "/board/market/marketOrder";
 	}
@@ -131,7 +130,6 @@ public class MarketController {
 			, @SessionAttribute(value="loginMember", required=false) Member loginMember
 	) throws ParseException{
 
-		System.out.println("게시글 상세 조회 시작!");
 
 		Map<String, Object> map = new HashMap<String, Object>();
 
@@ -240,7 +238,6 @@ public class MarketController {
 		String memberNickname = (String) session.getAttribute("memberNickname");
 		int memberNo = loginMember.getMemberNo();
 
-		System.out.println("이미지 이름 : " + image);
 		// Review 객체에 사용자 닉네임과 회원 번호 설정
 		review.setMemberNickname(memberNickname);
 		review.setMemberNo(memberNo);
@@ -311,7 +308,6 @@ public class MarketController {
 
 		Review review = service.selectReviewDetail(map);
 
-		System.out.println("review 객체의 값 : " + review);
 		model.addAttribute("review", review);
 
 		return "board/market/reviewUpdate";
@@ -370,7 +366,6 @@ public class MarketController {
 		map.put("productNo", productNo);
 
 		int result = service.reviewDelete(map);
-		System.out.println(map);
 
 		String path = "";
 		String message = null;
@@ -455,7 +450,6 @@ public class MarketController {
 
 			path = "board/market/inquiryDetail";
 			model.addAttribute("inquiry", inquiry);
-			System.out.println("상품문의 작성자 회원번호 : " + inquiry.getMemberNo());
 			model.addAttribute("cp", cp);
 
 		}else{
@@ -598,8 +592,14 @@ public class MarketController {
 		return path;
 	}
 
-	@GetMapping("/marketCart")
-	public String marketCart() {
-		return "board/market/marketCart";
+	// 자동완성 기능
+	@RequestMapping(value = "/market/autocomplete")
+	public @ResponseBody Map<String, Object> autocomplete(@RequestParam Map<String, Object> paramMap) throws Exception{
+
+		List<Map<String, Object>> resultList = service.autocomplete(paramMap);
+		paramMap.put("resultList", resultList);
+
+		return paramMap;
 	}
 }
+
