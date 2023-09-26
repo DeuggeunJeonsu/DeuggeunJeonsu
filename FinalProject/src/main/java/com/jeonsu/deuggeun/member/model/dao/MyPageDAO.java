@@ -221,5 +221,16 @@ public class MyPageDAO {
 	public List<Cart> selectPurchaseList(Map<String, Object> map){
 		return sqlSession.selectList("marketMapper.selectPurchaseList_search", map);
 	}
+	
+	/** 마이페이지 상품문의 조회
+	 * @param loginMember
+	 * @return
+	 */
+
+	public List<Board> selectMarketList(Member loginMember) {
+		System.out.println(loginMember.getMemberNo());  
+		return sqlSession.selectList("myPageMapper.selectMarketList" , loginMember);
+	}
+
 
 }

@@ -16,6 +16,13 @@
 		
 		<result property="adminBoardNo" column="ADMIN_ANSWER" />
 		<result property="adminCheckFl" column="ADMIN_CHECK_FL" />
+		
+		<result property="productNo" column="PRODUCT_NO" />
+		<result property="inquiryTitle" column="INQUIRY_TITLE" />
+		<result property="inquiryContent" column="INQUIRY_CONTENT" />
+		<result property="inquiryType" column="INQUIRY_TYPE" />
+		<result property="adminMarketCheckFl" column="ADMIN_FL" />
+		<result property="inquiryCd" column="INQUIRY_CD" />
 
 		<result property="memberNo" column="MEMBER_NO" />
 		<result property="memberNickname" column="MEMBER_NICKNAME" />
@@ -124,12 +131,22 @@
 	
 	<!-- 마이페이지 1:1 문의 목록 조회 -->
 	<select id="selectMyUpdateList" resultMap="myPageBoard_rm">
-		SELECT BOARD_NO, BOARD_TITLE, BOARD_CONTENT ,CREATE_DT ,ADMIN_CHECK_FL
+		SELECT BOARD_NO, BOARD_TITLE, BOARD_CONTENT , TO_CHAR(CREATE_DT, 'YYYY-MM-DD') CREATE_DT
+    	,ADMIN_CHECK_FL
 		FROM BOARD
 		JOIN INQUIRY USING(BOARD_NO)
 		WHERE INQUIRY_TYPE = 1
 		AND MEMBER_NO = #{memberNo}
 		ORDER BY BOARD_NO DESC
+	</select>
+	
+	 <!-- 마이페이지 상품문의 목록 조회 -->
+	<select id="selectMarketList" resultMap="myPageBoard_rm">
+		SELECT PRODUCT_NO, INQUIRY_TITLE ,INQUIRY_CONTENT, TO_CHAR(INQUIRY_CD, 'YYYY-MM-DD') INQUIRY_CD
+        ,INQUIRY_TYPE , ADMIN_FL
+		FROM PRODUCT_INQUIRY
+		WHERE MEMBER_NO = #{memberNo}
+		ORDER BY PRODUCT_NO DESC
 	</select>
 	
 	<!-- 로그인한 회원이 피드 주인을 팔로우했는지 확인 -->
