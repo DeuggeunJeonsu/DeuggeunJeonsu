@@ -174,25 +174,29 @@ public class MyPageServiceImpl implements MyPageService {
 	}
 
 	// 마이페이지 1:1 문의 답변조회
-	@Override
-	public Board inquiryAnswer(int boardNo) {
-		
-		// 문의글 답변 내용 조회를 위한 게시글 번호 조회
-		int adminBoardNo = dao.selectAdminBoardNo(boardNo);
-		
-		Board board = new Board();
-		
-		board.setAdminBoardNo(adminBoardNo);
-		
-		 board = dao.inquiryAnswer(board);
-		 
-		 System.out.println(board.getBoardTitle());
-		 System.out.println(board.getBoardContent());
-		
-		
-		
-		return board;
-	}
+		@Override
+		public Board inquiryAnswer(int boardNo) {
+			
+			System.out.println(boardNo);
+			// 문의글 답변 내용 조회를 위한 게시글 번호 조회
+			int adminBoardNo = dao.selectAdminBoardNo(boardNo);
+			
+			System.out.println(adminBoardNo +"관리자 문의 답변 게시글 번호");
+			Board board = new Board();
+			
+			board.setAdminBoardNo(adminBoardNo);
+			System.out.println(board.getAdminBoardNo() +"관리자 문의 답변 게시글 번호2");
+			
+			 Board adminBoard = dao.inquiryAnswer(board);
+			 
+			 System.out.println(adminBoard.getBoardTitle());
+			 System.out.println(adminBoard.getBoardContent());
+			
+			
+			
+			return adminBoard;
+		}
+
 
 	// 마이페이지 내 뱃지 페이지 이동 + 뱃지 목록 조회
 	@Override
