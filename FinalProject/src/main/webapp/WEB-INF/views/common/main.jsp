@@ -58,8 +58,8 @@
 
 	<jsp:include page="/WEB-INF/views/common/ranking.jsp"></jsp:include>
 	<jsp:include page="/WEB-INF/views/common/MDPick.jsp"></jsp:include>
-	<jsp:include page="/WEB-INF/views/common/map.jsp"></jsp:include>
 	<jsp:include page="/WEB-INF/views/common/trendingPost.jsp"></jsp:include>
+	<jsp:include page="/WEB-INF/views/common/map.jsp"></jsp:include>
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
 	<input type="hidden" name="mainPage" value="mainPage"/>	
 

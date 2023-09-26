@@ -7,9 +7,13 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.jeonsu.deuggeun.board.model.dto.Board;
 import com.jeonsu.deuggeun.member.model.dto.Member;
 import com.jeonsu.deuggeun.member.model.dto.MemberBMI;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @Repository
 public class MemberDAO {
 
@@ -98,6 +102,14 @@ public class MemberDAO {
 	 */
 	public int checkKey(String memberEmail) {
 		return sqlSession.selectOne("memberMapper.checkKey", memberEmail);
+	}
+
+	/** 메인페이지 전체 게시글 인기글 조회
+	 * @return board
+	 */
+	public Board trendingInfo() {
+
+		return sqlSession.selectOne("freeBoardMapper.trendingInfo");
 	}
 
 }

@@ -394,4 +394,41 @@
 		CONNECT BY PRIOR COMMENT_NO = PARENT_NO
 		ORDER SIBLINGS BY C_CREATE_DT DESC, COMMENT_NO DESC
 	</select>
+	
+	<!-- 메인페이지 전체 게시글 인기글 조회 -->
+	<select id="trendingInfo" resultMap="freeBoard_rm">
+		SELECT *
+		FROM (
+			SELECT BOARD_NO, BOARD_CODE,
+			BOARD_TITLE, BOARD_CONTENT, MEMBER_NICKNAME,
+	
+			(SELECT COUNT(*) FROM "COMMENT" C
+			WHERE C.BOARD_NO = B.BOARD_NO) COMMENT_COUNT,
+	
+			(SELECT COUNT(*) FROM LIKE_POST L
+			WHERE L.BOARD_NO = B.BOARD_NO) LIKE_COUNT,
+	
+			<choose>
+				<when test='boardCode == "2"'>
+					(SELECT IMG_PATH || IMG_RENAME FROM BOARD_IMG I
+					WHERE I.BOARD_NO = B.BOARD_NO
+					AND IMG_LEVEL = 0) THUMBNAIL
+				</when>
+				<otherwise>
+					(SELECT IMG_RENAME FROM BOARD_IMG I
+					WHERE I.BOARD_NO = B.BOARD_NO
+					AND IMG_LEVEL = 0) THUMBNAIL
+				</otherwise>
+			</choose>
+	
+			FROM "BOARD" B
+			JOIN "MEMBER" USING(MEMBER_NO)
+			WHERE BOARD_ST = 'N'
+			AND
+			BOARD_CODE BETWEEN '1' AND '3'
+			ORDER BY LIKE_COUNT DESC
+		)
+		WHERE ROWNUM = 1
+
+	</select>
 </mapper>
