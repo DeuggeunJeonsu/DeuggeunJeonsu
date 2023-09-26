@@ -107,9 +107,29 @@ public class MemberDAO {
 	/** 메인페이지 전체 게시글 인기글 조회
 	 * @return board
 	 */
-	public Board trendingInfo() {
+	public Board trendingAll() {
+		return sqlSession.selectOne("freeBoardMapper.trendingAll");
+	}
 
+	/** 메인페이지 정보 공유 게시판 인기글 조회
+	 * @return board
+	 */
+	public Board trendingInfo() {
 		return sqlSession.selectOne("freeBoardMapper.trendingInfo");
+	}
+
+	/** 메인페이지 루틴 공유 게시판 인기글 조회
+	 * @return board
+	 */
+	public Board trendingRoutine() {
+		return sqlSession.selectOne("freeBoardMapper.trendingRoutine");
+	}
+
+	/** 메인페이지 자유 게시판 인기글 조회
+	 * @return board
+	 */
+	public Board trendingFree() {
+		return sqlSession.selectOne("freeBoardMapper.trendingFree");
 	}
 
 }

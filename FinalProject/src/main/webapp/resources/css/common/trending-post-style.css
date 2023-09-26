@@ -1,12 +1,15 @@
+#trending-post-container{
+    margin: 100px 0;
+}
+
 /* 메인 타이틀 */
-.main-article-tit{
+.trending-main-article-tit{
     font-family: 'Pretendard', sans-serif;
     text-align: center;
     font-size: 28px;
     font-weight: 700;
     line-height: 30px;
     margin-bottom: 40px;
-    color: #333;
 }
 
 /* ul, li 스타일 전체 */
@@ -36,7 +39,7 @@
 
 #wrapper {
     width: 1200px;
-    height: 400px;
+    height: 500px;
     margin: auto;
     margin-bottom: 100px;
     background-color: #fff;
@@ -164,8 +167,14 @@
     transition-duration: 0.5s;
 }
 
+.trending-like-count{
+    font-size: 17px;
+    margin-bottom: 10px;
+}
+
 /* 게시글 제목 */
 #right-side #first h1, #right-side #second h1, #right-side #third h1, #right-side #fourth h1 {
+    font-size: 25px;
     font-weight: 800;
     color: #333;
 
@@ -194,7 +203,9 @@
 /* 게시글 작성자 정보 영역 */
 .trending-writer-info{
     display: flex;
-    font-size: 13px;
+    font-size: 15px;
     font-weight: 600;
     justify-content: space-between;
+
+    margin-top: 6px;
 }

@@ -72,6 +72,21 @@ public interface MemberService {
 	/** 메인페이지 전체 게시글 인기글 조회
 	 * @return board
 	 */
+	Board trendingAll();
+
+	/** 메인페이지 정보 공유 게시판 인기글 조회
+	 * @return board
+	 */
 	Board trendingInfo();
+
+	/** 메인페이지 루틴 공유 게시판 인기글 조회
+	 * @return board
+	 */
+	Board trendingRoutine();
+
+	/** 메인페이지 자유 게시판 인기글 조회
+	 * @return board
+	 */
+	Board trendingFree();
 
 }

@@ -396,7 +396,7 @@
 	</select>
 	
 	<!-- 메인페이지 전체 게시글 인기글 조회 -->
-	<select id="trendingInfo" resultMap="freeBoard_rm">
+	<select id="trendingAll" resultMap="freeBoard_rm">
 		SELECT *
 		FROM (
 			SELECT BOARD_NO, BOARD_CODE,
@@ -429,6 +429,86 @@
 			ORDER BY LIKE_COUNT DESC
 		)
 		WHERE ROWNUM = 1
+	</select>
+	
+	<!-- 메인페이지 정보 공유 게시판 인기글 조회 -->
+	<select id="trendingInfo" resultMap="freeBoard_rm">
+		SELECT *
+		FROM (
+			SELECT BOARD_NO, BOARD_CODE,
+			BOARD_TITLE, BOARD_CONTENT, MEMBER_NICKNAME,
+	
+			(SELECT COUNT(*) FROM "COMMENT" C
+			WHERE C.BOARD_NO = B.BOARD_NO) COMMENT_COUNT,
+	
+			(SELECT COUNT(*) FROM LIKE_POST L
+			WHERE L.BOARD_NO = B.BOARD_NO) LIKE_COUNT,
 
+					(SELECT IMG_RENAME FROM BOARD_IMG I
+					WHERE I.BOARD_NO = B.BOARD_NO
+					AND IMG_LEVEL = 0) THUMBNAIL
+	
+			FROM "BOARD" B
+			JOIN "MEMBER" USING(MEMBER_NO)
+			WHERE BOARD_ST = 'N'
+			AND
+			BOARD_CODE = 1
+			ORDER BY LIKE_COUNT DESC
+		)
+		WHERE ROWNUM = 1
+	</select>
+	
+	<!--  메인페이지 루틴 공유 게시판 인기글 조회 -->
+	<select id="trendingRoutine" resultMap="freeBoard_rm">
+		SELECT *
+		FROM (
+			SELECT BOARD_NO, BOARD_CODE,
+			BOARD_TITLE, BOARD_CONTENT, MEMBER_NICKNAME,
+	
+			(SELECT COUNT(*) FROM "COMMENT" C
+			WHERE C.BOARD_NO = B.BOARD_NO) COMMENT_COUNT,
+	
+			(SELECT COUNT(*) FROM LIKE_POST L
+			WHERE L.BOARD_NO = B.BOARD_NO) LIKE_COUNT,
+
+			(SELECT IMG_PATH || IMG_RENAME FROM BOARD_IMG I
+			WHERE I.BOARD_NO = B.BOARD_NO
+			AND IMG_LEVEL = 0) THUMBNAIL
+	
+			FROM "BOARD" B
+			JOIN "MEMBER" USING(MEMBER_NO)
+			WHERE BOARD_ST = 'N'
+			AND
+			BOARD_CODE = 2
+			ORDER BY LIKE_COUNT DESC
+		)
+		WHERE ROWNUM = 1
+	</select>
+	
+	<!-- 메인페이지 자유 게시판 인기글 조회 -->
+	<select id="trendingFree" resultMap="freeBoard_rm">
+		SELECT *
+		FROM (
+			SELECT BOARD_NO, BOARD_CODE,
+			BOARD_TITLE, BOARD_CONTENT, MEMBER_NICKNAME,
+	
+			(SELECT COUNT(*) FROM "COMMENT" C
+			WHERE C.BOARD_NO = B.BOARD_NO) COMMENT_COUNT,
+	
+			(SELECT COUNT(*) FROM LIKE_POST L
+			WHERE L.BOARD_NO = B.BOARD_NO) LIKE_COUNT,
+	
+			(SELECT IMG_RENAME FROM BOARD_IMG I
+			WHERE I.BOARD_NO = B.BOARD_NO
+			AND IMG_LEVEL = 0) THUMBNAIL
+	
+			FROM "BOARD" B
+			JOIN "MEMBER" USING(MEMBER_NO)
+			WHERE BOARD_ST = 'N'
+			AND
+			BOARD_CODE = 3
+			ORDER BY LIKE_COUNT DESC
+		)
+		WHERE ROWNUM = 1
 	</select>
 </mapper>

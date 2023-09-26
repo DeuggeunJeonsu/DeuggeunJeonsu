@@ -68,11 +68,32 @@ public class MainController {
 		return String.valueOf(count);
 	}
 	
-	// 인기글 조회
+	// 메인페이지 전체 게시판 인기글 조회
 	@ResponseBody
 	@GetMapping(value = "/trendingAll", produces = "application/json; charset=UTF-8")
+	public String trendingAll() throws Exception {
+		return new ObjectMapper().writeValueAsString(service.trendingAll());
+	}
+	
+	// 정보 공유 게시판 인기글 조회
+	@ResponseBody
+	@GetMapping(value = "/trendingInfo", produces = "application/json; charset=UTF-8")
 	public String trendingInfo() throws Exception {
 		return new ObjectMapper().writeValueAsString(service.trendingInfo());
+	}
+	
+	// 루틴 공유 게시판 인기글 조회
+	@ResponseBody
+	@GetMapping(value = "/trendingRoutine", produces = "application/json; charset=UTF-8")
+	public String trendingRoutine() throws Exception {
+		return new ObjectMapper().writeValueAsString(service.trendingRoutine());
+	}
+	
+	// 자유 게시판 인기글 조회
+	@ResponseBody
+	@GetMapping(value = "/trendingFree", produces = "application/json; charset=UTF-8")
+	public String trendingFree() throws Exception {
+		return new ObjectMapper().writeValueAsString(service.trendingFree());
 	}
 	
 	
