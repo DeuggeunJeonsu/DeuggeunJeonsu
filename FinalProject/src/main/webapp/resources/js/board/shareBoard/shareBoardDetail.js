@@ -817,12 +817,12 @@ document.addEventListener("click", function (e){
                         if(result > 0){
 
 
-                            Swal.fire({
+                            // Swal.fire({
 
-                                title : "축하합니다🥳 목표를 득근하셨어요!", 
-                                icon : 'success'
-                            })
-
+                            //     title : "축하합니다🥳 목표를 득근하셨어요!", 
+                            //     icon : 'success'
+                            // })
+                            return;
 
                         }else{
                             console.log("실패ㅜㅜㅜ")

@@ -479,7 +479,7 @@ document.addEventListener("click", function (e){
                             //console.log("추가완료!")
                             addListInput.value="";
                 
-                            todoslist(choiceTodoDate)
+                            
                             buildCalendar();
                             updateCheckedPercentage();
                 
@@ -601,8 +601,8 @@ document.querySelector(".addList").addEventListener("keyup", function(event) {
                         if(result > 0){
                             //console.log("추가완료!")
                             addListInput.value="";
-
-                            todoslist(inputTodo.lcreateDt)
+                            
+                            //todoslist(inputTodo.lcreateDt)
                             buildCalendar();
                             updateCheckedPercentage();
                 
@@ -672,12 +672,12 @@ document.addEventListener("click", function (e){
                         if(result > 0){
 
 
-                            Swal.fire({
+                            // Swal.fire({
 
-                                title : "축하합니다🥳 목표를 득근하셨어요!", 
-                                icon : 'success'
-                            })
-
+                            //     title : "축하합니다🥳 목표를 득근하셨어요!", 
+                            //     icon : 'success'
+                            // })
+                            return;
 
                         }else{
                             console.log("실패ㅜㅜㅜ")
