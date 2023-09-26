@@ -26,7 +26,9 @@
                     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
                     integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+Wy4y5AuWn1C4EyyIbJs6YXvPECJwFPa28H"
                     crossorigin="anonymous">
-                
+
+
+
                 <link rel="apple-touch-icon" sizes="180x180" href="/resources/images/favicon_io/apple-touch-icon.png">
                 <link rel="icon" type="image/png" sizes="32x32" href="/resources/images/favicon_io/favicon-32x32.png">
                 <link rel="icon" type="image/png" sizes="16x16" href="/resources/images/favicon_io/favicon-16x16.png">
@@ -74,7 +76,6 @@
 
                 <c:choose>
                     <c:when test="${empty marketList}">
-<%--                            <h1 id="list-area2">"${param.keyword}" 게시글이 존재하지 않습니다.</h1>--%>
                             <div class="box">
                                 <br>
                                 <br>
@@ -141,6 +142,9 @@
 
 
             <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
+            <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+            <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+            <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
             <script src="/resources/js/market/marketList.js"></script>
         </body>
 

@@ -26,7 +26,7 @@ public class CartController {
     // 장바구니에 상품 담기
     @PostMapping("/addToCart")
     public int addToCart(@RequestBody Cart cart) {
-        System.out.println("컨트롤러 실행!!!");
+
         return service.addToCart(cart);
     }
 
@@ -71,7 +71,6 @@ public class CartController {
             order.setOrderName((String) paymentInfo.get("name")); // 결제창에 뜨는 상품명
             order.setProductCount(Integer.parseInt((String) paymentInfo.get("productCount"))); // 상품 수량
 
-            System.out.println(order);
             return service.insertOrder(order);
 
         }
@@ -79,7 +78,6 @@ public class CartController {
 
     @PostMapping("/buyItNow")
     public int buyItNow(@RequestBody Cart cart) {
-        System.out.println("buyItNow 컨트롤러 실행!!!");
         return service.buyItNow(cart);
     }
 }

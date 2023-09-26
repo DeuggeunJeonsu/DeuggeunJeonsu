@@ -185,18 +185,15 @@ public class MarketDAO {
 
 	// 장바구니 검사
 	public Cart getCartItem(Cart cart) {
-//		System.out.println("DAO 1번 실행");
 		return sqlSession.selectOne("marketMapper.getCartItem", cart);
 	}
 	// 장바구니에 담기
 	public int addToCart(Cart cart) {
-//		System.out.println("DAO 2번 실행");
 		return sqlSession.insert("marketMapper.addToCart", cart);
 	}
 
 	// 상품이 이미 있는 경우 수량만 업데이트
 	public int updateCart(Cart cart) {
-		System.out.println("DAO 3번 실행");
 		return sqlSession.update("marketMapper.updateCart", cart);
 	}
 
@@ -212,13 +209,11 @@ public class MarketDAO {
 
 	// 결제 성공시 주문 테이블 등록
 	public int insertOrder(Order order) {
-		System.out.println("dao 실행!!!!!");
 		return sqlSession.insert("marketMapper.insertOrder", order);
 	}
 
 	// 결제 후 장바구니 상태 업데이트
 	public int afterOrder(Order order) {
-		System.out.println("이거실행!");
 		return sqlSession.update("marketMapper.afterOrder", order);
 	}
 
@@ -267,5 +262,11 @@ public class MarketDAO {
 	// 리뷰 조회수 증가
 	public int updateCount(Map<String, Object> map) {
 		return sqlSession.update("marketMapper.updateCount", map);
+	}
+
+	// 자동완성 기능
+	public List<Map<String, Object>> autocomplete(Map<String, Object> paramMap) {
+
+		return sqlSession.selectList("marketMapper.autocomplete", paramMap);
 	}
 }
