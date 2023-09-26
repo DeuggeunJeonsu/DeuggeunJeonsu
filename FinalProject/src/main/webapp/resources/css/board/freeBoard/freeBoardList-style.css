@@ -344,20 +344,7 @@
     margin-top: 40px;
 }
 
-#ad {
-	display: flex;
-	width: 960px;
-	height: 100px;
-	border-radius: 20px;
-	background-image: linear-gradient(135deg, rgb(0, 220, 244), violet);
-	color: white;
-	font-size: 3rem;
-	justify-content: center;
-	align-items: center;
-	transition-duration: 2s;
-    margin: auto;
-    margin-top: 30px;
-}
+
 
 .pagination-area {
     text-align: center;
@@ -398,4 +385,34 @@
 .pagination li a:hover {
     background-color: #99E1ED;
     color: #fff;
+}
+
+
+/* 광고 */
+.slider__wrap {
+    width: 100%;
+    margin-top: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.slider__img {  /* 이미지가 보이는 영역 */
+    position: relative;
+    width: 880px;
+    height: 164px;
+    
+    
+    overflow: hidden;
+}
+.slider__inner {    /* 이미지 움직이는 영역 */
+    display: flex;
+    flex-wrap: wrap;
+    width: 4800px;  /* 총 이미지 영역 */
+    height: 200px;
+}
+.slider {   /* 개별적인 이미지 */
+    position: relative;
+    width: 880px;
+    height: 164px;
+    
 }
