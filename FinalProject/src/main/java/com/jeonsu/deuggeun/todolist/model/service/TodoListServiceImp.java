@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.jeonsu.deuggeun.todolist.model.dao.TodoListDao;
+import com.jeonsu.deuggeun.todolist.model.dto.Health;
 import com.jeonsu.deuggeun.todolist.model.dto.TodoList;
 
 @Service
@@ -61,6 +62,11 @@ public class TodoListServiceImp implements TodoListService{
 	@Override
 	public int unfinished(String date, int loginMemberNo ) {
 		return dao.unfinished(date, loginMemberNo);
+	}
+	
+	@Override
+	public List<Health> autoSearch(Map<String, Object> map) {
+		return dao.autoSearch(map);
 	}
 	
 	

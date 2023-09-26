@@ -22,9 +22,8 @@ public class Member {
 	private String memberThema; // 회원 커스터마이징 테마
 	private String memberDeleteFlag; // 탈퇴 여부(N: 탈퇴X, Y: 탈퇴O)
 	private int authority; // 회원 권한(1:일반, 2:관리자)
+	private String attendenceDate; // 월간 출석일
 	
 	private List<Badge> badgeList; // 뱃지 리스트
-	
-//	private String attendenceDate; // 출석일
 	
 }

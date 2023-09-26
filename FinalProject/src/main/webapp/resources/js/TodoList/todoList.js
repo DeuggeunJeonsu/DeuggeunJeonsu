@@ -479,7 +479,7 @@ document.addEventListener("click", function (e){
                             //console.log("추가완료!")
                             addListInput.value="";
                 
-                            todoslist(choiceTodoDate)
+                            
                             buildCalendar();
                             updateCheckedPercentage();
                 
@@ -601,8 +601,8 @@ document.querySelector(".addList").addEventListener("keyup", function(event) {
                         if(result > 0){
                             //console.log("추가완료!")
                             addListInput.value="";
-
-                            todoslist(inputTodo.lcreateDt)
+                            
+                            //todoslist(inputTodo.lcreateDt)
                             buildCalendar();
                             updateCheckedPercentage();
                 
@@ -672,12 +672,12 @@ document.addEventListener("click", function (e){
                         if(result > 0){
 
 
-                            Swal.fire({
+                            // Swal.fire({
 
-                                title : "축하합니다🥳 목표를 득근하셨어요!", 
-                                icon : 'success'
-                            })
-
+                            //     title : "축하합니다🥳 목표를 득근하셨어요!", 
+                            //     icon : 'success'
+                            // })
+                            return;
 
                         }else{
                             console.log("실패ㅜㅜㅜ")
@@ -854,3 +854,66 @@ function updateCheckedPercentage( ) {
 }
 
 // -------------------------------------------------------------------------------
+
+// 자동완성
+const addListInput = document.querySelector(".addList");
+const addListVal = addListInput.value.trim();
+
+const autoSearch = document.querySelector("#autoSearch"); 
+const resultArea = document.querySelector("#todo-resultArea"); 
+
+addListInput.addEventListener("input", e=>{
+
+    const query = e.target.value.trim();
+
+    if(query.length == 0){
+        resultArea.innerHTML = "";
+        return;
+    }
+
+    if(query.length > 0){
+
+        fetch("/todo/auto/selecthealth?query="+ query)
+        .then(resp => resp.json())
+        .then(list => {
+            
+            resultArea.innerHTML = ""; // 이전 검색 결과 비우기
+
+            // 검색 결과 없을 때는 창이 사라짐
+            if(list.length == 0 ){
+                autoSearch.style.display="none";
+            }else{
+                autoSearch.style.display="block";
+                for( let health of list){
+                    const li = document.createElement("li");
+                    li.classList.add("todo-result-row");
+                    li.setAttribute("date-id", health.healthLevel);
+    
+                    let name = health.healthName;
+                    let parent = health.healthParent;
+                    // let bar = " |"+ '&nbsp;'
+                    const span3 = document.createElement("span");
+                    span3.innerHTML= "&nbsp;|&nbsp;"
+                    const span1 = document.createElement("span");
+                    span1.innerHTML = `${name}`.replace(query, `<mark>${query}</mark>`);
+    
+                    const span2 = document.createElement("span");
+                    span2.innerHTML = parent
+    
+                    li.append(span1, span3 , span2);
+                    resultArea.append(li);
+
+                    li.addEventListener('click', ()=>{
+                        addListInput.value = health.healthName;
+                        autoSearch.style.display="none";
+                    })
+                }
+
+            }
+
+        })
+        .catch(err => console.log(err));
+    }
+})
+
+    

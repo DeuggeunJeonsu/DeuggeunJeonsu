@@ -18,12 +18,12 @@
 	<jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
 
 	<!-- Preloader -->
-	<div id="loading">
+	<%-- <div id="loading">
 		<div id="loading-log">
 			<img src="/resources/images/main/loading.gif">
 		</div>
 		
-	</div>
+	</div> --%>
 
 	<section id="main-container">
 
@@ -59,6 +59,7 @@
 	<jsp:include page="/WEB-INF/views/common/ranking.jsp"></jsp:include>
 	<jsp:include page="/WEB-INF/views/common/MDPick.jsp"></jsp:include>
 	<jsp:include page="/WEB-INF/views/common/map.jsp"></jsp:include>
+	<jsp:include page="/WEB-INF/views/common/trendingPost.jsp"></jsp:include>
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
 	<input type="hidden" name="mainPage" value="mainPage"/>	
 

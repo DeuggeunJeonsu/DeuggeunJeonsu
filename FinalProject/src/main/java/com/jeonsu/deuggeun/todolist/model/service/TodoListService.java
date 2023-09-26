@@ -3,6 +3,7 @@ package com.jeonsu.deuggeun.todolist.model.service;
 import java.util.List;
 import java.util.Map;
 
+import com.jeonsu.deuggeun.todolist.model.dto.Health;
 import com.jeonsu.deuggeun.todolist.model.dto.TodoList;
 
 public interface TodoListService  {
@@ -27,5 +28,8 @@ public interface TodoListService  {
 
 	// 일부 수행시 
 	int unfinished(String date, int loginMemberNo );
+
+	// 자동 완성 
+	List<Health> autoSearch(Map<String, Object> map);
 
 }
