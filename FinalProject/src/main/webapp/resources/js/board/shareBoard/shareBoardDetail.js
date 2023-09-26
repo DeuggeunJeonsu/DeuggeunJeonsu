@@ -49,7 +49,10 @@ if(followBtn != null){
                 return;
             } else {
                 console.log("처리 성공")
+                location.reload(true);
                 selectFollowCount();
+               
+                
             }
 
         })
@@ -74,6 +77,7 @@ if(followingBtn != null){
                 return;
             } else {
                 console.log("처리 성공");
+                location.reload(true);
                 selectFollowCount()
             }
         })
@@ -949,3 +953,10 @@ function shareMessage() {
         },
     });
 }
+
+
+// const followBtn = document.querySelector("#follow-btn");
+// if()
+// document.querySelector("#follow-btn").addEventListener("click", ()=>{
+//     location.reload(true);
+// })
