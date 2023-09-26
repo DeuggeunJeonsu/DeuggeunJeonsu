@@ -119,27 +119,17 @@ trendingAll.addEventListener("click", ()=>{
             const boardNo = board.boardNo;
             const boardCode = board.boardCode;
             const boardTitle = board.boardTitle;
-            const boardContent = board.boardContent;
             const memberNickname = board.memberNickname;
             const commentCount = board.commentCount;
             const likeCount = board.likeCount;
             const originalThumbnail = board.thumbnail.replace("^^^", ",");
 
-            const thumbnail9 = originalThumbnail.split('" data-filename="img.png" style="width: 828px;');
             // console.log("thumbnail : "+thumbnail1)
             const style = originalThumbnail.substr(originalThumbnail.indexOf("style=")+7)
             const dataFilename= originalThumbnail.substr(originalThumbnail.indexOf("data-filename=")+15);
             
-            originalThumbnail.substr(originalThumbnail.indexOf("=\"")+2);
-            console.log(originalThumbnail);
-            console.log(style);
-            console.log(dataFilename.indexOf("\" style"));
-
-            const thumbnail2 = originalThumbnail.split('" style="');
-            const thumbnail3 = originalThumbnail.replaceFirst('"', "");
-
-
-            console.log(memberNickname);
+            const fileName = dataFilename.replace('" style="width: 828px',"");
+            const thumbnail = originalThumbnail.replace('" data-filename="img.png" style="width: 828px;', "");
 
             // <a> 요소를 생성합니다.
             const newA = document.createElement("a");
@@ -151,7 +141,9 @@ trendingAll.addEventListener("click", ()=>{
     
             // 이미지 요소를 생성하고 설정합니다.
             const newImg = document.createElement("img");
-            newImg.setAttribute("src", thumbnail9);
+            newImg.setAttribute("src", thumbnail);
+            newImg.setAttribute("data-filename", fileName);
+            newImg.setAttribute("style", style);
             newImg.classList.add("trending-img");
     
             // trending-writer-info <div> 요소를 생성합니다.
