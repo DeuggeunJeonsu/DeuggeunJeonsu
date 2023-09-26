@@ -18,12 +18,12 @@
 	<jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
 
 	<!-- Preloader -->
-	<div id="loading">
+	<%-- <div id="loading">
 		<div id="loading-log">
 			<img src="/resources/images/main/loading.gif">
 		</div>
 		
-	</div>
+	</div> --%>
 
 	<section id="main-container">
 
