@@ -8,6 +8,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.jeonsu.deuggeun.board.model.dto.Board;
 import com.jeonsu.deuggeun.member.model.dao.MemberDAO;
 import com.jeonsu.deuggeun.member.model.dto.Member;
 import com.jeonsu.deuggeun.member.model.dto.MemberBMI;
@@ -105,6 +106,12 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public int checkKey(String memberEmail) {
 		return dao.checkKey(memberEmail);
+	}
+
+	// 메인페이지 전체 게시글 인기글 조회
+	@Override
+	public Board trendingInfo() {
+		return dao.trendingInfo();
 	}
 
 
