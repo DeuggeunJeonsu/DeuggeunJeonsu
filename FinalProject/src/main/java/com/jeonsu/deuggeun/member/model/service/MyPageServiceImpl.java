@@ -161,17 +161,29 @@ public class MyPageServiceImpl implements MyPageService {
 	}
 
 	// 마이페이지 1:1 문의 목록조회
-	@Override
-	public Map<String, Object> selectMyUpdateList(Member loginMember) {
+		@Override
+		public Map<String, Object> selectMyUpdateList(Member loginMember) {
 
-		List<Board> boardList = dao.selectMyUpdateList(loginMember);
+			List<Board> boardList = dao.selectMyUpdateList(loginMember);
+			
+			List<Board> marketList = new ArrayList<Board>();
+			
+			 if(boardList != null) {
+				 
+				 marketList = dao.selectMarketList(loginMember);
+			}
+			 
+			 System.out.println(boardList);
+			 System.out.println(marketList);
+			 
 
-		Map<String, Object> map = new HashMap<String, Object>();
+			Map<String, Object> map = new HashMap<String, Object>();
 
-		map.put("boardList", boardList);
+			map.put("boardList", boardList);
+			map.put("marketList", marketList);
 
-		return map;
-	}
+			return map;
+		}
 
 	// 마이페이지 1:1 문의 답변조회
 		@Override

@@ -3,9 +3,12 @@ package com.jeonsu.deuggeun.main.controller;
 import java.util.List;
 import java.util.Map;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.jeonsu.deuggeun.board.model.dto.Board;
 import com.jeonsu.deuggeun.member.model.dto.Member;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import com.jeonsu.deuggeun.member.model.dto.MemberBMI;
@@ -64,4 +67,34 @@ public class MainController {
 		System.out.println(count);
 		return String.valueOf(count);
 	}
+	
+	// 메인페이지 전체 게시판 인기글 조회
+	@ResponseBody
+	@GetMapping(value = "/trendingAll", produces = "application/json; charset=UTF-8")
+	public String trendingAll() throws Exception {
+		return new ObjectMapper().writeValueAsString(service.trendingAll());
+	}
+	
+	// 정보 공유 게시판 인기글 조회
+	@ResponseBody
+	@GetMapping(value = "/trendingInfo", produces = "application/json; charset=UTF-8")
+	public String trendingInfo() throws Exception {
+		return new ObjectMapper().writeValueAsString(service.trendingInfo());
+	}
+	
+	// 루틴 공유 게시판 인기글 조회
+	@ResponseBody
+	@GetMapping(value = "/trendingRoutine", produces = "application/json; charset=UTF-8")
+	public String trendingRoutine() throws Exception {
+		return new ObjectMapper().writeValueAsString(service.trendingRoutine());
+	}
+	
+	// 자유 게시판 인기글 조회
+	@ResponseBody
+	@GetMapping(value = "/trendingFree", produces = "application/json; charset=UTF-8")
+	public String trendingFree() throws Exception {
+		return new ObjectMapper().writeValueAsString(service.trendingFree());
+	}
+	
+	
 }

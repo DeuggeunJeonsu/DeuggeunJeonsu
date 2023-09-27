@@ -15,7 +15,14 @@
 </head>
 <body>
     
-    <section id="middle-Container">
+    <section id="middle-Container"
+		data-aos="fade-left"
+		data-aos-offset="50"
+		data-aos-duration="300"
+		data-aos-easing="ease-in-out"
+		data-aos-once="false"
+		data-aos-anchor-placement="top-center"+20
+	>
 		<div id="schedule-area">
 			<div>
 				<h1>My Health Schedule</h1>

@@ -140,9 +140,6 @@ input[type="text"],textarea {
     height: 500px;
 }
 
-.realboardTitle{
-    cursor: pointer;
-}
 
 /* 닫기 버튼 스타일 */
 #close-button {
@@ -165,6 +162,20 @@ input[type="text"],textarea {
     justify-content: right;
 }
 
+
+.realboardTitle{
+    cursor: pointer;
+}
+
 .realboardTitle:hover{
+    color: #99e1ed;
+}
+
+
+.realMarketTitle{
+    cursor: pointer;
+}
+
+.realMarketTitle:hover{
     color: #99e1ed;
 }

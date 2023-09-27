@@ -492,8 +492,7 @@
 }
 
 #default-logo{
-    width: 100%;
-    height: auto;
+    width: 100% !important;
 }
 
 .thumbnail >a> div:first-of-type> img{

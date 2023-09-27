@@ -1,3 +1,211 @@
-#trending-post-container * {
-    border: 1px solid #797979;
+#trending-post-container{
+    margin: 100px 0;
+}
+
+/* 메인 타이틀 */
+.trending-main-article-tit{
+    font-family: 'Pretendard', sans-serif;
+    text-align: center;
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 30px;
+    margin-bottom: 40px;
+}
+
+/* ul, li 스타일 전체 */
+#trending-post-container  ul, li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+/* 왼쪽 사이드 메뉴 */
+
+/* 아이콘 */
+.icon {
+    position: relative;
+    width: 32px;
+    height: 32px;
+    display: block;
+    fill: rgba(51, 51, 51, 0.5);
+    margin-right: 40px;
+    transition: all 0.2s ease-out;
+}
+
+/* 아이콘 눌렀을 때 */
+.icon.active {
+    fill: #99e1ed;
+}
+
+#wrapper {
+    width: 1200px;
+    height: 500px;
+    margin: auto;
+    margin-bottom: 100px;
+    background-color: #fff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    overflow: hidden;
+}
+
+#wrapper  a{
+    text-decoration: none;
+    color: #797979;
+}
+
+#left-side {
+    height: 70%;
+    width: 35%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#left-side ul li {
+    padding-top: 30px;
+    padding-bottom: 10px;
+    display: flex;
+    line-height: 34px;
+    color: rgba(51, 51, 51, 0.5);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease-out;
+    font-size: 20px;
+}
+
+#left-side ul li:hover {
+    color: rgba(51, 51, 51, 1);
+    transition: all 0.2s ease-out;
+}
+
+#left-side ul li:hover > .icon {
+    fill: #333;
+}
+
+#left-side ul li.active {
+    color: rgba(51, 51, 51, 1);
+}
+
+#left-side ul li.active:hover > .icon {
+    fill: #99e1ed;
+}
+
+/* 가운데 스크롤바 */
+#border {
+    margin-top: 30px;
+    height: 288px;
+    width: 1px;
+    background-color: rgba(51, 51, 51, 0.2);
+}
+
+#border #line.one {
+    width: 5px;
+    height: 54px;
+    background-color: #99e1ed;
+    margin-left: -2px;
+    margin-top: 6px;
+    transition: all 0.4s ease-in-out;
+}
+
+#border #line.two {
+    width: 5px;
+    height: 54px;
+    background-color: #99e1ed;
+    margin-left: -2px;
+    margin-top: 79px;
+    transition: all 0.4s ease-in-out;
+}
+
+#border #line.three {
+    width: 5px;
+    height: 54px;
+    background-color: #99e1ed;
+    margin-left: -2px;
+    margin-top: 150px;
+    transition: all 0.4s ease-in-out;
+}
+
+#border #line.four {
+    width: 5px;
+    height: 54px;
+    background-color: #99e1ed;
+    margin-left: -2px;
+    margin-top: 224px;
+    transition: all 0.4s ease-in-out;
+}
+
+/* 오른쪽 사이드 메뉴 */
+#right-side {
+    height: 280px;
+    width: 75%;
+    overflow: hidden;
+}
+
+#right-side #first, #right-side #second, #right-side #third, #right-side #fourth {
+    position: absolute;
+    height: 300px;
+    width: 40%;
+    transition: all 0.6s ease-in-out;
+    margin-top: -60px;
+    opacity: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+/* 조회된 게시글 감싸는 div */
+.trending-board-select{
+    text-align: center;
+}
+
+.trending-board-select:hover{
+    text-align: center;
+    transform: scale(1.05);
+    transition-duration: 0.5s;
+}
+
+.trending-like-count{
+    font-size: 17px;
+    margin-bottom: 10px;
+}
+
+/* 게시글 제목 */
+#right-side #first h1, #right-side #second h1, #right-side #third h1, #right-side #fourth h1 {
+    font-size: 25px;
+    font-weight: 800;
+    color: #333;
+
+    /* 길어지면 말줄임 처리 */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+#right-side #first.active, #right-side #second.active, #right-side #third.active, #right-side #fourth.active {
+    margin-top: 0px;
+    opacity: 1;
+    transition: all 0.6s ease-in-out;
+}
+
+/* 게시글 썸네일 */
+.trending-img{
+    margin-top: 10px;
+
+    width: 400px !important;
+    height: 250px !important;
+
+    border-radius: 8px !important;
+}
+
+/* 게시글 작성자 정보 영역 */
+.trending-writer-info{
+    display: flex;
+    font-size: 15px;
+    font-weight: 600;
+    justify-content: space-between;
+
+    margin-top: 6px;
 }

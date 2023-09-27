@@ -3,6 +3,7 @@ package com.jeonsu.deuggeun.member.model.service;
 import java.util.List;
 import java.util.Map;
 
+import com.jeonsu.deuggeun.board.model.dto.Board;
 import com.jeonsu.deuggeun.member.model.dto.Member;
 import com.jeonsu.deuggeun.member.model.dto.MemberBMI;
 
@@ -67,8 +68,25 @@ public interface MemberService {
 	 * @return
 	 */
 	int checkKey(String memberEmail);
-	
 
+	/** 메인페이지 전체 게시글 인기글 조회
+	 * @return board
+	 */
+	Board trendingAll();
 
+	/** 메인페이지 정보 공유 게시판 인기글 조회
+	 * @return board
+	 */
+	Board trendingInfo();
+
+	/** 메인페이지 루틴 공유 게시판 인기글 조회
+	 * @return board
+	 */
+	Board trendingRoutine();
+
+	/** 메인페이지 자유 게시판 인기글 조회
+	 * @return board
+	 */
+	Board trendingFree();
 
 }

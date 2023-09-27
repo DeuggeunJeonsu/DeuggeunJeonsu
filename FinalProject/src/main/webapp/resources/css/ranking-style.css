@@ -5,6 +5,7 @@
 
 /* 컨테이너 영역 */
 .ranking-section{
+    margin-bottom: 100px;
     width: 100%;
     height: 800px;
     display: flex;

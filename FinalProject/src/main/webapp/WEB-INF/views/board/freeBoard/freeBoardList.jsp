@@ -127,7 +127,7 @@
                             <a href="/board/3/${board.boardNo}?cp=${pagination.currentPage}">
                                 <div>
                                     <c:if test="${empty board.thumbnail}" >
-                                        <img src="/resources/images/myPage/kakaoShare_thumbnail.PNG" id="default-logo">
+                                        <img src="/resources/images/myPage/kakaoShare_thumbnail(2).PNG" id="default-logo">
                                     </c:if>
 
                                     <c:if test="${!empty board.thumbnail}">
@@ -172,6 +172,18 @@
                     <button id="writeBtn">글쓰기</button>
                 </c:if>
             </a>
+        </div>
+
+
+        <div class="slider__wrap">
+            <div class="slider__img">
+                <div class="slider__inner">
+                    <div class="slider s1"><img src="/resources/images/ad/egg.png" alt="이미지3"></div>
+                    <div class="slider s2"><img src="/resources/images/ad/coffee.png" alt="이미지4"></div>
+                    <div class="slider s3"><img src="/resources/images/ad/fromroller.png" alt="이미지6"></div>
+                    <div class="slider s4"><img src="/resources/images/ad/protine.png" alt="이미지8"></div>
+                </div>
+            </div>
         </div>
 
         <div class="pagination-area">

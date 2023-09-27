@@ -53,7 +53,16 @@
         }
     </style>
 </head>
-<body>
+<body
+    <%-- data-aos="fade-right"
+    data-aos-offset="50"
+    data-aos-duration="300"
+    data-aos-easing="ease-in-out"
+    
+    data-aos-once="false"
+    data-aos-anchor-placement="top-center"+20 --%>
+
+>
     <div class="mapCon">
         <h1>득근전수에서 한눈에 내주변 헬스장을 확인해보세요 😃</h1>
 

@@ -30,9 +30,8 @@ const bodyListLeg = document.getElementsByClassName("bodyList-leg")[0];
 const popUp = document.getElementsByClassName("popUp")[0];
 const popList = document.getElementsByClassName("popList")[0];
 
-let len = next.length;
 
-
+let str = [];
 
 
 
@@ -94,30 +93,29 @@ for (let i of fristCheck) {
 
                 } else if (ub.checked == true) {
 
+                    header.innerHTML = "상체를 하는 날이군요! 그 중 어느 부위를 하시나요?";
+
+
+                    beforeBtn.style.visibility = "visible";
+                    beforeBtn.style.cursor = "pointer";
+
+                    input.style.transitionDuration = "2s, 1s";
+                    input.style.width = "60%";
+
+
+
+                    btn.style.visibility = "hidden";
+
+                    finalCheck.style.visibility = "visible";
+
                     for (let i = 0; i < next.length; i++) {
 
                         next[i].style.display = "contents";
 
 
                         fristList[i].style.display = "none";
-                        /* leg.checked = false; */
 
-                        header.innerHTML = "상체를 하는 날이군요! 그 중 어느 부위를 하시나요?";
-
-                        /*  rangeInput.style.transition = "background";
-                         rangeInput.style.transition = ""; */
-
-                        beforeBtn.style.visibility = "visible";
-                        beforeBtn.style.cursor = "pointer";
-
-                        input.style.transitionDuration = "2s, 1s";
-                        input.style.width = "60%";
-
-
-
-                        btn.style.visibility = "hidden";
-
-                        finalCheck.style.visibility = "visible";
+                       
 
 
                         finalCheck.addEventListener("click", () => {
@@ -151,13 +149,40 @@ for (let i of fristCheck) {
 
                             popUp.style.visibility = "visible";
                             popUp.style.opacity = "10";
+                            popUp.style.height =   "770px";
+
+
+                            str = [];
+
+                            if(upChk[i].checked == true){
+                                
+                                switch(i){
+                                    case 0 : str = ["턱걸이 8회 4세트","렛풀다운 12회 4세트","바벨로우 12회 4세트", "시티드 로우 15회 4세트" , "데드리프트 12회 4세트" ];
+                                        break;
+                                    case 1 : str = ["바벨 벤치프레스 12회 4세트","인클라인 벤치 프레스 15회 4세트","딥스 8회 4세트","인클라인 덤벨 플라이 15회 4세트" , "케이블 크로스오버 15회 4세트"];
+                                        break;
+                                    case 2 : str = ["사이드 레터럴 레이즈 15회 4세트","밀리터리 프레스 12회 4세트","덤벨 숄더프레스 15회 4세트" ,"벤트오버 레터럴 레이즈 20회 4세트"];
+                                        break;
+                                    case 3 : str = ["이두컬 12회 4세트","해머 컬 15회 4세트","바벨 컬 10회 4세트" , "라잉 트라이셉스 익스텐션 12회 4세트" ,"트라이셉스 킥백 12회 4세트"];
+                                }
+                            }
+                            
+                            for(let i=0; i < str.length; i++){
+                                const li = document.createElement('li');
+
+                                li.innerText = str[i];
+                                li.style.marginBottom = "10px";
+                                popList.appendChild(li);
+                            }
 
                         })
 
 
 
                         beforeBtn.addEventListener("click", () => {
+                            upChk[i].checked = false;
 
+                           
                             header.innerHTML = "오늘은 어느 부위를 하시나요?";
                             next[i].style.display = "none";
 
@@ -201,13 +226,7 @@ for (let i of fristCheck) {
 
                 } else if (leg.checked == true) {
 
-
-                    for (let i = 0; i < nextleg.length; i++) {
-
-                        nextleg[i].style.display = "contents";
-
-
-                        fristList[i].style.display = "none";
+                    
 
                         header.innerHTML = "하체를 하는 날이군요! 그 중 어느 부위를 하시나요?";
 
@@ -222,6 +241,13 @@ for (let i of fristCheck) {
                         btn.style.visibility = "hidden";
 
                         finalCheck.style.visibility = "visible";
+
+                    for (let i = 0; i < nextleg.length; i++) {
+
+                        nextleg[i].style.display = "contents";
+
+
+                        fristList[i].style.display = "none";
 
                         finalCheck.addEventListener("click", () => {
 
@@ -249,20 +275,38 @@ for (let i of fristCheck) {
                             maindiv2.style.webkitFilter = "blur(2px)";
 
                             popUp.style.visibility = "visible";
-                            popUp.style.opacity = "10";
+                            popUp.style.opacity =   "10";
+                            popUp.style.height =   "770px";
 
-                            if(legChk[0].checked == true){
+                            str = [];
+
+                            if(legChk[i].checked == true){
+                                
+                                switch(i){
+                                    case 0 : str = ["레그 익스텐션 15회 4세트","파워 레그프레스 12회 4세트","핵스쿼트 12회 4세트","런지 20회 4세트"];
+                                        break;
+                                    case 1 : str = ["레그컬 15회 4세트","루마니안 데드리프트 12회 4세트","힙 쓰러스트 20회 4세트","스쿼트 12회 5세트"];
+                                        break;
+                                    case 2 : str = ["시티드 카프레이즈 20회 4세트","스탠딩 카프레이즈 15회 4세트","바벨 카프레이즈 15회 4세트"];
+                                }
+                            }
+                            for(let i=0; i < str.length; i++){
                                 const li = document.createElement('li');
 
-                                li.innerHTML = "레그 익스텐션";
-
+                                li.innerText = str[i];
+                                li.style.marginBottom = "10px";
                                 popList.appendChild(li);
-                            } 
+                            }
+                            
+                           
 
                         })
-
+                        
+                        
                         beforeBtn.addEventListener("click", () => {
-
+                            while (str.length > 0) {
+                                str.pop(); // 배열의 마지막 요소를 반복적으로 제거
+                              }
                             header.innerHTML = "오늘은 어느 부위를 하시나요?";
 
                             nextleg[i].style.display = "none";
@@ -301,8 +345,9 @@ for (let i of fristCheck) {
 
 
 
+                   
                     }
-
+                    
                 }
 
             })
@@ -339,17 +384,4 @@ $("#confirmStart").click(function () {
     })
 });
 
-const legChk2 = document.querySelectorAll('input[name="legs"]');
-const legChkArray = Array.from(legChk); // NodeList를 배열로 변환
 
-// for 루프를 forEach 루프로 변경
-legChkArray.forEach((checkbox, index) => {
-    if (checkbox.checked === true) {
-      const li = document.createElement('li');
-      li.innerHTML = "레그 익스텐션";
-      popList.appendChild(li);
-    }
-  });
-
-
-  

@@ -40,7 +40,7 @@
 					</div>
 
 
-					<%-- <button href="" title="Button2 border lightblue2" class="button2 btnFloat2 btnLightBlue2" id="confirmStart2"></button> --%>
+					<button href="" title="Button2 border lightblue2" class="button2 btnFloat2 btnLightBlue2" id="confirmStart2"></button>
 					<button href="" title="Button border lightblue"
 						class="button btnFloat btnLightBlue" id="confirmStart"></button>
 

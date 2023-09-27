@@ -3,6 +3,7 @@
         <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
             <c:set var="boardList" value="${map.boardList}" ></c:set>
+            <c:set var="marketList" value="${map.marketList}" ></c:set>
 
             <!DOCTYPE html>
             <html lang="ko">
@@ -80,7 +81,7 @@
                                     <table id="inquiry-list">
                                         <thead class="theadColor">
                                             <tr>
-                                                <th>게시글 번호</th>
+                                                <th>문의글 번호</th>
                                                 <th>제목</th>
                                                 <th>작성일</th>
                                                 <th>답변 상태</th>
@@ -101,6 +102,17 @@
                                                 <input type="hidden" class="hiddenCheckFl" value="${board.adminCheckFl}" />
                                             </c:forEach>
 
+                                            <c:forEach items="${marketList}" var="market">
+                                                <tr>
+                                                    <td>${market.productNo}</td>
+                                                    <td class="realMarketTitle">${market.inquiryTitle}</td>
+                                                    <td>${market.inquiryCd}</td>
+                                                    <td class="checkFl2">${market.adminMarketCheckFl}</td>
+                                                </tr>
+                                                <input type="hidden" class="hiddenCheckFl2" value="${market.adminMarketCheckFl}" />
+                                                <input type="hidden" class="marketTitle" value="${market.inquiryTitle}" />
+                                                <input type="hidden" class="marketContent" value="${market.inquiryContent}" />
+                                            </c:forEach> 
 
 
                                         </tbody>

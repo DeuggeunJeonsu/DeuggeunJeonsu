@@ -1,12 +1,20 @@
 const boardTitle = document.getElementsByClassName("boardTitle");
 const boardContent = document.getElementsByClassName("boardContent");
 
-const realboardTitle = document.getElementsByClassName("realboardTitle");
+const realMarketTitle = document.getElementsByClassName("realMarketTitle");
+const marketContent = document.getElementsByClassName("marketContent");
+
+const realboardTitle = document.getElementsByClassName("boardTitle");
+const marketTitle = document.getElementsByClassName("marketTitle");
+
 const modalHeader = document.getElementsByClassName("modal-header")[0];
 const modalHeader2 = document.getElementById("modal-header2");
 
 const hiddenCheckFl = document.getElementsByClassName("hiddenCheckFl");
+const hiddenCheckFl2 = document.getElementsByClassName("hiddenCheckFl2");
+
 const checkFl = document.getElementsByClassName("checkFl");
+const checkFl2 = document.getElementsByClassName("checkFl2");
 
 const userBoardNo = document.getElementsByClassName("boardNo");
 
@@ -32,11 +40,13 @@ for(let i = 0 ; i < boardTitle.length ; i++){
 
     })
     
-    if(hiddenCheckFl[i].value == 'N'){
+  
+
+    if(hiddenCheckFl[i].value == 'N' ){
 
         checkFl[i].innerHTML = '미답변';
 
-    }else{
+    }else if(hiddenCheckFl[i].value == 'Y'){
 
         checkFl[i].innerHTML = '답변 보기';
         checkFl[i].style.color = "#99e1ed";
@@ -44,6 +54,8 @@ for(let i = 0 ; i < boardTitle.length ; i++){
         
 
     }
+
+    
     
     checkFl[i].addEventListener('click', e => {
 
@@ -70,4 +82,34 @@ for(let i = 0 ; i < boardTitle.length ; i++){
 /* modal 창 닫기 */
 closeBtn.addEventListener("click", () => {
     QnAModal.style.visibility = "hidden";
-})
+});
+
+for(let i = 0 ; i < marketTitle.length ; i++){
+
+    realMarketTitle[i].addEventListener("click", () => {
+
+        QnAModal.style.visibility = "visible";
+
+        modalTitle.value = marketTitle[i].value;
+        QnAContent.value = marketContent[i].value;
+
+
+    })
+    
+  
+
+    if(hiddenCheckFl2[i].value == 'N' ){
+
+        checkFl2[i].innerHTML = '미답변';
+
+    }else if(hiddenCheckFl2[i].value == 'Y'){
+
+        checkFl2[i].innerHTML = '답변 보기';
+        checkFl2[i].style.color = "#99e1ed";
+        checkFl2[i].style.cursor = "pointer";
+        
+
+    }
+
+
+}
