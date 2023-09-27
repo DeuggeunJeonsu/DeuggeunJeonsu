@@ -80,12 +80,12 @@
                                     <label for="headerMenuToggle">
                                         <%-- 프로필 이미지 X --%>
                                         <c:if test="${empty loginMember.profileImage}">
-                                            <img src="/resources/images/user.png" id="main-member-profile">
+                                            <img src="/resources/images/user.png" >
                                         </c:if>
 
                                         <%-- 프로필 이미지 O --%>
                                         <c:if test="${!empty loginMember.profileImage}">
-                                            <img src="${loginMember.profileImage}">
+                                            <img src="${loginMember.profileImage}" id="main-member-profile">
                                         </c:if>
 
                                         <input type="checkbox" id="headerMenuToggle">
