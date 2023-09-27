@@ -127,7 +127,7 @@
                             <a href="/board/3/${board.boardNo}?cp=${pagination.currentPage}">
                                 <div>
                                     <c:if test="${empty board.thumbnail}" >
-                                        <img src="/resources/images/myPage/kakaoShare_thumbnail(2).PNG" id="default-logo">
+                                        <img src="/resources/images/myPage/kakaoShare_thumbnail.PNG" id="default-logo">
                                     </c:if>
 
                                     <c:if test="${!empty board.thumbnail}">
