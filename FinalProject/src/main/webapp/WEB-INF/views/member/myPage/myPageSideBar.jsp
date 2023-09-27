@@ -67,18 +67,9 @@
     const profileImage = document.getElementById("profileImage");
 
 
-    let initCheck; //초기 프로필 이미지 상태 저장 
-    let deletCheck = -1;
-
     let originalImage; //초기 프로필 이미지의 파일 경로 저장
     
     originalImage = profileImage.getAttribute('src');
-
-    if(originalImage == "/resources/images/user.png"){ //기본이미지 일때 
-        initCheck= false;
-    }else{
-        initCheck= true;
-    }
 
     imageInput.addEventListener("change", e => {
     const file = e.target.files[0];
@@ -87,7 +78,7 @@
         console.log('파일 선택이 취소됨');
         deletCheck = -1;
         profileImage.setAttribute("src", originalImage);
-        return;
+        
     }
 
     const reader = new FileReader();
