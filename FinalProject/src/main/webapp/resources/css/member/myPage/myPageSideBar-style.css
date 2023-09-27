@@ -66,3 +66,21 @@
     background-color: rgba(52, 196, 219, 0.5);
     color: white;
 }
+
+.myPageProfile{
+    position: relative;
+}
+
+
+#imageInput{ display: none;}
+
+.myPageProfile > label{
+    right: 0;
+    position: absolute;
+    top: 4px;
+    background-color: pink;
+    width: 80px;
+    height: 20px;
+    border-radius: 10px;
+
+}

@@ -29,8 +29,8 @@ public class MyPageServiceImpl implements MyPageService {
 	@Autowired
 	private MyPageDAO dao;
 
-		@Autowired
-		private BCryptPasswordEncoder bcrypt;
+	@Autowired
+	private BCryptPasswordEncoder bcrypt;
 
 	// 마이페이지 내 게시글 목록 조회
 	@Override
@@ -161,132 +161,173 @@ public class MyPageServiceImpl implements MyPageService {
 	}
 
 	// 마이페이지 1:1 문의 목록조회
-		@Override
-		public Map<String, Object> selectMyUpdateList(Member loginMember) {
+	@Override
+	public Map<String, Object> selectMyUpdateList(Member loginMember) {
 
-			List<Board> boardList = dao.selectMyUpdateList(loginMember);
-			
-			List<Board> marketList = new ArrayList<Board>();
-			
-			 if(boardList != null) {
-				 
-				 marketList = dao.selectMarketList(loginMember);
-			}
-			 
-			 System.out.println(boardList);
-			 System.out.println(marketList);
-			 
+		List<Board> boardList = dao.selectMyUpdateList(loginMember);
 
-			Map<String, Object> map = new HashMap<String, Object>();
+		List<Board> marketList = new ArrayList<Board>();
 
-			map.put("boardList", boardList);
-			map.put("marketList", marketList);
+		if(boardList != null) {
 
-			return map;
+			marketList = dao.selectMarketList(loginMember);
 		}
+
+		System.out.println(boardList);
+		System.out.println(marketList);
+
+
+		Map<String, Object> map = new HashMap<String, Object>();
+
+		map.put("boardList", boardList);
+		map.put("marketList", marketList);
+
+		return map;
+	}
 
 	// 마이페이지 1:1 문의 답변조회
-		@Override
-		public Board inquiryAnswer(int boardNo) {
-			
-			System.out.println(boardNo);
-			// 문의글 답변 내용 조회를 위한 게시글 번호 조회
-			int adminBoardNo = dao.selectAdminBoardNo(boardNo);
-			
-			System.out.println(adminBoardNo +"관리자 문의 답변 게시글 번호");
-			Board board = new Board();
-			
-			board.setAdminBoardNo(adminBoardNo);
-			System.out.println(board.getAdminBoardNo() +"관리자 문의 답변 게시글 번호2");
-			
-			 Board adminBoard = dao.inquiryAnswer(board);
-			 
-			 System.out.println(adminBoard.getBoardTitle());
-			 System.out.println(adminBoard.getBoardContent());
-			
-			
-			
-			return adminBoard;
-		}
+	@Override
+	public Board inquiryAnswer(int boardNo) {
+
+		System.out.println(boardNo);
+		// 문의글 답변 내용 조회를 위한 게시글 번호 조회
+		int adminBoardNo = dao.selectAdminBoardNo(boardNo);
+
+		System.out.println(adminBoardNo +"관리자 문의 답변 게시글 번호");
+		Board board = new Board();
+
+		board.setAdminBoardNo(adminBoardNo);
+		System.out.println(board.getAdminBoardNo() +"관리자 문의 답변 게시글 번호2");
+
+		Board adminBoard = dao.inquiryAnswer(board);
+
+		System.out.println(adminBoard.getBoardTitle());
+		System.out.println(adminBoard.getBoardContent());
+
+
+
+		return adminBoard;
+	}
 
 
 	// 마이페이지 내 뱃지 페이지 이동 + 뱃지 목록 조회
 	@Override
 	public Map<String, Object> selectBadgeList(int memberNo) {
-		
+
 		// 로그인한 회원의 뱃지 목록 조회
 		List<Badge> badgeList = dao.selectBadgeList(memberNo);
-		
+
 		// 로그인한 회원의 뱃지 수 조회
 		int badgeCount = dao.getBadgeCount(memberNo);
-		
+
 		Map<String, Object> map = new HashMap<String, Object>();
 
 		map.put("badgeList", badgeList);
 		map.put("badgeCount", badgeCount);
-		
+
 		return map;
 	}
 
 
-		// 회원 탈퇴
-		@Transactional(rollbackFor = {Exception.class} )
-		@Override
-		public int secession(int memberNo, String memberPw) {
-			
-			String encPw = dao.selectEncPw(memberNo);
-			
-			if(bcrypt.matches(memberPw, encPw)) {
-				return dao.secession(memberNo);
-			}
-			
-			return 0;
+	// 회원 탈퇴
+	@Transactional(rollbackFor = {Exception.class} )
+	@Override
+	public int secession(int memberNo, String memberPw) {
+
+		String encPw = dao.selectEncPw(memberNo);
+
+		if(bcrypt.matches(memberPw, encPw)) {
+			return dao.secession(memberNo);
 		}
 
-		// 회원 프로필 수정
-		@Override
-		public int updateImage(MultipartFile profileImage, String webPath, String filePath, Member loginMember) throws IllegalStateException, IOException {
-			
-			String temp = loginMember.getProfileImage();
-			
-			String rename = null;
-			
-			if(profileImage.getSize() > 0) {
-				
-				rename = Util.fileRename(profileImage.getOriginalFilename());
-				
-				loginMember.setProfileImage(webPath + rename);
-				
-			} else {
-				loginMember.setProfileImage(null);
-			}
-			
-			int result = dao.updateProfile(loginMember);
-			
-			if(result > 0) {
-				
-				if(rename != null) {
-					profileImage.transferTo(new File(filePath + rename));
-				}
-			} else {
-				loginMember.setProfileImage(temp);
-			}
-			
-			return result;
+		return 0;
+	}
+
+	// 회원 프로필 수정
+	@Override
+	public int updateImage(MultipartFile profileImage, String webPath, String filePath, Member loginMember) throws IllegalStateException, IOException {
+
+		String temp = loginMember.getProfileImage();
+
+		String rename = null;
+
+		if(profileImage.getSize() > 0) {
+
+			rename = Util.fileRename(profileImage.getOriginalFilename());
+
+			loginMember.setProfileImage(webPath + rename);
+
+		} else {
+			loginMember.setProfileImage(null);
 		}
 
-		// 마이페이지 - 구매 내역 selectbox 선택 시
-		@Override
-		public List<Cart> selectPurchaseList(int memberNo, Map<String, Object> paramMap){
-			
-			Map<String, Object> map = new HashMap<String, Object>();
-			
-			map.put("memberNo", memberNo);
-			map.put("key", paramMap.get("key"));
-			
-			List<Cart> purchaseList = dao.selectPurchaseList(map);
-			
-			return purchaseList;
+		int result = dao.updateProfile(loginMember);
+
+		if(result > 0) {
+
+			if(rename != null) {
+				profileImage.transferTo(new File(filePath + rename));
+			}
+		} else {
+			loginMember.setProfileImage(temp);
 		}
+
+		return result;
+	}
+
+	// 마이페이지 - 구매 내역 selectbox 선택 시
+	@Override
+	public List<Cart> selectPurchaseList(int memberNo, Map<String, Object> paramMap){
+
+		Map<String, Object> map = new HashMap<String, Object>();
+
+		map.put("memberNo", memberNo);
+		map.put("key", paramMap.get("key"));
+
+		List<Cart> purchaseList = dao.selectPurchaseList(map);
+
+		return purchaseList;
+	}
+
+
+	// 회원 프로필 수정 
+	@Override
+	public int updateProfile(MultipartFile profileImage, String webPath, String filePath, Member loginMember) throws IllegalStateException, IOException {
+
+		// 세션에 담긴 이전 이미지 저장 
+		String temp = loginMember.getProfileImage(); //이전 이미지 저장
+
+		String rename = null; 
+
+		if( profileImage.getSize() > 0 ) {
+
+			// 1) 파일 이름 변경 
+			rename = Util.fileRename(profileImage.getOriginalFilename());
+
+			// 2) 바뀐 이름으로 loginMember에 세팅
+			loginMember.setProfileImage(webPath + rename);
+
+		}else { // 없는 경우(x버튼)
+			loginMember.setProfileImage(null);
+			// 세션 이미지를 null로 변경해서 삭제
+
+		}
+
+		// 프로필 이미지 수정 DAO메소드 호출
+		int result = dao.updateProfileImage(loginMember);
+
+		if(result > 0){ //성공
+
+			// 새 이미지가 업로드 된 경우 
+			if(rename != null) {
+				profileImage.transferTo(new File(filePath + rename));
+			}
+
+		}else { // 실패
+			// 이전 이미지로 프로필 다시 세팅
+			loginMember.setProfileImage(temp);
+		}
+		return result;
+	}
 
 }

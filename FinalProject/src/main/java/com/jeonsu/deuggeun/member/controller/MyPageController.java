@@ -51,12 +51,12 @@ public class MyPageController {
 			) {
 
 		int memberNo = loginMember.getMemberNo();
-		
+
 		// 뱃지 목록 조회
 		Map<String, Object> map = service.selectBadgeList(memberNo);
 
 		model.addAttribute("map", map);
-		
+
 		return "member/myPage/myBadge";
 	}
 
@@ -223,14 +223,14 @@ public class MyPageController {
 		int memberNo = loginMember.getMemberNo();
 
 		List<Cart> purchaseList = new ArrayList<Cart>();
-			
+
 		if(paramMap.get("key") == null) {
 			purchaseList = service.selectPurchaseList(memberNo);
-			
+
 		} else {
-			
+
 			System.out.println("이것이 키다:"+paramMap.get("key"));
-			
+
 			purchaseList = service.selectPurchaseList(memberNo, paramMap);
 
 		}
@@ -239,31 +239,7 @@ public class MyPageController {
 
 		return "member/myPage/myPurchaseList";
 	}
-	
-	@PostMapping("/profile")
-	public String updateProfile(
-			@RequestParam("profileImage") MultipartFile profileImage
-			,@SessionAttribute("loginMember") Member loginMember
-			,RedirectAttributes ra
-			, HttpSession session
-			)throws IllegalStateException, IOException {
-		
-		String webPath = "/resources/imgaes/member/";
-		
-		String filePath = session.getServletContext().getRealPath(webPath);
-		
-		int result = service.updateImage(profileImage, webPath, filePath, loginMember);
-		
-		String message = null;
-		
-		if(result > 0) message = "프로필 이미지가 변경되었습니다.";
-		else			message = "프로필 변경 실패";
-		
-		ra.addFlashAttribute("message", message);
-		return "redirect:profile";
-	}
-	
-	
+
 
 	// 내 정보수정 페이지
 	@GetMapping("/myUpdate")
@@ -272,42 +248,42 @@ public class MyPageController {
 	}
 
 	// 회원탈퇴
-		@PostMapping("/secession")
-		public String secession(@SessionAttribute("loginMember") Member loginMember
-								,@RequestHeader(value="referer") String referer
-								,String memberPw
-								,RedirectAttributes ra
-								,SessionStatus status
-								,HttpServletResponse resp) {
-			
-			int result = service.secession(loginMember.getMemberNo() , memberPw);
-			
-			String path = "redirect:";
-			String message = null;
-			
-			if(result > 0) {
-				message = "탈퇴 되었습니다.";
-				ra.addFlashAttribute("message", message);
-				
-				path += "/";
-			
-				status.setComplete();
-				
-				Cookie cookie = new Cookie("saveId", "");
-				
-				cookie.setMaxAge(0);
-				cookie.setPath("/");
-				resp.addCookie(cookie);
-			}else {
-				message = "현재 비밀번호가 일치하지 않습니다.";
-				ra.addFlashAttribute("message", message);
-				
-				path += referer;
-			}
-			
-			
-			return path;
+	@PostMapping("/secession")
+	public String secession(@SessionAttribute("loginMember") Member loginMember
+			,@RequestHeader(value="referer") String referer
+			,String memberPw
+			,RedirectAttributes ra
+			,SessionStatus status
+			,HttpServletResponse resp) {
+
+		int result = service.secession(loginMember.getMemberNo() , memberPw);
+
+		String path = "redirect:";
+		String message = null;
+
+		if(result > 0) {
+			message = "탈퇴 되었습니다.";
+			ra.addFlashAttribute("message", message);
+
+			path += "/";
+
+			status.setComplete();
+
+			Cookie cookie = new Cookie("saveId", "");
+
+			cookie.setMaxAge(0);
+			cookie.setPath("/");
+			resp.addCookie(cookie);
+		}else {
+			message = "현재 비밀번호가 일치하지 않습니다.";
+			ra.addFlashAttribute("message", message);
+
+			path += referer;
 		}
+
+
+		return path;
+	}
 
 
 
@@ -329,16 +305,40 @@ public class MyPageController {
 		}
 		return "member/myPage/myOneOnOneInquiry";
 	}
-	
+
 	// 마이페이지 문의 목록 조회
 	@RequestMapping("/inquiryAnswer")
 	@ResponseBody
 	public Board inquiryAnswer(@RequestParam int boardNo) {
-		
-		
-		
+
+
+
 		return service.inquiryAnswer(boardNo);
 	}
 
+	@ResponseBody
+	@PostMapping("/changeProfile")
+	public int changeProfile(
+			@RequestParam("profileImage") MultipartFile profileImage // 업로드한 파일 정보
+			, @SessionAttribute("loginMember") Member loginMember 
+			
+			, HttpSession session
+			) throws IllegalStateException, IOException{
+
+			// System.out.println("profileImage File Name : " + profileImage.getOriginalFilename());
+			// System.out.println("profileImage File Size : " +profileImage.getSize());
+
+		String webPath = "/resources/images/member/";
+		
+		// 실제 파일 저장 경로 
+		String filePath = session.getServletContext().getRealPath(webPath);
+		
+		// 프로필 이미지 수정 서비스 호출 
+		return  service.updateProfile(profileImage, webPath, filePath, loginMember);
+		
+		
+		
+		
+	}
 
 }
