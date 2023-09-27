@@ -104,17 +104,14 @@ function selectFollowingList(){
             a.setAttribute("href", "/myPage/memberFeed/" + memberNo);
             div.append(a);
             
-            // 60 ~ 69번째 줄 생성(프로필 이미지 있는 div)
-            const div2 = document.createElement("div");
+            // 60 ~ 69번째 줄 생성(프로필 이미지 있는 img 태그)
             const img2 = document.createElement("img");
-            
-            div2.classList.add("followProfileImg");
+            img2.classList.add("followProfileImg");
             if (profileImage == null) {
                 img2.setAttribute("src", "/resources/images/user.png");
             } else {
                 img2.setAttribute("src", profileImage);
             }
-            div2.appendChild(img2);
             
             // 71 ~ 75번째 줄 생성(닉네임 있는 div)
             const a2 = document.createElement("a");
@@ -137,7 +134,8 @@ function selectFollowingList(){
             div4.appendChild(btn).appendChild(div5);
 
             // 전체 요소 합치기
-            div.appendChild(div2);
+            a.appendChild(img2);
+            div.appendChild(a);
             div.appendChild(a2);
             div.appendChild(div4);
             followListArea.appendChild(div);
@@ -195,17 +193,14 @@ function selectFollowerList(){
             a.setAttribute("href", "/myPage/memberFeed/" + memberNo);
             div.append(a);
             
-            // 60 ~ 69번째 줄 생성(프로필 이미지 있는 div)
-            const div2 = document.createElement("div");
+            // 60 ~ 69번째 줄 생성(프로필 이미지 있는 img 태그)
             const img2 = document.createElement("img");
-            
-            div2.classList.add("followProfileImg");
+            img2.classList.add("followProfileImg");
             if (profileImage == null) {
                 img2.setAttribute("src", "/resources/images/user.png");
             } else {
                 img2.setAttribute("src", profileImage);
             }
-            div2.appendChild(img2);
             
             // 71 ~ 75번째 줄 생성(닉네임 있는 div)
             const a2 = document.createElement("a");
@@ -239,11 +234,12 @@ function selectFollowerList(){
             }
 
             // 전체 요소 합치기
-            div.appendChild(div2);
+            a.appendChild(img2);
+            div.appendChild(a);
             div.appendChild(a2);
             div.appendChild(div4);
             followListArea.appendChild(div);
-
+            
             isFollowingListPage = false;
         }
     })
@@ -270,7 +266,7 @@ function followBtnClick(followMemberNo){
                 icon: 'success',                     
                 title: '팔로우 되었습니다. 🤩',    
                 text: '회원님만의 득근 레시피를 함께 나눠 보세요!', 
-              });
+            });
 
             selectFollowerList();
             selectFollowCount();

@@ -103,13 +103,6 @@
             </div>
         </div>
 
-        <%-- 팔로잉순 말풍선 --%>
-        <c:if test="${!empty loginMember}" >
-            <div class="ballon floating">
-                내가 팔로잉한 회원의 게시글 확인하기! 👀💬
-            </div>
-        </c:if>
-
         <div id="list-area">
 
             <c:choose>
