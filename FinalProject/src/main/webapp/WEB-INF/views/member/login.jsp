@@ -42,7 +42,7 @@
 
                 <div class="saveId-area">
                     <input type="checkbox" name="saveId" id="saveId" ${chk}>
-                    <label for="saveId"><i class="fas fa-check"></i>아이디 저장</label>
+                    <label for="saveId">아이디 저장</label>
                 </div>
 
                 <p class="text-area">
