@@ -232,5 +232,9 @@ public class MyPageDAO {
 		return sqlSession.selectList("myPageMapper.selectMarketList" , loginMember);
 	}
 
+	public int updateProfileImage(Member loginMember) {
+		return sqlSession.update("myPageMapper.updateProfileImage", loginMember);
+	}
+
 
 }
