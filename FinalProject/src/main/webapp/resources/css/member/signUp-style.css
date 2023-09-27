@@ -1,7 +1,5 @@
 @charset "utf-8";
 
-
-
 * {
   margin: 0;
   padding: 0;
@@ -14,7 +12,37 @@ body {
   line-height: 1rem;
   color: #333;
   letter-spacing: 0.1px;
+
+  display: flex;
+  flex-direction: column;
 }
+
+/* 회원 가입 메인 타이틀 영역 */
+.signUp-main-title{
+  margin: 0 auto;
+  margin-top: 100px !important;
+
+  font-size: 30px;
+  font-weight: 600;
+}
+
+#signUp-main-title-sub{
+  margin: auto;
+  margin-top: 40px !important;
+
+  font-size: 18px !important;
+}
+
+.signUp-hr{
+  margin: 30px 550px;
+  border: 1px solid #ddd;
+}
+
+.signUp-message{
+  color: #b3b3b3;
+}
+
+/* --------------------------------------------------------------------------------- */
 
 h2 {
   font-size: 1.2em;
@@ -42,6 +70,7 @@ ul {
   vertical-align: -6px;  
 }
 
+/* input 태그 전체 스타일 */
 input {
   border: 1px solid #ccc;
   border-radius: 5px;
@@ -72,19 +101,35 @@ input[type=radio]+.ico {
   vertical-align: -4px;
 }
 
-button {
+/* --------------------------------------------------------------------------------- */
+
+/* 버튼 전체 스타일 */
+form button {
   width: 50%;
+
   font-size: 1rem;
-  font-weight: bold;
   text-transform: uppercase;
+
   padding: 14px;
   margin-left: 10px;
-  border: 1px solid rgba(52, 196, 219, 0.5);
+
+  border: 1px solid #99e1ed;
   border-radius: 4px;
-  color: rgba(52, 196, 219, 0.5);
+
+  color: #99e1ed;
   background: white;
-  transition: 0.3s;
+
+  cursor: pointer;
 }
+
+form button:hover{
+  transition-duration: 0.4s;
+  
+  background-color: #99e1ed;
+  color: white;
+}
+
+/* --------------------------------------------------------------------------------- */
 
 #adr{
   width: 30%;
@@ -95,28 +140,18 @@ button {
   background: white;
 }
 
-button:hover {
-  cursor: pointer;
-}
-
-button[type="submit"] {
-  background: rgba(52, 196, 219, 0.5);
-  color: #fff;
-}
-
+/* 회원 가입 폼 태그 */
 
 #signUpFrm {
   max-width: 768px;
   margin: 0 auto;
-  padding: 100px 5%;
+  padding: 0 5%;
 }
 
-form> div div {
-  margin-bottom: 1rem;
-}
-
-form div label {
-  font-weight: bold;
+/* membership 내부 div 전체 */
+form label {
+  font-size: 15px !important;
+  margin-top: 30px !important;
 }
 
 form div label.imp::after {
@@ -138,11 +173,6 @@ form .membership div ul li {
   width: 100%;
 }
 
-form .membership :nth-child(6) input{
-  margin: -10px 0;
-
-}
-
 form .membership :nth-child(7) div {
   position: relative;
   margin-bottom: 0;
@@ -155,15 +185,11 @@ form .membership :nth-child(7) div img {
   height: 28px;
 }
 
-form .membership :nth-child(8) div {
+/* 연락처 입력 영역 */
+form .membership :nth-child(8) div input {
   border: 1px solid #ccc;
   border-radius: 5px;
   margin-top: 10px;
-}
-
-form .membership :nth-child(8) div input {
-  border: none;
-  margin: 0;
   text-align: center;
 }
 
@@ -182,64 +208,11 @@ form .membership :nth-child(10) ul li {
   font-size: 1rem;
 }
 
-form .terms {
-  margin: 2rem 0;
-}
-
-form .terms span {
-  color: #ccc;
-}
-
-form .terms div {
-  margin: 1rem 0;
-}
-
-form .terms div p {
-  margin: 10px 0;
-}
-
-form .terms> :nth-child(1) {
-  margin: 1rem 0;
-}
-
-form .terms> :nth-child(2) {
-  line-height: 1.4rem;
-  margin: 1rem 0;
-  border-bottom: 1px solid #eee;
-}
-
-form .terms> :nth-child(3),
-form .terms :nth-child(4),
-form .terms :nth-child(5) {
-  position: relative;
-}
-
-form .terms> :nth-child(3) a,
-form .terms :nth-child(4) a,
-form .terms :nth-child(5) a {
-  position: absolute;
-  right: 0;
-  width: 30px;
-  height: 30px;
-  background-size: 36px 36px;
-}
-
-form .terms :nth-child(7) div {
-  margin-left: 10%;  
-}
-
-
-form> button {
+form > button {
   margin: 0 auto;
   width: 100%;
 }
 
-
-body {
-  font-family: "Open Sans", sans-serif;
-  display: flex;
-  flex-direction: column;
-}
 a {
   text-decoration: none;
   transition: 0.3s all ease-in-out;
@@ -248,9 +221,10 @@ a:hover {
   text-decoration: none;
 }
 .main-container {
-  margin-top: 110px;
-  margin-bottom: 110px;
+  margin-top: 70px;
+  margin-bottom: 50px;
 }
+
 .login-form {
   display: flex;
   flex-direction: column;
@@ -304,37 +278,6 @@ a:hover {
   color: #81d4fa;
 }
 
-.btn-area button {
-  width: 100%;
-  height: 50px;
-  background: #166cea;
-  color: #fff;
-  font-size: 20px;
-  border: none;
-  border-radius: 25px;
-  cursor: pointer;
-}
-.caption {
-  margin-top: 20px;
-  text-align: center;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-}
-.caption div {
-  padding-right: 25px;
-}
-.caption div a {
-  font-size: 15px;
-  color: #9e9e9e;
-  text-decoration: none;
-  text-transform: uppercase;
-  display: inline-block;
-}
-.caption div a:hover {
-  color: #90caf9;
-  border-bottom: 1px solid #bbdefb;
-}
 .agree-container {
   display: flex;
   align-items: center;
@@ -346,8 +289,8 @@ a:hover {
 }
 
 .checkbox-container {
-  margin-top: 10px;
-  margin-bottom: 10px;
+  margin-top: -5px;
+  margin-bottom: 40px;
 }
 
 .agree-terms {
@@ -363,6 +306,7 @@ a:hover {
   margin-bottom: 0px;
   
 }
+
 .agreebtn {
             display: inline-block;
             padding: 10px 20px;
@@ -388,10 +332,33 @@ a:hover {
   width: 100px;
 }
 
+/* 유효성 검사 문구 스타일 */
+.confirm{ color: #99e1ed; }
+.error{ color: #ee6a7b;}
 
-.confirm{ color: green; }
-.error{ color: red; }
+/* 인증 입력 칸 스타일 */
+.auth-input-area{
+  width: 350px;
+}
 
+/* 인증 번호 시간 */
+#smsTimer{
+  color: #99e1ed;
+  height: 18px;
+}
 
+.signUp-last-btn{
+  margin-top: -20px;
+  margin-bottom: 80px;
+}
 
+.signUp-main-title2{
+  text-align: center;
+  font-size: 30px !important;
+  font-weight: 600;
+  margin-bottom: -20px;
+}
 
+.check-all{
+  color: #99e1ed;
+}
