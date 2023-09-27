@@ -132,7 +132,9 @@
                     data: formData,
                     type: 'POST',
                     success: function(result) {
-                        if(result > 0) alert("Uploaded");
+                        if(result > 0) {
+                            document.getElementById("main-member-profile").setAttribute("src", url);
+                        }
                         else alert("실패")
                     },
                     error: function(){
