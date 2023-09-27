@@ -9,18 +9,22 @@
 
     <title>득근채팅</title>
 
+    <link rel="stylesheet" href="/resources/css/common/chatting-style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/mdbassit/Coloris@latest/dist/coloris.min.css"/>
     <script src="https://cdn.jsdelivr.net/gh/mdbassit/Coloris@latest/dist/coloris.min.js"></script>
-    <link rel="stylesheet" href="/resources/css/common/chatting-style.css">
 
     <script src="https://kit.fontawesome.com/a2e8ca0ae3.js" crossorigin="anonymous"></script>
     <!--------------------------------------- sockjs를 이용한 WebSocket 구현을 위해 라이브러리 추가 ---------------------------------------------->
     <!-- https://github.com/sockjs/sockjs-client -->
     <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
+
     <script>
-        const loginMember = "${loginMember}"; // 로그인한 회원 번호
+        const loginMember = "${loginMember}"; // 로그인한 회원
         const loginMemberNo = "${loginMember.memberNo}"; // 로그인한 회원 번호
+        const memberThema = "${loginMember.memberThema}";
+        let themas = memberThema.split(",,");
     </script>
+
     <link rel="apple-touch-icon" sizes="180x180" href="/resources/images/favicon_io/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/resources/images/favicon_io/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/resources/images/favicon_io/favicon-16x16.png">
@@ -48,7 +52,7 @@
                 </div>
                 <div id="chattingRoomListArea">
                     <!-- 채팅방 맴버찾기 -->
-                    <div id="addTargetPopupLayer" class="popup-layer-close">  
+                    <div id="addTargetPopupLayer" class="displayNone">  
                         <div class="target-input-area">
                             <input type="search" id="targetInput" placeholder="닉네임 또는 아이디를 입력하세요" autocomplete="off">
                             <span id="addTargetCloseBtn" class="closeBtn">&times</span>
@@ -60,7 +64,7 @@
                     </div>
 
                     <!-- 팔레트 -->
-                    <div id="palettePopupLayer" class="popup-layer-close"> 
+                    <div id="palettePopupLayer" class="displayNone"> 
                         <div class="palette-title-area">
                             <p>원하는 색상으로 테마를 변경해보세요!</p>
                             <span id="paletteCloseBtn" class="closeBtn">&times</span>
@@ -72,26 +76,48 @@
                             </div>
                         </div>
                         <div class="thema-input-area">
+                            <div class="paletteName">메뉴 아이콘</div>
+                            <div class="thema-color-area">
+                                <input type="text" class="color-input" id="menuIconColor" data-coloris>
+                            </div>
+                        </div>
+
+                        <div class="thema-input-area">
                             <div class="paletteName">채팅방 목록</div>
                             <div class="thema-color-area">
                                 <input type="text" class="color-input" id="palette2Color" data-coloris>
                             </div>
                         </div>
                         <div class="thema-input-area">
+                            <div class="paletteName">목록 텍스트</div>
+                            <div class="thema-color-area">
+                                <input type="text" class="color-input" id="listFontColor" data-coloris>
+                            </div>
+                        </div>
+
+                        <div class="thema-input-area">
                             <div class="paletteName">채팅방 내부</div>
                             <div class="thema-color-area">
                                 <input type="text" class="color-input" id="palette3Color" data-coloris>
                             </div>
                         </div>
+                        <div class="thema-input-area">
+                            <div class="paletteName">내부 텍스트</div>
+                            <div class="thema-color-area">
+                                <input type="text" class="color-input" id="chatFontColor" data-coloris>
+                            </div>
+                        </div>
+
                         <div id="saveThemaBtnArea">
                             <button id="saveThemaBtn">테마 저장</button>
                         </div>
+
                     </div>
                     
                     <!-- 채팅방 검색 -->
                     <div id="roomSearchArea">
                         <i class="fa fa-solid fa-magnifying-glass fa-2xl" style="color: #ddd;"></i>
-                        <input type="text" id="roomSearchInput">
+                        <input type="text" id="roomSearchInput" placeholder="채팅방 목록 내 검색">
                     </div>
 
                     <!-- 채팅방 목록 -->
