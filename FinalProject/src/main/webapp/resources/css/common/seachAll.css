@@ -1,21 +1,31 @@
 *{
     box-sizing: border-box;
 }
+body{
+    /*font-family: 'Raleway', sans-serif!important;*/
+    background-color: #fff !important;
+}
 .bigCon{
-    width: 768px;
+    width: 770px;
     margin-left: auto;
     margin-right: auto;
-    background-color: pink;
+    /*background-color: #fdd2d9;*/
+    margin-bottom: 50px;
 }
-p{
-    margin-bottom: 4rem;
-    font-size: 1.125rem;
+.total{
+    margin-bottom: 3.5rem;
+    font-size: 1.5rem;
     line-height: 1.5;
+    color: #495057;
+    /*background-color: red;*/
+}
+.total b{
+    color : #212529;
 }
 .resultCon{
     /* border-top: 1px solid #f1f3f5 */
     padding-top: 4rem;
-    border-top: 1px solid black;
+    border-bottom: 1px solid black;
     padding-bottom: 4rem;
     line-height: 1.5;
 }
@@ -40,15 +50,37 @@ a{
     box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 8px;
 }
 .username a{
-    font-size: 1rem;
+    font-size: 1.1rem;
     color : #212529;
     font-weight: bold;
 }
+.boardName{
+    display: flex;
+}
+.detail{
+}
+.detail {
+    margin-right: 10px;
+    display: inline-block;
+    padding: 5px 10px;
+    /*background-color: #f2f2f2;*/
+    /*color: #333;*/
+    background-color: #078dd3;
+    color: #fff;
+    border-radius: 20px;
+    font-size: 1.3em;
+    text-decoration: none;
+}
+
+.hashtag-detail:hover {
+    background-color: #e6e6e6; /* 마우스 오버 시 배경색을 조금 더 어둡게 */
+}
+
 .thumb{
     /* position: absolute; */
     border: 1px solid black;
     width: 100%;
-    height: 430px;
+    height: 35%;
     display: block;
     object-fit: cover;
 }
@@ -57,7 +89,8 @@ a{
     /*padding-top: 10%;*/
 }
 h2{
-    font-size: 1.5rem;
+    font-size: 1.6rem;
+    font-weight: bold;
     color: #212529;
     margin: 0px;
     line-height: 1.5;
@@ -66,7 +99,7 @@ h2{
 .contentP{
     margin-bottom: 2rem;
     margin-top: 0.5rem;
-    font-size: 1rem;
+    font-size: 1.1rem;
     word-break: keep-all;
     overflow-wrap: break-word;
     color: #495057;
@@ -85,7 +118,7 @@ h2{
 span{
     color: #868e96;
     line-height: 1.5;
-    font-size: 0.875rem;
+    font-size: 1.1rem;
 }
 .heart{
     display: flex;
@@ -98,5 +131,31 @@ svg{
     margin-right: 0.25rem;
 }
 .place{
-    height: 150px;
+    height: 100px;
+}
+.searchCon{
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    transition: all 0.125s ease-in 0s;
+    border: 1px solid #343a40;
+    cursor: text;
+    height: 5rem;
+    padding: 0px 1.5rem;
+    margin-bottom: 20px;
+}
+.searchCon svg{
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-right: 1.25rem;
+}
+#searchAll{
+    font-size: 1.5rem;
+    line-height: 2rem;
+    height: 2rem;
+    padding: 0px;
+    border: none;
+    outline: 0px;
+    background: transparent;
+    display: block;
 }

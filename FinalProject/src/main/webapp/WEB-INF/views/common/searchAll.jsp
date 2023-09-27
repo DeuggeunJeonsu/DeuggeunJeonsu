@@ -1,89 +1,91 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<c:set var="searchList" value="${map.searchList}" />
+<c:set var="listCount" value="${map.listCount}" />
 <html>
 <head>
-    <title>전체검색페이지</title>
+    <title>전체검색 페이지</title>
     <link rel="stylesheet" href="/resources/css/common/seachAll.css">
+    <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
 </head>
 <body>
 <jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
 
+<%-- 검색을 진행한 경우 파라미터(key, query)를 쿼리스트링 형태로 저장한 변수를 선언 --%>
+<c:if test="${!empty param.keyword}">
+    <c:set var="sp" value="&query=${param.keyword}"/>
+</c:if>
+
+<div class="place"></div>
 <div class="bigCon">
-    <p>총 10000개의 포스트</p>
 
-    <div class="resultCon">
+    <form action="/search/all" method="GET">
+    <div class="searchCon"><svg width="17" height="17" viewBox="0 0 17 17">
+        <path fill-rule="evenodd" d="M13.66 7.36a6.3 6.3 0 1 1-12.598 0 6.3 6.3 0 0 1 12.598 0zm-1.73 5.772a7.36 7.36 0 1 1 1.201-1.201l3.636 3.635c.31.31.31.815 0 1.126l-.075.075a.796.796 0 0 1-1.126 0l-3.636-3.635z" clip-rule="evenodd" fill="currentColor"></path></svg>
+        <input type="text" placeholder="검색어를 입력하세요" name="keyword" value="${param.keyword}" id="searchAll">
+    </div>
+    </form>
 
-        <div class="user-info">
+    <c:if test="${!empty param.keyword}">
+
+    <p class="total">총
+        <b>${listCount.size()}</b>
+        건의 검색결과를 찾았습니다.
+    </p>
+    <c:if test="${listCount.size() == 0}">
+        <p class="no-results">검색결과가 없습니다.</p>
+    </c:if>
+
+    <div class="boardName">
+        <c:forEach var="boardCount" items="${listCount}">
             <a href="#">
-                <img src="/resources/images/market/bono.png" alt="thumbnail">
+            <div class="detail">#${boardCount.boardName} (${boardCount.count})</div>
             </a>
-            <div class="username">
-                <a href=#>멤버닉네임</a>
+        </c:forEach>
+    </div>
+
+
+    <c:forEach var="board" items="${searchList}">
+        <div class="resultCon">
+            <div class="user-info">
+                <a href="#">
+                    <c:choose>
+                        <c:when test="${empty board.profileImage}">
+                            <img src="/resources/images/user.png" alt="default">
+                        </c:when>
+                        <c:otherwise>
+                            <img src="${board.profileImage}" alt="profile">
+                        </c:otherwise>
+                    </c:choose>
+                </a>
+                <div class="username">
+                    <a href="#">${board.memberNickname}</a>
+                </div>
             </div>
-        </div>
-        <a href="#">
-            <div class="imgCon">
-                <img src="/resources/images/board/리액트.png" class="thumb">
-            </div>
-        </a>
-        <a>
-            <h2>제목입니다</h2>
-        </a>
-        <p class="contentP">
-            Eclipse에서 전체 검색(Ctrl + H) 로 검색을 할 때,
-            검색을 원치 안하는 파일들이 포함되어 검색 결과를 늘리는 경우가 종종 발생한다.
-            jQuery.min.js, 오픈소스라이브러리.js, 템플릿.css 뭐 등등,,이때 전체 검색 대상이 되는 범위 Scope를
-        </p>
-
-        <div class="subinfo">
-            <span>2022년 1월 1일</span>
-            <div class="separator">.</div>
-            <span>10개의 댓글</span>
-            <div class="separator">.</div>
-            <span class="heart">
-                <svg width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M18 1l-6 4-6-4-6 5v7l12 10 12-10v-7z"></path></svg>
-            </span>
-        </div>
-
-    </div> <%-- 여기까지 resultCon --%>
-
-    <div class="resultCon">
-
-        <div class="user-info">
             <a href="#">
-                <img src="/resources/images/market/bono.png" alt="thumbnail">
+                <div class="imgCon">
+                    <img src="/resources/images/board/${board.thumbnail}" class="thumb">
+                </div>
             </a>
-            <div class="username">
-                <a href=#>멤버닉네임</a>
+            <a>
+                <h2>${board.boardTitle}</h2>
+            </a>
+            <p class="contentP">
+                    ${board.boardContent}
+            </p>
+            <div class="subinfo">
+                <span>${board.boardCreateDate}</span>
+                <div class="separator">.</div>
+                <span>10개의 댓글</span>
             </div>
         </div>
-        <a href="#">
-            <div class="imgCon">
-                <img src="/resources/images/board/리액트.png" class="thumb">
-            </div>
-        </a>
-        <a>
-            <h2>제목입니다</h2>
-        </a>
-        <p class="contentP">
-            Eclipse에서 전체 검색(Ctrl + H) 로 검색을 할 때,
-            검색을 원치 안하는 파일들이 포함되어 검색 결과를 늘리는 경우가 종종 발생한다.
-            jQuery.min.js, 오픈소스라이브러리.js, 템플릿.css 뭐 등등,,이때 전체 검색 대상이 되는 범위 Scope를
-        </p>
+    </c:forEach>
+    </c:if>
 
-        <div class="subinfo">
-            <span>2022년 1월 1일</span>
-            <div class="separator">.</div>
-            <span>10개의 댓글</span>
-            <div class="separator">.</div>
-            <span class="heart">
-                <svg width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M18 1l-6 4-6-4-6 5v7l12 10 12-10v-7z"></path></svg>
-            </span>
-        </div>
-
-    </div> <%-- 여기까지 resultCon --%>
 
 </div>
-<div class="place"></div>
+<%--<div class="place"></div>--%>
 <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
 </body>
 </html>
