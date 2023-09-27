@@ -50,12 +50,12 @@
                     <ul>
                         <li>
                             <span>닉네임</span>
-                            <input type="text" name="memberNickName" 
+                            <input type="text" name="memberNickName" id="memberNickname"
                             placeholder="한글/숫자 만 가능합니다." value="${loginMember.memberNickname}">
                         </li>
                         <li>
                             <span>전화번호</span>
-                            <input type="text" name="memberTel" 
+                            <input type="text" name="memberTel" id="memberTel"
                             placeholder="(-)제외 입력해주세요 "value="${loginMember.memberTel}">
                         </li>
                         <li>
@@ -63,10 +63,10 @@
                             <c:set var="addr" value="${fn:split(loginMember.memberAddress,'^^^')}"/>
                             <div class="info-address">
                                 <input type="text" name="memberAddress" 
-                                placeholder="우편번호" value="${addr[0]}" id="sample6_postcode">
+                                placeholder="우편번호" value="${addr[0]}" id="sample6_postcode" readonly>
                                 <button type="button" onclick="sample6_execDaumPostcode()">검색</button>
                                 <input type="text" name="memberAddress" 
-                                placeholder="도로명/지번 주소"value="${addr[1]}" id="sample6_address">
+                                placeholder="도로명/지번 주소"value="${addr[1]}" id="sample6_address" readonly>
                                 <input type="text" name="memberAddress" 
                                 placeholder="상세주소"value="${addr[1]}" id="sample6_detailAddress">
                             </div>
@@ -78,17 +78,17 @@
                         <li>
                             <span>비밀번호</span>
                             <input type="text" name="memberPw" 
-                            placeholder="한글,숫자 만 가능합니다.">
+                            placeholder="">
                         </li>
                         <li>
                             <span>비밀번호 확인</span>
                             <input type="text" name="memberPw-confirm" 
-                            placeholder="한글,숫자 만 가능합니다.">
+                            placeholder="">
                         </li>
                     
                     </ul>
                     <div class="btnArea">
-					    <a class="button btnPush btnLightBlue" id="myPage-submit">수정하기</a>
+					    <a class="button btnPush btnLightBlue" id="myPage-submit" type="submit">수정하기</a>
 				    </div> 
                 </form>
 
@@ -138,8 +138,8 @@
 
 
 
-    <%-- myBadge.js 연결 --%>
-	<script src="/resources/js/member/myPage/myBadge.js"></script>
+    <%-- myUpdate.js 연결 --%>
+	<script src="/resources/js/member/myPage/myUpdate.js"></script>
 
 </body>
 </html>
