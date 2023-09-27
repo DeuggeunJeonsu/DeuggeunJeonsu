@@ -269,4 +269,25 @@ public class MarketDAO {
 
 		return sqlSession.selectList("marketMapper.autocomplete", paramMap);
 	}
+
+	// 게시글 수 검색
+	public int selectCount(Map<String, Object> paramMap) {
+		return sqlSession.selectOne("marketMapper.selectCount", paramMap);
+	}
+
+	// 결과 1개 이상일때 결과 리스트
+	public List<Board> searchAll(Map<String, Object> paramMap) {
+		return sqlSession.selectList("marketMapper.searchAll", paramMap);
+	}
+
+	// 게시판 별 숫자, 이름
+	public List<Board> searchCount(Map<String, Object> paramMap) {
+		return  sqlSession.selectList("marketMapper.searchCount", paramMap);
+	}
+
+	// 게시글 1개 일때
+	public Board selectBoard(Map<String, Object> paramMap) {
+		return sqlSession.selectOne("marketMapper.selectBoard", paramMap);
+	}
+
 }

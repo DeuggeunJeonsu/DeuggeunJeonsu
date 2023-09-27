@@ -46,7 +46,6 @@ public class MarketController {
 
 		if(boardCode == 5){
 
-
 		if(paramMap.get("keyword") == null) {
 
 			Map<String, Object> map = service.selectMarketList(boardCode, cp, sort);

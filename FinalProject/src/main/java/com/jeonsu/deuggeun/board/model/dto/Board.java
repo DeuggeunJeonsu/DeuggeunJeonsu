@@ -24,6 +24,8 @@ public class Board {
 	private String boardName; // 게시판 이름
 	private int tagNo; // 해시태그 번호
 	private String tagContent; // 해시태그 내용
+	private String imgRename;
+	private int count;
 
 	private int memberNo; // 작성자 회원 번호
 	private String memberNickname; // 작성자 닉네임

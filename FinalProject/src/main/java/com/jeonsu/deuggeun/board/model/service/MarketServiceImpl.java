@@ -42,8 +42,7 @@ public class MarketServiceImpl implements MarketService {
 			marketList = dao.selectMarketListByHighPrice(pagination, boardCode); // 높은 가격 우선으로 조회
 		} else if ("b".equals(sort)) {
 			marketList = dao.selectMarketListByReview(pagination, boardCode); // 후기 많은순
-		}
-		else {
+		} else {
 			marketList = dao.selectMarketList(pagination, boardCode);
 		}
 		// 4. pagination, marketList를  Map에 담아서 반환
@@ -484,4 +483,33 @@ public class MarketServiceImpl implements MarketService {
 	public List<Map<String, Object>> autocomplete(Map<String, Object> paramMap) {
 		return dao.autocomplete(paramMap);
 	}
-}
+	// 전체검색 기능
+	@Override
+	public Map<String, Object> searchAll(Map<String, Object> paramMap) {
+
+		Map<String, Object> map = new HashMap<>();
+
+		int count = dao.selectCount(paramMap);
+
+		if (count > 1) {
+
+			List<Board> searchList = dao.searchAll(paramMap);
+			List<Board> listCount = dao.searchCount(paramMap);
+
+			map.put("searchList", searchList);
+			map.put("listCount", listCount);
+
+//		} else if(count == 1) {
+//
+//			Board board = dao.selectBoard(paramMap);
+//
+//			map.put("board", board);
+//
+//		}
+		}else{
+
+				System.out.println("카운트가 0개ㅠㅠ");
+			}
+			return map;
+		}
+	}

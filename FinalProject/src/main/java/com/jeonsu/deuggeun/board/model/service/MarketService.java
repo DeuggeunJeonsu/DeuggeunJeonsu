@@ -77,4 +77,7 @@ public interface MarketService {
 
     // 자동완성 기능
     List<Map<String, Object>> autocomplete(Map<String, Object> paramMap) throws Exception;
+
+    // 전체검색 기능
+    Map<String, Object> searchAll(Map<String, Object> paramMap);
 }
