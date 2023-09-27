@@ -318,7 +318,7 @@ document.addEventListener("click", function (event) {
                 
                 if(preview[i].getAttribute("src")!= ""){
         
-                    preview[i].removeAttribute("src");
+                    preview[i].setAttribute("src","/resources/images/boardDetaile/noneImage.png");
                     inputImage[i].value="";
                 }
             })
