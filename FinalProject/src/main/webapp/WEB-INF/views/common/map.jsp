@@ -75,7 +75,7 @@
             <div class="option">
                 <div>
                     <form onsubmit="searchPlaces(); return false;">
-                        키워드 : <input type="text" value="강남역 헬스장" id="keyword" size="15">
+                        키워드 : <input type="text" value="강남역" id="keyword" size="15">
                         <button type="submit">검색하기</button>
                     </form>
                 </div>
@@ -117,7 +117,7 @@
             alert('키워드를 입력해주세요!');
             return false;
         }
-
+        keyword += " 헬스장";
         // 장소검색 객체를 통해 키워드로 장소검색을 요청합니다
         ps.keywordSearch( keyword, placesSearchCB);
     }
@@ -148,7 +148,6 @@
 
     // 검색 결과 목록과 마커를 표출하는 함수
     function displayPlaces(places) {
-
         var listEl = document.getElementById('placesList'),
             menuEl = document.getElementById('menu_wrap'),
             fragment = document.createDocumentFragment(),
@@ -158,39 +157,52 @@
         // 검색 결과 목록에 추가된 항목들을 제거
         removeAllChildNods(listEl);
 
-        // 지도에 표시되고 있는 마커 제거
+        // 지도에 표시되고 있는 마커를 제거
         removeMarker();
 
         for ( var i=0; i<places.length; i++ ) {
+            var placeName = places[i].place_name;
 
-            // 마커를 생성하고 지도에 표시
-            var placePosition = new kakao.maps.LatLng(places[i].y, places[i].x),
-                marker = addMarker(placePosition, i),
-                itemEl = getListItem(i, places[i]);
+            // 원하는 키워드가 포함된 장소만 처리
+            if (
+                placeName.includes("헬스장") ||
+                placeName.includes("짐") ||
+                placeName.includes("휘트니스") ||
+                placeName.includes("피트니스") ||
+                placeName.includes("헬스") ||
+                placeName.includes("스포츠") ||
+                placeName.includes("핏") ||
+                placeName.includes("PT") ||
+                placeName.includes("스포애니")
+            ) {
+                // 마커를 생성하고 지도에 표시
+                var placePosition = new kakao.maps.LatLng(places[i].y, places[i].x),
+                    marker = addMarker(placePosition, i),
+                    itemEl = getListItem(i, places[i]);
 
-            bounds.extend(placePosition);
+                bounds.extend(placePosition);
 
-            (function(marker, title) {
-                kakao.maps.event.addListener(marker, 'mouseover', function() {
-                    displayInfowindow(marker, title);
-                });
+                (function(marker, title) {
+                    kakao.maps.event.addListener(marker, 'mouseover', function() {
+                        displayInfowindow(marker, title);
+                    });
 
-                kakao.maps.event.addListener(marker, 'mouseout', function() {
-                    infowindow.close();
-                });
+                    kakao.maps.event.addListener(marker, 'mouseout', function() {
+                        infowindow.close();
+                    });
 
-                itemEl.onmouseover =  function () {
-                    displayInfowindow(marker, title);
-                };
+                    itemEl.onmouseover =  function () {
+                        displayInfowindow(marker, title);
+                    };
 
-                itemEl.onmouseout =  function () {
-                    infowindow.close();
-                };
-            })(marker, places[i].place_name);
+                    itemEl.onmouseout =  function () {
+                        infowindow.close();
+                    };
+                })(marker, places[i].place_name);
 
-            fragment.appendChild(itemEl);
+                fragment.appendChild(itemEl);
+            }
         }
-
 
         listEl.appendChild(fragment);
         menuEl.scrollTop = 0;
