@@ -217,11 +217,11 @@ svg{
     /*height: 58vh;*/
     /*background-color: #faf9f3;*/
 }
-.product-list {
+.product-list{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    margin-top: 50px;
+    margin-top: 40px;
     gap: 10px;
 }
 
@@ -244,7 +244,7 @@ svg{
 }
 
 .product-name {
-    font-size: 1em;
+    font-size: 1.1em;
     font-weight: bold;
     margin-bottom: 5px;
 }
@@ -271,4 +271,8 @@ svg{
     text-decoration: none;
     cursor: pointer;
     display: none;
+}
+.nav{
+    margin-top: 30px;
+    color: #3c3b3b;
 }

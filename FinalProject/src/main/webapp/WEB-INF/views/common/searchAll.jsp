@@ -124,6 +124,9 @@
         </div>
     </c:forEach>
 
+    <c:if test="${!empty map2.productList}">
+        <h1 class="nav">마켓 상품 ☺️</h1>
+    </c:if>
     <div class="product-list board5">
         <c:forEach var="product" items="${map2.productList}">
             <div class="product-item">
@@ -153,7 +156,7 @@
     });
 
     $(".detail").click(function() {
-        // 모든 boardName에 'unselected-board' 클래스를 추가
+
         $(".detail").addClass("unselected-board");
 
         var boardCode = $(this).data("boardcode");
@@ -162,7 +165,6 @@
         $(".product-list").hide();
         $(".board" + boardCode).show();
 
-        // 현재 클릭된 boardName에서 'unselected-board' 클래스를 제거
         $(this).removeClass("unselected-board");
 
         $("#show-all").show();
@@ -172,7 +174,6 @@
         $(".resultCon").show();
         $(".product-list").show();
 
-        // 'show-all' 버튼 클릭 시 모든 boardName에 'unselected-board' 클래스를 제거
         $(".detail").removeClass("unselected-board");
 
         $(this).hide();
