@@ -144,7 +144,7 @@
     justify-content: center;
 }
 
-.no-board-list {
+.no-board-list{
     text-align: center;
     width: 900px;
     min-width: 900px;
@@ -153,10 +153,9 @@
 
 .thumbnail{
     border: 1px solid #ddd;
-    border-radius: 5px;
-
-    background-color: white;
     
+    background-color: white;
+    border-radius: 5px;
     cursor: pointer;
 }
 
@@ -164,27 +163,29 @@
     transform: scale(1.05);
     transition-duration: 0.5s;
 }
-
 .thumbnail > a {
     text-decoration: none;
     color: #797979;
 }
-
-.thumbnail > div:first-of-type{
+.thumbnail  >a> div:first-of-type{
     height: 60%;
 
     display: flex;
     justify-content: center;
     align-items: center;
-
     border-radius: 5px 5px 0 0;
 
     background-color: #797979;
+
 }
 
-.thumbnail >a> div:first-of-type> img{
-    width: 100%;
-    height: 100%;
+#default-logo{
+    width: 100% !important;
+}
+
+.thumbnail >a> div:first-of-type img {
+    width: 100% !important;
+    height: 100% !important;
 
     border-top-left-radius: 4px;
     border-top-right-radius: 4px;
@@ -198,7 +199,7 @@
 /* 게시글 제목 */
 .title{
     font-size: 20px;
-    
+
     /* 길어지면 말줄임 처리 */
     overflow: hidden;
     text-overflow: ellipsis;
@@ -218,6 +219,18 @@
     margin-top: 20px;
     display: flex;
     align-items: center;
+}
+
+.profileArea > img{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+/* 닉네임 영역 */
+.profile-area > div:nth-of-type(2){
+    width: 200px;
+    margin-left: 5px;
 }
 
 /* 좋아요 영역 */
@@ -266,18 +279,7 @@
     margin-top: 40px;
 }
 
-#ad {
-	display: flex;
-	width: 960px;
-	height: 100px;
-	border-radius: 20px;
-	background-image: linear-gradient(135deg, rgb(0, 220, 244), violet);
-	color: white;
-	font-size: 3rem;
-	justify-content: center;
-	align-items: center;
-	transition-duration: 2s;
-}
+
 
 .pagination-area {
     text-align: center;
@@ -318,4 +320,33 @@
 .pagination li a:hover {
     background-color: #99E1ED;
     color: #fff;
+}
+
+
+/* 광고 */
+.slider__wrap {
+    width: 100%;
+    margin-top: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.slider__img {  /* 이미지가 보이는 영역 */
+    position: relative;
+    width: 880px;
+    height: 164px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+.slider__inner {    /* 이미지 움직이는 영역 */
+    display: flex;
+    flex-wrap: wrap;
+    width: 4800px;  /* 총 이미지 영역 */
+    height: 200px;
+}
+.slider {   /* 개별적인 이미지 */
+    position: relative;
+    width: 880px;
+    height: 164px;
+    
 }

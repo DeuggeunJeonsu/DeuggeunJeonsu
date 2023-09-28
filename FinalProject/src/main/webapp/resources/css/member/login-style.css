@@ -42,6 +42,13 @@ main .title-area p:nth-of-type(2){
 
 
 /* 아이디, 비밀번호 입력 부분*/
+#loginFrm{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .input-box {
     position: relative;
     width: 300px;
@@ -109,6 +116,7 @@ main .title-area p:nth-of-type(2){
 .saveId-area {
     position: relative;
     padding-left: 2px;
+    width: 100%;
 }
 
 .saveId-area input[type="checkbox"] {  /* 실제 체크박스는 화면에서 숨김 */
@@ -204,6 +212,7 @@ main .title-area p:nth-of-type(2){
 /* 회원가입, 아이디/비밀번호 찾기 */
 .text-area {
     margin-top: 10px;
+    width: 100%;
     display :flex;
     justify-content: space-between;
 }

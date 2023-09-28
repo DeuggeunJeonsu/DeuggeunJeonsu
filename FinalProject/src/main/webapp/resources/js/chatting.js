@@ -5,6 +5,17 @@ const menuBtn = document.querySelector("#menuBtn"); // 메뉴 버튼
 const menuArea = document.querySelector("#menus"); // 사이드 메뉴 영역
 let menuFlag = 0; // 메뉴버튼 토글 플레그
 
+// 팔레트
+const palette = document.querySelector("#palette"); // 팔레트 설정 버튼
+const palettePopupLayer = document.querySelector("#palettePopupLayer"); // 팝업 레이어
+const closeBtn2 = document.querySelector("#paletteCloseBtn"); // 팝업 닫기 버튼
+const palette1Color = document.querySelector("#palette1Color"); // 사이드 메뉴 색상 input
+const menuIconColor = document.querySelector("#menuIconColor"); // 사이드메뉴 아이콘 색상 input
+const palette2Color = document.querySelector("#palette2Color"); // 채팅방 목록 색상 input
+const listFontColor = document.querySelector("#listFontColor"); // 목록 글꼴 색상 input
+const palette3Color = document.querySelector("#palette3Color"); // 채팅방 내부 색상 input
+const chatFontColor = document.querySelector("#chatFontColor"); // 내부 글꼴 색상 input
+const saveThemaBtn = document.querySelector("#saveThemaBtn"); // 테마 저장 버튼
 
 // 채팅방
 const addTarget = document.querySelector("#addTarget"); // 채팅방 추가 버튼
@@ -16,23 +27,12 @@ const roomSearchInput = document.querySelector("#roomSearchInput"); // 채팅방
 const roomListArea = document.querySelector("#chattingRoomListArea"); // 채팅방 목록 영역
 const roomDetail = document.querySelector("#chattingRoomDetail"); // 채팅방 내부 영역
 
-// 팔레트
-const palette = document.querySelector("#palette"); // 팔레트 설정 버튼
-const palettePopupLayer = document.querySelector("#palettePopupLayer"); // 팝업 레이어
-const closeBtn2 = document.querySelector("#paletteCloseBtn"); // 팝업 닫기 버튼
-const palette1Color = document.querySelector("#palette1Color"); // 사이드 메뉴 색상 input
-const menuIconColor = document.querySelector("#menuIconColor"); // 사이드메뉴 아이콘 색상 input
-const palette2Color = document.querySelector("#palette2Color"); // 채팅방 목록 색상 input
-const listFontColor = document.querySelector("#listFontColor"); // 목록 글꼴 색상 input
-const palette3Color = document.querySelector("#palette3Color"); // 채팅방 내부 색상 input
-const chatFontColor = document.querySelector("#chatFontColor"); // 내부 글꼴 색상 input
-
 let selectChattingNo; // 선택한 채팅방 번호
 let selectTargetNo; // 현재 채팅 대상
 let selectTargetName; // 대상의 이름
 let selectTargetProfile; // 대상의 프로필
 
-// 회원 테마 적용
+// 랜더링 시 회원 테마 적용
 menuArea.style.backgroundColor=themas[0];
 palette1Color.value=themas[0];
 roomListArea.style.backgroundColor=themas[1];
@@ -44,9 +44,10 @@ palette3Color.value=themas[2];
 const inputChatting = document.getElementById("inputChatting");
 
 inputChatting.addEventListener("input",()=>{
+   let sendContent = inputChatting.value.split(/\r\n|\r|\n/);
    let rowCount = inputChatting.value.split(/\r\n|\r|\n/).length;
    if(rowCount < 2){ // textarea row=1일 때
-      inputChatting.style.height="41px"; // 최소값
+      inputChatting.style.height="42px"; // 최소값
    }
    else if(rowCount <= 15){
       inputChatting.style.height= ((rowCount*21)+20) + "px";
@@ -282,14 +283,8 @@ function selectRoomList(){
 
 }
 
-
-
-
-
-
 // 채팅 메세지 영역
 const display = document.getElementsByClassName("display-chatting")[0];
-
 
 // 채팅방 목록에 이벤트를 추가하는 함수 
 function roomListAddEvent(){
@@ -311,7 +306,9 @@ function roomListAddEvent(){
          if(item.children[1].children[1].children[1] != undefined){
             item.children[1].children[1].children[1].remove();
          }
-
+         // 채팅방 이름을 채팅상대로 변경
+         const rt = document.getElementById("roomTitle");
+         rt.innerText = selectTargetName;
    
          // 모든 채팅방에서 select 클래스를 제거
          for(let it of chattingItemList) it.classList.remove("select")
@@ -430,7 +427,7 @@ const sendMessage = () => {
       chattingSock.send(JSON.stringify(obj));
 
       inputChatting.value = "";
-      inputChatting.style.height="41px";
+      inputChatting.style.height="42px";
    }
 }
 
@@ -533,11 +530,9 @@ Coloris({
    alpha: true,          // 불투명도 조절가능 여부
    format: 'hex',        // 포맷 hex rgb hsl auto mixed
    formatToggle: false,   // 포맷 토글 사용여부
-   forceAlpha: false,    // 불투명토 미사용 시 값에 포함할지
-   clearButton: true,    
-   clearLabel: 'Clear',
+   forceAlpha: false,    // 불투명도 미사용 시 값에 포함할지
    closeButton: true,
-   closeLabel: 'Close',
+   closeLabel: '확인',
    swatches: [
       '#498792',
       '#99E1ED',
@@ -546,7 +541,7 @@ Coloris({
       '#DDD',
       'whitesmoke'
    ],
-   inline: false,
+   inline: false
 });
 
 Coloris.setInstance('.instance1', {
@@ -586,8 +581,6 @@ listFontColor.addEventListener("input",()=>{
    roomListArea.style.color = `${listFontColor.value}`;
    roomSearchInput.style.color = `${listFontColor.value}`;
    targetInput.style.color = `${listFontColor.value}`;
-   document.querySelector("#roomSearchInput > input::-webkit-input-placeholder").style.color = `${listFontColor.value}`;
-   document.querySelector("#targetInput > input::-webkit-input-placeholder").style.color = `${listFontColor.value}`;
 })
 
 // 채팅방내부 색상 변경
@@ -597,4 +590,36 @@ palette3Color.addEventListener("input",()=>{
 // 채팅방내부 글꼴 색상 변경
 chatFontColor.addEventListener("input",()=>{
    roomDetail.style.color = `${chatFontColor.value}`;
+})
+
+saveThemaBtn.addEventListener("click",()=>{
+   const equals = (a, b) => JSON.stringify(a) === JSON.stringify(b);
+   const nowThemas = [
+      palette1Color.value, menuIconColor.value,
+      palette2Color.value, listFontColor.value,
+      palette3Color.value, chatFontColor.value
+   ];
+   if(equals(themas, nowThemas)){
+      alert("변경사항이 없습니다.")
+   }
+   else{ // 변경사항이 있을 때
+      const newMemberThema = nowThemas.join(",,");
+      memberThema = newMemberThema;
+      const data = {
+         "newMemberThema" : newMemberThema,
+         "loginMemberNo" : loginMemberNo
+      };
+
+      fetch("/chatting/updateThema", {
+         method : "POST",
+         headers : {"Content-Type" : "application/json"},
+         body : JSON.stringify(data)
+      })
+      .then(resp => resp.text())
+      .then(chattingNo => {
+         
+         
+      })
+      .catch(err => console.log(err));
+   }
 })

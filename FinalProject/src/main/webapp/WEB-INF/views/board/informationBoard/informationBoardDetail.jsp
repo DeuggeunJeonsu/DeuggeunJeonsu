@@ -7,7 +7,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
-	<title>건강/운동정보</title>
+	<title>정보공유 게시판</title>
 
 	<link rel="stylesheet" href="/resources/css/board/informationBoard/informationBoardDetail-style.css">
     
@@ -42,14 +42,16 @@
     <div class="place"></div>
 	<section id="main-container">
         <div id="title-area">
-			<div class="board-title">건강/운동정보</div>
+			<div class="board-title">정보공유 게시판</div>
 			<div><h3>득근전수 회원님들이 유용한 지식을 얻어갈 수 있는 공간입니다.</h3></div>
 			<div>
 				<div><i class="fa-regular fa-clock"></i> <span id="createDate">${board.boardCreateDate}</span></div>
 				<div><i class="fa-solid fa-eye"></i> <span id="readCount">${board.readCount}</span></div>
 			</div>
 			<div>
-				<div class="categorie"># ${hashtag.tagContent}</div>
+                <c:forEach items="${board.tagList}" var="hashtag">
+                    <div class="categorie"># ${hashtag.tagContent}</div>
+                </c:forEach>
 				<div class="title">${board.boardTitle}</div>
 			</div>
 		</div>

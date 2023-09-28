@@ -1,0 +1,519 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="informationBoardMapper">
+
+	<!-- Board resultMap -->
+	<resultMap type="Board" id="informationBoard_rm">
+		<id property="boardNo" column="BOARD_NO" />
+
+		<result property="boardTitle" column="BOARD_TITLE" />
+		<result property="boardContent" column="BOARD_CONTENT" />
+		<result property="boardCreateDate" column="CREATE_DT" />
+		<result property="boardState" column="BOARD_ST" />
+		<result property="boardUpdateDate" column="UPDATE_DT" />
+		<result property="boardCode" column="BOARD_CODE" />
+		<result property="tagNo" column="TAG_NO" />
+
+		<result property="memberNo" column="MEMBER_NO" />
+		<result property="memberNickname" column="MEMBER_NICKNAME" />
+		<result property="profileImage" column="PROFILE_IMG" />
+		<result property="thumbnail" column="THUMBNAIL" />
+		<result property="readCount" column="READ_COUNT" />
+		
+		<result property="commentCount" column="COMMENT_COUNT" />
+		<result property="likeCount" column="LIKE_COUNT" />
+
+		<collection property="tagList"
+					select="selectHashtagList"
+					column="BOARD_NO"
+					javaType="java.util.ArrayList"
+					ofType="Hashtag">
+		</collection>
+		
+		<collection property="commentList"  
+      			  select="selectCommentList"
+      			  column="BOARD_NO"
+      			  javaType="java.util.ArrayList"
+      			  ofType="Comment"> 
+      	</collection>
+	</resultMap>
+	
+	<!-- comment resultMap -->
+   <resultMap type="Comment" id="comment_rm">
+      <id property="commentNo" column="COMMENT_NO"/>
+      <result property="commentContent" column="COMMENT_CONTENT"/>
+      <result property="commentCreateDate" column="C_CREATE_DT"/>
+      <result property="boardNo" column="BOARD_NO"/>
+      <result property="memberNo" column="MEMBER_NO"/>
+      <result property="commentDeleteFlag" column="COMMENT_DEL_FL"/>
+      <result property="parentNo" column="PARENT_NO"/>
+      <result property="memberNickname" column="MEMBER_NICKNAME"/>
+      <result property="profileImage" column="PROFILE_IMG"/>
+   </resultMap>
+	
+	<!-- BoardImage resultMap -->
+	<resultMap type="BoardImage" id="informationBoardImage_rm">
+		<id property="imageNo" column="IMG_NO" />
+
+		<result property="imagePath" column="IMG_PATH" />
+		<result property="imageReName" column="IMG_ORIGINAL" />
+		<result property="imageOriginal" column="IMG_RENAME" />
+		<result property="imageLevel" column="IMG_LEVEL" />
+		<result property="boardNo" column="BOARD_NO" />
+	</resultMap>
+
+	<!-- Hashtag resultMap -->	
+	<resultMap type="Hashtag" id="informationBoardHashtag_rm">
+		<id property="tagNo" column="TAG_NO" />
+		
+		<result property="boardNo" column="BOARD_NO" />
+		<result property="tagContent" column="TAG_CONTENT" />
+	</resultMap>
+	
+	<!-- 정보공유게시판 삭제되지 않은 게시글 수 조회 -->
+	<select id="getInformationBoardListCount" resultType="_int">
+		SELECT COUNT(*)
+		FROM BOARD
+		WHERE BOARD_ST = 'N'
+		AND BOARD_CODE = #{boardCode}
+	</select>
+	
+	<!-- 정보공유게시판 게시글 목록 조회 -->
+	<select id="selectInformationBoardList" resultMap="informationBoard_rm">
+		SELECT BOARD_NO,
+		BOARD_TITLE, MEMBER_NICKNAME, TO_CHAR(CREATE_DT, 'YY.MM.DD')
+		CREATE_DT, PROFILE_IMG,
+
+		(SELECT COUNT(*) FROM "COMMENT" C
+		WHERE C.BOARD_NO = B.BOARD_NO) COMMENT_COUNT,
+
+		(SELECT COUNT(*) FROM LIKE_POST L
+		WHERE L.BOARD_NO = B.BOARD_NO) LIKE_COUNT,
+
+		(SELECT IMG_RENAME FROM BOARD_IMG I
+		WHERE I.BOARD_NO = B.BOARD_NO
+		AND IMG_LEVEL = 0) THUMBNAIL
+
+		FROM "BOARD" B
+		JOIN "MEMBER" USING(MEMBER_NO)
+		WHERE BOARD_ST = 'N'
+		AND
+		BOARD_CODE = #{boardCode}
+		ORDER BY BOARD_NO DESC
+	</select>
+
+	<!-- 정보공유게시판 게시글 상세 조회 -->
+	<select id="selectInformationBoard" resultMap="informationBoard_rm">
+		SELECT BOARD_NO, BOARD_TITLE, BOARD_CONTENT, BOARD_CODE,
+	        READ_COUNT, MEMBER_NICKNAME, MEMBER_NO, PROFILE_IMG,
+	        TO_CHAR(CREATE_DT, 'YY.MM.DD') CREATE_DT,
+	        (SELECT COUNT(*)
+	        FROM LIKE_POST L
+	        WHERE L.BOARD_NO = B.BOARD_NO) LIKE_COUNT
+		FROM BOARD B
+		JOIN MEMBER USING(MEMBER_NO)
+		WHERE BOARD_ST = 'N'
+		AND BOARD_CODE = #{boardCode}
+		AND BOARD_NO = #{boardNo}
+	</select>
+
+	<!-- 정보공유게시판 조회수 증가 -->
+	<update id="updateInformationBoardReadCount">
+		UPDATE BOARD SET
+		READ_COUNT = READ_COUNT +1
+		WHERE BOARD_NO = #{boardNo}
+	</update>
+		
+	<!-- 정보공유게시판 좋아요 여부 확인 -->
+	<select id="informationBoardLikeCheck" resultType="_int">
+		SELECT COUNT(*) FROM LIKE_POST
+		WHERE BOARD_NO = #{boardNo}
+		AND MEMBER_NO = #{memberNo}
+	</select>
+	
+	<!-- 정보공유게시판 좋아요 처리 -->
+	<insert id="insertInformationBoardLike">
+		INSERT INTO LIKE_POST VALUES(#{memberNo}, #{boardNo})
+	</insert>
+	
+	<!-- 정보공유게시판 좋아요 취소(삭제) -->
+	<delete id="deleteInformationBoardLike">
+		DELETE FROM LIKE_POST
+		WHERE BOARD_NO = #{boardNo}
+		AND MEMBER_NO = #{memberNo}
+	</delete>
+	
+	<!-- 정보공유게시판 좋아요 수 조회 -->
+	<select id="countInformationBoardLike" resultType="_int">
+		SELECT COUNT(*) FROM LIKE_POST
+		WHERE BOARD_NO = #{boardNo}
+	</select>
+	
+	<!-- 정보공유게시판 특정 게시글 해시태그 조회 -->
+	<select id="selectHashtagList" resultMap="informationBoardHashtag_rm">
+		SELECT * FROM HASHTAG
+		JOIN BOARD_HASHTAG USING(TAG_NO)
+		WHERE BOARD_NO = #{boardNo}
+		ORDER BY TAG_NO
+	</select>
+	
+	<!-- 정보공유게시판 게시글 삽입 -->
+	<insert id="informationBoardInsert" parameterType="Board"
+		useGeneratedKeys="true">
+		<selectKey order="BEFORE" resultType="_int"
+			keyProperty="boardNo">
+			SELECT SEQ_BOARD_NO.NEXTVAL FROM DUAL
+		</selectKey>
+		INSERT INTO BOARD
+		VALUES(#{boardNo}, #{boardTitle}, #{boardContent},
+		DEFAULT, DEFAULT, DEFAULT, DEFAULT,
+		#{memberNo}, #{boardCode})
+	</insert>
+
+	<!-- 정보공유게시판 HASHTAG 테이블 해시태그 삽입 -->
+	<insert id="hashtagInsert" parameterType="Hashtag"
+		useGeneratedKeys="true">
+		<selectKey order="BEFORE" resultType="_int"
+			keyProperty="tagNo">
+			SELECT SEQ_TAG_NO.NEXTVAL FROM DUAL
+		</selectKey>
+		INSERT INTO HASHTAG
+		VALUES(#{tagNo}, #{tagContent})
+	</insert>
+
+	<!-- 정보공유게시판 BOARD_HASHTAG 테이블 해시태그 삽입 -->
+	<insert id="hashtagInsert2" parameterType="Hashtag">
+		INSERT INTO
+		BOARD_HASHTAG
+		VALUES(#{boardNo}, #{tagNo})
+	</insert>
+	
+	<!-- 정보공유게시판 이미지 삽입 -->
+	<insert id="informationBoardImageInsert" parameterType="BoardImage">
+		<selectKey order="BEFORE" resultType="_int"
+			keyProperty="imageNo">
+			SELECT SEQ_IMG_NO.NEXTVAL FROM DUAL
+		</selectKey>
+		INSERT INTO BOARD_IMG
+		VALUES(#{imageNo}, #{imagePath},
+		#{imageOriginal}, #{imageReName}, #{boardNo}, #{imageLevel})
+	</insert>
+	
+	<!-- 정보공유게시판 게시글 수정 -->
+	<update id="informationBoardUpdate">
+		UPDATE BOARD SET
+		BOARD_TITLE = #{boardTitle},
+		BOARD_CONTENT = #{boardContent},
+		UPDATE_DT = SYSDATE
+		WHERE BOARD_CODE = #{boardCode}
+		AND BOARD_NO = #{boardNo}
+	</update>
+	
+	<!-- 정보공유게시판 게시글 수정 시 삭제된 해시태그 BOARD_HASHTAG 테이블에서 삭제 -->
+	<delete id="hashtagDelete">
+		DELETE FROM BOARD_HASHTAG
+		WHERE BOARD_NO = #{boardNo}
+		AND TAG_NO IN ( ${deleteList} )
+	</delete>
+	
+	<!-- 정보공유게시판 게시글 수정 시 삭제된 해시태그 HASHTAG 테이블에서 삭제 -->
+	<delete id="hashtagDelete2">
+		DELETE FROM HASHTAG
+		WHERE TAG_NO IN ( ${deleteList} )
+	</delete>
+	
+	<!-- 정보공유게시판 게시글 삭제 -->
+	<update id="informationBoardDelete">
+		UPDATE BOARD SET
+		BOARD_ST = 'Y'
+		WHERE BOARD_NO = #{boardNo}
+	</update>
+	
+	<!-- 게시글 삭제 시 해시태그 삭제 (HASHTAG) -->
+	<delete id="informationBoardHashtagDelete">
+		DELETE FROM HASHTAG
+		WHERE TAG_NO IN (
+		SELECT TAG_NO
+		FROM HASHTAG
+		JOIN BOARD_HASHTAG USING(TAG_NO)
+		JOIN BOARD USING(BOARD_NO)
+		WHERE BOARD_NO = #{boardNo}
+		)
+	</delete>
+	
+	<!-- 게시글 삭제 시 이미지 삭제 -->
+	<delete id="informationBoardImageDelete">
+		DELETE FROM BOARD_IMG
+		WHERE BOARD_NO = #{boardNo}
+	</delete>
+
+	<!-- 팔로우 여부 확인 -->	
+	<select id="memberFollowCheck" resultType="_int">
+		SELECT COUNT(*) FROM FOLLOW
+		WHERE FOLLOWER_NO = #{boardMemberNo}
+		AND MEMBER_NO = #{memberNo}
+	</select>
+	
+	<!-- 멤버 팔로우 -->	
+	<insert id="memberFollow">
+		INSERT INTO FOLLOW
+		VALUES(#{boardMemberNo}, #{loginMemberNo})
+	</insert>
+	
+	<!-- 멤버 언팔로우 -->	
+	<delete id="memberUnfollow">
+		DELETE FROM FOLLOW
+		WHERE FOLLOWER_NO = #{boardMemberNo}
+		AND MEMBER_NO = #{loginMemberNo}
+	</delete>
+	
+	<!-- 삭제되지 않고 검색 조건이 일치하는 게시글 수 조회 -->
+	<select id="getInformationBoardListCount_search" resultType="_int">
+		SELECT COUNT(*) FROM BOARD
+		WHERE BOARD_ST = 'N'
+		AND BOARD_CODE = #{boardCode}
+		<if test=" key != null and key != ''">
+			<choose>
+				<when test='key == "h"'>
+					AND BOARD_NO IN (
+	            		SELECT BOARD_NO FROM BOARD_HASHTAG
+	            		JOIN HASHTAG USING(TAG_NO)
+	            		WHERE TAG_CONTENT LIKE '%건강정보%')
+				</when>
+				<when test='key == "f"'>
+					AND BOARD_NO IN (
+	            		SELECT BOARD_NO FROM BOARD_HASHTAG
+	            		JOIN HASHTAG USING(TAG_NO)
+	            		WHERE TAG_CONTENT LIKE '%운동정보%')
+				</when>
+				<when test='key == "t"'>
+					AND BOARD_NO IN (
+	            		SELECT BOARD_NO FROM BOARD_HASHTAG
+	            		JOIN HASHTAG USING(TAG_NO)
+	            		WHERE TAG_CONTENT LIKE '%최근동향%')
+				</when>
+			</choose>
+		</if>
+		<if test="query != null and query !=''">
+				AND (BOARD_TITLE LIKE '%${query}%' OR BOARD_CONTENT LIKE '%${query}%')
+		</if>
+	</select>
+	
+	<!-- 정보공유게시판 게시글 상세 검색 -->
+	<select id="selectInformationBoardList_search" resultMap="informationBoard_rm">
+		SELECT BOARD_NO, BOARD_TITLE, MEMBER_NICKNAME,
+		TO_CHAR(CREATE_DT, 'YY.MM.DD') CREATE_DT,
+		(SELECT COUNT(*) FROM "COMMENT" C
+		
+		WHERE C.BOARD_NO = B.BOARD_NO) COMMENT_COUNT,
+		(SELECT COUNT(*) FROM LIKE_POST L
+		
+		WHERE L.BOARD_NO = B.BOARD_NO) LIKE_COUNT,
+		(SELECT IMG_RENAME FROM BOARD_IMG I
+		
+		WHERE I.BOARD_NO = B.BOARD_NO
+		AND IMG_LEVEL = 0) THUMBNAIL
+		
+		FROM "BOARD" B
+		JOIN "MEMBER" USING(MEMBER_NO)
+		
+		WHERE BOARD_ST = 'N'
+		AND BOARD_CODE = #{boardCode}
+
+		<if test=" key != null and key != ''">
+			<choose>
+				<when test='key == "h"'>
+					AND BOARD_NO IN (
+	            		SELECT BOARD_NO FROM BOARD_HASHTAG
+	            		JOIN HASHTAG USING(TAG_NO)
+	            		WHERE TAG_CONTENT LIKE '%건강정보%')
+				</when>
+				<when test='key == "f"'>
+					AND BOARD_NO IN (
+	            		SELECT BOARD_NO FROM BOARD_HASHTAG
+	            		JOIN HASHTAG USING(TAG_NO)
+	            		WHERE TAG_CONTENT LIKE '%운동정보%')
+				</when>
+				<when test='key == "t"'>
+					AND BOARD_NO IN (
+	            		SELECT BOARD_NO FROM BOARD_HASHTAG
+	            		JOIN HASHTAG USING(TAG_NO)
+	            		WHERE TAG_CONTENT LIKE '%최근동향%')
+				</when>
+			</choose>
+		</if>
+		<if test="query != null and query !=''">
+				AND (BOARD_TITLE LIKE '%${query}%' OR BOARD_CONTENT LIKE '%${query}%')
+		</if>
+
+	</select>
+	
+	<!-- 마이페이지 - 피드 주인의 게시글 수 조회 -->
+	<select id="getBoardCount" resultType="_int">
+		SELECT COUNT(*)
+		FROM "BOARD"
+		JOIN "MEMBER" USING(MEMBER_NO)
+		WHERE BOARD_ST = 'N'
+		AND MEMBER_NO = #{memberNo}
+
+		ORDER BY BOARD_NO DESC
+	</select>
+	
+	<!-- 마이페이지 - 피드 주인의 게시글 목록 조회 -->
+	<select id="selectFeedBoardList" resultMap="informationBoard_rm">
+		SELECT BOARD_NO,
+		BOARD_TITLE, MEMBER_NICKNAME, TO_CHAR(CREATE_DT, 'YY.MM.DD')
+		CREATE_DT, BOARD_CODE,
+
+		(SELECT COUNT(*) FROM "COMMENT" C
+		WHERE C.BOARD_NO = B.BOARD_NO) COMMENT_COUNT,
+
+		(SELECT COUNT(*) FROM LIKE_POST L
+		WHERE L.BOARD_NO = B.BOARD_NO) LIKE_COUNT,
+
+		(SELECT IMG_RENAME FROM BOARD_IMG I
+		WHERE I.BOARD_NO = B.BOARD_NO
+		AND IMG_LEVEL = 0) THUMBNAIL
+
+		FROM "BOARD" B
+		JOIN "MEMBER" USING(MEMBER_NO)
+		WHERE BOARD_ST = 'N'
+		AND MEMBER_NO = #{memberNo}
+
+		ORDER BY BOARD_NO DESC
+	</select>
+	
+	<select id="selectCommentList" resultMap="comment_rm">
+		WITH CommentHierarchy AS (
+		    SELECT COMMENT_NO, COMMENT_CONTENT,
+		           TO_CHAR(C_CREATE_DT, 'YYYY.MM.DD') C_CREATE_DT,
+		           BOARD_NO, MEMBER_NO, MEMBER_NICKNAME, PROFILE_IMG, PARENT_NO, COMMENT_DEL_FL
+		    FROM "COMMENT"
+		    JOIN MEMBER USING(MEMBER_NO)
+		    WHERE BOARD_NO = #{boardNo}
+		    AND COMMENT_DEL_FL = 'N'
+		)
+		SELECT LEVEL, C.*
+		FROM CommentHierarchy C
+		START WITH PARENT_NO IS NULL
+		CONNECT BY PRIOR COMMENT_NO = PARENT_NO
+		ORDER SIBLINGS BY C_CREATE_DT DESC, COMMENT_NO DESC
+	</select>
+	
+	<!-- 메인페이지 전체 게시글 인기글 조회 -->
+	<select id="trendingAll" resultMap="informationBoard_rm">
+		SELECT *
+		FROM (
+			SELECT BOARD_NO, BOARD_CODE,
+			BOARD_TITLE, BOARD_CONTENT, MEMBER_NICKNAME,
+	
+			(SELECT COUNT(*) FROM "COMMENT" C
+			WHERE C.BOARD_NO = B.BOARD_NO) COMMENT_COUNT,
+	
+			(SELECT COUNT(*) FROM LIKE_POST L
+			WHERE L.BOARD_NO = B.BOARD_NO) LIKE_COUNT,
+	
+			<choose>
+				<when test='boardCode == "2"'>
+					(SELECT IMG_PATH || IMG_RENAME FROM BOARD_IMG I
+					WHERE I.BOARD_NO = B.BOARD_NO
+					AND IMG_LEVEL = 0) THUMBNAIL
+				</when>
+				<otherwise>
+					(SELECT IMG_RENAME FROM BOARD_IMG I
+					WHERE I.BOARD_NO = B.BOARD_NO
+					AND IMG_LEVEL = 0) THUMBNAIL
+				</otherwise>
+			</choose>
+	
+			FROM "BOARD" B
+			JOIN "MEMBER" USING(MEMBER_NO)
+			WHERE BOARD_ST = 'N'
+			AND
+			BOARD_CODE BETWEEN '1' AND '3'
+			ORDER BY LIKE_COUNT DESC
+		)
+		WHERE ROWNUM = 1
+	</select>
+	
+	<!-- 메인페이지 정보 공유 게시판 인기글 조회 -->
+	<select id="trendingInfo" resultMap="informationBoard_rm">
+		SELECT *
+		FROM (
+			SELECT BOARD_NO, BOARD_CODE,
+			BOARD_TITLE, BOARD_CONTENT, MEMBER_NICKNAME,
+	
+			(SELECT COUNT(*) FROM "COMMENT" C
+			WHERE C.BOARD_NO = B.BOARD_NO) COMMENT_COUNT,
+	
+			(SELECT COUNT(*) FROM LIKE_POST L
+			WHERE L.BOARD_NO = B.BOARD_NO) LIKE_COUNT,
+
+					(SELECT IMG_RENAME FROM BOARD_IMG I
+					WHERE I.BOARD_NO = B.BOARD_NO
+					AND IMG_LEVEL = 0) THUMBNAIL
+	
+			FROM "BOARD" B
+			JOIN "MEMBER" USING(MEMBER_NO)
+			WHERE BOARD_ST = 'N'
+			AND
+			BOARD_CODE = 1
+			ORDER BY LIKE_COUNT DESC
+		)
+		WHERE ROWNUM = 1
+	</select>
+	
+	<!--  메인페이지 루틴 공유 게시판 인기글 조회 -->
+	<select id="trendingRoutine" resultMap="informationBoard_rm">
+		SELECT *
+		FROM (
+			SELECT BOARD_NO, BOARD_CODE,
+			BOARD_TITLE, BOARD_CONTENT, MEMBER_NICKNAME,
+	
+			(SELECT COUNT(*) FROM "COMMENT" C
+			WHERE C.BOARD_NO = B.BOARD_NO) COMMENT_COUNT,
+	
+			(SELECT COUNT(*) FROM LIKE_POST L
+			WHERE L.BOARD_NO = B.BOARD_NO) LIKE_COUNT,
+
+			(SELECT IMG_PATH || IMG_RENAME FROM BOARD_IMG I
+			WHERE I.BOARD_NO = B.BOARD_NO
+			AND IMG_LEVEL = 0) THUMBNAIL
+	
+			FROM "BOARD" B
+			JOIN "MEMBER" USING(MEMBER_NO)
+			WHERE BOARD_ST = 'N'
+			AND
+			BOARD_CODE = 2
+			ORDER BY LIKE_COUNT DESC
+		)
+		WHERE ROWNUM = 1
+	</select>
+	
+	<!-- 메인페이지 정보공유 게시판 인기글 조회 -->
+	<select id="trendingFree" resultMap="informationBoard_rm">
+		SELECT *
+		FROM (
+			SELECT BOARD_NO, BOARD_CODE,
+			BOARD_TITLE, BOARD_CONTENT, MEMBER_NICKNAME,
+	
+			(SELECT COUNT(*) FROM "COMMENT" C
+			WHERE C.BOARD_NO = B.BOARD_NO) COMMENT_COUNT,
+	
+			(SELECT COUNT(*) FROM LIKE_POST L
+			WHERE L.BOARD_NO = B.BOARD_NO) LIKE_COUNT,
+	
+			(SELECT IMG_RENAME FROM BOARD_IMG I
+			WHERE I.BOARD_NO = B.BOARD_NO
+			AND IMG_LEVEL = 0) THUMBNAIL
+	
+			FROM "BOARD" B
+			JOIN "MEMBER" USING(MEMBER_NO)
+			WHERE BOARD_ST = 'N'
+			AND
+			BOARD_CODE = 3
+			ORDER BY LIKE_COUNT DESC
+		)
+		WHERE ROWNUM = 1
+	</select>
+</mapper>
