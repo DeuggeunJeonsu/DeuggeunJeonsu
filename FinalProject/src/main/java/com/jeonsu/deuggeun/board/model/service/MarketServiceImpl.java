@@ -494,11 +494,7 @@ public class MarketServiceImpl implements MarketService {
 
 		if (count > 0) {
 
-			System.out.println("parmaMap의 값 : " + paramMap);
-//			List<Product> productList = dao.searchProduct(paramMap);
 			List<Board> searchList = dao.searchAll(paramMap);
-			System.out.println("searchList의 값 : " + searchList);
-//			System.out.println("productList의 값 : " + productList);
 			List<Board> listCount = dao.searchCount(paramMap);
 			map.put("count", count);
 			map.put("searchList", searchList);
@@ -517,17 +513,14 @@ public class MarketServiceImpl implements MarketService {
 
 		int count = dao.selectCount(paramMap);
 		Map<String, Object> map = new HashMap<>();
-		System.out.println("실행되나용");
 
 		if(count > 0){
 
-			System.out.println("실행되나용22");
 			List<Product> productList = dao.searchProduct(paramMap);
 			map.put("productList", productList);
-			System.out.println("상품리스트의 값 : " + productList);
 
 		}else{
-			System.out.println("카운트가 0개ㅠㅠ");
+
 		}
 		return map;
 	}
