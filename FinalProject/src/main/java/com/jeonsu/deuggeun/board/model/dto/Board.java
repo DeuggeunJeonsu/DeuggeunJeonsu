@@ -26,12 +26,13 @@ public class Board {
 	private String tagContent; // 해시태그 내용
 	private String imgRename;
 	private int count;
+	private String imgPath;
 
 	private int memberNo; // 작성자 회원 번호
 	private String memberNickname; // 작성자 닉네임
 	private String profileImage; // 작성자 프로필 이미지
 	private String thumbnail; // 게시글 썸네일
-	
+
 	private int commentCount; // 댓글 수
 	private int likeCount;    // 좋아요 수
 
@@ -40,6 +41,7 @@ public class Board {
 	private String productImg;
 	private int productNo;
 	private String productTitle;
+	private String productName;
 	private String productContent;
 
 	// 문의 관련

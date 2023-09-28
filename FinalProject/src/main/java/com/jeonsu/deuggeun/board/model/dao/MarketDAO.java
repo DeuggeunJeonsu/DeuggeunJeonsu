@@ -285,9 +285,8 @@ public class MarketDAO {
 		return  sqlSession.selectList("marketMapper.searchCount", paramMap);
 	}
 
-	// 게시글 1개 일때
-	public Board selectBoard(Map<String, Object> paramMap) {
-		return sqlSession.selectOne("marketMapper.selectBoard", paramMap);
+	// 상품조회
+	public List<Product> searchProduct(Map<String, Object> paramMap) {
+		return sqlSession.selectList("marketMapper.searchProduct", paramMap);
 	}
-
 }

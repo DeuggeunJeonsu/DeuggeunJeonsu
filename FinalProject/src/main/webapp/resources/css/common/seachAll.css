@@ -11,6 +11,7 @@ body{
     margin-right: auto;
     /*background-color: #fdd2d9;*/
     margin-bottom: 50px;
+    min-height: 65vh;
 }
 .total{
     margin-bottom: 3.5rem;
@@ -79,7 +80,7 @@ a{
 .thumb{
     /* position: absolute; */
     border: 1px solid black;
-    width: 100%;
+    width: 100% !important;
     height: 35%;
     display: block;
     object-fit: cover;
@@ -97,13 +98,29 @@ h2{
     /*color: var(--text1);*/
 }
 .contentP{
+    /*margin-bottom: 2rem;*/
+    /*margin-top: 0.5rem;*/
+    /*font-size: 1.2rem;*/
+    /*word-break: keep-all;*/
+    /*overflow-wrap: break-word;*/
+    /*color: #495057;*/
+}
+.contentDiv{
     margin-bottom: 2rem;
     margin-top: 0.5rem;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     word-break: keep-all;
     overflow-wrap: break-word;
     color: #495057;
 }
+/*p{*/
+/*    margin-bottom: 2rem !important;*/
+/*    margin-top: 0.5rem !important;*/
+/*    font-size: 1.2rem !important;*/
+/*    word-break: keep-all !important;*/
+/*    overflow-wrap: break-word !important;*/
+/*    color: #495057 !important;*/
+/*}*/
 .subinfo{
     display: flex;
     -webkit-box-align: center;
@@ -129,6 +146,9 @@ svg{
     width: 0.875rem;
     height: 0.875rem;
     margin-right: 0.25rem;
+}
+.place1{
+    height: 60vh;
 }
 .place{
     height: 100px;
@@ -159,3 +179,74 @@ svg{
     background: transparent;
     display: block;
 }
+#searchSvg{
+    width: 200px !important;
+    height: 150px !important;
+}
+.pull {
+    position: relative;
+    width: 450px;
+    height: 250px;
+    padding: 20px;
+    color: #FFF;
+    border-radius: 10px;
+    background-color: #477A7B;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.pull:after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: -20px;
+    margin-top: -10px;
+    border-left: 20px solid #477A7B;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+}
+.pull-text{
+    font-family: 'Montserrat','Nanum Gothic',sans-serif;
+    font-size: 1.7em;
+}
+.box {
+    /*height: 58vh;*/
+    /*background-color: #faf9f3;*/
+}
+.product-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-top: 50px;
+    gap: 20px; /* 각 상품 항목 사이의 간격 */
+}
+
+.product-item {
+    border: 1px solid #ddd;
+    padding: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    width: 250px;
+}
+
+.product-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.product-details {
+    text-align: center;
+}
+
+.product-name {
+    font-size: 1em;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.product-content {
+    font-size: 1em;
+    color: #666;
+}
+

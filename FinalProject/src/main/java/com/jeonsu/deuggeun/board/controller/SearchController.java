@@ -22,11 +22,15 @@ public class SearchController {
     public String searchAll(Model model,
                             @RequestParam Map<String, Object> paramMap){
 
-        paramMap.put("keyword", paramMap.get("keyword"));
-        Map<String, Object> map = service.searchAll(paramMap);
-
-        model.addAttribute("map", map);
-
+        if(paramMap.get("keyword") == null) {
+            return "/common/searchAll";
+        }else{
+            paramMap.put("keyword", paramMap.get("keyword"));
+            Map<String, Object> map = service.searchAll(paramMap);
+            Map<String, Object> map2 = service.searchProduct(paramMap);
+            model.addAttribute("map", map);
+            model.addAttribute("map2", map2);
+        }
         return "/common/searchAll";
     }
 }
