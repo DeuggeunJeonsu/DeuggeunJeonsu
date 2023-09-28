@@ -48,6 +48,8 @@
     align-items: center;
     justify-content: left;
     overflow: hidden;
+
+    border-radius: 8px;
 }
 
 #wrapper  a{

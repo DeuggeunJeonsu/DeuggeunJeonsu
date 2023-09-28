@@ -342,11 +342,6 @@ a:hover {
 }
 
 /* 인증 번호 시간 */
-#smsTimer{
-  color: #99e1ed;
-  height: 18px;
-}
-
 .signUp-last-btn{
   margin-top: -20px;
   margin-bottom: 80px;
