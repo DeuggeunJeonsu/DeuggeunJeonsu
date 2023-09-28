@@ -67,7 +67,7 @@
             <div id="sort-btn-area">
 
                 <%-- 최신순 --%>
-                <a href="/board/3/list?key=r">
+                <a href="/board/3/list?key=r${sp}">
                     <c:if test="${param.key == 'r'}" >
                         <span name="key" value="r" style="font-weight:bold; color:#99E1ED" id="recent-sort-btn">최신순</span>
                     </c:if>
@@ -77,7 +77,7 @@
                 </a> |
 
                 <%-- 인기순 --%>
-                <a href="/board/3/list?key=p">
+                <a href="/board/3/list?key=p${sp}">
                     <c:if test="${param.key == 'p'}" >
                         <span name="key" value="p" style="font-weight:bold; color:#99E1ED" id="popular-sort-btn">인기순</span>
                     </c:if>
@@ -91,7 +91,7 @@
                 |
                 </c:if>
                 <c:if test="${!empty loginMember}">
-                    <a href="/board/3/list?key=f">
+                    <a href="/board/3/list?key=f${sp}">
                         <c:if test="${param.key == 'f'}" >
                             <span name="key" value="f" style="font-weight:bold; color:#99E1ED" id="following-sort-btn">팔로잉순</span>
                         </c:if>

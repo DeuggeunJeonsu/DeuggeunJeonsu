@@ -190,13 +190,21 @@ public class MemberController {
 	
 	// 회원 가입 진행
 	@PostMapping("/signUp")
-	public String signUp(Member inputMember, String memberAddress, RedirectAttributes ra){
+	public String signUp(Member inputMember, String[] memberAddress, RedirectAttributes ra){
+		
+		if(inputMember.getMemberAddress().equals(",,")) {
+			inputMember.setMemberAddress(null);
+			
+		} else {
+			String addr = String.join(",,", memberAddress);
+			inputMember.setMemberAddress(addr);
+		}
 		
 		// 회원가입 시 입력한 정보로 DB에 INSERT 
 		int result = service.signUp(inputMember);
 		
 		// INSERT 성공/실패 시 메세지 설정
-		String message = result> 0 ? (inputMember.getMemberNickname() + "님의 가입을 환영합니다.") : "회원 가입에 실패했습니다.";
+		String message = result> 0 ? (inputMember.getMemberNickname() + " 님의 가입을 환영합니다!") : "회원 가입에 실패했습니다.";
 		
 		// INSERT 성공시 메인페이지로, 실패시 다시 회원가입 페이지로
 		String path = "redirect:"+(result> 0 ? "/" : "signUp");

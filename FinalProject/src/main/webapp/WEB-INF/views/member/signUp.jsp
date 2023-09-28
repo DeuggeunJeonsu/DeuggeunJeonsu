@@ -58,8 +58,8 @@
           <div>
 
             <div class="auth-input-area">
-              <input type="text" name = "pwAuthenticationKey" id = "pwAuthenticationKey" placeholder="인증 번호 입력" maxlength="6" autocomplete="off">
-              <button type="button" id="findPwBtn">인증 번호 확인</button>
+              <input type="text" name = "pwAuthenticationKey" id = "email-auth-key" placeholder="인증 번호 입력" maxlength="6" autocomplete="off">
+              <button type="button" id="email-auth-btn">인증 번호 확인</button>
             </div>
 
 
@@ -104,16 +104,21 @@
 
         <div>
           <div class="auth-input-area">
-            <input type="text" placeholder="인증 번호 입력" id="idAuthenticationKey">
-            <button type="button" id="findIdBtn">인증 번호 확인</button>
+            <input type="text" placeholder="인증 번호 입력" id="tel-auth-key">
+            <button type="button" id="tel-auth-btn">인증 번호 확인</button>
           </div>
 
+          <p class="auth-message" id="authMessage2"></p>
           <section class="timerSection">
             <div id="smsTimer"></div>
           </section>
 
         </div>
 
+          <p class="auth-message" id="authMessage"></p>
+          <section class="timerSection">
+            <div id="emailTimer"></div> 
+          </section>
 
         <div>
           <label class="imp">주소</label>
