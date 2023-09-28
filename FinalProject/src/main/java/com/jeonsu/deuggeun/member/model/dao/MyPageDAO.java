@@ -232,8 +232,34 @@ public class MyPageDAO {
 		return sqlSession.selectList("myPageMapper.selectMarketList" , loginMember);
 	}
 
+	/** 프로필 이미지 변경
+	 * @param loginMember
+	 * @return
+	 */
 	public int updateProfileImage(Member loginMember) {
 		return sqlSession.update("myPageMapper.updateProfileImage", loginMember);
+	}
+
+	/** 회원정보 변경 
+	 * @param updateMember
+	 * @return
+	 */
+	public int updateInfo(Member updateMember) {
+		return sqlSession.update("myPageMapper.updateInfo", updateMember);
+	}
+
+	/** 비밀번호 변경 
+	 * @param encode
+	 * @param memberNo
+	 * @return
+	 */
+	public int changePw(String newPw, int memberNo) {
+		
+		Member member = new Member();
+		member.setMemberNo(memberNo);
+		member.setMemberPw(newPw);
+		
+		return sqlSession.update("myPageMapper.changePw", member);
 	}
 
 

@@ -50,8 +50,12 @@
                     <ul>
                         <li>
                             <span>닉네임</span>
-                            <input type="text" name="memberNickName" id="memberNickname"
-                            placeholder="한글/숫자 만 가능합니다." value="${loginMember.memberNickname}">
+                            <div class="nickArea">
+                                <input type="text" name="memberNickname" id="memberNickname"
+                                placeholder="한글/숫자 만 가능합니다." value="${loginMember.memberNickname}">
+                                <span id="nickMessage"></span>
+                            </div>
+                            
                         </li>
                         <li>
                             <span>전화번호</span>
@@ -68,7 +72,7 @@
                                 <input type="text" name="memberAddress" 
                                 placeholder="도로명/지번 주소"value="${addr[1]}" id="sample6_address" readonly>
                                 <input type="text" name="memberAddress" 
-                                placeholder="상세주소"value="${addr[1]}" id="sample6_detailAddress">
+                                placeholder="상세주소"value="${addr[2]}" id="sample6_detailAddress">
                             </div>
                         </li>
                     
@@ -77,18 +81,18 @@
                     <ul>
                         <li>
                             <span>비밀번호</span>
-                            <input type="text" name="memberPw" 
-                            placeholder="">
+                            <input type="password" name="newPw" id="newPw" maxlength="30"
+                            placeholder="새로운 비밀번호를 입력해 주세요" >
                         </li>
                         <li>
                             <span>비밀번호 확인</span>
-                            <input type="text" name="memberPw-confirm" 
-                            placeholder="">
+                            <input type="password" name="memberPwConfirm" id="newPwConfirm" maxlength="30"
+                            placeholder="다시 입력해주세요">
                         </li>
                     
                     </ul>
                     <div class="btnArea">
-					    <a class="button btnPush btnLightBlue" id="myPage-submit" type="submit">수정하기</a>
+					    <button class="button btnPush btnLightBlue" type="submit">수정하기</button>
 				    </div> 
                 </form>
 
@@ -133,10 +137,6 @@
             }).open();
         }
     </script>
-
-
-
-
 
     <%-- myUpdate.js 연결 --%>
 	<script src="/resources/js/member/myPage/myUpdate.js"></script>

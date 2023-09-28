@@ -58,13 +58,13 @@
     font-size: 20px;
     display: flex;
     justify-content: space-between;
-    height: 50px
+    height: 55px
 }
 #updateInfo li:nth-child(3){
     font-size: 20px;
     display: flex;
     justify-content: space-between;
-    height: 150px
+    height: 15px
 }
 #updateInfo input{
     width: 400px;
@@ -84,6 +84,15 @@
 }
 .info-address{
     position: relative;
+}
+.nickArea{
+    display: flex;
+    flex-direction: column;
+}
+
+.nickArea > span{
+    font-size: 10px;
+    
 }
 
 .info-address button {
@@ -105,11 +114,12 @@
     display: flex;
 }
 
-.btnArea > a, .btnArea > a:visited {
+
+.btnArea > button , .btnArea > button:visited {
     text-decoration: none;
     color: #00AE68;
     cursor: pointer;
-
+    border: none;
 
     display: block;
     position: relative;

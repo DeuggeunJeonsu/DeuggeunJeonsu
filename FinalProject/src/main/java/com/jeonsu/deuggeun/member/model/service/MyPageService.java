@@ -113,4 +113,10 @@ public interface MyPageService {
 	 */
 	int updateProfile(MultipartFile profileImage, String webPath, String filePath, Member loginMember)throws IllegalStateException, IOException;
 
+	// 회원정보 수정 
+	int updateInfo(Member updateMember);
+
+	// 비밀번호 수정
+	int changePw(String newPw, int memberNo);
+
 }

@@ -1,16 +1,15 @@
 
 // 회원 정보
 const memberNickname = document.getElementById("memberNickname");
-const updateInfo = document.getElementById("myPage-submit");
-
+const updateInfo = document.getElementById("updateInfo");
+const nickMessage = document.getElementById("nickMessage");
 
 if(updateInfo != null){
     initNickname = memberNickname.value;
     initTel = memberTel.value;
     
-
+    // 닉네임 유효성
     memberNickname.addEventListener("input", () => {
-
         if(initNickname == memberNickname.value){
             memberNickname.removeAttribute("style");
 
@@ -19,13 +18,27 @@ if(updateInfo != null){
         const regEx = /^[가-힣0-9\w\s]*[가-힣][가-힣0-9\w\s]{2,10}$/;
 
         if(regEx.test(memberNickname.value)){
-            memberNickname.style.color = "#99E1ED";
 
+            fetch("/checkNick/nickname?nickname=" + memberNickname.value)
+            .then(nickname => nickname.text())
+            .then(name => {
+                if(name == 0){
+                    nickMessage.innerText="사용 가능한 닉네임입니다."
+                    memberNickname.style.color = "#99E1ED";
+                }else{
+                    nickMessage.innerText="이미 사용 중인 닉네임입니다."
+                    memberNickname.style.color = "red";
+                }
+            })
+            .catch(err => console.log(err))
         }else{
-            memberNickname.style.color = "#ee4949";
+            memberNickname.style.color = "red";
+        
         }
+
     });
 
+    // 전화번호 유효성
     memberTel.addEventListener("input", () => {
 
         if(initTel == memberTel.value){
@@ -40,7 +53,7 @@ if(updateInfo != null){
 
             memberTel.style.color = "#99E1ED";
         } else{
-            memberTel.style.color = "#ee4949";
+            memberTel.style.color = "red";
         }
 
     });
@@ -49,7 +62,10 @@ if(updateInfo != null){
 
     updateInfo.addEventListener("submit" , e=>{
 
-        if(memberNickname.style.color == "#ee4949"){
+        
+        
+        // 닉네임이 중복
+        if(memberNickname.style.color == "red"){
 
             alert("닉네임 형식이 유효하지 않습니다.");
 
@@ -60,7 +76,7 @@ if(updateInfo != null){
             return;
         }
 
-        if(memberTel.style.color == "#ee4949"){
+        if(memberTel.style.color == "red"){
 
             alert("전화번호 형식이 유효하지 않습니다.");
 
@@ -84,7 +100,6 @@ if(updateInfo != null){
                 alert("비밀번호가 유효하지 않습니다.");
                 
                 e.preventDefault();
-                
                 newPw.focus();
                 
                 return;
@@ -96,12 +111,13 @@ if(updateInfo != null){
                 alert("두 비밀번호가 일치하지 않습니다.");
                 
                 newPwConfirm.focus();
-                
                 e.preventDefault();
                 
                 return;
             }
         }
+
+        document.getElementById("updateInfo").submit();
         
 
     })

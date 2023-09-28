@@ -316,29 +316,72 @@ public class MyPageController {
 		return service.inquiryAnswer(boardNo);
 	}
 
+	// 회원프로필 수정
 	@ResponseBody
 	@PostMapping("/changeProfile")
 	public int changeProfile(
 			@RequestParam("profileImage") MultipartFile profileImage // 업로드한 파일 정보
 			, @SessionAttribute("loginMember") Member loginMember 
-			
+
 			, HttpSession session
 			) throws IllegalStateException, IOException{
 
-			// System.out.println("profileImage File Name : " + profileImage.getOriginalFilename());
-			// System.out.println("profileImage File Size : " +profileImage.getSize());
+		// System.out.println("profileImage File Name : " + profileImage.getOriginalFilename());
+		// System.out.println("profileImage File Size : " +profileImage.getSize());
 
 		String webPath = "/resources/images/member/";
-		
+
 		// 실제 파일 저장 경로 
 		String filePath = session.getServletContext().getRealPath(webPath);
-		
+
 		// 프로필 이미지 수정 서비스 호출 
 		return  service.updateProfile(profileImage, webPath, filePath, loginMember);
-		
-		
-		
-		
+
+
 	}
 
+
+	// 회원정보 수정 & 비밀번호 변경
+	@PostMapping("/info")
+	public String info(Member updateMember, String[] memberAddress
+			, @SessionAttribute("loginMember") Member loginMember
+			, RedirectAttributes ra
+			, String newPw
+			) {
+
+		// 주소
+		String addr = String.join("^^^", memberAddress);
+		updateMember.setMemberAddress(addr);
+
+		// 로그인한 회원번호 추가 
+		updateMember.setMemberNo( loginMember.getMemberNo());
+
+		// DB에 회원 정보 수정 Update 서비스 호출
+		int result = service.updateInfo(updateMember);
+
+		String message = null; 
+		if(result > 0 ) {
+			message = "회원정보가 수정되었습니다.";
+
+			//Session에 로그인된  회원 정보도 수정(동기화)
+			loginMember.setMemberNickname(updateMember.getMemberNickname());
+			loginMember.setMemberTel(updateMember.getMemberTel());
+			loginMember.setMemberAddress(updateMember.getMemberAddress());
+
+		}else {
+			message= "회원 정보 수정 실패.";
+		}
+
+		//----------------------------------------------------
+		// 비밀번호 변경 
+		if( newPw != null ) {
+			int memberNo = loginMember.getMemberNo();
+
+			// 비밀번호 변경 Service 호출
+			int result2 = service.changePw(newPw, memberNo);
+			
+		}	
+		ra.addFlashAttribute("message", message);
+		return"redirect:myUpdate"; 
+	}
 }
