@@ -124,7 +124,7 @@
         </div>
     </c:forEach>
 
-    <c:if test="${!empty map2.productList}">
+    <c:if test="${!empty productList}">
         <h1 class="nav">마켓 상품 ☺️</h1>
     </c:if>
     <div class="product-list board5">
@@ -156,26 +156,29 @@
     });
 
     $(".detail").click(function() {
-
         $(".detail").addClass("unselected-board");
 
         var boardCode = $(this).data("boardcode");
 
         $(".resultCon").hide();
         $(".product-list").hide();
+        $(".nav").hide();
         $(".board" + boardCode).show();
 
-        $(this).removeClass("unselected-board");
+        if (boardCode == 5) {
+            $(".nav").show();
+        }
 
+        $(this).removeClass("unselected-board");
         $("#show-all").show();
     });
 
     $("#show-all").click(function() {
         $(".resultCon").show();
         $(".product-list").show();
+        $(".nav").show();
 
         $(".detail").removeClass("unselected-board");
-
         $(this).hide();
     });
 
