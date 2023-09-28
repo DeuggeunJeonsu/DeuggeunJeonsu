@@ -156,6 +156,7 @@ main {
    overflow: hidden;
    display: flex;
    background-color: rgba( 255, 255, 255, 0.7 );
+   border: 1px inset white;
    border-radius: 10px 10px 10px 0;
 }
 
@@ -214,6 +215,7 @@ main {
    right: 4px;
    font-size: 30px;
    cursor: pointer;
+   color: gray;
 }
 
 /* 회원 검색 부분 */
@@ -235,7 +237,7 @@ main {
    list-style: none;
    padding: 5px 10px;
    min-height: 250px;
-   max-height: dddd0px;
+   max-height: 250px;
    overflow-y: auto;
 }
 .result-row{
@@ -273,6 +275,7 @@ main {
 }
 .palette-title-area > p{
    margin: 10px;
+   color: gray;
 }
 .thema-title-area{
    margin: 5px 0;
@@ -297,6 +300,7 @@ main {
 }
 .paletteName{
    width: 30%;
+   font-size: 12px;
    text-align: start;
 }
 .thema-color-area{
@@ -369,6 +373,8 @@ main {
 .list-profile{ 
    max-width: 65px;
    max-height: 65px;
+   border: 2px solid #99E1ED;
+   border-radius: 50%;
 }
 
 .target-name{
@@ -418,7 +424,6 @@ main {
 /* 채팅 내용 */
 
 #chattingArea > ul {
-
    overflow: auto;
    list-style: none;
    padding: 10px 10px;

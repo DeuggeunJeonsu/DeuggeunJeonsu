@@ -21,7 +21,7 @@
     <script>
         const loginMember = "${loginMember}"; // 로그인한 회원
         const loginMemberNo = "${loginMember.memberNo}"; // 로그인한 회원 번호
-        const memberThema = "${loginMember.memberThema}";
+        let memberThema = "${loginMember.memberThema}";
         let themas = memberThema.split(",,");
     </script>
 
@@ -123,7 +123,7 @@
                     <!-- 채팅방 목록 -->
                     <ul id="chattingRoomList">
                         <c:forEach var="room" items="${roomList}">
-                            <li class="chatting-item select" chat-no="${room.chattingNo}" target-no="${room.targetNo}">
+                            <li class="chatting-item" chat-no="${room.chattingNo}" target-no="${room.targetNo}">
                                 <div class="item-header">
                                     <c:if test="${not empty room.targetProfile}">
                                         <img class="list-profile" src="${room.targetProfile}">
@@ -179,7 +179,7 @@
                         <div class="send-btn-area">
                             <button id="addImgBtn" class="sendBtns"><i class="fa-regular fa-image fa-2xl"></i></button>
                         </div>
-                        <textarea id="inputChatting" rows="1"></textarea>
+                        <textarea id="inputChatting" rows="1" style="overflow:hidden"></textarea>
                         <div class="send-btn-area">
                             <button id="sendBtn" class="sendBtns"><i class="fa-solid fa-paper-plane fa-2xl"></i></button>
                         </div>

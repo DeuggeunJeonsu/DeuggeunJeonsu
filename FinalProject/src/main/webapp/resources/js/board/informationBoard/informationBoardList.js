@@ -36,7 +36,7 @@ boardSearch.addEventListener("submit", e=>{
     }
 });
 
-// 해시태그 클릭 시 삭제 이벤트 추가
+// 검색어 클릭 시 삭제 이벤트 추가
 const hashtag = document.getElementsByClassName("hashtag")[0];
 
 if(hashtag != null){

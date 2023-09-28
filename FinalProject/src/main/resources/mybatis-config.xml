@@ -54,5 +54,6 @@
 		<mapper resource="/mappers/adminPage-mapper.xml" />
 		<mapper resource="/mappers/Email-mapper.xml" />
 		<mapper resource="/mappers/ajax-mapper.xml" />
+		<mapper resource="/mappers/informationBoard-mapper.xml" />
 	</mappers>
 </configuration>

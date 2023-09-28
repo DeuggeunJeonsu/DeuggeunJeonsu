@@ -7,7 +7,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
-    <title>건강/운동정보</title>
+    <title>정보공유 게시판</title>
 
     <%-- freeBoardWrite-style.css 연결 --%>
     <link rel="stylesheet" href="/resources/css/board/informationBoard/informationBoardWrite-style.css">
@@ -19,12 +19,13 @@
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.28/dist/sweetalert2.all.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.28/dist/sweetalert2.min.css">
+
 </head>
 <body>
 
 	<jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
 	
-<!-- include libraries(bootstrap) -->
+    <!-- include libraries(bootstrap) -->
     <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
     <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script> 
 
@@ -35,24 +36,23 @@
     <div class="place"></div>
 	<section id="main-container">
         <div id="title-area">
-            <div class="board-title">건강/운동정보 ㅣ 게시글 작성</div>
+            <div class="board-title">정보공유 게시판 ㅣ 수정하기</div>
             <div>득근전수 회원님들이 유용한 지식을 얻어갈 수 있는 공간입니다.</div>
         </div>
 
         <div id="middle-area">
             <form action="update" method="POST" id="write-form">
-                
                 <div id="title-middle-area">
-                    <select name="tagSelect" id="tagSelect">
+                    <select id="tagSelect">
                         <option value="">태그선택</option>
                         <option value="건강정보">건강정보</option>
                         <option value="운동정보">운동정보</option>
                         <option value="최근동향">최근동향</option>
                     </select>
-                    <textarea name="title-textArea" id="title-textArea" placeholder="제목을 입력해 주세요."></textarea>
+                    <textarea name="boardTitle" id="title-textArea" placeholder="제목을 입력해 주세요.">${board.boardTitle}</textarea>
                 </div>
 
-                <textarea name="summernote" id="summernote" name="boardContent"></textarea>
+                <textarea name="boardContent" id="summernote">${board.boardContent}</textarea>
 
                 <div id="button-area">
                     <button class="btnStyle" id="write-btn">작성</button>
@@ -60,7 +60,7 @@
                 </div>
 
                 <input type="hidden" name="imgSrc" value="">
-                <input type="hidden" name="hashtags">
+                <input type="hidden" name="tagContent" value="">
                 <input type="hidden" name="cp" value="${param.cp}">
             </form>
         </div>
@@ -69,13 +69,14 @@
 
     <script>
         const boardNo = "${board.boardNo}";
+        const tagOption = "${board.tagList[0].tagContent}";
     </script>
     
     <!-- footer include -->
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
     
     <!-- informationBoardWrite.js 연결 -->
-	<script src="/resources/js/board/informationBoard/informationBoardWrite.js"></script>
+	<script src="/resources/js/board/informationBoard/informationBoardUpdate.js"></script>
 
 </body>
 </html>
