@@ -217,6 +217,7 @@ svg{
     /*height: 58vh;*/
     /*background-color: #faf9f3;*/
 }
+
 .product-list{
     display: flex;
     flex-direction: row;
@@ -259,6 +260,54 @@ svg{
     font-size: 1.1em;
     color: #666;
 }
+
+/*.product-item {*/
+/*    display: flex;*/
+/*    flex-direction: row;*/
+/*    flex-wrap: wrap;*/
+/*    margin-top: 40px;*/
+/*    gap: 10px;*/
+/*    border: 1px solid #ddd;*/
+/*    padding: 10px;*/
+/*    box-shadow: 0 0 10px rgba(0,0,0,0.1);*/
+/*    width: 250px;*/
+/*}*/
+
+/*.product-image img {*/
+/*    width: 100%;*/
+/*    height: auto;*/
+/*    display: block;*/
+/*    margin-bottom: 10px;*/
+/*}*/
+
+/*.product-details {*/
+/*    text-align: center;*/
+/*}*/
+
+/*.product-name {*/
+/*    font-size: 1.1em;*/
+/*    font-weight: bold;*/
+/*    margin-bottom: 5px;*/
+/*}*/
+
+/*.product-item a {*/
+/*    color: #3c3b3b;*/
+/*    text-decoration: none;*/
+/*    font-size: 1.1em;*/
+/*    font-weight: bold;*/
+/*    margin-bottom: 5px;*/
+/*}*/
+
+/*.product-content {*/
+/*    font-size: 1.1em;*/
+/*    color: #666;*/
+/*}*/
+/*.product-details{*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    justify-content: center;*/
+/*    align-items: center;*/
+/*}*/
 #show-all {
     margin-right: 10px;
     display: inline-block;
