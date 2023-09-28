@@ -34,7 +34,7 @@ input:autofill:active {
 }
 /* 전체 글꼴 */
 *{
-    /*font-family: 'Pretendard-Regular';*/
+    font-family: 'Pretendard-Regular';
 }
 /* main 스타일 */
 html, body{
@@ -665,4 +665,7 @@ a{
 #loading-log img{
     border-radius: 50%;
 
+}
+#shopping-count {
+    display: none;
 }

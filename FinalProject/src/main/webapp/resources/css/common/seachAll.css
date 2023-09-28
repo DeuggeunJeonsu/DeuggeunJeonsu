@@ -71,8 +71,20 @@ a{
     border-radius: 20px;
     font-size: 1.3em;
     text-decoration: none;
+    cursor: pointer;
 }
-
+.unselected-board {
+    margin-right: 10px;
+    display: inline-block;
+    padding: 5px 10px;
+    background-color: #fff;
+    border: 1px solid #078dd3;
+    color: #078dd3;
+    border-radius: 20px;
+    font-size: 1.3em;
+    text-decoration: none;
+    cursor: pointer;
+}
 .hashtag-detail:hover {
     background-color: #e6e6e6; /* 마우스 오버 시 배경색을 조금 더 어둡게 */
 }
@@ -113,14 +125,6 @@ h2{
     overflow-wrap: break-word;
     color: #495057;
 }
-/*p{*/
-/*    margin-bottom: 2rem !important;*/
-/*    margin-top: 0.5rem !important;*/
-/*    font-size: 1.2rem !important;*/
-/*    word-break: keep-all !important;*/
-/*    overflow-wrap: break-word !important;*/
-/*    color: #495057 !important;*/
-/*}*/
 .subinfo{
     display: flex;
     -webkit-box-align: center;
@@ -218,7 +222,7 @@ svg{
     flex-direction: row;
     flex-wrap: wrap;
     margin-top: 50px;
-    gap: 20px; /* 각 상품 항목 사이의 간격 */
+    gap: 10px;
 }
 
 .product-item {
@@ -244,9 +248,27 @@ svg{
     font-weight: bold;
     margin-bottom: 5px;
 }
-
+.product-item a {
+    color: #3c3b3b;
+    text-decoration: none;
+    font-size: 1.1em;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
 .product-content {
-    font-size: 1em;
+    font-size: 1.1em;
     color: #666;
 }
-
+#show-all {
+    margin-right: 10px;
+    display: inline-block;
+    padding: 5px 10px;
+    background-color: #fff;
+    border: 1px solid #078dd3;
+    color: #078dd3;
+    border-radius: 20px;
+    font-size: 1.3em;
+    text-decoration: none;
+    cursor: pointer;
+    display: none;
+}

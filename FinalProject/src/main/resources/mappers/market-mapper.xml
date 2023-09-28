@@ -655,11 +655,15 @@
         ORDER BY b.CREATE_DT DESC
     </select>
 
+    <!-- 키워드에 일치하는 상품 검색 -->
     <select id="searchProduct" resultMap="product_rm">
-        SELECT p.PRODUCT_NAME, p.PRODUCT_CONTENT, img.P_IMG_PATH
+        SELECT p.PRODUCT_TITLE,
+               p.PRODUCT_CONTENT,
+               img.P_IMG_PATH,
+               p.PRODUCT_NO
         FROM PRODUCT p
                  JOIN PRODUCT_IMG img ON p.PRODUCT_NO = img.PRODUCT_NO
-        WHERE (p.PRODUCT_NAME LIKE '%' || #{keyword} || '%' OR p.PRODUCT_TITLE LIKE '%' || #{keyword} || '%')
+        WHERE (p.PRODUCT_TITLE LIKE '%' || #{keyword} || '%')
           AND img.P_IMG_PATH LIKE '%main%'
     </select>
 </mapper>

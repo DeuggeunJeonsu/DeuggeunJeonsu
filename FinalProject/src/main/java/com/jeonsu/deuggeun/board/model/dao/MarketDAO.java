@@ -289,4 +289,22 @@ public class MarketDAO {
 	public List<Product> searchProduct(Map<String, Object> paramMap) {
 		return sqlSession.selectList("marketMapper.searchProduct", paramMap);
 	}
+
+	// 정보공유 게시판
+	public List<Board> info(Map<String, Object> paramMap) {
+		return sqlSession.selectList("marketMapper.info", paramMap);
+	}
+
+	public List<Board> routine(Map<String, Object> paramMap) {
+		return sqlSession.selectList("marketMapper.routine", paramMap);
+	}
+
+	public List<Board> free(Map<String, Object> paramMap) {
+		return sqlSession.selectList("marketMapper.free", paramMap);
+	}
+
+	public List<Product> market(Map<String, Object> paramMap) {
+		return sqlSession.selectList("marketMapper.market", paramMap);
+	}
+
 }

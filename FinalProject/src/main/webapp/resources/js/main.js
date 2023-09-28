@@ -122,7 +122,11 @@ function updateShoppingCount() {
         url: url,
         dataType: "text",
         success: function(response) {
-            $('#shopping-count').text(response);
+            if (parseInt(response) > 0) {
+                $('#shopping-count').text(response).show();
+            } else {
+                $('#shopping-count').hide();
+            }
         },
         error: function(error) {
             console.error("데이터 가져오기 오류: ", error);

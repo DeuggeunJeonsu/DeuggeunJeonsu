@@ -83,4 +83,6 @@ public interface MarketService {
 
     // 전체검색에서 상품 영역
     Map<String, Object> searchProduct(Map<String, Object> paramMap);
+
+
 }
