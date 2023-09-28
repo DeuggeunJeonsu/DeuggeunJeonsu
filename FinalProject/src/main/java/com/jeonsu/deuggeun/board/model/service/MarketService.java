@@ -80,4 +80,7 @@ public interface MarketService {
 
     // 전체검색 기능
     Map<String, Object> searchAll(Map<String, Object> paramMap);
+
+    // 전체검색에서 상품 영역
+    Map<String, Object> searchProduct(Map<String, Object> paramMap);
 }
