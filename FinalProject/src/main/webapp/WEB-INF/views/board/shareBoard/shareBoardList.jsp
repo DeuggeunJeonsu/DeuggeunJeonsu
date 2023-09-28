@@ -105,14 +105,14 @@
                 <c:otherwise>
 
                     <c:forEach items="${boardList}" var="board">
-
+                       
                         <div class="thumbnail">
                             <a href="/board/2/${board.boardNo}?cp=${pagination.currentPage}">
                                 <div>
                                     <c:if test="${empty board.thumbnail}" >
                                         <img src="/resources/images/myPage/kakaoShare_thumbnail.PNG" id="default-logo">
                                     </c:if>
-
+                                    ${board.thumbnail}
                                     <c:if test="${!empty board.thumbnail}">
                                         <img src="${board.thumbnail}">
                                     </c:if>

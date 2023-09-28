@@ -103,13 +103,6 @@
             </div>
         </div>
 
-        <%-- 팔로잉순 말풍선 --%>
-        <c:if test="${!empty loginMember}" >
-            <div class="ballon floating">
-                내가 팔로잉한 회원의 게시글 확인하기! 👀💬
-            </div>
-        </c:if>
-
         <div id="list-area">
 
             <c:choose>
@@ -127,7 +120,7 @@
                             <a href="/board/3/${board.boardNo}?cp=${pagination.currentPage}">
                                 <div>
                                     <c:if test="${empty board.thumbnail}" >
-                                        <img src="/resources/images/myPage/kakaoShare_thumbnail(2).PNG" id="default-logo">
+                                        <img src="/resources/images/myPage/kakaoShare_thumbnail.PNG" id="default-logo">
                                     </c:if>
 
                                     <c:if test="${!empty board.thumbnail}">

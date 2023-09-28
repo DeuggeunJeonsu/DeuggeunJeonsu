@@ -25,7 +25,14 @@
             <div class="top-write">
                 <div id="writer">
                     <div id="profile-area">
-                        <img src="/resources/images/user.png">
+                        <c:if test="${empty loginMember.profileImage}">
+                            <img src="/resources/images/user.png">
+                        </c:if>
+                        <c:if test="${!empty loginMember.profileImage}">
+                            <img src="${loginMember.profileImage}">
+                        </c:if>
+
+
                     </div>
                     <span>${loginMember.memberNickname}</span>
                 </div>
@@ -41,7 +48,7 @@
                         <div class="thumbnail-box">
                             <div class="boardImg thumbnail">
                                 <label for="img0">
-                                    <img class="preview" src="">
+                                    <img class="preview" src="/resources/images/boardDetaile/noneImage.png">
                                 </label>
                                 <input type="file" name="images" class="inputImage" id="img0" accept="image/*">
                                 <span class="delete-image">&times;</span>
@@ -79,7 +86,7 @@
                         <li class="routine" draggale="true">
                             <div class="boardImg">
                                 <label for="img1">
-                                    <img class="preview" src="">
+                                    <img class="preview" src="/resources/images/boardDetaile/noneImage.png">
                                 </label>
                                 <input type="file" name="images" class="inputImage" id="img1" accept="image/*">
                                 <span class="delete-image">&times;</span>

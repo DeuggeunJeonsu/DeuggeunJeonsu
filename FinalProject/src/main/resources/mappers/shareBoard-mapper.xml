@@ -108,7 +108,7 @@
 	<select id="selectShareBoardList" resultMap="shareBoard_rm">
 		SELECT BOARD_NO,
 		BOARD_TITLE, MEMBER_NICKNAME, TO_CHAR(CREATE_DT, 'YY.MM.DD')
-		CREATE_DT,
+		CREATE_DT,PROFILE_IMG,
 
 		(SELECT COUNT(*) FROM "COMMENT" C
 		WHERE C.BOARD_NO =

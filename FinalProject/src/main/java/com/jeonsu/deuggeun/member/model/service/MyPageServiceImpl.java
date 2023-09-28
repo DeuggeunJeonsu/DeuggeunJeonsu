@@ -330,4 +330,25 @@ public class MyPageServiceImpl implements MyPageService {
 		return result;
 	}
 
+	
+	
+	// 회원정보 수정 
+	@Transactional(rollbackFor = {Exception.class})
+	@Override
+	public int updateInfo(Member updateMember) {
+
+		int result = dao.updateInfo(updateMember); 
+		
+		return result;
+	}
+	
+	// 회원 비밀번호 변경
+	@Transactional(rollbackFor = {Exception.class})
+	@Override
+	public int changePw(String newPw, int memberNo) {
+		
+		int result = dao.changePw(bcrypt.encode(newPw), memberNo);
+	
+		return result;
+	}
 }
