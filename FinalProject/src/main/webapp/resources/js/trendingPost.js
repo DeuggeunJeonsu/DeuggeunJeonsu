@@ -196,7 +196,7 @@ window.addEventListener("load", ()=>{
             const span1 = document.createElement("span");
             const i1 = document.createElement("i");
             i1.classList.add("fa-regular", "fa-comment", "fa-1x");
-            i1.setAttribute("style", "color: #99e1ed; margin-right: 5px;")
+            i1.setAttribute("style", "color: #99e1ed; margin-right: 5px;");
             const commentCountText = document.createTextNode(commentCount);
             span1.appendChild(i1);
             span1.appendChild(commentCountText);
