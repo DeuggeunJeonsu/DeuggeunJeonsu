@@ -146,7 +146,7 @@
         ,INQUIRY_TYPE , ADMIN_FL
 		FROM PRODUCT_INQUIRY
 		WHERE MEMBER_NO = #{memberNo}
-		ORDER BY PRODUCT_NO DESC
+		ORDER BY INQUIRY_CD DESC
 	</select>
 	
 	<!-- 로그인한 회원이 피드 주인을 팔로우했는지 확인 -->

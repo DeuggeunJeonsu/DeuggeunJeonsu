@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import com.jeonsu.deuggeun.board.model.dto.Board;
 import com.jeonsu.deuggeun.member.model.dto.Member;
 import com.jeonsu.deuggeun.member.model.dto.MemberBMI;
+import com.jeonsu.deuggeun.todolist.model.dto.TodoList;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -131,5 +132,35 @@ public class MemberDAO {
 	public Board trendingFree() {
 		return sqlSession.selectOne("freeBoardMapper.trendingFree");
 	}
+
+	/** 추천 루틴 투두리스트에 추가
+	 * @param routine
+	 * @return result
+	 */
+	public int surveyTodo(TodoList todoList) {
+
+		int listCount = sqlSession.selectOne("todolistMapper.todoListCount", todoList);
+
+		int result = 0;
+
+		if(listCount < 10) {
+
+			result = sqlSession.insert("todolistMapper.todoInsert",todoList );
+
+			String createDT = sqlSession.selectOne("todolistMapper.calenderSelectRoutine", todoList);
+	
+			int result2 = 0;
+			if(createDT==null) {
+				result2 = sqlSession.insert("todolistMapper.calenderInsertRoutine", todoList);
+			}
+			if(result > 0 ) {
+				result = sqlSession.insert("todolistMapper.todoDateInsertRoutine", todoList);
+			}
+		}
+
+		return result;
+	}
+
+	
 
 }

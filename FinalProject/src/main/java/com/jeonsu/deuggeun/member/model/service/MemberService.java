@@ -6,6 +6,7 @@ import java.util.Map;
 import com.jeonsu.deuggeun.board.model.dto.Board;
 import com.jeonsu.deuggeun.member.model.dto.Member;
 import com.jeonsu.deuggeun.member.model.dto.MemberBMI;
+import com.jeonsu.deuggeun.todolist.model.dto.TodoList;
 
 public interface MemberService {
 
@@ -88,5 +89,15 @@ public interface MemberService {
 	 * @return board
 	 */
 	Board trendingFree();
+
+	
+	/** 추천 루틴 todoList에 추가
+	 * @param todoList
+	 * @return result
+	 */
+	int surveyTodo(TodoList todoList);
+
+
+	
 
 }
