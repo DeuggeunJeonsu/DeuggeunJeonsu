@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -15,7 +16,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
-    <title>건강/운동정보</title>
+    <title>정보공유 게시판</title>
     <link rel="stylesheet" href="/resources/css/board/informationBoard/informationBoardList-style.css">
 
     <link rel="apple-touch-icon" sizes="180x180" href="/resources/images/favicon_io/apple-touch-icon.png">
@@ -23,8 +24,6 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/resources/images/favicon_io/favicon-16x16.png">
     <link rel="manifest" href="/resources/images/favicon_io/site.webmanifest">
 
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.28/dist/sweetalert2.all.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.28/dist/sweetalert2.min.css">
 </head>
 
 <body>
@@ -33,13 +32,16 @@
 	
     <%-- 검색어가 있을 경우 --%>
     <c:if test="${!empty param.key}" >
-        <c:set var="sp" value="&key=${param.key}&query=${param.query}"/>
+        <c:set var="key" value="&key=${param.key}"/>
+    </c:if>
+    <c:if test="${!empty param.key}" >
+        <c:set var="query" value="&query=${param.query}"/>
     </c:if>
 
     <div class="place"></div>
 	<section id="main-container">
         <div id="title-area">
-            <div class="board-title">건강/운동정보</div>
+            <div class="board-title">정보공유 게시판</div>
             <div><h3>득근전수 회원님들이 유용한 지식을 얻어갈 수 있는 공간입니다.</h3></div>
         </div>
 
@@ -47,8 +49,10 @@
             <%-- 게시글 상세 검색 --%>
             <div class="search-place">
                 <form method="get" id="boardSearch">
-                    <input type="hidden" name="key" value="tc">
-                    <input type="search" name="query" id="searchQuery" placeholder="search..." autocomplete="off" value=${param.query}>
+                    <c:if test="${!empty param.key}" >
+                        <input type="hidden" name="key" value="${param.key}">
+                    </c:if>
+                    <input type="search" name="query" id="searchQuery" placeholder="search..." autocomplete="off" value="${key}">
                     <button id="search-button"><i class="fas fa-search"></i></button>
                 </form>
             </div>
@@ -65,7 +69,7 @@
 
             <%-- 게시글 빠른 검색 --%>
             <div id="sort-btn-area">
-                <a href="/board/1/list?key=h">
+                <a href="/board/1/list?key=h${!empty param.query ? '&query=' : ''}${param.query}">
                     <c:if test="${param.key == 'h'}" >
                         <span name="key" value="h" style="font-weight:bold; color:#99E1ED" id="healthCategory">건강정보</span>
                     </c:if>
@@ -74,7 +78,7 @@
                     </c:if>
                 </a> |
 
-                <a href="/board/1/list?key=f">
+                <a href="/board/1/list?key=f${!empty param.query ? '&query=' : ''}${param.query}">
                     <c:if test="${param.key == 'f'}" >
                         <span name="key" value="f" style="font-weight:bold; color:#99E1ED" id="exerciseCategory">운동정보</span>
                     </c:if>
@@ -83,7 +87,7 @@
                     </c:if>
                 </a> |
 
-                <a href="/board/1/list?key=t">
+                <a href="/board/1/list?key=t${!empty param.query ? '&query=' : ''}${param.query}">
                     <c:if test="${param.key == 't'}" >
                         <span name="key" value="t" style="font-weight:bold; color:#99E1ED" id="trendCategory">최근동향</span>
                     </c:if>
@@ -98,7 +102,7 @@
             <c:choose>
                 <c:when test="${empty boardList}">
                     <div class="no-board-list">
-                        <h1>게시글이 존재하지 않습니다. 준비중인 콘탠츠 입니다. 😅</h1>
+                        <h1>게시글이 존재하지 않습니다. 😅</h1>
                     </div>
                 </c:when>
             
@@ -110,11 +114,13 @@
                             <a href="/board/1/${board.boardNo}?cp=${pagination.currentPage}">
                                 <div>
                                     <c:if test="${empty board.thumbnail}" >
-                                        <img src="/resources/images/main/log02.png" id="default-logo">
+                                        <img src="/resources/images/myPage/kakaoShare_thumbnail.PNG" id="default-logo">
                                     </c:if>
 
                                     <c:if test="${!empty board.thumbnail}">
-                                        <img src="${board.thumbnail}">
+                                        <c:set var="originalThumbnail" value="${board.thumbnail}"/>
+                                        <c:set var="thumbnail" value="${fn:replace(originalThumbnail, '^^^', ',')}"/>
+                                        <img src="${thumbnail}">
                                     </c:if>
                                 </div>
                                 <div>
@@ -138,7 +144,7 @@
         
         <div class="write-btn-area">
             <c:if test="${!empty loginMember && loginMember.authority==2}" >
-                <a href="/board2/1/insert">
+                <a href="/board2/1/write">
                     <button type="button" id="writeBtn">글쓰기</button>
                 </a>
             </c:if>
@@ -148,10 +154,10 @@
             <ul class="pagination">
 
                 <!-- 첫 페이지로 이동 -->
-                <li><a href="/board/${boardCode}/list?cp=1${sp}">&lt;&lt;</a></li>
+                <li><a href="/board/${boardCode}/list?cp=1${key}${query}">&lt;&lt;</a></li>
 
                 <!-- 이전 목록 마지막 번호로 이동 -->
-                <li><a href="/board/${boardCode}/list?cp=${pagination.prevPage}${sp}">&lt;</a></li>
+                <li><a href="/board/${boardCode}/list?cp=${pagination.prevPage}${key}${query}">&lt;</a></li>
 
 
                 <!-- 특정 페이지로 이동 -->
@@ -165,7 +171,7 @@
 
                         <c:otherwise>
                             <!-- 현재 페이지를 제외한 나머지 -->
-                            <li><a href="/board/${boardCode}/list?cp=${i}${sp}">${i}</a></li>
+                            <li><a href="/board/${boardCode}/list?cp=${i}${key}${query}">${i}</a></li>
 
                         </c:otherwise>
                     </c:choose>
@@ -173,10 +179,10 @@
                 </c:forEach>
 
                 <!-- 다음 목록 시작 번호로 이동 -->
-                <li><a href="/board/${boardCode}/list?cp=${pagination.nextPage}${sp}">&gt;</a></li>
+                <li><a href="/board/${boardCode}/list?cp=${pagination.nextPage}${key}${query}">&gt;</a></li>
 
                 <!-- 끝 페이지로 이동 -->
-                <li><a href="/board/${boardCode}/list?cp=${pagination.maxPage}${sp}">&gt;&gt;</a></li>
+                <li><a href="/board/${boardCode}/list?cp=${pagination.maxPage}${key}${query}">&gt;&gt;</a></li>
 
             </ul>
         </div>

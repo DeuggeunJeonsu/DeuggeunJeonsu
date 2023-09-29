@@ -1,5 +1,6 @@
 package com.jeonsu.deuggeun.adminController.model.service;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import java.util.List;
@@ -44,9 +45,18 @@ public class AdminServiceimpl implements AdminService{
 	public Map<String, Object> selectInquiryList() {
 		List<AdminMember> boardList = dao.selectInquiryList();
 
+		List<AdminMember> marketList = new ArrayList<AdminMember>();
+
+		if(boardList != null) {
+
+			marketList = dao.selectInquiryList2();
+		}
+		
+		
 		Map<String, Object> map = new HashMap<>();
 
 		map.put("boardList", boardList);
+		map.put("marketList", marketList);
 
 		return map;
 	}

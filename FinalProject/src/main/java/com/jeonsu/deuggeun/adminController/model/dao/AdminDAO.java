@@ -89,5 +89,12 @@ public class AdminDAO {
 	}
 
 
+	public List<AdminMember> selectInquiryList2() {
+		return sqlSession.selectList("adminMapper.selectInquiry2", null);
+	}
+
+
+
+
 
 }

@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-		<c:set var="boardList" value="${map.boardList}" />
+	<c:set var="boardList" value="${map.boardList}" ></c:set>
+	<c:set var="marketList" value="${map.marketList}" ></c:set>
 
 
 			<!DOCTYPE html>
@@ -111,7 +112,6 @@
 											</tr>
 										</c:if>
 
-										<c:if test="${!empty boardList }">
 											<c:forEach items="${boardList}" var="board">
 												<tr>
 													<td>${board.boardNo}</td>
@@ -119,11 +119,7 @@
 													<td class="inquiryType">${board.inquiryType}</td>
 													<td>${board.memberEmail}</td>
 
-
-
 													<td class="complete adminCheckFl">${board.adminCheckFl}</td>
-
-
 
 												</tr>
 
@@ -135,7 +131,19 @@
 
 
 											</c:forEach>
-										</c:if>
+
+											<c:forEach items="${marketList}" var="market">
+                                                <tr>
+                                                    <td>${market.productNo}</td>
+                                                    <td class="realMarketTitle">${market.inquiryTitle}</td>
+                                                    <td>${market.inquiryType}</td>
+                                                    <td>${market.memberEmail}</td>
+                                                    <td class="checkFl2">${market.marketCheckFl}</td>
+                                                </tr>
+                                                <input type="hidden" class="hiddenCheckFl2" value="${market.marketCheckFl}" />
+                                                <input type="hidden" class="marketTitle" value="${market.inquiryTitle}" />
+                                                <input type="hidden" class="marketContent" value="${market.inquiryContent}" />
+                                            </c:forEach> 
 
 									
 

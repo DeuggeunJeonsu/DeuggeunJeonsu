@@ -664,3 +664,23 @@ a.button2 {
 .bodycheck2{
   display: none;
 }
+
+
+/* 마이너스 버튼 */
+.todoBtn{
+  
+  color :#aaa;
+  width: 25px;
+  height: 25px;
+
+  margin-left: 20px;
+  border: none;
+
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.todoBtn::before {
+  content: '+';
+  /* 추가 스타일 속성을 여기에 추가하세요. */
+}

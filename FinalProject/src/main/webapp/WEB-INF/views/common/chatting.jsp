@@ -21,7 +21,7 @@
     <script>
         const loginMember = "${loginMember}"; // 로그인한 회원
         const loginMemberNo = "${loginMember.memberNo}"; // 로그인한 회원 번호
-        const memberThema = "${loginMember.memberThema}";
+        let memberThema = "${loginMember.memberThema}"; // 회원 테마
         let themas = memberThema.split(",,");
     </script>
 
@@ -117,13 +117,13 @@
                     <!-- 채팅방 검색 -->
                     <div id="roomSearchArea">
                         <i class="fa fa-solid fa-magnifying-glass fa-2xl" style="color: #ddd;"></i>
-                        <input type="text" id="roomSearchInput" placeholder="채팅방 목록 내 검색">
+                        <input type="text" id="roomSearchInput" placeholder="채팅방 목록 내 검색" autocomplete="off">
                     </div>
 
                     <!-- 채팅방 목록 -->
                     <ul id="chattingRoomList">
                         <c:forEach var="room" items="${roomList}">
-                            <li class="chatting-item select" chat-no="${room.chattingNo}" target-no="${room.targetNo}">
+                            <li class="chatting-item" chat-no="${room.chattingNo}" target-no="${room.targetNo}">
                                 <div class="item-header">
                                     <c:if test="${not empty room.targetProfile}">
                                         <img class="list-profile" src="${room.targetProfile}">
@@ -153,7 +153,7 @@
                 <div id="chattingRoomDetail">
                     <!-- 채팅방 이름 -->
                     <div id="roomTitleArea">
-                        <div id="roomTitle">채팅방 이름</div>
+                        <div id="roomTitle"></div>
                     </div>
 
                     <!-- 채팅내역 -->
@@ -179,7 +179,7 @@
                         <div class="send-btn-area">
                             <button id="addImgBtn" class="sendBtns"><i class="fa-regular fa-image fa-2xl"></i></button>
                         </div>
-                        <textarea id="inputChatting" rows="1"></textarea>
+                        <textarea id="inputChatting" rows="1" style="overflow:hidden"></textarea>
                         <div class="send-btn-area">
                             <button id="sendBtn" class="sendBtns"><i class="fa-solid fa-paper-plane fa-2xl"></i></button>
                         </div>

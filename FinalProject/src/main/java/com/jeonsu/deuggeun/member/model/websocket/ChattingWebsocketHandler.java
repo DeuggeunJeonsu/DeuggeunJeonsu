@@ -37,23 +37,18 @@ public class ChattingWebsocketHandler extends TextWebSocketHandler{
         // 이를 필드에 선언해준sessions에 저장
         sessions.add(session);
 
-        log.info("{}연결됨", session.getId());
+        log.info("세션 아이디 \"{}\"로 연결됨", session.getId());
     }
 
 
     @Override	//handlerTextMessage - 클라이언트로부터 텍스트 메세지를 받았을때 실행
     protected void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
 
-        // 전달받은 내용은 JSON 형태의 String
-        log.debug("전달받은 내용 : " + message.getPayload());
-
         // Jackson에서 제공하는 객체
         // JSON String -> VO Object
         ObjectMapper objectMapper = new ObjectMapper();
 
         Message msg = objectMapper.readValue( message.getPayload(), Message.class);
-        // Message 객체 확인
-        System.out.println(msg);
 
         // DB 삽입 서비스 호출
         int result = service.insertMessage(msg);
@@ -70,13 +65,15 @@ public class ChattingWebsocketHandler extends TextWebSocketHandler{
 
                 // 로그인된 회원 정보 중 회원 번호 얻어오기
                 int loginMemberNo = ((Member)s.getAttributes().get("loginMember")).getMemberNo();
-                log.debug("loginMemberNo : " + loginMemberNo);
 
-                // 로그인 상태인 회원 중 targetNo가 일티하는 회원에게 메세지 전달
+                // 로그인 상태인 회원 중 targetNo가 일치하는 회원에게 메세지 전달
                 if(loginMemberNo == msg.getTargetNo() || loginMemberNo == msg.getSenderNo()) {
 
                     s.sendMessage(new TextMessage(new Gson().toJson(msg)));
+                    // 전달받은 내용은 JSON 형태의 String
+                    log.debug("{} 전송 완료" + message.getPayload());
                 }
+                else log.debug("{} 전송 실패" + message.getPayload());
             }
         }
     }
@@ -88,7 +85,7 @@ public class ChattingWebsocketHandler extends TextWebSocketHandler{
     @Override
     public void afterConnectionClosed(WebSocketSession session, CloseStatus status) throws Exception {
         sessions.remove(session);
-        log.info("{} 연결끊김",session.getId());
+        log.info("세션 아이디 \"{}\" 연결종료",session.getId());
     }
 
 }

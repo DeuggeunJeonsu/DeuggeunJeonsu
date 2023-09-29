@@ -60,7 +60,7 @@
                             <c:if test="${!empty loginMember}">
                                 <a href="/chatting">
                                     <i class="fa fa-solid fa-message fa-lg"></i>
-                                    <span class="count-area" id="chatting-count">27</span>
+                                    <span class="count-area" id="chatting-count"></span>
                                 </a>
                             </c:if>
                         </li>

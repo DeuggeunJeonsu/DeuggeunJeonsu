@@ -184,7 +184,7 @@ goToListBtn.addEventListener("click", ()=>{
 /* 카카오톡 공유하기 */
 function shareMessage() {
     Kakao.Share.sendCustom({
-        templateId: 98809,
+        templateId: 98875,
         templateArgs: {
             PROFILE : profile, // 작성자 프로필 이미지 주소 ${PROFILE}
             NICKNAME : nickname,    // 작성자 닉네임 ${NICKNAME}

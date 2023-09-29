@@ -5,17 +5,6 @@ const menuBtn = document.querySelector("#menuBtn"); // 메뉴 버튼
 const menuArea = document.querySelector("#menus"); // 사이드 메뉴 영역
 let menuFlag = 0; // 메뉴버튼 토글 플레그
 
-
-// 채팅방
-const addTarget = document.querySelector("#addTarget"); // 채팅방 추가 버튼
-const addTargetPopupLayer = document.querySelector("#addTargetPopupLayer"); // 팝업 레이어
-const closeBtn1 = document.querySelector("#addTargetCloseBtn"); // 팝업 닫기 버튼
-const targetInput = document.querySelector("#targetInput"); // 회원 검색창
-const resultArea = document.querySelector("#resultArea"); // 회원 검색 결과
-const roomSearchInput = document.querySelector("#roomSearchInput"); // 채팅방 목록 내 검색 input
-const roomListArea = document.querySelector("#chattingRoomListArea"); // 채팅방 목록 영역
-const roomDetail = document.querySelector("#chattingRoomDetail"); // 채팅방 내부 영역
-
 // 팔레트
 const palette = document.querySelector("#palette"); // 팔레트 설정 버튼
 const palettePopupLayer = document.querySelector("#palettePopupLayer"); // 팝업 레이어
@@ -26,32 +15,46 @@ const palette2Color = document.querySelector("#palette2Color"); // 채팅방 목
 const listFontColor = document.querySelector("#listFontColor"); // 목록 글꼴 색상 input
 const palette3Color = document.querySelector("#palette3Color"); // 채팅방 내부 색상 input
 const chatFontColor = document.querySelector("#chatFontColor"); // 내부 글꼴 색상 input
+const saveThemaBtn = document.querySelector("#saveThemaBtn"); // 테마 저장 버튼
+
+// 채팅방
+const addTarget = document.querySelector("#addTarget"); // 채팅방 추가 버튼
+const addTargetPopupLayer = document.querySelector("#addTargetPopupLayer"); // 팝업 레이어
+const closeBtn1 = document.querySelector("#addTargetCloseBtn"); // 팝업 닫기 버튼
+const targetInput = document.querySelector("#targetInput"); // 회원 검색창
+const resultArea = document.querySelector("#resultArea"); // 회원 검색 결과
+const roomSearchInput = document.querySelector("#roomSearchInput"); // 채팅방 목록 내 검색 input
+const roomListArea = document.querySelector("#chattingRoomListArea"); // 채팅방 목록 영역
+const roomDetail = document.querySelector("#chattingRoomDetail"); // 채팅방 내부 영역
+const send = document.getElementById("sendBtn"); // 전송 버튼
 
 let selectChattingNo; // 선택한 채팅방 번호
 let selectTargetNo; // 현재 채팅 대상
 let selectTargetName; // 대상의 이름
 let selectTargetProfile; // 대상의 프로필
 
-// 회원 테마 적용
-menuArea.style.backgroundColor=themas[0];
-palette1Color.value=themas[0];
-roomListArea.style.backgroundColor=themas[1];
-palette2Color.value=themas[1];
-roomDetail.style.backgroundColor=themas[2];
-palette3Color.value=themas[2];
+// 랜더링 시 회원 테마 적용
+menuArea.style.backgroundColor = themas[0];
+addTargetPopupLayer.style.borderColor = themas[0];
+palettePopupLayer.style.borderColor = themas[0];
+document.querySelector(".palette-title-area").style.borderColor = themas[0];
+document.querySelector(".target-input-area").style.borderColor = themas[0];
+palette1Color.value = themas[0];
+for(let btn of menuBtns){btn.style.color = themas[1];}
+menuIconColor.value = themas[1];
+roomListArea.style.backgroundColor = themas[2];
+addTargetPopupLayer.style.backgroundColor = themas[2];
+palettePopupLayer.style.backgroundColor = themas[2];
+palette2Color.value=themas[2];
+roomListArea.style.color = themas[3];
+roomSearchInput.style.color = themas[3];
+targetInput.style.color = themas[3];
+listFontColor.value = themas[3];
+roomDetail.style.backgroundColor=themas[4];
+palette3Color.value=themas[4];
+roomDetail.style.color = themas[5];
+chatFontColor.value = themas[5];
 
-// 전송 textarea 자동으로 늘어나도록 설정
-const inputChatting = document.getElementById("inputChatting");
-
-inputChatting.addEventListener("input",()=>{
-   let rowCount = inputChatting.value.split(/\r\n|\r|\n/).length;
-   if(rowCount < 2){ // textarea row=1일 때
-      inputChatting.style.height="41px"; // 최소값
-   }
-   else if(rowCount <= 15){
-      inputChatting.style.height= ((rowCount*21)+20) + "px";
-   }
-})
 
 // 메뉴버튼 누르면 버튼들 등장
 menuBtn.addEventListener("click",()=>{
@@ -61,6 +64,9 @@ menuBtn.addEventListener("click",()=>{
    }
    else {
       buttons.style.height="40px";
+      addTargetPopupLayer.setAttribute("class","displayNone");
+      resultArea.innerHTML = "";
+      palettePopupLayer.setAttribute("class","displayNone");
       menuFlag=0;
    }
 })
@@ -282,14 +288,8 @@ function selectRoomList(){
 
 }
 
-
-
-
-
-
 // 채팅 메세지 영역
 const display = document.getElementsByClassName("display-chatting")[0];
-
 
 // 채팅방 목록에 이벤트를 추가하는 함수 
 function roomListAddEvent(){
@@ -311,7 +311,9 @@ function roomListAddEvent(){
          if(item.children[1].children[1].children[1] != undefined){
             item.children[1].children[1].children[1].remove();
          }
-
+         // 채팅방 이름을 채팅상대로 변경
+         const rt = document.getElementById("roomTitle");
+         rt.innerText = selectTargetName;
    
          // 모든 채팅방에서 select 클래스를 제거
          for(let it of chattingItemList) it.classList.remove("select")
@@ -324,8 +326,6 @@ function roomListAddEvent(){
       });
    }
 }
-
-
 
 
 // 비동기로 메세지 목록을 조회하는 함수
@@ -408,14 +408,39 @@ if(loginMemberNo != ""){
 
 
 
-// 채팅 입력
-const send = document.getElementById("sendBtn");
+// 채팅 입력 부분
+// 전송 textarea 자동으로 늘어나도록 설정
+const inputChatting = document.getElementById("inputChatting");
+
+inputChatting.addEventListener("input",()=>{
+   
+   let rowCount = inputChatting.value.split(/\r\n|\r|\n/).length;
+   
+   if(rowCount < 2){ // textarea row=1일 때
+      inputChatting.style.height="42px"; // 최소값
+   }
+   else if(rowCount <= 15){
+      inputChatting.style.height= ((rowCount*21)+20) + "px";
+   }
+
+   if(inputChatting.value.trim().length>0){
+      send.style.backgroundColor="rgba( 255, 255, 255, 0.7 )";
+      send.style.color="black";
+   }
+   else{
+      send.style.backgroundColor="initial";
+      send.style.color="#ddd";
+   }
+})
 
 const sendMessage = () => {
    const inputChatting = document.getElementById("inputChatting");
 
    if (inputChatting.value.trim().length == 0) {
-      alert("채팅을 입력해주세요.");
+      Swal.fire({
+         icon: 'error',                     
+         title: '채팅을 입력해주세요.',    
+      });
       inputChatting.value = "";
    } else {
       var obj = {
@@ -430,7 +455,7 @@ const sendMessage = () => {
       chattingSock.send(JSON.stringify(obj));
 
       inputChatting.value = "";
-      inputChatting.style.height="41px";
+      inputChatting.style.height="42px";
    }
 }
 
@@ -503,24 +528,8 @@ chattingSock.onmessage = function(e) {
       display.scrollTop = display.scrollHeight; // 스크롤 제일 밑으로
    }
 
-
-
    selectRoomList();
 }
-
-
-
-
-// 문서 로딩 완료 후 수행할 기능
-document.addEventListener("DOMContentLoaded", ()=>{
-   
-   // 채팅방 목록에 클릭 이벤트 추가
-   roomListAddEvent(); 
-
-   // 보내기 버튼에 이벤트 추가
-   send.addEventListener("click", sendMessage);
-});
-
 
 // 테마 컬러픽커 세팅
 Coloris({
@@ -533,11 +542,9 @@ Coloris({
    alpha: true,          // 불투명도 조절가능 여부
    format: 'hex',        // 포맷 hex rgb hsl auto mixed
    formatToggle: false,   // 포맷 토글 사용여부
-   forceAlpha: false,    // 불투명토 미사용 시 값에 포함할지
-   clearButton: true,    
-   clearLabel: 'Clear',
+   forceAlpha: false,    // 불투명도 미사용 시 값에 포함할지
    closeButton: true,
-   closeLabel: 'Close',
+   closeLabel: '확인',
    swatches: [
       '#498792',
       '#99E1ED',
@@ -546,17 +553,7 @@ Coloris({
       '#DDD',
       'whitesmoke'
    ],
-   inline: false,
-});
-
-Coloris.setInstance('.instance1', {
-   defaultColor: '#99E1ED'
-});
-Coloris.setInstance('.instance2', {
-   defaultColor: 'whitesmoke'
-});
-Coloris.setInstance('.instance3', {
-   defaultColor: 'white'
+   inline: false
 });
 
 
@@ -586,8 +583,6 @@ listFontColor.addEventListener("input",()=>{
    roomListArea.style.color = `${listFontColor.value}`;
    roomSearchInput.style.color = `${listFontColor.value}`;
    targetInput.style.color = `${listFontColor.value}`;
-   document.querySelector("#roomSearchInput > input::-webkit-input-placeholder").style.color = `${listFontColor.value}`;
-   document.querySelector("#targetInput > input::-webkit-input-placeholder").style.color = `${listFontColor.value}`;
 })
 
 // 채팅방내부 색상 변경
@@ -598,3 +593,48 @@ palette3Color.addEventListener("input",()=>{
 chatFontColor.addEventListener("input",()=>{
    roomDetail.style.color = `${chatFontColor.value}`;
 })
+
+saveThemaBtn.addEventListener("click",()=>{
+   const equals = (a, b) => JSON.stringify(a) === JSON.stringify(b);
+   const nowThemas = [
+      palette1Color.value, menuIconColor.value,
+      palette2Color.value, listFontColor.value,
+      palette3Color.value, chatFontColor.value
+   ];
+   if(equals(themas, nowThemas)){
+      Swal.fire({
+         icon: 'error',                     
+         title: '변경사항이 없습니다',    
+         text: '회원님만의 테마를 꾸며보세요 :)'
+      });
+      return;
+   }
+   const newMemberThema = nowThemas.join(",,");
+   const data = { "newMemberThema" : newMemberThema, "memberNo" : loginMemberNo };
+
+   fetch("/chatting/updateThema",{
+      method : "PUT",
+      headers : {"Content-Type": "application/json"},
+      body : JSON.stringify(data)
+   })
+   .then(resp => resp.text())
+   .then(result => {
+      Swal.fire({
+         icon: (result>0 ? 'success' : 'error'),                     
+         title: '테마 저장'+(result>0 ? '성공' : '실패')
+      });
+      palettePopupLayer.setAttribute("class","displayNone");
+   })
+   .catch(err => console.log(err));
+})
+
+
+// 문서 로딩 완료 후 수행할 기능
+document.addEventListener("DOMContentLoaded", ()=>{
+   
+   // 채팅방 목록에 클릭 이벤트 추가
+   roomListAddEvent(); 
+
+   // 보내기 버튼에 이벤트 추가
+   send.addEventListener("click", sendMessage);
+});

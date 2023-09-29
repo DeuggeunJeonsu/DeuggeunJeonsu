@@ -1,5 +1,37 @@
-/*검색 버튼 눌렀을 때 창 사라지고 나타남*/
+// 채팅 카운트 최신화
+let chattingCount;
+//let chattingCountIsRunning = false; 
+//if (chattingCountIsRunning) clearInterval(chattingCount); // 실행중이면 초기화
 
+// 로그인 후 채팅아이콘이 존재 할 때만
+if($('#chatting-count').length){
+    console.log("채팅아이콘 존재");
+    realTimeUpdates();
+}
+else console.log("채팅아이콘 없음");
+
+function realTimeUpdates(){
+    chattingCount = setInterval(function () {
+        $.ajax({
+            type: "GET",
+            url: "/chattingCount",
+            dataType: "text",
+            success: function(response) {
+                if (parseInt(response) > 0) {
+                    $('#chatting-count').text(response).show();
+                } else {
+                    $('#chatting-count').hide();
+                }
+            },
+            error: function(error) {
+                console.error("데이터 가져오기 오류: ", error);
+            }
+        });
+    }, 1000);
+    //chattingCountIsRunning = true;
+}
+
+/*검색 버튼 눌렀을 때 창 사라지고 나타남*/
 $(document).ready(function(){
     // 돋보기 버튼 눌렀을 시 검색 창 나타나거나 사라짐  
     $('.search').click( function (){
@@ -18,7 +50,7 @@ $(document).ready(function(){
     const log01 = document.querySelector(".log01");  
     const log02 = document.querySelector(".log02"); //스크롤내렸을 때 보이게 될 로고
     const body = document.querySelector("body")
-   
+
     $(window).scroll(function(e) {
         didScroll = true;
     });

@@ -1,3 +1,10 @@
+// 태그 불러오기
+const hashtagSelect = document.getElementById("tagSelect");
+const optionSelect = tagOption;
+for(let option of hashtagSelect){
+    if(option.value == optionSelect ) option.selected = true;
+}
+
 // summernote 에디터 불러오기
 $(document).ready(function() {
     $('#summernote').summernote({
@@ -33,7 +40,6 @@ const writeFrm = document.getElementById("write-form");
 writeFrm.addEventListener("submit", e=>{
 
     // 태그 유효성 검사
-    const hashtagSelect = document.getElementById("tagSelect");
     const tagValue = (tagSelect.options[tagSelect.selectedIndex].value);
     if(tagValue==""){
         Swal.fire({
@@ -101,23 +107,18 @@ writeFrm.addEventListener("submit", e=>{
         const imgSrcInput = document.querySelector('input[name="imgSrc"]');
         imgSrcInput.value = imgSrc;
     }
+
 });
 
 // 취소 버튼 클릭 시
 const cancelBtn = document.getElementById("cancel-btn");
 cancelBtn.addEventListener("click", ()=>{
 
-    let url = "/board/1/list";
-
+    let url = "/board/1/" + boardNo + "?cp="
+    
     const params = new URL(location.href).searchParams;
 
-    let cp;
-
-    if(params.get("cp") != null){ // 쿼리스트링에 cp가 있을 경우
-        cp = "?cp=" + params.get("cp");
-    } else {
-        cp = "?cp=1";
-    }
+    let cp = params.get("cp");
 
     url += cp;
 
