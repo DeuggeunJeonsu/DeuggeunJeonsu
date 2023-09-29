@@ -73,11 +73,17 @@ bmiCalculate.addEventListener("click", ()=>{
     const reqExp = /^\d{2,3}(\.\d{1,2})?$/;
 
     if(heightInput.value.trim().length==0 || !reqExp.test(heightInput.value.trim())){
-        alert("신장이 제대로 입력되지 않았습니다");
+        Swal.fire({
+            icon: 'error',                     
+            title: '신장이 제대로 입력되지 않았습니다',    
+        });
         return;
     }
     if(weightInput.value.trim().length==0 || !reqExp.test(weightInput.value.trim())){
-        alert("체중이 제대로 입력되지 않았습니다");
+        Swal.fire({
+            icon: 'error',                     
+            title: '체중이 제대로 입력되지 않았습니다',    
+        });
         return;
     }
     // bmi 결과 div에 표시
@@ -115,7 +121,11 @@ bmiSave.addEventListener("click", ()=>{
             .then(resp => resp.json() )
             .then(result => {
                 if(result>0){
-                    alert("오늘의 내 BMI 저장 완료!");
+                    Swal.fire({
+                        icon: 'success',                     
+                        title: '오늘의 내 BMI 저장 완료!',
+                        text: '당일 가장 마지막 저장으로 최신화 됩니다.'
+                    });
                     location.reload();
                 }
             })
@@ -125,11 +135,18 @@ bmiSave.addEventListener("click", ()=>{
             })
         }
         else{ // bmi 계산 값이 없으면
-            alert("저장할 BMI값이 없습니다");
+            Swal.fire({
+                icon: 'error',                     
+                title: '저장할 BMI값이 없습니다',    
+                text: '신장(키) 와 체중(몸무게) 를 입력하고 BMI를 계산해보세요!'
+            });
         }
     }
     else{
-        alert("로그인 후 저장 가능합니다");
+        Swal.fire({
+            icon: 'error',                     
+            title: '로그인 후 저장 가능합니다' 
+        });
     }
 
 });

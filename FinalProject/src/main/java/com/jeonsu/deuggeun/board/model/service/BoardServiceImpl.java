@@ -108,7 +108,7 @@ public class BoardServiceImpl implements BoardService {
 	// 게시글 수정
 	@Transactional(rollbackFor = Exception.class)
 	@Override
-	public int informationBoardUpdate(Board board, int cp, List<String> insertList, List<String> imgSrc, String deleteList) {
+	public int informationBoardUpdate(Board board, int cp, List<String> insertList, List<String> imgSrc) {
 		
 		board.setBoardTitle(Util.XSSHandling(board.getBoardTitle()));
 		return dao.informationBoardUpdate(board);

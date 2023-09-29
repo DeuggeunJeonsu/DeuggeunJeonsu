@@ -21,7 +21,7 @@
     <script>
         const loginMember = "${loginMember}"; // 로그인한 회원
         const loginMemberNo = "${loginMember.memberNo}"; // 로그인한 회원 번호
-        let memberThema = "${loginMember.memberThema}";
+        let memberThema = "${loginMember.memberThema}"; // 회원 테마
         let themas = memberThema.split(",,");
     </script>
 
@@ -153,7 +153,7 @@
                 <div id="chattingRoomDetail">
                     <!-- 채팅방 이름 -->
                     <div id="roomTitleArea">
-                        <div id="roomTitle">채팅방 이름</div>
+                        <div id="roomTitle"></div>
                     </div>
 
                     <!-- 채팅내역 -->

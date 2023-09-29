@@ -24,8 +24,6 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/resources/images/favicon_io/favicon-16x16.png">
     <link rel="manifest" href="/resources/images/favicon_io/site.webmanifest">
 
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.28/dist/sweetalert2.all.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.28/dist/sweetalert2.min.css">
 </head>
 
 <body>
@@ -34,7 +32,10 @@
 	
     <%-- 검색어가 있을 경우 --%>
     <c:if test="${!empty param.key}" >
-        <c:set var="sp" value="&key=${param.key}&query=${param.query}"/>
+        <c:set var="key" value="&key=${param.key}"/>
+    </c:if>
+    <c:if test="${!empty param.key}" >
+        <c:set var="query" value="&query=${param.query}"/>
     </c:if>
 
     <div class="place"></div>
@@ -48,8 +49,10 @@
             <%-- 게시글 상세 검색 --%>
             <div class="search-place">
                 <form method="get" id="boardSearch">
-                    <!-- <input type="hidden" name="key" value="tc"> -->
-                    <input type="search" name="query" id="searchQuery" placeholder="search..." autocomplete="off" value=${param.query}>
+                    <c:if test="${!empty param.key}" >
+                        <input type="hidden" name="key" value="${param.key}">
+                    </c:if>
+                    <input type="search" name="query" id="searchQuery" placeholder="search..." autocomplete="off" value="${key}">
                     <button id="search-button"><i class="fas fa-search"></i></button>
                 </form>
             </div>
@@ -66,7 +69,7 @@
 
             <%-- 게시글 빠른 검색 --%>
             <div id="sort-btn-area">
-                <a href="/board/1/list?key=h${!empty param.query ? '&query='+param.query : ''}">
+                <a href="/board/1/list?key=h${!empty param.query ? '&query=' : ''}${param.query}">
                     <c:if test="${param.key == 'h'}" >
                         <span name="key" value="h" style="font-weight:bold; color:#99E1ED" id="healthCategory">건강정보</span>
                     </c:if>
@@ -75,7 +78,7 @@
                     </c:if>
                 </a> |
 
-                <a href="/board/1/list?key=f${!empty param.query ? '&query='+param.query : ''}">
+                <a href="/board/1/list?key=f${!empty param.query ? '&query=' : ''}${param.query}">
                     <c:if test="${param.key == 'f'}" >
                         <span name="key" value="f" style="font-weight:bold; color:#99E1ED" id="exerciseCategory">운동정보</span>
                     </c:if>
@@ -84,7 +87,7 @@
                     </c:if>
                 </a> |
 
-                <a href="/board/1/list?key=t${!empty param.query ? '&query='+param.query : ''}">
+                <a href="/board/1/list?key=t${!empty param.query ? '&query=' : ''}${param.query}">
                     <c:if test="${param.key == 't'}" >
                         <span name="key" value="t" style="font-weight:bold; color:#99E1ED" id="trendCategory">최근동향</span>
                     </c:if>
@@ -151,10 +154,10 @@
             <ul class="pagination">
 
                 <!-- 첫 페이지로 이동 -->
-                <li><a href="/board/${boardCode}/list?cp=1${sp}">&lt;&lt;</a></li>
+                <li><a href="/board/${boardCode}/list?cp=1${key}${query}">&lt;&lt;</a></li>
 
                 <!-- 이전 목록 마지막 번호로 이동 -->
-                <li><a href="/board/${boardCode}/list?cp=${pagination.prevPage}${sp}">&lt;</a></li>
+                <li><a href="/board/${boardCode}/list?cp=${pagination.prevPage}${key}${query}">&lt;</a></li>
 
 
                 <!-- 특정 페이지로 이동 -->
@@ -168,7 +171,7 @@
 
                         <c:otherwise>
                             <!-- 현재 페이지를 제외한 나머지 -->
-                            <li><a href="/board/${boardCode}/list?cp=${i}${sp}">${i}</a></li>
+                            <li><a href="/board/${boardCode}/list?cp=${i}${key}${query}">${i}</a></li>
 
                         </c:otherwise>
                     </c:choose>
@@ -176,10 +179,10 @@
                 </c:forEach>
 
                 <!-- 다음 목록 시작 번호로 이동 -->
-                <li><a href="/board/${boardCode}/list?cp=${pagination.nextPage}${sp}">&gt;</a></li>
+                <li><a href="/board/${boardCode}/list?cp=${pagination.nextPage}${key}${query}">&gt;</a></li>
 
                 <!-- 끝 페이지로 이동 -->
-                <li><a href="/board/${boardCode}/list?cp=${pagination.maxPage}${sp}">&gt;&gt;</a></li>
+                <li><a href="/board/${boardCode}/list?cp=${pagination.maxPage}${key}${query}">&gt;&gt;</a></li>
 
             </ul>
         </div>

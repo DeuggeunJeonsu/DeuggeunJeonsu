@@ -119,5 +119,12 @@
       AND MEMBER_DEL_FL = 'N'
       AND MEMBER_NO != ${memberNo}
    </select>
+   
+   <!-- 회원 테마 변경 -->
+   <update id="updateThema">
+      UPDATE "MEMBER" SET
+      MEMBER_THEMA = #{newMemberThema}
+      WHERE MEMBER_NO = #{memberNo}
+   </update>
 
 </mapper>

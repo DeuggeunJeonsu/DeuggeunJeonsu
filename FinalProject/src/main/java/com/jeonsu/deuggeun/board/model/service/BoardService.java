@@ -64,10 +64,9 @@ public interface BoardService {
 	 * @param cp
 	 * @param tagContent
 	 * @param imgSrc
-	 * @param deleteList
 	 * @return rowCount
 	 */
-	int informationBoardUpdate(Board board, int cp, List<String> insertList, List<String> imgSrc, String deleteList);
+	int informationBoardUpdate(Board board, int cp, List<String> insertList, List<String> imgSrc);
 
 	/** 게시글 삭제
 	 * @param map

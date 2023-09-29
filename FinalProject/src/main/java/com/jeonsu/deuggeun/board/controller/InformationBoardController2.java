@@ -97,7 +97,6 @@ public class InformationBoardController2 {
 			, Board board
 			, @RequestParam(value = "insertList", required = false) List<String> insertList
 			, @RequestParam(value = "imgSrc", required = false) List<String> imgSrc
-			, @RequestParam(value = "deleteList", required = false) String deleteList
 			, @RequestParam(value = "cp", required = false, defaultValue = "1") int cp
 			, HttpSession session
 			, RedirectAttributes ra
@@ -106,7 +105,7 @@ public class InformationBoardController2 {
 		board.setBoardCode(1);
 		board.setBoardNo(boardNo);
 		
-		int rowCount = service.informationBoardUpdate(board, cp, insertList, imgSrc, deleteList);
+		int rowCount = service.informationBoardUpdate(board, cp, insertList, imgSrc);
 		
 		String message = null;
 		String path = "redirect:";
