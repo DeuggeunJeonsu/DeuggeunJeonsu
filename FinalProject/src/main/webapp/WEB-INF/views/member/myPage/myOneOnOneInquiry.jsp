@@ -66,9 +66,9 @@
                         <div id="right-content-area">
                             <div id="title-area">
                                 <div>
-                                    <h1>1:1 문의</h1>
+                                    <h1>문의 목록</h1>
                                 </div>
-                                <div>작성하신 1:1 문의글 목록 및 상세 조회를 할 수 있습니다.</div>
+                                <div>작성하신 문의글 목록 및 상세 조회를 할 수 있습니다.</div>
                             </div>
 
                             <div id="main-content-area">

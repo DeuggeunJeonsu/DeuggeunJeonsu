@@ -1,6 +1,8 @@
 package com.jeonsu.deuggeun.main.controller;
 
 import java.util.List;
+
+
 import java.util.Map;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 
 import com.jeonsu.deuggeun.member.model.dto.MemberBMI;
 import com.jeonsu.deuggeun.member.model.service.MemberService;
+import com.jeonsu.deuggeun.todolist.model.dto.TodoList;
 
 @Controller
 @SessionAttributes({"loginMember"})
@@ -20,6 +23,9 @@ public class MainController {
 	
 	@Autowired
 	MemberService service;
+	
+	
+	
 	
 	// 메인페이지로 이동
 	@RequestMapping("/")
@@ -31,6 +37,24 @@ public class MainController {
 	@RequestMapping("/survey")
 	public String survey() {
 		return "common/survey";
+	}
+	
+	
+	// 추천 루틴 투두리스트에 삽입
+	@RequestMapping("/survey/todoList")
+	@ResponseBody
+	public int surveyTodo(String routine,
+			@SessionAttribute("loginMember") Member loginMember
+			) {
+		
+		System.out.println(routine + "엥?");
+		TodoList todoList = new TodoList();
+		System.out.println("왜 널이냐");
+		todoList.setListContent(routine);
+		todoList.setMemberNo(loginMember.getMemberNo());
+		System.out.println(todoList.getListContent());
+		
+		return service.surveyTodo(todoList);
 	}
 	
 	// BMI 페이지로 이동

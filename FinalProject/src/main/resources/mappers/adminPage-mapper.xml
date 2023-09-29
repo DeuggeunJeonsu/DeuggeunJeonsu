@@ -28,6 +28,14 @@
 
 		<result property="commentCount" column="COMMENT_COUNT" />
 		<result property="likeCount" column="LIKE_COUNT" />
+		
+		
+		<result property="productNo" column="PRODUCT_NO" />
+		<result property="inquiryTitle" column="INQUIRY_TITLE" />
+		<result property="inquiryContent" column="INQUIRY_CONTENT" />
+		<result property="marketCheckFl" column="ADMIN_FL" />
+		
+		
 
 	</resultMap>
 	
@@ -73,12 +81,10 @@
 	
 	<!-- 상품 문의 리스트 조회 -->
 	<select id="selectInquiry2" resultMap="adminBoard_rm">
-		SELECT BOARD_NO, BOARD_TITLE, INQUIRY_TYPE , MEMBER_EMAIL, ADMIN_CHECK_FL
-		FROM BOARD
-		JOIN INQUIRY USING(BOARD_NO)
+		 SELECT PRODUCT_NO, INQUIRY_TITLE ,INQUIRY_CONTENT ,INQUIRY_TYPE ,MEMBER_EMAIL, ADMIN_FL
+		FROM PRODUCT_INQUIRY
 		JOIN MEMBER USING(MEMBER_NO)
-		WHERE INQUIRY_TYPE IN (3,4)
-		ORDER BY BOARD_NO DESC
+		ORDER BY INQUIRY_CD DESC
 	</select>
 	
 	<!-- 관리자 1:1 문의 답변 -->

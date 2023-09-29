@@ -12,6 +12,7 @@ import com.jeonsu.deuggeun.board.model.dto.Board;
 import com.jeonsu.deuggeun.member.model.dao.MemberDAO;
 import com.jeonsu.deuggeun.member.model.dto.Member;
 import com.jeonsu.deuggeun.member.model.dto.MemberBMI;
+import com.jeonsu.deuggeun.todolist.model.dto.TodoList;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -131,6 +132,14 @@ public class MemberServiceImpl implements MemberService {
 	public Board trendingFree() {
 		return dao.trendingFree();
 	}
+
+	// 추천 루틴 투두리스트에 추가하기
+	@Override
+	public int surveyTodo(TodoList todoList) {
+		return dao.surveyTodo(todoList);
+	}
+
+
 
 
 }

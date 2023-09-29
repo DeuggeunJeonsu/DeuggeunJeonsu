@@ -80,6 +80,30 @@
 		    TO_CHAR(TD."L_CREATE_DT", 'YYYY-MM-DD')
 	
 	</select>
+	
+	<!-- 루틴 추천 전용 -->
+	<select id="calenderSelectRoutine" resultType="java.lang.String">
+		SELECT
+		    count(TO_CHAR(C."L_CREATE_DT", 'YYYY-MM-DD')) AS "L_CREATE_DT"
+		    
+		FROM
+		    "TODOLIST" TL
+		JOIN
+		    "TODOLIST_DATE" TD ON TL."LIST_NO" = TD."LIST_NO"
+		JOIN
+		    "CALENDER" C ON TD."L_CREATE_DT" = C."L_CREATE_DT"
+		WHERE
+		    TL."MEMBER_NO" = #{memberNo}
+		AND 
+		    C."L_CREATE_DT" = SYSDATE
+		GROUP BY
+		    TO_CHAR(TD."L_CREATE_DT", 'YYYY-MM-DD')
+		ORDER BY
+		    TO_CHAR(TD."L_CREATE_DT", 'YYYY-MM-DD')
+	
+	</select>
+	
+	
 	<delete id="calenderDelete">
 		DELETE FROM "CALENDER"
 		WHERE "L_CREATE_DT" = #{lCreateDt}
@@ -99,10 +123,29 @@
 		VALUES(#{memberNo}, #{lCreateDt}, DEFAULT)
 	</insert>
 	
+	<!-- 루틴 추천 전용 -->
+	<insert id="calenderInsertRoutine">
+		INSERT INTO "CALENDER"
+		VALUES(#{memberNo}, SYSDATE, DEFAULT)
+	</insert>
+	
+	
 	<insert id="todoDateInsert">
 		INSERT INTO "TODOLIST_DATE"
 		VALUES (${listNo}, #{lCreateDt})
 	</insert>
+	
+	<!-- 루틴 추천 전용 -->
+	<insert id="todoDateInsertRoutine">
+		INSERT INTO "TODOLIST_DATE"
+		VALUES (${listNo}, SYSDATE)
+	</insert>
+	
+	<!-- 루틴 추천 전용 -->
+	<select id="todoListCount" resultType="_int">
+		SELECT COUNT(*) FROM TODOLIST
+		WHERE MEMBER_NO = #{memberNo} 
+	</select>
   
   	<!-- 전체 달성 -->
   	<update id="allCompleted">
