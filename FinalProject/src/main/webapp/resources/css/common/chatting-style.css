@@ -3,6 +3,20 @@
    /* border: 1px solid black; */
 }
 
+/* placeholder 설정 */
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+   text-shadow: 0.5px 0.5px 0.5px black;
+}
+::-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+   text-shadow: 0.5px 0.5px 0.5px black;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+   text-shadow: 0.5px 0.5px 0.5px black;
+}
+::-ms-input-placeholder { /* Internet Explorer 10-11 */
+   text-shadow: 0.5px 0.5px 0.5px black;
+}
+
 body {
    display: flex;
    flex-direction: column;
@@ -82,7 +96,7 @@ main {
    border : 1px solid #ddd;
    overflow: auto;
    background-color: whitesmoke;
-   
+   text-shadow: 0.5px 0.5px 0.5px black;
    position: relative;
 }
 #roomSearchArea{
@@ -139,6 +153,7 @@ main {
 }
 #roomTitle{
    font-size: 1.3em;
+   text-shadow: 0.5px 0.5px 0.5px black;
 }
 
 /* 채팅 내역 */
@@ -199,11 +214,14 @@ main {
 #addTargetPopupLayer{
    position: absolute;
    margin: auto;
-   top: 120px;
+   top: 110px;
    left: 1;
    z-index: 1200;
    background-color: whitesmoke;
-   border: 5px inset #99E1ED;
+   border-top: 5px outset #99E1ED;
+   border-left: 5px outset #99E1ED;
+   border-right: 5px inset #99E1ED;
+   border-bottom: 5px inset #99E1ED;
    border-radius: 10px;
    width: 295px;
    height:auto;
@@ -260,11 +278,14 @@ main {
 #palettePopupLayer{
    position: absolute;
    margin: auto;
-   top: 45px;
+   top: 50px;
    left: 1;
    z-index: 1200;
    background-color: whitesmoke;
-   border: 5px inset #99E1ED;
+   border-top: 5px outset #99E1ED;
+   border-left: 5px outset #99E1ED;
+   border-right: 5px inset #99E1ED;
+   border-bottom: 5px inset #99E1ED;
    border-radius: 10px;
    width: 295px;
    height: auto;
@@ -301,7 +322,7 @@ main {
 }
 .paletteName{
    width: 30%;
-   font-size: 12px;
+   font-size: 13px;
    text-align: start;
 }
 .thema-color-area{
@@ -414,11 +435,11 @@ main {
    justify-content: center;
    align-items: center;
    border-radius: 50%;
-   background-color: #99E1ED;
+   background-color: #ff6464;
    color: white;
    font-size: 12px;
    margin: 10px 10px 0 0;
-   box-shadow: 1px 2px 2px #ddd;
+   box-shadow: 0px 0px 3px #ddd;
 }
 
 
@@ -464,7 +485,9 @@ main {
 }
 
 .chatDate {
-   font-size: 9px;
+   font-size: 12px;
+   text-shadow: 0.5px 0.5px 0.5px black;
+   margin: 0 5px;
 }
 
 #exit-area {

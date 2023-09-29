@@ -117,7 +117,7 @@
                     <!-- 채팅방 검색 -->
                     <div id="roomSearchArea">
                         <i class="fa fa-solid fa-magnifying-glass fa-2xl" style="color: #ddd;"></i>
-                        <input type="text" id="roomSearchInput" placeholder="채팅방 목록 내 검색">
+                        <input type="text" id="roomSearchInput" placeholder="채팅방 목록 내 검색" autocomplete="off">
                     </div>
 
                     <!-- 채팅방 목록 -->
