@@ -92,5 +92,15 @@ public class ChattingController {
         return service.selectMessageList(paramMap);
     }
     
-
+    // 회원 테마 저장
+    @PutMapping("/chatting/updateThema")
+    @ResponseBody
+    public int updateThema(@RequestBody Map<String, Object> paramMap, @SessionAttribute("loginMember") Member loginMember, Model model) { 
+    	int result = service.updateThema(paramMap);
+    	if(result>0) {
+    		loginMember.setMemberThema(String.valueOf(paramMap.get("newMemberThema")));
+    		model.addAttribute("loginMember", loginMember);
+    	}
+        return result;
+    }
 }

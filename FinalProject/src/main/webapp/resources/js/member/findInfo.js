@@ -31,7 +31,10 @@ sendSmsBtn.addEventListener("click", e=>{
     memberTel ="";
     for( let i of memberTels){
         if(i.value.trim().length==0){
-            alert("휴대폰번호를 입력해주세요");
+            Swal.fire({
+                icon: 'error',                     
+                title: '휴대폰번호를 입력해주세요'  
+            });
             return;
         }
         memberTel += i.value;
@@ -54,9 +57,19 @@ sendSmsBtn.addEventListener("click", e=>{
             // 5분간 유효한 쿠키 생성
             set_cookie(memberTel+"_idAtKey", resultIdAtKey, 5);
             // 안내문구 출력
-            alert("인증번호가 전송되었습니다. 휴대폰을 확인해주세요.");
+            Swal.fire({
+                icon: 'success',                     
+                title: '인증번호가 전송되었습니다.',
+                text: '휴대폰을 확인해주세요.'
+            });
         }
-        else alert("해당 번호로 등록된 회원이 없습니다. 다시한번 확인해주세요.");
+        else {
+            Swal.fire({
+                icon: 'error',                     
+                title: '해당 번호로 등록된 회원이 없습니다.',
+                text: '휴대폰 번호를 다시한번 확인해주세요.'  
+            });
+        }
     })
     .catch(err =>{
         console.log("예외 발생");
@@ -69,13 +82,19 @@ findIdBtn.addEventListener("click",()=>{
     const smsCookieValue = get_cookie(memberTel+"_idAtKey");
     
     if(smsCookieValue == null){ // 쿠키없음 == 인증번호 미발송 == 인증번호 만료
-        alert("인증번호를 전송해주세요");
+        Swal.fire({
+            icon: 'error',                     
+            title: '인증번호를 전송해주세요', 
+        });
         return;
     }
     else{console.log(smsCookieValue);}
 
     if(idAtKey.value.trim().length==0){ // 인증번호 입력 칸이 비었을 때
-        alert("인증번호를 입력해주세요");
+        Swal.fire({
+            icon: 'error',                     
+            title: '인증번호를 입력해주세요', 
+        });
         return;
     }
 
@@ -107,14 +126,25 @@ findIdBtn.addEventListener("click",()=>{
                 // 인증번호 쿠키 삭제
                 delete_cookie(memberTel+"_idAtKey");
             }
-            else alert("일치하는 회원 정보가 없습니다.");
+            else {
+                Swal.fire({
+                    icon: 'error',                     
+                    title: '일치하는 회원 정보가 없습니다.'
+                });
+            }
         })
         .catch(err =>{
             console.log("예외 발생");
             console.log(err);
         })
     }
-    else alert("인증번호가 일치하지 않습니다. 다시한번 확인해주세요.");
+    else {
+        Swal.fire({
+            icon: 'error',                     
+            title: '인증번호가 일치하지 않습니다.', 
+            text: '다시 한번 확인해주세요'
+        });
+    }
 })
 
 // 아이디찾기 결과창에서 로그인 버튼 클릭 시
@@ -159,9 +189,19 @@ sendEmailBtn.addEventListener("click", e=>{
             set_cookie(memberEmail.value.replace("@","_")+"_pwAtKey", resultPwAtKey, 5);
 
             // 안내문구 출력
-            alert("인증번호가 전송되었습니다. 이메일을 확인해주세요.");
+            Swal.fire({
+                icon: 'success',                     
+                title: '인증번호가 전송되었습니다.',
+                text: '이메일을 확인해주세요.'
+            });
         }
-        else alert("해당 이메일로 등록된 회원이 없습니다. 다시한번 확인해주세요.");
+        else {
+            Swal.fire({
+                icon: 'error',                     
+                title: '해당 이메일로 등록된 회원이 없습니다.',
+                text: '이메일을 다시한번 확인해주세요.'  
+            });
+        }
     })
     .catch(err =>{
         console.log("예외 발생");
@@ -174,12 +214,18 @@ findPwBtn.addEventListener("click",()=>{
     const emailCookieValue = get_cookie(memberEmail.value.replace("@","_")+"_pwAtKey");
 
     if(emailCookieValue == null){ // 쿠키없음 == 인증번호 미발송 == 인증번호 만료
-        alert("인증번호를 전송해주세요");
+        Swal.fire({
+            icon: 'error',                     
+            title: '인증번호를 전송해주세요', 
+        });
         return;
     }
 
     if(pwAtKey.value.trim().length==0){ // 인증번호 입력 칸이 비었을 때
-        alert("인증번호를 입력해주세요");
+        Swal.fire({
+            icon: 'error',                     
+            title: '인증번호를 입력해주세요', 
+        });
         return;
     }
 
@@ -259,16 +305,31 @@ findPwBtn.addEventListener("click",()=>{
                 inputPw.focus();
 
                 // 안내문구 출력
-                alert(selectMember.memberNickname+"님 인증완료 되었습니다, 비밀번호를 재설정해주세요");
+                Swal.fire({
+                    icon: 'success',                     
+                    title: selectMember.memberNickname+"님 인증완료 되었습니다",
+                    text: '비밀번호를 재설정 해주세요'
+                });
             }
-            else alert("일치하는 회원 정보가 없습니다.");
+            else {
+                Swal.fire({
+                    icon: 'error',                     
+                    title: '일치하는 회원 정보가 없습니다.'
+                });
+            }
         })
         .catch(err =>{
             console.log("예외 발생");
             console.log(err);
         })
     }
-    else alert("인증번호가 일치하지 않습니다. 다시한번 확인해주세요.");
+    else{
+        Swal.fire({
+            icon: 'error',                     
+            title: '인증번호가 일치하지 않습니다.',
+            text: '이메일을 다시 한번 확인해주세요'
+        });
+    }
 })
 
 // 비밀번호 설정 버튼 눌렀을 때 예외처리 함수
@@ -283,22 +344,36 @@ function pwValidation(){
     if(changePw.value.trim().length==0){
         changePw.value="";
         changePw.focus();
-        alert("비밀번호를 입력 해주세요.");
+        Swal.fire({
+            icon: 'error',                     
+            title: '비밀번호를 입력 해주세요.'
+        });
         return false;
     }
     if(changePwCheck.value.trim().length==0){
         changePwCheck.value="";
         changePwCheck.focus();
-        alert("비밀번호 확인을 입력 해주세요.");
+        Swal.fire({
+            icon: 'error',                     
+            title: '비밀번호확인을 입력 해주세요.'
+        });
         return false;
     }
     if(!regEx.test(changePw.value)){
-        alert("비밀번호가 유효하지 않은 형식입니다.");
+        Swal.fire({
+            icon: 'error',                     
+            title: '비밀번호가 유효하지 않은 형식입니다.',
+            text: '6~20글자 사이로 입력해주세요. 사용가능한 특수문자는 ! @ # - _ 입니다.'
+        });
         changePw.focus();
         return false;
     }
     if(!regEx.test(changePwCheck.value)){
-        alert("비밀번호 확인이 유효하지 않은 형식입니다.");
+        Swal.fire({
+            icon: 'error',                     
+            title: '비밀번호확인이 유효하지 않은 형식입니다.',
+            text: '6~20글자 사이로 입력해주세요. 사용가능한 특수문자는 ! @ # - _ 입니다.'
+        });
         changePwCheck.focus();
         return false;
     }
@@ -306,7 +381,11 @@ function pwValidation(){
         changePw.value="";
         changePwCheck.value="";
         changePw.focus();
-        alert("비밀번호가 일치하지 않습니다.");
+        Swal.fire({
+            icon: 'error',                     
+            title: '비밀번호가 일치하지 않습니다.',
+            text: '비밀번호, 비밀번호확인을 다시한번 입력해주세요'
+        });
         return false;
     }
 

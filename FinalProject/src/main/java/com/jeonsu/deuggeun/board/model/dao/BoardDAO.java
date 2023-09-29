@@ -205,6 +205,10 @@ public class BoardDAO {
 	public int informationBoardUpdate(Board board) {
 		return sqlSession.update("informationBoardMapper.informationBoardUpdate", board);
 	}
+	
+	// 현재 게시글의 해시태그 넘버 조회
+	// 해시태그 수정
+	// 보드이미지 수정
 
 
 	/** 게시글 삭제

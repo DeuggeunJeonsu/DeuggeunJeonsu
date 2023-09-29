@@ -171,10 +171,8 @@
 	</insert>
 
 	<!-- 정보공유게시판 HASHTAG 테이블 해시태그 삽입 -->
-	<insert id="hashtagInsert" parameterType="Hashtag"
-		useGeneratedKeys="true">
-		<selectKey order="BEFORE" resultType="_int"
-			keyProperty="tagNo">
+	<insert id="hashtagInsert" parameterType="Hashtag" useGeneratedKeys="true">
+		<selectKey order="BEFORE" resultType="_int" keyProperty="tagNo">
 			SELECT SEQ_TAG_NO.NEXTVAL FROM DUAL
 		</selectKey>
 		INSERT INTO HASHTAG
@@ -190,8 +188,7 @@
 	
 	<!-- 정보공유게시판 이미지 삽입 -->
 	<insert id="informationBoardImageInsert" parameterType="BoardImage">
-		<selectKey order="BEFORE" resultType="_int"
-			keyProperty="imageNo">
+		<selectKey order="BEFORE" resultType="_int" keyProperty="imageNo">
 			SELECT SEQ_IMG_NO.NEXTVAL FROM DUAL
 		</selectKey>
 		INSERT INTO BOARD_IMG
@@ -208,19 +205,6 @@
 		WHERE BOARD_CODE = #{boardCode}
 		AND BOARD_NO = #{boardNo}
 	</update>
-	
-	<!-- 정보공유게시판 게시글 수정 시 삭제된 해시태그 BOARD_HASHTAG 테이블에서 삭제 -->
-	<delete id="hashtagDelete">
-		DELETE FROM BOARD_HASHTAG
-		WHERE BOARD_NO = #{boardNo}
-		AND TAG_NO IN ( ${deleteList} )
-	</delete>
-	
-	<!-- 정보공유게시판 게시글 수정 시 삭제된 해시태그 HASHTAG 테이블에서 삭제 -->
-	<delete id="hashtagDelete2">
-		DELETE FROM HASHTAG
-		WHERE TAG_NO IN ( ${deleteList} )
-	</delete>
 	
 	<!-- 정보공유게시판 게시글 삭제 -->
 	<update id="informationBoardDelete">

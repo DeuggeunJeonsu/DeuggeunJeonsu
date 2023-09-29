@@ -43,6 +43,8 @@ public class InformationBoardController {
 			, @SessionAttribute(value = "loginMember", required = false) Member loginMember
 			, Model model, @RequestParam Map<String, Object> paramMap) {
 		
+		System.out.println(paramMap.get("query"));
+		
 		// 정보공유 게시판 코드
 		int boardCode = 1;
 
