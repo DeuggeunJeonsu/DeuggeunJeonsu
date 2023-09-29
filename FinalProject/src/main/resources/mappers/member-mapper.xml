@@ -129,6 +129,16 @@
       AND MEMBER_EMAIL = #{memberEmail}
    </select>
 
+   <!-- 안읽은 채팅 카운트  -->
+   <select id="chattingCount" parameterType="int" resultType="int">
+      SELECT COUNT(*) FROM MESSAGE
+	  WHERE CHATTING_NO IN 
+	  	(SELECT CHATTING_NO FROM CHATTING_ROOM
+	    	WHERE (OPEN_MEMBER = #{memberNo} OR PARTICIPANT = #{memberNo}))
+	  AND READ_FL = 'N'
+	  AND SENDER_NO != #{memberNo}
+   </select>
+
    <!-- 장바구니 상품 카운트  -->
    <select id="shoppingCount" parameterType="int" resultType="int">
       SELECT COUNT(*) FROM CART

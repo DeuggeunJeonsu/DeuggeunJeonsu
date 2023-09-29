@@ -55,7 +55,6 @@ palette3Color.value=themas[4];
 roomDetail.style.color = themas[5];
 chatFontColor.value = themas[5];
 
-
 // 메뉴버튼 누르면 버튼들 등장
 menuBtn.addEventListener("click",()=>{
    if(menuFlag==0) {
@@ -128,6 +127,7 @@ targetInput.addEventListener("input", e => {
 
             // 프로필 이미지 요소
             const img = document.createElement("img");
+            img.style.borderRadius="50%";
             img.classList.add("result-row-img");
             
             // 프로필 이미지 여부에 따른 src 속성 선택
@@ -156,15 +156,15 @@ targetInput.addEventListener("input", e => {
 
 // 채팅방 입장 또는 선택 함수
 function chattingEnter(e){
-   console.log(e.target); // 실제 클릭된 요소
-   console.log(e.currentTarget); // 이벤트 리스트가 설정된 요소
+   // console.log(e.target); // 실제 클릭된 요소
+   // console.log(e.currentTarget); // 이벤트 리스트가 설정된 요소
 
    const targetNo = e.currentTarget.getAttribute("data-id");
 
    fetch("/chatting/enter?targetNo="+targetNo)
    .then(resp => resp.text())
    .then(chattingNo => {
-      console.log(chattingNo);
+      // console.log(chattingNo);
       
       selectRoomList(); // 채팅방 목록 조회
       
@@ -184,6 +184,7 @@ function chattingEnter(e){
       }, 200);
    })
    .catch(err => console.log(err));
+   
 }
 
 
@@ -334,7 +335,7 @@ function selectChattingFn() {
    fetch("/chatting/selectMessage?"+`chattingNo=${selectChattingNo}&memberNo=${loginMemberNo}`)
    .then(resp => resp.json())
    .then(messageList => {
-      console.log(messageList);
+      // console.log(messageList);
 
       // <ul class="display-chatting">
       const ul = document.querySelector(".display-chatting");
@@ -384,13 +385,11 @@ function selectChattingFn() {
          }
 
          ul.append(li);
-         display.scrollTop = display.scrollHeight; // 스크롤 제일 밑으로
       }
+      document.getElementById("chattingArea").scrollTop =  ul.scrollHeight;
 
    })
    .catch(err => console.log(err));
-
-
 }
 
 
@@ -449,7 +448,7 @@ const sendMessage = () => {
          "chattingNo": selectChattingNo,
          "messageContent": inputChatting.value,
       };
-      console.log(obj)
+      // console.log(obj)
 
       // JSON.stringify() : 자바스크립트 객체를 JSON 문자열로 변환
       chattingSock.send(JSON.stringify(obj));
@@ -474,12 +473,9 @@ inputChatting.addEventListener("keyup", e => {
 chattingSock.onmessage = function(e) {
    // 메소드를 통해 전달받은 객체값을 JSON객체로 변환해서 obj 변수에 저장.
    const msg = JSON.parse(e.data);
-   console.log(msg);
-
 
    // 현재 채팅방을 보고있는 경우
    if(selectChattingNo == msg.chattingNo){
-
 
       const ul = document.querySelector(".display-chatting");
    
@@ -525,7 +521,7 @@ chattingSock.onmessage = function(e) {
       }
    
       ul.append(li)
-      display.scrollTop = display.scrollHeight; // 스크롤 제일 밑으로
+      document.getElementById("chattingArea").scrollTop =  ul.scrollHeight;
    }
 
    selectRoomList();

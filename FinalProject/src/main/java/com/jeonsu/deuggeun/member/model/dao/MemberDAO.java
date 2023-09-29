@@ -81,10 +81,20 @@ public class MemberDAO {
 		if(checkResult==0) return sqlSession.insert("memberMapper.insertBMI", paramMap);
 		else return sqlSession.update("memberMapper.updateBMI", paramMap);
 	}
+	
+	/** 안읽은 채팅 카운트
+	 * @param memberNo
+	 * @return chattingCount
+	 */
+	public int chattingCount(int memberNo) {
+		return sqlSession.selectOne("memberMapper.chattingCount", memberNo);
+	}
 
-	// 장바구니 상품 카운트
+	/** 장바구니 상품 카운트
+	 * @param memberNo
+	 * @return shoppingCount
+	 */
 	public int shoppingCount(int memberNo) {
-
 		return sqlSession.selectOne("memberMapper.shoppingCount", memberNo);
 	}
 

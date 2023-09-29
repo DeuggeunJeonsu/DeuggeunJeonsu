@@ -461,6 +461,7 @@ main {
 .target-chat > img{
    width: 50px;
    margin-right: 5px;
+   border-radius: 50%;
 }
 
 .chat {
