@@ -23,9 +23,12 @@ import com.jeonsu.deuggeun.board.model.dto.Board;
 import com.jeonsu.deuggeun.board.model.service.BoardService;
 import com.jeonsu.deuggeun.member.model.dto.Member;
 
+import lombok.extern.slf4j.Slf4j;
+
 @Controller
 @RequestMapping("/board2/1")
 @SessionAttributes({"loginMember"})
+@Slf4j
 public class InformationBoardController2 {
 
 	@Autowired
@@ -50,8 +53,6 @@ public class InformationBoardController2 {
 		
 		board.setMemberNo(loginMember.getMemberNo());
 		board.setBoardCode(1);
-
-		System.out.println(imgSrc);
 		
 		int boardNo = service.boardInsert(board, tagContent, imgSrc);
 		
@@ -59,10 +60,12 @@ public class InformationBoardController2 {
 		String path = "redirect:";
 		
 		if(boardNo > 0) { // 게시글 등록 성공
+			log.debug("정보공유 게시판 {}번 게시글 삽입 성공", boardNo);
 			message = "게시글이 등록되었습니다.";
 			path += "/board/" + board.getBoardCode() + "/" + boardNo;
 			
 		} else { // 게시글 등록 실패
+			log.debug("정보공유 게시판 게시글 삽입 실패");
 			message = "게시글 등록에 실패했습니다.";
 			path += "write";
 		}
@@ -96,7 +99,7 @@ public class InformationBoardController2 {
 			@PathVariable("boardNo") int boardNo
 			, Board board
 			, @RequestParam(value = "insertList", required = false) List<String> insertList
-			, @RequestParam(value = "imgSrc", required = false) List<String> imgSrc
+			, @RequestParam(value = "imgSrc", required = false) String[] imgSrc
 			, @RequestParam(value = "cp", required = false, defaultValue = "1") int cp
 			, HttpSession session
 			, RedirectAttributes ra
@@ -110,13 +113,13 @@ public class InformationBoardController2 {
 		String message = null;
 		String path = "redirect:";
 		
-		System.out.println(rowCount);
-		
 		if(rowCount > 0) {
+			log.debug("정보공유 게시판 {}번 게시글 수정 성공", boardNo);
 			message = "게시글이 수정되었습니다.";
 			path += "/board/1/" + boardNo + "?cp=" + cp;
 			
 		} else {
+			log.debug("정보공유 게시판 {}번 게시글 수정 실패", boardNo);
 			message = "게시글 수정에 실패했습니다.";
 			path += "update";
 		}
@@ -144,9 +147,11 @@ public class InformationBoardController2 {
 		String message = null;
 		
 		if(result > 0) {
+			log.debug("정보공유 게시판 {}번 게시글 삭제 성공", boardNo);
 			path += "/board/1/list";
 		
 		} else {
+			log.debug("정보공유 게시판 {}번 게시글 삭제 실패", boardNo);
 			message = "게시글 삭제에 실패했습니다.";
 			path += "/board/1/" + boardNo;
 		}

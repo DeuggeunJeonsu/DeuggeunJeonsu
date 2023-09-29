@@ -13,7 +13,10 @@ import com.jeonsu.deuggeun.board.model.dto.Board;
 import com.jeonsu.deuggeun.board.model.dto.Pagination;
 import com.jeonsu.deuggeun.common.utility.Util;
 
+import lombok.extern.slf4j.Slf4j;
+
 @Service
+@Slf4j
 public class BoardServiceImpl implements BoardService {
 	
 	@Autowired
@@ -37,10 +40,12 @@ public class BoardServiceImpl implements BoardService {
 		
 		// 게시글 해시태그 삽입
 		int result = dao.hashtagInsert(boardNo, tagContent);
+		log.debug("해시태그 삽입결과 {}", result);
 		
 		// 이미지가 있을 경우 이미지 삽입			
 		if(boardNo > 0 && imgSrc != null) {
 			int result2 = dao.informationBoardImageInsert(boardNo, imgSrc);
+			log.debug("보드 이미지 삽입결과 {}", result2);
 		}
 
 		return boardNo;
@@ -108,10 +113,34 @@ public class BoardServiceImpl implements BoardService {
 	// 게시글 수정
 	@Transactional(rollbackFor = Exception.class)
 	@Override
-	public int informationBoardUpdate(Board board, int cp, List<String> insertList, List<String> imgSrc) {
+	public int informationBoardUpdate(Board board, int cp, List<String> insertList, String[] imgSrc) {
 		
 		board.setBoardTitle(Util.XSSHandling(board.getBoardTitle()));
-		return dao.informationBoardUpdate(board);
+		
+		// 게시글 내용 수정
+		int result = dao.informationBoardUpdate(board);
+		
+		// 게시글 내용 수정에 성공했을 때
+		if(result>0) {
+			// 게시글 해시태그 수정
+			int hashResult = dao.hashtagUpdate(board);
+			log.debug("해시태그 수정결과 {}",hashResult);
+			
+			// 이미지가 있으면 수정, 없으면 삭제
+			if(imgSrc != null) {
+				// 게시글 프리뷰 이미지 삭제
+				Map<String,Object> map = new HashMap<String, Object>();
+				map.put("boardNo",board.getBoardNo());
+				
+				int imageResult = dao.informationBoardImageDelete(map);
+				log.debug("기존 보드 이미지 삭제여부 {}",imageResult);
+				
+				int imageResult2 = dao.informationBoardImageInsert(board.getBoardNo(), imgSrc);
+				log.debug("보드 이미지 삽입결과 {}",imageResult2);
+			}
+		}
+		
+		return result;
 	}
 
 	// 게시글 삭제
@@ -126,8 +155,11 @@ public class BoardServiceImpl implements BoardService {
 		if(result > 0) {
 		
 			// 게시글에 포함되어 있던 해시태그, 이미지 삭제
-			result += dao.informationBoardHashtagDelete(map);
-			result += dao.informationBoardImageDelete(map);
+			int hashResult = dao.informationBoardHashtagDelete(map);
+			log.debug("해시태그 삭제결과 {}",hashResult);
+			
+			int imageResult = dao.informationBoardImageDelete(map);
+			log.debug("보드 이미지 삭제결과 {}",imageResult);
 		}
 		
 		return result;

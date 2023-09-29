@@ -29,9 +29,12 @@ import com.jeonsu.deuggeun.board.model.dto.Board;
 import com.jeonsu.deuggeun.board.model.service.BoardService;
 import com.jeonsu.deuggeun.member.model.dto.Member;
 
+import lombok.extern.slf4j.Slf4j;
+
 @Controller
 @RequestMapping("/board/1") /* 정보공유 게시판 */
 @SessionAttributes({"loginMember"})
+@Slf4j
 public class InformationBoardController {
 	
 	@Autowired
@@ -43,7 +46,7 @@ public class InformationBoardController {
 			, @SessionAttribute(value = "loginMember", required = false) Member loginMember
 			, Model model, @RequestParam Map<String, Object> paramMap) {
 		
-		System.out.println(paramMap.get("query"));
+		// log.debug(String.valueOf(paramMap.get("query")));
 		
 		// 정보공유 게시판 코드
 		int boardCode = 1;

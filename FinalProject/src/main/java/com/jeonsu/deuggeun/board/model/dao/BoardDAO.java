@@ -84,8 +84,6 @@ public class BoardDAO {
 			}
 			
 		}
-
-		if(result2 > 0) result2 = boardNo;
 		
 		return result2;
 	}
@@ -98,7 +96,6 @@ public class BoardDAO {
 	public int informationBoardImageInsert(int boardNo, String[] imgSrc) {
 		
 		int result = 0;
-		
 		
 		BoardImage image = new BoardImage();
 		
@@ -113,8 +110,6 @@ public class BoardDAO {
 
 			result = sqlSession.insert("informationBoardMapper.informationBoardImageInsert", image);
 		}
-		
-		if(result > 0) result = boardNo;
 		
 		return result;
 	}
@@ -206,10 +201,13 @@ public class BoardDAO {
 		return sqlSession.update("informationBoardMapper.informationBoardUpdate", board);
 	}
 	
-	// 현재 게시글의 해시태그 넘버 조회
-	// 해시태그 수정
-	// 보드이미지 수정
-
+	/** 게시글 해시태그 수정
+	 * @param board
+	 * @return result
+	 */
+	public int hashtagUpdate(Board board) {
+		return sqlSession.update("informationBoardMapper.hashtagUpdate",board);
+	}
 
 	/** 게시글 삭제
 	 * @param map
@@ -228,7 +226,7 @@ public class BoardDAO {
 		return sqlSession.delete("informationBoardMapper.informationBoardHashtagDelete", map);
 	}
 
-	/** 게시글 삭제 시 이미지 삭제
+	/** 게시글 삭제 시 프리뷰 이미지 삭제
 	 * @param map
 	 * @return result
 	 */
@@ -258,4 +256,5 @@ public class BoardDAO {
 		
 		return sqlSession.selectList("informationBoardMapper.selectInformationBoardList_search", paramMap, rowBounds);
 	}
+
 }

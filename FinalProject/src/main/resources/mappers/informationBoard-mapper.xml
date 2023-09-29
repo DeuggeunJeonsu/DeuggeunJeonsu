@@ -206,6 +206,13 @@
 		AND BOARD_NO = #{boardNo}
 	</update>
 	
+	<!-- 정보공유게시판 HASHTAG 테이블 해시태그 수정 -->
+	<update id="hashtagUpdate" parameterType="board">
+		UPDATE HASHTAG SET
+		TAG_CONTENT = #{tagContent}
+		WHERE TAG_NO = (SELECT TAG_NO FROM BOARD_HASHTAG WHERE BOARD_NO = #{boardNo})
+	</update>
+	
 	<!-- 정보공유게시판 게시글 삭제 -->
 	<update id="informationBoardDelete">
 		UPDATE BOARD SET
@@ -329,7 +336,7 @@
 		<if test="query != null and query !=''">
 				AND (BOARD_TITLE LIKE '%${query}%' OR BOARD_CONTENT LIKE '%${query}%')
 		</if>
-
+		ORDER BY BOARD_NO DESC
 	</select>
 	
 	<!-- 마이페이지 - 피드 주인의 게시글 수 조회 -->
