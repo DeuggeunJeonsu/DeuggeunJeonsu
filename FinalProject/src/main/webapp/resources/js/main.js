@@ -1,35 +1,6 @@
 // 채팅 카운트 최신화
 let chattingCount;
-//let chattingCountIsRunning = false; 
-//if (chattingCountIsRunning) clearInterval(chattingCount); // 실행중이면 초기화
-
-// 로그인 후 채팅아이콘이 존재 할 때만
-if($('#chatting-count').length){
-    console.log("채팅아이콘 존재");
-    realTimeUpdates();
-}
-else console.log("채팅아이콘 없음");
-
-function realTimeUpdates(){
-    chattingCount = setInterval(function () {
-        $.ajax({
-            type: "GET",
-            url: "/chattingCount",
-            dataType: "text",
-            success: function(response) {
-                if (parseInt(response) > 0) {
-                    $('#chatting-count').text(response).show();
-                } else {
-                    $('#chatting-count').hide();
-                }
-            },
-            error: function(error) {
-                console.error("데이터 가져오기 오류: ", error);
-            }
-        });
-    }, 1000);
-    //chattingCountIsRunning = true;
-}
+$('#chatting-count').hide();
 
 /*검색 버튼 눌렀을 때 창 사라지고 나타남*/
 $(document).ready(function(){
@@ -78,7 +49,6 @@ $(document).ready(function(){
         }
     }, 250);
 
-   
     
 
     function hasScrolled() {
@@ -142,9 +112,13 @@ $(document).ready(function() {
 
 })();
 
-// 페이지가 준비되면 장바구니 수량 업데이트 함수를 호출
+// 페이지가 준비되면 업데이트 함수를 호출
 $(document).ready(function() {
-    updateShoppingCount();
+    // 로그인 후 장바구니, 채팅 아이콘이 존재 할 때만
+    if($('.count-area').length){
+        updateShoppingCount();
+        realTimeUpdates();
+    }
 });
 
 function updateShoppingCount() {
@@ -166,12 +140,25 @@ function updateShoppingCount() {
     });
 }
 
-
-
-
-
-
-
+function realTimeUpdates(){
+    chattingCount = setInterval(function () {
+        $.ajax({
+            type: "GET",
+            url: "/chattingCount",
+            dataType: "text",
+            success: function(response) {
+                if (parseInt(response) > 0) {
+                    $('#chatting-count').text(response).show();
+                } else {
+                    $('#chatting-count').hide();
+                }
+            },
+            error: function(error) {
+                console.error("데이터 가져오기 오류: ", error);
+            }
+        });
+    }, 500);
+}
 
 
 
