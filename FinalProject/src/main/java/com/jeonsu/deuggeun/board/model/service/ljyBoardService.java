@@ -44,6 +44,9 @@ public interface ljyBoardService {
 	// 게시글 수정
 	int boardUpdate(Board board, List<MultipartFile> images, String webPath, String filePath , List<Routine> routines)throws IllegalStateException, IOException;
 
+	// 게시글 검색 후 목록 리스트 
+	Map<String, Object> selectFreeBoardList(Map<String, Object> paramMap, int cp);
+
 	
 
 	

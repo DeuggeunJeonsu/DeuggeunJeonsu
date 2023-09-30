@@ -914,6 +914,12 @@ addListInput.addEventListener("input", e=>{
         })
         .catch(err => console.log(err));
     }
+
+    addListInput.addEventListener("blur", () => {
+        autoSearch.style.display="none";
+    });
 })
+
+
 
     

@@ -176,6 +176,30 @@ public class ljyBoardDAO {
 	public int insertRoutine(Routine routine) {
 		return sqlSession.insert("shareBoardMapper.insertRoutine", routine);
 	}
+
+
+	/** 게시글 수 조회(검색)
+	 * @param paramMap
+	 * @return result
+	 */
+	public int getShareBoardListCount(Map<String, Object> paramMap) {
+		return sqlSession.selectOne("shareBoardMapper.getShareBoardListCount_search", paramMap);
+	}
+
+
+	/** 자유게시판 게시글 상세 검색
+	 * @param pagination
+	 * @param paramMap
+	 * @return list
+	 */
+	public List<Board> selecShareBoardList(Pagination pagination, Map<String, Object> paramMap) {
+		
+		int offset = (pagination.getCurrentPage() - 1) * pagination.getLimit();
+		
+		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
+		
+		return sqlSession.selectList("shareBoardMapper.selectShareBoardList_search", paramMap, rowBounds);
+	}
 	
 
 
