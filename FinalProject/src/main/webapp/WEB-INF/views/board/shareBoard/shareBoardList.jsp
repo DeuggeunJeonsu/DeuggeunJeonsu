@@ -112,7 +112,7 @@
                                     <c:if test="${empty board.thumbnail}" >
                                         <img src="/resources/images/myPage/kakaoShare_thumbnail.PNG" id="default-logo">
                                     </c:if>
-                                    ${board.thumbnail}
+                                    
                                     <c:if test="${!empty board.thumbnail}">
                                         <img src="${board.thumbnail}">
                                     </c:if>

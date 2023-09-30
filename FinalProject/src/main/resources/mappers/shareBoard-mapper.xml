@@ -375,5 +375,82 @@
 			#{boardNo},#{rtLevel})
 	</insert>
 	
+	<!-- 삭제되지 않고 검색 조건이 일치하는 게시글 수 조회 -->
+	<select id="getShareBoardListCount_search" resultType="_int">
+		SELECT COUNT(*) FROM BOARD
+		WHERE BOARD_ST = 'N'
+		AND BOARD_CODE = #{boardCode}
+		
+		<choose>
+			<when test='key == "tc"'>
+				AND (BOARD_TITLE LIKE '%${query}%' OR BOARD_CONTENT LIKE '%${query}%')
+			</when>
+			
+			<when test='key == "f"'>
+				AND MEMBER_NO IN (SELECT FOLLOWER_NO FROM FOLLOW WHERE MEMBER_NO = #{loginMemberNo})
+			</when>
+			
+			<when test='key == "ht"'>
+				AND BOARD_NO IN (
+            		SELECT BOARD_NO FROM BOARD_HASHTAG
+            		JOIN HASHTAG USING(TAG_NO)
+            		WHERE TAG_CONTENT LIKE '%${query}%')
+			</when>
+		</choose>
+		
+	</select>
+	
+	<!-- 루틴공유 게시글 상세 검색 -->
+	<select id="selectShareBoardList_search" resultMap="shareBoard_rm">
+		SELECT BOARD_NO, BOARD_TITLE, MEMBER_NICKNAME,
+		TO_CHAR(CREATE_DT, 'YY.MM.DD') CREATE_DT,
+		(SELECT COUNT(*) FROM "COMMENT" C
+		
+		WHERE C.BOARD_NO = B.BOARD_NO) COMMENT_COUNT,
+		(SELECT COUNT(*) FROM LIKE_POST L
+		
+		WHERE L.BOARD_NO = B.BOARD_NO) LIKE_COUNT,
+		
+		(SELECT IMG_PATH || IMG_RENAME
+		FROM BOARD_IMG I
+		WHERE I.BOARD_NO = B.BOARD_NO
+		AND IMG_LEVEL = 0)THUMBNAIL
+		
+		FROM "BOARD" B
+		JOIN "MEMBER" USING(MEMBER_NO)
+		
+		WHERE BOARD_ST = 'N'
+		AND BOARD_CODE = #{boardCode}
+
+		<choose>
+			<when test='key == "tc"'>
+				AND (BOARD_TITLE LIKE '%${query}%' OR BOARD_CONTENT LIKE '%${query}%')
+				ORDER BY BOARD_NO DESC
+			</when>
+			
+			<when test='key == "f"'>
+				AND MEMBER_NO IN (SELECT FOLLOWER_NO FROM FOLLOW WHERE MEMBER_NO = #{loginMemberNo})
+				ORDER BY BOARD_NO DESC
+			</when>
+			
+			<when test='key == "r"'>
+				ORDER BY BOARD_NO DESC
+			</when>
+			
+			<when test='key == "p"'>
+				ORDER BY LIKE_COUNT DESC
+			</when>
+			
+			<when test='key == "ht"'>
+				AND BOARD_NO IN (
+            		SELECT BOARD_NO FROM BOARD_HASHTAG
+            		JOIN HASHTAG USING(TAG_NO)
+            		WHERE TAG_CONTENT LIKE '%${query}%')
+            	ORDER BY BOARD_NO DESC	
+			</when>
+		</choose>
+
+	</select>
+	
 	
 </mapper>

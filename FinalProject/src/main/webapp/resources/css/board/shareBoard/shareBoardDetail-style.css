@@ -176,6 +176,7 @@ hr{ border-bottom: 2px solid #ddd;}
 }
 #member-area > div:nth-child(1)  img{
     width: 100%;
+    height: 100%;
     border-radius: 50%;
 }
 #member-area > div:nth-child(1)>span{
