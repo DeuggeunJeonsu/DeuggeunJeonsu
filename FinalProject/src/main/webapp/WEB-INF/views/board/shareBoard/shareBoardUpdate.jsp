@@ -59,7 +59,12 @@
             <div class="top-write">
                 <div id="writer">
                     <div id="profile-area">
-                        <img src="/resources/images/user.png">
+                        <c:if test="${empty loginMember.profileImage}">
+                            <img src="/resources/images/user.png">
+                        </c:if>
+                        <c:if test="${!empty loginMember.profileImage}">
+                            <img src="${loginMember.profileImage}">
+                        </c:if>
                     </div>
                     <span>${loginMember.memberNickname}</span>
                 </div>
@@ -109,27 +114,34 @@
                         <c:when test="${routine.rtLevel == 0}">
                             <c:set var="routineTitle0" value="${routine.rtTitle}"/>
                             <c:set var="routineContent0" value="${routine.rtContent}"/>
+                            <c:set var="routineNo0" value="${routine.rtNo}"/>
                         </c:when>
 
                         <c:when test="${routine.rtLevel == 1}">
                             <c:set var="routineTitle1" value="${routine.rtTitle}"/>
                             <c:set var="routineContent1" value="${routine.rtContent}"/>
+                            <c:set var="routineNo1" value="${routine.rtNo}"/>
                         </c:when>
 
                         <c:when test="${routine.rtLevel== 2}">
                             <c:set var="routineTitle2" value="${routine.rtTitle}"/>
                             <c:set var="routineContent2" value="${routine.rtContent}"/>
+                            <c:set var="routineNo2" value="${routine.rtNo}"/>
                         </c:when>
 
                         <c:when test="${routine.rtLevel == 3}">
                             <c:set var="routineTitle3" value="${routine.rtTitle}"/>
                             <c:set var="routineContent3" value="${routine.rtContent}"/>
+                            <c:set var="routineNo3" value="${routine.rtNo}"/>
                         </c:when>
 
                         <c:when test="${routine.rtLevel == 4}">
                             <c:set var="routineTitle4" value="${routine.rtTitle}"/>
                             <c:set var="routineContent4" value="${routine.rtContent}"/>
+                            <c:set var="routineNo4" value="${routine.rtNo}"/>
                         </c:when>
+
+                       
                        
                     </c:choose>
                 </c:forEach>
@@ -139,10 +151,10 @@
                         <h3>Routine</h3>
                         <hr>
                     </div>
-                    <%-- 득근 캘린더 말풍선 --%>
+                    <!-- <%-- 득근 캘린더 말풍선 --%>
                     <div class="ballon floating">
                         드래그를 통해 Routine 순서를 바꿀 수 있어요!👟
-                    </div>
+                    </div> -->
 
                         <ul class="routine-add">
                             <c:if test="${!empty img1}">
@@ -158,7 +170,10 @@
                                         <input type="text" placeholder="예) 스쿼트 20회 30세트" name="routineName" value="${routineTitle0}">
                                         <textarea name="routineContent">${routineContent0}</textarea>
                                     </div>
-                                    <div class="routine-cancle"><button type="button" class="cancle">&times;</button></div>
+                                    <div class="routine-cancle">
+                                        <button type="button" class="cancle">&times;</button>
+                                        <input type="hidden" value="${routineNo0}">
+                                    </div>
                                 </li>
                             </c:if>
                             <c:if test="${!empty img2}">
@@ -174,7 +189,10 @@
                                         <input type="text" placeholder="예) 스쿼트 20회 30세트" name="routineName" value="${routineTitle1}">
                                         <textarea name="routineContent">${routineContent1}</textarea>
                                     </div>
-                                    <div class="routine-cancle"><button type="button" class="cancle">&times;</button></div>
+                                    <div class="routine-cancle">
+                                        <button type="button" class="cancle">&times;</button>
+                                        <input type="hidden" value="${routineNo1}">
+                                    </div>                                
                                 </li>
                             </c:if>
                             <c:if test="${!empty img3}">
@@ -183,14 +201,17 @@
                                         <label for="img3">
                                             <img class="preview" src="${img3}">
                                         </label>
-                                        <input type="file" name="images" class="inputImage" id="img3" accept="image/*" value="${routineTitle2}">
+                                        <input type="file" name="images" class="inputImage" id="img3" accept="image/*" >
                                         <span class="delete-image">&times;</span>
                                     </div>
                                     <div class="routine-write-area">
-                                        <input type="text" placeholder="예) 스쿼트 20회 30세트" name="routineName">
+                                        <input type="text" placeholder="예) 스쿼트 20회 30세트" name="routineName" value="${routineTitle2}">
                                         <textarea name="routineContent">${routineContent2}</textarea>
                                     </div>
-                                    <div class="routine-cancle"><button type="button" class="cancle">&times;</button></div>
+                                    <div class="routine-cancle">
+                                        <button type="button" class="cancle">&times;</button>
+                                        <input type="hidden" value="${routineNo2}">
+                                    </div>
                                 </li>
                             </c:if>
                             <c:if test="${!empty img4}">
@@ -199,14 +220,17 @@
                                         <label for="img4">
                                             <img class="preview" src="${img4}">
                                         </label>
-                                        <input type="file" name="images" class="inputImage" id="img4" accept="image/*" value="${routineTitle3}">
+                                        <input type="file" name="images" class="inputImage" id="img4" accept="image/*">
                                         <span class="delete-image">&times;</span>
                                     </div>
                                     <div class="routine-write-area">
-                                        <input type="text" placeholder="예) 스쿼트 20회 30세트" name="routineName">
+                                        <input type="text" placeholder="예) 스쿼트 20회 30세트" name="routineName"  value="${routineTitle3}">
                                         <textarea name="routineContent">${routineContent3}</textarea>
                                     </div>
-                                    <div class="routine-cancle"><button type="button" class="cancle">&times;</button></div>
+                                    <div class="routine-cancle">
+                                        <button type="button" class="cancle">&times;</button>
+                                        <input type="hidden" value="${routineNo3}">
+                                    </div>
                                 </li>
                             </c:if>
                             <c:if test="${!empty img5}">
@@ -215,30 +239,17 @@
                                         <label for="img5">
                                             <img class="preview" src="${img5}">
                                         </label>
-                                        <input type="file" name="images" class="inputImage" id="img5" accept="image/*" value="${routineTitle4}">
+                                        <input type="file" name="images" class="inputImage" id="img5" accept="image/*">
                                         <span class="delete-image">&times;</span>
                                     </div>
                                     <div class="routine-write-area">
-                                        <input type="text" placeholder="예) 스쿼트 20회 30세트" name="routineName">
+                                        <input type="text" placeholder="예) 스쿼트 20회 30세트" name="routineName"  value="${routineTitle4}">
                                         <textarea name="routineContent">${routineContent4}</textarea>
                                     </div>
-                                    <div class="routine-cancle"><button type="button" class="cancle">&times;</button></div>
-                                </li>
-                            </c:if>
-                            <c:if test="${!empty img6}">
-                                <li class="routine" draggale="true">
-                                    <div class="boardImg">
-                                        <label for="img6">
-                                            <img class="preview" src="${img6}">
-                                        </label>
-                                        <input type="file" name="images" class="inputImage" id="img6" accept="image/*" value="${routineTitle5}">
-                                        <span class="delete-image">&times;</span>
+                                    <div class="routine-cancle">
+                                        <button type="button" class="cancle">&times;</button>
+                                        <input type="hidden" value="${routineNo4}">
                                     </div>
-                                    <div class="routine-write-area">
-                                        <input type="text" placeholder="예) 스쿼트 20회 30세트" name="routineName">
-                                        <textarea name="routineContent">${routineContent5}</textarea>
-                                    </div>
-                                    <div class="routine-cancle"><button type="button" class="cancle">&times;</button></div>
                                 </li>
                             </c:if>
 

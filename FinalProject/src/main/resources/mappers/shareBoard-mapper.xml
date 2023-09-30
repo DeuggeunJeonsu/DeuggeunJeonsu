@@ -59,7 +59,7 @@
 	
 	<!-- Routine resultMap -->
 	<resultMap type="Routine" id="routine_rm">
-		<id property="rtNo" column=""/>
+		<id property="rtNo" column="RT_NO"/>
 
 		<result property="rtTitle" column="RT_TITLE"/>
 		<result property="rtContent" column="RT_CONTENT"/>
