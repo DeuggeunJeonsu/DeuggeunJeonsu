@@ -23,6 +23,7 @@ public class Member {
 	private String memberDeleteFlag; // 탈퇴 여부(N: 탈퇴X, Y: 탈퇴O)
 	private int authority; // 회원 권한(1:일반, 2:관리자)
 	private int attendenceDate; // 월간 출석일
+	private int todoAllFlagCount; // 투두리스트 실천 횟수
 	private int communityScore; // 커뮤니티 활동 점수
 	
 	private List<Badge> badgeList; // 뱃지 리스트

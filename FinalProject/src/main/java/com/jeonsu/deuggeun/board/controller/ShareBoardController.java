@@ -71,7 +71,7 @@ public class ShareBoardController {
 			
 			paramMap.put("boardCode", 2);
 			
-			Map<String, Object> map = service2.selectFreeBoardList(paramMap, cp);
+			Map<String, Object> map = service.selectFreeBoardList(paramMap, cp);
 			
 			model.addAttribute("map", map);
 			

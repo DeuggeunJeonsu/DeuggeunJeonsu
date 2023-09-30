@@ -141,6 +141,7 @@
     left: 22%;
     background-color: white;
     border-radius: 50%;
+    box-shadow: 1px 1px 1px gray;
 }
 .top1-border{
     border: 5px solid #F2CC65;
@@ -168,15 +169,15 @@
 .top1-font{
     font-size: 27px;
     color: #F2CC65;
-    text-shadow: 1px 2px 2px #987001;
+    text-shadow: 2px 1px 1px black;
 }
 .top2-font{
     color: #D6DAEB;
-    text-shadow: 1px 2px 2px gray;
+    text-shadow: 2px 1px 1px black;
 }
 .top3-font{
     color: #DCB29E;
-    text-shadow: 1px 2px 2px #894c30;
+    text-shadow: 2px 1px 1px black;
 }
 
 /* 랭크 한 행 */
@@ -205,4 +206,5 @@
 .rank-profile-img{
     width: 30px;
     height: 30px;
+    border-radius: 50%;
 }

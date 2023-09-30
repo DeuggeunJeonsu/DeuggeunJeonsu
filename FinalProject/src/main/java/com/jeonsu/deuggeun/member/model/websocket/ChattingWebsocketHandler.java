@@ -71,9 +71,9 @@ public class ChattingWebsocketHandler extends TextWebSocketHandler{
 
                     s.sendMessage(new TextMessage(new Gson().toJson(msg)));
                     // 전달받은 내용은 JSON 형태의 String
-                    log.debug("{} 전송 완료" + message.getPayload());
+                    log.debug("{} 전송 완료", message.getPayload());
                 }
-                else log.debug("{} 전송 실패" + message.getPayload());
+                else log.debug("{} 전송 실패", message.getPayload());
             }
         }
     }

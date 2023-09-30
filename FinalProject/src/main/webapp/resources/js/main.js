@@ -30,14 +30,16 @@ $(document).ready(function(){
     // 메인페이지가 아닐때
     if(document.querySelector("[name='mainPage']") == null){
 
+
         navContainer.classList.add("nav-sticky");
         headerNav.classList.remove("no-background");
         headerNav.classList.add("nav-container-bg")
+
         body.classList.add("nav-padding")
         // log02.classList.add("log-disply");
         // log01.classList.remove("log-disply");
 
-        return;
+        //return;
 
     }
 

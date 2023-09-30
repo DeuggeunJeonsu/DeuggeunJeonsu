@@ -81,10 +81,20 @@ public class MemberDAO {
 		if(checkResult==0) return sqlSession.insert("memberMapper.insertBMI", paramMap);
 		else return sqlSession.update("memberMapper.updateBMI", paramMap);
 	}
+	
+	/** 안읽은 채팅 카운트
+	 * @param memberNo
+	 * @return chattingCount
+	 */
+	public int chattingCount(int memberNo) {
+		return sqlSession.selectOne("memberMapper.chattingCount", memberNo);
+	}
 
-	// 장바구니 상품 카운트
+	/** 장바구니 상품 카운트
+	 * @param memberNo
+	 * @return shoppingCount
+	 */
 	public int shoppingCount(int memberNo) {
-
 		return sqlSession.selectOne("memberMapper.shoppingCount", memberNo);
 	}
 
@@ -161,6 +171,29 @@ public class MemberDAO {
 		return result;
 	}
 
+	/** 출석 랭킹
+	 * @return attendenceRanking
+	 */
+	public List<Member> setAttendenceRanking() {
+		List<Member> atList = sqlSession.selectList("memberMapper.setAttendenceRanking");
+		return atList;
+	}
+
+	/** 투두리스트 실천랭킹
+	 * @return todoListRanking
+	 */
+	public List<Member> setTodoListRanking() {
+		List<Member> tdList = sqlSession.selectList("memberMapper.setTodoListRanking");
+		return tdList;
+	}
+
+	/** 커뮤니티 활동랭킹
+	 * @return communityRanking
+	 */
+	public List<Member> setCommunityRanking() {
+		List<Member> cmList = sqlSession.selectList("memberMapper.setCommunityRanking");
+		return cmList;
+	}
 	
 
 }

@@ -26,6 +26,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/resources/images/favicon_io/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/resources/images/favicon_io/favicon-16x16.png">
     <link rel="manifest" href="/resources/images/favicon_io/site.webmanifest">
+
 </head>
 <body>
 
@@ -47,257 +48,230 @@
                 data-aos-once="false"
                 data-aos-anchor-placement="top-center"+20
             >
-                <div class="ranking-table-area"> <!--홈페이지 출석-->
+                <!--홈페이지 출석 랭킹 -->
+                <div class="ranking-table-area">
                     <div class="ranking-table" id="attendanceRanking">
-                        <div class="my-rank-area">
-                            <p>30</p>
-                            <p>rank : 1</p>
-                        </div>
-                        <div class="you">You</div>
-
+                        <c:if test="${!empty loginMember}">
+                            <div class="my-rank-area">
+                                <c:forEach var="member" items="${attendenceRanking}" varStatus="status">
+                                    <c:if test="${member.memberNo == loginMember.memberNo}">
+                                        <p>${member.attendenceDate}일 출석</p>
+                                        <p>rank : ${status.index+1}</p>
+                                    </c:if>
+                                </c:forEach>
+                            </div>
+                            <div class="you">You</div>
+                        </c:if>
                         <div class="ranking-title">
                             출석 랭킹
                         </div>
                         <div class="top3-area">
                             <div>
-                                <img class="top3-profile-img top2-border" src="/resources/images/user.png">
+                                <c:if test="${attendenceRanking[1].profileImage != null}">
+                                    <img class="top3-profile-img top2-border" src="${attendenceRanking[1].profileImage}">
+                                </c:if>
+                                <c:if test="${attendenceRanking[1].profileImage == null}">
+                                    <img class="top3-profile-img top2-border" src="/resources/images/user.png">
+                                </c:if>
                                 <div class="top3-info-area top2-font">
-                                    <div>2ed NickName</div>
-                                    <div>Score icon</div>
+                                    <div>2ed ${attendenceRanking[1].memberNickname}</div>
+                                    <div>${attendenceRanking[1].attendenceDate}일 출석</div>
                                 </div>
                             </div>
                             <div>
-                                <img class="top3-profile-img top1-border" src="/resources/images/user.png">
+                                <c:if test="${attendenceRanking[0].profileImage != null}">
+                                    <img class="top3-profile-img top1-border" src="${attendenceRanking[0].profileImage}">
+                                </c:if>
+                                <c:if test="${attendenceRanking[0].profileImage == null}">
+                                    <img class="top3-profile-img top1-border" src="/resources/images/user.png">
+                                </c:if>
                                 <div class="top3-info-area top1-font">
-                                    <div>1st NickName</div>
-                                    <div>Score icon</div>
+                                    <div>1st ${attendenceRanking[0].memberNickname}</div>
+                                    <div>${attendenceRanking[0].attendenceDate}일 출석</div>
                                 </div>
                             </div>
                             <div>
-                                <img class="top3-profile-img top3-border" src="/resources/images/user.png">
+                                <c:if test="${attendenceRanking[2].profileImage != null}">
+                                    <img class="top3-profile-img top3-border" src="${attendenceRanking[2].profileImage}">
+                                </c:if>
+                                <c:if test="${attendenceRanking[2].profileImage == null}">
+                                    <img class="top3-profile-img top3-border" src="/resources/images/user.png">
+                                </c:if>
                                 <div class="top3-info-area top3-font">
-                                    <div>3rd NickName</div>
-                                    <div>Score icon</div>
+                                    <div>3rd ${attendenceRanking[2].memberNickname}</div>
+                                    <div>${attendenceRanking[2].attendenceDate}일 출석</div>
                                 </div>
                             </div>
                         </div>
-                        <div class="ranking-row">
-                            <div>4</div>
-                            <div>
-                                <img class="rank-profile-img" src="/resources/images/user.png">
+                        <c:forEach var="member" items="${attendenceRanking}" begin="3" end="7" varStatus="status">
+                            <div class="ranking-row">
+                                <div>${status.index+1}</div>
+                                <div>
+                                    <c:if test="${member.profileImage != null}">
+                                        <img class="rank-profile-img" src="${member.profileImage}">
+                                    </c:if>
+                                    <c:if test="${member.profileImage == null}">
+                                        <img class="rank-profile-img" src="/resources/images/user.png">
+                                    </c:if>
+                                </div>
+                                <div>${member.memberNickname}</div>
+                                <div>${member.attendenceDate}일 출석</div>
                             </div>
-                            <div>NickName</div>
-                            <div>Score</div>
-                            <div>icon</div>
-                        </div>
-                        <div class="ranking-row">
-                            <div>5</div>
-                            <div>
-                                <img class="rank-profile-img" src="/resources/images/user.png">
-                            </div>
-                            <div>NickName</div>
-                            <div>Score</div>
-                            <div>icon</div>
-                        </div>
-                        <div class="ranking-row">
-                            <div>6</div>
-                            <div>
-                                <img class="rank-profile-img" src="/resources/images/user.png">
-                            </div>
-                            <div>NickName</div>
-                            <div>Score</div>
-                            <div>icon</div>
-                        </div>
-                        <div class="ranking-row">
-                            <div>7</div>
-                            <div>
-                                <img class="rank-profile-img" src="/resources/images/user.png">
-                            </div>
-                            <div>NickName</div>
-                            <div>Score</div>
-                            <div>icon</div>
-                        </div>
-                        <div class="ranking-row">
-                            <div>8</div>
-                            <div>
-                                <img class="rank-profile-img" src="/resources/images/user.png">
-                            </div>
-                            <div>NickName</div>
-                            <div>Score</div>
-                            <div>icon</div>
-                        </div>
+                        </c:forEach>
                     </div>
                 </div>
 
-                <div class="ranking-table-area"> <!--투두리스트 실천-->
+                <!--투두리스트 실천 랭킹-->
+                <div class="ranking-table-area">
                     <div class="ranking-table" id="executionRanking">
-                        <div class="my-rank-area">
-                            <p>30</p>
-                            <p>rank : 1</p>
-                        </div>
-                        <div class="you">You</div>
-
+                        <c:if test="${!empty loginMember}">
+                            <div class="my-rank-area">
+                                <c:forEach var="member" items="${todoListRanking}" varStatus="status">
+                                    <c:if test="${member.memberNo == loginMember.memberNo}">
+                                        <p>${member.todoAllFlagCount}번 완료</p>
+                                        <p>rank : ${status.index+1}</p>
+                                    </c:if>
+                                </c:forEach>
+                            </div>
+                            <div class="you">You</div>
+                        </c:if>
                         <div class="ranking-title">
                             실천 랭킹
                         </div>
                         <div class="top3-area">
                             <div>
-                                <img class="top3-profile-img top2-border" src="/resources/images/user.png">
+                                <c:if test="${todoListRanking[1].profileImage != null}">
+                                    <img class="top3-profile-img top2-border" src="${todoListRanking[1].profileImage}">
+                                </c:if>
+                                <c:if test="${todoListRanking[1].profileImage == null}">
+                                    <img class="top3-profile-img top2-border" src="/resources/images/user.png">
+                                </c:if>
                                 <div class="top3-info-area top2-font">
-                                    <div>2ed NickName</div>
-                                    <div>Score icon</div>
+                                    <div>2ed ${todoListRanking[1].memberNickname}</div>
+                                    <div>${todoListRanking[1].todoAllFlagCount}번 완료</div>
                                 </div>
                             </div>
                             <div>
-                                <img class="top3-profile-img top1-border" src="/resources/images/user.png">
+                                <c:if test="${todoListRanking[0].profileImage != null}">
+                                    <img class="top3-profile-img top1-border" src="${todoListRanking[0].profileImage}">
+                                </c:if>
+                                <c:if test="${todoListRanking[0].profileImage == null}">
+                                    <img class="top3-profile-img top1-border" src="/resources/images/user.png">
+                                </c:if>
                                 <div class="top3-info-area top1-font">
-                                    <div>1st NickName</div>
-                                    <div>Score icon</div>
+                                    <div>1st ${todoListRanking[0].memberNickname}</div>
+                                    <div>${todoListRanking[0].todoAllFlagCount}번 완료</div>
                                 </div>
                             </div>
                             <div>
-                                <img class="top3-profile-img top3-border" src="/resources/images/user.png">
+                                <c:if test="${todoListRanking[2].profileImage != null}">
+                                    <img class="top3-profile-img top3-border" src="${todoListRanking[2].profileImage}">
+                                </c:if>
+                                <c:if test="${todoListRanking[2].profileImage == null}">
+                                    <img class="top3-profile-img top3-border" src="/resources/images/user.png">
+                                </c:if>
                                 <div class="top3-info-area top3-font">
-                                    <div>3rd NickName</div>
-                                    <div>Score icon</div>
+                                    <div>3rd ${todoListRanking[2].memberNickname}</div>
+                                    <div>${todoListRanking[2].todoAllFlagCount}번 완료</div>
                                 </div>
                             </div>
                         </div>
-                        <div class="ranking-row">
-                            <div>4</div>
-                            <div>
-                                <img class="rank-profile-img" src="/resources/images/user.png">
+                        <c:forEach var="member" items="${todoListRanking}" begin="3" end="7" varStatus="status">
+                            <div class="ranking-row">
+                                <div>${status.index+1}</div>
+                                <div>
+                                    <c:if test="${member.profileImage != null}">
+                                        <img class="rank-profile-img" src="${member.profileImage}">
+                                    </c:if>
+                                    <c:if test="${member.profileImage == null}">
+                                        <img class="rank-profile-img" src="/resources/images/user.png">
+                                    </c:if>
+                                </div>
+                                <div>${member.memberNickname}</div>
+                                <div>${member.todoAllFlagCount}번 완료</div>
                             </div>
-                            <div>NickName</div>
-                            <div>Score</div>
-                            <div>icon</div>
-                        </div>
-                        <div class="ranking-row">
-                            <div>5</div>
-                            <div>
-                                <img class="rank-profile-img" src="/resources/images/user.png">
-                            </div>
-                            <div>NickName</div>
-                            <div>Score</div>
-                            <div>icon</div>
-                        </div>
-                        <div class="ranking-row">
-                            <div>6</div>
-                            <div>
-                                <img class="rank-profile-img" src="/resources/images/user.png">
-                            </div>
-                            <div>NickName</div>
-                            <div>Score</div>
-                            <div>icon</div>
-                        </div>
-                        <div class="ranking-row">
-                            <div>7</div>
-                            <div>
-                                <img class="rank-profile-img" src="/resources/images/user.png">
-                            </div>
-                            <div>NickName</div>
-                            <div>Score</div>
-                            <div>icon</div>
-                        </div>
-                        <div class="ranking-row">
-                            <div>8</div>
-                            <div>
-                                <img class="rank-profile-img" src="/resources/images/user.png">
-                            </div>
-                            <div>NickName</div>
-                            <div>Score</div>
-                            <div>icon</div>
-                        </div>
+                        </c:forEach>
                     </div>
                 </div>
 
-                <div class="ranking-table-area"> <!--커뮤니티 활동-->
+                <!--커뮤니티 활동랭킹-->
+                <div class="ranking-table-area">
                     <div class="ranking-table" id="communityRanking">
-                        <div class="my-rank-area">
-                            <p>12308</p>
-                            <p>rank : 1</p>
-                        </div>
-                        <div class="you">You</div>
-                        
+                        <c:if test="${!empty loginMember}">
+                            <div class="my-rank-area">
+                                <c:forEach var="member" items="${communityRanking}" varStatus="status">
+                                    <c:if test="${member.memberNo == loginMember.memberNo}">
+                                        <p>${member.communityScore}점</p>
+                                        <p>rank : ${status.index+1}</p>
+                                    </c:if>
+                                </c:forEach>
+                            </div>
+                            <div class="you">You</div>
+                        </c:if>
                         <div class="ranking-title">
-                            활동 랭킹
+                            실천 랭킹
                         </div>
                         <div class="top3-area">
                             <div>
-                                <img class="top3-profile-img top2-border" src="/resources/images/user.png">
+                                <c:if test="${communityRanking[1].profileImage != null}">
+                                    <img class="top3-profile-img top2-border" src="${communityRanking[1].profileImage}">
+                                </c:if>
+                                <c:if test="${communityRanking[1].profileImage == null}">
+                                    <img class="top3-profile-img top2-border" src="/resources/images/user.png">
+                                </c:if>
                                 <div class="top3-info-area top2-font">
-                                    <div>2ed NickName</div>
-                                    <div>Score icon</div>
+                                    <div>2ed ${communityRanking[1].memberNickname}</div>
+                                    <div>${communityRanking[1].communityScore}점</div>
                                 </div>
                             </div>
                             <div>
-                                <img class="top3-profile-img top1-border" src="/resources/images/user.png">
+                                <c:if test="${communityRanking[0].profileImage != null}">
+                                    <img class="top3-profile-img top1-border" src="${communityRanking[0].profileImage}">
+                                </c:if>
+                                <c:if test="${communityRanking[0].profileImage == null}">
+                                    <img class="top3-profile-img top1-border" src="/resources/images/user.png">
+                                </c:if>
                                 <div class="top3-info-area top1-font">
-                                    <div>1st NickName</div>
-                                    <div>Score icon</div>
+                                    <div>1st ${communityRanking[0].memberNickname}</div>
+                                    <div>${communityRanking[0].communityScore}점</div>
                                 </div>
                             </div>
                             <div>
-                                <img class="top3-profile-img top3-border" src="/resources/images/user.png">
+                                <c:if test="${communityRanking[2].profileImage != null}">
+                                    <img class="top3-profile-img top3-border" src="${communityRanking[2].profileImage}">
+                                </c:if>
+                                <c:if test="${communityRanking[2].profileImage == null}">
+                                    <img class="top3-profile-img top3-border" src="/resources/images/user.png">
+                                </c:if>
                                 <div class="top3-info-area top3-font">
-                                    <div>3rd NickName</div>
-                                    <div>Score icon</div>
+                                    <div>3rd ${communityRanking[2].memberNickname}</div>
+                                    <div>${communityRanking[2].communityScore}점</div>
                                 </div>
                             </div>
                         </div>
-                        <div class="ranking-row">
-                            <div>4</div>
-                            <div>
-                                <img class="rank-profile-img" src="/resources/images/user.png">
+                        <c:forEach var="member" items="${communityRanking}" begin="3" end="7" varStatus="status">
+                            <div class="ranking-row">
+                                <div>${status.index+1}</div>
+                                <div>
+                                    <c:if test="${member.profileImage != null}">
+                                        <img class="rank-profile-img" src="${member.profileImage}">
+                                    </c:if>
+                                    <c:if test="${member.profileImage == null}">
+                                        <img class="rank-profile-img" src="/resources/images/user.png">
+                                    </c:if>
+                                </div>
+                                <div>${member.memberNickname}</div>
+                                <div>${member.communityScore}점</div>
                             </div>
-                            <div>NickName</div>
-                            <div>Score</div>
-                            <div>icon</div>
-                        </div>
-                        <div class="ranking-row">
-                            <div>5</div>
-                            <div>
-                                <img class="rank-profile-img" src="/resources/images/user.png">
-                            </div>
-                            <div>NickName</div>
-                            <div>Score</div>
-                            <div>icon</div>
-                        </div>
-                        <div class="ranking-row">
-                            <div>6</div>
-                            <div>
-                                <img class="rank-profile-img" src="/resources/images/user.png">
-                            </div>
-                            <div>NickName</div>
-                            <div>Score</div>
-                            <div>icon</div>
-                        </div>
-                        <div class="ranking-row">
-                            <div>7</div>
-                            <div>
-                                <img class="rank-profile-img" src="/resources/images/user.png">
-                            </div>
-                            <div>NickName</div>
-                            <div>Score</div>
-                            <div>icon</div>
-                        </div>
-                        <div class="ranking-row">
-                            <div>8</div>
-                            <div>
-                                <img class="rank-profile-img" src="/resources/images/user.png">
-                            </div>
-                            <div>NickName</div>
-                            <div>Score</div>
-                            <div>icon</div>
-                        </div>
+                        </c:forEach>
                     </div>
                 </div>
 
-                
             </div>
             
         </div>
     </section>
 
 </body>
+<script src="/resources/js/ranking.js"></script>
 </html>
