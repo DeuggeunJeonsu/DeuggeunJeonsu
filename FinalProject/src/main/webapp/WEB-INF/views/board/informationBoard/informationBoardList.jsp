@@ -34,7 +34,7 @@
     <c:if test="${!empty param.key}" >
         <c:set var="key" value="&key=${param.key}"/>
     </c:if>
-    <c:if test="${!empty param.key}" >
+    <c:if test="${!empty param.query}" >
         <c:set var="query" value="&query=${param.query}"/>
     </c:if>
 
@@ -69,6 +69,15 @@
 
             <%-- 게시글 빠른 검색 --%>
             <div id="sort-btn-area">
+                <a href="/board/1/list?${!empty param.query ? '&query=' : ''}${param.query}">
+                    <c:if test="${param.key == null}" >
+                        <span name="key" value="h" style="font-weight:bold; color:#99E1ED" id="healthCategory">전체보기</span>
+                    </c:if>
+                    <c:if test="${param.key != null}" >
+                        <span name="key" value="h" id="healthCategory">전체보기</span>
+                    </c:if>
+                </a> |
+
                 <a href="/board/1/list?key=h${!empty param.query ? '&query=' : ''}${param.query}">
                     <c:if test="${param.key == 'h'}" >
                         <span name="key" value="h" style="font-weight:bold; color:#99E1ED" id="healthCategory">건강정보</span>

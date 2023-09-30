@@ -64,14 +64,12 @@ public interface MemberService {
 	 */
     int shoppingCount(int memberNo);
 
-	
 	/** 회원가입 이메일 인증
 	 * @param memberEmail
 	 * @return
 	 */
 	Member selectEmail(String memberEmail);
 
-	
 	/** 회원가입 이메일 인증확인
 	 * @param paramMap
 	 * @return
@@ -105,7 +103,20 @@ public interface MemberService {
 	 */
 	int surveyTodo(TodoList todoList);
 
+	/** 출석 랭킹
+	 * @return attendenceRanking
+	 */
+	List<Member> setAttendenceRanking();
 
-	
+	/** 투두리스트 실천랭킹
+	 * @return todoListRanking
+	 */
+	List<Member> setTodoListRanking();
+
+	/** 커뮤니티 활동랭킹
+	 * @return communityRanking
+	 */
+	List<Member> setCommunityRanking();
+
 
 }

@@ -10,6 +10,7 @@ import com.jeonsu.deuggeun.board.model.dto.Board;
 import com.jeonsu.deuggeun.member.model.dto.Member;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,8 +18,11 @@ import com.jeonsu.deuggeun.member.model.dto.MemberBMI;
 import com.jeonsu.deuggeun.member.model.service.MemberService;
 import com.jeonsu.deuggeun.todolist.model.dto.TodoList;
 
+import lombok.extern.slf4j.Slf4j;
+
 @Controller
 @SessionAttributes({"loginMember"})
+@Slf4j
 public class MainController {
 	
 	@Autowired
@@ -26,7 +30,18 @@ public class MainController {
 	
 	// 메인페이지로 이동
 	@RequestMapping("/")
-	public String mainForward() {
+	public String mainForward(Model model) {
+		
+		// 출석랭킹 리스트
+		List<Member> attendenceRanking = service.setAttendenceRanking();
+		model.addAttribute("attendenceRanking",attendenceRanking);
+		// 투두리스트 실천랭킹 리스트
+		List<Member> todoListRanking = service.setTodoListRanking();
+		model.addAttribute("todoListRanking",todoListRanking);
+		// 커뮤니티 활동랭킹 리스트
+		List<Member> communityRanking = service.setCommunityRanking();
+		model.addAttribute("communityRanking",communityRanking);
+		
 		return "common/main";
 	}
 	
@@ -124,8 +139,5 @@ public class MainController {
 	public String trendingFree() throws Exception {
 		return new ObjectMapper().writeValueAsString(service.trendingFree());
 	}
-	
-	// 메인페이지 랭킹 맴버 리스트 조회
-	
 	
 }

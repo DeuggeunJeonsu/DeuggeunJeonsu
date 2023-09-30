@@ -39,6 +39,7 @@ addTargetPopupLayer.style.borderColor = themas[0];
 palettePopupLayer.style.borderColor = themas[0];
 document.querySelector(".palette-title-area").style.borderColor = themas[0];
 document.querySelector(".target-input-area").style.borderColor = themas[0];
+for(let profile of document.querySelectorAll(".list-profile")){profile.style.borderColor = themas[0];}
 palette1Color.value = themas[0];
 for(let btn of menuBtns){btn.style.color = themas[1];}
 menuIconColor.value = themas[1];
@@ -560,6 +561,7 @@ palette1Color.addEventListener("input",()=>{
    palettePopupLayer.style.borderColor = `${palette1Color.value}`;
    document.querySelector(".palette-title-area").style.borderColor = `${palette1Color.value}`;
    document.querySelector(".target-input-area").style.borderColor = `${palette1Color.value}`;
+   for(let profile of document.querySelectorAll(".list-profile")){profile.style.borderColor = `${palette1Color.value}`;}
 })
 // 사이드메뉴 아이콘 색상 변경
 menuIconColor.addEventListener("input",()=>{

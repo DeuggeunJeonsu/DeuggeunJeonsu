@@ -19,6 +19,22 @@
       <result property="authority" column="AUTHORITY" />
       <result property="attendenceDate" column="ATTENDENCE_DT" />
    </resultMap>
+   
+   <!-- 투두리스트 실천 랭킹 리스트 -->
+   <resultMap type="map" id="tdRankingList_rm">
+      <result property="memberNo" column="MEMBER_NO" />
+      <result property="memberNickname" column="MEMBER_NICKNAME" />
+      <result property="profileImage" column="PROFILE_IMG" />
+      <result property="todoAllFlagCount" column="TODO_ALL_FLAG_COUNT" />
+   </resultMap>
+   
+   <!-- 커뮤니티 활동 랭킹 리스트 -->
+   <resultMap type="map" id="cmRankingList_rm">
+      <result property="memberNo" column="MEMBER_NO" />
+      <result property="memberNickname" column="MEMBER_NICKNAME" />
+      <result property="profileImage" column="PROFILE_IMG" />
+      <result property="communityScore" column="COMMUNITY_SCORE" />
+   </resultMap>
 
    <!-- Cart에 대한 resultMap -->
    <resultMap id="cart_rm" type="Cart">
@@ -152,6 +168,39 @@
    		FROM "MEMBER"
    		WHERE MEMBER_EMAIL = #{memberEmail}
    		AND MEMBER_DEL_FL = 'N'
+   </select>
+   
+   <!-- 메인페이지 출석 랭킹 불러오기 -->
+   <select id="setAttendenceRanking" resultMap="member_rm">
+        SELECT MEMBER_NO, PROFILE_IMG ,MEMBER_NICKNAME, ATTENDENCE_DT
+		  FROM (SELECT ROWNUM, MEMBER_NO, PROFILE_IMG ,MEMBER_NICKNAME, ATTENDENCE_DT
+	    FROM MEMBER ORDER BY ATTENDENCE_DT DESC)
+   </select>
+   
+   <!-- 메인페이지 실천 랭킹 불러오기 -->
+   <select id="setTodoListRanking" resultMap="tdRankingList_rm">
+        SELECT AF.MEMBER_NO, PROFILE_IMG ,MEMBER_NICKNAME,
+		    (SELECT COUNT(ALL_FL)
+	  		   FROM (SELECT TO_CHAR(TD."L_CREATE_DT", 'YYYY-MM-DD') AS "L_CREATE_DT", C.ALL_FL
+		  		    FROM "TODOLIST" TL
+				    JOIN "TODOLIST_DATE" TD ON TL."LIST_NO" = TD."LIST_NO"
+				    JOIN "CALENDER" C ON TD."L_CREATE_DT" = C."L_CREATE_DT"
+				    WHERE TL."MEMBER_NO" = AF."MEMBER_NO"
+				    GROUP BY TO_CHAR(TD."L_CREATE_DT", 'YYYY-MM-DD'), C.ALL_FL
+				    ORDER BY TO_CHAR(TD."L_CREATE_DT", 'YYYY-MM-DD'))
+		    WHERE ALL_FL = 'Y') TODO_ALL_FLAG_COUNT
+	    FROM "MEMBER" AF
+	    ORDER BY TODO_ALL_FLAG_COUNT DESC
+   </select>
+   
+   <!-- 메인페이지 활동 랭킹 불러오기 -->
+   <select id="setCommunityRanking" resultMap="cmRankingList_rm">
+        SELECT MEMBER_NO, PROFILE_IMG, MEMBER_NICKNAME, COMMUNITY_SCORE
+		FROM (SELECT CM."MEMBER_NO", CM."PROFILE_IMG" ,CM."MEMBER_NICKNAME",
+		        (SELECT COUNT(*) FROM "BOARD" B WHERE B."MEMBER_NO" = CM."MEMBER_NO")+
+		        (SELECT COUNT(*) FROM "COMMENT" C WHERE C."MEMBER_NO" = CM."MEMBER_NO") COMMUNITY_SCORE
+		        FROM "MEMBER" CM ORDER BY COMMUNITY_SCORE DESC)
+		ORDER BY COMMUNITY_SCORE DESC
    </select>
 
 </mapper>
