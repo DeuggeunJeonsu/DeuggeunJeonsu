@@ -136,7 +136,7 @@ window.addEventListener("load", ()=>{
     
                 // 2. 속성 별로 분리
     
-                // 2-1. style 속성값
+                // 2-1. src 속성값
                 const thumbnail = originalThumbnail.substring(0, originalThumbnail.indexOf('" data-filename="'));
 
                 // 2-2. data-filename 속성값
@@ -145,7 +145,7 @@ window.addEventListener("load", ()=>{
                     originalThumbnail.indexOf('" style="')
                   );
 
-                // 2-3. src 속성값
+                // 2-3. style 속성값
                 const style = originalThumbnail.substring(originalThumbnail.indexOf('" style="') + 9);
 
                 newImg.setAttribute("src", thumbnail);
@@ -272,7 +272,7 @@ trendingAll.addEventListener("click", ()=>{
     
                 // 2. 속성 별로 분리
     
-                // 2-1. style 속성값
+                // 2-1. src 속성값
                 const thumbnail = originalThumbnail.substring(0, originalThumbnail.indexOf('" data-filename="'));
 
                 // 2-2. data-filename 속성값
@@ -281,7 +281,7 @@ trendingAll.addEventListener("click", ()=>{
                     originalThumbnail.indexOf('" style="')
                   );
 
-                // 2-3. src 속성값
+                // 2-3. style 속성값
                 const style = originalThumbnail.substring(originalThumbnail.indexOf('" style="') + 9);
 
                 newImg.setAttribute("src", thumbnail);
@@ -411,19 +411,23 @@ trendingInfo.addEventListener("click", ()=>{
     
     
                 // 2. 속성 별로 분리
-    
-                // 2-1. style 속성값
-                const style = originalThumbnail.substr(originalThumbnail.indexOf("style=")+7)
+                
+                // 2-1. src 속성값
+                const thumbnail = originalThumbnail.substring(0, originalThumbnail.indexOf('" data-filename="'));
+
                 // 2-2. data-filename 속성값
-                const dataFilename= originalThumbnail.substr(originalThumbnail.indexOf("data-filename=")+15);
-                const fileName = dataFilename.replace('" style="width: 828px',"");
-                // 2-3. src 속성값
-                const thumbnail = originalThumbnail.replace('" data-filename="img.png" style="width: 828px;', "");
+                const dataFilename = originalThumbnail.substring(
+                    originalThumbnail.indexOf('" data-filename="') + 16,
+                    originalThumbnail.indexOf('" style="')
+                  );
+
+                // 2-3. style 속성값
+                const style = originalThumbnail.substring(originalThumbnail.indexOf('" style="') + 9);
 
                 newImg.setAttribute("src", thumbnail);
 
-                if(fileName != null){
-                    newImg.setAttribute("data-filename", fileName);
+                if(dataFilename != null){
+                    newImg.setAttribute("data-filename", dataFilename);
                 }
                 
                 if(style != null){
