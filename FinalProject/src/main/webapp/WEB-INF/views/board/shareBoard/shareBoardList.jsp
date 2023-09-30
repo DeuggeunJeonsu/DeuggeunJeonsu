@@ -39,7 +39,7 @@
         <div id="search-area">
             <div class="search-place">
                 <form method="get" id="boardSearch">
-                    <input type="hidden" name="key" value="tc">
+                    <input type="hidden" name="key" value="ht">
                     <input type="search" name="query" id="searchQuery" placeholder="search..." autocomplete="off" value=${param.query}>
                     <button id="search-button"><i class="fas fa-search"></i></button>
                 </form>
