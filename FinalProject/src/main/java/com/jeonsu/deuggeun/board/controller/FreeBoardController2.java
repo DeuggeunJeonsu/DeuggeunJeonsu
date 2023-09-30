@@ -116,7 +116,7 @@ public class FreeBoardController2 {
 			@PathVariable("boardNo") int boardNo
 			, Board board
 			, @RequestParam(value = "insertList", required = false) List<String> insertList
-			, @RequestParam(value = "imgSrc", required = false) List<String> imgSrc
+			, @RequestParam(value = "imgSrc", required = false) String[] imgSrc
 			, @RequestParam(value = "deleteList", required = false) String deleteList
 			, @RequestParam(value = "cp", required = false, defaultValue = "1") int cp
 			, HttpSession session
