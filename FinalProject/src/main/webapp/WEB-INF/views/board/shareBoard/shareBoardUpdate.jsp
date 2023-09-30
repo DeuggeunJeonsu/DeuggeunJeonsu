@@ -13,30 +13,37 @@
     <c:choose>
         <c:when test="${img.imageLevel == 0}">
             <c:set var="img0" value="${img.imagePath}${img.imageReName}"/>
+            <c:set var="img1No0" value="${img.imageNo}"/>
         </c:when>
-
+        
         <c:when test="${img.imageLevel == 1}">
             <c:set var="img1" value="${img.imagePath}${img.imageReName}"/>
+            <c:set var="imgNo1" value="${img.imageNo}"/>
         </c:when>
-
+        
         <c:when test="${img.imageLevel == 2}">
             <c:set var="img2" value="${img.imagePath}${img.imageReName}"/>
+            <c:set var="imgNo2" value="${img.imageNo}"/>
         </c:when>
-
+        
         <c:when test="${img.imageLevel == 3}">
             <c:set var="img3" value="${img.imagePath}${img.imageReName}"/>
+            <c:set var="imgNo3" value="${img.imageNo}"/>
         </c:when>
-
+        
         <c:when test="${img.imageLevel == 4}">
             <c:set var="img4" value="${img.imagePath}${img.imageReName}"/>
+            <c:set var="imgNo4" value="${img.imageNo}"/>
         </c:when>
-
+        
         <c:when test="${img.imageLevel == 5}">
             <c:set var="img5" value="${img.imagePath}${img.imageReName}"/>
+            <c:set var="imgNo5" value="${img.imageNo}"/>
         </c:when>
         
         <c:when test="${img.imageLevel == 6}">
             <c:set var="img6" value="${img.imagePath}${img.imageReName}"/>
+            <c:set var="imgNo6" value="${img.imageNo}"/>
         </c:when>
     </c:choose>
 </c:forEach>
@@ -141,10 +148,9 @@
                             <c:set var="routineNo4" value="${routine.rtNo}"/>
                         </c:when>
 
-                       
-                       
                     </c:choose>
                 </c:forEach>
+
 
                 <div class="routine-area">
                     <div>
@@ -173,6 +179,7 @@
                                     <div class="routine-cancle">
                                         <button type="button" class="cancle">&times;</button>
                                         <input type="hidden" value="${routineNo0}">
+                                        <input type="hidden" value="${imgNo1}">
                                     </div>
                                 </li>
                             </c:if>
@@ -192,6 +199,7 @@
                                     <div class="routine-cancle">
                                         <button type="button" class="cancle">&times;</button>
                                         <input type="hidden" value="${routineNo1}">
+                                        <input type="hidden" value="${imgNo2}">
                                     </div>                                
                                 </li>
                             </c:if>
@@ -211,6 +219,7 @@
                                     <div class="routine-cancle">
                                         <button type="button" class="cancle">&times;</button>
                                         <input type="hidden" value="${routineNo2}">
+                                        <input type="hidden" value="${imgNo3}">
                                     </div>
                                 </li>
                             </c:if>
@@ -230,6 +239,7 @@
                                     <div class="routine-cancle">
                                         <button type="button" class="cancle">&times;</button>
                                         <input type="hidden" value="${routineNo3}">
+                                        <input type="hidden" value="${imgNo4}">
                                     </div>
                                 </li>
                             </c:if>
@@ -249,10 +259,11 @@
                                     <div class="routine-cancle">
                                         <button type="button" class="cancle">&times;</button>
                                         <input type="hidden" value="${routineNo4}">
+                                        <input type="hidden" value="${imgNo5}">
                                     </div>
                                 </li>
                             </c:if>
-
+                            
                         </ul>
                     </div>
                    
@@ -262,20 +273,21 @@
                         Routine 
                         <i class="fa-solid fa-circle-plus"></i>
                     </button>
-                
+                    
                 </div>
             </div>
             <input type="hidden" name="deleteList"  value="">
+            <input type="hidden" name="deleteImgList"  value="">
             <input type="hidden" name="cp" value="${param.cp}">
         </form>    
 
     </section>
 
-
+    
     <!-- footer include -->
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
-
+    
     <script src="/resources/js/board/shareBoard/shareBoardUpdate.js"></script>
-
+    
 </body>
 </html>
