@@ -320,15 +320,18 @@
 			</when>
 			
 			<when test='key == "f"'>
+				AND (BOARD_TITLE LIKE '%${query}%' OR BOARD_CONTENT LIKE '%${query}%')
 				AND MEMBER_NO IN (SELECT FOLLOWER_NO FROM FOLLOW WHERE MEMBER_NO = #{loginMemberNo})
 				ORDER BY BOARD_NO DESC
 			</when>
 			
 			<when test='key == "r"'>
+				AND (BOARD_TITLE LIKE '%${query}%' OR BOARD_CONTENT LIKE '%${query}%')
 				ORDER BY BOARD_NO DESC
 			</when>
 			
 			<when test='key == "p"'>
+				AND (BOARD_TITLE LIKE '%${query}%' OR BOARD_CONTENT LIKE '%${query}%')
 				ORDER BY LIKE_COUNT DESC
 			</when>
 			
