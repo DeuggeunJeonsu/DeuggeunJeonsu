@@ -14,6 +14,13 @@
     <title>전체검색 페이지</title>
     <link rel="stylesheet" href="/resources/css/common/seachAll.css">
     <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+
+    <%-- 파비콘 --%>
+    <link rel="apple-touch-icon" sizes="180x180" href="/resources/images/favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/resources/images/favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/resources/images/favicon_io/favicon-16x16.png">
+    <link rel="manifest" href="/resources/images/favicon_io/site.webmanifest">
+    <link rel="icon" href="/resources/images/favicon_io/favicon.ico" type="image/x-icon">
 </head>
 <body>
 <jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
