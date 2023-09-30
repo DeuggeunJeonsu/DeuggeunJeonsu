@@ -69,7 +69,7 @@
 
 #sort-btn-area{
     display: flex;
-    
+
     align-items: center;
 }
 
@@ -96,7 +96,7 @@
     position: absolute;
     left: 1280px;
     bottom: 610px;
-    
+
     background: #484848;
     color: white;
     border-radius: 5px;
@@ -116,38 +116,38 @@
 }
 
 .floating{
-	animation-name: floating;
-	-webkit-animation-name: floating;
+    animation-name: floating;
+    -webkit-animation-name: floating;
 
-	animation-duration: 1.5s;	
-	-webkit-animation-duration: 1.5s;
+    animation-duration: 1.5s;
+    -webkit-animation-duration: 1.5s;
 
-	animation-iteration-count: infinite;
-	-webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+    -webkit-animation-iteration-count: infinite;
 }
 
 @keyframes floating {
-	0% {
-		transform: translateY(0%);	
-	}
-	50% {
-		transform: translateY(8%);	
-	}	
-	100% {
-		transform: translateY(0%);
-	}			
+    0% {
+        transform: translateY(0%);
+    }
+    50% {
+        transform: translateY(8%);
+    }
+    100% {
+        transform: translateY(0%);
+    }
 }
 
 @-webkit-keyframes floating {
-	0% {
-		-webkit-transform: translateY(0%);	
-	}
-	50% {
-		-webkit-transform: translateY(8%);	
-	}	
-	100% {
-		-webkit-transform: translateY(0%);
-	}			
+    0% {
+        -webkit-transform: translateY(0%);
+    }
+    50% {
+        -webkit-transform: translateY(8%);
+    }
+    100% {
+        -webkit-transform: translateY(0%);
+    }
 }
 
 /* 해시태그 영역 */
@@ -218,7 +218,7 @@
 
 .thumbnail{
     border: 1px solid #ddd;
-    
+
     background-color: white;
     border-radius: 5px;
     cursor: pointer;
@@ -309,7 +309,7 @@
 /* 글쓰기 버튼 영역 */
 .write-btn-area{
     margin: auto;
-    
+
     display: flex;
     justify-content: end;
 }
@@ -338,7 +338,7 @@
 /* 페이지네이션 영역 */
 .paginationArea{
     height: 100px;
-    
+
     display: flex;
     justify-content: center;
     align-items: center;
@@ -415,5 +415,5 @@
     position: relative;
     width: 880px;
     height: 164px;
-    
+
 }
