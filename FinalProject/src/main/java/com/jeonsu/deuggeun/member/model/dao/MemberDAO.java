@@ -171,6 +171,29 @@ public class MemberDAO {
 		return result;
 	}
 
+	/** 출석 랭킹
+	 * @return attendenceRanking
+	 */
+	public List<Member> setAttendenceRanking() {
+		List<Member> atList = sqlSession.selectList("memberMapper.setAttendenceRanking");
+		return atList;
+	}
+
+	/** 투두리스트 실천랭킹
+	 * @return todoListRanking
+	 */
+	public List<Member> setTodoListRanking() {
+		List<Member> tdList = sqlSession.selectList("memberMapper.setTodoListRanking");
+		return tdList;
+	}
+
+	/** 커뮤니티 활동랭킹
+	 * @return communityRanking
+	 */
+	public List<Member> setCommunityRanking() {
+		List<Member> cmList = sqlSession.selectList("memberMapper.setCommunityRanking");
+		return cmList;
+	}
 	
 
 }

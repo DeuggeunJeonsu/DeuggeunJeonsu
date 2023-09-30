@@ -144,8 +144,23 @@ public class MemberServiceImpl implements MemberService {
 		return dao.surveyTodo(todoList);
 	}
 
+	// 출석 랭킹
+	@Override
+	public List<Member> setAttendenceRanking() {
+		return dao.setAttendenceRanking();
+	}
 
+	// 투두리스트 실천 랭킹
+	@Override
+	public List<Member> setTodoListRanking() {
+		return dao.setTodoListRanking();
+	}
 
+	// 커뮤니티 활동 랭킹
+	@Override
+	public List<Member> setCommunityRanking() {
+		return dao.setCommunityRanking();
+	}
 
 }
 
