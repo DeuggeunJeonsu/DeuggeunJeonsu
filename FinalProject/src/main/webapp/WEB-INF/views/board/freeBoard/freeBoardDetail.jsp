@@ -182,7 +182,6 @@ console.log(Kakao.isInitialized());
         const profile = "${board.profileImage}";
         const nickname = "${board.memberNickname}";
         const title = "${board.boardTitle}";
-        const content = '${board.boardContent}';
     </script>
 
     <!-- footer include -->
