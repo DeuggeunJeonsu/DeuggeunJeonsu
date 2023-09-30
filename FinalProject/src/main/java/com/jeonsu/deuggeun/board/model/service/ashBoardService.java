@@ -58,7 +58,7 @@ public interface ashBoardService {
 	 * @param deleteList
 	 * @return rowCount
 	 */
-	int freeBoardUpdate(Board board, int cp, List<String> insertList, List<String> imgSrc, String deleteList);
+	int freeBoardUpdate(Board board, int cp, List<String> insertList, String[] imgSrc, String deleteList);
 
 	/** 게시글 삭제
 	 * @param map

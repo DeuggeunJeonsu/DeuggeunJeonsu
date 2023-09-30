@@ -183,11 +183,6 @@ $(document).ready(function() {
         height: 600,                 // 에디터 높이
         focus: true,                  // 에디터 로딩후 포커스를 맞출지 여부
         lang: "ko-KR",					// 한글 설정
-        callbacks: {
-            onImageUpload : function(files){
-                uploadSummernoteImageFile2(files[0], this);
-            }
-        },
         placeholder: '최대 2048자까지 쓸 수 있습니다. :)',
         disableResizeEditor: true,	// 크기 조절 기능 삭제
         toolbar: [
@@ -209,26 +204,26 @@ $(document).ready(function() {
 });
 
 // summernote 에디터 내에서 이미지 업로드 했을 때 이미지 경로 변경
-function uploadSummernoteImageFile2(file, editor){
-    var data = new FormData();
-    data.append("file", file);
-    console.log(file);
+// function uploadSummernoteImageFile2(file, editor){
+//     var data = new FormData();
+//     data.append("file", file);
+//     console.log(file);
 
-    $.ajax({
+//     $.ajax({
 
-        data : data,
-        type : "POST",
-        url : "uploadSummernoteImageFile2",
-        dataType : "JSON",
-        contentType : false,
-        processData : false,
-        success : function(data){
+//         data : data,
+//         type : "POST",
+//         url : "uploadSummernoteImageFile2",
+//         dataType : "JSON",
+//         contentType : false,
+//         processData : false,
+//         success : function(data){
 
-            $(editor).summernote("insertImage", data.url);
-        }
-    });
+//             $(editor).summernote("insertImage", data.url);
+//         }
+//     });
 
-}
+// }
 
 // -----------------------------------------------------------------------------------------------
 
@@ -276,7 +271,23 @@ writeFrm.addEventListener("submit", e=>{
     // 기존 해시태그를 삭제
     document.querySelector("[name='deleteList']").value
     = Array.from(deleteSet);
-})
+
+    // 이미지 삽입
+    const summernote = document.getElementById("summernote");
+    const htmlContent = summernote.value;
+
+    const image = htmlContent.substring(htmlContent.indexOf('data:image'), htmlContent.indexOf('">'));
+
+    // 이미지가 있는지 확인
+    if (image && image.length > 0) {
+    
+            const imgSrc = image;
+            
+            const imgSrcInput = document.querySelector('input[name="imgSrc"]');
+            imgSrcInput.value = imgSrc;
+
+    }
+});
 
 // 취소 버튼 클릭 시
 const cancelBtn = document.getElementById("cancel-btn");

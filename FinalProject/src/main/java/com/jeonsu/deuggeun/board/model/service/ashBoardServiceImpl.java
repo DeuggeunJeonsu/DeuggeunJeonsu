@@ -112,7 +112,7 @@ public class ashBoardServiceImpl implements ashBoardService{
 	// 게시글 수정
 	@Transactional(rollbackFor = Exception.class)
 	@Override
-	public int freeBoardUpdate(Board board, int cp, List<String> insertList, List<String> imgSrc, String deleteList) {
+	public int freeBoardUpdate(Board board, int cp, List<String> insertList, String[] imgSrc, String deleteList) {
 		
 		board.setBoardTitle(Util.XSSHandling(board.getBoardTitle()));
 		
@@ -140,6 +140,18 @@ public class ashBoardServiceImpl implements ashBoardService{
 			// 새로 추가할 해시태그가 있을 경우 해시태그 새로 삽입
 			if(insertList != null) {
 				rowCount += dao.hashtagUpdate(board.getBoardNo(), insertList);
+			}
+			
+			// 이미지가 있으면 수정, 없으면 삭제
+			if(imgSrc != null) {
+				
+				// 게시글 프리뷰 이미지 삭제
+				Map<String,Object> map = new HashMap<String, Object>();
+				map.put("boardNo",board.getBoardNo());
+				
+				int imageResult = dao.freeBoardImageDelete(map);
+				
+				int imageResult2 = dao.freeBoardImageInsert(board.getBoardNo(), imgSrc);
 			}
 		}
 		
