@@ -83,7 +83,7 @@
                         드래그를 통해 Routine 순서를 바꿀 수 있어요!👟
                     </div>
                     <ul class="routine-add">
-                        <li class="routine" draggale="true">
+                        <li class="routine" draggable="true">
                             <div class="boardImg">
                                 <label for="img1">
                                     <img class="preview" src="/resources/images/boardDetaile/noneImage.png">
@@ -92,8 +92,24 @@
                                 <span class="delete-image">&times;</span>
                             </div>
                             <div class="routine-write-area">
-                                <input type="text" placeholder="예) 스쿼트 20회 30세트" name="routineName">
+                                <input type="text" placeholder="예) 스쿼트 20회 30세트" name="routineName" autocomplete="off">
                                 <textarea name="routineContent">1.&#10;2.&#10;3.&#10;&#10;꿀팁!</textarea>
+                            </div>
+                           <div class="autoSearchArea">
+                                <!-- <div class="autoSearch">
+                                    <ul id="todo-resultArea">
+                                        <li class="todo-result-row" data-id="1">
+                                            <span><mark>스쿼</mark>트<span>
+                                        </li>
+                                        <li class="todo-result-row" data-id="2">
+                                            <span><mark>스쿼</mark>트<span>
+                                        </li>
+                                        <li class="todo-result-row" data-id="3">
+                                            <span><mark>스쿼</mark>트<span> | <span class="category">하체</span>
+                                        </li>
+                                    </ul>
+                                </div> -->
+                                
                             </div>
                             <div class="routine-cancle"><button type="button" class="cancle">&times;</button></div>
                         </li>

@@ -30,6 +30,11 @@
 
 	<jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
 	
+    <%-- 검색어가 있을 경우 --%>
+    <c:if test="${!empty param.key}" >
+        <c:set var="sp" value="&key=${param.key}&query=${param.query}"/>
+    </c:if>
+
     <div class="place"></div>
 	<section id="main-container">
         <div id="title-area">
@@ -53,43 +58,45 @@
                     </div>
                 </div>
             </c:if>
+            <c:if test="${param.key != 'ht'}">
 
-            <div id="sort-btn-area">
-                <%-- 최신순 --%>
-                <a href="/board/2/list?key=r">
-                    <c:if test="${param.key == 'r'}" >
-                        <span name="key" value="r" style="font-weight:bold; color:#99E1ED" id="recent-sort-btn">최신순</span>
-                    </c:if>
-                    <c:if test="${param.key != 'r'}" >
-                        <span name="key" value="r" id="recent-sort-btn">최신순</span>
-                    </c:if>
-                </a> |
-
-                <%-- 인기순 --%>
-                <a href="/board/2/list?key=p">
-                    <c:if test="${param.key == 'p'}" >
-                        <span name="key" value="p" style="font-weight:bold; color:#99E1ED" id="popular-sort-btn">인기순</span>
-                    </c:if>
-                    <c:if test="${param.key != 'p'}" >
-                        <span name="key" value="p" id="popular-sort-btn">인기순</span>
-                    </c:if>
-                </a>
-
-                <%-- 팔로잉순 --%>
-                <c:if test="${!empty loginMember}">
-                |
-                </c:if>
-                <c:if test="${!empty loginMember}">
-                    <a href="/board/2/list?key=f">
-                        <c:if test="${param.key == 'f'}" >
-                            <span name="key" value="f" style="font-weight:bold; color:#99E1ED" id="following-sort-btn">팔로잉순</span>
+                <div id="sort-btn-area">
+                    <%-- 최신순 --%>
+                    <a href="/board/2/list?key=r&query=${param.query}">
+                        <c:if test="${param.key == 'r'}" >
+                            <span name="key" value="r" style="font-weight:bold; color:#99E1ED" id="recent-sort-btn">최신순</span>
                         </c:if>
-                        <c:if test="${param.key != 'f'}" >
-                            <span name="key" value="f" id="following-sort-btn">팔로잉순</span>
+                        <c:if test="${param.key != 'r'}" >
+                            <span name="key" value="r" id="recent-sort-btn">최신순</span>
+                        </c:if>
+                    </a> |
+    
+                    <%-- 인기순 --%>
+                    <a href="/board/2/list?key=p&query=${param.query}">
+                        <c:if test="${param.key == 'p'}" >
+                            <span name="key" value="p" style="font-weight:bold; color:#99E1ED" id="popular-sort-btn">인기순</span>
+                        </c:if>
+                        <c:if test="${param.key != 'p'}" >
+                            <span name="key" value="p" id="popular-sort-btn">인기순</span>
                         </c:if>
                     </a>
-                </c:if>
-            </div>
+    
+                    <%-- 팔로잉순 --%>
+                    <c:if test="${!empty loginMember}">
+                    |
+                    </c:if>
+                    <c:if test="${!empty loginMember}">
+                        <a href="/board/2/list?key=f&query=${param.query}">
+                            <c:if test="${param.key == 'f'}" >
+                                <span name="key" value="f" style="font-weight:bold; color:#99E1ED" id="following-sort-btn">팔로잉순</span>
+                            </c:if>
+                            <c:if test="${param.key != 'f'}" >
+                                <span name="key" value="f" id="following-sort-btn">팔로잉순</span>
+                            </c:if>
+                        </a>
+                    </c:if>
+                </div>
+            </c:if>
         </div>
 
         <div id="list-area">

@@ -48,7 +48,6 @@
     </c:choose>
 </c:forEach>
 
-<%-- boardList-style.css 연결 --%>
 <link rel="stylesheet" href="/resources/css/board/shareBoard/shareBoardWrite-style.css">
 </head>
 <body style="background-color:#F8F9FA">
@@ -157,14 +156,14 @@
                         <h3>Routine</h3>
                         <hr>
                     </div>
-                    <!-- <%-- 득근 캘린더 말풍선 --%>
+                    <%-- 득근 캘린더 말풍선 --%>
                     <div class="ballon floating">
                         드래그를 통해 Routine 순서를 바꿀 수 있어요!👟
-                    </div> -->
+                    </div>
 
                         <ul class="routine-add">
                             <c:if test="${!empty img1}">
-                                <li class="routine" draggale="true">
+                                <li class="routine" draggable="true">
                                     <div class="boardImg">
                                         <label for="img1">
                                             <img class="preview" src="${img1}">
@@ -184,7 +183,7 @@
                                 </li>
                             </c:if>
                             <c:if test="${!empty img2}">
-                                <li class="routine" draggale="true">
+                                <li class="routine" draggable="true">
                                     <div class="boardImg">
                                         <label for="img2">
                                             <img class="preview" src="${img2}">
@@ -204,7 +203,7 @@
                                 </li>
                             </c:if>
                             <c:if test="${!empty img3}">
-                                <li class="routine" draggale="true">
+                                <li class="routine" draggable="true">
                                     <div class="boardImg">
                                         <label for="img3">
                                             <img class="preview" src="${img3}">
@@ -224,7 +223,7 @@
                                 </li>
                             </c:if>
                             <c:if test="${!empty img4}">
-                                <li class="routine" draggale="true">
+                                <li class="routine" draggable="true">
                                     <div class="boardImg">
                                         <label for="img4">
                                             <img class="preview" src="${img4}">
@@ -244,7 +243,7 @@
                                 </li>
                             </c:if>
                             <c:if test="${!empty img5}">
-                                <li class="routine" draggale="true">
+                                <li class="routine" draggable="true">
                                     <div class="boardImg">
                                         <label for="img5">
                                             <img class="preview" src="${img5}">
