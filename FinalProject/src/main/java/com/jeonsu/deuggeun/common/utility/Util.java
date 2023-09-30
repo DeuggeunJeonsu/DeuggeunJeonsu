@@ -34,8 +34,8 @@ public class Util {
 	// 개행문자를 "<br>"로 변경하는 메서드
 	public static String newLineHandling(String content) {
 		
-		content = content.replaceAll("\r\n|\n|\r|\n\r", "<br>");
-		content = content.replaceAll("&#10;", "<br>");
+		content = content.replaceAll( "\\r\\n|\\n|\\r|\\n\\r","<br>");
+		content = content.replaceAll( "&#10;", "<br>");
 
 		return content;
 	}

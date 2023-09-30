@@ -235,7 +235,7 @@ public class ljyBoardServiceImpl implements ljyBoardService{
 	// 게시글 수정
 	@Transactional(rollbackFor = Exception.class)
 	@Override
-	public int boardUpdate(Board board, List<MultipartFile> images, String webPath, String filePath,List<Routine> routines) throws IllegalStateException, IOException {
+	public int boardUpdate(Board board, List<MultipartFile> images, String webPath, String filePath,List<Routine> routines, String deleteList, String deleteImgList) throws IllegalStateException, IOException {
 
 		board.setBoardContent(Util.XSSHandling(board.getBoardContent()));
 		board.setBoardTitle(Util.XSSHandling(board.getBoardTitle()));
@@ -243,11 +243,24 @@ public class ljyBoardServiceImpl implements ljyBoardService{
 		
 		int rowCount =  dao.boardUpdate(board);
 		int routineUpdate = 0; 
+		
 		// 게시글의 제목과 내용을 업로드 성공했을 때
 		if(rowCount > 0) {
 			List<BoardImage> uploadList = new ArrayList<BoardImage>();
+			// 게시글 이미지 삭제 
+			if(!deleteList.equals("")) {
+				Map<String,Object> deleteMap = new HashMap<String, Object>();
+				deleteMap.put("boardNo", board.getBoardNo());
+				deleteMap.put("deleteImgList", deleteImgList);
+				deleteMap.put("deleteList", deleteList);
+				
+				rowCount = dao.imgDelete(deleteMap);
+				rowCount = dao.rtDelete(deleteMap);
+				
+			}
 
 			for(int i = 0; i <images.size(); i++) {
+				
 
 				if(images.get(i).getSize() > 0) {
 

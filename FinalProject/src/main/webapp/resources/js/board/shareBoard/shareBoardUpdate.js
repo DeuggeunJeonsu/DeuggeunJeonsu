@@ -136,6 +136,10 @@ function getRandomInt(min, max) {
 // 게시글 수정시 삭제된 이미지의 순서를 기록할 Set 객체 생성
 const deleteSet = new Set() //순서X, 중복X
 // -> x버튼 클릭시 순서를 한번 만 저장하는 용도
+// 루틴 삭제 버튼
+// 게시글 수정시 삭제된 이미지의 순서를 기록할 Set 객체 생성
+const deleteImgSet = new Set() //순서X, 중복X
+// -> x버튼 클릭시 순서를 한번 만 저장하는 용도
 
 // 취소 버튼 이벤트 핸들러를 등록합니다.
 document.addEventListener("click", function (e) {
@@ -151,7 +155,9 @@ document.addEventListener("click", function (e) {
 // 취소 버튼 눌렀을 때 해당 루틴 삭제하기
 function cancleRoutine(e) {
     const deleteRt = e.target.nextElementSibling.value
+    const deleteimg = e.target.nextElementSibling.nextElementSibling.value
     deleteSet.add(deleteRt);
+    deleteImgSet.add(deleteimg);
     e.target.parentElement.parentElement.remove();
 }
 
@@ -380,5 +386,7 @@ document.getElementById("boardUpdateFrm").addEventListener("submit", e => {
 
     document.querySelector("[name='deleteList']").value
         = Array.from(deleteSet);
+    document.querySelector("[name='deleteImgList']").value
+        = Array.from(deleteImgSet);
     document.getElementById("boardUpdateFrm").submit();
 });
