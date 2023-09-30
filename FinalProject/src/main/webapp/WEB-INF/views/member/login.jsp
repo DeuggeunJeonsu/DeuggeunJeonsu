@@ -12,6 +12,11 @@
         <link rel="icon" type="image/png" sizes="32x32" href="/resources/images/favicon_io/favicon-32x32.png">
         <link rel="icon" type="image/png" sizes="16x16" href="/resources/images/favicon_io/favicon-16x16.png">
         <link rel="manifest" href="/resources/images/favicon_io/site.webmanifest">
+
+        <script src="https://t1.kakaocdn.net/kakao_js_sdk/2.4.0/kakao.min.js" integrity="sha384-mXVrIX2T/Kszp6Z0aEWaA8Nm7J6/ZeWXbL8UpGRjKwWe56Srd/iyNmWMBhcItAjH" crossorigin="anonymous"></script>
+        <script>
+            Kakao.init('5600ed391bce28878bbfdfcae636db6e'); // 사용하려는 앱의 JavaScript 키 입력
+        </script>
     </head>
 
     <body>
@@ -52,7 +57,7 @@
 
                 <button type="submit" class="login-btn">득근전수 로그인</button>
 
-                <button type="button" class="kakao-login-btn">카카오톡 로그인</button>
+                <button type="button" id="kakao-login-btn">카카오톡 로그인</button>
             </form>
 
         </main>

@@ -30,16 +30,24 @@ $(document).ready(function(){
     // 메인페이지가 아닐때
     if(document.querySelector("[name='mainPage']") == null){
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+
+>>>>>>> a58f6f688738b29e6f1256cb9376036c75c0e680
 
         navContainer.classList.add("nav-sticky");
         headerNav.classList.remove("no-background");
         headerNav.classList.add("nav-container-bg")
+<<<<<<< HEAD
 =======
     
         // navContainer.classList.add("nav-sticky");
         // headerNav.classList.remove("no-background");
         // headerNav.classList.add("nav-container-bg")
 >>>>>>> 7e53742d4c74174a178a338065b05df2384c19f5
+=======
+
+>>>>>>> a58f6f688738b29e6f1256cb9376036c75c0e680
         body.classList.add("nav-padding")
         // log02.classList.add("log-disply");
         // log01.classList.remove("log-disply");
@@ -57,10 +65,14 @@ $(document).ready(function(){
     }, 250);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
     
 >>>>>>> 7e53742d4c74174a178a338065b05df2384c19f5
+=======
+
+>>>>>>> a58f6f688738b29e6f1256cb9376036c75c0e680
 
     function hasScrolled() {
 
