@@ -149,6 +149,7 @@ img{
 .thumbnail > div:nth-of-type(2){
     height: 40%;
     padding: 10px;
+    text-align: center;
 }
 
 /* 게시글 제목 */
