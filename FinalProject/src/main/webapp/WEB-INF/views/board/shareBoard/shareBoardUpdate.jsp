@@ -13,35 +13,41 @@
     <c:choose>
         <c:when test="${img.imageLevel == 0}">
             <c:set var="img0" value="${img.imagePath}${img.imageReName}"/>
+            <c:set var="img1No0" value="${img.imageNo}"/>
         </c:when>
-
+        
         <c:when test="${img.imageLevel == 1}">
             <c:set var="img1" value="${img.imagePath}${img.imageReName}"/>
+            <c:set var="imgNo1" value="${img.imageNo}"/>
         </c:when>
-
+        
         <c:when test="${img.imageLevel == 2}">
             <c:set var="img2" value="${img.imagePath}${img.imageReName}"/>
+            <c:set var="imgNo2" value="${img.imageNo}"/>
         </c:when>
-
+        
         <c:when test="${img.imageLevel == 3}">
             <c:set var="img3" value="${img.imagePath}${img.imageReName}"/>
+            <c:set var="imgNo3" value="${img.imageNo}"/>
         </c:when>
-
+        
         <c:when test="${img.imageLevel == 4}">
             <c:set var="img4" value="${img.imagePath}${img.imageReName}"/>
+            <c:set var="imgNo4" value="${img.imageNo}"/>
         </c:when>
-
+        
         <c:when test="${img.imageLevel == 5}">
             <c:set var="img5" value="${img.imagePath}${img.imageReName}"/>
+            <c:set var="imgNo5" value="${img.imageNo}"/>
         </c:when>
         
         <c:when test="${img.imageLevel == 6}">
             <c:set var="img6" value="${img.imagePath}${img.imageReName}"/>
+            <c:set var="imgNo6" value="${img.imageNo}"/>
         </c:when>
     </c:choose>
 </c:forEach>
 
-<%-- boardList-style.css 연결 --%>
 <link rel="stylesheet" href="/resources/css/board/shareBoard/shareBoardWrite-style.css">
 </head>
 <body style="background-color:#F8F9FA">
@@ -141,24 +147,23 @@
                             <c:set var="routineNo4" value="${routine.rtNo}"/>
                         </c:when>
 
-                       
-                       
                     </c:choose>
                 </c:forEach>
+
 
                 <div class="routine-area">
                     <div>
                         <h3>Routine</h3>
                         <hr>
                     </div>
-                    <!-- <%-- 득근 캘린더 말풍선 --%>
+                    <%-- 득근 캘린더 말풍선 --%>
                     <div class="ballon floating">
                         드래그를 통해 Routine 순서를 바꿀 수 있어요!👟
-                    </div> -->
+                    </div>
 
                         <ul class="routine-add">
                             <c:if test="${!empty img1}">
-                                <li class="routine" draggale="true">
+                                <li class="routine" draggable="true">
                                     <div class="boardImg">
                                         <label for="img1">
                                             <img class="preview" src="${img1}">
@@ -173,11 +178,12 @@
                                     <div class="routine-cancle">
                                         <button type="button" class="cancle">&times;</button>
                                         <input type="hidden" value="${routineNo0}">
+                                        <input type="hidden" value="${imgNo1}">
                                     </div>
                                 </li>
                             </c:if>
                             <c:if test="${!empty img2}">
-                                <li class="routine" draggale="true">
+                                <li class="routine" draggable="true">
                                     <div class="boardImg">
                                         <label for="img2">
                                             <img class="preview" src="${img2}">
@@ -192,11 +198,12 @@
                                     <div class="routine-cancle">
                                         <button type="button" class="cancle">&times;</button>
                                         <input type="hidden" value="${routineNo1}">
+                                        <input type="hidden" value="${imgNo2}">
                                     </div>                                
                                 </li>
                             </c:if>
                             <c:if test="${!empty img3}">
-                                <li class="routine" draggale="true">
+                                <li class="routine" draggable="true">
                                     <div class="boardImg">
                                         <label for="img3">
                                             <img class="preview" src="${img3}">
@@ -211,11 +218,12 @@
                                     <div class="routine-cancle">
                                         <button type="button" class="cancle">&times;</button>
                                         <input type="hidden" value="${routineNo2}">
+                                        <input type="hidden" value="${imgNo3}">
                                     </div>
                                 </li>
                             </c:if>
                             <c:if test="${!empty img4}">
-                                <li class="routine" draggale="true">
+                                <li class="routine" draggable="true">
                                     <div class="boardImg">
                                         <label for="img4">
                                             <img class="preview" src="${img4}">
@@ -230,11 +238,12 @@
                                     <div class="routine-cancle">
                                         <button type="button" class="cancle">&times;</button>
                                         <input type="hidden" value="${routineNo3}">
+                                        <input type="hidden" value="${imgNo4}">
                                     </div>
                                 </li>
                             </c:if>
                             <c:if test="${!empty img5}">
-                                <li class="routine" draggale="true">
+                                <li class="routine" draggable="true">
                                     <div class="boardImg">
                                         <label for="img5">
                                             <img class="preview" src="${img5}">
@@ -249,10 +258,11 @@
                                     <div class="routine-cancle">
                                         <button type="button" class="cancle">&times;</button>
                                         <input type="hidden" value="${routineNo4}">
+                                        <input type="hidden" value="${imgNo5}">
                                     </div>
                                 </li>
                             </c:if>
-
+                            
                         </ul>
                     </div>
                    
@@ -262,20 +272,21 @@
                         Routine 
                         <i class="fa-solid fa-circle-plus"></i>
                     </button>
-                
+                    
                 </div>
             </div>
             <input type="hidden" name="deleteList"  value="">
+            <input type="hidden" name="deleteImgList"  value="">
             <input type="hidden" name="cp" value="${param.cp}">
         </form>    
 
     </section>
 
-
+    
     <!-- footer include -->
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
-
+    
     <script src="/resources/js/board/shareBoard/shareBoardUpdate.js"></script>
-
+    
 </body>
 </html>

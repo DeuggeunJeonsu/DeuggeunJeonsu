@@ -42,7 +42,7 @@ public interface ljyBoardService {
 	int shareboardDelete(Map<String, Object> map);
 
 	// 게시글 수정
-	int boardUpdate(Board board, List<MultipartFile> images, String webPath, String filePath , List<Routine> routines)throws IllegalStateException, IOException;
+	int boardUpdate(Board board, List<MultipartFile> images, String webPath, String filePath , List<Routine> routines, String deleteList , String deleteImgList)throws IllegalStateException, IOException;
 
 	// 게시글 검색 후 목록 리스트 
 	Map<String, Object> selectFreeBoardList(Map<String, Object> paramMap, int cp);

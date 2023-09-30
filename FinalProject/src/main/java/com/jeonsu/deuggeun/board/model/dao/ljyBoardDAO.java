@@ -200,6 +200,17 @@ public class ljyBoardDAO {
 		
 		return sqlSession.selectList("shareBoardMapper.selectShareBoardList_search", paramMap, rowBounds);
 	}
+
+
+	// 이미지 삭제 
+	public int imgDelete(Map<String, Object> deleteMap) {
+		return sqlSession.delete("shareBoardMapper.imgDelete", deleteMap);
+	}
+
+	// 루틴 삭제
+	public int rtDelete(Map<String, Object> deleteMap) {
+		return  sqlSession.delete("shareBoardMapper.rtDelete", deleteMap);
+	}
 	
 
 

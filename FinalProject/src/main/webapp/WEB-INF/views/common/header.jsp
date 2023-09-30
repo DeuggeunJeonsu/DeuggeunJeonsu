@@ -45,6 +45,8 @@
                             <a href="/search/all">
                                 <i class="fa fa-solid fa-magnifying-glass fa-lg"></i>
                             </a>
+                            
+                            <!-- <i class="fa fa-solid fa-magnifying-glass fa-lg"></i> -->
                         </li>
 
                         <li>

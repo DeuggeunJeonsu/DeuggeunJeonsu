@@ -509,4 +509,64 @@ h2 {
 	100% {
 		-webkit-transform: translateY(0%);
 	}			
+
+}
+/* -------------------------------------------------------- */
+ /* 자동완성   */
+/* 자동완성 */
+.autoSearch{
+    width: 54%;
+    height: 40%;
+    border: 3px solid #eee;
+    background-color: #fff;
+    border-radius: 6px;
+    position: absolute;
+    left: 280px;
+    top: 66px;
+    margin-top: 5px;
+    /* display: none; */
+    overflow-y: scroll;
+}
+
+/* 스크롤바 설정*/
+.autoSearch::-webkit-scrollbar{
+    width: 6px;
+}
+
+/* 스크롤바 막대 설정*/
+.autoSearch::-webkit-scrollbar-thumb{
+    height: 17%;
+    background-color: #d1edf1;
+    border-radius: 10px;  
+}
+
+/* 스크롤바 뒷 배경 설정*/
+.autoSearch::-webkit-scrollbar-track{
+    background-color: white;
+}
+
+
+ .todo-resultArea{
+    list-style: none;
+    padding : 5px 10px;
+    min-height: 60px;
+    max-height: dddd0px;
+    overflow-y: auto;
+}
+
+.todo-result-row{
+    width: 100%;
+    font-size: 16px;
+    padding: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+.todo-result-row > * {
+    margin-right:  10px;
+    user-select: none;
+} 
+
+.todo-result-row  mark{
+  background-color: #99E1ED;
 }

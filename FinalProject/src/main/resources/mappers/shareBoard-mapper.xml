@@ -354,8 +354,8 @@
 	<!-- 이미지 삽입 -->
 	<insert id="insertImage">
 		INSERT INTO BOARD_IMG
-		VALUES(SEQ_IMG_NO.NEXTVAL, #{imagePath}, #{imageReName}, 
-			#{imageOriginal},#{imageLevel},#{boardNo})
+		VALUES(SEQ_IMG_NO.NEXTVAL, #{imagePath},#{imageOriginal}, #{imageReName}
+			,#{boardNo},#{imageLevel})
 	</insert>
 	
 	<!-- 루틴 수정 -->
@@ -370,9 +370,9 @@
 	
 	<!-- 루틴 삽입 -->
 	<insert id="insertRoutine">
-		INSERT ROUTINE
-		VALUES(SEQ_IMG_NO.NEXTVAL, #{rtTitle}, #{rtContent}, 
-			#{boardNo},#{rtLevel})
+		INSERT INTO ROUTINE
+		VALUES(SEQ_IMG_NO.NEXTVAL, #{rtTitle}, #{rtContent}
+			,#{boardNo},#{rtLevel})
 	</insert>
 	
 	<!-- 삭제되지 않고 검색 조건이 일치하는 게시글 수 조회 -->
@@ -429,15 +429,18 @@
 			</when>
 			
 			<when test='key == "f"'>
+			AND (BOARD_TITLE LIKE '%${query}%' OR BOARD_CONTENT LIKE '%${query}%')
 				AND MEMBER_NO IN (SELECT FOLLOWER_NO FROM FOLLOW WHERE MEMBER_NO = #{loginMemberNo})
 				ORDER BY BOARD_NO DESC
 			</when>
 			
 			<when test='key == "r"'>
+			AND (BOARD_TITLE LIKE '%${query}%' OR BOARD_CONTENT LIKE '%${query}%')
 				ORDER BY BOARD_NO DESC
 			</when>
 			
 			<when test='key == "p"'>
+				AND (BOARD_TITLE LIKE '%${query}%' OR BOARD_CONTENT LIKE '%${query}%')
 				ORDER BY LIKE_COUNT DESC
 			</when>
 			
@@ -451,6 +454,20 @@
 		</choose>
 
 	</select>
+	
+	<!-- 이미지 삭제 -->
+	<delete id="imgDelete">
+		DELETE FROM BOARD_IMG
+		WHERE BOARD_NO = #{boardNo}
+		AND IMG_NO IN (${deleteImgList})
+	</delete>
+	
+	<!-- 루틴 삭제 -->
+	<delete id="rtDelete">
+		DELETE FROM ROUTINE
+		WHERE BOARD_NO = #{boardNo}
+		AND RT_NO IN (${deleteList})
+	</delete>
 	
 	
 </mapper>

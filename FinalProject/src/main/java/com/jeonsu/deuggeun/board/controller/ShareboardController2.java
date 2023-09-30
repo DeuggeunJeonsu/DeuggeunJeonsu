@@ -117,6 +117,17 @@ public class ShareboardController2 {
 		map.put("boardNo", boardNo);
 
 		Board board = service.selectShareBoard(map);
+		
+		
+		// 개행문자처리 해제 (<br> -> /n)
+		board.setBoardContent(board.getBoardContent().replaceAll("<br>", "\n"));
+		
+		List<Routine> routines= board.getRoutineList();
+		for(int i=0 ; i < routines.size() ; i++) {
+			routines.get(i).setRtContent(routines.get(i).getRtContent().replaceAll("<br>", "\n"));
+			
+		}
+		
 		model.addAttribute("board", board);
 
 		return "board/shareBoard/shareBoardUpdate";
@@ -152,11 +163,14 @@ public class ShareboardController2 {
 
 		return path;
 	}
+	
+	// 게시글 수정
 	@PostMapping("/{boardNo}/update")
 	public String boardUpdate(
 			Board board // 커맨드 객체( VO 또는 DTO 필드명이 name 속성 값이 같은 경우 파라미터 세팅)
 			, @RequestParam(value = "cp", required = false, defaultValue = "1") int cp //쿼리스트링 유지
-			, @RequestParam(value = "deleteList" , required = false) String delteList //삭제할 이미지 순서 
+			, @RequestParam(value = "deleteList" , required = false) String deleteList //삭제할 루틴 
+			, @RequestParam(value = "deleteImgList" , required = false) String deleteImgList //삭제할 이미지 
 			, @RequestParam("routineName") List<String> routineNames
 			, @RequestParam("routineContent") List<String> routineContents 
 			, @RequestParam(value = "images", required = false) List<MultipartFile> images //업로드된 파일 리스트
@@ -165,6 +179,9 @@ public class ShareboardController2 {
 			, RedirectAttributes ra //리다이렉트시 값 전달용
 			)throws IllegalStateException, IOException {
 
+		//System.out.println("deleteImgList::::"+ deleteImgList);
+		//System.out.println("deleteList::::"+ deleteList);
+		
 		// 1) boardCode, boardNo를 커맨드 객체에 세팅
 		board.setBoardCode(2);
 		board.setBoardNo(boardNo);
@@ -187,7 +204,7 @@ public class ShareboardController2 {
 		String webPath ="/resources/images/board/";
 		String filePath = session.getServletContext().getRealPath(webPath);
 		
-		int rowCount = service.boardUpdate(board, images, webPath, filePath, routines);		
+		int rowCount = service.boardUpdate(board, images, webPath, filePath, routines, deleteList, deleteImgList);		
 		
 		String message = null;
 		String path = "redirect:";
