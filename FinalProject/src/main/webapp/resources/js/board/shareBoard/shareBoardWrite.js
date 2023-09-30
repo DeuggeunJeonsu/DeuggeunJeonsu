@@ -328,17 +328,93 @@ document.addEventListener("click", function (event) {
 })
 
 /* 캘린더 말풍선 */
-// $(window).scroll(function() {
-//     $('#animatedElement').each(function(){
-//     var imagePos = $(this).offset().top;
+$(window).scroll(function() {
+    $('#animatedElement').each(function(){
+    var imagePos = $(this).offset().top;
 
-//     var topOfWindow = $(window).scrollTop();
-//         if (imagePos < topOfWindow+400) {
-//             $(this).addClass("slideUp");
-//         }
-//     });
-// });
+    var topOfWindow = $(window).scrollTop();
+        if (imagePos < topOfWindow+400) {
+            $(this).addClass("slideUp");
+        }
+    });
+});
 if (document.querySelectorAll(".routine").length >= 2) {
     const balloon = document.querySelector(".balloon");
     balloon.style.display = "block"; 
 }
+
+
+//---------------------------------------------------------------------------
+//자동완성
+
+// 자동완성
+const addListInput = document.querySelector('[name="routineName"]');
+const routineVal = addListInput.value.trim();
+// const autoSearch = document.querySelector("#autoSearch"); 
+// const resultArea = document.querySelector("#todo-resultArea"); 
+const autoSearchArea = document.querySelector(".autoSearchArea");
+addListInput.addEventListener("input", e =>{
+
+    const query = e.target.value.trim();
+
+    if(query.length == 0){
+        autoSearchArea.innerText="";
+        return;
+    }
+
+    if(query.length > 0){
+
+        fetch("/todo/auto/selecthealth?query="+ query)
+        .then(resp => resp.json())
+        .then(list => {
+
+            const autoSearchArea = e.target.parentElement.nextElementSibling
+
+            const autoSearch = document.createElement("div");
+            autoSearch.classList.add("autoSearch");
+
+            const resultArea = document.createElement("ul");
+            resultArea.classList.add("todo-resultArea")
+
+            resultArea.innerHTML = ""; // 이전 검색 결과 비우기
+
+            // 검색 결과 없을 때는 창이 사라짐
+            if(list.length > 0 ){
+                for( let health of list){
+                    const li = document.createElement("li");
+                    li.classList.add("todo-result-row");
+                    li.setAttribute("date-id", health.healthLevel);
+
+                    let name = health.healthName;
+                    let parent = health.healthParent;
+                    // let bar = " |"+ '&nbsp;'
+                    const span3 = document.createElement("span");
+                    span3.innerHTML= "&nbsp;|&nbsp;"
+                    const span1 = document.createElement("span");
+                    span1.innerHTML = `${name}`.replace(query, `<mark>${query}</mark>`);
+
+                    const span2 = document.createElement("span");
+                    span2.innerHTML = parent
+
+                    li.append(span1, span3 , span2);
+                    resultArea.append(li);
+                    autoSearch.append(resultArea);
+                    autoSearchArea.append(autoSearch);
+
+                    li.addEventListener('click', ()=>{
+                        addListInput.value = health.healthName;
+                       
+                    })
+                }
+            }
+
+        })
+        .catch(err => console.log(err));
+    }
+    
+})
+addListInput.addEventListener("blur", () => {
+    autoSearchArea.innerHTML=""
+});
+
+//autocomplete="off"
