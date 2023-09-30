@@ -24,9 +24,6 @@ public class MainController {
 	@Autowired
 	MemberService service;
 	
-	
-	
-	
 	// 메인페이지로 이동
 	@RequestMapping("/")
 	public String mainForward() {
@@ -39,13 +36,10 @@ public class MainController {
 		return "common/survey";
 	}
 	
-	
 	// 추천 루틴 투두리스트에 삽입
 	@RequestMapping("/survey/todoList")
 	@ResponseBody
-	public int surveyTodo(String routine,
-			@SessionAttribute("loginMember") Member loginMember
-			) {
+	public int surveyTodo(String routine, @SessionAttribute("loginMember") Member loginMember) {
 		
 		System.out.println(routine + "엥?");
 		TodoList todoList = new TodoList();
@@ -75,6 +69,17 @@ public class MainController {
 	@RequestMapping(value="/bmi/addBMI", produces = "application/json; charset=UTF-8")
 	public int addBMI(@RequestBody Map<String, Object> paramMap) {
 		return service.addBMI(paramMap);
+	}
+	
+	// 안읽은 채팅 카운트
+	@ResponseBody
+	@RequestMapping(value="/chattingCount", produces = "text/plain; charset=UTF-8")
+	public String chattingCount(@SessionAttribute(value="loginMember", required=false) Member loginMember) {
+
+		int memberNo = 0;
+		if(loginMember != null) memberNo = loginMember.getMemberNo();
+		
+		return String.valueOf(service.chattingCount(memberNo));
 	}
 
 	// 장바구니 상품 카운트
@@ -119,6 +124,8 @@ public class MainController {
 	public String trendingFree() throws Exception {
 		return new ObjectMapper().writeValueAsString(service.trendingFree());
 	}
+	
+	// 메인페이지 랭킹 맴버 리스트 조회
 	
 	
 }

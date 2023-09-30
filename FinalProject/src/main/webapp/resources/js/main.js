@@ -29,15 +29,22 @@ $(document).ready(function(){
 
     // 메인페이지가 아닐때
     if(document.querySelector("[name='mainPage']") == null){
+<<<<<<< HEAD
 
         navContainer.classList.add("nav-sticky");
         headerNav.classList.remove("no-background");
         headerNav.classList.add("nav-container-bg")
+=======
+    
+        // navContainer.classList.add("nav-sticky");
+        // headerNav.classList.remove("no-background");
+        // headerNav.classList.add("nav-container-bg")
+>>>>>>> 7e53742d4c74174a178a338065b05df2384c19f5
         body.classList.add("nav-padding")
         // log02.classList.add("log-disply");
         // log01.classList.remove("log-disply");
 
-        return;
+        //return;
 
     }
 
@@ -49,7 +56,11 @@ $(document).ready(function(){
         }
     }, 250);
 
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> 7e53742d4c74174a178a338065b05df2384c19f5
 
     function hasScrolled() {
 

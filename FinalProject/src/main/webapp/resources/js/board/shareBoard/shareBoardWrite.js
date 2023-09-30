@@ -54,7 +54,7 @@ routineBtn.addEventListener("click", function () {
         const img = document.createElement("img");
         // img.setAttribute("class","preview");
         img.classList.add("preview")
-        img.setAttribute("src","");
+        img.setAttribute("src","/resources/images/boardDetaile/noneImage.png");
     
         // 파일 입력 부분
         const input = document.createElement("input");

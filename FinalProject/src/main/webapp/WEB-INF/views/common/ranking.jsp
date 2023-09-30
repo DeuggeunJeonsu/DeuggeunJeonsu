@@ -63,21 +63,21 @@
                                 <img class="top3-profile-img top2-border" src="/resources/images/user.png">
                                 <div class="top3-info-area top2-font">
                                     <div>2ed NickName</div>
-                                    <div>Score icon</div>
+                                    <div>Score</div>
                                 </div>
                             </div>
                             <div>
                                 <img class="top3-profile-img top1-border" src="/resources/images/user.png">
                                 <div class="top3-info-area top1-font">
                                     <div>1st NickName</div>
-                                    <div>Score icon</div>
+                                    <div>Score</div>
                                 </div>
                             </div>
                             <div>
                                 <img class="top3-profile-img top3-border" src="/resources/images/user.png">
                                 <div class="top3-info-area top3-font">
                                     <div>3rd NickName</div>
-                                    <div>Score icon</div>
+                                    <div>Score</div>
                                 </div>
                             </div>
                         </div>
@@ -88,7 +88,6 @@
                             </div>
                             <div>NickName</div>
                             <div>Score</div>
-                            <div>icon</div>
                         </div>
                         <div class="ranking-row">
                             <div>5</div>
@@ -97,7 +96,6 @@
                             </div>
                             <div>NickName</div>
                             <div>Score</div>
-                            <div>icon</div>
                         </div>
                         <div class="ranking-row">
                             <div>6</div>
@@ -106,7 +104,6 @@
                             </div>
                             <div>NickName</div>
                             <div>Score</div>
-                            <div>icon</div>
                         </div>
                         <div class="ranking-row">
                             <div>7</div>
@@ -115,7 +112,6 @@
                             </div>
                             <div>NickName</div>
                             <div>Score</div>
-                            <div>icon</div>
                         </div>
                         <div class="ranking-row">
                             <div>8</div>
@@ -124,7 +120,6 @@
                             </div>
                             <div>NickName</div>
                             <div>Score</div>
-                            <div>icon</div>
                         </div>
                     </div>
                 </div>
@@ -145,21 +140,21 @@
                                 <img class="top3-profile-img top2-border" src="/resources/images/user.png">
                                 <div class="top3-info-area top2-font">
                                     <div>2ed NickName</div>
-                                    <div>Score icon</div>
+                                    <div>Score</div>
                                 </div>
                             </div>
                             <div>
                                 <img class="top3-profile-img top1-border" src="/resources/images/user.png">
                                 <div class="top3-info-area top1-font">
                                     <div>1st NickName</div>
-                                    <div>Score icon</div>
+                                    <div>Score</div>
                                 </div>
                             </div>
                             <div>
                                 <img class="top3-profile-img top3-border" src="/resources/images/user.png">
                                 <div class="top3-info-area top3-font">
                                     <div>3rd NickName</div>
-                                    <div>Score icon</div>
+                                    <div>Score</div>
                                 </div>
                             </div>
                         </div>
@@ -170,7 +165,6 @@
                             </div>
                             <div>NickName</div>
                             <div>Score</div>
-                            <div>icon</div>
                         </div>
                         <div class="ranking-row">
                             <div>5</div>
@@ -179,7 +173,6 @@
                             </div>
                             <div>NickName</div>
                             <div>Score</div>
-                            <div>icon</div>
                         </div>
                         <div class="ranking-row">
                             <div>6</div>
@@ -188,7 +181,6 @@
                             </div>
                             <div>NickName</div>
                             <div>Score</div>
-                            <div>icon</div>
                         </div>
                         <div class="ranking-row">
                             <div>7</div>
@@ -197,7 +189,6 @@
                             </div>
                             <div>NickName</div>
                             <div>Score</div>
-                            <div>icon</div>
                         </div>
                         <div class="ranking-row">
                             <div>8</div>
@@ -206,7 +197,6 @@
                             </div>
                             <div>NickName</div>
                             <div>Score</div>
-                            <div>icon</div>
                         </div>
                     </div>
                 </div>
@@ -227,21 +217,21 @@
                                 <img class="top3-profile-img top2-border" src="/resources/images/user.png">
                                 <div class="top3-info-area top2-font">
                                     <div>2ed NickName</div>
-                                    <div>Score icon</div>
+                                    <div>Score</div>
                                 </div>
                             </div>
                             <div>
                                 <img class="top3-profile-img top1-border" src="/resources/images/user.png">
                                 <div class="top3-info-area top1-font">
                                     <div>1st NickName</div>
-                                    <div>Score icon</div>
+                                    <div>Score</div>
                                 </div>
                             </div>
                             <div>
                                 <img class="top3-profile-img top3-border" src="/resources/images/user.png">
                                 <div class="top3-info-area top3-font">
                                     <div>3rd NickName</div>
-                                    <div>Score icon</div>
+                                    <div>Score</div>
                                 </div>
                             </div>
                         </div>
@@ -252,7 +242,6 @@
                             </div>
                             <div>NickName</div>
                             <div>Score</div>
-                            <div>icon</div>
                         </div>
                         <div class="ranking-row">
                             <div>5</div>
@@ -261,7 +250,6 @@
                             </div>
                             <div>NickName</div>
                             <div>Score</div>
-                            <div>icon</div>
                         </div>
                         <div class="ranking-row">
                             <div>6</div>
@@ -270,7 +258,6 @@
                             </div>
                             <div>NickName</div>
                             <div>Score</div>
-                            <div>icon</div>
                         </div>
                         <div class="ranking-row">
                             <div>7</div>
@@ -279,7 +266,6 @@
                             </div>
                             <div>NickName</div>
                             <div>Score</div>
-                            <div>icon</div>
                         </div>
                         <div class="ranking-row">
                             <div>8</div>
@@ -288,7 +274,6 @@
                             </div>
                             <div>NickName</div>
                             <div>Score</div>
-                            <div>icon</div>
                         </div>
                     </div>
                 </div>

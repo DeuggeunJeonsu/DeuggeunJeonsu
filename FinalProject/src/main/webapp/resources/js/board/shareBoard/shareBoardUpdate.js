@@ -133,7 +133,9 @@ function getRandomInt(min, max) {
 }
 // ------------------------------------------------
 // 루틴 삭제 버튼
-
+// 게시글 수정시 삭제된 이미지의 순서를 기록할 Set 객체 생성
+const deleteSet = new Set() //순서X, 중복X
+// -> x버튼 클릭시 순서를 한번 만 저장하는 용도
 
 // 취소 버튼 이벤트 핸들러를 등록합니다.
 document.addEventListener("click", function (e) {
@@ -148,12 +150,15 @@ document.addEventListener("click", function (e) {
     
 // 취소 버튼 눌렀을 때 해당 루틴 삭제하기
 function cancleRoutine(e) {
+    const deleteRt = e.target.nextElementSibling.value
+    deleteSet.add(deleteRt);
     e.target.parentElement.parentElement.remove();
 }
 
 
 
 //-------------------------------------------------
+
 
 // 루틴 드래그로 위치 바꾸기
 
@@ -206,16 +211,16 @@ let currentRoutine = null;
 //     });
 // });
 
-if (document.querySelectorAll(".routine").length >= 2) {
-    const ballon = document.querySelector(".ballon");
-    ballon.style.display = "block"; 
-}
+// if (document.querySelectorAll(".routine").length >= 2) {
+//     const ballon = document.querySelector(".ballon");
+//     ballon.style.display = "block"; 
+// }
 
 
 
-// 게시글 수정시 삭제된 이미지의 순서를 기록할 Set 객체 생성
-const deleteSet = new Set() //순서X, 중복X
-// -> x버튼 클릭시 순서를 한번 만 저장하는 용도
+// // 게시글 수정시 삭제된 이미지의 순서를 기록할 Set 객체 생성
+// const deleteSet = new Set() //순서X, 중복X
+// // -> x버튼 클릭시 순서를 한번 만 저장하는 용도
 
 document.addEventListener("click", function(event){
     
@@ -373,5 +378,7 @@ document.getElementById("boardUpdateFrm").addEventListener("submit", e => {
         }
     }
 
+    document.querySelector("[name='deleteList']").value
+        = Array.from(deleteSet);
     document.getElementById("boardUpdateFrm").submit();
 });

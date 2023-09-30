@@ -89,10 +89,34 @@ public class ljyBoardServiceImpl implements ljyBoardService{
 		return count;
 	}
 
+	//조회수 증가 
 	@Override
 	public int updateShareBoardReadCount(int boardNo) {
 		return dao.updateBoardReadCount(boardNo);
 	}
+	
+	// 자유게시판 게시글 상세 검색
+	@Override
+	public Map<String, Object> selectFreeBoardList(Map<String, Object> paramMap, int cp) {
+		
+		// 검색된 게시글 수 조회
+		int listCount = dao.getShareBoardListCount(paramMap);
+		
+		// 페이지네이션
+		Pagination pagination = new Pagination(cp, listCount);
+		
+		// 현재 페이지에 해당하는 게시글 목록만 조회
+		List<Board> boardList = dao.selecShareBoardList(pagination, paramMap);
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("pagination", pagination);
+		map.put("boardList", boardList);
+		
+		return map;
+	}
+			
+	
+	
 
 	//----------------------------------------------------
 	/*board2*/
