@@ -279,6 +279,20 @@ inquireForm.addEventListener("submit", function (e) {
     inquireForm.submit();
 });
 
+document.addEventListener("DOMContentLoaded", function() {
+    let urlParams = new URLSearchParams(window.location.search);
+    let fromParam = urlParams.get('from');
+
+    let selectOptionElement = document.getElementById('inquiryType');
+
+    // 'from' 파라미터가 'purchase'와 일치하는지 확인
+    if (fromParam === 'purchase') {
+        selectOptionElement.style.display = 'block'; // 또는 'inline-block' 또는 'flex' 등
+    } else {
+        selectOptionElement.style.display = 'none';
+    }
+});
+
 document.getElementById('cancel-btn').addEventListener('click', function() {
     window.history.back();
 });

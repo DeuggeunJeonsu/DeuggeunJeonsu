@@ -6,7 +6,7 @@
 
 #main-container{
     margin: 100px 400px;
-    height: auto;
+    min-height: 65vh;
     min-width: 1200px;
 }
 

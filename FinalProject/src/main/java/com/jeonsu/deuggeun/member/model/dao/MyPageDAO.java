@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.jeonsu.deuggeun.board.model.dto.Cart;
+import com.jeonsu.deuggeun.board.model.dto.Inquiry;
 import org.apache.ibatis.session.RowBounds;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -154,7 +155,6 @@ public class MyPageDAO {
 
 	// 결제 완료시 구매내역 페이지
 	public List<Cart> selectPurchaseList(int memberNo) {
-		System.out.println("지금 회원번호 : " + memberNo);
 		return sqlSession.selectList("marketMapper.selectPurchaseList", memberNo);
 	}
 

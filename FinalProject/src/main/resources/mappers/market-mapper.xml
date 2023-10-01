@@ -339,8 +339,7 @@
 
     <!-- 상품문의 게시글 삭제 -->
     <update id="inquiryDelete">
-        UPDATE PRODUCT_INQUIRY
-        SET INQUIRY_FLAG = 'Y'
+        DELETE FROM PRODUCT_INQUIRY
         WHERE INQUIRY_NO = #{inquiryNo}
         AND PRODUCT_NO = #{productNo}
     </update>
@@ -444,12 +443,15 @@
                p.PRODUCT_NAME,
                p.PRODUCT_NO,
                c.TOTAL_AMOUNT,
-               c.ORDER_FL
+               c.ORDER_FL,
+               i.INQUIRY_TYPE
         FROM CART c
                  JOIN PRODUCT p ON c.PRODUCT_NO = p.PRODUCT_NO
                  JOIN "ORDER" o ON c.ORDER_NO = o.ORDER_NO
+                 LEFT JOIN PRODUCT_INQUIRY i ON i.PRODUCT_NO = p.PRODUCT_NO
         WHERE c.MEMBER_NO = #{memberNo}
         ORDER BY o.ORDER_DATE DESC
+
     </select>
 
     <!-- 구매내역 -->

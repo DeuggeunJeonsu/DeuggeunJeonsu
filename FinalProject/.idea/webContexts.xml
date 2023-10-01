@@ -16,6 +16,7 @@
         <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/common/footer.jsp" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/common" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/common/header.jsp" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/common" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/common/searchAll.jsp" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/common" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/member/myPage/myPurchaseList.jsp" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/member/myPage" />
       </map>
     </option>
   </component>

@@ -4,7 +4,7 @@
 
 #main-container{
     margin: 100px 400px;
-    height: 650px;
+    min-height: 65vh;
     min-width: 1200px;
 }
 h1{
@@ -14,12 +14,6 @@ h1{
     padding-bottom: 10px;
     /*border-bottom: 2px solid #ddd;*/
 }
-
-/* 게시글 상세 조회 영역 */
-/*#detail-container{*/
-/*    width: 1200px;*/
-/*    margin: auto;*/
-/*}*/
 
 /* 게시글 제목 */
 #title-middle-area{
