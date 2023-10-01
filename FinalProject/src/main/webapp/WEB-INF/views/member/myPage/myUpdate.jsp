@@ -63,7 +63,7 @@
                                 <input type="text" name="memberTel" id="memberTel"
                                 placeholder="(-)제외 입력해주세요 "value="${loginMember.memberTel}">
                                 <button type="button" class="findInfo-btn" id="sendSmsBtn">인증번호 받기</button>
-                                <input type="text" id="tel-auth-key" placeholder="인증번호 입력">
+                                <input type="text" id="idAuthenticationKey" placeholder="인증번호 입력">
                                 <button type="button"  id="tel-auth-btn">인증번호 확인</button>
                                 <span id="smsTimer"></span>
                             </div>
