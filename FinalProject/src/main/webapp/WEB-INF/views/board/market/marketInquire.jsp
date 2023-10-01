@@ -155,7 +155,7 @@
                                                                     <button type="button" id="btn-status">처리대기</button>
                                                                 </c:when>
                                                                 <c:otherwise>
-                                                                    <button type="button" id="btn-status">답변완료</button>
+                                                                    <button type="button" id="btn-status" class="An">답변완료</button>
                                                                 </c:otherwise>
                                                             </c:choose>
                                                         </td>
@@ -205,7 +205,7 @@
 
                  </section>
 
-            <button id="myButton" style="display: none;">나의 버튼</button>
+            <button id="myButton" style="display: none;">스크롤 버튼</button>
             <script>
 
                 const productNo = "${product.productNo}";

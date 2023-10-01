@@ -191,7 +191,7 @@
                 </div>
             </section>
 
-            <button id="myButton" style="display: none;">나의 버튼</button>
+            <button id="myButton" style="display: none;">스크롤 버튼</button>
             <script>
 
                 const productNo = "${product.productNo}";

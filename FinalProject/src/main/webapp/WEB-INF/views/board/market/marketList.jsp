@@ -59,7 +59,7 @@
 
                     <form action="/board/${boardCode}/list" method="GET">
                         <div class="search-place">
-                            <input type="text" id="market-search" name="keyword" placeholder="찾으시는 제품을 검색해보세요" value="${param.keyword}">
+                            <input type="text" id="market-search" name="keyword" placeholder="search.." value="${param.keyword}">
                             <button id="search-button"><i class="fas fa-search"></i></button>
                         </div>
                     </form>

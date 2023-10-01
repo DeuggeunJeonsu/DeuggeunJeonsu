@@ -52,6 +52,10 @@ a{
     height: 100px;
 }
 /* 게시판 제목 영역 */
+#title-area{
+    padding-bottom: 10px;
+    border-bottom: 2px solid #ddd;
+}
 #title-area > div:nth-of-type(1){
 }
 

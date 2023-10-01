@@ -85,10 +85,11 @@ public class MarketDAO {
 	}
 
 	// 리뷰게시판 삭제되지 않은 게시글 목록
-	public int getReviewListCount(int boardCode) {
-		return sqlSession.selectOne("marketMapper.getReviewListCount", boardCode);
+	public int getReviewListCount(Map<String, Object> productMap) {
+		return sqlSession.selectOne("marketMapper.getReviewListCount", productMap);
 	}
 
+	// 리뷰 리스트 가져오기
 	public List<Review> selectReview(Pagination pagination, Map<String, Object> params) {
 
 		int offset = (pagination.getCurrentPage() - 1) * pagination.getLimit();
@@ -103,9 +104,9 @@ public class MarketDAO {
 		return sqlSession.selectOne("marketMapper.selectReviewDetail", map);
 	}
 
-	public int updateReadCount(int reviewNo) {
-
-		return sqlSession.update("marketMapper.updateReadCount", reviewNo);
+	// 조회수
+	public int updateReadCount(Map<String, Object> readMap) {
+		return sqlSession.update("marketMapper.updateReadCount", readMap);
 	}
 
 	// 리뷰 게시글 수정
@@ -257,11 +258,6 @@ public class MarketDAO {
 	// 결제완료 페이지
 	public List<Order> selectOrderList(int orderNo) {
 		return sqlSession.selectList("marketMapper.selectOrderList", orderNo);
-	}
-
-	// 리뷰 조회수 증가
-	public int updateCount(Map<String, Object> map) {
-		return sqlSession.update("marketMapper.updateCount", map);
 	}
 
 	// 자동완성 기능

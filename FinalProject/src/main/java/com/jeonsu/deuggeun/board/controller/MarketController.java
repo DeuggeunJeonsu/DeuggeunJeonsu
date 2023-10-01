@@ -166,7 +166,6 @@ public class MarketController {
 
 		Map<String, Object> map = new HashMap<String, Object>();
 
-
 		map.put("boardCode", boardCode);
 		map.put("productNo", productNo);
 
@@ -275,25 +274,39 @@ public class MarketController {
 							   HttpServletRequest req,
 							   HttpServletResponse resp) throws ParseException {
 
+		Map<String, Object> readMap = new HashMap<String, Object>();
+
+		int memberNo = -1; // 기본값
+		if (loginMember != null) {
+			memberNo = loginMember.getMemberNo();
+			readMap.put("memberNo", memberNo);
+			readMap.put("reviewNo", reviewNo);
+		}
+
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("boardCode", boardCode);
 		map.put("reviewNo", reviewNo);
-		map.put("cp", cp);  // cp 값을 추가
+		map.put("cp", cp);
 
 		Review review = service.selectReviewDetail(map);
 
-		String path = null;
+		if (review != null) {
+			// 로그인한 회원이 리뷰 작성자와 다를 때 조회수 증가
+			if (loginMember != null && review.getMemberNo() != memberNo) {
+				service.updateReadCount(readMap);
+				// 조회수 증가 후 다시 상세 정보를 가져옴
+				review = service.selectReviewDetail(map);
+			}
 
-		if(review != null){
-			path = "board/market/reviewDetail";
 			model.addAttribute("review", review);
 			model.addAttribute("cp", cp);
-
-		}else{
-			path = "redirect:/board/" + boardCode + "/list";
+			return "board/market/reviewDetail";
+		} else {
+			return "redirect:/board/" + boardCode + "/list";
 		}
-		return path;
 	}
+
+
 
 	// 리뷰 게시글 수정 화면 전환
 	@GetMapping("/{reviewNo}/update")

@@ -31,7 +31,7 @@ public interface MarketService {
     Review selectReviewDetail(Map<String, Object> map);
 
     // * 조회 수 증가 서비스
-    int updateReadCount(int reviewNo);
+    int updateReadCount(Map<String, Object> readMap);
 
     // 리뷰 수정
     int reviewUpdate(Review review, MultipartFile image, String webPath, String filePath) throws IOException;
