@@ -123,7 +123,11 @@ public class MarketServiceImpl implements MarketService {
 	@Override
 	public Map<String, Object> selectReview(int boardCode, int cp, int productNo) {
 
-		int listCount = dao.getReviewListCount(boardCode);
+		Map<String, Object> productMap = new HashMap<>();
+		productMap.put("boardCode", boardCode);
+		productMap.put("productNo", productNo);
+
+		int listCount = dao.getReviewListCount(productMap);
 
 		Pagination pagination = new Pagination(cp, listCount);
 
@@ -137,27 +141,21 @@ public class MarketServiceImpl implements MarketService {
 		Map<String, Object> map = new HashMap<>();
 		map.put("pagination", pagination);
 		map.put("rList", rList);
+
 		return map;
 
 	}
 
 	@Override
 	public Review selectReviewDetail(Map<String, Object> map) {
-
-		int result = dao.updateCount(map);
-		if (result > 0) {
 			return dao.selectReviewDetail(map);
-		} else {
-			return null;
-		}
 	}
-
 
 	// 조회 수 증가 서비스
 	@Transactional
 	@Override
-	public int updateReadCount(int reviewNo) {
-		return dao.updateReadCount(reviewNo);
+	public int updateReadCount(Map<String, Object> readMap) {
+		return dao.updateReadCount(readMap);
 	}
 
 	// 리뷰 수정
