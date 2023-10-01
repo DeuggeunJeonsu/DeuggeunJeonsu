@@ -4,8 +4,7 @@
 
 #main-container{
     margin: 100px 400px;
-    height: 60vh;
-    /*height: auto;*/
+    height: 65vh;
     min-width: 1200px;
 }
 h1{

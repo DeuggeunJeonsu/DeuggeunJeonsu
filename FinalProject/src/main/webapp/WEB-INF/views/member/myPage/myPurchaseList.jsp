@@ -62,7 +62,7 @@
                                 <th>상품명</th>
                                 <th>상품 구매 금액</th>
                                 <th>주문 처리 상태</th>
-                                <th>취소/교환/반품</th>
+                                <th>취소/교환/기타</th>
                                 <th>리뷰</th>
                             </tr>
                         </thead>
@@ -77,19 +77,27 @@
                                         </a>
                                     </td>
                                     <td>${item.total}</td>
+<%--                                    <td>--%>
+<%--                                        <c:choose>--%>
+<%--                                            <c:when test="${item.orderStatus == 'Y'}">결제 완료</c:when>--%>
+<%--                                            <c:when test="${item.orderStatus == 'D'}">배송 완료</c:when>--%>
+<%--                                        </c:choose>--%>
+<%--                                    </td>--%>
                                     <td>
                                         <c:choose>
-                                            <c:when test="${item.orderStatus == 'Y'}">결제 완료</c:when>
+                                            <c:when test="${item.orderStatus == 'Y' && (item.inquiryType == 0 || item.inquiryType == 3)}">결제 완료</c:when>
+
+                                            <c:when test="${item.orderStatus == 'Y' && item.inquiryType == 1}">교환 접수중</c:when>
+                                            <c:when test="${item.orderStatus == 'Y' && item.inquiryType == 2}">취소 접수중</c:when>
                                             <c:when test="${item.orderStatus == 'D'}">배송 완료</c:when>
-<%--                                            <c:when test="${item.orderStatus == 'Y' && item.inquiryType == 1}">교환접수중</c:when>--%>
-<%--                                            <c:when test="${item.orderStatus == 'Y' && item.inquiryType == 2}">취소접수중</c:when>--%>
                                         </c:choose>
                                     </td>
-                                    <td>
-                                        <button class="inquiryBtn inquiryBtnColor2"
-                                                onclick="location.href='/board/5/inquiry/${item.productNo}/insert'">문의 하기</button>
 
+                                    <td>
+                                        <button class="inquiryBtn inquiryBtnColor2" data-inquiryType="${item.inquiryType}"
+                                                onclick="handleInquiryClick(event, ${item.productNo})">문의 하기</button>
                                     </td>
+
                                     <td>
                                         <button class="inquiryBtn inquiryBtnColor1"
                                         onclick="location.href='/board/5/review/${item.productNo}/insert'">리뷰 작성</button>

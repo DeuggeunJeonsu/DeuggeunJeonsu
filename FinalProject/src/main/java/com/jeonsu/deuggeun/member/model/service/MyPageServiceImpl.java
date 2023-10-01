@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.jeonsu.deuggeun.board.model.dto.Cart;
+import com.jeonsu.deuggeun.board.model.dto.Inquiry;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -351,4 +352,5 @@ public class MyPageServiceImpl implements MyPageService {
 	
 		return result;
 	}
+
 }

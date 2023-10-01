@@ -48,7 +48,9 @@
             <div class="place"></div>
             <section id="main-container">
                 <div id="title-area">
-                    <div class="board-title">득근 마켓</div>
+                    <a href="/board/5/list">
+                        <div class="board-title">득근 마켓</div>
+                    </a>
                     <div>
                         <h3>건강한 삶을 지향하는 득근전수 회원님들을 위한 마켓입니다 :)</h3>
                     </div>
