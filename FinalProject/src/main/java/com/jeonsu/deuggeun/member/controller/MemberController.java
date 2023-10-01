@@ -243,5 +243,20 @@ public class MemberController {
 			
 		}
 	
+		
+		// 회원정보 수정 시 전화번호 인증 
+		@ResponseBody //(viewResolver -> jsp찾는다 X, 리턴 값을 JSON으로 STring타입으로 리턴, jackson이 스프링 기본 라이브러리로 사용됨)
+		@PostMapping(value="/sendSms/update", produces = "application/json; charset=UTF-8")
+		public String updateTel(@RequestBody String memberTel, HttpServletResponse resp) {
+			
+			
+			String AuthenticationKey="";
+
+			// 일치하는 회원이 있으면 sms인증번호 전송
+			AuthenticationKey = Util.sendMessage(memberTel);
+			
+			// 인증번호 반환
+			return AuthenticationKey;
+		}
 
 }

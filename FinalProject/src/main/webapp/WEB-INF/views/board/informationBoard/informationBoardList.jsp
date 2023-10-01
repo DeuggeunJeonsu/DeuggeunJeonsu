@@ -159,6 +159,17 @@
             </c:if>
         </div>
 
+        <div class="slider__wrap">
+            <div class="slider__img">
+                <div class="slider__inner">
+                    <div class="slider s1"><a href="/board/5/detail/7"><img src="/resources/images/ad/egg.png" alt="이미지3"></a></div>
+                    <div class="slider s2"><a href="/board/5/detail/9"><img src="/resources/images/ad/coffee.png" alt="이미지4"></a></div>
+                    <div class="slider s3"><a href="/board/5/detail/4"><img src="/resources/images/ad/fromroller.png" alt="이미지6"></a></div>
+                    <div class="slider s4"><a href="/board/5/detail/3"><img src="/resources/images/ad/protine.png" alt="이미지8"></a></div>
+                </div>
+            </div>
+        </div>
+
         <div class="paginationArea">
             <ul class="pagination">
 

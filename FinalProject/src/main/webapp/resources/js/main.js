@@ -43,7 +43,7 @@ $(document).ready(function(){
         // log02.classList.add("log-disply");
         // log01.classList.remove("log-disply");
 
-        //return;
+        return;
 
     }
 

@@ -92,7 +92,7 @@
                                 <span class="delete-image">&times;</span>
                             </div>
                             <div class="routine-write-area">
-                                <input type="text" placeholder="예) 스쿼트 20회 30세트" name="routineName" autocomplete="off">
+                                <input type="text" placeholder="예) 스쿼트 20회 30세트" name="routineName" autocomplete="off" class="routineName">
                                 <textarea name="routineContent">1.&#10;2.&#10;3.&#10;&#10;꿀팁!</textarea>
                             </div>
                            <div class="autoSearchArea">
