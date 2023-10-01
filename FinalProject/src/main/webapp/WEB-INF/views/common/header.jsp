@@ -36,18 +36,40 @@
     <div class="main-content">
         <nav class="header-nav no-background ">
 
+        <%-- search 영역 --%>
+            <form action="/search/all" method="GET">
+            <div class="top-search">
+                <div class="search-container">
+                    <div class="input-group">
+                        <span class="search-icon-area">
+                            <i class="fa fa-solid fa-magnifying-glass"></i>
+                        </span>
+                        <input type="text" placeholder="검색어를 입력하세요" name="keyword" value="${param.keyword}"  class="form-search" id="searchAll">
+                        <span class="search-icon-area close-search">
+                            <i>&times;</i>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            </form>
+
             <div class="nav-container">
                 <div class="nav-icon">
                     <ul>
 
                         <%-- 검색 아이콘 누르면 검색창 화면으로 이동 --%>
-                        <li class="search">
-                            <a href="/search/all">
-                                <i class="fa fa-solid fa-magnifying-glass fa-lg"></i>
-                            </a>
-                            
-                            <!-- <i class="fa fa-solid fa-magnifying-glass fa-lg"></i> -->
-                        </li>
+                            <li class="search">
+                                <a href="#">
+                                    <i class="fa fa-solid fa-magnifying-glass"></i>
+                                </a>
+                            </li>
+<%--                        <li class="search">--%>
+<%--&lt;%&ndash;                            <a href="/search/all">&ndash;%&gt;--%>
+<%--&lt;%&ndash;                                <i class="fa fa-solid fa-magnifying-glass fa-lg"></i>&ndash;%&gt;--%>
+<%--&lt;%&ndash;                            </a>&ndash;%&gt;--%>
+
+<%--                             <i class="fa fa-solid fa-magnifying-glass fa-lg"></i>--%>
+<%--                        </li>--%>
 
                         <li>
                             <c:if test="${!empty loginMember}">
