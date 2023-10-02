@@ -49,7 +49,7 @@ public class MainController {
 	
 	// 카카오 로그인
 	@RequestMapping("/oauth")
-	public String kakaoForward(Model model, @RequestHeader(value="referer") String referer, 
+	public String kakaoForward(Model model, 
 								@RequestParam(value = "code", required = false) String code,
 								@RequestParam(value = "error", required = false) String error,
 								RedirectAttributes ra) throws Throwable {
@@ -80,7 +80,7 @@ public class MainController {
 		else{ // 로그인 취소, 실패 시
 			log.debug(error);
 			ra.addFlashAttribute("message","카카오톡 로그인에 실패했습니다.");
-			return path+referer;
+			return path+"/meber/login";
 		}
 	}
 	
