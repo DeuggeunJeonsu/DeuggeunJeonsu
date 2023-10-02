@@ -1,5 +1,8 @@
 package com.jeonsu.deuggeun.member.model.service;
 
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -15,6 +18,21 @@ public interface MemberService {
 	 * @return email, pw가 일치하는 회원 정보 또는 null
 	 */
 	Member login(Member inputMember);
+	
+	/** 카카오 로그인 토근 가져오기
+	 * @param authorize_code
+	 * @return access_Token
+	 * @throws MalformedURLException 
+	 * @throws IOException 
+	 */
+	String getAccessToken(String authorize_code) throws MalformedURLException, IOException;
+	
+	/** 카카오 토큰으로 유저정보 가져오기
+	 * @param access_Token
+	 * @return userInfo
+	 * @throws Throwable
+	 */
+	public HashMap<String, Object> getUserInfo(String access_Token) throws Throwable, NullPointerException;
 
 	/** 회원 가입 서비스(비밀번호 암호화 필요)
 	 * @param inputMember

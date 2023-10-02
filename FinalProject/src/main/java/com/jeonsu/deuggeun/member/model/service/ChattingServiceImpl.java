@@ -28,6 +28,12 @@ public class ChattingServiceImpl implements ChattingService{
         return dao.selectRoomList(memberNo);
     }
     
+    // 채팅방 목록 내 회원 검색
+    @Override
+    public List<ChattingRoom> selectRoomListInUser(Map<String, Object> map) {
+        return dao.selectRoomListInUser(map);
+    }
+    
     // 해당 회원과 채팅방이 있는지 없는지 조회
     @Override
     public int checkChattingNo(Map<String, Integer> map) {

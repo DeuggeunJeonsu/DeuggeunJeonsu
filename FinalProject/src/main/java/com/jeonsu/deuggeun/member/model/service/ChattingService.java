@@ -14,6 +14,12 @@ public interface ChattingService {
 	 * @return chattingRoomList
 	 */
     List<ChattingRoom> selectRoomList(int memberNo);
+    
+    /** 채팅방 목록내 회원 검색
+	 * @param memberNo
+	 * @return chattingRoomList
+	 */
+    List<ChattingRoom> selectRoomListInUser(Map<String, Object> map);
 
     /** 해당 회원과 채팅방이 있는지 없는지 조회
      * @param map
