@@ -12,6 +12,7 @@ const popChk = document.getElementsByClassName("pop_chk");
 
 const maindiv1 = document.getElementsByClassName("sv1")[0];
 const maindiv2 = document.getElementsByClassName("sv2")[0];
+const checks = document.getElementsByClassName("checks")[0];
 
 
 const input = document.getElementById("rangeblue");
@@ -105,7 +106,8 @@ for (let i of fristCheck) {
                     input.style.transitionDuration = "2s, 1s";
                     input.style.width = "60%";
 
-
+                    maindiv1.style.height = "500px";
+                    checks.style.height = "370px";
 
                     btn.style.visibility = "hidden";
 
@@ -118,7 +120,7 @@ for (let i of fristCheck) {
 
                         fristList[i].style.display = "none";
 
-                       
+
 
 
                         finalCheck.addEventListener("click", () => {
@@ -152,72 +154,72 @@ for (let i of fristCheck) {
 
                             popUp.style.visibility = "visible";
                             popUp.style.opacity = "10";
-                            popUp.style.height =   "770px";
+                            popUp.style.height = "770px";
 
 
-                          str = [];
+                            str = [];
 
 
-                            if(upChk[i].checked == true){
-                                
-                                switch(i){
-                                    case 0 : str.push("턱걸이 8회 4세트","렛풀다운 12회 4세트","바벨로우 12회 4세트", "시티드 로우 15회 4세트" , "데드리프트 12회 4세트" );
+                            if (upChk[i].checked == true) {
+
+                                switch (i) {
+                                    case 0: str.push("턱걸이 8회 4세트", "렛풀다운 12회 4세트", "바벨로우 12회 4세트", "시티드 로우 15회 4세트", "데드리프트 12회 4세트");
                                         break;
-                                    case 1 : str.push("바벨 벤치프레스 12회 4세트","인클라인 벤치 프레스 15회 4세트","딥스 8회 4세트","인클라인 덤벨 플라이 15회 4세트" , "케이블 크로스오버 15회 4세트");
+                                    case 1: str.push("바벨 벤치프레스 12회 4세트", "인클라인 벤치 프레스 15회 4세트", "딥스 8회 4세트", "인클라인 덤벨 플라이 15회 4세트", "케이블 크로스오버 15회 4세트");
                                         break;
-                                    case 2 : str.push("사이드 레터럴 레이즈 15회 4세트","밀리터리 프레스 12회 4세트","덤벨 숄더프레스 15회 4세트" ,"벤트오버 레터럴 레이즈 20회 4세트");
+                                    case 2: str.push("사이드 레터럴 레이즈 15회 4세트", "밀리터리 프레스 12회 4세트", "덤벨 숄더프레스 15회 4세트", "벤트오버 레터럴 레이즈 20회 4세트");
                                         break;
-                                    case 3 : str.push("이두컬 12회 4세트","해머 컬 15회 4세트","바벨 컬 10회 4세트" , "라잉 트라이셉스 익스텐션 12회 4세트" ,"트라이셉스 킥백 12회 4세트");
-                                        default: ''
+                                    case 3: str.push("이두컬 12회 4세트", "해머 컬 15회 4세트", "바벨 컬 10회 4세트", "라잉 트라이셉스 익스텐션 12회 4세트", "트라이셉스 킥백 12회 4세트");
+                                    default: ''
                                         break;
                                 }
                             }
-                            
+
                             for (let i = 0; i < str.length; i++) {
                                 // 운동 항목을 li 요소에 추가합니다.
                                 const li = document.createElement('li');
                                 li.innerText = str[i];
                                 li.style.marginBottom = "10px";
-                    
+
                                 // 운동 항목에 대한 버튼을 생성하고 추가합니다.
                                 const button = document.createElement('button');
                                 button.classList.add("todoBtn");
                                 // li 요소에 버튼을 추가
                                 li.appendChild(button);
-                    
+
                                 // li 요소를 popList에 추가
                                 popList.appendChild(li);
-                                
-                                if(listCount < 10){
+
+                                if (listCount < 10) {
                                     button.addEventListener('click', () => {
-    
-                                       console.log(li.innerText);
-    
-                                       const routine = li.innerText;
-                                        
+
+                                        console.log(li.innerText);
+
+                                        const routine = li.innerText;
+
                                         fetch("/survey/todoList?routine=" + routine)
-                                        .then(resp => resp.json())
-                                        .then(result => {
-                                          
-                                            if(result > '0'){
-                                                // 버튼 클릭 시 실행될 동작을 정의합니다.
-                                                alert('TodoList에 추가되었습니다.'); // 원하는 동작으로 변경
-                                                li.remove(button);
-                                                return;
+                                            .then(resp => resp.json())
+                                            .then(result => {
 
-                                            }else{
+                                                if (result > '0') {
+                                                    // 버튼 클릭 시 실행될 동작을 정의합니다.
+                                                    alert('TodoList에 추가되었습니다.'); // 원하는 동작으로 변경
+                                                    li.remove(button);
+                                                    return;
 
-                                                alert('TodoList 개수가 꽉 찼습니다. 삭제 후 이용해주세요.'); 
-                                            }
-                                        })
-                                        .catch() 
-    
-    
+                                                } else {
+
+                                                    alert('TodoList 개수가 꽉 찼습니다. 삭제 후 이용해주세요.');
+                                                }
+                                            })
+                                            .catch()
+
+
                                     });
 
                                 }
-                                
-                        }
+
+                            }
 
                         })
                         str = [];
@@ -228,7 +230,9 @@ for (let i of fristCheck) {
 
                             upChk[i].checked = false;
 
-                           
+                            maindiv1.style.height = "300px";
+                            checks.style.height = "170px";
+
                             header.innerHTML = "오늘은 어느 부위를 하시나요?";
                             next[i].style.display = "none";
 
@@ -273,19 +277,22 @@ for (let i of fristCheck) {
                 } else if (leg.checked == true) {
 
 
-                        header.innerHTML = "하체를 하는 날이군요! 그 중 어느 부위를 하시나요?";
+                    header.innerHTML = "하체를 하는 날이군요! 그 중 어느 부위를 하시나요?";
 
-                        input.style.transitionDuration = "2s, 1s";
-                        input.style.width = "60%";
+                    input.style.transitionDuration = "2s, 1s";
+                    input.style.width = "60%";
 
-                        btn.innerHTML = "결과확인";
+                    btn.innerHTML = "결과확인";
 
-                        beforeBtn.style.visibility = "visible";
-                        beforeBtn.style.cursor = "pointer";
+                    beforeBtn.style.visibility = "visible";
+                    beforeBtn.style.cursor = "pointer";
 
-                        btn.style.visibility = "hidden";
+                    maindiv1.style.height = "500px";
+                    checks.style.height = "370px";
 
-                        finalCheck.style.visibility = "visible";
+                    btn.style.visibility = "hidden";
+
+                    finalCheck.style.visibility = "visible";
 
                     for (let i = 0; i < nextleg.length; i++) {
 
@@ -319,20 +326,20 @@ for (let i of fristCheck) {
                             maindiv2.style.webkitFilter = "blur(2px)";
 
                             popUp.style.visibility = "visible";
-                            popUp.style.opacity =   "10";
-                            popUp.style.height =   "770px";
+                            popUp.style.opacity = "10";
+                            popUp.style.height = "770px";
 
-                         
+
                             str = [];
 
-                            if(legChk[i].checked == true){
-                                
-                                switch(i){
-                                    case 0 : str.push("레그 익스텐션 15회 4세트","파워 레그프레스 12회 4세트","핵스쿼트 12회 4세트","런지 20회 4세트");
+                            if (legChk[i].checked == true) {
+
+                                switch (i) {
+                                    case 0: str.push("레그 익스텐션 15회 4세트", "파워 레그프레스 12회 4세트", "핵스쿼트 12회 4세트", "런지 20회 4세트");
                                         break;
-                                    case 1 : str.push("레그컬 15회 4세트","루마니안 데드리프트 12회 4세트","힙 쓰러스트 20회 4세트","스쿼트 12회 5세트");
+                                    case 1: str.push("레그컬 15회 4세트", "루마니안 데드리프트 12회 4세트", "힙 쓰러스트 20회 4세트", "스쿼트 12회 5세트");
                                         break;
-                                    case 2 : str.push("시티드 카프레이즈 20회 4세트","스탠딩 카프레이즈 15회 4세트","바벨 카프레이즈 15회 4세트");
+                                    case 2: str.push("시티드 카프레이즈 20회 4세트", "스탠딩 카프레이즈 15회 4세트", "바벨 카프레이즈 15회 4세트");
                                 }
                             }
 
@@ -341,53 +348,57 @@ for (let i of fristCheck) {
                                 const li = document.createElement('li');
                                 li.innerText = str[i];
                                 li.style.marginBottom = "10px";
-                    
-                                // 운동 항목에 대한 버튼을 생성하고 추가합니다.
+
+                                // li 요소를 popList에 추가
+                                popList.appendChild(li);
+
                                 const button = document.createElement('button');
+                                // 운동 항목에 대한 버튼을 생성하고 추가
                                 button.classList.add("todoBtn");
                                 // li 요소에 버튼을 추가
                                 li.appendChild(button);
-                    
-                                // li 요소를 popList에 추가
-                                popList.appendChild(li);
-                                
-                                if(listCount < 10){
+
+
+                                if (listCount < 10) {
                                     button.addEventListener('click', () => {
-    
-                                       console.log(li.innerText);
-    
-                                       const routine = li.innerText;
-                                        
+
+                                        console.log(li.innerText);
+
+                                        const routine = li.innerText;
+
                                         fetch("/survey/todoList?routine=" + routine)
-                                        .then(resp => resp.json())
-                                        .then(result => {
-                                          
-                                            if(result > '0'){
-                                                // 버튼 클릭 시 실행될 동작을 정의합니다.
-                                                alert('TodoList에 추가되었습니다.'); // 원하는 동작으로 변경
-                                                li.remove(button);
-                                                return;
+                                            .then(resp => resp.json())
+                                            .then(result => {
 
-                                            }else{
+                                                if (result > '0') {
+                                                    // 버튼 클릭 시 실행될 동작을 정의합니다.
+                                                    alert('TodoList에 추가되었습니다.'); // 원하는 동작으로 변경
+                                                    li.remove(button);
+                                                    return;
 
-                                                alert('TodoList 개수가 꽉 찼습니다. 삭제 후 이용해주세요.'); 
-                                            }
-                                        })
-                                        .catch() 
-    
-    
+                                                } else {
+
+                                                    alert('TodoList 개수가 꽉 찼습니다. 삭제 후 이용해주세요.');
+                                                }
+                                            })
+                                            .catch()
+
+
                                     });
-
                                 }
-                                
-                        }
-                            
+
+
+                            }
+
 
                         })
-                        
-                        
+
+
                         beforeBtn.addEventListener("click", () => {
-                            
+
+                            maindiv1.style.height = "300px";
+                            checks.style.height = "170px";
+
                             str = [];
                             header.innerHTML = "오늘은 어느 부위를 하시나요?";
 
@@ -427,9 +438,9 @@ for (let i of fristCheck) {
 
 
 
-                   
+
                     }
-                    
+
                 }
 
             })

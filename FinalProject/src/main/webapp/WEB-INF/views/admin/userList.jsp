@@ -37,10 +37,17 @@
 				<div class="adminSide">
 					<div id="fristSide">
 						<div class="adminImg">
-							<img
-								src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcmsIcVNgkjQ_BAsCA53PKy_iBXOaetVFJBQ&usqp=CAU">
+							<%-- 프로필 이미지 X --%>
+							<c:if test="${empty loginMember.profileImage}" >
+								<img src="/resources/images/user.png" id="profileImage">
+							</c:if>
+			
+							<%-- 프로필 이미지 O --%>
+							<c:if test="${!empty loginMember.profileImage}" >
+								<img src="${loginMember.profileImage}" id="profileImage">
+							</c:if>
 						</div>
-						관리자님
+						${loginMember.memberNickname}
 
 					</div>
 					<a href="/admin/userList">

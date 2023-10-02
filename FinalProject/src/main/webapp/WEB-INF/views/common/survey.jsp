@@ -119,26 +119,28 @@
 			</div>
 
 			<pre class="sv2">
-<strong>득근 전수가 추천 해드립니다.</strong>
-득근 전수에서는 설문하신 내용을 토대로 부의별 운동을 추천 및 소개 해드립니다.
+                            <strong>득근 전수가 추천 해드립니다.</strong>
 
-정성껏 답변하시어 득근하는 시간이 되셨으면 좋겠습니다.
+득근 전수에서는 설문하신 내용을 토대로 부의별 운동을 추천 해드립니다.
+
+            정성껏 답변하시어 득근하는 시간이 되셨으면 좋겠습니다.
 
 
 
 
                 
-<strong>이게 과연 나에게 맞을까?</strong>
-설문 완료 후, 알맞은 운동이 나에게 맞지 않을까라는 의심이 드신다면?
+                                   <strong>TodoList 추가 가능!</strong>
 
-걱정하지 마세요! 다시 해보세요 ~ 
+설문 완료 후, 마음에 드는 운동을 나만의 TodoList에 담아보세요.
 
-
-
+                           TodoList 추가 후 오늘도 득근!
 
 
 
-추천내용은 새로고침 후 사라지니 유의하시기 바랍니다.
+
+
+
+            추천내용은 새로고침 후 사라지니 유의하시기 바랍니다.
                 </pre>
 
 		</div>
@@ -148,6 +150,7 @@
 	</main>
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
 </body>
+
 <script src="/resources/js/survey.js"></script>
 
 </html>

@@ -47,16 +47,23 @@ public interface AdminService {
 
 	/** 관리자 상품 문의 답변
 	 * @param board
-	 * @param boardNo
+	 * @param marketTitle
 	 * @return result
 	 */
-	int marketInWrite(AdminMember board, int boardNo);
+	int marketInWrite(AdminMember board, String marketTitle);
 
-	/** 회원 문의 상세정보 조회
+	/** 1:1 문의 상세조회
 	 * @param boardNo
 	 * @return Board
 	 */
 	AdminMember adminInquiryDetail(int boardNo);
+
+	/** 상품 문의 상세조회
+	 * @param marketTitle
+	 * @return 
+	 */
+	AdminMember marketDetail(String marketTitle);
+
 
 
 }

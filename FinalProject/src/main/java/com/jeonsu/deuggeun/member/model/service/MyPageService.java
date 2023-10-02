@@ -68,9 +68,15 @@ public interface MyPageService {
 
 	/** 마이페이지 1:1 문의 답변조회
 	 * @param boardNo
-	 * @return
+	 * @return Board
 	 */
 	Board inquiryAnswer(int boardNo);
+	
+	/** 마이페이지 상품문의 답변 조회
+	 * @param marketTitle
+	 * @return Board
+	 */
+	Board inquiryMarketAnswer(String marketTitle);
 
 	/** 마이페이지 내 뱃지 페이지 이동 + 뱃지 목록 조회
 	 * @param memberNo
@@ -119,5 +125,7 @@ public interface MyPageService {
 
 	// 비밀번호 수정
 	int changePw(String newPw, int memberNo);
+
+
 
 }

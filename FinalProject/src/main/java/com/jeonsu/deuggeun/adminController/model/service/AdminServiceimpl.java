@@ -112,28 +112,36 @@ public class AdminServiceimpl implements AdminService{
 	
 	// 관리자 상품 문의 답변
 	@Override
-	public int marketInWrite(AdminMember board, int boardNo) {
+	public int marketInWrite(AdminMember board, String marketTitle) {
 		
 		int result = dao.marketInWrite(board);
 		
-		board.setBoardNo(boardNo);
 		
 		  if(result > 0) {
+			  board.setBoardTitle(marketTitle);
 			  
 			  
 			  // 문의 관리자 답변 여부 변경
-			  result = dao.updateQnA(board);
+			  result = dao.updateMarket(board);
 		  }
 		 
 		return result;
 	}
 
-	// 문의 상세정보 조회
+	// 1:1 문의 상세조회
 	@Override
 	public AdminMember adminInquiryDetail(int boardNo) {
 		
 		AdminMember boardDetail = dao.adminInquiryDetail(boardNo);
 		
+		return boardDetail;
+	}
+
+	// 상품 문의 상세조회
+	@Override
+	public AdminMember marketDetail(String marketTitle) {
+		
+		AdminMember boardDetail = dao.marketDetail(marketTitle);
 		return boardDetail;
 	}
 

@@ -40,11 +40,12 @@
                     <br>
 
                     <div>
-                        <input type="text" name="boardTitle" class="boardTitle" id="QnATitle" placeholder="제목" value="" placeholder="제목을 입력해주세요">
+                        <input type="text" name="boardTitle" class="boardTitle" id="QnATitle" placeholder="제목" value=""
+                            placeholder="제목을 입력해주세요">
                     </div>
 
                     <div>
-                        <textarea name="boardContent" class="boardContent" id="QnAContent"  cols="30" rows="10"
+                        <textarea name="boardContent" class="boardContent" id="QnAContent" cols="30" rows="10"
                             placeholder="내용을 입력해주세요"></textarea>
                     </div>
 
@@ -52,12 +53,12 @@
 
                     <div class="bottom">
                         <div>
-                            <button id="submit-button" >작성</button>
+                            <button id="submit-button">작성</button>
                             <button id="cancel-button">취소</button>
                         </div>
                     </div>
-                    <input type="hidden" name="boardNo" value="${boardNo}" />
-                </form> 
+                    <input type="hidden" name="marketTitle" value="${marketTitle}" />
+                </form>
             </section>
 
             <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
