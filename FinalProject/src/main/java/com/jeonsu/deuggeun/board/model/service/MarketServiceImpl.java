@@ -208,7 +208,12 @@ public class MarketServiceImpl implements MarketService {
 	@Override
 	public Map<String, Object> selectInquiry(int boardCode, int cp, int productNo) {
 
-		int listCount = dao.getInquiryListCount(boardCode);
+		Map<String, Object> pageMap =  new HashMap<>();
+		pageMap.put("productNo", productNo);
+		pageMap.put("boardCode", boardCode);
+
+		int listCount = dao.getInquiryListCount(pageMap);
+
 		Pagination pagination = new Pagination(cp, listCount);
 
 		Map<String, Object> params = new HashMap<>();

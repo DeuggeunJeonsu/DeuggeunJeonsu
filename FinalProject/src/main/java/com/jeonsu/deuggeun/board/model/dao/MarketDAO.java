@@ -130,8 +130,8 @@ public class MarketDAO {
 	}
 
 	// 상품문의 게시판 삭제되지 않은 게시글
-	public int getInquiryListCount(int boardCode) {
-		return sqlSession.selectOne("marketMapper.getInquiryListCount", boardCode);
+	public int getInquiryListCount(Map<String, Object> pageMap) {
+		return sqlSession.selectOne("marketMapper.getInquiryListCount", pageMap);
 	}
 
 	// 상품문의 게시판 목록

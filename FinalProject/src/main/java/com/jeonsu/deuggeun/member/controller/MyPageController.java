@@ -225,9 +225,11 @@ public class MyPageController {
 
 		List<Cart> purchaseList = new ArrayList<Cart>();
 
+
 		if(paramMap.get("key") == null) {
+
 			purchaseList = service.selectPurchaseList(memberNo);
-			System.out.println("구매내역의 값 : " + purchaseList);
+		//	System.out.println("구매내역의 값 : " + purchaseList);
 
 		} else {
 
