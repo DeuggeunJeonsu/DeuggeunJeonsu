@@ -308,7 +308,7 @@ public class MyPageController {
 		return "member/myPage/myOneOnOneInquiry";
 	}
 
-	// 마이페이지 문의 목록 조회
+	// 마이페이지 1:1 문의 답변 조회
 	@RequestMapping("/inquiryAnswer")
 	@ResponseBody
 	public Board inquiryAnswer(@RequestParam int boardNo) {
@@ -318,6 +318,16 @@ public class MyPageController {
 		return service.inquiryAnswer(boardNo);
 	}
 
+	// 마이페이지 상품문의 답변 조회
+	@RequestMapping("/inquiryMarketAnswer")
+	@ResponseBody
+	public Board inquiryMarketAnswer(@RequestParam String marketTitle) {
+
+
+
+		return service.inquiryMarketAnswer(marketTitle);
+	}
+	
 	// 회원프로필 수정
 	@ResponseBody
 	@PostMapping("/changeProfile")

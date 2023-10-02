@@ -39,6 +39,7 @@ const modalContent = document.getElementById("modalContent");
 
 
 const iqUpdate = document.getElementsByClassName("iq-update");
+const iqUpdate2 = document.getElementsByClassName("iq-update2");
 
 
 
@@ -52,6 +53,9 @@ const inquiryType = document.getElementsByClassName("inquiryType");
 const inquiryType2 = document.getElementsByClassName("inquiryType2");
 
 
+
+
+
 (() => {
 
   for (let i = 0; i < adminCheckFl.length; i++) {
@@ -59,7 +63,7 @@ const inquiryType2 = document.getElementsByClassName("inquiryType2");
     if (adminCheckFl2[i].value == 'N') {
 
       adminCheckFl[i].innerHTML = "미답변";
-      adminCheckFl[i].style.color = "black";
+      adminCheckFl[i].style.color = "#797979";
 
 
     } else {
@@ -79,6 +83,42 @@ const inquiryType2 = document.getElementsByClassName("inquiryType2");
 
 })();
 
+
+const marketIt1 = document.getElementsByClassName("marketIt1");
+const marketIt2 = document.getElementsByClassName("marketIt2");
+
+const marketCheckFL1 = document.getElementsByClassName("marketCheckFL1");
+const marketCheckFL2 = document.getElementsByClassName("marketCheckFL2");
+
+(() => {
+
+  for (let i = 0; i < marketIt1.length; i++) {
+
+    if (marketIt2[i].value == '1') {
+
+      marketIt1[i].innerHTML = "상품/교환";
+
+
+    } else if (marketIt2[i].value == '2') {
+      marketIt1[i].innerHTML = "상품/취소";
+    } else {
+      marketIt1[i].innerHTML = "상품/기타";
+    }
+
+
+    if (marketCheckFL2[i].value == 'N') {
+      marketCheckFL1[i].innerHTML = "미답변";
+
+    } else {
+      marketCheckFL1[i].innerHTML = "답변완료";
+      marketCheckFL1[i].style.color = "#99E1ED";
+    }
+  }
+
+})()
+
+
+
 /* 선택한 문의목록 조회 */
 const option1 = document.getElementById("option1");
 const option2 = document.getElementById("option2");
@@ -88,14 +128,14 @@ const tr = document.getElementsByTagName("tr");
 const td = document.getElementsByTagName("td");
 
 const inquiryHeader = document.getElementById("inquiryHeader");
-
+let marketNo = document.getElementsByClassName("marketNo")[0];
 option1.addEventListener("click", () => {
   option1.style.color = "#99E1ED";
   option2.style.color = "#797979";
   fetch("/admin/selectInquiry1")
     .then(resp => resp.json())
     .then(data => {
-
+      marketNo.innerHTML = "문의글 번호";
 
 
       const inquiryList = document.getElementById("inquiryList");
@@ -110,7 +150,7 @@ option1.addEventListener("click", () => {
              <td><a class="iq-update">${item.boardTitle}</a></td>
              <td>${item.inquiryType === 1 ? "1:1문의" : "에러"}</td>
              <td>${item.memberEmail}</td>
-             <td style="color: ${item.adminCheckFl === 'N' ? 'black' : '#99E1ED'}">${item.adminCheckFl === 'N' ? '미답변' : '답변 완료'}</td>
+             <td style="color: ${item.adminCheckFl === 'N' ? '#797979' : '#99E1ED'}">${item.adminCheckFl === 'N' ? '미답변' : '답변 완료'}</td>
              <input type="hidden" class="boardNo2" value="${item.boardNo}" />
              <input type="hidden" class="boardCode" value="${item.inquiryType}" />
                
@@ -224,7 +264,7 @@ option2.addEventListener("click", () => {
   fetch("/admin/selectInquiry2")
     .then(resp => resp.json())
     .then(data => {
-
+      marketNo.innerHTML = "상품 번호";
 
       // 배열 내의 각 객체에서 boardNo 속성을 추출하여 문자열로 변환
       /*      const boardNoList = list.boardList.map(item => item.boardNo.toString());
@@ -241,21 +281,26 @@ option2.addEventListener("click", () => {
       data.boardList.forEach(item => {
         const row = document.createElement("tr");
 
+
         let inquiryTypeText = '';
 
-        if (item.inquiryType === 3) {
+        if (item.inquiryType === 1) {
           inquiryTypeText = '상품/교환';
-        } else if (item.inquiryType === 4) {
+          
+        } else if (item.inquiryType === 2) {
           inquiryTypeText = '상품/취소';
+        } else {
+          inquiryTypeText = '상품/기타';
         }
         row.innerHTML = `
-             <td>${item.boardNo}</td>
-             <td><a class="iq-update" >${item.boardTitle}</a></td>
+             <td>${item.productNo}</td>
+             <td><a class="iq-update"  >${item.inquiryTitle}</a></td>
              <td>${inquiryTypeText}</td>
              <td>${item.memberEmail}</td>
-             <td style="color: ${item.adminCheckFl === 'N' ? 'black' : '#99E1ED'}">${item.adminCheckFl === 'N' ? '미답변' : '답변 완료'}</td>
-             <input type="hidden" class="boardNo2" value="${item.boardNo}" />
+             <td style="color: ${item.marketCheckFl === 'N' ? '#797979' : '#99E1ED'}">${item.marketCheckFl === 'N' ? '미답변' : '답변 완료'}</td>
+             <input type="hidden" class="boardNo2" value="${item.productNo}" />
              <input type="hidden" class="boardCode" value="${item.inquiryType}" />
+             <input type="hidden" class="marketTitle" value="${item.inquiryTitle}" />
              `;
         inquiryList.appendChild(row);
 
@@ -263,33 +308,31 @@ option2.addEventListener("click", () => {
 
       inquiryHeader.innerHTML = "회원 상품문의 목록";
       const boardNo2 = document.getElementsByClassName("boardNo2");
-      const boardCode = document.getElementsByClassName("boardCode");
-
+      const marketTitle = document.getElementsByClassName("marketTitle");
+      
       /* -------------------- */
       /* modal 창 */
       for (let i = 0; i < iqUpdate.length; i++) {
-
+        
         iqUpdate[i].addEventListener("click", () => {
-
           inquiryModal.style.visibility = "visible";
 
-          fetch("/admin/adminInquiryDetail?boardNo=" + boardNo2[i].value)
+          fetch("/admin/marketDetail?marketTitle=" + marketTitle[i].value)
             .then(resp => resp.json())
             .then(data => {
-              console.log(data.boardTitle);
+              console.log(data.inquiryTitle);
 
-              modalTitle.value = data.boardTitle;
-              modalContent.value = data.boardContent;
+              modalTitle.value = data.inquiryTitle;
+              modalContent.value = data.inquiryContent;
 
               /* -------------------- */
 
               // 답변 화면으로 이동
 
-              for (let i = 0; i < data.boardTitle.length; i++) {
+              for (let i = 0; i < data.inquiryTitle.length; i++) {
                 insertBtn.addEventListener("click", e => {
                   e.preventDefault();
 
-                  if (data.inquiryType == '1') {
 
                     Swal.fire({
                       title: '답변 하시겠습니까?',
@@ -304,31 +347,11 @@ option2.addEventListener("click", () => {
 
                     }).then((result) => {
                       if (result.isConfirmed) {
-                        window.location.href = '/admin/adminQnAWrite?boardNo=' + data.boardNo;
+                        window.location.href = '/admin/marketWrite?marketTitle=' + data.inquiryTitle;
                       }
                     })
 
-                  } else if (data.inquiryType == '3' || data.inquiryType == '4') {
-
-                    Swal.fire({
-                      title: '답변 하시겠습니까?',
-                      text: "승인 시 작성 페이지로 이동합니다",
-                      icon: 'success',
-                      showCancelButton: true,
-                      confirmButtonColor: '#3085d6',
-                      cancelButtonColor: '#d33',
-                      confirmButtonText: '승인',
-                      cancelButtonText: '취소',
-                      reverseButtons: true, // 버튼 순서 거꾸로
-
-                    }).then((result) => {
-                      if (result.isConfirmed) {
-
-                        window.location.href = '/admin/marketWrite?boardNo=' + data.boardNo;
-
-                      }
-                    })
-                  }
+                  
 
                 })
               }
@@ -357,7 +380,7 @@ option2.addEventListener("click", () => {
 
 
 
-/* modal 창 */
+/* 전체 목록 modal 창 */
 for (let i = 0; i < iqUpdate.length; i++) {
 
   iqUpdate[i].addEventListener("click", () => {
@@ -435,6 +458,66 @@ for (let i = 0; i < iqUpdate.length; i++) {
       .catch(error => console.log(error))
   })
 }
+
+
+const marketTitle = document.getElementsByClassName("marketTitle");
+
+/* 전체 목록 modal 창 */
+for (let i = 0; i < iqUpdate2.length; i++) {
+
+  iqUpdate2[i].addEventListener("click", () => {
+
+    inquiryModal.style.visibility = "visible";
+
+    fetch("/admin/marketDetail?marketTitle=" + marketTitle[i].value)
+      .then(resp => resp.json())
+      .then(data => {
+
+        modalTitle.value = data.inquiryTitle;
+        modalContent.value = data.inquiryContent;
+
+
+        /* ---------------------------------- */
+
+        for (let i = 0; i < data.inquiryTitle.length; i++) {
+          insertBtn.addEventListener("click", e => {
+            e.preventDefault();
+
+
+              Swal.fire({
+                title: '답변 하시겠습니까?',
+                text: "승인 시 작성 페이지로 이동합니다",
+                icon: 'success',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: '승인',
+                cancelButtonText: '취소',
+                reverseButtons: true, // 버튼 순서 거꾸로
+
+              }).then((result) => {
+                if (result.isConfirmed) {
+                  window.location.href = '/admin/marketWrite?marketTitle=' + data.inquiryTitle;
+                }
+              })
+
+            
+
+          })
+        }
+
+
+
+
+        /* ---------------------------------- */
+
+
+
+      })
+      .catch(error => console.log(error))
+  })
+}
+
 
 closeBtn.addEventListener("click", () => {
 

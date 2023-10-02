@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.jeonsu.deuggeun.member.model.dto.MemberBMI;
 import com.jeonsu.deuggeun.member.model.service.MemberService;
@@ -54,14 +55,14 @@ public class MainController {
 	// 추천 루틴 투두리스트에 삽입
 	@RequestMapping("/survey/todoList")
 	@ResponseBody
-	public int surveyTodo(String routine, @SessionAttribute("loginMember") Member loginMember) {
+	public int surveyTodo(String routine, @SessionAttribute("loginMember") Member loginMember,
+			RedirectAttributes ra
+			) {
 		
-		System.out.println(routine + "엥?");
 		TodoList todoList = new TodoList();
-		System.out.println("왜 널이냐");
+		
 		todoList.setListContent(routine);
 		todoList.setMemberNo(loginMember.getMemberNo());
-		System.out.println(todoList.getListContent());
 		
 		return service.surveyTodo(todoList);
 	}

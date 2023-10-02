@@ -190,24 +190,24 @@ public class MyPageServiceImpl implements MyPageService {
 	@Override
 	public Board inquiryAnswer(int boardNo) {
 
-		System.out.println(boardNo);
 		// 문의글 답변 내용 조회를 위한 게시글 번호 조회
 		int adminBoardNo = dao.selectAdminBoardNo(boardNo);
 
-		System.out.println(adminBoardNo +"관리자 문의 답변 게시글 번호");
 		Board board = new Board();
 
 		board.setAdminBoardNo(adminBoardNo);
-		System.out.println(board.getAdminBoardNo() +"관리자 문의 답변 게시글 번호2");
 
 		Board adminBoard = dao.inquiryAnswer(board);
 
-		System.out.println(adminBoard.getBoardTitle());
-		System.out.println(adminBoard.getBoardContent());
 
 
 
 		return adminBoard;
+	}
+	
+	@Override
+	public Board inquiryMarketAnswer(String marketTitle) {
+		return null;
 	}
 
 
@@ -352,5 +352,7 @@ public class MyPageServiceImpl implements MyPageService {
 	
 		return result;
 	}
+
+	
 
 }

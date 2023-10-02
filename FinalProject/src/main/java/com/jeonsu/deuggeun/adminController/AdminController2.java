@@ -85,13 +85,13 @@ public class AdminController2 {
 	@PostMapping(value="/marketInWrite", produces = "application/json; charset=UTF-8")
 	public String marketInWrite(AdminMember board,
 			@SessionAttribute("loginMember") Member loginMember,
-			@RequestParam("boardNo") int boardNo,
+			@RequestParam("marketTitle") String marketTitle,
 			RedirectAttributes ra
 			) {
 
 		board.setMemberNo(loginMember.getMemberNo());
 		
-		int result = service.marketInWrite(board ,boardNo);
+		int result = service.marketInWrite(board ,marketTitle);
 
 		String path = "redirect:";
 		if(result > 0) {

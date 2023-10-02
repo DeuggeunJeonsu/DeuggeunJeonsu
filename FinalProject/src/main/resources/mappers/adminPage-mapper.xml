@@ -101,12 +101,18 @@
 		#{memberNo}, 6)
 	</insert>
 	
-	<!-- 문의 관리자 답변 여부 변경 -->
+	<!-- 1:1 문의 관리자 답변 여부 변경 -->
 	<update id="updateQnA">
 		UPDATE INQUIRY SET
 		ADMIN_CHECK_FL = 'Y',
 		ADMIN_ANSWER = #{adminBoardNo}
 		WHERE BOARD_NO = #{boardNo}
+	</update>
+	
+	<update id="updateMarket">
+		UPDATE PRODUCT_INQUIRY SET
+		ADMIN_FL = 'Y'
+		WHERE INQUIRY_TITLE = #{boardTitle}
 	</update>
 	
 	<!-- 관리자 상품 문의 답변 -->
@@ -129,5 +135,12 @@
 		FROM BOARD
 		JOIN INQUIRY USING(BOARD_NO)
 		WHERE BOARD_NO = #{boardNo}
+	</select>
+	
+	<!-- 상품 문의 상세조회 -->
+	<select id="marketDetail" resultMap="adminBoard_rm">
+		SELECT PRODUCT_NO, INQUIRY_TITLE, INQUIRY_CONTENT , INQUIRY_TYPE
+		FROM PRODUCT_INQUIRY
+		WHERE INQUIRY_TITLE = #{marketTitle}
 	</select>
 </mapper>

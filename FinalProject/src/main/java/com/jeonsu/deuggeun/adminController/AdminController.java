@@ -71,15 +71,15 @@ public class AdminController {
 
 	// 상품문의 답변 작성페이지
 	@RequestMapping("/marketWrite")
-	public String marketWrite(@RequestParam int boardNo,
+	public String marketWrite(@RequestParam String marketTitle,
 			Model model) {
 		
 		
-		model.addAttribute("boardNo" , boardNo);
+		model.addAttribute("marketTitle" , marketTitle);
 		return "admin/adminMarketWrite";
 	}
 	
-	// 상품 문의 상세조회
+	// 1:1 문의 상세조회
 	@RequestMapping("/adminInquiryDetail")
 	@ResponseBody
 	public AdminMember adminInquiryDetail(@RequestParam("boardNo") int boardNo) {
@@ -88,5 +88,13 @@ public class AdminController {
 		return service.adminInquiryDetail(boardNo);
 	}
 
+	// 상품 문의 상세조회
+	@RequestMapping("/marketDetail")
+	@ResponseBody
+	public AdminMember marketDetail(@RequestParam("marketTitle") String marketTitle) {
+		
+		
+		return service.marketDetail(marketTitle);
+	}
 
 }

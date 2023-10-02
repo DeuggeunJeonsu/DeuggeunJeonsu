@@ -80,7 +80,7 @@ public class AdminDAO {
 	}
 
 
-	/** 회원 문의 상세조회
+	/** 1:1 문의 상세조회
 	 * @param board
 	 * @return
 	 */
@@ -89,8 +89,29 @@ public class AdminDAO {
 	}
 
 
+	/** 상품 문의 목록 조회
+	 * @return
+	 */
 	public List<AdminMember> selectInquiryList2() {
 		return sqlSession.selectList("adminMapper.selectInquiry2", null);
+	}
+
+
+	/** 상품 상세 조회
+	 * @param marketTitle
+	 * @return
+	 */
+	public AdminMember marketDetail(String marketTitle) {
+		return sqlSession.selectOne("adminMapper.marketDetail", marketTitle);
+	}
+
+
+	/** 상품 문의 답변 여부 변경
+	 * @param board
+	 * @return result
+	 */
+	public int updateMarket(AdminMember board) {
+		return sqlSession.update("adminMapper.updateMarket", board);
 	}
 
 
