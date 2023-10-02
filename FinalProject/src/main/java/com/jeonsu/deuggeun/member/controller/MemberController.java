@@ -100,8 +100,11 @@ public class MemberController {
 	
 	// 로그아웃 요청 처리
 	@GetMapping("/logout")
-	public String logout(SessionStatus status, @SessionAttribute("loginMember") Member loginMember) {
-		log.debug("회원{} 로그아웃", loginMember.getMemberNo());
+	public String logout(SessionStatus status, @SessionAttribute(value="loginMember", required=false) Member loginMember,
+			@SessionAttribute(value="kakaoLoginMember", required=false) Member kakaoLoginMember) {
+		if(loginMember.getMemberNo() > 0) log.debug("회원{} 로그아웃", loginMember.getMemberNo());
+		else log.debug("카카오 간편로그인 회원 {}님 로그아웃", loginMember.getMemberNickname());
+		
 		// 세션 관리객체를 이용해 세션을 제거해주고
 		status.setComplete();
 		// 메인페이지로 이동

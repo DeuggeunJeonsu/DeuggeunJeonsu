@@ -165,7 +165,7 @@
                             <c:if test="${!empty img1}">
                                 <li class="routine" draggable="true">
                                     <div class="boardImg">
-                                        <label for="img1">
+                                        <label for="img1" class="label">
                                             <img class="preview" src="${img1}">
                                         </label>
                                         <input type="file" name="images" class="inputImage" id="img1" accept="image/*" value="${img1}">
@@ -185,7 +185,7 @@
                             <c:if test="${!empty img2}">
                                 <li class="routine" draggable="true">
                                     <div class="boardImg">
-                                        <label for="img2">
+                                        <label for="img2" class="label">
                                             <img class="preview" src="${img2}">
                                         </label>
                                         <input type="file" name="images" class="inputImage" id="img2" accept="image/*">
@@ -205,7 +205,7 @@
                             <c:if test="${!empty img3}">
                                 <li class="routine" draggable="true">
                                     <div class="boardImg">
-                                        <label for="img3">
+                                        <label for="img3" class="label">
                                             <img class="preview" src="${img3}">
                                         </label>
                                         <input type="file" name="images" class="inputImage" id="img3" accept="image/*" >
@@ -225,7 +225,7 @@
                             <c:if test="${!empty img4}">
                                 <li class="routine" draggable="true">
                                     <div class="boardImg">
-                                        <label for="img4">
+                                        <label for="img4" class="label">
                                             <img class="preview" src="${img4}">
                                         </label>
                                         <input type="file" name="images" class="inputImage" id="img4" accept="image/*">
@@ -245,7 +245,7 @@
                             <c:if test="${!empty img5}">
                                 <li class="routine" draggable="true">
                                     <div class="boardImg">
-                                        <label for="img5">
+                                        <label for="img5" class="label">
                                             <img class="preview" src="${img5}">
                                         </label>
                                         <input type="file" name="images" class="inputImage" id="img5" accept="image/*">
@@ -259,6 +259,26 @@
                                         <button type="button" class="cancle">&times;</button>
                                         <input type="hidden" value="${routineNo4}">
                                         <input type="hidden" value="${imgNo5}">
+                                    </div>
+                                </li>
+                            </c:if>
+                            <c:if test="${!empty img6}">
+                                <li class="routine" draggable="true">
+                                    <div class="boardImg">
+                                        <label for="img6" class="label">
+                                            <img class="preview" src="${img6}">
+                                        </label>
+                                        <input type="file" name="images" class="inputImage" id="img6" accept="image/*">
+                                        <span class="delete-image">&times;</span>
+                                    </div>
+                                    <div class="routine-write-area">
+                                        <input type="text" placeholder="예) 스쿼트 20회 30세트" name="routineName"  value="${routineTitle5}">
+                                        <textarea name="routineContent">${routineContent5}</textarea>
+                                    </div>
+                                    <div class="routine-cancle">
+                                        <button type="button" class="cancle">&times;</button>
+                                        <input type="hidden" value="${routineNo5}">
+                                        <input type="hidden" value="${imgNo6}">
                                     </div>
                                 </li>
                             </c:if>
@@ -286,6 +306,9 @@
     <!-- footer include -->
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
     
+    
+
+
     <script src="/resources/js/board/shareBoard/shareBoardUpdate.js"></script>
     
 </body>

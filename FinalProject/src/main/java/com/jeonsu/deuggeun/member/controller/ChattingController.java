@@ -74,7 +74,17 @@ public class ChattingController {
     @GetMapping(value="/chatting/roomList", produces="application/json; charset=UTF-8")
     @ResponseBody
     public List<ChattingRoom> selectRoomList(@SessionAttribute("loginMember") Member loginMember) {
-       return service.selectRoomList(loginMember.getMemberNo());
+    	return service.selectRoomList(loginMember.getMemberNo());
+    }
+    
+    // 채팅방 목록내 회원 검색
+    @GetMapping(value="/chatting/roomListInUser", produces="application/json; charset=UTF-8")
+    @ResponseBody
+    public List<ChattingRoom> selectRoomListInUser(String query, @SessionAttribute("loginMember") Member loginMember) {
+    	Map<String, Object> map = new HashMap<>();
+        map.put("memberNo", loginMember.getMemberNo());
+        map.put("query", query);
+        return service.selectRoomListInUser(map);
     }
     
     

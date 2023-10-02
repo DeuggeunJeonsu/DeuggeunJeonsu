@@ -1,5 +1,6 @@
 package com.jeonsu.deuggeun.main.controller;
 
+import java.util.HashMap;
 import java.util.List;
 
 
@@ -45,6 +46,44 @@ public class MainController {
 		
 		return "common/main";
 	}
+	
+	// 카카오 로그인
+	@RequestMapping("/oauth")
+	public String kakaoForward(Model model, 
+								@RequestParam(value = "code", required = false) String code,
+								@RequestParam(value = "error", required = false) String error,
+								RedirectAttributes ra) throws Throwable {
+		
+		String path = "redirect:";
+		log.debug("/kakaoLogin");
+		
+		if(code !="") { // 정상적으로 카카오 로그인 진행 시
+			// access_code 반환 값 확인
+			log.debug("Authorization code : {}",code);
+			
+			// access_code를 이용해 access_Token 발급받기
+			String access_Token = service.getAccessToken(code);
+			
+			// kakao userInfo 반환
+			HashMap<String, Object> userInfo = service.getUserInfo(access_Token);
+			
+			if(userInfo != null) log.debug("kakao login success");
+			Member kakaoLoginMember = new Member();
+			kakaoLoginMember.setMemberEmail(String.valueOf(userInfo.get("email")));
+			kakaoLoginMember.setMemberNickname(String.valueOf(userInfo.get("nickname")));
+			kakaoLoginMember.setProfileImage(String.valueOf(userInfo.get("profileImage")));
+			
+			//model.addAttribute("kakaoLoginMember",kakaoLoginMember);
+			model.addAttribute("loginMember",kakaoLoginMember);
+			return path+"/";
+		}
+		else{ // 로그인 취소, 실패 시
+			log.debug(error);
+			ra.addFlashAttribute("message","카카오톡 로그인에 실패했습니다.");
+			return path+"/meber/login";
+		}
+	}
+	
 	
 	// 운동루틴추천 페이지로 이동
 	@RequestMapping("/survey")
