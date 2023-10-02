@@ -300,6 +300,7 @@
         SELECT COUNT(*) FROM PRODUCT_INQUIRY
         WHERE INQUIRY_FLAG = 'N'
         AND BOARD_CODE = #{boardCode}
+        AND PRODUCT_NO = #{productNo}
     </select>
 
     <select id="selectInquiry" resultMap="inquiry_rm">
@@ -450,10 +451,9 @@
         FROM CART c
                  JOIN PRODUCT p ON c.PRODUCT_NO = p.PRODUCT_NO
                  JOIN "ORDER" o ON c.ORDER_NO = o.ORDER_NO
-                 LEFT JOIN PRODUCT_INQUIRY i ON i.PRODUCT_NO = p.PRODUCT_NO
+                 LEFT JOIN PRODUCT_INQUIRY i ON i.MEMBER_NO = c.MEMBER_NO AND i.PRODUCT_NO = c.PRODUCT_NO
         WHERE c.MEMBER_NO = #{memberNo}
         ORDER BY o.ORDER_DATE DESC
-
     </select>
 
     <!-- 구매내역 -->

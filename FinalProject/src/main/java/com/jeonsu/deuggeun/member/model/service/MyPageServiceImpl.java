@@ -158,6 +158,8 @@ public class MyPageServiceImpl implements MyPageService {
 	// 결제 완료시 마이페이지 구매내역
 	@Override
 	public List<Cart> selectPurchaseList(int memberNo) {
+
+
 		return dao.selectPurchaseList(memberNo);
 	}
 
