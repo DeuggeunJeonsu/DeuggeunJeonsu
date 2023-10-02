@@ -158,21 +158,22 @@
 	display: flex;
 }
 .detail-btn-area button{
+    width: 100px;
+    height: 50px;
 	padding: 5px 10px;
     margin: 5px;
-    background-color: #99E1ED;
-    border: 1px solid #99E1ED;
+    background-color: #ddd;
+    border: 1px solid #ddd;
     border-radius: 5px;
-    font-size: 16px;
-    font-weight: bold;
-    color: white;
+    font-size: 13.5px;
+    color: black;
 }
 .detail-btn-area button:hover{
-    background-color: inherit;
-    color: #99E1ED;
+    background-color: #99E1ED;
+    transition-duration: 0.5s;
 }
 .detail-btn-area button:active{
-    transform: scale(0.90);
+    transform: scale(1);
 }
 .btn-area button{
 	margin-left: 10px;
@@ -351,6 +352,7 @@
 /* 카카오톡 공유하기 */
 #social-btn-area{
     width: 300px;
+    height: 50px;
     display: flex;
     justify-content: center;
 }
@@ -360,7 +362,8 @@
     justify-content: center;
     align-items: center;
     width: 170px !important;
-    padding: 0 20px;
+    padding: 0 10px;
+    font-size: 13.5px;
 
     position: relative;
     left: 47px;

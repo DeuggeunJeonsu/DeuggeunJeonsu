@@ -176,9 +176,9 @@
                     </div>
                     <!-- 채팅 입력, 전송 -->
                     <div id="sendArea">
-                        <div class="send-btn-area">
+                        <!-- <div class="send-btn-area">
                             <button id="addImgBtn" class="sendBtns"><i class="fa-regular fa-image fa-2xl"></i></button>
-                        </div>
+                        </div> -->
                         <textarea id="inputChatting" rows="1" style="overflow:hidden"></textarea>
                         <div class="send-btn-area">
                             <button id="sendBtn" class="sendBtns"><i class="fa-solid fa-paper-plane fa-2xl"></i></button>

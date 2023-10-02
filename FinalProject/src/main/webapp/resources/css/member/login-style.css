@@ -71,7 +71,7 @@ main .title-area p:nth-of-type(2){
 }
 
 /* 로그인 버튼 부분*/
-.login-btn {
+#login-btn {
     cursor: pointer;
     display: inline-block;
     width: 100%;
@@ -84,6 +84,9 @@ main .title-area p:nth-of-type(2){
     border-radius: 5px;
     margin-top: 10px;
 }
+#kakaoArea{
+    width: 100%;
+}
 #kakao-login-btn {
     cursor: pointer;
     display: inline-block;
@@ -93,21 +96,22 @@ main .title-area p:nth-of-type(2){
     padding: 15px;
     font-size: 18px;
     font-weight: bold;
+    text-align: center;
     border: 0;
     border-radius: 5px;
     margin-top: 10px;
 }
 
-.login-btn:focus, .kakao-login-btn:focus {
+#login-btn:focus, #kakao-login-btn:focus {
     outline: 0;
 }
 
-.login-btn:hover, .kakao-login-btn:hover{
+#login-btn:hover, #kakao-login-btn:hover{
     transform: scale(1.02);
     transition-duration: 0.3s;
 }
 
-.login-btn:active, .kakao-login-btn:active {
+#login-btn:active, #kakao-login-btn:active {
     transform: scale(0.98);
 }
 
