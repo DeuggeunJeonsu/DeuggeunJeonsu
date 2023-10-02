@@ -179,10 +179,12 @@ let currentRoutine = null;
         currentRoutine = e.target;
         const listArr = [...currentRoutine.parentElement.children];
         currentRoutineIndex = listArr.indexOf(currentRoutine);
+
+
+        console.log('dragstart '+e.target.innerHTML )
     });
     
     routineArea.addEventListener('dragover',(e)=>{
-       
         e.preventDefault();
     });
     
@@ -195,32 +197,38 @@ let currentRoutine = null;
         
         if(currentRoutineIndex< dropRoutineIndex){
             currentDropRoutine.after(currentRoutine);
-        }else{
+        }
+        else{
             currentDropRoutine.before(currentRoutine);
         }
+        console.log('drop '+e.target.innerHTML )
+        
+        
+    
     });
+
+
 // }
 
 //-------------------------------------------------------
 
 
 
-/* 캘린더 말풍선 */
-// $(window).scroll(function() {
-//     $('#animatedElement').each(function(){
-//     var imagePos = $(this).offset().top;
+$(window).scroll(function() {
+    $('#animatedElement').each(function(){
+    var imagePos = $(this).offset().top;
 
-//     var topOfWindow = $(window).scrollTop();
-//         if (imagePos < topOfWindow+400) {
-//             $(this).addClass("slideUp");
-//         }
-//     });
-// });
+    var topOfWindow = $(window).scrollTop();
+        if (imagePos < topOfWindow+400) {
+            $(this).addClass("slideUp");
+        }
+    });
+});
 
-// if (document.querySelectorAll(".routine").length >= 2) {
-//     const ballon = document.querySelector(".ballon");
-//     ballon.style.display = "block"; 
-// }
+if (document.querySelectorAll(".routine").length >= 2) {
+    const ballon = document.querySelector(".ballon");
+    ballon.style.display = "block"; 
+}
 
 
 
@@ -288,7 +296,7 @@ document.addEventListener("click", function(event){
                     // input type="file" 의 value ""(빈칸)만 대입가능
                     inputImage[i].value="";
                 
-                    // deleteSet애 삭제된 이미지 순서(i)몇 번째인지 추가
+                    // deleteSe에 삭제된 이미지 순서(i)몇 번째인지 추가
                     deleteSet.add(i);
                 
                 }
@@ -383,6 +391,10 @@ document.getElementById("boardUpdateFrm").addEventListener("submit", e => {
             return;
         }
     }
+
+    
+
+
 
     document.querySelector("[name='deleteList']").value
         = Array.from(deleteSet);
