@@ -90,7 +90,7 @@
 							
 							<div class="ncBtnList">
 							
-								<c:if test="${loginMember.memberNo == board.memberNo}" >
+								<c:if test="${loginMember.authority == 2}" >
 									<button id="ncUpdate" onclick="return boardUpdate()">수정</button>
 									<button id="ncDelete" onclick="return boardDelete()">삭제</button>
 								</c:if>

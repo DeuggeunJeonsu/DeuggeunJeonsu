@@ -229,7 +229,7 @@ public class MyPageController {
 		if(paramMap.get("key") == null) {
 
 			purchaseList = service.selectPurchaseList(memberNo);
-		//	System.out.println("구매내역의 값 : " + purchaseList);
+			//	System.out.println("구매내역의 값 : " + purchaseList);
 
 		} else {
 
@@ -323,13 +323,13 @@ public class MyPageController {
 	// 마이페이지 상품문의 답변 조회
 	@RequestMapping("/inquiryMarketAnswer")
 	@ResponseBody
-	public Board inquiryMarketAnswer(@RequestParam String marketTitle) {
+	public Board inquiryMarketAnswer(@RequestParam int inquiryNo) {
 
 
 
-		return service.inquiryMarketAnswer(marketTitle);
+		return service.inquiryMarketAnswer(inquiryNo);
 	}
-	
+
 	// 회원프로필 수정
 	@ResponseBody
 	@PostMapping("/changeProfile")
@@ -393,7 +393,7 @@ public class MyPageController {
 
 			// 비밀번호 변경 Service 호출
 			int result2 = service.changePw(newPw, memberNo);
-			
+
 		}	
 		ra.addFlashAttribute("message", message);
 		return"redirect:myUpdate"; 

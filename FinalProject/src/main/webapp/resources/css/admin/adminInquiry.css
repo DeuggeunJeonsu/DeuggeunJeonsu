@@ -105,6 +105,7 @@ main{
 a{
     text-decoration: none;
     cursor: pointer;
+    color: #797979;
 }
 
 a:hover{

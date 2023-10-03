@@ -52,7 +52,7 @@
                     <div class="bottom">
                         <div>
                             <button id="submit-button">작성</button>
-                            <button id="cancel-button">취소</button>
+                            <button type="button" id="cancel-button">취소</button>
                         </div>
                     </div>
                 </form> 

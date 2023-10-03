@@ -111,23 +111,27 @@
 	
 	<update id="updateMarket">
 		UPDATE PRODUCT_INQUIRY SET
-		ADMIN_FL = 'Y'
+		ADMIN_FL = 'Y',
+		ADMIN_ANSWER = #{boardNo}
 		WHERE INQUIRY_TITLE = #{boardTitle}
 	</update>
+	
+	<!-- 관리자 상품 답변을 위한 게시글 번호 조회 -->
+	<select id="marketInWriteBoardNo" resultType="_int">
+		SELECT SEQ_BOARD_NO.NEXTVAL FROM DUAL
+	</select>
 	
 	<!-- 관리자 상품 문의 답변 -->
 	<insert id="marketInWrite">
 	
-	<selectKey order="BEFORE" resultType="_int"
-			keyProperty="boardNo">
-			SELECT SEQ_BOARD_NO.NEXTVAL FROM DUAL
-		</selectKey>
+	
 		
 		INSERT INTO BOARD
 		VALUES(#{boardNo}, #{boardTitle}, #{boardContent},
 		DEFAULT, DEFAULT, DEFAULT, DEFAULT,
 		#{memberNo}, 6)
 	</insert>
+	
 	
 	<!-- 회원 문의 상세조회 -->
 	<select id="adminInquiryDetail" resultMap="adminBoard_rm">

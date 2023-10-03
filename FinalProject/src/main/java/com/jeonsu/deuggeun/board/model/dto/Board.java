@@ -53,6 +53,7 @@ public class Board {
 	private String inquiryContent;
 	private int inquiryType;
 	private String inquiryCd;
+	private int inquiryNo;
 	
 	// 이미지 목록
 	private List<BoardImage> imageList;

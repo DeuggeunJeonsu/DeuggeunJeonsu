@@ -75,8 +75,19 @@ public class AdminDAO {
 	}
 
 
+	/** 상품 문의 답변
+	 * @param board
+	 * @return
+	 */
 	public int marketInWrite(AdminMember board) {
+		
+		int boardNo = sqlSession.selectOne("adminMapper.marketInWriteBoardNo", null);
+		
+		if(boardNo != 0) {
+			board.setBoardNo(boardNo);
+		}
 		return sqlSession.update("adminMapper.marketInWrite", board);
+		
 	}
 
 
