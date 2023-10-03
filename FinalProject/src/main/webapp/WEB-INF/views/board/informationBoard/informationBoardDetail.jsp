@@ -87,7 +87,7 @@
                         </div>
                     </c:if>
 
-                    <c:if test="${loginMember.memberNo == board.memberNo}">
+                    <c:if test="${loginMember.memberNo == board.memberNo || loginMember.authority == 2}">
                         <div>
                             <button id="updateBtn">수정하기</button>
                             <button id="deleteBtn">삭제하기</button>
