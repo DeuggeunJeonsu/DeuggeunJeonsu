@@ -1,6 +1,6 @@
 * {
   box-sizing: border-box;
-/* border: 1px solid black; */
+ /*  border: 1px solid black; */
 }
 
 
@@ -235,6 +235,17 @@ strong {
   font-weight: bold;
   border: none;
   visibility: hidden;
+}
+
+#noMember{
+  width: 200px;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  background-color: #99E1ED;
+  cursor: pointer;
 }
 
 .btnList{
@@ -627,7 +638,7 @@ a.button2 {
 }
 
 .btnFloat2:before {
-  content: 'TodoList 추가';
+  content: '닫기';
   display: block;
   top: 0;
   left: 0;

@@ -262,5 +262,21 @@ public class MyPageDAO {
 		return sqlSession.update("myPageMapper.changePw", member);
 	}
 
+	/** 상품 문의 답변 조회를 위한 boardNo 조회
+	 * @param inquiryNo
+	 * @return
+	 */
+	public int selectInquiryBoardNo(int inquiryNo) {
+		return sqlSession.selectOne("myPageMapper.selectInquiryBoardNo", inquiryNo);
+	}
+
+	/** 상품 문의 답변 조회
+	 * @param board
+	 * @return board
+	 */
+	public Board inquiryMarketAnswer(Board board) {
+		return sqlSession.selectOne("myPageMapper.inquiryMarketAnswer", board);
+	}
+
 
 }

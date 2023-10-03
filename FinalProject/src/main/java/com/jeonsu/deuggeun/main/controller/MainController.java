@@ -87,7 +87,9 @@ public class MainController {
 	
 	// 운동루틴추천 페이지로 이동
 	@RequestMapping("/survey")
-	public String survey() {
+	public String survey(
+			) {
+		
 		return "common/survey";
 	}
 	
