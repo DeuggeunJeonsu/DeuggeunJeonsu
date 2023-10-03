@@ -249,7 +249,7 @@ public class MyPageDAO {
 	}
 
 	/** 비밀번호 변경 
-	 * @param encode
+	 * @param newPw
 	 * @param memberNo
 	 * @return
 	 */
@@ -261,6 +261,5 @@ public class MyPageDAO {
 		
 		return sqlSession.update("myPageMapper.changePw", member);
 	}
-
 
 }

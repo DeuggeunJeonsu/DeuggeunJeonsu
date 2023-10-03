@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 import com.jeonsu.deuggeun.board.model.dto.Board;
 import com.jeonsu.deuggeun.board.model.dto.Cart;
 import com.jeonsu.deuggeun.board.model.dto.Inquiry;
+import com.jeonsu.deuggeun.board.model.dto.Review;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -225,11 +226,9 @@ public class MyPageController {
 
 		List<Cart> purchaseList = new ArrayList<Cart>();
 
-
 		if(paramMap.get("key") == null) {
 
 			purchaseList = service.selectPurchaseList(memberNo);
-		//	System.out.println("구매내역의 값 : " + purchaseList);
 
 		} else {
 

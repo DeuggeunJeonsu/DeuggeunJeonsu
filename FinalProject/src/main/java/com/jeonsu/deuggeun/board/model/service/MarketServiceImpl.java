@@ -527,4 +527,11 @@ public class MarketServiceImpl implements MarketService {
 		}
 		return map;
 	}
+
+	// 리뷰 작성 여부 확인
+	@Override
+	public int checkReview(Map<String, Object> reviewMap) {
+
+		return dao.checkReview(reviewMap);
+	}
 }

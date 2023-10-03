@@ -126,6 +126,4 @@ public interface MyPageService {
 	// 비밀번호 수정
 	int changePw(String newPw, int memberNo);
 
-
-
 }

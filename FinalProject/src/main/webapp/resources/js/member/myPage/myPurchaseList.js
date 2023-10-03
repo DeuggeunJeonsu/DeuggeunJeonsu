@@ -25,14 +25,36 @@ function handleInquiryClick(event, productNo) {
     switch (inquiryType) {
         case 1:
             event.preventDefault();
-            alert('이미 교환접수중인 상품입니다.');
+            alert('이미 교환 접수 중인 상품입니다.');
             break;
         case 2:
             event.preventDefault();
-            alert('이미 취소접수중인 상품입니다.');
+            alert('이미 취소 접수 중인 상품입니다.');
             break;
         default:
             location.href = '/board/5/inquiry/' + productNo + '/insert?from=purchase';
             break;
     }
+}
+
+// 리뷰 작성 여부 확인
+function checkReview(productNo) {
+    $.ajax({
+        url: '/board/checkReview',
+        type: 'GET',
+        data: {
+            productNo: productNo,
+            memberNo: loginMemberNo
+        },
+        success: function(result) {
+            if(result > 0) {
+                alert("이미 리뷰를 작성하셨습니다.");
+            } else {
+                location.href='/board/5/review/' + productNo + '/insert';
+            }
+        },
+        error: function(error) {
+            console.error("Error checking review:", error);
+        }
+    });
 }
