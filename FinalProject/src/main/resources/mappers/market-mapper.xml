@@ -664,5 +664,12 @@
         WHERE (p.PRODUCT_TITLE LIKE '%' || #{keyword} || '%')
           AND img.P_IMG_PATH LIKE '%main%'
     </select>
+
+    <select id="checkReview" resultType="int">
+        SELECT COUNT(*)
+        FROM REVIEW
+        WHERE MEMBER_NO = #{memberNo}
+        AND PRODUCT_NO = #{productNo}
+    </select>
 </mapper>
 

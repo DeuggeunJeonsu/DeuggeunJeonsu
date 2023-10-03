@@ -19,7 +19,7 @@ public class MarketDAO {
 		this.sqlSession = sqlSession;
 	}
 
-	// 특정 게시판의 삭제되지 않은 게시글 수 조회
+	// 특정 게판의 삭제되지 않은 게시글 수 조회
 	public int getListCount(int boardCode) {
 
 		return sqlSession.selectOne("marketMapper.getListCount", boardCode);
@@ -303,4 +303,8 @@ public class MarketDAO {
 		return sqlSession.selectList("marketMapper.market", paramMap);
 	}
 
+	// 리뷰 작성 여부 확인
+	public int checkReview(Map<String, Object> reviewMap) {
+		return sqlSession.selectOne("marketMapper.checkReview", reviewMap);
+	}
 }

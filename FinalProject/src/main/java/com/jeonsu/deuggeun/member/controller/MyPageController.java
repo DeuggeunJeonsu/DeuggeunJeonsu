@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 import com.jeonsu.deuggeun.board.model.dto.Board;
 import com.jeonsu.deuggeun.board.model.dto.Cart;
 import com.jeonsu.deuggeun.board.model.dto.Inquiry;
+import com.jeonsu.deuggeun.board.model.dto.Review;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -225,11 +226,9 @@ public class MyPageController {
 
 		List<Cart> purchaseList = new ArrayList<Cart>();
 
-
 		if(paramMap.get("key") == null) {
 
 			purchaseList = service.selectPurchaseList(memberNo);
-			//	System.out.println("구매내역의 값 : " + purchaseList);
 
 		} else {
 
@@ -323,13 +322,13 @@ public class MyPageController {
 	// 마이페이지 상품문의 답변 조회
 	@RequestMapping("/inquiryMarketAnswer")
 	@ResponseBody
-	public Board inquiryMarketAnswer(@RequestParam int inquiryNo) {
+	public Board inquiryMarketAnswer(@RequestParam String marketTitle) {
 
 
 
-		return service.inquiryMarketAnswer(inquiryNo);
+		return service.inquiryMarketAnswer(marketTitle);
 	}
-
+	
 	// 회원프로필 수정
 	@ResponseBody
 	@PostMapping("/changeProfile")
@@ -393,7 +392,7 @@ public class MyPageController {
 
 			// 비밀번호 변경 Service 호출
 			int result2 = service.changePw(newPw, memberNo);
-
+			
 		}	
 		ra.addFlashAttribute("message", message);
 		return"redirect:myUpdate"; 

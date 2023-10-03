@@ -206,7 +206,11 @@ public class MyPageServiceImpl implements MyPageService {
 
 		return adminBoard;
 	}
-
+	
+	@Override
+	public Board inquiryMarketAnswer(String marketTitle) {
+		return null;
+	}
 
 
 	// 마이페이지 내 뱃지 페이지 이동 + 뱃지 목록 조회
@@ -329,44 +333,26 @@ public class MyPageServiceImpl implements MyPageService {
 		return result;
 	}
 
-
-
+	
+	
 	// 회원정보 수정 
 	@Transactional(rollbackFor = {Exception.class})
 	@Override
 	public int updateInfo(Member updateMember) {
 
 		int result = dao.updateInfo(updateMember); 
-
+		
 		return result;
 	}
-
+	
 	// 회원 비밀번호 변경
 	@Transactional(rollbackFor = {Exception.class})
 	@Override
 	public int changePw(String newPw, int memberNo) {
-
+		
 		int result = dao.changePw(bcrypt.encode(newPw), memberNo);
-
+	
 		return result;
 	}
-
-	// 마이페이지 상품 답변 조회
-	@Override
-	public Board inquiryMarketAnswer(int inquiryNo) {
-
-		// 상품 문의 답변 조회를 위한 boardNo 조회
-		int adminBoardNo = dao.selectInquiryBoardNo(inquiryNo);
-
-		Board board = new Board();
-
-		board.setAdminBoardNo(adminBoardNo);
-
-		Board adminBoard = dao.inquiryMarketAnswer(board);
-
-		return adminBoard;
-	}
-
-
 
 }

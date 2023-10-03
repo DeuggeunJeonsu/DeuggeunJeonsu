@@ -613,5 +613,20 @@ public class MarketController {
 
 		return paramMap;
 	}
+
+	@RequestMapping(value = "/checkReview")
+	@ResponseBody
+	public int checkReview(@RequestParam("productNo") int productNo,
+						   @RequestParam("memberNo") int memberNo) {
+
+		Map<String, Object> reviewMap = new HashMap<>();
+		reviewMap.put("productNo", productNo);
+		reviewMap.put("memberNo", memberNo);
+
+		int result = service.checkReview(reviewMap);
+
+		return result;
+	}
+
 }
 

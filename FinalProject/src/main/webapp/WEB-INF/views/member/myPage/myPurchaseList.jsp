@@ -98,10 +98,15 @@
                                                 onclick="handleInquiryClick(event, ${item.productNo})">문의 하기</button>
                                     </td>
 
+<%--                                    <td>--%>
+<%--                                        <button class="inquiryBtn inquiryBtnColor1"--%>
+<%--                                        onclick="location.href='/board/5/review/${item.productNo}/insert'">리뷰 작성</button>--%>
+<%--                                    </td>--%>
                                     <td>
                                         <button class="inquiryBtn inquiryBtnColor1"
-                                        onclick="location.href='/board/5/review/${item.productNo}/insert'">리뷰 작성</button>
+                                                onclick="checkReview(${item.productNo})">리뷰 작성</button>
                                     </td>
+
                                 </tr>
                                 <input type="hidden" value="${item.productNo}" id="productNo" />
                             </c:forEach>
@@ -117,6 +122,10 @@
 
     <!-- footer include -->
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
+    <script>
+        const loginMemberNo = "${loginMember.memberNo}";
+    </script>
     <script src="/resources/js/member/myPage/myPurchaseList.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </body>
 </html>
