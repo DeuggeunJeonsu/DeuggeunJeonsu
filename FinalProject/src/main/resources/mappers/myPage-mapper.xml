@@ -23,6 +23,7 @@
 		<result property="inquiryType" column="INQUIRY_TYPE" />
 		<result property="adminMarketCheckFl" column="ADMIN_FL" />
 		<result property="inquiryCd" column="INQUIRY_CD" />
+		<result property="inquiryNo" column="INQUIRY_NO" />
 
 		<result property="memberNo" column="MEMBER_NO" />
 		<result property="memberNickname" column="MEMBER_NICKNAME" />
@@ -143,7 +144,7 @@
 	 <!-- 마이페이지 상품문의 목록 조회 -->
 	<select id="selectMarketList" resultMap="myPageBoard_rm">
 		SELECT PRODUCT_NO, INQUIRY_TITLE ,INQUIRY_CONTENT, TO_CHAR(INQUIRY_CD, 'YYYY-MM-DD') INQUIRY_CD
-        ,INQUIRY_TYPE , ADMIN_FL
+        ,INQUIRY_TYPE , ADMIN_FL , INQUIRY_NO
 		FROM PRODUCT_INQUIRY
 		WHERE MEMBER_NO = #{memberNo}
 		ORDER BY INQUIRY_CD DESC
@@ -227,5 +228,19 @@
 	<update id="changePw" parameterType="Member">
 		UPDATE MEMBER SET MEMBER_PW = #{memberPw} WHERE MEMBER_NO = ${memberNo}
 	</update>
+	
+	<!-- 상품 문의 답변 조회를 위한 boardNo 조회 -->
+	<select id="selectInquiryBoardNo" resultType="_int">
+		SELECT ADMIN_ANSWER
+		FROM PRODUCT_INQUIRY
+		WHERE INQUIRY_NO = #{inquiryNo}
+	</select>
+	
+	<!-- 상품 문의 답변 조회를 위한 boardNo 조회 -->
+	<select id="inquiryMarketAnswer" resultMap="myPageBoard_rm">
+		SELECT BOARD_TITLE, BOARD_CONTENT
+		FROM BOARD
+		WHERE BOARD_NO = #{adminBoardNo}
+	</select>
 
 </mapper>

@@ -15,16 +15,20 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttribute;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.google.gson.JsonObject;
 import com.jeonsu.deuggeun.board.model.dto.Board;
 import com.jeonsu.deuggeun.board.model.service.jhjBoardService;
+import com.jeonsu.deuggeun.member.model.dto.Member;
 
 /* 공지사항 기능 Controller */
 @Controller
 @RequestMapping("/board")
+@SessionAttributes({"loginMember"})
 public class NotificationController2 {
 
 	@Autowired
@@ -35,10 +39,11 @@ public class NotificationController2 {
 	public String ncinsert(Board board,
 			RedirectAttributes ra,
 			@PathVariable("boardCode") int boardCode,
-			Model model
-			) {
+			Model model,
+			@SessionAttribute("loginMember") Member loginMember)
+			 {
 		
-		board.setMemberNo(1);
+		board.setMemberNo(loginMember.getMemberNo());
 		board.setBoardCode(boardCode);
 		
 

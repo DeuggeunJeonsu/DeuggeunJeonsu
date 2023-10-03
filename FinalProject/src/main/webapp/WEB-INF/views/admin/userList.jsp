@@ -66,10 +66,7 @@
 
 
 					<div class="search-place">
-						<input type="search" id="market-search" placeholder="search...">
-						<button type="button" id="search-button">
-							<i class="fas fa-search"></i>
-						</button>
+						
 					</div>
 
 

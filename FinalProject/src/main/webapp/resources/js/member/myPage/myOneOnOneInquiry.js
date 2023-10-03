@@ -4,7 +4,7 @@ const boardContent = document.getElementsByClassName("boardContent");
 const realMarketTitle = document.getElementsByClassName("realMarketTitle");
 const marketContent = document.getElementsByClassName("marketContent");
 
-const realboardTitle = document.getElementsByClassName("boardTitle");
+const realboardTitle = document.getElementsByClassName("realboardTitle");
 const marketTitle = document.getElementsByClassName("marketTitle");
 
 const modalHeader = document.getElementsByClassName("modal-header")[0];
@@ -110,12 +110,12 @@ for(let i = 0 ; i < marketTitle.length ; i++){
     }
 
     
-    
+    const inquiryNo = document.getElementsByClassName("inquiryNo");
     checkFl2[i].addEventListener('click', e => {
 
 
 
-        fetch('/myPage/inquiryMarketAnswer?marketTitle=' + marketTitle[i].value)
+        fetch('/myPage/inquiryMarketAnswer?inquiryNo=' + inquiryNo[i].value)
         .then(resp => resp.json())
         .then(data => {
 

@@ -73,10 +73,10 @@ public interface MyPageService {
 	Board inquiryAnswer(int boardNo);
 	
 	/** 마이페이지 상품문의 답변 조회
-	 * @param marketTitle
+	 * @param inquiryNo
 	 * @return Board
 	 */
-	Board inquiryMarketAnswer(String marketTitle);
+	Board inquiryMarketAnswer(int inquiryNo);
 
 	/** 마이페이지 내 뱃지 페이지 이동 + 뱃지 목록 조회
 	 * @param memberNo

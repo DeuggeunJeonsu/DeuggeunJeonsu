@@ -117,35 +117,45 @@
             
                 <c:otherwise>
 
-                    <c:forEach items="${boardList}" var="board">
+                <c:forEach items="${boardList}" var="board">
 
-                        <div class="thumbnail">
-                            <a href="/board/1/${board.boardNo}?cp=${pagination.currentPage}">
-                                <div>
-                                    <c:if test="${empty board.thumbnail}" >
-                                        <img src="/resources/images/myPage/kakaoShare_thumbnail.PNG" id="default-logo">
-                                    </c:if>
+                <div class="thumbnail">
+                    <a href="/board/3/${board.boardNo}?cp=${pagination.currentPage}">
+                        <div>
+                            <c:if test="${empty board.thumbnail}" >
+                                <img src="/resources/images/myPage/kakaoShare_thumbnail.PNG" id="default-logo">
+                            </c:if>
 
-                                    <c:if test="${!empty board.thumbnail}">
-                                        <c:set var="originalThumbnail" value="${board.thumbnail}"/>
-                                        <c:set var="thumbnail" value="${fn:replace(originalThumbnail, '^^^', ',')}"/>
-                                        <img src="${thumbnail}">
-                                    </c:if>
-                                </div>
-                                <div>
-                                    <div class="title">${board.boardTitle}</div>
-                                    <div class="createDate-area">
-                                        <div>${board.boardContent}</div>
-                                    </div>
-                                    <div class="profile-area">
-                                        <div><i class="fa-regular fa-comment" style="color: #ddd;"></i>&nbsp;${board.commentCount}</div>
-                                        <div><i class="fa-solid fa-heart" style="color: #ff4242;"></i>&nbsp;${board.likeCount}</div>
-                                    </div>
-                                </div>
-                            </a>
+                            <c:if test="${!empty board.thumbnail}">
+                                <c:set var="originalThumbnail" value="${board.thumbnail}"/>
+                                <c:set var="thumbnail" value="${fn:replace(originalThumbnail, '^^^', ',')}"/>
+                                <img src="${thumbnail}">
+                            </c:if>
                         </div>
+                        <div>
+                            <div class="title">${board.boardTitle}</div>
+                            <div class="createDate-area">
+                                <div>작성일 ${board.boardCreateDate}</div>
+                                <div><i class="fa-regular fa-comment" style="color: #ddd;"></i>&nbsp;${board.commentCount}</div>
+                            </div>
+                            <div class="profile-area">
+                                <div class="profileArea">
+                                    <c:if test="${empty board.profileImage}" >
+                                        <img src="/resources/images/user.png">
+                                    </c:if>
 
-                    </c:forEach>
+                                    <c:if test="${!empty board.profileImage}" >
+                                        <img src="${board.profileImage}">
+                                    </c:if>
+                                </div>
+                                <div>${board.memberNickname}</div>
+                                <div><i class="fa-solid fa-heart" style="color: #ff4242;"></i>&nbsp;${board.likeCount}</div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+            </c:forEach>
 
                 </c:otherwise>
             </c:choose>

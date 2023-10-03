@@ -3,6 +3,7 @@ const title = document.getElementById("QnATitle");
 const content = document.getElementById("QnAContent");
 
 const formTag = document.getElementById("QnAform");
+const cancelBtn = document.getElementById("cancel-button");
 
 formTag.addEventListener("submit", e => {
 
@@ -29,4 +30,8 @@ formTag.addEventListener("submit", e => {
             return;
     }
 
+})
+
+cancelBtn.addEventListener("click", () => {
+    location.href = "/myPage/oneOnOneInquiry";
 })

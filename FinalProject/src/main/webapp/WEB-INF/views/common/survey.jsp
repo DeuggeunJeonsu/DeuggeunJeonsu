@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -40,7 +40,7 @@
 					</div>
 
 
-					<!-- <button href="" title="Button2 border lightblue2" class="button2 btnFloat2 btnLightBlue2" id="confirmStart2"></button> -->
+					<button href="" title="Button2 border lightblue2" class="button2 btnFloat2 btnLightBlue2" id="confirmStart2"></button>
 					<button href="" title="Button border lightblue"
 						class="button btnFloat btnLightBlue" id="confirmStart"></button>
 
@@ -111,7 +111,14 @@
 
 				<div class="btnList">
 					<button type="button" id="beforeBtn" value="">이전</button>
-					<button type="button" id="bodyCheck" value="">다음</button>
+					
+					<c:if test="${empty loginMember}">
+						<a id="noMember">로그인하고 추천받기!</a>
+					</c:if>
+					
+					<c:if test="${!empty loginMember}">
+						<button type="button" id="bodyCheck" value="">다음</button>
+					</c:if>
 					<button type="button" id="finalCheck" value="">결과확인</button>
 
 				</div>
@@ -123,13 +130,13 @@
 
 득근 전수에서는 설문하신 내용을 토대로 부의별 운동을 추천 해드립니다.
 
-            정성껏 답변하시어 득근하는 시간이 되셨으면 좋겠습니다.
+            자유롭게 선택 후 득근하는 시간이 되셨으면 좋겠습니다.
 
 
 
 
-                
-                                   <strong>TodoList 추가 가능!</strong>
+									     
+                                   <strong>TodoList 추가 가능!</strong> 
 
 설문 완료 후, 마음에 드는 운동을 나만의 TodoList에 담아보세요.
 
@@ -139,7 +146,7 @@
 
 
 
-
+		  * TodoList 기능은 로그인 후 이용가능 하고,
             추천내용은 새로고침 후 사라지니 유의하시기 바랍니다.
                 </pre>
 
@@ -150,6 +157,10 @@
 	</main>
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
 </body>
+
+<script>
+	const loginMember = '${loginMember}';
+</script>
 
 <script src="/resources/js/survey.js"></script>
 

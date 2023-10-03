@@ -30,7 +30,7 @@
             </head>
 
             <body>
-                <%-- header include --%>
+                <div%-- header include --%>
                     <jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
 
                     <section id="main-container">
@@ -77,45 +77,44 @@
                                         <button class="inquiryBtn inquiryBtnColor1">문의글 작성하기</button>
                                     </a>
                                 </div>
+                                <div class="list-head">
+                                    <div class="head-child">문의글/상품 번호</div>
+                                    <div class="head-child">제목</div>
+                                    <div class="head-child">작성일</div>
+                                    <div class="head-child">답변 상태</div>
+                                </div>
                                 <div id="list">
                                     <table id="inquiry-list">
-                                        <thead class="theadColor">
-                                            <tr>
-                                                <th>문의글 번호</th>
-                                                <th>제목</th>
-                                                <th>작성일</th>
-                                                <th>답변 상태</th>
-                                            </tr>
-                                        </thead>
+                                        
+                                            <tbody>
+                                                <c:forEach items="${boardList}" var="board">
+                                                    <tr>
+                                                        <td>${board.boardNo}</td>
+                                                        <td ><a class="realboardTitle">${board.boardTitle}</a></td>
+                                                        <td>${board.boardCreateDate}</td>
+                                                        <td class="checkFl">${board.adminCheckFl}</td>
+                                                    </tr>
+                                                    <input type="hidden" class="boardTitle" value="${board.boardTitle}" />
+                                                    <input type="hidden" class="boardContent" value="${board.boardContent}" />
+                                                    <input type="hidden" class="boardNo" value="${board.boardNo}" />
+                                                    <input type="hidden" class="hiddenCheckFl" value="${board.adminCheckFl}" />
+                                                </c:forEach>
 
-                                        <tbody>
-                                            <c:forEach items="${boardList}" var="board">
-                                                <tr>
-                                                    <td>${board.boardNo}</td>
-                                                    <td class="realboardTitle">${board.boardTitle}</td>
-                                                    <td>${board.boardCreateDate}</td>
-                                                    <td class="checkFl">${board.adminCheckFl}</td>
-                                                </tr>
-                                                <input type="hidden" class="boardTitle" value="${board.boardTitle}" />
-                                                <input type="hidden" class="boardContent" value="${board.boardContent}" />
-                                                <input type="hidden" class="boardNo" value="${board.boardNo}" />
-                                                <input type="hidden" class="hiddenCheckFl" value="${board.adminCheckFl}" />
-                                            </c:forEach>
-
-                                            <c:forEach items="${marketList}" var="market">
-                                                <tr>
-                                                    <td>${market.productNo}</td>
-                                                    <td class="realMarketTitle">${market.inquiryTitle}</td>
-                                                    <td>${market.inquiryCd}</td>
-                                                    <td class="checkFl2">${market.adminMarketCheckFl}</td>
-                                                </tr>
-                                                <input type="hidden" class="hiddenCheckFl2" value="${market.adminMarketCheckFl}" />
-                                                <input type="hidden" class="marketTitle" value="${market.inquiryTitle}" />
-                                                <input type="hidden" class="marketContent" value="${market.inquiryContent}" />
-                                            </c:forEach> 
+                                                <c:forEach items="${marketList}" var="market">
+                                                    <tr>
+                                                        <td>${market.productNo}</td>
+                                                        <td ><a class="realMarketTitle">${market.inquiryTitle}</a></td>
+                                                        <td>${market.inquiryCd}</td>
+                                                        <td class="checkFl2">${market.adminMarketCheckFl}</td>
+                                                    </tr>
+                                                    <input type="hidden" class="hiddenCheckFl2" value="${market.adminMarketCheckFl}" />
+                                                    <input type="hidden" class="marketTitle" value="${market.inquiryTitle}" />
+                                                    <input type="hidden" class="marketContent" value="${market.inquiryContent}" />
+                                                    <input type="hidden" class="inquiryNo" value="${market.inquiryNo}" />
+                                                </c:forEach> 
 
 
-                                        </tbody>
+                                            </tbody>
                                     </table>
                                 </div>
 
