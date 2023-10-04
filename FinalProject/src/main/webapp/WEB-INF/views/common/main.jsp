@@ -61,8 +61,10 @@
 
 	<jsp:include page="/WEB-INF/views/common/todolist.jsp"></jsp:include>
 	<jsp:include page="/WEB-INF/views/common/randing.jsp"></jsp:include>
-	
 	<jsp:include page="/WEB-INF/views/common/ranking.jsp"></jsp:include>
+	<div style="width: 120%; height:50px;">
+		<img src="/resources/images/main/banner.jpg"  style="width: 100%;"></img>
+	</div>
 	<jsp:include page="/WEB-INF/views/common/MDPick.jsp"></jsp:include>
 	<jsp:include page="/WEB-INF/views/common/trendingPost.jsp"></jsp:include>
 	<jsp:include page="/WEB-INF/views/common/map.jsp"></jsp:include>
