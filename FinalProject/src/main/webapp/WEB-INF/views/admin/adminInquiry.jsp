@@ -147,6 +147,7 @@
                                                     <td>${market.memberEmail}</td>
                                                     <td class="marketCheckFL1">${market.marketCheckFl}</td>
                                                 </tr>
+                                                <input type="hidden" class="inquiryNo" value="${market.inquiryNo}" />
                                                 <input type="hidden" class="productNo" value="${market.productNo}" />
                                                 <input type="hidden" class="marketCheckFL2" value="${market.marketCheckFl}" />
                                                 <input type="hidden" class="marketTitle" value="${market.inquiryTitle}" />

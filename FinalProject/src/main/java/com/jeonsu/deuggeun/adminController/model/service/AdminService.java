@@ -59,10 +59,10 @@ public interface AdminService {
 	AdminMember adminInquiryDetail(int boardNo);
 
 	/** 상품 문의 상세조회
-	 * @param marketTitle
+	 * @param inquiryNo
 	 * @return 
 	 */
-	AdminMember marketDetail(String marketTitle);
+	AdminMember marketDetail(int inquiryNo);
 
 
 

@@ -7,15 +7,9 @@ const imgChange = document.getElementById("ncPic");
 
 const input = document.getElementById("title-textArea");
 
-const inputCheck = document.getElementById("ncBigCheck");
 const checkFL = document.getElementById("checkFL");
 
-inputCheck.addEventListener("change", () => {
 
-  if(inputCheck.checked != false){
-    checkFL.value = 1;
-  }
-})
 
 
 

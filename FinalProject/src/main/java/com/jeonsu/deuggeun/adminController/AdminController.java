@@ -91,10 +91,9 @@ public class AdminController {
 	// 상품 문의 상세조회
 	@RequestMapping("/marketDetail")
 	@ResponseBody
-	public AdminMember marketDetail(@RequestParam("marketTitle") String marketTitle) {
+	public AdminMember marketDetail(@RequestParam int inquiryNo) {
 		
-		
-		return service.marketDetail(marketTitle);
+		return service.marketDetail(inquiryNo);
 	}
 
 }
