@@ -13,10 +13,10 @@
 		<result property="boardState" column="BOARD_ST" />
 		<result property="boardUpdateDate" column="UPDATE_DT" />
 		<result property="tagNo" column="TAG_NO" />
-		
+
 		<result property="adminBoardNo" column="ADMIN_ANSWER" />
 		<result property="adminCheckFl" column="ADMIN_CHECK_FL" />
-		
+
 		<result property="productNo" column="PRODUCT_NO" />
 		<result property="inquiryTitle" column="INQUIRY_TITLE" />
 		<result property="inquiryContent" column="INQUIRY_CONTENT" />
@@ -40,7 +40,7 @@
 
 		<result property="memberNickname" column="MEMBER_NICKNAME" />
 		<result property="profileImage" column="PROFILE_IMG" />
-			
+
 		<collection property="badgeList"
 					select="selectBadgeList"
 					column="MEMBER_NO"
@@ -48,10 +48,10 @@
 					ofType="Badge">
 		</collection>
 	</resultMap>
-	
+
 	<resultMap type="Badge" id="myPageBadge_rm">
 		<id property="badgeNo" column="BADGE_NO"/>
-		
+
 		<result property="badgeName" column="BADGE_NM"/>
 		<result property="badgeContent" column="BADGE_CONTENT"/>
 		<result property="badgeImage" column="BADGE_IMG"/>
@@ -64,178 +64,178 @@
 		SELECT COUNT(*)
 		FROM BOARD
 		WHERE BOARD_ST = 'N'
-		AND MEMBER_NO = #{memberNo}
+		  AND MEMBER_NO = #{memberNo}
 	</select>
-	
+
 	<!-- 마이페이지 내 게시글 목록 조회 -->
 	<select id="selectMyPageBoardList" resultMap="myPageBoard_rm">
 		SELECT BOARD_NO,
-		BOARD_TITLE, MEMBER_NICKNAME, TO_CHAR(CREATE_DT, 'YY.MM.DD')
-		CREATE_DT, BOARD_CODE,
+			   BOARD_TITLE, MEMBER_NICKNAME, TO_CHAR(CREATE_DT, 'YY.MM.DD')
+											   CREATE_DT, BOARD_CODE,
 
-		(SELECT COUNT(*) FROM "COMMENT" C
-		WHERE C.BOARD_NO = B.BOARD_NO) COMMENT_COUNT,
+			   (SELECT COUNT(*) FROM "COMMENT" C
+				WHERE C.BOARD_NO = B.BOARD_NO) COMMENT_COUNT,
 
-		(SELECT COUNT(*) FROM LIKE_POST L
-		WHERE L.BOARD_NO = B.BOARD_NO) LIKE_COUNT,
+			   (SELECT COUNT(*) FROM LIKE_POST L
+				WHERE L.BOARD_NO = B.BOARD_NO) LIKE_COUNT,
 
-		(SELECT IMG_RENAME FROM BOARD_IMG I
-		WHERE I.BOARD_NO = B.BOARD_NO
-		AND IMG_LEVEL = 0) THUMBNAIL
+			   (SELECT IMG_RENAME FROM BOARD_IMG I
+				WHERE I.BOARD_NO = B.BOARD_NO
+				  AND IMG_LEVEL = 0) THUMBNAIL
 
 		FROM "BOARD" B
-		JOIN "MEMBER" USING(MEMBER_NO)
+				 JOIN "MEMBER" USING(MEMBER_NO)
 		WHERE BOARD_ST = 'N'
-		AND
-		MEMBER_NO = #{memberNo}
+		  AND
+			MEMBER_NO = #{memberNo}
 		ORDER BY BOARD_NO DESC
 	</select>
-	
+
 	<!-- 마이페이지 팔로잉 수 조회 -->
 	<select id="getFollowingTotalCount" resultType="_int">
 		SELECT COUNT(*)
 		FROM FOLLOW F
-		JOIN MEMBER M ON (F.FOLLOWER_NO = M.MEMBER_NO)
+				 JOIN MEMBER M ON (F.FOLLOWER_NO = M.MEMBER_NO)
 		WHERE F.MEMBER_NO = #{memberNo}
 	</select>
-	
+
 	<!-- 마이페이지 팔로잉 목록 조회 -->
 	<select id="selectFollowingList" resultMap="myPageMember_rm">
 		SELECT M.MEMBER_NO, M.MEMBER_NICKNAME, M.PROFILE_IMG
 		FROM FOLLOW F
-		JOIN MEMBER M ON (F.FOLLOWER_NO = M.MEMBER_NO)
+				 JOIN MEMBER M ON (F.FOLLOWER_NO = M.MEMBER_NO)
 		WHERE F.MEMBER_NO = #{memberNo}
 	</select>
-	
+
 	<!-- 마이페이지 팔로워 수 조회 -->
 	<select id="getFollowerTotalCount" resultType="_int">
 		SELECT COUNT(*)
 		FROM FOLLOW F
-		JOIN MEMBER M ON (F.MEMBER_NO = M.MEMBER_NO)
+				 JOIN MEMBER M ON (F.MEMBER_NO = M.MEMBER_NO)
 		WHERE F.FOLLOWER_NO = #{memberNo}
 	</select>
-	
+
 	<!-- 마이페이지 팔로워 목록 조회 -->
 	<select id="selectFollowerList" resultMap="myPageMember_rm">
 		SELECT M.MEMBER_NO, M.MEMBER_NICKNAME, M.PROFILE_IMG
 		FROM FOLLOW F
-		JOIN MEMBER M ON (F.MEMBER_NO = M.MEMBER_NO)
+				 JOIN MEMBER M ON (F.MEMBER_NO = M.MEMBER_NO)
 		WHERE F.FOLLOWER_NO = #{memberNo}
 	</select>
-	
+
 	<!-- 마이페이지 멤버 피드 조회 -->
 	<select id="selectFeedMember" resultMap="myPageMember_rm">
 		SELECT MEMBER_NO, MEMBER_NICKNAME, PROFILE_IMG
 		FROM MEMBER
 		WHERE MEMBER_NO = #{memberNo}
 	</select>
-	
+
 	<!-- 마이페이지 1:1 문의 목록 조회 -->
 	<select id="selectMyUpdateList" resultMap="myPageBoard_rm">
 		SELECT BOARD_NO, BOARD_TITLE, BOARD_CONTENT , TO_CHAR(CREATE_DT, 'YYYY-MM-DD') CREATE_DT
-    	,ADMIN_CHECK_FL
+			 ,ADMIN_CHECK_FL
 		FROM BOARD
-		JOIN INQUIRY USING(BOARD_NO)
+				 JOIN INQUIRY USING(BOARD_NO)
 		WHERE INQUIRY_TYPE = 1
-		AND MEMBER_NO = #{memberNo}
+		  AND MEMBER_NO = #{memberNo}
 		ORDER BY BOARD_NO DESC
 	</select>
-	
-	 <!-- 마이페이지 상품문의 목록 조회 -->
+
+	<!-- 마이페이지 상품문의 목록 조회 -->
 	<select id="selectMarketList" resultMap="myPageBoard_rm">
 		SELECT PRODUCT_NO, INQUIRY_TITLE ,INQUIRY_CONTENT, TO_CHAR(INQUIRY_CD, 'YYYY-MM-DD') INQUIRY_CD
-        ,INQUIRY_TYPE , ADMIN_FL , INQUIRY_NO
+			 ,INQUIRY_TYPE , ADMIN_FL , INQUIRY_NO
 		FROM PRODUCT_INQUIRY
 		WHERE MEMBER_NO = #{memberNo}
 		ORDER BY INQUIRY_CD DESC
 	</select>
-	
+
 	<!-- 로그인한 회원이 피드 주인을 팔로우했는지 확인 -->
 	<select id="feedFollowCheck" resultType="_int">
 		SELECT COUNT(*) FROM MEMBER
 		WHERE MEMBER_NO IN
-		(SELECT FOLLOWER_NO FROM FOLLOW WHERE MEMBER_NO = #{loginMemberNo})
-		AND MEMBER_NO = #{memberNo}
+			  (SELECT FOLLOWER_NO FROM FOLLOW WHERE MEMBER_NO = #{loginMemberNo})
+		  AND MEMBER_NO = #{memberNo}
 	</select>
-	
+
 	<!-- 비밀번호 조회 -->
 	<select id="selectEncPw" parameterType="_int" resultType="string">
 		SELECT MEMBER_PW FROM MEMBER
 		WHERE MEMBER_NO = #{memberNo}
 	</select>
-	
+
 	<!-- 회원 탈퇴 -->
 	<update id="secession" parameterType="_int">
 		UPDATE MEMBER
 		SET MEMBER_DEL_FL = 'Y'
 		WHERE MEMBER_NO = #{memberNo}
 	</update>
-	
+
 	<!-- 문의 답변 내용 조회를 위한 게시글 번호 조회 -->
 	<select id="selectAdminBoardNo"  resultType="_int">
 		SELECT ADMIN_ANSWER
 		FROM INQUIRY
 		WHERE BOARD_NO = #{boardNo}
 	</select>
-	
+
 	<!-- 마이페이지 1:1 문의 답변조회 -->
 	<select id="inquiryAnswer" resultMap="myPageBoard_rm">
 		SELECT BOARD_TITLE, BOARD_CONTENT
 		FROM BOARD
 		WHERE BOARD_NO = #{adminBoardNo}
 	</select>
-	
+
 	<!-- 마이페이지 내 뱃지 목록 조회 -->
 	<select id="selectBadgeList" resultMap="myPageBadge_rm">
 		SELECT BADGE_NO, BADGE_NM, BADGE_CONTENT, BADGE_IMG,
 			   TO_CHAR(BADGE_DATE, 'YYYY-MM-DD') BADGE_DATE, BADGE_FL FROM BADGE
-		JOIN MEMBER_BADGE USING(BADGE_NO)
+																			   JOIN MEMBER_BADGE USING(BADGE_NO)
 		WHERE MEMBER_NO = #{memberNo}
 	</select>
-	
+
 	<!-- 마이페이지 내 뱃지 수 조회 -->
 	<select id="getBadgeCount" resultType="_int">
 		SELECT COUNT(*) FROM BADGE
-		JOIN MEMBER_BADGE USING(BADGE_NO)
+								 JOIN MEMBER_BADGE USING(BADGE_NO)
 		WHERE MEMBER_NO = #{memberNo}
-		AND BADGE_FL = 'Y'
+		  AND BADGE_FL = 'Y'
 	</select>
-	
+
 	<update id="updateProfile">
 		UPDATE MEMBER
 		SET PROFILE_IMG = #{profileImage}
 		WHERE MEMBER_NO = #{memberNo}
-		AND MEMBER_DEL_FL = 'N'
-	</update>	
-	
+		  AND MEMBER_DEL_FL = 'N'
+	</update>
+
 	<!-- 프로필 이미지 수정 -->
 	<update id="updateProfileImage">
 		UPDATE MEMBER SET
-		PROFILE_IMG = #{profileImage}
- 		WHERE MEMBER_NO = #{memberNo}
-	</update>	
-	
+			PROFILE_IMG = #{profileImage}
+		WHERE MEMBER_NO = #{memberNo}
+	</update>
+
 	<!-- 회원 정보 수정 -->
 	<update id="updateInfo" parameterType="Member">
 		UPDATE MEMBER SET MEMBER_NICKNAME = #{memberNickname}
 						, MEMBER_TEL = #{memberTel}
 						, MEMBER_ADDR = #{memberAddress}
-		WHERE MEMBER_NO = ${memberNo}		
+		WHERE MEMBER_NO = ${memberNo}
 	</update>
-	
-	
+
+
 	<!-- 비밀번호 변경 -->
 	<update id="changePw" parameterType="Member">
 		UPDATE MEMBER SET MEMBER_PW = #{memberPw} WHERE MEMBER_NO = ${memberNo}
 	</update>
-	
+
 	<!-- 상품 문의 답변 조회를 위한 boardNo 조회 -->
 	<select id="selectInquiryBoardNo" resultType="_int">
 		SELECT ADMIN_ANSWER
 		FROM PRODUCT_INQUIRY
 		WHERE INQUIRY_NO = #{inquiryNo}
 	</select>
-	
+
 	<!-- 상품 문의 답변 조회를 위한 boardNo 조회 -->
 	<select id="inquiryMarketAnswer" resultMap="myPageBoard_rm">
 		SELECT BOARD_TITLE, BOARD_CONTENT
