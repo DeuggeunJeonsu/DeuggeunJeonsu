@@ -112,7 +112,7 @@
 	<update id="updateMarket">
 		UPDATE PRODUCT_INQUIRY SET
 		ADMIN_FL = 'Y',
-		ADMIN_ANSWER = #{boardNo}
+		MARKET_ADMIN_ANSWER = #{boardNo}
 		WHERE INQUIRY_TITLE = #{boardTitle}
 	</update>
 	

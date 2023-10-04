@@ -15,6 +15,7 @@
 		<result property="tagNo" column="TAG_NO" />
 
 		<result property="adminBoardNo" column="ADMIN_ANSWER" />
+		<result property="adminBoardNo" column="MARKET_ADMIN_ANSWER" />
 		<result property="adminCheckFl" column="ADMIN_CHECK_FL" />
 
 		<result property="productNo" column="PRODUCT_NO" />
@@ -231,7 +232,7 @@
 
 	<!-- 상품 문의 답변 조회를 위한 boardNo 조회 -->
 	<select id="selectInquiryBoardNo" resultType="_int">
-		SELECT ADMIN_ANSWER
+		SELECT MARKET_ADMIN_ANSWER
 		FROM PRODUCT_INQUIRY
 		WHERE INQUIRY_NO = #{inquiryNo}
 	</select>
