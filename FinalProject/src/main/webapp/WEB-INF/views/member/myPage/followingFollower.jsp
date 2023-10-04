@@ -109,5 +109,7 @@
     <!-- followingFollower.js 연결 -->
 	<script src="/resources/js/member/myPage/followingFollower.js"></script>
 
+    <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
+
 </body>
 </html>

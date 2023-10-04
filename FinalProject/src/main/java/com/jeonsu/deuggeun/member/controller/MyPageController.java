@@ -232,8 +232,6 @@ public class MyPageController {
 
 		} else {
 
-			System.out.println("이것이 키다:"+paramMap.get("key"));
-
 			purchaseList = service.selectPurchaseList(memberNo, paramMap);
 
 		}
@@ -265,7 +263,7 @@ public class MyPageController {
 		String message = null;
 
 		if(result > 0) {
-			message = "탈퇴 되었습니다.";
+			message = "회원 탈퇴가 완료되었습니다.";
 			ra.addFlashAttribute("message", message);
 
 			path += "/";
@@ -278,7 +276,7 @@ public class MyPageController {
 			cookie.setPath("/");
 			resp.addCookie(cookie);
 		}else {
-			message = "현재 비밀번호가 일치하지 않습니다.";
+			message = "비밀번호가 일치하지 않습니다.";
 			ra.addFlashAttribute("message", message);
 
 			path += referer;
