@@ -67,36 +67,42 @@
                         </div>
                         <div class="top3-area">
                             <div>
-                                <c:if test="${attendenceRanking[1].profileImage != null}">
-                                    <img class="top3-profile-img top2-border" src="${attendenceRanking[1].profileImage}">
-                                </c:if>
-                                <c:if test="${attendenceRanking[1].profileImage == null}">
-                                    <img class="top3-profile-img top2-border" src="/resources/images/user.png">
-                                </c:if>
+                                <a href="/myPage/memberFeed/${attendenceRanking[1].memberNo}">
+                                    <c:if test="${attendenceRanking[1].profileImage != null}">
+                                        <img class="top3-profile-img top2-border" src="${attendenceRanking[1].profileImage}">
+                                    </c:if>
+                                    <c:if test="${attendenceRanking[1].profileImage == null}">
+                                        <img class="top3-profile-img top2-border" src="/resources/images/user.png">
+                                    </c:if>
+                                </a>
                                 <div class="top3-info-area top2-font">
                                     <div>2ed ${attendenceRanking[1].memberNickname}</div>
                                     <div>${attendenceRanking[1].attendenceDate}일 출석</div>
                                 </div>
                             </div>
                             <div>
-                                <c:if test="${attendenceRanking[0].profileImage != null}">
-                                    <img class="top3-profile-img top1-border" src="${attendenceRanking[0].profileImage}">
-                                </c:if>
-                                <c:if test="${attendenceRanking[0].profileImage == null}">
-                                    <img class="top3-profile-img top1-border" src="/resources/images/user.png">
-                                </c:if>
+                                <a href="/myPage/memberFeed/${attendenceRanking[0].memberNo}">
+                                    <c:if test="${attendenceRanking[0].profileImage != null}">
+                                        <img class="top3-profile-img top1-border" src="${attendenceRanking[0].profileImage}">
+                                    </c:if>
+                                    <c:if test="${attendenceRanking[0].profileImage == null}">
+                                        <img class="top3-profile-img top1-border" src="/resources/images/user.png">
+                                    </c:if>
+                                </a>
                                 <div class="top3-info-area top1-font">
                                     <div>1st ${attendenceRanking[0].memberNickname}</div>
                                     <div>${attendenceRanking[0].attendenceDate}일 출석</div>
                                 </div>
                             </div>
                             <div>
-                                <c:if test="${attendenceRanking[2].profileImage != null}">
-                                    <img class="top3-profile-img top3-border" src="${attendenceRanking[2].profileImage}">
-                                </c:if>
-                                <c:if test="${attendenceRanking[2].profileImage == null}">
-                                    <img class="top3-profile-img top3-border" src="/resources/images/user.png">
-                                </c:if>
+                                <a href="/myPage/memberFeed/${attendenceRanking[2].memberNo}">
+                                    <c:if test="${attendenceRanking[2].profileImage != null}">
+                                        <img class="top3-profile-img top3-border" src="${attendenceRanking[2].profileImage}">
+                                    </c:if>
+                                    <c:if test="${attendenceRanking[2].profileImage == null}">
+                                        <img class="top3-profile-img top3-border" src="/resources/images/user.png">
+                                    </c:if>
+                                </a>
                                 <div class="top3-info-area top3-font">
                                     <div>3rd ${attendenceRanking[2].memberNickname}</div>
                                     <div>${attendenceRanking[2].attendenceDate}일 출석</div>
@@ -106,14 +112,16 @@
                         <c:forEach var="member" items="${attendenceRanking}" begin="3" end="7" varStatus="status">
                             <div class="ranking-row">
                                 <div>${status.index+1}</div>
-                                <div>
-                                    <c:if test="${member.profileImage != null}">
-                                        <img class="rank-profile-img" src="${member.profileImage}">
-                                    </c:if>
-                                    <c:if test="${member.profileImage == null}">
-                                        <img class="rank-profile-img" src="/resources/images/user.png">
-                                    </c:if>
-                                </div>
+                                <a href="/myPage/memberFeed/${member.memberNo}">
+                                    <div>
+                                        <c:if test="${member.profileImage != null}">
+                                            <img class="rank-profile-img" src="${member.profileImage}">
+                                        </c:if>
+                                        <c:if test="${member.profileImage == null}">
+                                            <img class="rank-profile-img" src="/resources/images/user.png">
+                                        </c:if>
+                                    </div>
+                                </a>
                                 <div>${member.memberNickname}</div>
                                 <div>${member.attendenceDate}일 출석</div>
                             </div>
@@ -140,36 +148,42 @@
                         </div>
                         <div class="top3-area">
                             <div>
-                                <c:if test="${todoListRanking[1].profileImage != null}">
-                                    <img class="top3-profile-img top2-border" src="${todoListRanking[1].profileImage}">
-                                </c:if>
-                                <c:if test="${todoListRanking[1].profileImage == null}">
-                                    <img class="top3-profile-img top2-border" src="/resources/images/user.png">
-                                </c:if>
+                                <a href="/myPage/memberFeed/${todoListRanking[1].memberNo}">
+                                    <c:if test="${todoListRanking[1].profileImage != null}">
+                                        <img class="top3-profile-img top2-border" src="${todoListRanking[1].profileImage}">
+                                    </c:if>
+                                    <c:if test="${todoListRanking[1].profileImage == null}">
+                                        <img class="top3-profile-img top2-border" src="/resources/images/user.png">
+                                    </c:if>
+                                </a>
                                 <div class="top3-info-area top2-font">
                                     <div>2ed ${todoListRanking[1].memberNickname}</div>
                                     <div>${todoListRanking[1].todoAllFlagCount}번 완료</div>
                                 </div>
                             </div>
                             <div>
-                                <c:if test="${todoListRanking[0].profileImage != null}">
-                                    <img class="top3-profile-img top1-border" src="${todoListRanking[0].profileImage}">
-                                </c:if>
-                                <c:if test="${todoListRanking[0].profileImage == null}">
-                                    <img class="top3-profile-img top1-border" src="/resources/images/user.png">
-                                </c:if>
+                                <a href="/myPage/memberFeed/${todoListRanking[0].memberNo}">
+                                    <c:if test="${todoListRanking[0].profileImage != null}">
+                                        <img class="top3-profile-img top1-border" src="${todoListRanking[0].profileImage}">
+                                    </c:if>
+                                    <c:if test="${todoListRanking[0].profileImage == null}">
+                                        <img class="top3-profile-img top1-border" src="/resources/images/user.png">
+                                    </c:if>
+                                </a>
                                 <div class="top3-info-area top1-font">
                                     <div>1st ${todoListRanking[0].memberNickname}</div>
                                     <div>${todoListRanking[0].todoAllFlagCount}번 완료</div>
                                 </div>
                             </div>
                             <div>
-                                <c:if test="${todoListRanking[2].profileImage != null}">
-                                    <img class="top3-profile-img top3-border" src="${todoListRanking[2].profileImage}">
-                                </c:if>
-                                <c:if test="${todoListRanking[2].profileImage == null}">
-                                    <img class="top3-profile-img top3-border" src="/resources/images/user.png">
-                                </c:if>
+                                <a href="/myPage/memberFeed/${todoListRanking[2].memberNo}">
+                                    <c:if test="${todoListRanking[2].profileImage != null}">
+                                        <img class="top3-profile-img top3-border" src="${todoListRanking[2].profileImage}">
+                                    </c:if>
+                                    <c:if test="${todoListRanking[2].profileImage == null}">
+                                        <img class="top3-profile-img top3-border" src="/resources/images/user.png">
+                                    </c:if>
+                                </a>
                                 <div class="top3-info-area top3-font">
                                     <div>3rd ${todoListRanking[2].memberNickname}</div>
                                     <div>${todoListRanking[2].todoAllFlagCount}번 완료</div>
@@ -179,14 +193,16 @@
                         <c:forEach var="member" items="${todoListRanking}" begin="3" end="7" varStatus="status">
                             <div class="ranking-row">
                                 <div>${status.index+1}</div>
-                                <div>
-                                    <c:if test="${member.profileImage != null}">
-                                        <img class="rank-profile-img" src="${member.profileImage}">
-                                    </c:if>
-                                    <c:if test="${member.profileImage == null}">
-                                        <img class="rank-profile-img" src="/resources/images/user.png">
-                                    </c:if>
-                                </div>
+                                <a href="/myPage/memberFeed/${member.memberNo}">
+                                    <div>
+                                        <c:if test="${member.profileImage != null}">
+                                            <img class="rank-profile-img" src="${member.profileImage}">
+                                        </c:if>
+                                        <c:if test="${member.profileImage == null}">
+                                            <img class="rank-profile-img" src="/resources/images/user.png">
+                                        </c:if>
+                                    </div>
+                                </a>
                                 <div>${member.memberNickname}</div>
                                 <div>${member.todoAllFlagCount}번 완료</div>
                             </div>
@@ -213,36 +229,42 @@
                         </div>
                         <div class="top3-area">
                             <div>
-                                <c:if test="${communityRanking[1].profileImage != null}">
-                                    <img class="top3-profile-img top2-border" src="${communityRanking[1].profileImage}">
-                                </c:if>
-                                <c:if test="${communityRanking[1].profileImage == null}">
-                                    <img class="top3-profile-img top2-border" src="/resources/images/user.png">
-                                </c:if>
+                                <a href="/myPage/memberFeed/${communityRanking[1].memberNo}">
+                                    <c:if test="${communityRanking[1].profileImage != null}">
+                                        <img class="top3-profile-img top2-border" src="${communityRanking[1].profileImage}">
+                                    </c:if>
+                                    <c:if test="${communityRanking[1].profileImage == null}">
+                                        <img class="top3-profile-img top2-border" src="/resources/images/user.png">
+                                    </c:if>
+                                </a>
                                 <div class="top3-info-area top2-font">
                                     <div>2ed ${communityRanking[1].memberNickname}</div>
                                     <div>${communityRanking[1].communityScore}점</div>
                                 </div>
                             </div>
                             <div>
-                                <c:if test="${communityRanking[0].profileImage != null}">
-                                    <img class="top3-profile-img top1-border" src="${communityRanking[0].profileImage}">
-                                </c:if>
-                                <c:if test="${communityRanking[0].profileImage == null}">
-                                    <img class="top3-profile-img top1-border" src="/resources/images/user.png">
-                                </c:if>
+                                <a href="/myPage/memberFeed/${communityRanking[0].memberNo}">
+                                    <c:if test="${communityRanking[0].profileImage != null}">
+                                        <img class="top3-profile-img top1-border" src="${communityRanking[0].profileImage}">
+                                    </c:if>
+                                    <c:if test="${communityRanking[0].profileImage == null}">
+                                        <img class="top3-profile-img top1-border" src="/resources/images/user.png">
+                                    </c:if>
+                                </a>
                                 <div class="top3-info-area top1-font">
                                     <div>1st ${communityRanking[0].memberNickname}</div>
                                     <div>${communityRanking[0].communityScore}점</div>
                                 </div>
                             </div>
                             <div>
-                                <c:if test="${communityRanking[2].profileImage != null}">
-                                    <img class="top3-profile-img top3-border" src="${communityRanking[2].profileImage}">
-                                </c:if>
-                                <c:if test="${communityRanking[2].profileImage == null}">
-                                    <img class="top3-profile-img top3-border" src="/resources/images/user.png">
-                                </c:if>
+                                <a href="/myPage/memberFeed/${communityRanking[2].memberNo}">
+                                    <c:if test="${communityRanking[2].profileImage != null}">
+                                        <img class="top3-profile-img top3-border" src="${communityRanking[2].profileImage}">
+                                    </c:if>
+                                    <c:if test="${communityRanking[2].profileImage == null}">
+                                        <img class="top3-profile-img top3-border" src="/resources/images/user.png">
+                                    </c:if>
+                                </a>
                                 <div class="top3-info-area top3-font">
                                     <div>3rd ${communityRanking[2].memberNickname}</div>
                                     <div>${communityRanking[2].communityScore}점</div>
@@ -252,14 +274,16 @@
                         <c:forEach var="member" items="${communityRanking}" begin="3" end="7" varStatus="status">
                             <div class="ranking-row">
                                 <div>${status.index+1}</div>
-                                <div>
-                                    <c:if test="${member.profileImage != null}">
-                                        <img class="rank-profile-img" src="${member.profileImage}">
-                                    </c:if>
-                                    <c:if test="${member.profileImage == null}">
-                                        <img class="rank-profile-img" src="/resources/images/user.png">
-                                    </c:if>
-                                </div>
+                                <a href="/myPage/memberFeed/${member.memberNo}">
+                                    <div>
+                                        <c:if test="${member.profileImage != null}">
+                                            <img class="rank-profile-img" src="${member.profileImage}">
+                                        </c:if>
+                                        <c:if test="${member.profileImage == null}">
+                                            <img class="rank-profile-img" src="/resources/images/user.png">
+                                        </c:if>
+                                    </div>
+                                </a>
                                 <div>${member.memberNickname}</div>
                                 <div>${member.communityScore}점</div>
                             </div>

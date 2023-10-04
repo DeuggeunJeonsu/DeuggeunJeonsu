@@ -218,8 +218,14 @@
 
                                     <c:if test="${!empty board.thumbnail}">
                                         <c:set var="originalThumbnail" value="${board.thumbnail}"/>
-                                        <c:set var="thumbnail" value="${fn:replace(originalThumbnail, '^^^', ',')}"/>
-                                        <img src="${thumbnail}">
+
+                                        <c:if test="${board.boardCode == 2}">
+                                            <img src="/resources/images/board/${originalThumbnail}">
+                                        </c:if>
+                                        <c:if test="${board.boardCode != 2}" >
+                                            <c:set var="thumbnail" value="${fn:replace(originalThumbnail, '^^^', ',')}"/>
+                                            <img src="${thumbnail}">
+                                        </c:if>
                                     </c:if>
                                 </div>
 
@@ -239,8 +245,9 @@
                                             <c:if test="${!empty board.profileImage}" >
                                                 <img src="${board.profileImage}">
                                             </c:if>
+
+                                            <div>${board.memberNickname}</div>
                                         </div>
-                                        <div>${board.memberNickname}</div>
                                         <div><i class="fa-solid fa-heart" style="color: #ff4242;"></i>&nbsp;${board.likeCount}</div>
                                     </div>
                                 </div>

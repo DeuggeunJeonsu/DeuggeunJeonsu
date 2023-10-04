@@ -515,14 +515,18 @@
 /* 게시글 제목 */
 .title{
     font-size: 20px;
+    margin-bottom: 10px;
+
+    /* 길어지면 말줄임 처리 */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 /* 게시글 작성일, 좋아요 영역 */
 .createDate-area{
     display: flex;
     justify-content: space-between;
-
-    margin-top: 10px;
 }
 
 /* 게시글 작성자 프로필 영역 */
@@ -530,23 +534,29 @@
     margin-top: 20px;
     display: flex;
     align-items: center;
+    justify-content: space-between;
+}
+
+.profileArea{
+    display: flex;
+    align-items: center;
 }
 
 .profileArea > img{
     width: 40px;
     border-radius: 50%;
+    margin-right: 5px;
 }
 
 /* 닉네임 영역 */
 .profile-area > div:nth-of-type(2){
-    width: 200px;
-    margin-left: 5px;
+    /* width: 200px; */
+    /* margin-left: 5px; */
 }
 
 /* 좋아요 영역 */
 .profile-area > div:nth-of-type(3){
-    margin-left: 109px;
-    width: 120px;
+    /* width: 120px; */
 }
 
 /* ------------------------------------------------------------------------------------- */
