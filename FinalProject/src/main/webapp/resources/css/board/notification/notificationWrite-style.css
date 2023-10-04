@@ -68,7 +68,7 @@ height: auto;
 /* 게시글 제목 영역 */
 #title-textArea{
   height: 40px;
-  width: 80%;
+  width: 100%;
 
   font-size: 20px;
 

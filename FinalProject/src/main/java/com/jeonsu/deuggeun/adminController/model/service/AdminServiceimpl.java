@@ -139,9 +139,9 @@ public class AdminServiceimpl implements AdminService{
 
 	// 상품 문의 상세조회
 	@Override
-	public AdminMember marketDetail(String marketTitle) {
+	public AdminMember marketDetail(int inquiryNo) {
 		
-		AdminMember boardDetail = dao.marketDetail(marketTitle);
+		AdminMember boardDetail = dao.marketDetail(inquiryNo);
 		return boardDetail;
 	}
 

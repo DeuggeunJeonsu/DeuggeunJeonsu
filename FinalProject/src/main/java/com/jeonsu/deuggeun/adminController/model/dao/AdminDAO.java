@@ -109,11 +109,11 @@ public class AdminDAO {
 
 
 	/** 상품 상세 조회
-	 * @param marketTitle
+	 * @param inquiryNo
 	 * @return
 	 */
-	public AdminMember marketDetail(String marketTitle) {
-		return sqlSession.selectOne("adminMapper.marketDetail", marketTitle);
+	public AdminMember marketDetail(int inquiryNo) {
+		return sqlSession.selectOne("adminMapper.marketDetail", inquiryNo);
 	}
 
 

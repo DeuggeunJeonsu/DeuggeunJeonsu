@@ -568,7 +568,7 @@ a.button {
   background: none;
   box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.5);
   left: 1130px;
-  top: 750px;
+  top: 720px;
   
  border: none;
 }
@@ -631,8 +631,8 @@ a.button2 {
   position: fixed;
   background: none;
   box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.5);
-  left: 1100px;
-  top: 790px;
+  left: 1130px;
+  top: 780px;
   
   border: none;
 }

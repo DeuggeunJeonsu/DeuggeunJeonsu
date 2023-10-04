@@ -34,6 +34,7 @@ const insertBtn = document.getElementById("insert-button");
 
 
 
+const inquiryNo = document.getElementsByClassName("inquiryNo");
 const modalTitle = document.getElementById("modalTitle");
 const modalContent = document.getElementById("modalContent");
 
@@ -109,7 +110,7 @@ const marketCheckFL2 = document.getElementsByClassName("marketCheckFL2");
     if (marketCheckFL2[i].value == 'N') {
       marketCheckFL1[i].innerHTML = "미답변";
 
-    } else {
+    } else if(marketCheckFL2[i].value == 'M') {
       marketCheckFL1[i].innerHTML = "답변완료";
       marketCheckFL1[i].style.color = "#99E1ED";
     }
@@ -463,13 +464,13 @@ for (let i = 0; i < iqUpdate.length; i++) {
 const marketTitle = document.getElementsByClassName("marketTitle");
 
 /* 전체 목록 modal 창 */
-for (let i = 0; i < iqUpdate2.length; i++) {
+for (let i = 0; i < inquiryNo.length; i++) {
 
   iqUpdate2[i].addEventListener("click", () => {
 
     inquiryModal.style.visibility = "visible";
 
-    fetch("/admin/marketDetail?marketTitle=" + marketTitle[i].value)
+    fetch("/admin/marketDetail?inquiryNo=" + inquiryNo[i].value)
       .then(resp => resp.json())
       .then(data => {
 

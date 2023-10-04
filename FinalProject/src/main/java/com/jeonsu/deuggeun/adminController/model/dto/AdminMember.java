@@ -29,6 +29,7 @@ public class AdminMember {
 	private int adminBoardNo;
 	
 	private int productNo;
+	private int inquiryNo;
 	private String inquiryTitle;
 	private String inquiryContent;
 	private char marketCheckFl;
