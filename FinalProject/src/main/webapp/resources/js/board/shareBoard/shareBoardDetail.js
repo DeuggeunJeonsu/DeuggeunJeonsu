@@ -950,13 +950,12 @@ goToListBtn.addEventListener("click", ()=>{
 /* 카카오톡 공유하기 */
 function shareMessage() {
     Kakao.Share.sendCustom({
-        templateId: 98809,
+        templateId: 98875,
         templateArgs: {
             PROFILE : profile, // 작성자 프로필 이미지 주소 ${PROFILE}
             NICKNAME : nickname,    // 작성자 닉네임 ${NICKNAME}
             TITLE: title, // 제목 텍스트 ${TITLE}
-            CONTENT: content, // 설명 텍스트 ${CONTENT}
-            PATH: 'board/3/' + boardNo // 자유게시판 상세 게시글 주소
+            PATH: 'board/2/' + boardNo // 자유게시판 상세 게시글 주소
         },
     });
 }
