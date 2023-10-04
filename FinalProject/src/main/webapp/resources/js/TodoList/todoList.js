@@ -479,7 +479,7 @@ document.addEventListener("click", function (e){
                             //console.log("추가완료!")
                             addListInput.value="";
                 
-                            
+                            todoslist(inputTodo.lcreateDt)
                             buildCalendar();
                             updateCheckedPercentage();
                 
@@ -602,7 +602,7 @@ document.querySelector(".addList").addEventListener("keyup", function(event) {
                             //console.log("추가완료!")
                             addListInput.value="";
                             
-                            //todoslist(inputTodo.lcreateDt)
+                            todoslist(inputTodo.lcreateDt)
                             buildCalendar();
                             updateCheckedPercentage();
                 
@@ -795,6 +795,8 @@ function updateTodo(checkbox,listFl,choiceTodoDate ) {
                                 title : "축하합니다🥳 목표를 득근하셨어요!", 
                                 icon : 'success'
                             })
+                            todoslist(choiceTodoDate)
+                            buildCalendar();
                             
                         }else{
                             console.log("실패ㅜㅜㅜ")
