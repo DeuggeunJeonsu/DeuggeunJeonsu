@@ -322,13 +322,11 @@ public class MyPageController {
 	// 마이페이지 상품문의 답변 조회
 	@RequestMapping("/inquiryMarketAnswer")
 	@ResponseBody
-	public Board inquiryMarketAnswer(@RequestParam String marketTitle) {
+	public Board inquiryMarketAnswer(@RequestParam int inquiryNo) {
 
 
-
-		return service.inquiryMarketAnswer(marketTitle);
+		return service.inquiryMarketAnswer(inquiryNo);
 	}
-	
 	// 회원프로필 수정
 	@ResponseBody
 	@PostMapping("/changeProfile")

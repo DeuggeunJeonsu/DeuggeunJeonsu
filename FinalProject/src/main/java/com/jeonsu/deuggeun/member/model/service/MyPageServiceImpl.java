@@ -206,12 +206,6 @@ public class MyPageServiceImpl implements MyPageService {
 
 		return adminBoard;
 	}
-	
-	@Override
-	public Board inquiryMarketAnswer(String marketTitle) {
-		return null;
-	}
-
 
 	// 마이페이지 내 뱃지 페이지 이동 + 뱃지 목록 조회
 	@Override
@@ -355,4 +349,19 @@ public class MyPageServiceImpl implements MyPageService {
 		return result;
 	}
 
+	// 마이페이지 상품 답변 조회
+	@Override
+	public Board inquiryMarketAnswer(int inquiryNo) {
+
+		// 상품 문의 답변 조회를 위한 boardNo 조회
+		int adminBoardNo = dao.selectInquiryBoardNo(inquiryNo);
+
+		Board board = new Board();
+
+		board.setAdminBoardNo(adminBoardNo);
+
+		Board adminBoard = dao.inquiryMarketAnswer(board);
+
+		return adminBoard;
+	}
 }
