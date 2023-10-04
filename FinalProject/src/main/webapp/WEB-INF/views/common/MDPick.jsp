@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="/resources/css/common/main.css">
 </head>
 <body>
-<h2 class="main-article-tit">MD Pick! 추천 상품</h2>
+<h2 class="main-article-tit" style="color: #fff;">MD Pick! 추천 상품</h2>
 <div class="carousel-container"
     data-aos="fade-left"
     data-aos-offset="50"
