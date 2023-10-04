@@ -60,7 +60,8 @@
 	</section>
 
 	<jsp:include page="/WEB-INF/views/common/todolist.jsp"></jsp:include>
-
+	<jsp:include page="/WEB-INF/views/common/randing.jsp"></jsp:include>
+	
 	<jsp:include page="/WEB-INF/views/common/ranking.jsp"></jsp:include>
 	<jsp:include page="/WEB-INF/views/common/MDPick.jsp"></jsp:include>
 	<jsp:include page="/WEB-INF/views/common/trendingPost.jsp"></jsp:include>
