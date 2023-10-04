@@ -49,7 +49,7 @@
                         <option value="1">주문 처리 상태</option>
                         <option value="2">결제 완료</option>
                         <option value="3">배송 완료</option>
-                        <option value="4">취소/교환/반품 완료</option>
+                        <option value="4">취소/교환</option>
                     </select>
                 </div>
 
