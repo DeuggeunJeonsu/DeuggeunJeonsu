@@ -27,6 +27,10 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/resources/images/favicon_io/favicon-16x16.png">
     <link rel="manifest" href="/resources/images/favicon_io/site.webmanifest">
 
+    <script>
+        const loginMember = "${loginMember}"; // 로그인한 회원 번호
+    </script>
+
 </head>
 <body>
 
