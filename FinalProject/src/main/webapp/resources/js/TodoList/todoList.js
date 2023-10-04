@@ -132,7 +132,7 @@ if(document.querySelector("#middle-Container")){
                         
                         if (todoFl == 'Y') {
                             newDIV2.classList.add("fa-solid", "fa-circle", "Circle");
-                        } else {
+                        } else if(todoFl == 'N') {
                             
                             newDIV2.classList.add("fa-solid", "fa-caret-up", "triangle");
                         }
@@ -180,7 +180,8 @@ if(document.querySelector("#middle-Container")){
                 for ( let calendeDay of calendeDays) {
                     
                     if(calendeDay.innerText == day){
-                        // console.log(newDIV2)
+                        //console.log(newDIV2)
+                        
                         calendeDay.innerHTML="";
                         calendeDay.innerHTML=day;
                         calendeDay.append(newDIV2);
@@ -477,9 +478,20 @@ document.addEventListener("click", function (e){
                     .then(result =>{
                         if(result > 0){
                             //console.log("추가완료!")
+                            fetch("/todo/unfinished?date=" + choiceTodoDate )
+                            .then(resp => resp.text())
+                            .then(result=>{
+                                if(result == 0){
+                                
+                                    console.log("실패ㅜㅜㅜ")
+                                }
+                            })
+                            .catch( e=> console.log(e) )
+
+
                             addListInput.value="";
                 
-                            
+                            todoslist(insertTodo.lcreateDt)
                             buildCalendar();
                             updateCheckedPercentage();
                 
@@ -600,10 +612,19 @@ document.querySelector(".addList").addEventListener("keyup", function(event) {
                     .then(result =>{
                         if(result > 0){
                             //console.log("추가완료!")
+                            fetch("/todo/unfinished?date=" + choiceTodoDate )
+                            .then(resp => resp.text())
+                            .then(result=>{
+                                if(result == 0){
+                                
+                                    console.log("실패ㅜㅜㅜ")
+                                }
+                            })
+                            .catch( e=> console.log(e) )
                             addListInput.value="";
                             
-                            //todoslist(inputTodo.lcreateDt)
                             buildCalendar();
+                            todoslist(inputTodo.lcreateDt)
                             updateCheckedPercentage();
                 
                         }else{
@@ -795,6 +816,8 @@ function updateTodo(checkbox,listFl,choiceTodoDate ) {
                                 title : "축하합니다🥳 목표를 득근하셨어요!", 
                                 icon : 'success'
                             })
+                            todoslist(choiceTodoDate)
+                            buildCalendar();
                             
                         }else{
                             console.log("실패ㅜㅜㅜ")
