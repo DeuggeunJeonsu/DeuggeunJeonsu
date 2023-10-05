@@ -136,5 +136,11 @@ public interface MemberService {
 	 */
 	List<Member> setCommunityRanking();
 
+	/** 출석일 증가
+	 * @param memberNo
+	 * @return
+	 */
+	int attendencePlus(int memberNo);
+
 
 }

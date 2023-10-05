@@ -182,4 +182,23 @@ public class MainController {
 		return new ObjectMapper().writeValueAsString(service.trendingFree());
 	}
 	
+	// 출석일 증가
+	@ResponseBody
+	@RequestMapping(value="/attendencePlus", produces = "text/plain; charset=UTF-8")
+	public int attendencePlus(@SessionAttribute(value="loginMember", required=false) Member loginMember, Model model) {
+
+		int memberNo = 0;
+		int result = 0;
+		
+		if(loginMember != null) {
+			memberNo = loginMember.getMemberNo();
+			result = service.attendencePlus(memberNo);
+			if(result>0) {
+				loginMember.setAttendenceDate(loginMember.getAttendenceDate()+1);
+				model.addAttribute("loginMember",loginMember);
+			}
+		}
+		return result;
+	}
+	
 }
