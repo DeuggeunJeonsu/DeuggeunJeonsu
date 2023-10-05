@@ -166,26 +166,29 @@ function realTimeUpdates(){
     }, 500);
 }
 
-if(loginMemberEmail != null){
-    const cookieName = loginMemberEmail.replace("@","_")+"_attendance";
-    const attendenceCookie = get_cookie(cookieName);
-
-    if(attendenceCookie == null){ // 쿠키없음 == 금일 출석 안함
-        set_cookie(cookieName); // 00시 까지 유지되는 쿠키 생성
-
-        $.ajax({
-            type: "GET",
-            url: "/attendencePlus",
-            dataType: "text",
-            success: function(response) {
-                // 출석일 +1
-            },
-            error: function(error) {
-                console.error(error);
-            }
-        });
+if( document.querySelector('.home video') != null){
+    if(loginMemberEmail != null){
+        const cookieName = loginMemberEmail.replace("@","_")+"_attendance";
+        const attendenceCookie = get_cookie(cookieName);
+    
+        if(attendenceCookie == null){ // 쿠키없음 == 금일 출석 안함
+            set_cookie(cookieName); // 00시 까지 유지되는 쿠키 생성
+    
+            $.ajax({
+                type: "GET",
+                url: "/attendencePlus",
+                dataType: "text",
+                success: function(response) {
+                    // 출석일 +1
+                },
+                error: function(error) {
+                    console.error(error);
+                }
+            });
+        }
     }
 }
+
 
 //쿠키 생성하는 함수
 function set_cookie(name) {

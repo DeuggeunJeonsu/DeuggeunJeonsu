@@ -452,15 +452,16 @@ function selectChattingFn() {
 
       // 메세지 만들어서 출력하기
       for(let msg of messageList){
-         //<li>,  <li class="my-chat">
+         
          const li = document.createElement("li");
 
+         // <li class="chat-date">
          if(date != msg.sendTime.substr(0,10)){
             date = msg.sendTime.substr(0,10);
             const dateLi = document.createElement("li");
             dateLi.classList.add("chat-date");
             const dateSpan = document.createElement("span");
-            dateSpan.innerText = msg.sendTime.substr(0,10);
+            dateSpan.innerText = date;
             dateLi.append(dateSpan);
             ul.append(dateLi);
          }
@@ -597,7 +598,6 @@ chattingSock.onmessage = function(e) {
 
    // 현재 채팅방을 보고있는 경우
    if(selectChattingNo == msg.chattingNo){
-
       const ul = document.querySelector(".display-chatting");
    
       // 메세지 만들어서 출력하기
