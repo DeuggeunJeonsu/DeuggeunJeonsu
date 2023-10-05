@@ -27,10 +27,6 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/resources/images/favicon_io/favicon-16x16.png">
     <link rel="manifest" href="/resources/images/favicon_io/site.webmanifest">
 
-    <script>
-        const loginMember = "${loginMember}"; // 로그인한 회원 번호
-    </script>
-
 </head>
 <body>
 
@@ -80,7 +76,7 @@
                                     </c:if>
                                 </a>
                                 <div class="top3-info-area top2-font">
-                                    <div>2ed ${attendenceRanking[1].memberNickname}</div>
+                                    <div>${attendenceRanking[1].memberNickname}</div>
                                     <div>${attendenceRanking[1].attendenceDate}일 출석</div>
                                 </div>
                             </div>
@@ -94,7 +90,7 @@
                                     </c:if>
                                 </a>
                                 <div class="top3-info-area top1-font">
-                                    <div>1st ${attendenceRanking[0].memberNickname}</div>
+                                    <div>${attendenceRanking[0].memberNickname}</div>
                                     <div>${attendenceRanking[0].attendenceDate}일 출석</div>
                                 </div>
                             </div>
@@ -108,7 +104,7 @@
                                     </c:if>
                                 </a>
                                 <div class="top3-info-area top3-font">
-                                    <div>3rd ${attendenceRanking[2].memberNickname}</div>
+                                    <div>${attendenceRanking[2].memberNickname}</div>
                                     <div>${attendenceRanking[2].attendenceDate}일 출석</div>
                                 </div>
                             </div>
@@ -132,7 +128,7 @@
                         </c:forEach>
                     </div>
                 </div>
-
+                
                 <!--투두리스트 실천 랭킹-->
                 <div class="ranking-table-area">
                     <div class="ranking-table" id="executionRanking">
@@ -140,7 +136,7 @@
                             <div class="my-rank-area">
                                 <c:forEach var="member" items="${todoListRanking}" varStatus="status">
                                     <c:if test="${member.memberNo == loginMember.memberNo}">
-                                        <p>${member.todoAllFlagCount}번 완료</p>
+                                        <p>${todoListRanking[1].SCORE}번 완료</p>
                                         <p>rank : ${status.index+1}</p>
                                     </c:if>
                                 </c:forEach>
@@ -152,6 +148,7 @@
                         </div>
                         <div class="top3-area">
                             <div>
+
                                 <a href="/myPage/memberFeed/${todoListRanking[1].memberNo}">
                                     <c:if test="${todoListRanking[1].profileImage != null}">
                                         <img class="top3-profile-img top2-border" src="${todoListRanking[1].profileImage}">
@@ -161,8 +158,8 @@
                                     </c:if>
                                 </a>
                                 <div class="top3-info-area top2-font">
-                                    <div>2ed ${todoListRanking[1].memberNickname}</div>
-                                    <div>${todoListRanking[1].todoAllFlagCount}번 완료</div>
+                                    <div>${todoListRanking[1].memberNickname}</div>
+                                    <div>${todoListRanking[1].SCORE}번 완료</div>
                                 </div>
                             </div>
                             <div>
@@ -175,8 +172,8 @@
                                     </c:if>
                                 </a>
                                 <div class="top3-info-area top1-font">
-                                    <div>1st ${todoListRanking[0].memberNickname}</div>
-                                    <div>${todoListRanking[0].todoAllFlagCount}번 완료</div>
+                                    <div>${todoListRanking[0].memberNickname}</div>
+                                    <div>${todoListRanking[0].SCORE}번 완료</div>
                                 </div>
                             </div>
                             <div>
@@ -189,8 +186,8 @@
                                     </c:if>
                                 </a>
                                 <div class="top3-info-area top3-font">
-                                    <div>3rd ${todoListRanking[2].memberNickname}</div>
-                                    <div>${todoListRanking[2].todoAllFlagCount}번 완료</div>
+                                    <div>${todoListRanking[2].memberNickname}</div>
+                                    <div>${todoListRanking[2].SCORE}번 완료</div>
                                 </div>
                             </div>
                         </div>
@@ -208,7 +205,7 @@
                                     </div>
                                 </a>
                                 <div>${member.memberNickname}</div>
-                                <div>${member.todoAllFlagCount}번 완료</div>
+                                <div>${todoListRanking[1].SCORE}번 완료</div>
                             </div>
                         </c:forEach>
                     </div>
@@ -229,7 +226,7 @@
                             <div class="you">You</div>
                         </c:if>
                         <div class="ranking-title">
-                            실천 랭킹
+                            활동 랭킹
                         </div>
                         <div class="top3-area">
                             <div>
@@ -242,7 +239,7 @@
                                     </c:if>
                                 </a>
                                 <div class="top3-info-area top2-font">
-                                    <div>2ed ${communityRanking[1].memberNickname}</div>
+                                    <div>${communityRanking[1].memberNickname}</div>
                                     <div>${communityRanking[1].communityScore}점</div>
                                 </div>
                             </div>
@@ -256,7 +253,7 @@
                                     </c:if>
                                 </a>
                                 <div class="top3-info-area top1-font">
-                                    <div>1st ${communityRanking[0].memberNickname}</div>
+                                    <div>${communityRanking[0].memberNickname}</div>
                                     <div>${communityRanking[0].communityScore}점</div>
                                 </div>
                             </div>
@@ -270,7 +267,7 @@
                                     </c:if>
                                 </a>
                                 <div class="top3-info-area top3-font">
-                                    <div>3rd ${communityRanking[2].memberNickname}</div>
+                                    <div>${communityRanking[2].memberNickname}</div>
                                     <div>${communityRanking[2].communityScore}점</div>
                                 </div>
                             </div>
