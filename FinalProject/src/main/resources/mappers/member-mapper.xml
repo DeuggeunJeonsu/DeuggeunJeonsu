@@ -74,6 +74,12 @@
       AND MEMBER_EMAIL = #{memberEmail}
    </select>
    
+   <!-- 출석일 증가 -->
+   <update id="attendencePlus">
+	  UPDATE MEMBER SET ATTENDENCE_DT= ATTENDENCE_DT+1
+	  WHERE MEMBER_NO = #{memberNo}
+   </update>
+   
    <!-- 회원가입 -->
    <insert id="signUp" parameterType = "Member">
    INSERT INTO "MEMBER"

@@ -124,13 +124,6 @@ $(document).ready(function() {
     if($('.count-area').length){
         updateShoppingCount();
         realTimeUpdates();
-
-        const attendenceCookie = get_cookie(loginMember.memberEmail.replace("@","_")+"_attendance");
-        if(attendenceCookie == null){ // 쿠키없음 == 금일 출석 안함
-            console(get_cookie(loginMember.memberEmail.replace("@","_")+"_attendance"));
-            set_cookie(loginMember.memberEmail.replace("@","_")+"_attendance"); // 00시 까지 유지되는 쿠키 생성
-            console(get_cookie(loginMember.memberEmail.replace("@","_")+"_attendance"));
-        }
     }
 });
 
@@ -173,15 +166,34 @@ function realTimeUpdates(){
     }, 500);
 }
 
+if(loginMemberEmail != null){
+    const cookieName = loginMemberEmail.replace("@","_")+"_attendance";
+    const attendenceCookie = get_cookie(cookieName);
+
+    if(attendenceCookie == null){ // 쿠키없음 == 금일 출석 안함
+        set_cookie(cookieName); // 00시 까지 유지되는 쿠키 생성
+
+        $.ajax({
+            type: "GET",
+            url: "/attendencePlus",
+            dataType: "text",
+            success: function(response) {
+                // 출석일 +1
+            },
+            error: function(error) {
+                console.error(error);
+            }
+        });
+    }
+}
 
 //쿠키 생성하는 함수
 function set_cookie(name) {
     let date = new Date();
-    date.setDate(date.getDate());
-    date.setHours(23-date.getHours());
-    date.setMinutes(59-date.getMinutes());
-    date.setSeconds(59-date.getSeconds());
-    console.log(date.toUTCString());
+    date.setDate(date.getDate()+1);
+    date.setHours(0);
+    date.setMinutes(0);
+    date.setSeconds(0);
     document.cookie = encodeURIComponent(name) + '=' + encodeURIComponent("출석") + ';expires=' + date.toUTCString() + ';path=/';
 }
 
