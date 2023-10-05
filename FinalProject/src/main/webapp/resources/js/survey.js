@@ -38,20 +38,6 @@ let listCount = 0;
 let str = [];
 
 
-btn.addEventListener("click", () => {
-
-    if(ub.checked == false && leg.checked == false){
-        
-        Swal.fire({
-            icon: 'error',
-            title: '미체크 에러',
-            text: '항목을 체크 해주세요!',
-        });
-    } 
-
-    return;
-    
-})
 
 
 
@@ -62,7 +48,20 @@ if (input.style.width == "20%") {
 }
 
 if(loginMember == ''){
+
+    
+
     noMember.addEventListener("click", () => {
+
+        if(ub.checked == false && leg.checked == false){
+            
+            Swal.fire({
+                icon: 'error',
+                title: '미체크 에러',
+                text: '항목을 체크 해주세요!',
+            });
+            return;
+        } 
     
         if(confirm("로그인 하시겠습니까?")){
             location.href = "/member/login";
@@ -70,7 +69,20 @@ if(loginMember == ''){
     })
 }else{
     
-
+    btn.addEventListener("click", () => {
+    
+        if(ub.checked == false && leg.checked == false){
+            
+            Swal.fire({
+                icon: 'error',
+                title: '미체크 에러',
+                text: '항목을 체크 해주세요!',
+            });
+        } 
+    
+        return;
+        
+    })
 
 
 
