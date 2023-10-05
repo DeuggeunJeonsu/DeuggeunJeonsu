@@ -24,6 +24,8 @@
 
   ## 💡 기획 의도
   <a name="기획-의도"></a>
+  
+  <img src="https://github.com/DeuggeunJeonsu/DeuggeunJeonsu/assets/137850727/89dca324-aa22-49fa-afb6-2cb1852d52ac"><br>
 
   헬스에 도전하고 싶으나 아는 운동은 없고 너무 많은 운동 정보들에 혼란스러움을 겪는 <b>A 씨</b> 🙅‍♀️<br>
   늘어났다 줄었다 변화가 잦은 유지어터 <b>B 씨</b> 🤷‍♂️<br>
