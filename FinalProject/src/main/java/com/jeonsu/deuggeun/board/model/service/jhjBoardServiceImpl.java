@@ -104,9 +104,9 @@ public class jhjBoardServiceImpl implements jhjBoardService{
 	@Override
 	public int QnaWriteInsert(Board board) {
 		
-		System.out.println(board.getBoardTitle());
-		System.out.println(board.getBoardContent());
-		System.out.println(board.getMemberNo());
+		board.setBoardTitle( Util.XSSHandling( board.getBoardTitle() ) ); 
+		board.setBoardContent( Util.XSSHandling( board.getBoardContent() ) ); 
+		
 		// 문의글 작성
 		int result = dao.QnaWriteInsert(board);
 		
@@ -116,7 +116,6 @@ public class jhjBoardServiceImpl implements jhjBoardService{
 			// 문의 테이블 데이터 삽입을 위한 boardNo 조회
 			int boardNo = dao.selectInquiryBoardNo(memberNo);
 			
-			System.out.println(boardNo + " ?????");
 			board.setBoardNo(boardNo);
 			
 			
