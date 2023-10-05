@@ -403,7 +403,7 @@
 	<!-- 루틴공유 게시글 상세 검색 -->
 	<select id="selectShareBoardList_search" resultMap="shareBoard_rm">
 		SELECT BOARD_NO, BOARD_TITLE, MEMBER_NICKNAME,
-		TO_CHAR(CREATE_DT, 'YY.MM.DD') CREATE_DT,
+		TO_CHAR(CREATE_DT, 'YY.MM.DD') CREATE_DT, PROFILE_IMG,
 		(SELECT COUNT(*) FROM "COMMENT" C
 		
 		WHERE C.BOARD_NO = B.BOARD_NO) COMMENT_COUNT,
