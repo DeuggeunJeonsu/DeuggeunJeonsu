@@ -43,9 +43,20 @@
         <!-- 게시글 작성자 정보 -->
         <div id="writer-info-area">
 
+            <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
             <div id="profile-area">
-                <img src="/resources/images/user.png">
+                <c:choose>
+                    <c:when test="${not empty review.profileImage}">
+                        <img src="${review.profileImage}">
+                    </c:when>
+
+                    <c:otherwise>
+                        <img src="/resources/images/user.png">
+                    </c:otherwise>
+                </c:choose>
             </div>
+
 
             <div id="nick-area">
                 <div id="nickname"><a href="#">${review.memberNickname}</a></div>

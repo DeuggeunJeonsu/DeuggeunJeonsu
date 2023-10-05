@@ -31,7 +31,7 @@ var minutes = today.getMinutes();  // 분
 var seconds = today.getSeconds();  // 초
 var milliseconds = today.getMilliseconds();
 var makeMerchantUid = hours +  minutes + seconds + milliseconds;
-// var totalAmountSum = "${totalAmountSum}";
+
 function requestPay() {
 
     var delName = document.getElementById("delName").value.trim();
@@ -108,12 +108,11 @@ function requestPay() {
 
     var paymentSuccess = false;
 
-    console.log('requestPay() 실행.');
     IMP.request_pay({
         pg : 'html5_inicis',
         pay_method: "card",
         merchant_uid: "IMP"+makeMerchantUid,   // 주문번호
-        name : '주문명 : ' + productName + '..',
+        name : '주문명 : ' + productName + '..', // 상품명
         amount : totalAmountSum,
         productCount : productCount,
         buyer_email: delEmail, // 이메일
@@ -122,8 +121,8 @@ function requestPay() {
         buyer_postcode: delZip,  // 우편번호
         buyer_notes: delNotes  // 배송 요청 사항
 
-    }, function (rsp) { // callback
-        //rsp.imp_uid 값으로 결제 단건조회 API를 호출하여 결제결과를 판단합니다.
+    }, function (rsp) {
+
         if(rsp.success){
             console.log(rsp);
             paymentSuccess = true; // 성공

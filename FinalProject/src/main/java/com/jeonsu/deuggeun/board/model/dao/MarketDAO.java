@@ -122,7 +122,7 @@ public class MarketDAO {
 
 	// 리뷰 삭제
 	public int reviewDelete(Map<String, Object> map) {
-		return sqlSession.update("marketMapper.reviewDelete", map);
+		return sqlSession.delete("marketMapper.reviewDelete", map);
 	}
 
 	public int updateImagePath2(Review review) {
