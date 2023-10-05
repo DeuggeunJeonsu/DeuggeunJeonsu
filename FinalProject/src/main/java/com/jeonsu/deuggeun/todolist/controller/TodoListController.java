@@ -82,7 +82,6 @@ public class TodoListController {
 	// 체크리스트 추가
 	@PostMapping("/todo/insert")
 	public int todoInsert(@RequestBody TodoList insertTodo) {
-		log.info(insertTodo.toString());
 		return service.todoInsert(insertTodo);
 	}
 	
