@@ -2,7 +2,9 @@
 
 <div align=center>
 
-  <img width="400px" src="https://github.com/4-TravelMaker/TravelMaker/assets/137850727/595e282c-1361-4b09-b08e-7642df5a83b6">
+  <a href="http://43.200.124.195:8080/">
+    <img width="400px" src="https://github.com/4-TravelMaker/TravelMaker/assets/137850727/595e282c-1361-4b09-b08e-7642df5a83b6">
+  </a>
   
   # 🏃‍♂️ 프로젝트 소개 🏃‍♀️
 
