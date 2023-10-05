@@ -9,6 +9,12 @@
 
 <%-- boardList-style.css 연결 --%>
 <link rel="stylesheet" href="/resources/css/board/shareBoard/shareBoardWrite-style.css">
+
+<%-- 헤더 아이콘 --%>
+<link rel="apple-touch-icon" sizes="180x180" href="/resources/images/favicon_io/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/resources/images/favicon_io/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/resources/images/favicon_io/favicon-16x16.png">
+
 </head>
 <body style="background-color:#F8F9FA">
 
