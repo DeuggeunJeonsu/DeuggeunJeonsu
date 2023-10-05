@@ -89,8 +89,9 @@ td {
 }
 
 .ncContent {
-	width: 1000px;
-	height: 500px;
+	padding: 10;
+	width: 778px;
+	height: 580px;
 	resize: none;
 	overflow: hidden;
 	border-radius: 5px;
@@ -140,7 +141,7 @@ td {
 	display: flex;
 	align-items: center;
 	justify-content: right;
-	border-left: 2px solid gray;
+	border-left: 1px solid gray;
 }
 
 #ncCheckbox>input {

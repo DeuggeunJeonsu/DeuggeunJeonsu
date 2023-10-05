@@ -51,10 +51,10 @@
 
 							<div id="ncName">${board.memberNickname}</div>
 
-							<div id="ncCheckbox">작성일 :${board.boardCreateDate} | 조회수 : ${board.readCount}
+							<div id="ncCheckbox">작성일  ${board.boardCreateDate} &nbsp; | &nbsp; 조회수  &nbsp;${board.readCount}
 
-								<c:if test="${!empty board.boardUpdateDate}">
-									| 수정일 : ${board.boardUpdateDate}
+								<c:if test="${!empty board.boardUpdateDate}"> 
+									&nbsp; | &nbsp;수정일  ${board.boardUpdateDate}
 								</c:if>
 							</div>
 
