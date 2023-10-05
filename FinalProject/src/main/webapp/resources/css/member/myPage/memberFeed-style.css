@@ -335,6 +335,11 @@
 .followNickname{
     font-size: 15px;
     margin-left: 30px;
+
+    /* 길어지면 말줄임 처리 */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 /* 팔로우 리스트 클릭 시 효과 */
