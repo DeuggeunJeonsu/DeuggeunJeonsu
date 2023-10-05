@@ -187,6 +187,7 @@ public class MemberServiceImpl implements MemberService {
 	// email인증 후 비밀번호 변경
 	@Override
 	public int changePw(Map<String, Object> paramMap) {
+		paramMap.put("newMemberPw", bcrypt.encode(String.valueOf(paramMap.get("newMemberPw"))));
 		return dao.changePw(paramMap);
 	}
 	

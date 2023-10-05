@@ -461,13 +461,13 @@ finalCheck.addEventListener("click", () => {
                             .then(resp => resp.json())
                             .then(result => {
         
-                                if (result > '0') {
+                                if (Number(result) > 0) {
                                     // 버튼 클릭 시 실행될 동작을 정의합니다.
                                     alert('TodoList에 추가되었습니다.'); // 원하는 동작으로 변경
                                     li.remove(button);
                                     return;
         
-                                } else {
+                                } else if(Number(result) > 10) {
         
                                     alert('TodoList 개수가 꽉 찼습니다. 삭제 후 이용해주세요.');
                                 }
