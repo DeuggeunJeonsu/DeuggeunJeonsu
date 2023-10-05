@@ -172,15 +172,17 @@
     font-size: 27px;
     color: #F2CC65;
     text-shadow: 2px 1px 1px rgba(0, 0, 0, 0.5);
+    padding-left: 10px;
 }
 .top2-font{
     color: #D6DAEB;
     text-shadow: 2px 1px 1px rgba(0, 0, 0, 0.5);
+    padding-left: 5px;
 }
 .top3-font{
     color: #DCB29E;
     text-shadow: 2px 1px 1px rgba(0, 0, 0, 0.5);
-    margin-left: 5px;
+    padding-left: 5px;
 }
 
 /* 랭크 한 행 */
