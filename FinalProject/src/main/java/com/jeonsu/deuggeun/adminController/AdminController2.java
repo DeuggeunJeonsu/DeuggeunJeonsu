@@ -30,13 +30,26 @@ public class AdminController2 {
 
 	// 회원 탈퇴
 	@PostMapping("/userDel")
-	@ResponseBody
-	public int userDel(@RequestBody AdminMember member) {
-
-
+	public String userDel(AdminMember member,
+			RedirectAttributes ra
+			
+			) {
+	
 		int result = service.userDel(member); 
+	
+		String path = "redirect:";
+		
+		if(result > 0 ) {
+			path += "/admin/userList";
+			ra.addFlashAttribute("message", "회원탈퇴 성공");
+			
+		}else {
+			
+			path += "/admin/userList";
+			ra.addFlashAttribute("message", "회원탈퇴 실패");
+		}
 
-		return result;
+		return path;
 	}
 
 	// 1:1문의 리스트 조회
