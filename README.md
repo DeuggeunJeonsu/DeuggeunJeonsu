@@ -34,7 +34,7 @@
   이 커뮤니티는 운동 정보를 쉽게 얻을 수 있는 UX/UI, 효율적인 TodoList, 뱃지 시스템, BMI 계산 도구, 설문조사 기능,<br>
   그리고 마켓을 포함한 다양한 기능을 통해 사용자 중심의 반응형 웹을 제공합니다.<br>
   
-  이를 통해 운동 동기 부여를 <b>UP! UP!</b> 할 수 있도록 도와 줍니다.
+  이를 통해 운동 동기 부여를 <b>UP! UP!</b> 할 수 있도록 도와줍니다.
   
   <br><br>
 
@@ -42,10 +42,10 @@
   <a name="팀원-소개"></a>
   
   <li>안수현 (조장) <a href="https://github.com/ansoohyeon"><img src="https://img.shields.io/badge/github-181717?style=flat&logo=github&logoColor=white"/></a> </li>
-  <li>이지영 (부조장) <a href="https://github.com/KIMKWANG8"><img src="https://img.shields.io/badge/github-181717?style=flat&logo=github&logoColor=white"/></a> </li>
-  <li>김종수 <a href="https://github.com/anzkanzk87"><img src="https://img.shields.io/badge/github-181717?style=flat&logo=github&logoColor=white"/></a> </li>
-  <li>이민주 <a href="https://github.com/hunny9512"><img src="https://img.shields.io/badge/github-181717?style=flat&logo=github&logoColor=white"/></a> </li>
-  <li>정호진 <a href="https://github.com/hankyu9820"><img src="https://img.shields.io/badge/github-181717?style=flat&logo=github&logoColor=white"/></a> </li>
+  <li>이지영 (부조장) <a href="https://github.com/complete0415Jiyoung"><img src="https://img.shields.io/badge/github-181717?style=flat&logo=github&logoColor=white"/></a> </li>
+  <li>김종수 <a href="https://github.com/js3720"><img src="https://img.shields.io/badge/github-181717?style=flat&logo=github&logoColor=white"/></a> </li>
+  <li>이민주 <a href="https://github.com/minjooo0116"><img src="https://img.shields.io/badge/github-181717?style=flat&logo=github&logoColor=white"/></a> </li>
+  <li>정호진 <a href="https://github.com/hojin1111"><img src="https://img.shields.io/badge/github-181717?style=flat&logo=github&logoColor=white"/></a> </li>
 
   <br><br>
   
