@@ -467,7 +467,7 @@ finalCheck.addEventListener("click", () => {
                                     li.remove(button);
                                     return;
         
-                                } else if(Number(result) > 10) {
+                                } else  {
         
                                     alert('TodoList 개수가 꽉 찼습니다. 삭제 후 이용해주세요.');
                                 }
