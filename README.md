@@ -79,9 +79,9 @@
   
   ![Apache Tomcat](https://img.shields.io/badge/apachetomcat-F8DC75?style=flat&logo=apachetomcat&logoColor=white)
   ![Oracle](https://img.shields.io/badge/oracle-F80000?style=flat&logo=oracle&logoColor=white)
-  ![JSON](https://img.shields.io/badge/json-000000?style=flat&logo=json&logoColor=white)
   ![Spring](https://img.shields.io/badge/spring-6DB33F?style=flat&logo=spring&logoColor=white)
   ![VSCode](https://img.shields.io/badge/visualstudiocode-007ACC?style=flat&logo=visualstudiocode&logoColor=white)
+  ![JSON](https://img.shields.io/badge/json-000000?style=flat&logo=json&logoColor=white)
 
   ![Java](https://img.shields.io/badge/java-007396?style=flat&logo=java&logoColor=white)
   ![intelliJ IDEA](https://img.shields.io/badge/intellijidea-000000?style=flat&logo=intellijidea&logoColor=white)
