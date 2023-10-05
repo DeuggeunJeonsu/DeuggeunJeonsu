@@ -191,7 +191,7 @@
 	<!-- 마이페이지 내 뱃지 목록 조회 -->
 	<select id="selectBadgeList" resultMap="myPageBadge_rm">
 		SELECT BADGE_NO, BADGE_NM, BADGE_CONTENT, BADGE_IMG,
-			   TO_CHAR(BADGE_DATE, 'YYYY-MM-DD') BADGE_DATE, BADGE_FL FROM BADGE
+			   BADGE_DATE, BADGE_FL FROM BADGE
 																			   JOIN MEMBER_BADGE USING(BADGE_NO)
 		WHERE MEMBER_NO = #{memberNo}
 	</select>
