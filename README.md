@@ -33,7 +33,7 @@
   이러한 '미래의 득근왕'들을 위해 우리 크루는 직관적이고 편리한 사용자 경험을 제공하면서 동시에 재미를 놓치지 않는<br>
   웹 플랫폼 <b>득근전수</b>를 개발하게 되었습니다.<br>
   
-  이 커뮤니티는 운동 정보를 쉽게 얻을 수 있는 UX/UI, 효율적인 TodoList, 뱃지 시스템, BMI 계산 도구, 설문조사 기능,<br>
+  이 커뮤니티는 운동 정보를 쉽게 얻을 수 있는 UX/UI, 효율적인 TodoList, 뱃지 제공 시스템, BMI 계산 도구, 설문조사 기능,<br>
   그리고 마켓을 포함한 다양한 기능을 통해 사용자 중심의 반응형 웹을 제공합니다.<br>
   
   이를 통해 운동 동기 부여를 <b>UP! UP!</b> 할 수 있도록 도와줍니다.
@@ -66,14 +66,17 @@
   ![HTML5](https://img.shields.io/badge/html5-E34F26?style=flat&logo=html5&logoColor=white)
   ![CSS3](https://img.shields.io/badge/css3-1572B6?style=flat&logo=css3&logoColor=white)
   ![Java](https://img.shields.io/badge/java-007396?style=flat&logo=java&logoColor=white)
-  
+
+  ![Apache Tomcat](https://img.shields.io/badge/apachetomcat-F8DC75?style=flat&logo=apachetomcat&logoColor=white)
   ![Oracle](https://img.shields.io/badge/oracle-F80000?style=flat&logo=oracle&logoColor=white)
-  ![Eclipse](https://img.shields.io/badge/eclipse-2C2255?style=flat&logo=eclipse&logoColor=white)
+  ![intelliJ IDEA](https://img.shields.io/badge/intellijidea-000000?style=flat&logo=intellijidea&logoColor=white)
+  ![JSON](https://img.shields.io/badge/json-000000?style=flat&logo=json&logoColor=white)
+  ![Spring](https://img.shields.io/badge/spring-6DB33F?style=flat&logo=spring&logoColor=white)
   ![VSCode](https://img.shields.io/badge/visualstudiocode-007ACC?style=flat&logo=visualstudiocode&logoColor=white)
   
   ![Windows 10](https://img.shields.io/badge/windows10-0078D6?style=flat&logo=windows10&logoColor=white)
-  ![Apache Tomcat](https://img.shields.io/badge/apachetomcat-F8DC75?style=flat&logo=apachetomcat&logoColor=white)
   ![GitHub](https://img.shields.io/badge/github-181717?style=flat&logo=github&logoColor=white)
+  ![Sourcetree](https://img.shields.io/badge/sourcetree-0052CC?style=flat&logo=sourcetree&logoColor=white)
 
   <br><br>
   
