@@ -78,6 +78,8 @@
 /* 랭킹 표 */
 .ranking-table{
     width: 100%;
+    height: 550px;
+
     position: relative;
     display: flex;
     flex-direction: column;
