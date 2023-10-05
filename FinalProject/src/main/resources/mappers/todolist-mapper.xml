@@ -139,8 +139,20 @@
 	
 	<!-- 루틴 추천 전용 -->
 	<select id="todoListCount" resultType="_int">
-		SELECT COUNT(*) FROM TODOLIST
-		WHERE MEMBER_NO = ${memberNo} 
+		 SELECT
+		    NVL(COUNT(C."L_CREATE_DT"), 0 ) AS "L_CREATE_DT"
+            
+		    
+		FROM
+		    "TODOLIST" TL
+		JOIN
+		    "TODOLIST_DATE" TD ON TL."LIST_NO" = TD."LIST_NO"
+		JOIN
+		    "CALENDER" C ON TD."L_CREATE_DT" = C."L_CREATE_DT"
+		WHERE
+		    TL."MEMBER_NO" = #{memberNo}
+		AND 
+		    C."L_CREATE_DT" = SYSDATE
 	</select>
   
   	<!-- 전체 달성 -->
