@@ -677,7 +677,7 @@
 /* 캘린더 말풍선 */
 .ballon {
     /* display: none; */
-    width: 292px;
+    width: auto;
     height: 40px;
 
     position: absolute;
