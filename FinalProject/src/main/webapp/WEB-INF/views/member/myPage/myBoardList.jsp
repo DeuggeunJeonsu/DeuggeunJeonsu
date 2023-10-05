@@ -63,8 +63,14 @@
 
                                             <c:if test="${!empty board.thumbnail}">
                                                 <c:set var="originalThumbnail" value="${board.thumbnail}"/>
-                                                <c:set var="thumbnail" value="${fn:replace(originalThumbnail, '^^^', ',')}"/>
-                                                <img src="${thumbnail}">
+
+                                                <c:if test="${board.boardCode == 2}">
+                                                    <img src="/resources/images/board/${originalThumbnail}">
+                                                </c:if>
+                                                <c:if test="${board.boardCode != 2}" >
+                                                    <c:set var="thumbnail" value="${fn:replace(originalThumbnail, '^^^', ',')}"/>
+                                                    <img src="${thumbnail}">
+                                                </c:if>
                                             </c:if>
                                         </div>
                                         <div>

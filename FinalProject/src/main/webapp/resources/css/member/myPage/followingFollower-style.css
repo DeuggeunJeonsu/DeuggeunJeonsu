@@ -120,7 +120,8 @@
 }
 
 .followProfileImg > img{
-    width: 100%;
+    width: 90px;
+    height: 90px;
 
     border-radius: 50%;
 }
