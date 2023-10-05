@@ -100,7 +100,7 @@ for(let i = 0 ; i < marketTitle.length ; i++){
 
         checkFl2[i].innerHTML = '미답변';
 
-    }else if(hiddenCheckFl2[i].value == 'Y'){
+    }else if(hiddenCheckFl2[i].value == 'Y' || hiddenCheckFl2[i].value == 'M'){
 
         checkFl2[i].innerHTML = '답변 보기';
         checkFl2[i].style.color = "#99e1ed";

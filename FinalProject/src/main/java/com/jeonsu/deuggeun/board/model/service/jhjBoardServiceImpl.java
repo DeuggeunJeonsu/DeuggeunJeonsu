@@ -104,6 +104,9 @@ public class jhjBoardServiceImpl implements jhjBoardService{
 	@Override
 	public int QnaWriteInsert(Board board) {
 		
+		System.out.println(board.getBoardTitle());
+		System.out.println(board.getBoardContent());
+		System.out.println(board.getMemberNo());
 		// 문의글 작성
 		int result = dao.QnaWriteInsert(board);
 		

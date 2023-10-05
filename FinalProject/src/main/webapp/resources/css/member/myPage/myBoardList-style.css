@@ -121,11 +121,13 @@
     font-size: 13px;
 
     margin-top: 10px;
+    margin-right: 3px;
 }
 
 /* 게시글 작성자 프로필 영역 */
 .profile-like-container{
     display: flex;
+    justify-content: space-between;
 }
 
 .profile-area{
@@ -154,7 +156,6 @@
     justify-content: center;
     align-items: center;
 
-    margin-left: 40px;
     margin-top: 10px;
     
     font-size: 13px;

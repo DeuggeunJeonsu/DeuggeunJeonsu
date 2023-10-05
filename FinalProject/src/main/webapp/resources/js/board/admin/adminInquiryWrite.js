@@ -2,7 +2,7 @@ const boardTitle = document.getElementsByClassName("boardTitle")[0];
 const boardContent = document.getElementsByClassName("boardContent")[0];
 const formTag = document.getElementsByClassName("formTag")[0];
 
-/* const submitBtn = document.getElementById("submit-button"); */
+ const submitBtn = document.getElementById("submit-button"); 
 const cancelBtn = document.getElementById("cancel-button");
 
 

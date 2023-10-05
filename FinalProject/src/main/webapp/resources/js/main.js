@@ -167,5 +167,29 @@ function realTimeUpdates(){
 }
 
 
+const attendenceCookie = get_cookie(loginMember.memberEmail.replace("@","_")+"_attendance");
+if(attendenceCookie == null){ // 쿠키없음 == 인증번호 미발송 == 인증번호 만료
+    set_cookie(loginMember.memberEmail.replace("@","_")+"_attendance");
+}
 
+//쿠키 생성하는 함수
+function set_cookie(name) {
+    let date = new Date();
+    date.setDate(date.getDate());
+    date.setHours(23-date.getHours());
+    date.setMinutes(59-date.getMinutes());
+    date.setSeconds(59-date.getSeconds());
+    console.log(date.toUTCString());
+    document.cookie = encodeURIComponent(name) + '=' + encodeURIComponent("출석") + ';expires=' + date.toUTCString() + ';path=/';
+}
 
+//쿠키 값 가져오는 함수
+function get_cookie(name) {
+    let value = document.cookie.match('(^|;) ?' + name + '=([^;]*)(;|$)');
+    return value? value[2] : null;
+}
+
+//쿠키 삭제하는 함수
+function delete_cookie(name) {
+    document.cookie = encodeURIComponent(name) + '=; expires=Thu, 01 JAN 1999 00:00:10 GMT;path=/';
+}

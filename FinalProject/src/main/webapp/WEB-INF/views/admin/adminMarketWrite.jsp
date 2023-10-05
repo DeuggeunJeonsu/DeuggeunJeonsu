@@ -53,7 +53,7 @@
 
                     <div class="bottom">
                         <div>
-                            <button id="submit-button">작성</button>
+                            <button id="submit-button" onclick="return submitBtn()" >작성</button>
                             <button id="cancel-button">취소</button>
                         </div>
                     </div>
@@ -64,5 +64,5 @@
             <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
 
         </body>
-
+            <script src="/resources/js/board/admin/adminInquiryWrite.js"></script>
         </html>

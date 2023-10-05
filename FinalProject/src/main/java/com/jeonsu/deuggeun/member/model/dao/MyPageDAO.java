@@ -163,7 +163,7 @@ public class MyPageDAO {
 	 * @return boardNo
 	 */
 	public int selectAdminBoardNo(int boardNo) {
-		System.out.println(boardNo + " ???다오");
+		
 		return sqlSession.selectOne("myPageMapper.selectAdminBoardNo", boardNo);
 	}
 	
