@@ -124,6 +124,13 @@ $(document).ready(function() {
     if($('.count-area').length){
         updateShoppingCount();
         realTimeUpdates();
+
+        const attendenceCookie = get_cookie(loginMember.memberEmail.replace("@","_")+"_attendance");
+        if(attendenceCookie == null){ // 쿠키없음 == 금일 출석 안함
+            console(get_cookie(loginMember.memberEmail.replace("@","_")+"_attendance"));
+            set_cookie(loginMember.memberEmail.replace("@","_")+"_attendance"); // 00시 까지 유지되는 쿠키 생성
+            console(get_cookie(loginMember.memberEmail.replace("@","_")+"_attendance"));
+        }
     }
 });
 
@@ -166,11 +173,6 @@ function realTimeUpdates(){
     }, 500);
 }
 
-
-const attendenceCookie = get_cookie(loginMember.memberEmail.replace("@","_")+"_attendance");
-if(attendenceCookie == null){ // 쿠키없음 == 인증번호 미발송 == 인증번호 만료
-    set_cookie(loginMember.memberEmail.replace("@","_")+"_attendance");
-}
 
 //쿠키 생성하는 함수
 function set_cookie(name) {
