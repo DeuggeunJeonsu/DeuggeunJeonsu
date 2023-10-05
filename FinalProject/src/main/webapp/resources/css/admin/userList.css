@@ -182,7 +182,7 @@ td{
     cursor: pointer;
 }
 
-.userDel{
+#userDel{
 
     background-color: #99E1ED;
     color: white;
