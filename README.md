@@ -2,9 +2,11 @@
 
 <div align=center>
 
-  <a href="http://43.200.124.195:8080/">
-    <img width="400px" src="https://github.com/4-TravelMaker/TravelMaker/assets/137850727/595e282c-1361-4b09-b08e-7642df5a83b6">
-  </a>
+  <img width="400px" src="https://github.com/4-TravelMaker/TravelMaker/assets/137850727/595e282c-1361-4b09-b08e-7642df5a83b6">
+
+  <br>[▶️ 득근전수 사이트 바로 가기 ◀️](http://43.200.124.195:8080/)
+
+  <br>
   
   # 🏃‍♂️ 프로젝트 소개 🏃‍♀️
 
