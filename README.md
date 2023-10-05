@@ -42,12 +42,23 @@
 
   ## 🧑‍💻 팀원 소개
   <a name="팀원-소개"></a>
-  
-  <li>안수현 (조장) <a href="https://github.com/ansoohyeon"><img src="https://img.shields.io/badge/github-181717?style=flat&logo=github&logoColor=white"/></a> </li>
-  <li>이지영 (부조장) <a href="https://github.com/complete0415Jiyoung"><img src="https://img.shields.io/badge/github-181717?style=flat&logo=github&logoColor=white"/></a> </li>
-  <li>김종수 <a href="https://github.com/js3720"><img src="https://img.shields.io/badge/github-181717?style=flat&logo=github&logoColor=white"/></a> </li>
-  <li>이민주 <a href="https://github.com/minjooo0116"><img src="https://img.shields.io/badge/github-181717?style=flat&logo=github&logoColor=white"/></a> </li>
-  <li>정호진 <a href="https://github.com/hojin1111"><img src="https://img.shields.io/badge/github-181717?style=flat&logo=github&logoColor=white"/></a> </li>
+
+  <table>
+    <tr>
+      <td><img src="https://github.com/DeuggeunJeonsu/DeuggeunJeonsu/assets/137850727/ffeb3f99-2a0a-4af1-af98-efc7c34ad87a"></td>
+      <td><img src="https://github.com/DeuggeunJeonsu/DeuggeunJeonsu/assets/137850727/b918f857-0283-4d4b-a4e8-8fc0ae0f45c6"></td>
+      <td><img src="https://github.com/DeuggeunJeonsu/DeuggeunJeonsu/assets/137850727/dd9fc525-b32b-4c64-94bd-386356574f37"></td>
+      <td><img src="https://github.com/DeuggeunJeonsu/DeuggeunJeonsu/assets/137850727/5b3700dc-8086-4363-bfbb-888e8ba4a53d"></td>
+      <td><img src="https://github.com/DeuggeunJeonsu/DeuggeunJeonsu/assets/137850727/e115669c-198e-4570-b36d-e61ac110bbdf"></td>
+    </tr>
+    <tr>
+      <th>안수현 (조장) <a href="https://github.com/ansoohyeon"><br><img src="https://img.shields.io/badge/github-181717?style=flat&logo=github&logoColor=white"/></a></th>
+      <th>이지영 (부조장) <a href="https://github.com/complete0415Jiyoung"><br><img src="https://img.shields.io/badge/github-181717?style=flat&logo=github&logoColor=white"/></a></th>
+      <th>김종수 (체육부장) <a href="https://github.com/js3720"><br><img src="https://img.shields.io/badge/github-181717?style=flat&logo=github&logoColor=white"/></a></th>
+      <th>이민주 () <a href="https://github.com/minjooo0116"><br><img src="https://img.shields.io/badge/github-181717?style=flat&logo=github&logoColor=white"/></a></th>
+      <th>정호진 (응원단장)<a href="https://github.com/hojin1111"><br><img src="https://img.shields.io/badge/github-181717?style=flat&logo=github&logoColor=white"/></a></th>
+    </tr>
+  </table>
 
   <br><br>
   
