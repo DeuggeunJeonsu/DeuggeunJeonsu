@@ -20,11 +20,15 @@ import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.jeonsu.deuggeun.todolist.model.service.TodoListService;
+
+import lombok.extern.java.Log;
+import lombok.extern.slf4j.Slf4j;
+
 import com.jeonsu.deuggeun.member.model.dto.Member;
 import com.jeonsu.deuggeun.todolist.model.dto.Health;
 import com.jeonsu.deuggeun.todolist.model.dto.TodoList;
 
-
+@Slf4j
 @Controller
 @ResponseBody
 @SessionAttributes({"loginMember"})
@@ -78,6 +82,7 @@ public class TodoListController {
 	// 체크리스트 추가
 	@PostMapping("/todo/insert")
 	public int todoInsert(@RequestBody TodoList insertTodo) {
+		log.info(insertTodo.toString());
 		return service.todoInsert(insertTodo);
 	}
 	
@@ -85,6 +90,7 @@ public class TodoListController {
 	@GetMapping("/todo/allCompleted")
 	public int allCompleted(@RequestParam("date") String date
 			,@SessionAttribute("loginMember") Member loginMember) {
+		
 		
 		int loginMemberNo =loginMember.getMemberNo();
 		
@@ -105,6 +111,7 @@ public class TodoListController {
 	public List<Health> autoSearch(String query){
 		
 		Map<String, Object>map = new HashMap<>();
+		
 		
 		map.put("query", query);
 		return service.autoSearch(map);
