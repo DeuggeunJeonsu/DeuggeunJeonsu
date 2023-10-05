@@ -358,6 +358,7 @@ public class MyPageController {
 			, String newPw
 			) {
 
+
 		// 주소
 		String addr = String.join("^^^", memberAddress);
 		updateMember.setMemberAddress(addr);
@@ -383,7 +384,7 @@ public class MyPageController {
 
 		//----------------------------------------------------
 		// 비밀번호 변경 
-		if( newPw != null ) {
+		if( newPw != "" ) {
 			int memberNo = loginMember.getMemberNo();
 
 			// 비밀번호 변경 Service 호출
