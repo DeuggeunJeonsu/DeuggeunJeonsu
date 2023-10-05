@@ -54,10 +54,7 @@ a {
     min-width: 1200px;
     background-color: #fff;
 }
-.main-con{
-    /*height: 1000px;*/
-    /*padding: 100px;*/
-}
+
 select{
     background-image: none;
     border-radius: 30px;
@@ -86,7 +83,6 @@ select{
     font-family: 'Montserrat','Nanum Gothic',sans-serif;
 }
 #title{
-    /*font-size: 22px;*/
     color: #565656;
     letter-spacing: -1px;
     margin-top: 7px;

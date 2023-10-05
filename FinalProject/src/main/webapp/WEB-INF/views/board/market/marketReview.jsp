@@ -60,9 +60,16 @@
                         <div class="left-content">
                             <img src="${product.productImg}" id="main-photo">
                         </div>
-                        <%--                        <p>Image Path: ${product.pImagePath}</p>--%>
                         <div class="right-content">
-                            <div id="title">${product.productTitle}</div>
+                            <div class="kakao">
+                                <div id="title">${product.productTitle}</div>
+                                <c:if test="${!empty loginMember}">
+                                    <button id="kakao-share-btn" onclick="shareMessage()">
+                                        <img id="kakao-logo" src="/resources/images/main/kakao.png">
+                                        &nbsp;카카오톡 공유하기
+                                    </button>
+                                </c:if>
+                            </div>
                             <hr>
                             <div id="amount">
                                 <h3>판매가 : <fmt:formatNumber type="number" value="${product.productPrice}" pattern="#,###원" /></h3>

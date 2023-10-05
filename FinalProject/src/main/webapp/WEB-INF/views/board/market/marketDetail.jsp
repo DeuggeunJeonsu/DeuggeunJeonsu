@@ -56,10 +56,6 @@
                         <div class="right-content">
                             <div class="kakao">
                             <div id="title">${product.productTitle}</div>
-<%--                            <a id="kakaotalk-sharing-btn" href="javascript:;">--%>
-<%--                                <img src="https://developers.kakao.com/assets/img/about/logos/kakaotalksharing/kakaotalk_sharing_btn_medium.png"--%>
-<%--                                     alt="카카오톡 공유 보내기 버튼" />--%>
-<%--                            </a>--%>
                                 <c:if test="${!empty loginMember}">
                                 <button id="kakao-share-btn" onclick="shareMessage()">
                                     <img id="kakao-logo" src="/resources/images/main/kakao.png">
