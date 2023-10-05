@@ -120,7 +120,8 @@
 }
 
 .followProfileImg > img{
-    width: 100%;
+    width: 90px;
+    height: 90px;
 
     border-radius: 50%;
 }
@@ -129,6 +130,11 @@
     font-size: 15px;
 
     margin-left: 30px;
+    width: 40px;
+
+    /* 길어지면 말줄임 처리 */
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 /* 팔로우 버튼 영역 */
@@ -152,7 +158,7 @@
 
 /* 팔로잉 시 버튼 스타일 */
 .followingBtn {
-    background: #99E1ED;
+    background: #99e0ed9c;
     width: 130px;
     height: 40px;
     line-height: 42px;

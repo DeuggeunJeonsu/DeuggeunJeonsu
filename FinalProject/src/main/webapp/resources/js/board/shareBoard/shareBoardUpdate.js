@@ -267,7 +267,7 @@ document.addEventListener("click", function(event){
                     //지정된 파일을 읽은 후 result변수에 URL형식으로 저장
 
                     reader.onload = e =>{ //파일을 다 읽은 후 수행
-                        preview[i].setAttribute("src", e.target.result);
+                        inputImage[i].parentElement.children[0].children[0].setAttribute("src", e.target.result);
 
                         //이미지가 성공적으로 읽어지면
                         // deleteSet에서 삭제

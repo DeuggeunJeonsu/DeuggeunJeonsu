@@ -74,6 +74,12 @@
       AND MEMBER_EMAIL = #{memberEmail}
    </select>
    
+   <!-- 출석일 증가 -->
+   <update id="attendencePlus">
+	  UPDATE MEMBER SET ATTENDENCE_DT= ATTENDENCE_DT+1
+	  WHERE MEMBER_NO = #{memberNo}
+   </update>
+   
    <!-- 회원가입 -->
    <insert id="signUp" parameterType = "Member">
    INSERT INTO "MEMBER"
@@ -179,18 +185,21 @@
    
    <!-- 메인페이지 실천 랭킹 불러오기 -->
    <select id="setTodoListRanking" resultMap="tdRankingList_rm">
-        SELECT AF.MEMBER_NO, PROFILE_IMG ,MEMBER_NICKNAME,
-		    (SELECT COUNT(ALL_FL)
-	  		   FROM (SELECT TO_CHAR(TD."L_CREATE_DT", 'YYYY-MM-DD') AS "L_CREATE_DT", C.ALL_FL
-		  		    FROM "TODOLIST" TL
-				    JOIN "TODOLIST_DATE" TD ON TL."LIST_NO" = TD."LIST_NO"
-				    JOIN "CALENDER" C ON TD."L_CREATE_DT" = C."L_CREATE_DT"
-				    WHERE TL."MEMBER_NO" = AF."MEMBER_NO"
-				    GROUP BY TO_CHAR(TD."L_CREATE_DT", 'YYYY-MM-DD'), C.ALL_FL
-				    ORDER BY TO_CHAR(TD."L_CREATE_DT", 'YYYY-MM-DD'))
-		    WHERE ALL_FL = 'Y') TODO_ALL_FLAG_COUNT
-	    FROM "MEMBER" AF
-	    ORDER BY TODO_ALL_FLAG_COUNT DESC
+        SELECT SUMMARY.MEMBER_NO, MEMBER.PROFILE_IMG, MEMBER.MEMBER_NICKNAME, SUMMARY.SCORE
+		FROM(
+		    SELECT MEMBER_NO, COUNT(MEMBER_NO) SCORE
+		    FROM (
+		        SELECT
+		             MEMBER_NO, SUM(DECODE(LIST_FL,'N',1,0)), L_CREATE_DT
+		        FROM TODOLIST JOIN TODOLIST_DATE ON TODOLIST.LIST_NO=TODOLIST_DATE.LIST_NO
+		        GROUP BY MEMBER_NO,L_CREATE_DT
+		        HAVING SUM(DECODE(LIST_FL,'N',1,0))=0
+		    )
+		    GROUP BY MEMBER_NO
+		    ORDER BY SCORE DESC
+		 ) SUMMARY LEFT JOIN MEMBER ON SUMMARY.MEMBER_NO = MEMBER.MEMBER_NO
+		WHERE ROWNUM BETWEEN 1 AND 8
+		ORDER BY SUMMARY.SCORE DESC
    </select>
    
    <!-- 메인페이지 활동 랭킹 불러오기 -->

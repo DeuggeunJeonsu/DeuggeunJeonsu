@@ -176,8 +176,6 @@ public class MyPageServiceImpl implements MyPageService {
 			marketList = dao.selectMarketList(loginMember);
 		}
 
-		System.out.println(boardList);
-		System.out.println(marketList);
 
 
 		Map<String, Object> map = new HashMap<String, Object>();

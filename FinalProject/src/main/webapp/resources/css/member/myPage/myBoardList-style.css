@@ -148,6 +148,11 @@
     width: 80px;
     font-size: 13px;
     margin-left: 5px;
+
+    /* 길어지면 말줄임 처리 */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 /* 좋아요 영역 */

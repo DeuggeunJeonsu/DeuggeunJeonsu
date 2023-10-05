@@ -228,7 +228,6 @@ public class MyPageDAO {
 	 */
 
 	public List<Board> selectMarketList(Member loginMember) {
-		System.out.println(loginMember.getMemberNo());  
 		return sqlSession.selectList("myPageMapper.selectMarketList" , loginMember);
 	}
 

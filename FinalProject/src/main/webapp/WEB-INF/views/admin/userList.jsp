@@ -85,28 +85,30 @@
 
 							<c:choose>
 
-							<c:when test="${empty memberList}">
-								<tr>
-									<th id="noPage" colspan="6">
-										페이지가 존재하지 않습니다.
-									</th>
-								</tr>
-							</c:when>
-							
-							<c:otherwise>
-								<c:forEach items="${memberList}" var="member">
+								<c:when test="${empty memberList}">
 									<tr>
-										<td>${member.memberNo}</td>
-										<td>${member.memberEmail}</td>
-										<td>${member.memberNickname}</td>
-										<td><button class="userDel">탈퇴</button></td>
+										<th id="noPage" colspan="6">
+											페이지가 존재하지 않습니다.
+										</th>
 									</tr>
+								</c:when>
+								
+								<c:otherwise>
+									<c:forEach items="${memberList}" var="member">
+									<form action="/admin/userDel" method="post">
+										<tr>
+											<td  >${member.memberNo}</td>
+											<td>${member.memberEmail}</td>
+											<td>${member.memberNickname}</td>
+											<td><button id="userDel" onclick="return userDel()">탈퇴</button></td>
+										</tr>
+										<input  type="hidden" class="memberNo" name="memberNo"  value="${member.memberNo}" >
+									</form>
 
-									<input  type="hidden" id="memberNo" value="${member.memberNo}" >
-									
-									
-								</c:forEach>
-							</c:otherwise>
+										
+										
+									</c:forEach>
+								</c:otherwise>
 						
 							</c:choose>
 							
@@ -132,5 +134,5 @@
 
 
 
-<script src="/resources/js/board/admin/userList.js"></script>
+	<script src="/resources/js/board/admin/userList.js"></script>
 </html>

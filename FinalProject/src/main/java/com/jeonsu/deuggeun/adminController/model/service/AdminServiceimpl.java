@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import com.jeonsu.deuggeun.adminController.model.dao.AdminDAO;
 import com.jeonsu.deuggeun.adminController.model.dto.AdminMember;
 import com.jeonsu.deuggeun.board.model.dto.Board;
+import com.jeonsu.deuggeun.common.utility.Util;
 import com.jeonsu.deuggeun.member.model.dto.Member;
 
 @Service
@@ -91,6 +92,9 @@ public class AdminServiceimpl implements AdminService{
 	@Override
 	public int insertQnA(AdminMember board, int userBoardNo ) {
 		
+		board.setBoardTitle( Util.XSSHandling( board.getBoardTitle() ) ); 
+		board.setBoardContent( Util.XSSHandling( board.getBoardContent() ) ); 
+		
 		int result = dao.insertQnA(board);
 		
 		board.setAdminBoardNo(board.getBoardNo());
@@ -100,11 +104,8 @@ public class AdminServiceimpl implements AdminService{
 		  if(result > 0) {
 			  
 			  
-			  System.out.println(board.getBoardNo() +"여기오냐?");
-			  System.out.println(board.getAdminBoardNo() +"여기오냐?");
 			  //  문의 관리자 답변 여부 변경
 			  result = dao.updateQnA(board);
-			  System.out.println("여기오냐?");
 		  }
 		 
 		return result;
@@ -114,6 +115,8 @@ public class AdminServiceimpl implements AdminService{
 	@Override
 	public int marketInWrite(AdminMember board, String marketTitle) {
 		
+		board.setBoardTitle( Util.XSSHandling( board.getBoardTitle() ) ); 
+		board.setBoardContent( Util.XSSHandling( board.getBoardContent() ) ); 
 		int result = dao.marketInWrite(board);
 		
 		

@@ -312,7 +312,7 @@ document.addEventListener("click", function (event) {
                     reader.readAsDataURL(file);
         
                     reader.onload = e => {
-                        preview[i].setAttribute("src", e.target.result);
+                        inputImage[i].parentElement.children[0].children[0].setAttribute("src", e.target.result);
                     }
         
                 }else{
@@ -346,7 +346,7 @@ $(window).scroll(function() {
         }
     });
 
-    auto();
+    
 });
 if (document.querySelectorAll(".routine").length >= 2) {
     const balloon = document.querySelector(".balloon");
@@ -357,90 +357,79 @@ if (document.querySelectorAll(".routine").length >= 2) {
 //---------------------------------------------------------------------------
 //자동완성
 
-function auto(){
-
-    document.addEventListener("input" , e =>{
-
-        if(e.target.classList.contains("routineName")){
-
-            const autoSearchArea = e.target.parentElement.nextElementSibling;
-            
-            const query = e.target.value.trim();
-            
-            if(query.length == 0){
-                autoSearchArea.innerText="";
-                return;
-            }
-            autoSearchArea.innerHTML=""
-            if(query.length > 0){
-                const autoSearchArea = e.target.parentElement.nextElementSibling
-
-                fetch("/todo/auto/selecthealth?query="+ query)
-                .then(resp => resp.json())
-                .then(list => {
 
 
-                    const autoSearch = document.createElement("div");
-                    autoSearch.classList.add("autoSearch");
+document.addEventListener("input" , e =>{
 
-                    const resultArea = document.createElement("ul");
-                    resultArea.classList.add("todo-resultArea")
+    if(e.target.classList.contains("routineName")){
 
-                    autoSearchArea.innerHTML = ""; // 이전 검색 결과 비우기
-
-                    // 검색 결과 없을 때는 창이 사라짐
-                    if(list.length > 0 ){
-                        
-                        for( let health of list){
-                            const li = document.createElement("li");
-                            li.classList.add("todo-result-row");
-                            li.setAttribute("date-id", health.healthLevel);
-
-                            let name = health.healthName;
-                            let parent = health.healthParent;
-                            // let bar = " |"+ '&nbsp;'
-                            const span3 = document.createElement("span");
-                            span3.innerHTML= "&nbsp;|&nbsp;"
-                            const span1 = document.createElement("span");
-                            span1.innerHTML = `${name}`.replace(query, `<mark>${query}</mark>`);
-
-                            const span2 = document.createElement("span");
-                            span2.innerHTML = parent
-
-                            li.append(span1, span3 , span2);
-                            resultArea.append(li);
-                            autoSearch.append(resultArea);
-                            autoSearchArea.append(autoSearch);
-
-                            li.addEventListener('click', ()=>{
-                                e.target.value = health.healthName;
-                                autoSearchArea.innerHTML=""
-                            
-                            })
-
-                            
-                        }
-                    }
-
-                })
-                .catch(err => console.log(err));
-            };
-
-        };
+        const autoSearchArea = e.target.parentElement.nextElementSibling;
         
-        e.target.addEventListener("blur", () => {
+        const query = e.target.value.trim();
+        
+        if(query.length == 0){
+            autoSearchArea.innerText="";
+            return;
+        }
+        autoSearchArea.innerHTML=""
+        if(query.length > 0){
             const autoSearchArea = e.target.parentElement.nextElementSibling
-            autoSearchArea.innerHTML=""
-        });
-    });
 
-};
+            fetch("/todo/auto/selecthealth?query="+ query)
+            .then(resp => resp.json())
+            .then(list => {
 
 
- 
+                const autoSearch = document.createElement("div");
+                autoSearch.classList.add("autoSearch");
 
+                const resultArea = document.createElement("ul");
+                resultArea.classList.add("todo-resultArea")
+
+                autoSearchArea.innerHTML = ""; // 이전 검색 결과 비우기
+
+                // 검색 결과 없을 때는 창이 사라짐
+                if(list.length > 0 ){
+                    
+                    for( let health of list){
+                        const li = document.createElement("li");
+                        li.classList.add("todo-result-row");
+                        li.setAttribute("date-id", health.healthLevel);
+
+                        let name = health.healthName;
+                        let parent = health.healthParent;
+                        // let bar = " |"+ '&nbsp;'
+                        const span3 = document.createElement("span");
+                        span3.innerHTML= "&nbsp;|&nbsp;"
+                        const span1 = document.createElement("span");
+                        span1.innerHTML = `${name}`.replace(query, `<mark>${query}</mark>`);
+
+                        const span2 = document.createElement("span");
+                        span2.innerHTML = parent
+
+                        li.append(span1, span3 , span2);
+                        resultArea.append(li);
+                        autoSearch.append(resultArea);
+                        autoSearchArea.append(autoSearch);
+
+                        li.addEventListener('click', ()=>{
+                            e.target.value = health.healthName;
+                            autoSearchArea.innerHTML="";
+                        
+                        })
+                        
+                    }
+                }
+
+            })
+            .catch(err => console.log(err));
+        };
+
+    };
     
+    e.target.addEventListener("blur", () => {
+        const autoSearchArea = e.target.parentElement.nextElementSibling
+        // autoSearchArea.innerHTML=""
+    });
+});
 
-
-
-//autocomplete="off"

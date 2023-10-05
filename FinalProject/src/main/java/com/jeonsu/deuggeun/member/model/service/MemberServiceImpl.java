@@ -288,5 +288,11 @@ public class MemberServiceImpl implements MemberService {
 		return dao.setCommunityRanking();
 	}
 
+	// 출석일 증가
+	@Override
+	public int attendencePlus(int memberNo) {
+		return dao.attendencePlus(memberNo);
+	}
+
 }
 

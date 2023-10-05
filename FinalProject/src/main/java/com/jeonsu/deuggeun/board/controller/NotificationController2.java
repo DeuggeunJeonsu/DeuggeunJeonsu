@@ -129,7 +129,6 @@ public class NotificationController2 {
 		String path = "";
 		if(result > 0) {
 			
-			System.out.println("삭제 성공하면 여기");
 			message = "게시글 삭제 성공";
 			path = "redirect:" +   "/board/"+ boardCode +"/list";
 			
@@ -137,7 +136,6 @@ public class NotificationController2 {
 			
 		}else {
 			
-			System.out.println("삭제 실패하면 여기");
 			message = "게시글 삭제 실패";
 			path += "redirect:/" + "board/" + boardCode + "/" +boardNo + "?cp=" + cp;
 			
@@ -145,7 +143,6 @@ public class NotificationController2 {
 		}
 			
 		
-		System.out.println(path);
 		return path;
 	}
 	

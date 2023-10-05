@@ -195,5 +195,13 @@ public class MemberDAO {
 		return cmList;
 	}
 	
+	/** 출석일 증가
+	 * @param memberNo
+	 * @return
+	 */
+	public int attendencePlus(int memberNo) {
+		return sqlSession.update("memberMapper.attendencePlus", memberNo);
+	}
+	
 
 }
