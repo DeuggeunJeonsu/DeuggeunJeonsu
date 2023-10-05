@@ -76,15 +76,15 @@
   ![jQuery](https://img.shields.io/badge/jquery-0769AD?style=flat&logo=jquery&logoColor=white)
   ![HTML5](https://img.shields.io/badge/html5-E34F26?style=flat&logo=html5&logoColor=white)
   ![CSS3](https://img.shields.io/badge/css3-1572B6?style=flat&logo=css3&logoColor=white)
-  ![Java](https://img.shields.io/badge/java-007396?style=flat&logo=java&logoColor=white)
-
+  
   ![Apache Tomcat](https://img.shields.io/badge/apachetomcat-F8DC75?style=flat&logo=apachetomcat&logoColor=white)
   ![Oracle](https://img.shields.io/badge/oracle-F80000?style=flat&logo=oracle&logoColor=white)
-  ![intelliJ IDEA](https://img.shields.io/badge/intellijidea-000000?style=flat&logo=intellijidea&logoColor=white)
   ![JSON](https://img.shields.io/badge/json-000000?style=flat&logo=json&logoColor=white)
   ![Spring](https://img.shields.io/badge/spring-6DB33F?style=flat&logo=spring&logoColor=white)
   ![VSCode](https://img.shields.io/badge/visualstudiocode-007ACC?style=flat&logo=visualstudiocode&logoColor=white)
-  
+
+  ![Java](https://img.shields.io/badge/java-007396?style=flat&logo=java&logoColor=white)
+  ![intelliJ IDEA](https://img.shields.io/badge/intellijidea-000000?style=flat&logo=intellijidea&logoColor=white)
   ![Windows 10](https://img.shields.io/badge/windows10-0078D6?style=flat&logo=windows10&logoColor=white)
   ![GitHub](https://img.shields.io/badge/github-181717?style=flat&logo=github&logoColor=white)
   ![Sourcetree](https://img.shields.io/badge/sourcetree-0052CC?style=flat&logo=sourcetree&logoColor=white)
