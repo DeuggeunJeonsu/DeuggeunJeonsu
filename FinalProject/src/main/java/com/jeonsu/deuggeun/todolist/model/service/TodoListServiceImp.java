@@ -11,6 +11,9 @@ import com.jeonsu.deuggeun.todolist.model.dao.TodoListDao;
 import com.jeonsu.deuggeun.todolist.model.dto.Health;
 import com.jeonsu.deuggeun.todolist.model.dto.TodoList;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @Service
 public class TodoListServiceImp implements TodoListService{
 
@@ -20,6 +23,7 @@ public class TodoListServiceImp implements TodoListService{
 	// 캘린더에 표시될 todolist (동그라미/세모)
 	@Override
 	public List<Map<String, Object>> selectTodoListAll(int loginMemberNo) {
+		log.info(String.valueOf(loginMemberNo));
 		return dao.selectTodoListAll(loginMemberNo);
 	}
 	

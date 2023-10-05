@@ -163,6 +163,7 @@ public class MemberDAO {
 			if(createDT==null) {
 				result2 = sqlSession.insert("todolistMapper.calenderInsertRoutine", todoList);
 			}
+			
 			if(result > 0 ) {
 				result = sqlSession.insert("todolistMapper.todoDateInsertRoutine", todoList);
 			}

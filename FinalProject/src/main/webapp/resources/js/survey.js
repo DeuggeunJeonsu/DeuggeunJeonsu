@@ -341,7 +341,7 @@ finalCheck.addEventListener("click", () => {
             // 운동 항목을 li 요소에 추가합니다.
             const li = document.createElement('li');
             li.innerText = str[i];
-            li.style.marginBottom = "10px";
+            li.style.marginBottom = "12px";
 
             // 운동 항목에 대한 버튼을 생성하고 추가합니다.
             const button = document.createElement('button');

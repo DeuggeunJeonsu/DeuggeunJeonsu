@@ -17,19 +17,19 @@
 	</resultMap>
   
 	<select id="selectTodoListAll" resultType="map">
-		SELECT TO_CHAR(L_CREATE_DT, 'YYYY-MM-DD')L_CREATE_DT, ALL_FL
+		SELECT L_CREATE_DT, ALL_FL
 		FROM "CALENDER"
-		WHERE MEMBER_NO= #{loginmember}
+		WHERE MEMBER_NO= ${loginMemberNo}
 	</select>
 	 
 	 
 	<select id="DetailedTodoList" resultMap="list_rm">
-		SELECT LIST_NO, TO_CHAR(L_CREATE_DT, 'YYYY-MM-DD')L_CREATE_DT,
+		SELECT LIST_NO, L_CREATE_DT,
 		    LIST_CONTENT, LIST_FL
 		FROM TODOLIST
 		JOIN TODOLIST_DATE USING(LIST_NO)
 		WHERE TODOLIST.MEMBER_NO = #{loginMemberNo}
-		AND TO_CHAR(L_CREATE_DT, 'YYYY-MM-DD') = #{choiceTodoDate}
+		AND L_CREATE_DT = #{choiceTodoDate}
 		ORDER BY LIST_NO
 	</select>
   
@@ -62,7 +62,7 @@
 	
 	<select id="calenderSelect" resultType="java.lang.String">
 		SELECT
-		    count(TO_CHAR(C."L_CREATE_DT", 'YYYY-MM-DD')) AS "L_CREATE_DT"
+		    count(C."L_CREATE_DT") AS "L_CREATE_DT"
 		    
 		FROM
 		    "TODOLIST" TL
@@ -74,17 +74,15 @@
 		    TL."MEMBER_NO" = #{memberNo}
 		AND 
 		    C."L_CREATE_DT" = #{lCreateDt}
-		GROUP BY
-		    TO_CHAR(TD."L_CREATE_DT", 'YYYY-MM-DD')
-		ORDER BY
-		    TO_CHAR(TD."L_CREATE_DT", 'YYYY-MM-DD')
+		GROUP BY TD."L_CREATE_DT"
+		ORDER BY TD."L_CREATE_DT"
 	
 	</select>
 	
 	<!-- 루틴 추천 전용 -->
 	<select id="calenderSelectRoutine" resultType="java.lang.String">
 		SELECT
-		    count(TO_CHAR(C."L_CREATE_DT", 'YYYY-MM-DD')) AS "L_CREATE_DT"
+		    count(C."L_CREATE_DT") AS "L_CREATE_DT"
 		    
 		FROM
 		    "TODOLIST" TL
@@ -93,13 +91,11 @@
 		JOIN
 		    "CALENDER" C ON TD."L_CREATE_DT" = C."L_CREATE_DT"
 		WHERE
-		    TL."MEMBER_NO" = #{memberNo}
+		    TL."MEMBER_NO" = ${memberNo}
 		AND 
 		    C."L_CREATE_DT" = SYSDATE
-		GROUP BY
-		    TO_CHAR(TD."L_CREATE_DT", 'YYYY-MM-DD')
-		ORDER BY
-		    TO_CHAR(TD."L_CREATE_DT", 'YYYY-MM-DD')
+		GROUP BY TD."L_CREATE_DT"
+		ORDER BY TD."L_CREATE_DT"
 	
 	</select>
 	
@@ -126,7 +122,7 @@
 	<!-- 루틴 추천 전용 -->
 	<insert id="calenderInsertRoutine">
 		INSERT INTO "CALENDER"
-		VALUES(#{memberNo}, SYSDATE, DEFAULT)
+		VALUES(${memberNo}, SYSDATE, DEFAULT)
 	</insert>
 	
 	
@@ -144,7 +140,7 @@
 	<!-- 루틴 추천 전용 -->
 	<select id="todoListCount" resultType="_int">
 		SELECT COUNT(*) FROM TODOLIST
-		WHERE MEMBER_NO = #{memberNo} 
+		WHERE MEMBER_NO = ${memberNo} 
 	</select>
   
   	<!-- 전체 달성 -->
