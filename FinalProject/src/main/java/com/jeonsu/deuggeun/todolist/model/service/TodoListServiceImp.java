@@ -23,7 +23,7 @@ public class TodoListServiceImp implements TodoListService{
 	// 캘린더에 표시될 todolist (동그라미/세모)
 	@Override
 	public List<Map<String, Object>> selectTodoListAll(int loginMemberNo) {
-		log.info(String.valueOf(loginMemberNo));
+		
 		return dao.selectTodoListAll(loginMemberNo);
 	}
 	
