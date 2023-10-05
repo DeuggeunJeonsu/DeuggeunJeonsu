@@ -272,7 +272,10 @@ main {
    margin-right: 10px;
    user-select: none;
 }
-.result-row-img{ width: 40px;}
+.result-row-img{
+   width: 40px;
+   height: 40px;
+}
 
 /* 팔레트 팝업 레이어 */
 #palettePopupLayer{

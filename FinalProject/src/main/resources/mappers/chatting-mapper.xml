@@ -35,182 +35,142 @@
 
    <!-- 채팅방 목록 조회 -->
    <select id="selectRoomList" resultMap="chattingRoom_rm">
-      SELECT
-	    R.CHATTING_NO,
-	    (
-	        SELECT MESSAGE_CONTENT
-	        FROM (
-	            SELECT * FROM MESSAGE M2
-	            WHERE M2.CHATTING_NO = R.CHATTING_NO
-	            ORDER BY MESSAGE_NO DESC
-	        ) WHERE ROWNUM = 1
-	    ) AS LAST_MESSAGE,
-	    TO_CHAR(
-	        NVL(
-	            (
-	                SELECT MAX(SEND_TIME)
-	                FROM MESSAGE M
-	                WHERE R.CHATTING_NO = M.CHATTING_NO
-	            ),
-	            CH_CREATE_DATE
-	        ),
-	        'YYYY.MM.DD'
-	    ) AS SEND_TIME,
-	    NVL2(
-	        (
-	            SELECT OPEN_MEMBER
-	            FROM CHATTING_ROOM R2
-	            WHERE R2.CHATTING_NO = R.CHATTING_NO
-	            AND R2.OPEN_MEMBER = #{memberNo}
-	        ),
-	        R.PARTICIPANT,
-	        R.OPEN_MEMBER
-	    ) AS TARGET_NO,
-	    NVL2(
-	        (
-	            SELECT OPEN_MEMBER
-	            FROM CHATTING_ROOM R2
-	            WHERE R2.CHATTING_NO = R.CHATTING_NO
-	            AND R2.OPEN_MEMBER = #{memberNo}
-	        ),
-	        (
-	            SELECT MEMBER_NICKNAME
-	            FROM MEMBER
-	            WHERE MEMBER_NO = R.PARTICIPANT
-	        ),
-	        (
-	            SELECT MEMBER_NICKNAME
-	            FROM MEMBER
-	            WHERE MEMBER_NO = R.OPEN_MEMBER
-	        )
-	    ) AS TARGET_NICKNAME,
-	    NVL2(
-	        (
-	            SELECT OPEN_MEMBER
-	            FROM CHATTING_ROOM R2
-	            WHERE R2.CHATTING_NO = R.CHATTING_NO
-	            AND R2.OPEN_MEMBER = #{memberNo}
-	        ),
-	        (
-	            SELECT PROFILE_IMG
-	            FROM MEMBER
-	            WHERE MEMBER_NO = R.PARTICIPANT
-	        ),
-	        (
-	            SELECT PROFILE_IMG
-	            FROM MEMBER
-	            WHERE MEMBER_NO = R.OPEN_MEMBER
-	        )
-	    ) AS TARGET_PROFILE,
-	    (
-	        SELECT COUNT(*)
-	        FROM MESSAGE M
-	        WHERE M.CHATTING_NO = R.CHATTING_NO
-	        AND READ_FL = 'N'
-	        AND SENDER_NO != #{memberNo}
-	    ) AS NOT_READ_COUNT,
-	    (
-	        SELECT MAX(MESSAGE_NO)
-	        FROM MESSAGE M
-	        WHERE R.CHATTING_NO = M.CHATTING_NO
-	    ) AS MAX_MESSAGE_NO
-	FROM CHATTING_ROOM R
-	WHERE (OPEN_MEMBER = #{memberNo} OR PARTICIPANT = #{memberNo})
-	ORDER BY MAX_MESSAGE_NO DESC NULLS LAST
+        WITH LastMessage AS (
+		    SELECT
+		        M2.CHATTING_NO,
+		        M2.MESSAGE_CONTENT,
+		        ROW_NUMBER() OVER (PARTITION BY M2.CHATTING_NO ORDER BY M2.MESSAGE_NO DESC) AS RN
+		    FROM
+		        MESSAGE M2
+		),
+		ChattingInfo AS (
+		    SELECT
+		        R.CHATTING_NO,
+		        NVL(
+		            (SELECT MAX(M.SEND_TIME)
+		             FROM MESSAGE M
+		             WHERE M.CHATTING_NO = R.CHATTING_NO),
+		            R.CH_CREATE_DATE
+		        ) AS SEND_TIME,
+		        R.PARTICIPANT,
+		        R.OPEN_MEMBER,
+		        R.OPEN_MEMBER AS TARGET_NO,
+		        (
+		            CASE
+		                WHEN R.OPEN_MEMBER = #{memberNo} THEN (SELECT MEMBER_NICKNAME FROM MEMBER WHERE MEMBER_NO = R.PARTICIPANT)
+		                ELSE (SELECT MEMBER_NICKNAME FROM MEMBER WHERE MEMBER_NO = R.OPEN_MEMBER)
+		            END
+		        ) AS TARGET_NICKNAME,
+		        (
+		            CASE
+		                WHEN R.OPEN_MEMBER = #{memberNo} THEN (SELECT PROFILE_IMG FROM MEMBER WHERE MEMBER_NO = R.PARTICIPANT)
+		                ELSE (SELECT PROFILE_IMG FROM MEMBER WHERE MEMBER_NO = R.OPEN_MEMBER)
+		            END
+		        ) AS TARGET_PROFILE,
+		        (SELECT COUNT(*) FROM MESSAGE M WHERE M.CHATTING_NO = R.CHATTING_NO AND M.READ_FL = 'N' AND M.SENDER_NO != #{memberNo}) AS NOT_READ_COUNT,
+		        (SELECT MAX(MESSAGE_NO) FROM MESSAGE M WHERE M.CHATTING_NO = R.CHATTING_NO) AS MAX_MESSAGE_NO
+		    FROM
+		        CHATTING_ROOM R
+		    WHERE
+		        R.OPEN_MEMBER = #{memberNo} OR R.PARTICIPANT = #{memberNo}
+		)
+		SELECT
+		    CI.CHATTING_NO,
+		    LM.MESSAGE_CONTENT AS LAST_MESSAGE,
+		    TO_CHAR(CI.SEND_TIME, 'YYYY.MM.DD') AS SEND_TIME,
+		    CI.TARGET_NO,
+		    CI.TARGET_NICKNAME,
+		    CI.TARGET_PROFILE,
+		    CI.NOT_READ_COUNT,
+		    CI.MAX_MESSAGE_NO
+		FROM
+		    ChattingInfo CI
+		LEFT JOIN
+		    LastMessage LM
+		ON
+		    CI.CHATTING_NO = LM.CHATTING_NO AND LM.RN = 1
+		ORDER BY
+		    CI.MAX_MESSAGE_NO DESC NULLS LAST
    </select>
    
    <!-- 채팅방 목록 내 유저 검색 -->
    <select id="selectRoomListInUser" resultMap="chattingRoom_rm">
-      SELECT
-		    R.CHATTING_NO,
-		    (
-		        SELECT MESSAGE_CONTENT
-		        FROM (
-		            SELECT * FROM MESSAGE M2
-		            WHERE M2.CHATTING_NO = R.CHATTING_NO
-		            ORDER BY MESSAGE_NO DESC
-		        ) WHERE ROWNUM = 1
-		    ) AS LAST_MESSAGE,
-		    TO_CHAR(
+        WITH LastMessage AS (
+		    SELECT
+		        M2.CHATTING_NO,
+		        M2.MESSAGE_CONTENT,
+		        ROW_NUMBER() OVER (PARTITION BY M2.CHATTING_NO ORDER BY M2.MESSAGE_NO DESC) AS RN
+		    FROM
+		        MESSAGE M2
+		),
+		ChattingInfo AS (
+		    SELECT
+		        R.CHATTING_NO,
 		        NVL(
-		            (
-		                SELECT MAX(SEND_TIME)
-		                FROM MESSAGE M
-		                WHERE R.CHATTING_NO = M.CHATTING_NO
-		            ),
-		            CH_CREATE_DATE
-		        ),
-		        'YYYY.MM.DD'
-		    ) AS SEND_TIME,
-		    NVL2(
-		        (
-		            SELECT OPEN_MEMBER
-		            FROM CHATTING_ROOM R2
-		            WHERE R2.CHATTING_NO = R.CHATTING_NO
-		            AND R2.OPEN_MEMBER = #{memberNo}
-		        ),
+		            (SELECT MAX(M.SEND_TIME)
+		             FROM MESSAGE M
+		             WHERE M.CHATTING_NO = R.CHATTING_NO),
+		            R.CH_CREATE_DATE
+		        ) AS SEND_TIME,
 		        R.PARTICIPANT,
-		        R.OPEN_MEMBER
-		    ) AS TARGET_NO,
-		    NVL2(
+		        R.OPEN_MEMBER,
+		        R.OPEN_MEMBER AS TARGET_NO,
 		        (
-		            SELECT OPEN_MEMBER
-		            FROM CHATTING_ROOM R2
-		            WHERE R2.CHATTING_NO = R.CHATTING_NO
-		            AND R2.OPEN_MEMBER = #{memberNo}
-		        ),
+		            CASE
+		                WHEN R.OPEN_MEMBER = #{memberNo} THEN (SELECT MEMBER_NICKNAME FROM MEMBER WHERE MEMBER_NO = R.PARTICIPANT)
+		                ELSE (SELECT MEMBER_NICKNAME FROM MEMBER WHERE MEMBER_NO = R.OPEN_MEMBER)
+		            END
+		        ) AS TARGET_NICKNAME,
 		        (
-		            SELECT MEMBER_NICKNAME
-		            FROM MEMBER
-		            WHERE MEMBER_NO = R.PARTICIPANT
-		        ),
-		        (
-		            SELECT MEMBER_NICKNAME
-		            FROM MEMBER
-		            WHERE MEMBER_NO = R.OPEN_MEMBER
-		        )
-		    ) AS TARGET_NICKNAME,
-		    NVL2(
-		        (
-		            SELECT OPEN_MEMBER
-		            FROM CHATTING_ROOM R2
-		            WHERE R2.CHATTING_NO = R.CHATTING_NO
-		            AND R2.OPEN_MEMBER = #{memberNo}
-		        ),
-		        (
-		            SELECT PROFILE_IMG
-		            FROM MEMBER
-		            WHERE MEMBER_NO = R.PARTICIPANT
-		        ),
-		        (
-		            SELECT PROFILE_IMG
-		            FROM MEMBER
-		            WHERE MEMBER_NO = R.OPEN_MEMBER
-		        )
-		    ) AS TARGET_PROFILE,
-		    (
-		        SELECT COUNT(*)
-		        FROM MESSAGE M
-		        WHERE M.CHATTING_NO = R.CHATTING_NO
-		        AND READ_FL = 'N'
-		        AND SENDER_NO != #{memberNo}
-		    ) AS NOT_READ_COUNT,
-		    (
-		        SELECT MAX(MESSAGE_NO)
-		        FROM MESSAGE M
-		        WHERE R.CHATTING_NO = M.CHATTING_NO
-		    ) AS MAX_MESSAGE_NO
-		FROM CHATTING_ROOM R
-		WHERE (OPEN_MEMBER = #{memberNo} OR PARTICIPANT = #{memberNo})
-      <if test="query != null and query !=''">
-      	AND NVL2((SELECT OPEN_MEMBER FROM CHATTING_ROOM R2
-            WHERE R2.CHATTING_NO = R.CHATTING_NO
-            AND R2.OPEN_MEMBER = #{memberNo}),
-            (SELECT MEMBER_NICKNAME FROM MEMBER WHERE MEMBER_NO = R.PARTICIPANT),
-            (SELECT MEMBER_NICKNAME FROM MEMBER WHERE MEMBER_NO = R.OPEN_MEMBER)
-            ) LIKE '%${query}%'
-      </if>
-      ORDER BY MAX_MESSAGE_NO DESC NULLS LAST
+		            CASE
+		                WHEN R.OPEN_MEMBER = #{memberNo} THEN (SELECT PROFILE_IMG FROM MEMBER WHERE MEMBER_NO = R.PARTICIPANT)
+		                ELSE (SELECT PROFILE_IMG FROM MEMBER WHERE MEMBER_NO = R.OPEN_MEMBER)
+		            END
+		        ) AS TARGET_PROFILE,
+		        (SELECT COUNT(*) FROM MESSAGE M WHERE M.CHATTING_NO = R.CHATTING_NO AND M.READ_FL = 'N' AND M.SENDER_NO != #{memberNo}) AS NOT_READ_COUNT,
+		        (SELECT MAX(MESSAGE_NO) FROM MESSAGE M WHERE M.CHATTING_NO = R.CHATTING_NO) AS MAX_MESSAGE_NO
+		    FROM
+		        CHATTING_ROOM R
+		    WHERE
+		        (R.OPEN_MEMBER = #{memberNo} OR R.PARTICIPANT = #{memberNo})
+		        <if test="query != null and query !=''">
+		            AND NVL2(
+		                (
+		                    SELECT OPEN_MEMBER
+		                    FROM CHATTING_ROOM R2
+		                    WHERE R2.CHATTING_NO = R.CHATTING_NO
+		                    AND R2.OPEN_MEMBER = #{memberNo}
+		                ),
+		                (
+		                    SELECT MEMBER_NICKNAME
+		                    FROM MEMBER
+		                    WHERE MEMBER_NO = R.PARTICIPANT
+		                ),
+		                (
+		                    SELECT MEMBER_NICKNAME
+		                    FROM MEMBER
+		                    WHERE MEMBER_NO = R.OPEN_MEMBER
+		                )
+		            ) LIKE '%${query}%'
+		        </if>
+		)
+		SELECT
+		    CI.CHATTING_NO,
+		    LM.MESSAGE_CONTENT AS LAST_MESSAGE,
+		    TO_CHAR(CI.SEND_TIME, 'YYYY.MM.DD') AS SEND_TIME,
+		    CI.TARGET_NO,
+		    CI.TARGET_NICKNAME,
+		    CI.TARGET_PROFILE,
+		    CI.NOT_READ_COUNT,
+		    CI.MAX_MESSAGE_NO
+		FROM
+		    ChattingInfo CI
+		LEFT JOIN
+		    LastMessage LM
+		ON
+		    CI.CHATTING_NO = LM.CHATTING_NO AND LM.RN = 1
+		ORDER BY
+		    CI.MAX_MESSAGE_NO DESC NULLS LAST
    </select>
 
    <!-- 채팅 확인 -->
