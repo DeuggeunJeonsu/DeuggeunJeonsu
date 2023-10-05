@@ -69,6 +69,7 @@
                             </tr>
                         </thead>
                         <tbody id="purchase-list-tbody">
+
                             <c:forEach var="item" items="${purchaseList}">
                                 <tr>
                                     <td>${item.orderDate}</td>
@@ -78,15 +79,9 @@
                                                 ${item.productName}
                                         </a>
                                     </td>
-<%--                                    <td>${item.total}</td>--%>
+
                                     <td><fmt:formatNumber value="${item.total}" pattern="#,###"/>원</td>
 
-                                <%--                                    <td>--%>
-<%--                                        <c:choose>--%>
-<%--                                            <c:when test="${item.orderStatus == 'Y'}">결제 완료</c:when>--%>
-<%--                                            <c:when test="${item.orderStatus == 'D'}">배송 완료</c:when>--%>
-<%--                                        </c:choose>--%>
-<%--                                    </td>--%>
                                     <td>
                                         <c:choose>
                                             <c:when test="${item.orderStatus == 'Y' && (item.inquiryType == 0 || item.inquiryType == 3)}">결제 완료</c:when>
@@ -102,10 +97,6 @@
                                                 onclick="handleInquiryClick(event, ${item.productNo})">문의 하기</button>
                                     </td>
 
-<%--                                    <td>--%>
-<%--                                        <button class="inquiryBtn inquiryBtnColor1"--%>
-<%--                                        onclick="location.href='/board/5/review/${item.productNo}/insert'">리뷰 작성</button>--%>
-<%--                                    </td>--%>
                                     <td>
                                         <button class="inquiryBtn inquiryBtnColor1"
                                                 onclick="checkReview(${item.productNo})">리뷰 작성</button>
@@ -114,6 +105,136 @@
                                 </tr>
                                 <input type="hidden" value="${item.productNo}" id="productNo" />
                             </c:forEach>
+                            <tr>
+                                <td>2023-04-04</td>
+                                <td>9</td>
+                                <td>매너매트</td>
+                                <td>99,000원</td>
+                                <td>배송 완료</td>
+                                <td>
+                                    <button class="inquiryBtn inquiryBtnColor2">문의 하기</button>
+                                </td>
+                                <td>
+                                    <button class="inquiryBtn inquiryBtnColor1">리뷰 작성</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2023-03-14</td>
+                                <td>8</td>
+                                <td>네오프렌 덤벨</td>
+                                <td>8,500원</td>
+                                <td>배송 완료</td>
+                                <td>
+                                    <button class="inquiryBtn inquiryBtnColor2">문의 하기</button>
+                                </td>
+                                <td>
+                                    <button class="inquiryBtn inquiryBtnColor1">리뷰 작성</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2023-02-10</td>
+                                <td>7</td>
+                                <td>L-아르기닌</td>
+                                <td>15,000원</td>
+                                <td>배송 완료</td>
+                                <td>
+                                    <button class="inquiryBtn inquiryBtnColor2">문의 하기</button>
+                                </td>
+                                <td>
+                                    <button class="inquiryBtn inquiryBtnColor1">리뷰 작성</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2023-01-16</td>
+                                <td>6</td>
+                                <td>맥반석 구운란</td>
+                                <td>13,000원</td>
+                                <td>배송 완료</td>
+                                <td>
+                                    <button class="inquiryBtn inquiryBtnColor2">문의 하기</button>
+                                </td>
+                                <td>
+                                    <button class="inquiryBtn inquiryBtnColor1">리뷰 작성</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2022-12-13</td>
+                                <td>5</td>
+                                <td>라텍스 밴드</td>
+                                <td>9,000원</td>
+                                <td>배송 완료</td>
+                                <td>
+                                    <button class="inquiryBtn inquiryBtnColor2">문의 하기</button>
+                                </td>
+                                <td>
+                                    <button class="inquiryBtn inquiryBtnColor1">리뷰 작성</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2022-12-13</td>
+                                <td>5</td>
+                                <td>로메인 샐러드</td>
+                                <td>16,000원</td>
+                                <td>배송 완료</td>
+                                <td>
+                                    <button class="inquiryBtn inquiryBtnColor2">문의 하기</button>
+                                </td>
+                                <td>
+                                    <button class="inquiryBtn inquiryBtnColor1">리뷰 작성</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2022-12-31</td>
+                                <td>4</td>
+                                <td>닭가슴살 어묵바</td>
+                                <td>13,900원</td>
+                                <td>배송 완료</td>
+                                <td>
+                                    <button class="inquiryBtn inquiryBtnColor2">문의 하기</button>
+                                </td>
+                                <td>
+                                    <button class="inquiryBtn inquiryBtnColor1">리뷰 작성</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2022-12-13</td>
+                                <td>3</td>
+                                <td>감자만두닭</td>
+                                <td>32,900원</td>
+                                <td>배송 완료</td>
+                                <td>
+                                    <button class="inquiryBtn inquiryBtnColor2">문의 하기</button>
+                                </td>
+                                <td>
+                                    <button class="inquiryBtn inquiryBtnColor1">리뷰 작성</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2022-11-11</td>
+                                <td>2</td>
+                                <td>요가링</td>
+                                <td>4,900원</td>
+                                <td>배송 완료</td>
+                                <td>
+                                    <button class="inquiryBtn inquiryBtnColor2">문의 하기</button>
+                                </td>
+                                <td>
+                                    <button class="inquiryBtn inquiryBtnColor1">리뷰 작성</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2022-10-05</td>
+                                <td>1</td>
+                                <td>다부진 한끼 도시락</td>
+                                <td>23,900원</td>
+                                <td>배송 완료</td>
+                                <td>
+                                    <button class="inquiryBtn inquiryBtnColor2">문의 하기</button>
+                                </td>
+                                <td>
+                                    <button class="inquiryBtn inquiryBtnColor1">리뷰 작성</button>
+                                </td>
+                            </tr>
                         </tbody>
 
                     </table>
