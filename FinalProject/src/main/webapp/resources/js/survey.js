@@ -35,8 +35,24 @@ const confirmStart2 = document.getElementById("confirmStart2");
 
 let listCount = 0;
 
-
 let str = [];
+
+
+btn.addEventListener("click", () => {
+
+    if(ub.checked == false && leg.checked == false){
+        
+        Swal.fire({
+            icon: 'error',
+            title: '미체크 에러',
+            text: '항목을 체크 해주세요!',
+        });
+    } 
+
+    return;
+    
+})
+
 
 
 const noMember = document.getElementById("noMember");
@@ -57,25 +73,6 @@ if(loginMember == ''){
 
 
 
-/* if(btn.innerHTML == "다음"){
-    popUp.style.visibility ="hidden";
-} */
-
-
-
-/* for (let i = 0; i < next.length; i++) {
-    if(upChk[0].checked != true &&
-        upChk[1].checked != true &&
-        upChk[2].checked != true &&
-        upChk[3].checked != true ){
-
-        Swal.fire({
-            icon: 'error',
-            title: '미체크 에러',
-            text: '항목을 체크 해주세요!',
-          });
-    }
-} */
 
 
 for (let i = 0 ;  i <  fristCheck.length ; i++) {
@@ -87,6 +84,9 @@ for (let i = 0 ;  i <  fristCheck.length ; i++) {
             btn.addEventListener("click", () => {
                 str = [];
 
+               
+                
+
                 if (leg.checked == true && ub.checked == true) {
 
                     Swal.fire({
@@ -97,8 +97,8 @@ for (let i = 0 ;  i <  fristCheck.length ; i++) {
 
 
                     return;
-
-                } else if (ub.checked == true) {
+                 /* 상체를 선택 한 경우 */
+                }else if (ub.checked == true) {
                     str = [];
                     header.innerHTML = "상체를 하는 날이군요! 그 중 어느 부위를 하시나요?";
 
@@ -123,10 +123,7 @@ for (let i = 0 ;  i <  fristCheck.length ; i++) {
 
                         fristList[i].style.display = "none";
 
-
-
-
-
+                        /* 이전 버튼 클릭 시 */
                         beforeBtn.addEventListener("click", () => {
                             str = [];
 
@@ -184,11 +181,9 @@ for (let i = 0 ;  i <  fristCheck.length ; i++) {
 
                         })
 
-
-
-
                     }
 
+                /* 하체를 선택 한 경우 */
                 } else if (leg.checked == true) {
 
 
@@ -216,9 +211,8 @@ for (let i = 0 ;  i <  fristCheck.length ; i++) {
 
                         fristList[i].style.display = "none";
 
-                   
 
-
+                        /* 이전 버튼 클릭 시 */
                         beforeBtn.addEventListener("click", () => {
 
                             for (let i = 0; i < upChk.length; i++) {
@@ -255,6 +249,7 @@ for (let i = 0 ;  i <  fristCheck.length ; i++) {
 
                             popUp.style.visibility = "hidden";
 
+                            /* 이전 버튼 클릭 후 다시 다음 버튼 클릭 시 */
                             btn.addEventListener("click", () => {
                                 popUp.style.visibility = "hidden";
 
@@ -263,8 +258,6 @@ for (let i = 0 ;  i <  fristCheck.length ; i++) {
                             })
                         })
                         beforeBtn.visibility = "hidden";
-
-
 
 
                     }
@@ -426,7 +419,8 @@ finalCheck.addEventListener("click", () => {
             }
         }
             for (let i = 0; i < str.length; i++) {
-                // 운동 항목을 li 요소에 추가합니다.
+
+                // 운동 항목을 li 요소에 추가
                 const li = document.createElement('li');
                 li.innerText = str[i];
                 li.style.marginBottom = "10px";
@@ -434,9 +428,12 @@ finalCheck.addEventListener("click", () => {
                 // li 요소를 popList에 추가
                 popList.appendChild(li);
         
+                // 버튼 생성
                 const button = document.createElement('button');
+
                 // 운동 항목에 대한 버튼을 생성하고 추가
                 button.classList.add("todoBtn");
+
                 // li 요소에 버튼을 추가
                 li.appendChild(button);
         
@@ -474,15 +471,14 @@ finalCheck.addEventListener("click", () => {
     
 
     }
-    
-        
 
 })
 
 
-
-
 }
+
+
+
 /* 모달창 메인으로 버튼 alert 효과 */
 $("#confirmStart").click(function () {
     Swal.fire({
@@ -509,6 +505,7 @@ $("#confirmStart").click(function () {
     })
 });
 
+/* 모달창 닫기 버튼 */
 confirmStart2.addEventListener("click", () => {
 
 
@@ -535,8 +532,8 @@ confirmStart2.addEventListener("click", () => {
     popList.innerHTML = '';
 })
 
+/* 이전 버튼 누를 시 */
 beforeBtn.addEventListener("click", () => {
-
 
     str = [];
 
