@@ -136,9 +136,9 @@
 
         <div class="panel top">
             <div class="content">
-                <div class="description" style="background-color: rgb(44, 44, 44);">
-                    <h1 style="color: #fff; font-weight: bold;">Find Your Fit</h1>
-                    <pre class="pre1" style="color: #fff;">
+                <div class="description">
+                    <h1 style="color: rgb(44, 44, 44); font-weight: bold;">Find Your Fit</h1>
+                    <pre class="pre1" style="color: rgb(44, 44, 44);">
 운동 성과를 기록하고 추적하여 
 자신의 발전을 확인하고 공유할 수 있습니다.
 우리는 각 사용자의 운동 기록을 시각화하여
@@ -158,28 +158,18 @@
     <script>
        
        document.addEventListener('DOMContentLoaded', function() {
-    var parent = document.querySelector('.splitview'),
-        topPanel = parent.querySelector('.top'),
-        handle = parent.querySelector('.handle'),
-        skewHack = 0,
-        delta = 0;
+            var parent = document.querySelector('.splitview'),
+                topPanel = parent.querySelector('.top'),
+                handle = parent.querySelector('.handle');
 
-    // If the parent has .skewed class, set the skewHack var.
-    if (parent.className.indexOf('skewed') != -1) {
-        skewHack = 1000;
-    }
+            parent.addEventListener('mousemove', function(event) {
+                // Move the handle.
+                handle.style.left = event.clientX  + 'px';
 
-    parent.addEventListener('mousemove', function(event) {
-        // Get the delta between the mouse position and center point.
-        delta = (event.clientX - window.innerWidth / 2) * 0.5;
-
-        // Move the handle.
-        handle.style.left = event.clientX + delta + 'px';
-
-        // Adjust the top panel width.
-        topPanel.style.width = event.clientX + skewHack + delta + 'px';
-    });
-});
+                // Adjust the top panel width.
+                topPanel.style.width = event.clientX + 'px';
+            });
+        });
     </script>
 </body>
 </html>

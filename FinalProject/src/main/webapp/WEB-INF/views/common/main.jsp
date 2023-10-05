@@ -8,7 +8,9 @@
 	<!-- AOS 라이브러리 불러오기-->
     <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"> 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script> 
-
+	<script>
+		const loginMember = "${loginMember}"; // 로그인한 회원
+	</script>
 <meta charset="UTF-8">
 <title>득근전수</title>
 	<link rel="apple-touch-icon" sizes="180x180" href="/resources/images/favicon_io/apple-touch-icon.png">
