@@ -557,7 +557,7 @@ inputChatting.addEventListener("input",()=>{
 const sendMessage = () => {
    const inputChatting = document.getElementById("inputChatting");
 
-   if (inputChatting.value.trim().length == 0) {
+   if (inputChatting.value.trim().length == 0 ) {
       Swal.fire({
          icon: 'error',                     
          title: '채팅을 입력해주세요.',    
@@ -577,6 +577,8 @@ const sendMessage = () => {
 
       inputChatting.value = "";
       inputChatting.style.height="42px";
+      send.style.backgroundColor="initial";
+      send.style.color="#ddd";
    }
 }
 
