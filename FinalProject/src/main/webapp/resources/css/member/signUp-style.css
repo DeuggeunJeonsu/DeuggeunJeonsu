@@ -338,7 +338,12 @@ a:hover {
 
 /* 인증 입력 칸 스타일 */
 .auth-input-area{
-  width: 350px;
+  width: 90%;
+}
+#emailTimer{
+  width: 10%;
+  text-align: right;
+  padding-right: 15px;
 }
 
 /* 인증 번호 시간 */

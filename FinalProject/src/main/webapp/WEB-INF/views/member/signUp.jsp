@@ -37,7 +37,7 @@
     <jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
 
     <div class="signUp-main-title">회원 가입</div>
-    <div id="signUp-main-title-sub">이제 거의 다 왔습니다! 회원 가입을 완료하고 득근전수의 비결을 득근하세요. 💪</div>
+    <div id="signUp-main-title-sub">이제 거의 다 왔습니다! 회원 가입을 완료하고 득근전수의 비결로 득근하세요. 💪</div>
     <hr class="signUp-hr">
 
     <form action ="/member/signUp" method = "POST" name = "signUpFrm" id = "signUpFrm">
@@ -61,14 +61,10 @@
               <input type="text" name = "pwAuthenticationKey" id = "email-auth-key" placeholder="인증 번호 입력" maxlength="6" autocomplete="off">
               <button type="button" id="email-auth-btn">인증 번호 확인</button>
             </div>
-
+            <div id="emailTimer"></div> 
+            <p class="auth-message" id="authMessage"></p>
 
           </div>
-
-          <p class="auth-message" id="authMessage"></p>
-          <section class="timerSection">
-            <div id="emailTimer"></div> 
-          </section>
 
         </div>
 
