@@ -94,7 +94,8 @@
   ![Sourcetree](https://img.shields.io/badge/sourcetree-0052CC?style=flat&logo=sourcetree&logoColor=white)
 
   <br><br>
-  
+  [20231002_[KH파이널프로젝트]1조 득근전수 (1).pdf](https://github.com/DeuggeunJeonsu/DeuggeunJeonsu/files/12851967/20231002_.KH.1.1.pdf)
+
   ## 🔎 주요 기능
   <a name="주요-기능"></a>
 
