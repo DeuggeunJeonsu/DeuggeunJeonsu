@@ -5,7 +5,7 @@
   <img width="400px" src="https://github.com/4-TravelMaker/TravelMaker/assets/137850727/595e282c-1361-4b09-b08e-7642df5a83b6">
 
   <br>[▶️ 득근전수 사이트 바로 가기 ◀️](http://43.200.124.195:8080/)
-  <br> [▶️ [20231002_[KH파이널프로젝트]1조 득근전수 (1).pdf](https://github.com/DeuggeunJeonsu/DeuggeunJeonsu/files/12851967/20231002_.KH.1.1.pdf) ◀️]
+  <br>[▶️ [20231002_[KH파이널프로젝트]1조 득근전수 (1).pdf](https://github.com/DeuggeunJeonsu/DeuggeunJeonsu/files/12851967/20231002_.KH.1.1.pdf) ◀️]
   <br>
   
   # 🏃‍♂️ 프로젝트 소개 🏃‍♀️
