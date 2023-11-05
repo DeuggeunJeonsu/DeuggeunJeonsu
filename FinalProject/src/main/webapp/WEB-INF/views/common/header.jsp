@@ -115,7 +115,12 @@
                                         <input type="checkbox" id="headerMenuToggle">
                                         <div class="header-menu">
                                             <a href="/myPage/myBadge">마이 페이지</a>
-                                            <a href="/member/logout" id="logoutBtn">로그아웃</a>
+                                            <c:if test="${loginMember.memberNo > 0}">
+                                                <a href="/member/logout" id="logoutBtn">로그아웃</a>
+                                            </c:if>
+                                            <c:if test="${loginMember.memberNo == 0}">
+                                                <a href="https://kauth.kakao.com/oauth/logout?client_id=e5e770e3268b121e1528e7468c66b3b6&logout_redirect_uri=http://localhost:8080/member/logout" id="logoutBtn">로그아웃</a>
+                                            </c:if>
                                             <c:if test="${loginMember.authority == 2}" >
                                                 <a href="/admin/adminBoardList" id="adminPage">관리자 페이지</a>
                                             </c:if>
