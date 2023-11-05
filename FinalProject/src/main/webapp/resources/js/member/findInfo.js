@@ -363,7 +363,7 @@ function pwValidation(){
         Swal.fire({
             icon: 'error',                     
             title: '비밀번호가 유효하지 않은 형식입니다.',
-            text: '6~20글자 사이로 입력해주세요. 사용가능한 특수문자는 ! @ # - _ 입니다.'
+            text: '6~20글자 사이, 사용가능한 특수문자는 ! @ # - _ 입니다.'
         });
         changePw.focus();
         return false;
@@ -372,7 +372,7 @@ function pwValidation(){
         Swal.fire({
             icon: 'error',                     
             title: '비밀번호확인이 유효하지 않은 형식입니다.',
-            text: '6~20글자 사이로 입력해주세요. 사용가능한 특수문자는 ! @ # - _ 입니다.'
+            text: '6~20글자 사이, 사용가능한 특수문자는 ! @ # - _ 입니다.'
         });
         changePwCheck.focus();
         return false;

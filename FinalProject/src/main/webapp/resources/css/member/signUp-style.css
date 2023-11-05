@@ -338,11 +338,14 @@ a:hover {
 
 /* 인증 입력 칸 스타일 */
 .auth-input-area{
-  width: 90%;
+  width: 100%;
 }
-#emailTimer{
-  width: 10%;
-  text-align: right;
+.auth-message{
+  width: 80%;
+}
+#emailTimer, #smsTimer{
+  width: 20%;
+  text-align: center;
   padding-right: 15px;
 }
 
