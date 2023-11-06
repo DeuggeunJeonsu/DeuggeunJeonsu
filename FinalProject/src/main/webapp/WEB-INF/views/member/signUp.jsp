@@ -37,7 +37,7 @@
     <jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
 
     <div class="signUp-main-title">회원 가입</div>
-    <div id="signUp-main-title-sub">이제 거의 다 왔습니다! 회원 가입을 완료하고 득근전수의 비결로 득근하세요. 💪</div>
+    <div id="signUp-main-title-sub">회원 가입을 완료하고 득근전수의 비결로 득근하세요. 💪</div>
     <hr class="signUp-hr">
 
     <form action ="/member/signUp" method = "POST" name = "signUpFrm" id = "signUpFrm">
@@ -49,21 +49,19 @@
           <label class="imp" for="memberEmail">아이디(이메일)</label>
 
           <div>
-            <input type="text" name = "memberEmail" id = "memberEmail" placeholder="예 : email@gmail.com">
+            <input type="text" name = "memberEmail" id = "memberEmail" placeholder="ex) deuggeunJeonsu@naver.com">
             <button id="sendEmailBtn" type="button">인증 번호 받기</button>
           </div>
 
           <p class="signUp-message" id="emailMessage">인증 메일을 받을 이메일을 작성해 주세요.</p>
 
+          <div class="auth-input-area">
+            <input type="text" name = "pwAuthenticationKey" id = "email-auth-key" placeholder="인증 번호 입력" maxlength="6" autocomplete="off">
+            <button type="button" id="email-auth-btn">인증 번호 확인</button>
+          </div>
           <div>
-
-            <div class="auth-input-area">
-              <input type="text" name = "pwAuthenticationKey" id = "email-auth-key" placeholder="인증 번호 입력" maxlength="6" autocomplete="off">
-              <button type="button" id="email-auth-btn">인증 번호 확인</button>
-            </div>
-            <div id="emailTimer"></div> 
             <p class="auth-message" id="authMessage"></p>
-
+            <div id="emailTimer"></div> 
           </div>
 
         </div>
@@ -78,7 +76,7 @@
         <div>
           <label class="imp">비밀번호 확인</label>
           <input type="password" placeholder="비밀번호를 한 번 더 입력해 주세요." name = "memberPwConfirm" id = "memberPwConfirm">
-          <p class="signUp-message" id="pwMessage">영어, 숫자, 특수문자 8~16자 사이로 입력해 주세요.</p>
+          <p class="signUp-message" id="pwMessage">영어, 숫자, 특수문자 6~20자 사이로 입력해 주세요.</p>
         </div>
 
         <div>
@@ -104,17 +102,11 @@
             <button type="button" id="tel-auth-btn">인증 번호 확인</button>
           </div>
 
-          <p class="auth-message" id="authMessage2"></p>
-          <section class="timerSection">
+          <div>
+            <p class="auth-message" id="authMessage2"></p>
             <div id="smsTimer"></div>
-          </section>
-
+          </div>
         </div>
-
-          <p class="auth-message" id="authMessage"></p>
-          <section class="timerSection">
-            <div id="emailTimer"></div> 
-          </section>
 
         <div>
           <label class="imp">주소</label>
@@ -130,13 +122,13 @@
             </div>
         </div>
 
-        <div>
+        <!-- <div>
           <label>생년월일</label>
           <div>
             <input type="date" name="memberBirth" id="memberBirth" fontid="birth_year" pattern="[0-9]*" value label="생년월일" size="4" maxlength="4"
               placeholder="YYYY" >
           </div>
-        </div>
+        </div> -->
 
       </div>
 
@@ -153,7 +145,7 @@
 
               <div class="checkbox-container">
                 <input type="checkbox" id="chkAll" onchange="toggleAllAgree()" name="chkAll">
-                <label for="Allagreement" class="check-all">이용약관, 개인정보 수집 및 이용에 모두 동의합니다.</label>
+                <label for="Allagreement" class="check-all">이용약관, 개인정보 처리방침에 모두 동의합니다.</label>
               </div>
 
               <div class="agree-terms">
